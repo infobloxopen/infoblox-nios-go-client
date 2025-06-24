@@ -198,12 +198,12 @@ func (a *MsserverAPIService) CreateExecute(r MsserverAPICreateRequest) (*CreateM
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.msserver != nil {
-		if r.msserver.Extattrs == nil {
-			r.msserver.Extattrs = &map[string]ExtAttrs{}
+		if r.msserver.ExtAttrs == nil {
+			r.msserver.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.msserver.Extattrs)[k]; !ok {
-				(*r.msserver.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.msserver.ExtAttrs)[k]; !ok {
+				(*r.msserver.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *MsserverAPIService) UpdateExecute(r MsserverAPIUpdateRequest) (*UpdateM
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.msserver != nil {
-		if r.msserver.Extattrs == nil {
-			r.msserver.Extattrs = &map[string]ExtAttrs{}
+		if r.msserver.ExtAttrs == nil {
+			r.msserver.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.msserver.Extattrs)[k]; !ok {
-				(*r.msserver.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.msserver.ExtAttrs)[k]; !ok {
+				(*r.msserver.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

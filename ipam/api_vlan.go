@@ -198,12 +198,12 @@ func (a *VlanAPIService) CreateExecute(r VlanAPICreateRequest) (*CreateVlanRespo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.vlan != nil {
-		if r.vlan.Extattrs == nil {
-			r.vlan.Extattrs = &map[string]ExtAttrs{}
+		if r.vlan.ExtAttrs == nil {
+			r.vlan.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.vlan.Extattrs)[k]; !ok {
-				(*r.vlan.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.vlan.ExtAttrs)[k]; !ok {
+				(*r.vlan.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *VlanAPIService) UpdateExecute(r VlanAPIUpdateRequest) (*UpdateVlanRespo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.vlan != nil {
-		if r.vlan.Extattrs == nil {
-			r.vlan.Extattrs = &map[string]ExtAttrs{}
+		if r.vlan.ExtAttrs == nil {
+			r.vlan.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.vlan.Extattrs)[k]; !ok {
-				(*r.vlan.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.vlan.ExtAttrs)[k]; !ok {
+				(*r.vlan.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -198,12 +198,12 @@ func (a *RirOrganizationAPIService) CreateExecute(r RirOrganizationAPICreateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.rirOrganization != nil {
-		if r.rirOrganization.Extattrs == nil {
-			r.rirOrganization.Extattrs = &map[string]ExtAttrs{}
+		if r.rirOrganization.ExtAttrs == nil {
+			r.rirOrganization.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.rirOrganization.Extattrs)[k]; !ok {
-				(*r.rirOrganization.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.rirOrganization.ExtAttrs)[k]; !ok {
+				(*r.rirOrganization.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *RirOrganizationAPIService) UpdateExecute(r RirOrganizationAPIUpdateRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.rirOrganization != nil {
-		if r.rirOrganization.Extattrs == nil {
-			r.rirOrganization.Extattrs = &map[string]ExtAttrs{}
+		if r.rirOrganization.ExtAttrs == nil {
+			r.rirOrganization.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.rirOrganization.Extattrs)[k]; !ok {
-				(*r.rirOrganization.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.rirOrganization.ExtAttrs)[k]; !ok {
+				(*r.rirOrganization.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -198,12 +198,12 @@ func (a *RangeAPIService) CreateExecute(r RangeAPICreateRequest) (*CreateRangeRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.range_ != nil {
-		if r.range_.Extattrs == nil {
-			r.range_.Extattrs = &map[string]ExtAttrs{}
+		if r.range_.ExtAttrs == nil {
+			r.range_.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.range_.Extattrs)[k]; !ok {
-				(*r.range_.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.range_.ExtAttrs)[k]; !ok {
+				(*r.range_.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *RangeAPIService) UpdateExecute(r RangeAPIUpdateRequest) (*UpdateRangeRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.range_ != nil {
-		if r.range_.Extattrs == nil {
-			r.range_.Extattrs = &map[string]ExtAttrs{}
+		if r.range_.ExtAttrs == nil {
+			r.range_.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.range_.Extattrs)[k]; !ok {
-				(*r.range_.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.range_.ExtAttrs)[k]; !ok {
+				(*r.range_.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

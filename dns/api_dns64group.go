@@ -198,12 +198,12 @@ func (a *Dns64groupAPIService) CreateExecute(r Dns64groupAPICreateRequest) (*Cre
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dns64group != nil {
-		if r.dns64group.Extattrs == nil {
-			r.dns64group.Extattrs = &map[string]ExtAttrs{}
+		if r.dns64group.ExtAttrs == nil {
+			r.dns64group.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dns64group.Extattrs)[k]; !ok {
-				(*r.dns64group.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dns64group.ExtAttrs)[k]; !ok {
+				(*r.dns64group.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *Dns64groupAPIService) UpdateExecute(r Dns64groupAPIUpdateRequest) (*Upd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dns64group != nil {
-		if r.dns64group.Extattrs == nil {
-			r.dns64group.Extattrs = &map[string]ExtAttrs{}
+		if r.dns64group.ExtAttrs == nil {
+			r.dns64group.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dns64group.Extattrs)[k]; !ok {
-				(*r.dns64group.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dns64group.ExtAttrs)[k]; !ok {
+				(*r.dns64group.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

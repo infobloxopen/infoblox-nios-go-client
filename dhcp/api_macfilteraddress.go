@@ -198,12 +198,12 @@ func (a *MacfilteraddressAPIService) CreateExecute(r MacfilteraddressAPICreateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.macfilteraddress != nil {
-		if r.macfilteraddress.Extattrs == nil {
-			r.macfilteraddress.Extattrs = &map[string]ExtAttrs{}
+		if r.macfilteraddress.ExtAttrs == nil {
+			r.macfilteraddress.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.macfilteraddress.Extattrs)[k]; !ok {
-				(*r.macfilteraddress.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.macfilteraddress.ExtAttrs)[k]; !ok {
+				(*r.macfilteraddress.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *MacfilteraddressAPIService) UpdateExecute(r MacfilteraddressAPIUpdateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.macfilteraddress != nil {
-		if r.macfilteraddress.Extattrs == nil {
-			r.macfilteraddress.Extattrs = &map[string]ExtAttrs{}
+		if r.macfilteraddress.ExtAttrs == nil {
+			r.macfilteraddress.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.macfilteraddress.Extattrs)[k]; !ok {
-				(*r.macfilteraddress.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.macfilteraddress.ExtAttrs)[k]; !ok {
+				(*r.macfilteraddress.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

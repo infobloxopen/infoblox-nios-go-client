@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | The comment for the DTC Pool; maximum 256 characters. | [optional] 
 **ConsolidatedMonitors** | Pointer to [**[]DtcPoolConsolidatedMonitors**](DtcPoolConsolidatedMonitors.md) | List of monitors and associated members statuses of which are shared across members and consolidated in server availability determination. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DTC Pool is disabled or not. When this is set to False, the fixed address is enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Health** | Pointer to [**DtcPoolHealth**](DtcPoolHealth.md) |  | [optional] 
 **LbAlternateMethod** | Pointer to **string** | The alternate load balancing method. Use this to select a method type from the pool if the preferred method does not return any results. | [optional] 
 **LbAlternateTopology** | Pointer to **string** | The alternate topology for load balancing. | [optional] 
@@ -194,30 +194,30 @@ SetDisable sets Disable field to given value.
 
 HasDisable returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *DtcPool) GetExtattrs() map[string]ExtAttrs`
+`func (o *DtcPool) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *DtcPool) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *DtcPool) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *DtcPool) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *DtcPool) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *DtcPool) HasExtattrs() bool`
+`func (o *DtcPool) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetHealth
 

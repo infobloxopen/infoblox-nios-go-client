@@ -474,12 +474,12 @@ func (a *GridCloudapiVmAPIService) UpdateExecute(r GridCloudapiVmAPIUpdateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.gridCloudapiVm != nil {
-		if r.gridCloudapiVm.Extattrs == nil {
-			r.gridCloudapiVm.Extattrs = &map[string]ExtAttrs{}
+		if r.gridCloudapiVm.ExtAttrs == nil {
+			r.gridCloudapiVm.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.gridCloudapiVm.Extattrs)[k]; !ok {
-				(*r.gridCloudapiVm.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.gridCloudapiVm.ExtAttrs)[k]; !ok {
+				(*r.gridCloudapiVm.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

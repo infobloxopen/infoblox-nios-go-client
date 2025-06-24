@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DhcpUtilizationStatus** | Pointer to **string** | Utilization level of the DHCP range objects that belong to the superscope. | [optional] [readonly] 
 **Disable** | Pointer to **bool** | Determines whether the superscope is disabled. | [optional] 
 **DynamicHosts** | Pointer to **int64** | The total number of DHCP leases issued for the DHCP range objects that belong to the superscope. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **HighWaterMark** | Pointer to **int64** | The percentage value for DHCP range usage after which an alarm will be active. | [optional] [readonly] 
 **HighWaterMarkReset** | Pointer to **int64** | The percentage value for DHCP range usage after which an alarm will be reset. | [optional] [readonly] 
 **LowWaterMark** | Pointer to **int64** | The percentage value for DHCP range usage below which an alarm will be active. | [optional] [readonly] 
@@ -190,30 +190,30 @@ SetDynamicHosts sets DynamicHosts field to given value.
 
 HasDynamicHosts returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Mssuperscope) GetExtattrs() map[string]ExtAttrs`
+`func (o *Mssuperscope) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Mssuperscope) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Mssuperscope) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Mssuperscope) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Mssuperscope) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Mssuperscope) HasExtattrs() bool`
+`func (o *Mssuperscope) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetHighWaterMark
 

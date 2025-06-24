@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AuthenticationProtocol** | Pointer to **string** | The authentication protocol to be used for this user. | [optional] 
 **Comment** | Pointer to **string** | A descriptive comment for the SNMPv3 User. | [optional] 
 **Disable** | Pointer to **bool** | Determines if SNMPv3 user is disabled or not. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | The name of the user. | [optional] 
 **PrivacyPassword** | Pointer to **string** | Determines a password for the privacy protocol. | [optional] 
 **PrivacyProtocol** | Pointer to **string** | The privacy protocol to be used for this user. | [optional] 
@@ -158,30 +158,30 @@ SetDisable sets Disable field to given value.
 
 HasDisable returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Snmpuser) GetExtattrs() map[string]ExtAttrs`
+`func (o *Snmpuser) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Snmpuser) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Snmpuser) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Snmpuser) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Snmpuser) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Snmpuser) HasExtattrs() bool`
+`func (o *Snmpuser) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetName
 

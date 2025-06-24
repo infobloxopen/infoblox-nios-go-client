@@ -474,12 +474,12 @@ func (a *DtcMonitorAPIService) UpdateExecute(r DtcMonitorAPIUpdateRequest) (*Upd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitor != nil {
-		if r.dtcMonitor.Extattrs == nil {
-			r.dtcMonitor.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitor.ExtAttrs == nil {
+			r.dtcMonitor.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitor.Extattrs)[k]; !ok {
-				(*r.dtcMonitor.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitor.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitor.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

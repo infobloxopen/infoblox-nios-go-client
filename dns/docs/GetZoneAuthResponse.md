@@ -45,7 +45,7 @@ Name | Type | Description | Notes
 **DoHostAbstraction** | Pointer to **bool** | Determines if hosts and bulk hosts are automatically created when the zone data is imported. This field is meaningful only when import_from is set. | [optional] 
 **EffectiveCheckNamesPolicy** | Pointer to **string** | The value of the check names policy, which indicates the action the appliance takes when it encounters host names that do not comply with the Strict Hostname Checking policy. This value applies only if the host name restriction policy is set to \&quot;Strict Hostname Checking\&quot;. | [optional] 
 **EffectiveRecordNamePolicy** | Pointer to **string** | The selected hostname policy for records under this zone. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalPrimaries** | Pointer to [**[]ZoneAuthExternalPrimaries**](ZoneAuthExternalPrimaries.md) | The list of external primary servers. | [optional] 
 **ExternalSecondaries** | Pointer to [**[]ZoneAuthExternalSecondaries**](ZoneAuthExternalSecondaries.md) | The list of external secondary servers. | [optional] 
 **Fqdn** | Pointer to **string** | The name of this DNS zone. For a reverse zone, this is in \&quot;address/cidr\&quot; format. For other zones, this is in FQDN format. This value can be in unicode format. Note that for a reverse zone, the corresponding zone_format value should be set. | [optional] 
@@ -1167,30 +1167,30 @@ SetEffectiveRecordNamePolicy sets EffectiveRecordNamePolicy field to given value
 
 HasEffectiveRecordNamePolicy returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetZoneAuthResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetZoneAuthResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetZoneAuthResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetZoneAuthResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetZoneAuthResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetZoneAuthResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetZoneAuthResponse) HasExtattrs() bool`
+`func (o *GetZoneAuthResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetExternalPrimaries
 

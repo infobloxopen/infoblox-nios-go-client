@@ -198,12 +198,12 @@ func (a *FilteroptionAPIService) CreateExecute(r FilteroptionAPICreateRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filteroption != nil {
-		if r.filteroption.Extattrs == nil {
-			r.filteroption.Extattrs = &map[string]ExtAttrs{}
+		if r.filteroption.ExtAttrs == nil {
+			r.filteroption.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.filteroption.Extattrs)[k]; !ok {
-				(*r.filteroption.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.filteroption.ExtAttrs)[k]; !ok {
+				(*r.filteroption.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *FilteroptionAPIService) UpdateExecute(r FilteroptionAPIUpdateRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filteroption != nil {
-		if r.filteroption.Extattrs == nil {
-			r.filteroption.Extattrs = &map[string]ExtAttrs{}
+		if r.filteroption.ExtAttrs == nil {
+			r.filteroption.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.filteroption.Extattrs)[k]; !ok {
-				(*r.filteroption.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.filteroption.ExtAttrs)[k]; !ok {
+				(*r.filteroption.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

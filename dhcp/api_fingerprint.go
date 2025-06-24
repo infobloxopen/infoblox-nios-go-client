@@ -198,12 +198,12 @@ func (a *FingerprintAPIService) CreateExecute(r FingerprintAPICreateRequest) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.fingerprint != nil {
-		if r.fingerprint.Extattrs == nil {
-			r.fingerprint.Extattrs = &map[string]ExtAttrs{}
+		if r.fingerprint.ExtAttrs == nil {
+			r.fingerprint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.fingerprint.Extattrs)[k]; !ok {
-				(*r.fingerprint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.fingerprint.ExtAttrs)[k]; !ok {
+				(*r.fingerprint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *FingerprintAPIService) UpdateExecute(r FingerprintAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.fingerprint != nil {
-		if r.fingerprint.Extattrs == nil {
-			r.fingerprint.Extattrs = &map[string]ExtAttrs{}
+		if r.fingerprint.ExtAttrs == nil {
+			r.fingerprint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.fingerprint.Extattrs)[k]; !ok {
-				(*r.fingerprint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.fingerprint.ExtAttrs)[k]; !ok {
+				(*r.fingerprint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

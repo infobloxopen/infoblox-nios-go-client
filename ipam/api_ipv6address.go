@@ -576,12 +576,12 @@ func (a *Ipv6addressAPIService) UpdateExecute(r Ipv6addressAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6address != nil {
-		if r.ipv6address.Extattrs == nil {
-			r.ipv6address.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6address.ExtAttrs == nil {
+			r.ipv6address.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6address.Extattrs)[k]; !ok {
-				(*r.ipv6address.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6address.ExtAttrs)[k]; !ok {
+				(*r.ipv6address.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

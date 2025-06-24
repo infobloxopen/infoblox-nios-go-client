@@ -198,12 +198,12 @@ func (a *DtcMonitorPdpAPIService) CreateExecute(r DtcMonitorPdpAPICreateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorPdp != nil {
-		if r.dtcMonitorPdp.Extattrs == nil {
-			r.dtcMonitorPdp.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitorPdp.ExtAttrs == nil {
+			r.dtcMonitorPdp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorPdp.Extattrs)[k]; !ok {
-				(*r.dtcMonitorPdp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitorPdp.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitorPdp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *DtcMonitorPdpAPIService) UpdateExecute(r DtcMonitorPdpAPIUpdateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorPdp != nil {
-		if r.dtcMonitorPdp.Extattrs == nil {
-			r.dtcMonitorPdp.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitorPdp.ExtAttrs == nil {
+			r.dtcMonitorPdp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorPdp.Extattrs)[k]; !ok {
-				(*r.dtcMonitorPdp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitorPdp.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitorPdp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

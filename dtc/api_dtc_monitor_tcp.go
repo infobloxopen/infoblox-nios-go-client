@@ -198,12 +198,12 @@ func (a *DtcMonitorTcpAPIService) CreateExecute(r DtcMonitorTcpAPICreateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorTcp != nil {
-		if r.dtcMonitorTcp.Extattrs == nil {
-			r.dtcMonitorTcp.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitorTcp.ExtAttrs == nil {
+			r.dtcMonitorTcp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorTcp.Extattrs)[k]; !ok {
-				(*r.dtcMonitorTcp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitorTcp.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitorTcp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *DtcMonitorTcpAPIService) UpdateExecute(r DtcMonitorTcpAPIUpdateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorTcp != nil {
-		if r.dtcMonitorTcp.Extattrs == nil {
-			r.dtcMonitorTcp.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitorTcp.ExtAttrs == nil {
+			r.dtcMonitorTcp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorTcp.Extattrs)[k]; !ok {
-				(*r.dtcMonitorTcp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitorTcp.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitorTcp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -576,12 +576,12 @@ func (a *Ipv4addressAPIService) UpdateExecute(r Ipv4addressAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv4address != nil {
-		if r.ipv4address.Extattrs == nil {
-			r.ipv4address.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv4address.ExtAttrs == nil {
+			r.ipv4address.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv4address.Extattrs)[k]; !ok {
-				(*r.ipv4address.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv4address.ExtAttrs)[k]; !ok {
+				(*r.ipv4address.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

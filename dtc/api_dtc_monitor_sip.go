@@ -198,12 +198,12 @@ func (a *DtcMonitorSipAPIService) CreateExecute(r DtcMonitorSipAPICreateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorSip != nil {
-		if r.dtcMonitorSip.Extattrs == nil {
-			r.dtcMonitorSip.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitorSip.ExtAttrs == nil {
+			r.dtcMonitorSip.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorSip.Extattrs)[k]; !ok {
-				(*r.dtcMonitorSip.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitorSip.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitorSip.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *DtcMonitorSipAPIService) UpdateExecute(r DtcMonitorSipAPIUpdateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorSip != nil {
-		if r.dtcMonitorSip.Extattrs == nil {
-			r.dtcMonitorSip.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitorSip.ExtAttrs == nil {
+			r.dtcMonitorSip.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorSip.Extattrs)[k]; !ok {
-				(*r.dtcMonitorSip.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitorSip.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitorSip.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

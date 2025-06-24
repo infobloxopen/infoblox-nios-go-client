@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **DcaSubQueryCount** | Pointer to **bool** | Enable/disable the DCA subscriber query count. | [optional] 
 **EnableGlobalAllowListRpz** | Pointer to **bool** | Enable/disable global allow list RPZ setting. | [optional] 
 **EnableRpzFilteringBypass** | Pointer to **bool** | Enable/disable Subscriber Secure Policy Bypass for Allowed list. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FirstPort** | Pointer to **int64** | The start of the first Deterministic block. | [optional] 
 **GlobalAllowListRpz** | Pointer to **int64** | Global allow list RPZ index. Valid values are between 0 and 63. | [optional] 
 **MaximumSubscribers** | Pointer to **int64** | The max number of subscribers for the site. It is used to configure the cache size. | [optional] 
@@ -403,30 +403,30 @@ SetEnableRpzFilteringBypass sets EnableRpzFilteringBypass field to given value.
 
 HasEnableRpzFilteringBypass returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetParentalcontrolSubscribersiteResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetParentalcontrolSubscribersiteResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetParentalcontrolSubscribersiteResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetParentalcontrolSubscribersiteResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetParentalcontrolSubscribersiteResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetParentalcontrolSubscribersiteResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetParentalcontrolSubscribersiteResponse) HasExtattrs() bool`
+`func (o *GetParentalcontrolSubscribersiteResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFirstPort
 

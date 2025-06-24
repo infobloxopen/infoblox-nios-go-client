@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Community** | Pointer to **string** | The SNMP community string for SNMP authentication. | [optional] 
 **Context** | Pointer to **string** | The SNMPv3 context. | [optional] 
 **EngineId** | Pointer to **string** | The SNMPv3 engine identifier. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Interval** | Pointer to **int64** | The interval for TCP health check. | [optional] 
 **Name** | Pointer to **string** | The display name for this DTC monitor. | [optional] 
 **Oids** | Pointer to [**[]DtcMonitorSnmpOids**](DtcMonitorSnmpOids.md) | A list of OIDs for SNMP monitoring. | [optional] 
@@ -164,30 +164,30 @@ SetEngineId sets EngineId field to given value.
 
 HasEngineId returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *DtcMonitorSnmp) GetExtattrs() map[string]ExtAttrs`
+`func (o *DtcMonitorSnmp) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *DtcMonitorSnmp) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *DtcMonitorSnmp) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *DtcMonitorSnmp) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *DtcMonitorSnmp) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *DtcMonitorSnmp) HasExtattrs() bool`
+`func (o *DtcMonitorSnmp) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetInterval
 

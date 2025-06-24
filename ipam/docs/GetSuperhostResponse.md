@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DhcpAssociatedObjects** | Pointer to **[]string** | A list of DHCP objects refs which are associated with Super Host. | [optional] 
 **Disabled** | Pointer to **bool** | Disable all DNS/DHCP associated objects with Super Host if True, False by default. | [optional] 
 **DnsAssociatedObjects** | Pointer to **[]string** | A list of object refs of the DNS resource records which are associated with Super Host. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | Name of the Superhost. | [optional] 
 **Result** | Pointer to [**Superhost**](Superhost.md) |  | [optional] 
 
@@ -183,30 +183,30 @@ SetDnsAssociatedObjects sets DnsAssociatedObjects field to given value.
 
 HasDnsAssociatedObjects returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetSuperhostResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetSuperhostResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetSuperhostResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetSuperhostResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetSuperhostResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetSuperhostResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetSuperhostResponse) HasExtattrs() bool`
+`func (o *GetSuperhostResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetName
 

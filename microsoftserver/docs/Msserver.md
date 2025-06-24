@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Disabled** | Pointer to **bool** | Allow/forbids usage of this Microsoft Server | [optional] 
 **DnsServer** | Pointer to [**MsserverDnsServer**](MsserverDnsServer.md) |  | [optional] 
 **DnsView** | Pointer to **string** | Reference to the DNS view | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **GridMember** | Pointer to **string** | eference to the assigned grid member | [optional] 
 **LastSeen** | Pointer to **int64** | Timestamp of the last message received | [optional] [readonly] 
 **LogDestination** | Pointer to **string** | Directs logging of sync messages either to syslog or mslog | [optional] 
@@ -357,30 +357,30 @@ SetDnsView sets DnsView field to given value.
 
 HasDnsView returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Msserver) GetExtattrs() map[string]ExtAttrs`
+`func (o *Msserver) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Msserver) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Msserver) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Msserver) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Msserver) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Msserver) HasExtattrs() bool`
+`func (o *Msserver) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetGridMember
 

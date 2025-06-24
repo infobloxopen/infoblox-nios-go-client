@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AutoCreateHostRecord** | Pointer to **bool** | Enabling this option will auto-create a single read-only A/AAAA/CNAME record corresponding to the configured hostname and update it if the hostname changes. | [optional] 
 **Comment** | Pointer to **string** | Comment for the DTC Server; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DTC Server is disabled or not. When this is set to False, the fixed address is enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Health** | Pointer to [**DtcServerHealth**](DtcServerHealth.md) |  | [optional] 
 **Host** | Pointer to **string** | The address or FQDN of the server. | [optional] 
 **Monitors** | Pointer to [**[]DtcServerMonitors**](DtcServerMonitors.md) | List of IP/FQDN and monitor pairs to be used for additional monitoring. | [optional] 
@@ -136,30 +136,30 @@ SetDisable sets Disable field to given value.
 
 HasDisable returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetDtcServerResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetDtcServerResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetDtcServerResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetDtcServerResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetDtcServerResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetDtcServerResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetDtcServerResponse) HasExtattrs() bool`
+`func (o *GetDtcServerResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetHealth
 

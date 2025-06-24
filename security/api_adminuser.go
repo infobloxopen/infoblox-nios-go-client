@@ -198,12 +198,12 @@ func (a *AdminuserAPIService) CreateExecute(r AdminuserAPICreateRequest) (*Creat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.adminuser != nil {
-		if r.adminuser.Extattrs == nil {
-			r.adminuser.Extattrs = &map[string]ExtAttrs{}
+		if r.adminuser.ExtAttrs == nil {
+			r.adminuser.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.adminuser.Extattrs)[k]; !ok {
-				(*r.adminuser.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.adminuser.ExtAttrs)[k]; !ok {
+				(*r.adminuser.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *AdminuserAPIService) UpdateExecute(r AdminuserAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.adminuser != nil {
-		if r.adminuser.Extattrs == nil {
-			r.adminuser.Extattrs = &map[string]ExtAttrs{}
+		if r.adminuser.ExtAttrs == nil {
+			r.adminuser.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.adminuser.Extattrs)[k]; !ok {
-				(*r.adminuser.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.adminuser.ExtAttrs)[k]; !ok {
+				(*r.adminuser.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

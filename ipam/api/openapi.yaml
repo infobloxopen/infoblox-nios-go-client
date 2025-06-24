@@ -720,8 +720,8 @@ paths:
       summary: Create a network object
       tags:
       - Network
-      x-tf-resource: nios_ipam_network
-      x-tf-datasource: nios_ipam_network
+      x-tf-resource: ipam_network
+      x-tf-datasource: ipam_network
       x-sdk-default-ext-attrs: true
       x-sdk-post-function-call:
       - Network
@@ -1042,8 +1042,8 @@ paths:
       summary: Create a networkcontainer object
       tags:
       - Networkcontainer
-      x-tf-resource: nios_ipam_networkcontainer
-      x-tf-datasource: nios_ipam_networkcontainer
+      x-tf-resource: ipam_networkcontainer
+      x-tf-datasource: ipam_networkcontainer
       x-sdk-default-ext-attrs: true
       x-sdk-post-function-call:
       - Network
@@ -1374,8 +1374,8 @@ paths:
       summary: Create a networktemplate object
       tags:
       - Networktemplate
-      x-tf-resource: nios_ipam_networktemplate
-      x-tf-datasource: nios_ipam_networktemplate
+      x-tf-resource: ipam_networktemplate
+      x-tf-datasource: ipam_networktemplate
       x-sdk-default-ext-attrs: true
   /networktemplate/{reference}:
     delete:
@@ -1689,8 +1689,8 @@ paths:
       summary: Create a networkview object
       tags:
       - Networkview
-      x-tf-resource: nios_ipam_networkview
-      x-tf-datasource: nios_ipam_networkview
+      x-tf-resource: ipam_networkview
+      x-tf-datasource: ipam_networkview
       x-sdk-default-ext-attrs: true
   /networkview/{reference}:
     delete:
@@ -2004,8 +2004,8 @@ paths:
       summary: Create a ipv6network object
       tags:
       - Ipv6network
-      x-tf-resource: nios_ipam_ipv6network
-      x-tf-datasource: nios_ipam_ipv6network
+      x-tf-resource: ipam_ipv6network
+      x-tf-datasource: ipam_ipv6network
       x-sdk-default-ext-attrs: true
   /ipv6network/{reference}:
     delete:
@@ -2320,8 +2320,8 @@ paths:
       summary: Create a ipv6networkcontainer object
       tags:
       - Ipv6networkcontainer
-      x-tf-resource: nios_ipam_ipv6networkcontainer
-      x-tf-datasource: nios_ipam_ipv6networkcontainer
+      x-tf-resource: ipam_ipv6networkcontainer
+      x-tf-datasource: ipam_ipv6networkcontainer
       x-sdk-default-ext-attrs: true
   /ipv6networkcontainer/{reference}:
     delete:
@@ -2647,8 +2647,8 @@ paths:
       summary: Create a ipv6networktemplate object
       tags:
       - Ipv6networktemplate
-      x-tf-resource: nios_ipam_ipv6networktemplate
-      x-tf-datasource: nios_ipam_ipv6networktemplate
+      x-tf-resource: ipam_ipv6networktemplate
+      x-tf-datasource: ipam_ipv6networktemplate
       x-sdk-default-ext-attrs: true
   /ipv6networktemplate/{reference}:
     delete:
@@ -3121,8 +3121,8 @@ paths:
       summary: Create a vlan object
       tags:
       - Vlan
-      x-tf-resource: nios_ipam_vlan
-      x-tf-datasource: nios_ipam_vlan
+      x-tf-resource: ipam_vlan
+      x-tf-datasource: ipam_vlan
       x-sdk-default-ext-attrs: true
   /vlan/{reference}:
     delete:
@@ -3436,8 +3436,8 @@ paths:
       summary: Create a vlanview object
       tags:
       - Vlanview
-      x-tf-resource: nios_ipam_vlanview
-      x-tf-datasource: nios_ipam_vlanview
+      x-tf-resource: ipam_vlanview
+      x-tf-datasource: ipam_vlanview
       x-sdk-default-ext-attrs: true
   /vlanview/{reference}:
     delete:
@@ -3751,8 +3751,8 @@ paths:
       summary: Create a vlanrange object
       tags:
       - Vlanrange
-      x-tf-resource: nios_ipam_vlanrange
-      x-tf-datasource: nios_ipam_vlanrange
+      x-tf-resource: ipam_vlanrange
+      x-tf-datasource: ipam_vlanrange
       x-sdk-default-ext-attrs: true
   /vlanrange/{reference}:
     delete:
@@ -4076,8 +4076,8 @@ paths:
       summary: Create a bulkhost object
       tags:
       - Bulkhost
-      x-tf-resource: nios_ipam_bulkhost
-      x-tf-datasource: nios_ipam_bulkhost
+      x-tf-resource: ipam_bulkhost
+      x-tf-datasource: ipam_bulkhost
       x-sdk-default-ext-attrs: true
   /bulkhost/{reference}:
     delete:
@@ -4392,8 +4392,8 @@ paths:
       summary: Create a bulkhostnametemplate object
       tags:
       - Bulkhostnametemplate
-      x-tf-resource: nios_ipam_bulkhostnametemplate
-      x-tf-datasource: nios_ipam_bulkhostnametemplate
+      x-tf-resource: ipam_bulkhostnametemplate
+      x-tf-datasource: ipam_bulkhostnametemplate
   /bulkhostnametemplate/{reference}:
     delete:
       description: Deletes a specific bulkhostnametemplate object by reference
@@ -5091,8 +5091,8 @@ paths:
       summary: Create a superhost object
       tags:
       - Superhost
-      x-tf-resource: nios_ipam_superhost
-      x-tf-datasource: nios_ipam_superhost
+      x-tf-resource: ipam_superhost
+      x-tf-datasource: ipam_superhost
       x-sdk-default-ext-attrs: true
   /superhost/{reference}:
     delete:

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **DomainName** | Pointer to **string** | Use this method to set or retrieve the domain_name value of a DHCP IPv6 Shared Network object. | [optional] 
 **DomainNameServers** | Pointer to **[]string** | Use this method to set or retrieve the dynamic DNS updates flag of a DHCP IPv6 Shared Network object. The DHCP server can send DDNS updates to DNS servers in the same Grid and to external DNS servers. This setting overrides the member level settings. | [optional] 
 **EnableDdns** | Pointer to **bool** | The dynamic DNS updates flag of an IPv6 shared network object. If set to True, the DHCP server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **LogicFilterRules** | Pointer to [**[]Ipv6sharednetworkLogicFilterRules**](Ipv6sharednetworkLogicFilterRules.md) | This field contains the logic filters to be applied on the this IPv6 shared network. This list corresponds to the match rules that are written to the DHCPv6 configuration file. | [optional] 
 **Name** | Pointer to **string** | The name of the IPv6 Shared Network. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this IPv6 shared network resides. | [optional] 
@@ -331,30 +331,30 @@ SetEnableDdns sets EnableDdns field to given value.
 
 HasEnableDdns returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Ipv6sharednetwork) GetExtattrs() map[string]ExtAttrs`
+`func (o *Ipv6sharednetwork) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Ipv6sharednetwork) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Ipv6sharednetwork) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Ipv6sharednetwork) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Ipv6sharednetwork) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Ipv6sharednetwork) HasExtattrs() bool`
+`func (o *Ipv6sharednetwork) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLogicFilterRules
 

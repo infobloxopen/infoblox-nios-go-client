@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **EnableLom** | Pointer to **bool** | Determines if the LOM functionality is enabled or not. | [optional] 
 **EnableMemberRedirect** | Pointer to **bool** | Determines if the member will redirect GUI connections to the Grid Master or not. | [optional] 
 **EnableRoApiAccess** | Pointer to **bool** | If set to True and the member object is a Grid Master Candidate, then read-only API access is enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalSyslogBackupServers** | Pointer to [**[]MemberExternalSyslogBackupServers**](MemberExternalSyslogBackupServers.md) | The list of external syslog backup servers. | [optional] 
 **ExternalSyslogServerEnable** | Pointer to **bool** | Determines if external syslog servers should be enabled. | [optional] 
 **HaCloudPlatform** | Pointer to **string** | Cloud platform for HA. | [optional] 
@@ -508,30 +508,30 @@ SetEnableRoApiAccess sets EnableRoApiAccess field to given value.
 
 HasEnableRoApiAccess returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Member) GetExtattrs() map[string]ExtAttrs`
+`func (o *Member) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Member) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Member) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Member) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Member) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Member) HasExtattrs() bool`
+`func (o *Member) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetExternalSyslogBackupServers
 

@@ -198,12 +198,12 @@ func (a *DtcTopologyAPIService) CreateExecute(r DtcTopologyAPICreateRequest) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcTopology != nil {
-		if r.dtcTopology.Extattrs == nil {
-			r.dtcTopology.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcTopology.ExtAttrs == nil {
+			r.dtcTopology.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcTopology.Extattrs)[k]; !ok {
-				(*r.dtcTopology.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcTopology.ExtAttrs)[k]; !ok {
+				(*r.dtcTopology.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *DtcTopologyAPIService) UpdateExecute(r DtcTopologyAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcTopology != nil {
-		if r.dtcTopology.Extattrs == nil {
-			r.dtcTopology.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcTopology.ExtAttrs == nil {
+			r.dtcTopology.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcTopology.Extattrs)[k]; !ok {
-				(*r.dtcTopology.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcTopology.ExtAttrs)[k]; !ok {
+				(*r.dtcTopology.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

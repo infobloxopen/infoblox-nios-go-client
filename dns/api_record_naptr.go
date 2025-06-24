@@ -198,12 +198,12 @@ func (a *RecordNaptrAPIService) CreateExecute(r RecordNaptrAPICreateRequest) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordNaptr != nil {
-		if r.recordNaptr.Extattrs == nil {
-			r.recordNaptr.Extattrs = &map[string]ExtAttrs{}
+		if r.recordNaptr.ExtAttrs == nil {
+			r.recordNaptr.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordNaptr.Extattrs)[k]; !ok {
-				(*r.recordNaptr.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordNaptr.ExtAttrs)[k]; !ok {
+				(*r.recordNaptr.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *RecordNaptrAPIService) UpdateExecute(r RecordNaptrAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordNaptr != nil {
-		if r.recordNaptr.Extattrs == nil {
-			r.recordNaptr.Extattrs = &map[string]ExtAttrs{}
+		if r.recordNaptr.ExtAttrs == nil {
+			r.recordNaptr.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordNaptr.Extattrs)[k]; !ok {
-				(*r.recordNaptr.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordNaptr.ExtAttrs)[k]; !ok {
+				(*r.recordNaptr.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

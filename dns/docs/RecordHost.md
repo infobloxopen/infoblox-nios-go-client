@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **DnsAliases** | Pointer to **[]string** | The list of aliases for the host in punycode format. | [optional] 
 **DnsName** | Pointer to **string** | The name for a host record in punycode format. | [optional] [readonly] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the record should be immediately enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Ipv4addrs** | Pointer to **[]string** | This is a list of IPv4 Addresses for the host. | [optional] 
 **Ipv6addrs** | Pointer to **[]string** | This is a list of IPv6 Addresses for the host. | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
@@ -511,30 +511,30 @@ SetEnableImmediateDiscovery sets EnableImmediateDiscovery field to given value.
 
 HasEnableImmediateDiscovery returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *RecordHost) GetExtattrs() map[string]ExtAttrs`
+`func (o *RecordHost) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *RecordHost) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *RecordHost) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *RecordHost) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *RecordHost) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *RecordHost) HasExtattrs() bool`
+`func (o *RecordHost) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIpv4addrs
 

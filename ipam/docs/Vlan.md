@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Contact** | Pointer to **string** | Contact information for person/team managing or using VLAN. | [optional] 
 **Department** | Pointer to **string** | Department where VLAN is used. | [optional] 
 **Description** | Pointer to **string** | Description for the VLAN object, may be potentially used for longer VLAN names. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Id** | Pointer to **int64** | VLAN ID value. | [optional] 
 **Name** | Pointer to **string** | Name of the VLAN. | [optional] 
 **Parent** | Pointer to **string** | The VLAN View or VLAN Range to which this VLAN belongs. | [optional] 
@@ -186,30 +186,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Vlan) GetExtattrs() map[string]ExtAttrs`
+`func (o *Vlan) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Vlan) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Vlan) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Vlan) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Vlan) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Vlan) HasExtattrs() bool`
+`func (o *Vlan) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetId
 

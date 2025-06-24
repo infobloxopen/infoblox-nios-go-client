@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **EnableBlacklist** | Pointer to **bool** | Determines if the blacklist in a DNS view is enabled or not. | [optional] 
 **EnableFixedRrsetOrderFqdns** | Pointer to **bool** | Determines if the fixed RRset order FQDN is enabled or not. | [optional] 
 **EnableMatchRecursiveOnly** | Pointer to **bool** | Determines if the &#39;match-recursive-only&#39; option in a DNS view is enabled or not. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FilterAaaa** | Pointer to **string** | The type of AAAA filtering for this DNS view object. | [optional] 
 **FilterAaaaList** | Pointer to [**[]ViewFilterAaaaList**](ViewFilterAaaaList.md) | Applies AAAA filtering to a named ACL, or to a list of IPv4/IPv6 addresses and networks from which queries are received. This field does not allow TSIG keys. | [optional] 
 **FixedRrsetOrderFqdns** | Pointer to [**[]ViewFixedRrsetOrderFqdns**](ViewFixedRrsetOrderFqdns.md) | The fixed RRset order FQDN. If this field does not contain an empty value, the appliance will automatically set the enable_fixed_rrset_order_fqdns field to &#39;true&#39;, unless the same request sets the enable field to &#39;false&#39;. | [optional] 
@@ -832,30 +832,30 @@ SetEnableMatchRecursiveOnly sets EnableMatchRecursiveOnly field to given value.
 
 HasEnableMatchRecursiveOnly returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *View) GetExtattrs() map[string]ExtAttrs`
+`func (o *View) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *View) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *View) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *View) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *View) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *View) HasExtattrs() bool`
+`func (o *View) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFilterAaaa
 

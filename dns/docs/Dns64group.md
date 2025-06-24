@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Disable** | Pointer to **bool** | Determines whether the DNS64 synthesis group is disabled. | [optional] 
 **EnableDnssecDns64** | Pointer to **bool** | Determines whether the DNS64 synthesis of AAAA records is enabled for DNS64 synthesis groups that request DNSSEC data. | [optional] 
 **Exclude** | Pointer to [**[]Dns64groupExclude**](Dns64groupExclude.md) | Access Control settings that contain IPv6 addresses or prefix ranges that cannot be used by IPv6-only hosts, such as IP addresses in the ::ffff:0:0/96 network. When DNS server retrieves an AAAA record that contains an IPv6 address that matches an excluded address, it does not return the AAAA record. Instead it synthesizes an AAAA record from the A record. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Mapped** | Pointer to [**[]Dns64groupMapped**](Dns64groupMapped.md) | Access Control settings that contain IPv4 addresses and networks for which the DNS server can synthesize AAAA records with the specified prefix. | [optional] 
 **Name** | Pointer to **string** | The name of the DNS64 synthesis group object. | [optional] 
 **Prefix** | Pointer to **string** | The IPv6 prefix used for the synthesized AAAA records. The prefix length must be /32, /40, /48, /56, /64 or /96, and all bits beyond the specified length must be zero. | [optional] 
@@ -184,30 +184,30 @@ SetExclude sets Exclude field to given value.
 
 HasExclude returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Dns64group) GetExtattrs() map[string]ExtAttrs`
+`func (o *Dns64group) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Dns64group) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Dns64group) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Dns64group) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Dns64group) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Dns64group) HasExtattrs() bool`
+`func (o *Dns64group) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetMapped
 

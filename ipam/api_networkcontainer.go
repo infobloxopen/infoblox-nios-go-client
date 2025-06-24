@@ -198,12 +198,12 @@ func (a *NetworkcontainerAPIService) CreateExecute(r NetworkcontainerAPICreateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.networkcontainer != nil {
-		if r.networkcontainer.Extattrs == nil {
-			r.networkcontainer.Extattrs = &map[string]ExtAttrs{}
+		if r.networkcontainer.ExtAttrs == nil {
+			r.networkcontainer.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.networkcontainer.Extattrs)[k]; !ok {
-				(*r.networkcontainer.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.networkcontainer.ExtAttrs)[k]; !ok {
+				(*r.networkcontainer.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -773,12 +773,12 @@ func (a *NetworkcontainerAPIService) UpdateExecute(r NetworkcontainerAPIUpdateRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.networkcontainer != nil {
-		if r.networkcontainer.Extattrs == nil {
-			r.networkcontainer.Extattrs = &map[string]ExtAttrs{}
+		if r.networkcontainer.ExtAttrs == nil {
+			r.networkcontainer.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.networkcontainer.Extattrs)[k]; !ok {
-				(*r.networkcontainer.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.networkcontainer.ExtAttrs)[k]; !ok {
+				(*r.networkcontainer.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

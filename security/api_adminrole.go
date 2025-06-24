@@ -198,12 +198,12 @@ func (a *AdminroleAPIService) CreateExecute(r AdminroleAPICreateRequest) (*Creat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.adminrole != nil {
-		if r.adminrole.Extattrs == nil {
-			r.adminrole.Extattrs = &map[string]ExtAttrs{}
+		if r.adminrole.ExtAttrs == nil {
+			r.adminrole.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.adminrole.Extattrs)[k]; !ok {
-				(*r.adminrole.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.adminrole.ExtAttrs)[k]; !ok {
+				(*r.adminrole.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *AdminroleAPIService) UpdateExecute(r AdminroleAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.adminrole != nil {
-		if r.adminrole.Extattrs == nil {
-			r.adminrole.Extattrs = &map[string]ExtAttrs{}
+		if r.adminrole.ExtAttrs == nil {
+			r.adminrole.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.adminrole.Extattrs)[k]; !ok {
-				(*r.adminrole.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.adminrole.ExtAttrs)[k]; !ok {
+				(*r.adminrole.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

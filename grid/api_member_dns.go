@@ -474,12 +474,12 @@ func (a *MemberDnsAPIService) UpdateExecute(r MemberDnsAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.memberDns != nil {
-		if r.memberDns.Extattrs == nil {
-			r.memberDns.Extattrs = &map[string]ExtAttrs{}
+		if r.memberDns.ExtAttrs == nil {
+			r.memberDns.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.memberDns.Extattrs)[k]; !ok {
-				(*r.memberDns.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.memberDns.ExtAttrs)[k]; !ok {
+				(*r.memberDns.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

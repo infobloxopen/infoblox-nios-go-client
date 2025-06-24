@@ -198,12 +198,12 @@ func (a *RecordUnknownAPIService) CreateExecute(r RecordUnknownAPICreateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordUnknown != nil {
-		if r.recordUnknown.Extattrs == nil {
-			r.recordUnknown.Extattrs = &map[string]ExtAttrs{}
+		if r.recordUnknown.ExtAttrs == nil {
+			r.recordUnknown.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordUnknown.Extattrs)[k]; !ok {
-				(*r.recordUnknown.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordUnknown.ExtAttrs)[k]; !ok {
+				(*r.recordUnknown.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *RecordUnknownAPIService) UpdateExecute(r RecordUnknownAPIUpdateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordUnknown != nil {
-		if r.recordUnknown.Extattrs == nil {
-			r.recordUnknown.Extattrs = &map[string]ExtAttrs{}
+		if r.recordUnknown.ExtAttrs == nil {
+			r.recordUnknown.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordUnknown.Extattrs)[k]; !ok {
-				(*r.recordUnknown.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordUnknown.ExtAttrs)[k]; !ok {
+				(*r.recordUnknown.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **DisableNsGeneration** | Pointer to **bool** | Determines whether a auto-generation of NS records in parent zone is disabled or not. When this is set to False, the auto-generation is enabled. | [optional] 
 **DisplayDomain** | Pointer to **string** | The displayed name of the DNS zone. | [optional] [readonly] 
 **DnsFqdn** | Pointer to **string** | The name of this DNS zone in punycode format. For a reverse zone, this is in \&quot;address/cidr\&quot; format. For other zones, this is in FQDN format in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalNsGroup** | Pointer to **string** | A forward stub server name server group. | [optional] 
 **ForwardTo** | Pointer to [**[]ZoneForwardForwardTo**](ZoneForwardForwardTo.md) | The information for the remote name servers to which you want the Infoblox appliance to forward queries for a specified domain name. | [optional] 
 **ForwardersOnly** | Pointer to **bool** | Determines if the appliance sends queries to forwarders only, and not to other internal or Internet root servers. | [optional] 
@@ -227,30 +227,30 @@ SetDnsFqdn sets DnsFqdn field to given value.
 
 HasDnsFqdn returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetZoneForwardResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetZoneForwardResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetZoneForwardResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetZoneForwardResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetZoneForwardResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetZoneForwardResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetZoneForwardResponse) HasExtattrs() bool`
+`func (o *GetZoneForwardResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetExternalNsGroup
 

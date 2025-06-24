@@ -198,12 +198,12 @@ func (a *Ipv6networkAPIService) CreateExecute(r Ipv6networkAPICreateRequest) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6network != nil {
-		if r.ipv6network.Extattrs == nil {
-			r.ipv6network.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6network.ExtAttrs == nil {
+			r.ipv6network.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6network.Extattrs)[k]; !ok {
-				(*r.ipv6network.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6network.ExtAttrs)[k]; !ok {
+				(*r.ipv6network.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *Ipv6networkAPIService) UpdateExecute(r Ipv6networkAPIUpdateRequest) (*U
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6network != nil {
-		if r.ipv6network.Extattrs == nil {
-			r.ipv6network.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6network.ExtAttrs == nil {
+			r.ipv6network.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6network.Extattrs)[k]; !ok {
-				(*r.ipv6network.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6network.ExtAttrs)[k]; !ok {
+				(*r.ipv6network.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

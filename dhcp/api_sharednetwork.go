@@ -198,12 +198,12 @@ func (a *SharednetworkAPIService) CreateExecute(r SharednetworkAPICreateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.sharednetwork != nil {
-		if r.sharednetwork.Extattrs == nil {
-			r.sharednetwork.Extattrs = &map[string]ExtAttrs{}
+		if r.sharednetwork.ExtAttrs == nil {
+			r.sharednetwork.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.sharednetwork.Extattrs)[k]; !ok {
-				(*r.sharednetwork.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.sharednetwork.ExtAttrs)[k]; !ok {
+				(*r.sharednetwork.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *SharednetworkAPIService) UpdateExecute(r SharednetworkAPIUpdateRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.sharednetwork != nil {
-		if r.sharednetwork.Extattrs == nil {
-			r.sharednetwork.Extattrs = &map[string]ExtAttrs{}
+		if r.sharednetwork.ExtAttrs == nil {
+			r.sharednetwork.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.sharednetwork.Extattrs)[k]; !ok {
-				(*r.sharednetwork.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.sharednetwork.ExtAttrs)[k]; !ok {
+				(*r.sharednetwork.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

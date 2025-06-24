@@ -198,12 +198,12 @@ func (a *NotificationRestEndpointAPIService) CreateExecute(r NotificationRestEnd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.notificationRestEndpoint != nil {
-		if r.notificationRestEndpoint.Extattrs == nil {
-			r.notificationRestEndpoint.Extattrs = &map[string]ExtAttrs{}
+		if r.notificationRestEndpoint.ExtAttrs == nil {
+			r.notificationRestEndpoint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.notificationRestEndpoint.Extattrs)[k]; !ok {
-				(*r.notificationRestEndpoint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.notificationRestEndpoint.ExtAttrs)[k]; !ok {
+				(*r.notificationRestEndpoint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *NotificationRestEndpointAPIService) UpdateExecute(r NotificationRestEnd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.notificationRestEndpoint != nil {
-		if r.notificationRestEndpoint.Extattrs == nil {
-			r.notificationRestEndpoint.Extattrs = &map[string]ExtAttrs{}
+		if r.notificationRestEndpoint.ExtAttrs == nil {
+			r.notificationRestEndpoint.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.notificationRestEndpoint.Extattrs)[k]; !ok {
-				(*r.notificationRestEndpoint.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.notificationRestEndpoint.ExtAttrs)[k]; !ok {
+				(*r.notificationRestEndpoint.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

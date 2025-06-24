@@ -198,12 +198,12 @@ func (a *DtcMonitorSnmpAPIService) CreateExecute(r DtcMonitorSnmpAPICreateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorSnmp != nil {
-		if r.dtcMonitorSnmp.Extattrs == nil {
-			r.dtcMonitorSnmp.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitorSnmp.ExtAttrs == nil {
+			r.dtcMonitorSnmp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorSnmp.Extattrs)[k]; !ok {
-				(*r.dtcMonitorSnmp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitorSnmp.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitorSnmp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *DtcMonitorSnmpAPIService) UpdateExecute(r DtcMonitorSnmpAPIUpdateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dtcMonitorSnmp != nil {
-		if r.dtcMonitorSnmp.Extattrs == nil {
-			r.dtcMonitorSnmp.Extattrs = &map[string]ExtAttrs{}
+		if r.dtcMonitorSnmp.ExtAttrs == nil {
+			r.dtcMonitorSnmp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dtcMonitorSnmp.Extattrs)[k]; !ok {
-				(*r.dtcMonitorSnmp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dtcMonitorSnmp.ExtAttrs)[k]; !ok {
+				(*r.dtcMonitorSnmp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

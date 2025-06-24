@@ -185,8 +185,8 @@ paths:
       summary: Create a awsrte53taskgroup object
       tags:
       - Awsrte53taskgroup
-      x-tf-resource: nios_cloud_awsrte53taskgroup
-      x-tf-datasource: nios_cloud_awsrte53taskgroup
+      x-tf-resource: cloud_awsrte53taskgroup
+      x-tf-datasource: cloud_awsrte53taskgroup
   /awsrte53taskgroup/{reference}:
     delete:
       description: Deletes a specific awsrte53taskgroup object by reference
@@ -498,8 +498,8 @@ paths:
       summary: Create a awsuser object
       tags:
       - Awsuser
-      x-tf-resource: nios_cloud_awsuser
-      x-tf-datasource: nios_cloud_awsuser
+      x-tf-resource: cloud_awsuser
+      x-tf-datasource: cloud_awsuser
   /awsuser/{reference}:
     delete:
       description: Deletes a specific awsuser object by reference
@@ -812,8 +812,8 @@ paths:
       summary: Create a azurednstaskgroup object
       tags:
       - Azurednstaskgroup
-      x-tf-resource: nios_cloud_azurednstaskgroup
-      x-tf-datasource: nios_cloud_azurednstaskgroup
+      x-tf-resource: cloud_azurednstaskgroup
+      x-tf-datasource: cloud_azurednstaskgroup
   /azurednstaskgroup/{reference}:
     delete:
       description: Deletes a specific azurednstaskgroup object by reference
@@ -1125,8 +1125,8 @@ paths:
       summary: Create a azureuser object
       tags:
       - Azureuser
-      x-tf-resource: nios_cloud_azureuser
-      x-tf-datasource: nios_cloud_azureuser
+      x-tf-resource: cloud_azureuser
+      x-tf-datasource: cloud_azureuser
   /azureuser/{reference}:
     delete:
       description: Deletes a specific azureuser object by reference
@@ -1438,8 +1438,8 @@ paths:
       summary: Create a gcpdnstaskgroup object
       tags:
       - Gcpdnstaskgroup
-      x-tf-resource: nios_cloud_gcpdnstaskgroup
-      x-tf-datasource: nios_cloud_gcpdnstaskgroup
+      x-tf-resource: cloud_gcpdnstaskgroup
+      x-tf-datasource: cloud_gcpdnstaskgroup
   /gcpdnstaskgroup/{reference}:
     delete:
       description: Deletes a specific gcpdnstaskgroup object by reference
@@ -1751,8 +1751,8 @@ paths:
       summary: Create a gcpuser object
       tags:
       - Gcpuser
-      x-tf-resource: nios_cloud_gcpuser
-      x-tf-datasource: nios_cloud_gcpuser
+      x-tf-resource: cloud_gcpuser
+      x-tf-datasource: cloud_gcpuser
   /gcpuser/{reference}:
     delete:
       description: Deletes a specific gcpuser object by reference

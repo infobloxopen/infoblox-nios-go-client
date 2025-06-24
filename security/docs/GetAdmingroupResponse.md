@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **DockerShowCommands** | Pointer to [**AdmingroupDockerShowCommands**](AdmingroupDockerShowCommands.md) |  | [optional] 
 **EmailAddresses** | Pointer to **[]string** | The e-mail addresses for the Admin Group. | [optional] 
 **EnableRestrictedUserAccess** | Pointer to **bool** | Determines whether the restrictions will be applied to the admin connector level for users of this Admin Group. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **GridSetCommands** | Pointer to [**AdmingroupGridSetCommands**](AdmingroupGridSetCommands.md) |  | [optional] 
 **GridShowCommands** | Pointer to [**AdmingroupGridShowCommands**](AdmingroupGridShowCommands.md) |  | [optional] 
 **InactivityLockoutSetting** | Pointer to [**AdmingroupInactivityLockoutSetting**](AdmingroupInactivityLockoutSetting.md) |  | [optional] 
@@ -594,30 +594,30 @@ SetEnableRestrictedUserAccess sets EnableRestrictedUserAccess field to given val
 
 HasEnableRestrictedUserAccess returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetAdmingroupResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetAdmingroupResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetAdmingroupResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetAdmingroupResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetAdmingroupResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetAdmingroupResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetAdmingroupResponse) HasExtattrs() bool`
+`func (o *GetAdmingroupResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetGridSetCommands
 

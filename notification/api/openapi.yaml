@@ -177,8 +177,8 @@ paths:
       summary: Create a notification:rest:endpoint object
       tags:
       - NotificationRestEndpoint
-      x-tf-resource: nios_notification_notification_rest_endpoint
-      x-tf-datasource: nios_notification_notification_rest_endpoint
+      x-tf-resource: notification_notification_rest_endpoint
+      x-tf-datasource: notification_notification_rest_endpoint
       x-sdk-default-ext-attrs: true
   /notification:rest:endpoint/{reference}:
     delete:
@@ -748,8 +748,8 @@ paths:
       summary: Create a notification:rule object
       tags:
       - NotificationRule
-      x-tf-resource: nios_notification_notification_rule
-      x-tf-datasource: nios_notification_notification_rule
+      x-tf-resource: notification_notification_rule
+      x-tf-datasource: notification_notification_rule
   /notification:rule/{reference}:
     delete:
       description: Deletes a specific notification:rule object by reference

@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 **EnableHostnameRewrite** | Pointer to **bool** | Determines if the Grid member&#39;s host name rewrite feature is enabled or not. | [optional] 
 **EnableLeasequery** | Pointer to **bool** | Determines if lease query is allowed or not. This setting overrides the Grid-level setting. | [optional] 
 **EnableSnmpWarnings** | Pointer to **bool** | Determines if SNMP warnings are enabled or disabled on this DHCP member. When DHCP threshold is enabled and DHCP address usage crosses a watermark threshold, the appliance sends an SNMP trap to the trap receiver that was defined for the Grid member level. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a member DHCP object. | [optional] 
 **HighWaterMark** | Pointer to **int64** | Determines the high watermark value of a member DHCP server. If the percentage of allocated addresses exceeds this watermark, the appliance makes a syslog entry and sends an e-mail notification (if enabled). Specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **HighWaterMarkReset** | Pointer to **int64** | Determines the high watermark reset value of a member DHCP server. If the percentage of allocated addresses drops below this value, a corresponding SNMP trap is reset. Specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value. | [optional] 
@@ -1075,30 +1075,30 @@ SetEnableSnmpWarnings sets EnableSnmpWarnings field to given value.
 
 HasEnableSnmpWarnings returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetMemberDhcppropertiesResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetMemberDhcppropertiesResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetMemberDhcppropertiesResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetMemberDhcppropertiesResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetMemberDhcppropertiesResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetMemberDhcppropertiesResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetMemberDhcppropertiesResponse) HasExtattrs() bool`
+`func (o *GetMemberDhcppropertiesResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetGssTsigKeys
 

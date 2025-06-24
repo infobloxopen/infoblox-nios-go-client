@@ -212,8 +212,8 @@ paths:
       summary: Create a admingroup object
       tags:
       - Admingroup
-      x-tf-resource: nios_security_admingroup
-      x-tf-datasource: nios_security_admingroup
+      x-tf-resource: security_admingroup
+      x-tf-datasource: security_admingroup
       x-sdk-default-ext-attrs: true
   /admingroup/{reference}:
     delete:
@@ -527,8 +527,8 @@ paths:
       summary: Create a adminrole object
       tags:
       - Adminrole
-      x-tf-resource: nios_security_adminrole
-      x-tf-datasource: nios_security_adminrole
+      x-tf-resource: security_adminrole
+      x-tf-datasource: security_adminrole
       x-sdk-default-ext-attrs: true
   /adminrole/{reference}:
     delete:
@@ -842,8 +842,8 @@ paths:
       summary: Create a adminuser object
       tags:
       - Adminuser
-      x-tf-resource: nios_security_adminuser
-      x-tf-datasource: nios_security_adminuser
+      x-tf-resource: security_adminuser
+      x-tf-datasource: security_adminuser
       x-sdk-default-ext-attrs: true
   /adminuser/{reference}:
     delete:
@@ -1157,8 +1157,8 @@ paths:
       summary: Create a permission object
       tags:
       - Permission
-      x-tf-resource: nios_security_permission
-      x-tf-datasource: nios_security_permission
+      x-tf-resource: security_permission
+      x-tf-datasource: security_permission
   /permission/{reference}:
     delete:
       description: Deletes a specific permission object by reference
@@ -1923,8 +1923,8 @@ paths:
       summary: Create a approvalworkflow object
       tags:
       - Approvalworkflow
-      x-tf-resource: nios_security_approvalworkflow
-      x-tf-datasource: nios_security_approvalworkflow
+      x-tf-resource: security_approvalworkflow
+      x-tf-datasource: security_approvalworkflow
       x-sdk-default-ext-attrs: true
   /approvalworkflow/{reference}:
     delete:
@@ -2426,8 +2426,8 @@ paths:
       summary: Create a certificate:authservice object
       tags:
       - CertificateAuthservice
-      x-tf-resource: nios_security_certificate_authservice
-      x-tf-datasource: nios_security_certificate_authservice
+      x-tf-resource: security_certificate_authservice
+      x-tf-datasource: security_certificate_authservice
   /certificate:authservice/{reference}:
     delete:
       description: Deletes a specific certificate:authservice object by reference
@@ -2740,8 +2740,8 @@ paths:
       summary: Create a radius:authservice object
       tags:
       - RadiusAuthservice
-      x-tf-resource: nios_security_radius_authservice
-      x-tf-datasource: nios_security_radius_authservice
+      x-tf-resource: security_radius_authservice
+      x-tf-datasource: security_radius_authservice
   /radius:authservice/{reference}:
     delete:
       description: Deletes a specific radius:authservice object by reference
@@ -3054,8 +3054,8 @@ paths:
       summary: Create a tacacsplus:authservice object
       tags:
       - TacacsplusAuthservice
-      x-tf-resource: nios_security_tacacsplus_authservice
-      x-tf-datasource: nios_security_tacacsplus_authservice
+      x-tf-resource: security_tacacsplus_authservice
+      x-tf-datasource: security_tacacsplus_authservice
   /tacacsplus:authservice/{reference}:
     delete:
       description: Deletes a specific tacacsplus:authservice object by reference
@@ -3368,8 +3368,8 @@ paths:
       summary: Create a ldap_auth_service object
       tags:
       - LdapAuthService
-      x-tf-resource: nios_security_ldap_auth_service
-      x-tf-datasource: nios_security_ldap_auth_service
+      x-tf-resource: security_ldap_auth_service
+      x-tf-datasource: security_ldap_auth_service
   /ldap_auth_service/{reference}:
     delete:
       description: Deletes a specific ldap_auth_service object by reference
@@ -3682,8 +3682,8 @@ paths:
       summary: Create a saml:authservice object
       tags:
       - SamlAuthservice
-      x-tf-resource: nios_security_saml_authservice
-      x-tf-datasource: nios_security_saml_authservice
+      x-tf-resource: security_saml_authservice
+      x-tf-datasource: security_saml_authservice
   /saml:authservice/{reference}:
     delete:
       description: Deletes a specific saml:authservice object by reference
@@ -4155,8 +4155,8 @@ paths:
       summary: Create a snmpuser object
       tags:
       - Snmpuser
-      x-tf-resource: nios_security_snmpuser
-      x-tf-datasource: nios_security_snmpuser
+      x-tf-resource: security_snmpuser
+      x-tf-datasource: security_snmpuser
       x-sdk-default-ext-attrs: true
   /snmpuser/{reference}:
     delete:
@@ -4470,8 +4470,8 @@ paths:
       summary: Create a ftpuser object
       tags:
       - Ftpuser
-      x-tf-resource: nios_security_ftpuser
-      x-tf-datasource: nios_security_ftpuser
+      x-tf-resource: security_ftpuser
+      x-tf-datasource: security_ftpuser
       x-sdk-default-ext-attrs: true
   /ftpuser/{reference}:
     delete:
@@ -4785,8 +4785,8 @@ paths:
       summary: Create a networkuser object
       tags:
       - Networkuser
-      x-tf-resource: nios_security_networkuser
-      x-tf-datasource: nios_security_networkuser
+      x-tf-resource: security_networkuser
+      x-tf-datasource: security_networkuser
   /networkuser/{reference}:
     delete:
       description: Deletes a specific networkuser object by reference
@@ -5098,8 +5098,8 @@ paths:
       summary: Create a ad_auth_service object
       tags:
       - AdAuthService
-      x-tf-resource: nios_security_ad_auth_service
-      x-tf-datasource: nios_security_ad_auth_service
+      x-tf-resource: security_ad_auth_service
+      x-tf-datasource: security_ad_auth_service
   /ad_auth_service/{reference}:
     delete:
       description: Deletes a specific ad_auth_service object by reference
@@ -5638,8 +5638,8 @@ paths:
       summary: Create a hsm:entrustnshieldgroup object
       tags:
       - HsmEntrustnshieldgroup
-      x-tf-resource: nios_security_hsm_entrustnshieldgroup
-      x-tf-datasource: nios_security_hsm_entrustnshieldgroup
+      x-tf-resource: security_hsm_entrustnshieldgroup
+      x-tf-datasource: security_hsm_entrustnshieldgroup
   /hsm:entrustnshieldgroup/{reference}:
     delete:
       description: Deletes a specific hsm:entrustnshieldgroup object by reference
@@ -5952,8 +5952,8 @@ paths:
       summary: Create a hsm:thaleslunagroup object
       tags:
       - HsmThaleslunagroup
-      x-tf-resource: nios_security_hsm_thaleslunagroup
-      x-tf-datasource: nios_security_hsm_thaleslunagroup
+      x-tf-resource: security_hsm_thaleslunagroup
+      x-tf-datasource: security_hsm_thaleslunagroup
   /hsm:thaleslunagroup/{reference}:
     delete:
       description: Deletes a specific hsm:thaleslunagroup object by reference

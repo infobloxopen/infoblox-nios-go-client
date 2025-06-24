@@ -198,12 +198,12 @@ func (a *MemberdfpAPIService) CreateExecute(r MemberdfpAPICreateRequest) (*Creat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.memberdfp != nil {
-		if r.memberdfp.Extattrs == nil {
-			r.memberdfp.Extattrs = &map[string]ExtAttrs{}
+		if r.memberdfp.ExtAttrs == nil {
+			r.memberdfp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.memberdfp.Extattrs)[k]; !ok {
-				(*r.memberdfp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.memberdfp.ExtAttrs)[k]; !ok {
+				(*r.memberdfp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *MemberdfpAPIService) UpdateExecute(r MemberdfpAPIUpdateRequest) (*Updat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.memberdfp != nil {
-		if r.memberdfp.Extattrs == nil {
-			r.memberdfp.Extattrs = &map[string]ExtAttrs{}
+		if r.memberdfp.ExtAttrs == nil {
+			r.memberdfp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.memberdfp.Extattrs)[k]; !ok {
-				(*r.memberdfp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.memberdfp.ExtAttrs)[k]; !ok {
+				(*r.memberdfp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -198,12 +198,12 @@ func (a *RecordRpzCnameClientipaddressdnAPIService) CreateExecute(r RecordRpzCna
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzCnameClientipaddressdn != nil {
-		if r.recordRpzCnameClientipaddressdn.Extattrs == nil {
-			r.recordRpzCnameClientipaddressdn.Extattrs = &map[string]ExtAttrs{}
+		if r.recordRpzCnameClientipaddressdn.ExtAttrs == nil {
+			r.recordRpzCnameClientipaddressdn.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordRpzCnameClientipaddressdn.Extattrs)[k]; !ok {
-				(*r.recordRpzCnameClientipaddressdn.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordRpzCnameClientipaddressdn.ExtAttrs)[k]; !ok {
+				(*r.recordRpzCnameClientipaddressdn.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *RecordRpzCnameClientipaddressdnAPIService) UpdateExecute(r RecordRpzCna
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.recordRpzCnameClientipaddressdn != nil {
-		if r.recordRpzCnameClientipaddressdn.Extattrs == nil {
-			r.recordRpzCnameClientipaddressdn.Extattrs = &map[string]ExtAttrs{}
+		if r.recordRpzCnameClientipaddressdn.ExtAttrs == nil {
+			r.recordRpzCnameClientipaddressdn.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.recordRpzCnameClientipaddressdn.Extattrs)[k]; !ok {
-				(*r.recordRpzCnameClientipaddressdn.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.recordRpzCnameClientipaddressdn.ExtAttrs)[k]; !ok {
+				(*r.recordRpzCnameClientipaddressdn.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

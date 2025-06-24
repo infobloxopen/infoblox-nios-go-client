@@ -358,8 +358,8 @@ paths:
       summary: Create a discovery:credentialgroup object
       tags:
       - DiscoveryCredentialgroup
-      x-tf-resource: nios_discovery_discovery_credentialgroup
-      x-tf-datasource: nios_discovery_discovery_credentialgroup
+      x-tf-resource: discovery_discovery_credentialgroup
+      x-tf-datasource: discovery_discovery_credentialgroup
   /discovery:credentialgroup/{reference}:
     delete:
       description: Deletes a specific discovery:credentialgroup object by reference
@@ -2795,8 +2795,8 @@ paths:
       summary: Create a vdiscoverytask object
       tags:
       - Vdiscoverytask
-      x-tf-resource: nios_discovery_vdiscoverytask
-      x-tf-datasource: nios_discovery_vdiscoverytask
+      x-tf-resource: discovery_vdiscoverytask
+      x-tf-datasource: discovery_vdiscoverytask
   /vdiscoverytask/{reference}:
     delete:
       description: Deletes a specific vdiscoverytask object by reference

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CurrentRuleset** | Pointer to **string** | The current Threat Protection profile ruleset. | [optional] 
 **DisableMultipleDnsTcpRequest** | Pointer to **bool** | Determines if multiple BIND responses via TCP connection are disabled. | [optional] 
 **EventsPerSecondPerRule** | Pointer to **int64** | The number of events logged per second per rule. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Members** | Pointer to **[]string** | The list of members that are associated with the profile. | [optional] 
 **Name** | Pointer to **string** | The name of the Threat Protection profile. | [optional] 
 **SourceMember** | Pointer to **string** | The source member. It can be used only during the create operation for cloning a profile from an existing member. | [optional] 
@@ -163,30 +163,30 @@ SetEventsPerSecondPerRule sets EventsPerSecondPerRule field to given value.
 
 HasEventsPerSecondPerRule returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetThreatprotectionProfileResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetThreatprotectionProfileResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetThreatprotectionProfileResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetThreatprotectionProfileResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetThreatprotectionProfileResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetThreatprotectionProfileResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetThreatprotectionProfileResponse) HasExtattrs() bool`
+`func (o *GetThreatprotectionProfileResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetMembers
 

@@ -474,12 +474,12 @@ func (a *ViewAPIService) UpdateExecute(r ViewAPIUpdateRequest) (*UpdateViewRespo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.view != nil {
-		if r.view.Extattrs == nil {
-			r.view.Extattrs = &map[string]ExtAttrs{}
+		if r.view.ExtAttrs == nil {
+			r.view.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.view.Extattrs)[k]; !ok {
-				(*r.view.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.view.ExtAttrs)[k]; !ok {
+				(*r.view.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

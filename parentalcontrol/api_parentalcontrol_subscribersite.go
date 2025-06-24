@@ -198,12 +198,12 @@ func (a *ParentalcontrolSubscribersiteAPIService) CreateExecute(r Parentalcontro
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.parentalcontrolSubscribersite != nil {
-		if r.parentalcontrolSubscribersite.Extattrs == nil {
-			r.parentalcontrolSubscribersite.Extattrs = &map[string]ExtAttrs{}
+		if r.parentalcontrolSubscribersite.ExtAttrs == nil {
+			r.parentalcontrolSubscribersite.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.parentalcontrolSubscribersite.Extattrs)[k]; !ok {
-				(*r.parentalcontrolSubscribersite.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.parentalcontrolSubscribersite.ExtAttrs)[k]; !ok {
+				(*r.parentalcontrolSubscribersite.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
@@ -736,12 +736,12 @@ func (a *ParentalcontrolSubscribersiteAPIService) UpdateExecute(r Parentalcontro
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.parentalcontrolSubscribersite != nil {
-		if r.parentalcontrolSubscribersite.Extattrs == nil {
-			r.parentalcontrolSubscribersite.Extattrs = &map[string]ExtAttrs{}
+		if r.parentalcontrolSubscribersite.ExtAttrs == nil {
+			r.parentalcontrolSubscribersite.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.parentalcontrolSubscribersite.Extattrs)[k]; !ok {
-				(*r.parentalcontrolSubscribersite.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.parentalcontrolSubscribersite.ExtAttrs)[k]; !ok {
+				(*r.parentalcontrolSubscribersite.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
