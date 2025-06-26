@@ -28170,7 +28170,15 @@ components:
         disable: false
         forwarding_servers:
         - forward_to:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -28182,7 +28190,15 @@ components:
           forwarders_only: false
           use_override_forwarders: false
         - forward_to:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -28429,7 +28445,15 @@ components:
     ZoneForwardForwardingServers:
       example:
         forward_to:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -28451,7 +28475,13 @@ components:
           example: false
           type: boolean
         forward_to:
-          $ref: '#/components/schemas/ZoneforwardforwardingserversForwardTo'
+          description: The information for the remote name server to which you want
+            the Infoblox appliance to forward queries for a specified domain name.
+          enum:
+          - extserver
+          items:
+            $ref: '#/components/schemas/ZoneforwardforwardingserversForwardTo'
+          type: array
         use_override_forwarders:
           description: "Use flag for: forward_to"
           example: false
@@ -37827,7 +37857,15 @@ components:
           disable: false
           forwarding_servers:
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37839,7 +37877,15 @@ components:
             forwarders_only: false
             use_override_forwarders: false
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37913,7 +37959,15 @@ components:
           disable: false
           forwarding_servers:
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37925,7 +37979,15 @@ components:
             forwarders_only: false
             use_override_forwarders: false
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
