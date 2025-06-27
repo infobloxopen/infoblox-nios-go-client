@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](SnmpuserAPI.md#Get) | **Get** /snmpuser | Retrieve snmpuser objects
-[**Post**](SnmpuserAPI.md#Post) | **Post** /snmpuser | Create a snmpuser object
-[**ReferenceDelete**](SnmpuserAPI.md#ReferenceDelete) | **Delete** /snmpuser/{reference} | Delete a snmpuser object
-[**ReferenceGet**](SnmpuserAPI.md#ReferenceGet) | **Get** /snmpuser/{reference} | Get a specific snmpuser object
-[**ReferencePut**](SnmpuserAPI.md#ReferencePut) | **Put** /snmpuser/{reference} | Update a snmpuser object
+[**Create**](SnmpuserAPI.md#Create) | **Post** /snmpuser | Create a snmpuser object
+[**Delete**](SnmpuserAPI.md#Delete) | **Delete** /snmpuser/{reference} | Delete a snmpuser object
+[**List**](SnmpuserAPI.md#List) | **Get** /snmpuser | Retrieve snmpuser objects
+[**Read**](SnmpuserAPI.md#Read) | **Get** /snmpuser/{reference} | Get a specific snmpuser object
+[**Update**](SnmpuserAPI.md#Update) | **Put** /snmpuser/{reference} | Update a snmpuser object
 
 
 
-## Get
+## Create
 
-> ListSnmpuserResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateSnmpuserResponse Create(ctx).Snmpuser(snmpuser).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a snmpuser object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	snmpuser := *security.NewSnmpuser() // Snmpuser | Object data to create
+
+	apiClient := security.NewAPIClient()
+	resp, r, err := apiClient.SnmpuserAPI.Create(context.Background()).Snmpuser(snmpuser).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateSnmpuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `SnmpuserAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SnmpuserAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**snmpuser** | [**Snmpuser**](Snmpuser.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateSnmpuserResponse**](CreateSnmpuserResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a snmpuser object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the snmpuser object
+
+	apiClient := security.NewAPIClient()
+	r, err := apiClient.SnmpuserAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the snmpuser object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SnmpuserAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListSnmpuserResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve snmpuser objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.SnmpuserAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.SnmpuserAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListSnmpuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `SnmpuserAPI.Get`: %v\n", resp)
+	// response from `List`: ListSnmpuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `SnmpuserAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SnmpuserAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SnmpuserAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateSnmpuserResponse Post(ctx).Snmpuser(snmpuser).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a snmpuser object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	snmpuser := *security.NewSnmpuser() // Snmpuser | Object data to create
-
-	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.SnmpuserAPI.Post(context.Background()).Snmpuser(snmpuser).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateSnmpuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `SnmpuserAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SnmpuserAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**snmpuser** | [**Snmpuser**](Snmpuser.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateSnmpuserResponse**](CreateSnmpuserResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a snmpuser object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the snmpuser object
-
-	apiClient := security.NewAPIClient()
-	r, err := apiClient.SnmpuserAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the snmpuser object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SnmpuserAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetSnmpuserResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSnmpuserResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific snmpuser object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the snmpuser object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.SnmpuserAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SnmpuserAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetSnmpuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `SnmpuserAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSnmpuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `SnmpuserAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SnmpuserAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SnmpuserAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateSnmpuserResponse ReferencePut(ctx, reference).Snmpuser(snmpuser).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateSnmpuserResponse Update(ctx, reference).Snmpuser(snmpuser).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a snmpuser object
 
@@ -318,13 +318,13 @@ func main() {
 	snmpuser := *security.NewSnmpuser() // Snmpuser | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.SnmpuserAPI.ReferencePut(context.Background(), reference).Snmpuser(snmpuser).Execute()
+	resp, r, err := apiClient.SnmpuserAPI.Update(context.Background(), reference).Snmpuser(snmpuser).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SnmpuserAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateSnmpuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `SnmpuserAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateSnmpuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `SnmpuserAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SnmpuserAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SnmpuserAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **snmpuser** | [**Snmpuser**](Snmpuser.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

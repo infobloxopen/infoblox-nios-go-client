@@ -22,8 +22,9 @@ Name | Type | Description | Notes
 **DomainNameServers** | Pointer to **[]string** | The IPv6 addresses of DNS recursive name servers to which the DHCP client can send name resolution requests. The DHCP server includes this information in the DNS Recursive Name Server option in Advertise, Rebind, Information-Request, and Reply messages. | [optional] 
 **Duid** | Pointer to **string** | The DUID value for this IPv6 fixed address. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the IPv6 fixed address should be immediately enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**Ipv6addr** | Pointer to **string** | The IPv6 Address of the DHCP IPv6 fixed address. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**Ipv6addr** | Pointer to [**Ipv6fixedaddressIpv6addr**](Ipv6fixedaddressIpv6addr.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **Ipv6prefix** | Pointer to **string** | The IPv6 Address prefix of the DHCP IPv6 fixed address. | [optional] 
 **Ipv6prefixBits** | Pointer to **int64** | Prefix bits of the DHCP IPv6 fixed address. | [optional] 
 **LogicFilterRules** | Pointer to [**[]Ipv6fixedaddressLogicFilterRules**](Ipv6fixedaddressLogicFilterRules.md) | This field contains the logic filters to be applied to this IPv6 fixed address. This list corresponds to the match rules that are written to the DHCPv6 configuration file. | [optional] 
@@ -521,47 +522,47 @@ SetEnableImmediateDiscovery sets EnableImmediateDiscovery field to given value.
 
 HasEnableImmediateDiscovery returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetIpv6fixedaddressResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetIpv6fixedaddressResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetIpv6fixedaddressResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetIpv6fixedaddressResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetIpv6fixedaddressResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetIpv6fixedaddressResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetIpv6fixedaddressResponse) HasExtattrs() bool`
+`func (o *GetIpv6fixedaddressResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIpv6addr
 
-`func (o *GetIpv6fixedaddressResponse) GetIpv6addr() string`
+`func (o *GetIpv6fixedaddressResponse) GetIpv6addr() Ipv6fixedaddressIpv6addr`
 
 GetIpv6addr returns the Ipv6addr field if non-nil, zero value otherwise.
 
 ### GetIpv6addrOk
 
-`func (o *GetIpv6fixedaddressResponse) GetIpv6addrOk() (*string, bool)`
+`func (o *GetIpv6fixedaddressResponse) GetIpv6addrOk() (*Ipv6fixedaddressIpv6addr, bool)`
 
 GetIpv6addrOk returns a tuple with the Ipv6addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv6addr
 
-`func (o *GetIpv6fixedaddressResponse) SetIpv6addr(v string)`
+`func (o *GetIpv6fixedaddressResponse) SetIpv6addr(v Ipv6fixedaddressIpv6addr)`
 
 SetIpv6addr sets Ipv6addr field to given value.
 
@@ -570,6 +571,31 @@ SetIpv6addr sets Ipv6addr field to given value.
 `func (o *GetIpv6fixedaddressResponse) HasIpv6addr() bool`
 
 HasIpv6addr returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *GetIpv6fixedaddressResponse) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *GetIpv6fixedaddressResponse) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *GetIpv6fixedaddressResponse) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *GetIpv6fixedaddressResponse) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetIpv6prefix
 

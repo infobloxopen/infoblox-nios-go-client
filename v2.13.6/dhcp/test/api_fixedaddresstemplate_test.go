@@ -23,11 +23,11 @@ func TestFixedaddresstemplateAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test FixedaddresstemplateAPIService Get", func(t *testing.T) {
+	t.Run("Test FixedaddresstemplateAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FixedaddresstemplateAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.FixedaddresstemplateAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestFixedaddresstemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FixedaddresstemplateAPIService Post", func(t *testing.T) {
+	t.Run("Test FixedaddresstemplateAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.FixedaddresstemplateAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.FixedaddresstemplateAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test FixedaddresstemplateAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.FixedaddresstemplateAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestFixedaddresstemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FixedaddresstemplateAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test FixedaddresstemplateAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.FixedaddresstemplateAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FixedaddresstemplateAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.FixedaddresstemplateAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FixedaddresstemplateAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestFixedaddresstemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FixedaddresstemplateAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test FixedaddresstemplateAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.FixedaddresstemplateAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.FixedaddresstemplateAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -4,16 +4,83 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](Ipv6addressAPI.md#Get) | **Get** /ipv6address | Retrieve ipv6address objects
-[**ReferenceDelete**](Ipv6addressAPI.md#ReferenceDelete) | **Delete** /ipv6address/{reference} | Delete a ipv6address object
-[**ReferenceGet**](Ipv6addressAPI.md#ReferenceGet) | **Get** /ipv6address/{reference} | Get a specific ipv6address object
-[**ReferencePut**](Ipv6addressAPI.md#ReferencePut) | **Put** /ipv6address/{reference} | Update a ipv6address object
+[**Delete**](Ipv6addressAPI.md#Delete) | **Delete** /ipv6address/{reference} | Delete a ipv6address object
+[**List**](Ipv6addressAPI.md#List) | **Get** /ipv6address | Retrieve ipv6address objects
+[**Read**](Ipv6addressAPI.md#Read) | **Get** /ipv6address/{reference} | Get a specific ipv6address object
+[**Update**](Ipv6addressAPI.md#Update) | **Put** /ipv6address/{reference} | Update a ipv6address object
 
 
 
-## Get
+## Delete
 
-> ListIpv6addressResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> Delete(ctx, reference).Execute()
+
+Delete a ipv6address object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the ipv6address object
+
+	apiClient := ipam.NewAPIClient()
+	r, err := apiClient.Ipv6addressAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6addressAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the ipv6address object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `Ipv6addressAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListIpv6addressResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve ipv6address objects
 
@@ -35,13 +102,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.Ipv6addressAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.Ipv6addressAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6addressAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6addressAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListIpv6addressResponse
-	fmt.Fprintf(os.Stdout, "Response from `Ipv6addressAPI.Get`: %v\n", resp)
+	// response from `List`: ListIpv6addressResponse
+	fmt.Fprintf(os.Stdout, "Response from `Ipv6addressAPI.List`: %v\n", resp)
 }
 ```
 
@@ -51,13 +118,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Ipv6addressAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `Ipv6addressAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -83,76 +150,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## Read
 
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a ipv6address object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the ipv6address object
-
-	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.Ipv6addressAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6addressAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the ipv6address object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `Ipv6addressAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetIpv6addressResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetIpv6addressResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific ipv6address object
 
@@ -175,13 +175,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the ipv6address object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.Ipv6addressAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.Ipv6addressAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6addressAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6addressAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetIpv6addressResponse
-	fmt.Fprintf(os.Stdout, "Response from `Ipv6addressAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetIpv6addressResponse
+	fmt.Fprintf(os.Stdout, "Response from `Ipv6addressAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -195,13 +195,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Ipv6addressAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `Ipv6addressAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -222,9 +222,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateIpv6addressResponse ReferencePut(ctx, reference).Ipv6address(ipv6address).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateIpv6addressResponse Update(ctx, reference).Ipv6address(ipv6address).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a ipv6address object
 
@@ -248,13 +248,13 @@ func main() {
 	ipv6address := *ipam.NewIpv6address() // Ipv6address | Object data to update
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.Ipv6addressAPI.ReferencePut(context.Background(), reference).Ipv6address(ipv6address).Execute()
+	resp, r, err := apiClient.Ipv6addressAPI.Update(context.Background(), reference).Ipv6address(ipv6address).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6addressAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6addressAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateIpv6addressResponse
-	fmt.Fprintf(os.Stdout, "Response from `Ipv6addressAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateIpv6addressResponse
+	fmt.Fprintf(os.Stdout, "Response from `Ipv6addressAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -268,14 +268,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Ipv6addressAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `Ipv6addressAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ipv6address** | [**Ipv6address**](Ipv6address.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

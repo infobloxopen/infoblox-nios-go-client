@@ -23,150 +23,386 @@ import (
 
 type SnmpuserAPI interface {
 	/*
-		Get Retrieve snmpuser objects
-
-		Returns a list of snmpuser objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SnmpuserAPIGetRequest
-	*/
-	Get(ctx context.Context) SnmpuserAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListSnmpuserResponse
-	GetExecute(r SnmpuserAPIGetRequest) (*ListSnmpuserResponse, *http.Response, error)
-	/*
-		Post Create a snmpuser object
+		Create Create a snmpuser object
 
 		Creates a new snmpuser object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SnmpuserAPIPostRequest
+		@return SnmpuserAPICreateRequest
 	*/
-	Post(ctx context.Context) SnmpuserAPIPostRequest
+	Create(ctx context.Context) SnmpuserAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSnmpuserResponse
-	PostExecute(r SnmpuserAPIPostRequest) (*CreateSnmpuserResponse, *http.Response, error)
+	CreateExecute(r SnmpuserAPICreateRequest) (*CreateSnmpuserResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a snmpuser object
+		Delete Delete a snmpuser object
 
 		Deletes a specific snmpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the snmpuser object
-		@return SnmpuserAPIReferenceDeleteRequest
+		@return SnmpuserAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) SnmpuserAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) SnmpuserAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r SnmpuserAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SnmpuserAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific snmpuser object
+		List Retrieve snmpuser objects
+
+		Returns a list of snmpuser objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return SnmpuserAPIListRequest
+	*/
+	List(ctx context.Context) SnmpuserAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListSnmpuserResponse
+	ListExecute(r SnmpuserAPIListRequest) (*ListSnmpuserResponse, *http.Response, error)
+	/*
+		Read Get a specific snmpuser object
 
 		Returns a specific snmpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the snmpuser object
-		@return SnmpuserAPIReferenceGetRequest
+		@return SnmpuserAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) SnmpuserAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) SnmpuserAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSnmpuserResponse
-	ReferenceGetExecute(r SnmpuserAPIReferenceGetRequest) (*GetSnmpuserResponse, *http.Response, error)
+	ReadExecute(r SnmpuserAPIReadRequest) (*GetSnmpuserResponse, *http.Response, error)
 	/*
-		ReferencePut Update a snmpuser object
+		Update Update a snmpuser object
 
 		Updates a specific snmpuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the snmpuser object
-		@return SnmpuserAPIReferencePutRequest
+		@return SnmpuserAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) SnmpuserAPIReferencePutRequest
+	Update(ctx context.Context, reference string) SnmpuserAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSnmpuserResponse
-	ReferencePutExecute(r SnmpuserAPIReferencePutRequest) (*UpdateSnmpuserResponse, *http.Response, error)
+	UpdateExecute(r SnmpuserAPIUpdateRequest) (*UpdateSnmpuserResponse, *http.Response, error)
 }
 
 // SnmpuserAPIService SnmpuserAPI service
 type SnmpuserAPIService internal.Service
 
-type SnmpuserAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     SnmpuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type SnmpuserAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       SnmpuserAPI
+	snmpuser         *Snmpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r SnmpuserAPICreateRequest) Snmpuser(snmpuser Snmpuser) SnmpuserAPICreateRequest {
+	r.snmpuser = &snmpuser
+	return r
 }
 
 // Enter the field names followed by comma
-func (r SnmpuserAPIGetRequest) ReturnFields(returnFields string) SnmpuserAPIGetRequest {
+func (r SnmpuserAPICreateRequest) ReturnFields(returnFields string) SnmpuserAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SnmpuserAPIGetRequest) ReturnFields2(returnFields2 string) SnmpuserAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r SnmpuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SnmpuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r SnmpuserAPICreateRequest) ReturnAsObject(returnAsObject int32) SnmpuserAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r SnmpuserAPICreateRequest) Execute() (*CreateSnmpuserResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a snmpuser object
+
+Creates a new snmpuser object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SnmpuserAPICreateRequest
+*/
+func (a *SnmpuserAPIService) Create(ctx context.Context) SnmpuserAPICreateRequest {
+	return SnmpuserAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateSnmpuserResponse
+func (a *SnmpuserAPIService) CreateExecute(r SnmpuserAPICreateRequest) (*CreateSnmpuserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateSnmpuserResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/snmpuser"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.snmpuser == nil {
+		return localVarReturnValue, nil, internal.ReportError("snmpuser is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.snmpuser != nil {
+		if r.snmpuser.ExtAttrs == nil {
+			r.snmpuser.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.snmpuser.ExtAttrs)[k]; !ok {
+				(*r.snmpuser.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.snmpuser
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SnmpuserAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService SnmpuserAPI
+	reference  string
+}
+
+func (r SnmpuserAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a snmpuser object
+
+Deletes a specific snmpuser object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the snmpuser object
+	@return SnmpuserAPIDeleteRequest
+*/
+func (a *SnmpuserAPIService) Delete(ctx context.Context, reference string) SnmpuserAPIDeleteRequest {
+	return SnmpuserAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *SnmpuserAPIService) DeleteExecute(r SnmpuserAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/snmpuser/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type SnmpuserAPIListRequest struct {
+	ctx              context.Context
+	ApiService       SnmpuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r SnmpuserAPIListRequest) ReturnFields(returnFields string) SnmpuserAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r SnmpuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SnmpuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SnmpuserAPIGetRequest) MaxResults(maxResults int32) SnmpuserAPIGetRequest {
+func (r SnmpuserAPIListRequest) MaxResults(maxResults int32) SnmpuserAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SnmpuserAPIGetRequest) ReturnAsObject(returnAsObject int32) SnmpuserAPIGetRequest {
+func (r SnmpuserAPIListRequest) ReturnAsObject(returnAsObject int32) SnmpuserAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SnmpuserAPIGetRequest) Paging(paging int32) SnmpuserAPIGetRequest {
+func (r SnmpuserAPIListRequest) Paging(paging int32) SnmpuserAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SnmpuserAPIGetRequest) PageId(pageId string) SnmpuserAPIGetRequest {
+func (r SnmpuserAPIListRequest) PageId(pageId string) SnmpuserAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SnmpuserAPIGetRequest) Filters(filters map[string]interface{}) SnmpuserAPIGetRequest {
+func (r SnmpuserAPIListRequest) Filters(filters map[string]interface{}) SnmpuserAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SnmpuserAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SnmpuserAPIGetRequest {
+func (r SnmpuserAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SnmpuserAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SnmpuserAPIGetRequest) Execute() (*ListSnmpuserResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r SnmpuserAPIListRequest) Execute() (*ListSnmpuserResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve snmpuser objects
+List Retrieve snmpuser objects
 
 Returns a list of snmpuser objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SnmpuserAPIGetRequest
+	@return SnmpuserAPIListRequest
 */
-func (a *SnmpuserAPIService) Get(ctx context.Context) SnmpuserAPIGetRequest {
-	return SnmpuserAPIGetRequest{
+func (a *SnmpuserAPIService) List(ctx context.Context) SnmpuserAPIListRequest {
+	return SnmpuserAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *SnmpuserAPIService) Get(ctx context.Context) SnmpuserAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListSnmpuserResponse
-func (a *SnmpuserAPIService) GetExecute(r SnmpuserAPIGetRequest) (*ListSnmpuserResponse, *http.Response, error) {
+func (a *SnmpuserAPIService) ListExecute(r SnmpuserAPIListRequest) (*ListSnmpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *SnmpuserAPIService) GetExecute(r SnmpuserAPIGetRequest) (*ListSnmpuserR
 		localVarReturnValue *ListSnmpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *SnmpuserAPIService) GetExecute(r SnmpuserAPIGetRequest) (*ListSnmpuserR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *SnmpuserAPIService) GetExecute(r SnmpuserAPIGetRequest) (*ListSnmpuserR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SnmpuserAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     SnmpuserAPI
-	snmpuser       *Snmpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r SnmpuserAPIPostRequest) Snmpuser(snmpuser Snmpuser) SnmpuserAPIPostRequest {
-	r.snmpuser = &snmpuser
-	return r
+type SnmpuserAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       SnmpuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r SnmpuserAPIPostRequest) ReturnFields(returnFields string) SnmpuserAPIPostRequest {
+func (r SnmpuserAPIReadRequest) ReturnFields(returnFields string) SnmpuserAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SnmpuserAPIPostRequest) ReturnFields2(returnFields2 string) SnmpuserAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r SnmpuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SnmpuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SnmpuserAPIPostRequest) ReturnAsObject(returnAsObject int32) SnmpuserAPIPostRequest {
+func (r SnmpuserAPIReadRequest) ReturnAsObject(returnAsObject int32) SnmpuserAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SnmpuserAPIPostRequest) Execute() (*CreateSnmpuserResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r SnmpuserAPIReadRequest) Execute() (*GetSnmpuserResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a snmpuser object
-
-Creates a new snmpuser object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SnmpuserAPIPostRequest
-*/
-func (a *SnmpuserAPIService) Post(ctx context.Context) SnmpuserAPIPostRequest {
-	return SnmpuserAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateSnmpuserResponse
-func (a *SnmpuserAPIService) PostExecute(r SnmpuserAPIPostRequest) (*CreateSnmpuserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateSnmpuserResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/snmpuser"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.snmpuser == nil {
-		return localVarReturnValue, nil, internal.ReportError("snmpuser is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.snmpuser != nil {
-		if r.snmpuser.Extattrs == nil {
-			r.snmpuser.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.snmpuser.Extattrs)[k]; !ok {
-				(*r.snmpuser.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.snmpuser
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type SnmpuserAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService SnmpuserAPI
-	reference  string
-}
-
-func (r SnmpuserAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a snmpuser object
-
-Deletes a specific snmpuser object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the snmpuser object
-	@return SnmpuserAPIReferenceDeleteRequest
-*/
-func (a *SnmpuserAPIService) ReferenceDelete(ctx context.Context, reference string) SnmpuserAPIReferenceDeleteRequest {
-	return SnmpuserAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *SnmpuserAPIService) ReferenceDeleteExecute(r SnmpuserAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/snmpuser/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type SnmpuserAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     SnmpuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r SnmpuserAPIReferenceGetRequest) ReturnFields(returnFields string) SnmpuserAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SnmpuserAPIReferenceGetRequest) ReturnFields2(returnFields2 string) SnmpuserAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r SnmpuserAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) SnmpuserAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r SnmpuserAPIReferenceGetRequest) Execute() (*GetSnmpuserResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific snmpuser object
+Read Get a specific snmpuser object
 
 Returns a specific snmpuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the snmpuser object
-	@return SnmpuserAPIReferenceGetRequest
+	@return SnmpuserAPIReadRequest
 */
-func (a *SnmpuserAPIService) ReferenceGet(ctx context.Context, reference string) SnmpuserAPIReferenceGetRequest {
-	return SnmpuserAPIReferenceGetRequest{
+func (a *SnmpuserAPIService) Read(ctx context.Context, reference string) SnmpuserAPIReadRequest {
+	return SnmpuserAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *SnmpuserAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetSnmpuserResponse
-func (a *SnmpuserAPIService) ReferenceGetExecute(r SnmpuserAPIReferenceGetRequest) (*GetSnmpuserResponse, *http.Response, error) {
+func (a *SnmpuserAPIService) ReadExecute(r SnmpuserAPIReadRequest) (*GetSnmpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *SnmpuserAPIService) ReferenceGetExecute(r SnmpuserAPIReferenceGetReques
 		localVarReturnValue *GetSnmpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *SnmpuserAPIService) ReferenceGetExecute(r SnmpuserAPIReferenceGetReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *SnmpuserAPIService) ReferenceGetExecute(r SnmpuserAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SnmpuserAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     SnmpuserAPI
-	reference      string
-	snmpuser       *Snmpuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type SnmpuserAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       SnmpuserAPI
+	reference        string
+	snmpuser         *Snmpuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r SnmpuserAPIReferencePutRequest) Snmpuser(snmpuser Snmpuser) SnmpuserAPIReferencePutRequest {
+func (r SnmpuserAPIUpdateRequest) Snmpuser(snmpuser Snmpuser) SnmpuserAPIUpdateRequest {
 	r.snmpuser = &snmpuser
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SnmpuserAPIReferencePutRequest) ReturnFields(returnFields string) SnmpuserAPIReferencePutRequest {
+func (r SnmpuserAPIUpdateRequest) ReturnFields(returnFields string) SnmpuserAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SnmpuserAPIReferencePutRequest) ReturnFields2(returnFields2 string) SnmpuserAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r SnmpuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SnmpuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SnmpuserAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) SnmpuserAPIReferencePutRequest {
+func (r SnmpuserAPIUpdateRequest) ReturnAsObject(returnAsObject int32) SnmpuserAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SnmpuserAPIReferencePutRequest) Execute() (*UpdateSnmpuserResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r SnmpuserAPIUpdateRequest) Execute() (*UpdateSnmpuserResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a snmpuser object
+Update Update a snmpuser object
 
 Updates a specific snmpuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the snmpuser object
-	@return SnmpuserAPIReferencePutRequest
+	@return SnmpuserAPIUpdateRequest
 */
-func (a *SnmpuserAPIService) ReferencePut(ctx context.Context, reference string) SnmpuserAPIReferencePutRequest {
-	return SnmpuserAPIReferencePutRequest{
+func (a *SnmpuserAPIService) Update(ctx context.Context, reference string) SnmpuserAPIUpdateRequest {
+	return SnmpuserAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *SnmpuserAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateSnmpuserResponse
-func (a *SnmpuserAPIService) ReferencePutExecute(r SnmpuserAPIReferencePutRequest) (*UpdateSnmpuserResponse, *http.Response, error) {
+func (a *SnmpuserAPIService) UpdateExecute(r SnmpuserAPIUpdateRequest) (*UpdateSnmpuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *SnmpuserAPIService) ReferencePutExecute(r SnmpuserAPIReferencePutReques
 		localVarReturnValue *UpdateSnmpuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SnmpuserAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *SnmpuserAPIService) ReferencePutExecute(r SnmpuserAPIReferencePutReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *SnmpuserAPIService) ReferencePutExecute(r SnmpuserAPIReferencePutReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.snmpuser != nil {
-		if r.snmpuser.Extattrs == nil {
-			r.snmpuser.Extattrs = &map[string]ExtAttrs{}
+		if r.snmpuser.ExtAttrs == nil {
+			r.snmpuser.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.snmpuser.Extattrs)[k]; !ok {
-				(*r.snmpuser.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.snmpuser.ExtAttrs)[k]; !ok {
+				(*r.snmpuser.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

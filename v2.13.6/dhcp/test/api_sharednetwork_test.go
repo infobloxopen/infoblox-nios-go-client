@@ -23,11 +23,11 @@ func TestSharednetworkAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test SharednetworkAPIService Get", func(t *testing.T) {
+	t.Run("Test SharednetworkAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SharednetworkAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SharednetworkAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestSharednetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SharednetworkAPIService Post", func(t *testing.T) {
+	t.Run("Test SharednetworkAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SharednetworkAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.SharednetworkAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SharednetworkAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.SharednetworkAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestSharednetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SharednetworkAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test SharednetworkAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.SharednetworkAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SharednetworkAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.SharednetworkAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SharednetworkAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestSharednetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SharednetworkAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test SharednetworkAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SharednetworkAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SharednetworkAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

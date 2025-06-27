@@ -26,7 +26,7 @@ type Dhcpfailover struct {
 	// A descriptive comment about a DHCP failover object.
 	Comment *string `json:"comment,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// Determines the TCP port on which the server should listen for connections from its failover peer. Valid values are between 1 and 63999.
 	FailoverPort *int64 `json:"failover_port,omitempty"`
 	// A load balancing split value of a DHCP failover object. Specify the value of the maximum load balancing delay in a 8-bit integer format (range from 0 to 256).
@@ -78,9 +78,7 @@ type Dhcpfailover struct {
 	// The type of the secondary server of DHCP Failover association object.
 	SecondaryServerType *string `json:"secondary_server_type,omitempty"`
 	// The secondary server status of a DHCP failover object.
-	SecondaryState                   *string                `json:"secondary_state,omitempty"`
-	SetDhcpFailoverPartnerDown       map[string]interface{} `json:"set_dhcp_failover_partner_down,omitempty"`
-	SetDhcpFailoverSecondaryRecovery map[string]interface{} `json:"set_dhcp_failover_secondary_recovery,omitempty"`
+	SecondaryState *string `json:"secondary_state,omitempty"`
 	// Use flag for: failover_port
 	UseFailoverPort *bool `json:"use_failover_port,omitempty"`
 	// Use flag for: ms_switchover_interval
@@ -202,36 +200,36 @@ func (o *Dhcpfailover) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *Dhcpfailover) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Dhcpfailover) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Dhcpfailover) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *Dhcpfailover) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *Dhcpfailover) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Dhcpfailover) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *Dhcpfailover) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Dhcpfailover) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetFailoverPort returns the FailoverPort field value if set, zero value otherwise.
@@ -1066,70 +1064,6 @@ func (o *Dhcpfailover) SetSecondaryState(v string) {
 	o.SecondaryState = &v
 }
 
-// GetSetDhcpFailoverPartnerDown returns the SetDhcpFailoverPartnerDown field value if set, zero value otherwise.
-func (o *Dhcpfailover) GetSetDhcpFailoverPartnerDown() map[string]interface{} {
-	if o == nil || IsNil(o.SetDhcpFailoverPartnerDown) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.SetDhcpFailoverPartnerDown
-}
-
-// GetSetDhcpFailoverPartnerDownOk returns a tuple with the SetDhcpFailoverPartnerDown field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Dhcpfailover) GetSetDhcpFailoverPartnerDownOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.SetDhcpFailoverPartnerDown) {
-		return map[string]interface{}{}, false
-	}
-	return o.SetDhcpFailoverPartnerDown, true
-}
-
-// HasSetDhcpFailoverPartnerDown returns a boolean if a field has been set.
-func (o *Dhcpfailover) HasSetDhcpFailoverPartnerDown() bool {
-	if o != nil && !IsNil(o.SetDhcpFailoverPartnerDown) {
-		return true
-	}
-
-	return false
-}
-
-// SetSetDhcpFailoverPartnerDown gets a reference to the given map[string]interface{} and assigns it to the SetDhcpFailoverPartnerDown field.
-func (o *Dhcpfailover) SetSetDhcpFailoverPartnerDown(v map[string]interface{}) {
-	o.SetDhcpFailoverPartnerDown = v
-}
-
-// GetSetDhcpFailoverSecondaryRecovery returns the SetDhcpFailoverSecondaryRecovery field value if set, zero value otherwise.
-func (o *Dhcpfailover) GetSetDhcpFailoverSecondaryRecovery() map[string]interface{} {
-	if o == nil || IsNil(o.SetDhcpFailoverSecondaryRecovery) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.SetDhcpFailoverSecondaryRecovery
-}
-
-// GetSetDhcpFailoverSecondaryRecoveryOk returns a tuple with the SetDhcpFailoverSecondaryRecovery field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Dhcpfailover) GetSetDhcpFailoverSecondaryRecoveryOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.SetDhcpFailoverSecondaryRecovery) {
-		return map[string]interface{}{}, false
-	}
-	return o.SetDhcpFailoverSecondaryRecovery, true
-}
-
-// HasSetDhcpFailoverSecondaryRecovery returns a boolean if a field has been set.
-func (o *Dhcpfailover) HasSetDhcpFailoverSecondaryRecovery() bool {
-	if o != nil && !IsNil(o.SetDhcpFailoverSecondaryRecovery) {
-		return true
-	}
-
-	return false
-}
-
-// SetSetDhcpFailoverSecondaryRecovery gets a reference to the given map[string]interface{} and assigns it to the SetDhcpFailoverSecondaryRecovery field.
-func (o *Dhcpfailover) SetSetDhcpFailoverSecondaryRecovery(v map[string]interface{}) {
-	o.SetDhcpFailoverSecondaryRecovery = v
-}
-
 // GetUseFailoverPort returns the UseFailoverPort field value if set, zero value otherwise.
 func (o *Dhcpfailover) GetUseFailoverPort() bool {
 	if o == nil || IsNil(o.UseFailoverPort) {
@@ -1245,8 +1179,8 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.FailoverPort) {
 		toSerialize["failover_port"] = o.FailoverPort
@@ -1325,12 +1259,6 @@ func (o Dhcpfailover) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecondaryState) {
 		toSerialize["secondary_state"] = o.SecondaryState
-	}
-	if !IsNil(o.SetDhcpFailoverPartnerDown) {
-		toSerialize["set_dhcp_failover_partner_down"] = o.SetDhcpFailoverPartnerDown
-	}
-	if !IsNil(o.SetDhcpFailoverSecondaryRecovery) {
-		toSerialize["set_dhcp_failover_secondary_recovery"] = o.SetDhcpFailoverSecondaryRecovery
 	}
 	if !IsNil(o.UseFailoverPort) {
 		toSerialize["use_failover_port"] = o.UseFailoverPort

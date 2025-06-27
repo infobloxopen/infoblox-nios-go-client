@@ -23,150 +23,386 @@ import (
 
 type VlanviewAPI interface {
 	/*
-		Get Retrieve vlanview objects
-
-		Returns a list of vlanview objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return VlanviewAPIGetRequest
-	*/
-	Get(ctx context.Context) VlanviewAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListVlanviewResponse
-	GetExecute(r VlanviewAPIGetRequest) (*ListVlanviewResponse, *http.Response, error)
-	/*
-		Post Create a vlanview object
+		Create Create a vlanview object
 
 		Creates a new vlanview object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return VlanviewAPIPostRequest
+		@return VlanviewAPICreateRequest
 	*/
-	Post(ctx context.Context) VlanviewAPIPostRequest
+	Create(ctx context.Context) VlanviewAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateVlanviewResponse
-	PostExecute(r VlanviewAPIPostRequest) (*CreateVlanviewResponse, *http.Response, error)
+	CreateExecute(r VlanviewAPICreateRequest) (*CreateVlanviewResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a vlanview object
+		Delete Delete a vlanview object
 
 		Deletes a specific vlanview object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vlanview object
-		@return VlanviewAPIReferenceDeleteRequest
+		@return VlanviewAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) VlanviewAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) VlanviewAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r VlanviewAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r VlanviewAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific vlanview object
+		List Retrieve vlanview objects
+
+		Returns a list of vlanview objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return VlanviewAPIListRequest
+	*/
+	List(ctx context.Context) VlanviewAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListVlanviewResponse
+	ListExecute(r VlanviewAPIListRequest) (*ListVlanviewResponse, *http.Response, error)
+	/*
+		Read Get a specific vlanview object
 
 		Returns a specific vlanview object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vlanview object
-		@return VlanviewAPIReferenceGetRequest
+		@return VlanviewAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) VlanviewAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) VlanviewAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetVlanviewResponse
-	ReferenceGetExecute(r VlanviewAPIReferenceGetRequest) (*GetVlanviewResponse, *http.Response, error)
+	ReadExecute(r VlanviewAPIReadRequest) (*GetVlanviewResponse, *http.Response, error)
 	/*
-		ReferencePut Update a vlanview object
+		Update Update a vlanview object
 
 		Updates a specific vlanview object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the vlanview object
-		@return VlanviewAPIReferencePutRequest
+		@return VlanviewAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) VlanviewAPIReferencePutRequest
+	Update(ctx context.Context, reference string) VlanviewAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateVlanviewResponse
-	ReferencePutExecute(r VlanviewAPIReferencePutRequest) (*UpdateVlanviewResponse, *http.Response, error)
+	UpdateExecute(r VlanviewAPIUpdateRequest) (*UpdateVlanviewResponse, *http.Response, error)
 }
 
 // VlanviewAPIService VlanviewAPI service
 type VlanviewAPIService internal.Service
 
-type VlanviewAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     VlanviewAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type VlanviewAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       VlanviewAPI
+	vlanview         *Vlanview
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r VlanviewAPICreateRequest) Vlanview(vlanview Vlanview) VlanviewAPICreateRequest {
+	r.vlanview = &vlanview
+	return r
 }
 
 // Enter the field names followed by comma
-func (r VlanviewAPIGetRequest) ReturnFields(returnFields string) VlanviewAPIGetRequest {
+func (r VlanviewAPICreateRequest) ReturnFields(returnFields string) VlanviewAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanviewAPIGetRequest) ReturnFields2(returnFields2 string) VlanviewAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanviewAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanviewAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r VlanviewAPICreateRequest) ReturnAsObject(returnAsObject int32) VlanviewAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r VlanviewAPICreateRequest) Execute() (*CreateVlanviewResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a vlanview object
+
+Creates a new vlanview object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return VlanviewAPICreateRequest
+*/
+func (a *VlanviewAPIService) Create(ctx context.Context) VlanviewAPICreateRequest {
+	return VlanviewAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateVlanviewResponse
+func (a *VlanviewAPIService) CreateExecute(r VlanviewAPICreateRequest) (*CreateVlanviewResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateVlanviewResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/vlanview"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.vlanview == nil {
+		return localVarReturnValue, nil, internal.ReportError("vlanview is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.vlanview != nil {
+		if r.vlanview.ExtAttrs == nil {
+			r.vlanview.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.vlanview.ExtAttrs)[k]; !ok {
+				(*r.vlanview.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.vlanview
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type VlanviewAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService VlanviewAPI
+	reference  string
+}
+
+func (r VlanviewAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a vlanview object
+
+Deletes a specific vlanview object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the vlanview object
+	@return VlanviewAPIDeleteRequest
+*/
+func (a *VlanviewAPIService) Delete(ctx context.Context, reference string) VlanviewAPIDeleteRequest {
+	return VlanviewAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *VlanviewAPIService) DeleteExecute(r VlanviewAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/vlanview/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type VlanviewAPIListRequest struct {
+	ctx              context.Context
+	ApiService       VlanviewAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r VlanviewAPIListRequest) ReturnFields(returnFields string) VlanviewAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r VlanviewAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanviewAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r VlanviewAPIGetRequest) MaxResults(maxResults int32) VlanviewAPIGetRequest {
+func (r VlanviewAPIListRequest) MaxResults(maxResults int32) VlanviewAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VlanviewAPIGetRequest) ReturnAsObject(returnAsObject int32) VlanviewAPIGetRequest {
+func (r VlanviewAPIListRequest) ReturnAsObject(returnAsObject int32) VlanviewAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r VlanviewAPIGetRequest) Paging(paging int32) VlanviewAPIGetRequest {
+func (r VlanviewAPIListRequest) Paging(paging int32) VlanviewAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r VlanviewAPIGetRequest) PageId(pageId string) VlanviewAPIGetRequest {
+func (r VlanviewAPIListRequest) PageId(pageId string) VlanviewAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r VlanviewAPIGetRequest) Filters(filters map[string]interface{}) VlanviewAPIGetRequest {
+func (r VlanviewAPIListRequest) Filters(filters map[string]interface{}) VlanviewAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r VlanviewAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) VlanviewAPIGetRequest {
+func (r VlanviewAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) VlanviewAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r VlanviewAPIGetRequest) Execute() (*ListVlanviewResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r VlanviewAPIListRequest) Execute() (*ListVlanviewResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve vlanview objects
+List Retrieve vlanview objects
 
 Returns a list of vlanview objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return VlanviewAPIGetRequest
+	@return VlanviewAPIListRequest
 */
-func (a *VlanviewAPIService) Get(ctx context.Context) VlanviewAPIGetRequest {
-	return VlanviewAPIGetRequest{
+func (a *VlanviewAPIService) List(ctx context.Context) VlanviewAPIListRequest {
+	return VlanviewAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *VlanviewAPIService) Get(ctx context.Context) VlanviewAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListVlanviewResponse
-func (a *VlanviewAPIService) GetExecute(r VlanviewAPIGetRequest) (*ListVlanviewResponse, *http.Response, error) {
+func (a *VlanviewAPIService) ListExecute(r VlanviewAPIListRequest) (*ListVlanviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *VlanviewAPIService) GetExecute(r VlanviewAPIGetRequest) (*ListVlanviewR
 		localVarReturnValue *ListVlanviewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *VlanviewAPIService) GetExecute(r VlanviewAPIGetRequest) (*ListVlanviewR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *VlanviewAPIService) GetExecute(r VlanviewAPIGetRequest) (*ListVlanviewR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type VlanviewAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     VlanviewAPI
-	vlanview       *Vlanview
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r VlanviewAPIPostRequest) Vlanview(vlanview Vlanview) VlanviewAPIPostRequest {
-	r.vlanview = &vlanview
-	return r
+type VlanviewAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       VlanviewAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r VlanviewAPIPostRequest) ReturnFields(returnFields string) VlanviewAPIPostRequest {
+func (r VlanviewAPIReadRequest) ReturnFields(returnFields string) VlanviewAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanviewAPIPostRequest) ReturnFields2(returnFields2 string) VlanviewAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanviewAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanviewAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VlanviewAPIPostRequest) ReturnAsObject(returnAsObject int32) VlanviewAPIPostRequest {
+func (r VlanviewAPIReadRequest) ReturnAsObject(returnAsObject int32) VlanviewAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r VlanviewAPIPostRequest) Execute() (*CreateVlanviewResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r VlanviewAPIReadRequest) Execute() (*GetVlanviewResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a vlanview object
-
-Creates a new vlanview object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return VlanviewAPIPostRequest
-*/
-func (a *VlanviewAPIService) Post(ctx context.Context) VlanviewAPIPostRequest {
-	return VlanviewAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateVlanviewResponse
-func (a *VlanviewAPIService) PostExecute(r VlanviewAPIPostRequest) (*CreateVlanviewResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateVlanviewResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/vlanview"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.vlanview == nil {
-		return localVarReturnValue, nil, internal.ReportError("vlanview is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.vlanview != nil {
-		if r.vlanview.Extattrs == nil {
-			r.vlanview.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.vlanview.Extattrs)[k]; !ok {
-				(*r.vlanview.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.vlanview
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type VlanviewAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService VlanviewAPI
-	reference  string
-}
-
-func (r VlanviewAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a vlanview object
-
-Deletes a specific vlanview object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the vlanview object
-	@return VlanviewAPIReferenceDeleteRequest
-*/
-func (a *VlanviewAPIService) ReferenceDelete(ctx context.Context, reference string) VlanviewAPIReferenceDeleteRequest {
-	return VlanviewAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *VlanviewAPIService) ReferenceDeleteExecute(r VlanviewAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/vlanview/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type VlanviewAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     VlanviewAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r VlanviewAPIReferenceGetRequest) ReturnFields(returnFields string) VlanviewAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanviewAPIReferenceGetRequest) ReturnFields2(returnFields2 string) VlanviewAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r VlanviewAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) VlanviewAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r VlanviewAPIReferenceGetRequest) Execute() (*GetVlanviewResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific vlanview object
+Read Get a specific vlanview object
 
 Returns a specific vlanview object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the vlanview object
-	@return VlanviewAPIReferenceGetRequest
+	@return VlanviewAPIReadRequest
 */
-func (a *VlanviewAPIService) ReferenceGet(ctx context.Context, reference string) VlanviewAPIReferenceGetRequest {
-	return VlanviewAPIReferenceGetRequest{
+func (a *VlanviewAPIService) Read(ctx context.Context, reference string) VlanviewAPIReadRequest {
+	return VlanviewAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *VlanviewAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetVlanviewResponse
-func (a *VlanviewAPIService) ReferenceGetExecute(r VlanviewAPIReferenceGetRequest) (*GetVlanviewResponse, *http.Response, error) {
+func (a *VlanviewAPIService) ReadExecute(r VlanviewAPIReadRequest) (*GetVlanviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *VlanviewAPIService) ReferenceGetExecute(r VlanviewAPIReferenceGetReques
 		localVarReturnValue *GetVlanviewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *VlanviewAPIService) ReferenceGetExecute(r VlanviewAPIReferenceGetReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *VlanviewAPIService) ReferenceGetExecute(r VlanviewAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type VlanviewAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     VlanviewAPI
-	reference      string
-	vlanview       *Vlanview
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type VlanviewAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       VlanviewAPI
+	reference        string
+	vlanview         *Vlanview
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r VlanviewAPIReferencePutRequest) Vlanview(vlanview Vlanview) VlanviewAPIReferencePutRequest {
+func (r VlanviewAPIUpdateRequest) Vlanview(vlanview Vlanview) VlanviewAPIUpdateRequest {
 	r.vlanview = &vlanview
 	return r
 }
 
 // Enter the field names followed by comma
-func (r VlanviewAPIReferencePutRequest) ReturnFields(returnFields string) VlanviewAPIReferencePutRequest {
+func (r VlanviewAPIUpdateRequest) ReturnFields(returnFields string) VlanviewAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r VlanviewAPIReferencePutRequest) ReturnFields2(returnFields2 string) VlanviewAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r VlanviewAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) VlanviewAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r VlanviewAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) VlanviewAPIReferencePutRequest {
+func (r VlanviewAPIUpdateRequest) ReturnAsObject(returnAsObject int32) VlanviewAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r VlanviewAPIReferencePutRequest) Execute() (*UpdateVlanviewResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r VlanviewAPIUpdateRequest) Execute() (*UpdateVlanviewResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a vlanview object
+Update Update a vlanview object
 
 Updates a specific vlanview object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the vlanview object
-	@return VlanviewAPIReferencePutRequest
+	@return VlanviewAPIUpdateRequest
 */
-func (a *VlanviewAPIService) ReferencePut(ctx context.Context, reference string) VlanviewAPIReferencePutRequest {
-	return VlanviewAPIReferencePutRequest{
+func (a *VlanviewAPIService) Update(ctx context.Context, reference string) VlanviewAPIUpdateRequest {
+	return VlanviewAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *VlanviewAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateVlanviewResponse
-func (a *VlanviewAPIService) ReferencePutExecute(r VlanviewAPIReferencePutRequest) (*UpdateVlanviewResponse, *http.Response, error) {
+func (a *VlanviewAPIService) UpdateExecute(r VlanviewAPIUpdateRequest) (*UpdateVlanviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *VlanviewAPIService) ReferencePutExecute(r VlanviewAPIReferencePutReques
 		localVarReturnValue *UpdateVlanviewResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "VlanviewAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *VlanviewAPIService) ReferencePutExecute(r VlanviewAPIReferencePutReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *VlanviewAPIService) ReferencePutExecute(r VlanviewAPIReferencePutReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.vlanview != nil {
-		if r.vlanview.Extattrs == nil {
-			r.vlanview.Extattrs = &map[string]ExtAttrs{}
+		if r.vlanview.ExtAttrs == nil {
+			r.vlanview.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.vlanview.Extattrs)[k]; !ok {
-				(*r.vlanview.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.vlanview.ExtAttrs)[k]; !ok {
+				(*r.vlanview.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

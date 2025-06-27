@@ -23,8 +23,8 @@ Name | Type | Description | Notes
 **EnableDdns** | Pointer to **bool** | The dynamic DNS updates flag of a DHCP IPv6 network container object. If set to True, the DHCP server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers. | [optional] 
 **EnableDiscovery** | Pointer to **bool** | Determines whether a discovery is enabled or not for this network container. When this is set to False, the network container discovery is disabled. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the network container should be immediately enabled. | [optional] 
-**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP IPv6 Network Container. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP IPv6 Network Container. | [optional] [readonly] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FederatedRealms** | Pointer to [**[]Ipv6networkcontainerFederatedRealms**](Ipv6networkcontainerFederatedRealms.md) | This field contains the federated realms associated to this network container. | [optional] 
 **LastRirRegistrationUpdateSent** | Pointer to **int64** | The timestamp when the last RIR registration update was sent. | [optional] [readonly] 
 **LastRirRegistrationUpdateStatus** | Pointer to **string** | Last RIR registration update status. | [optional] [readonly] 
@@ -35,7 +35,6 @@ Name | Type | Description | Notes
 **Network** | Pointer to **string** | The network address in IPv6 Address/CIDR format. For regular expression searches, only the IPv6 Address portion is supported. Searches for the CIDR portion is always an exact match. For example, both network containers 16::0/28 and 26::0/24 are matched by expression &#39;.6&#39; and only 26::0/24 is matched by &#39;.6/24&#39;. | [optional] 
 **NetworkContainer** | Pointer to **string** | The network container to which this network belongs, if any. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this network resides. | [optional] 
-**NextAvailableNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
 **Options** | Pointer to [**[]Ipv6networkcontainerOptions**](Ipv6networkcontainerOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **PortControlBlackoutSetting** | Pointer to [**Ipv6networkcontainerPortControlBlackoutSetting**](Ipv6networkcontainerPortControlBlackoutSetting.md) |  | [optional] 
 **PreferredLifetime** | Pointer to **int64** | Use this method to set or retrieve the preferred lifetime value of a DHCP IPv6 Network Container object. | [optional] 
@@ -567,20 +566,20 @@ HasEnableImmediateDiscovery returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *Ipv6networkcontainer) GetEndpointSources() []map[string]interface{}`
+`func (o *Ipv6networkcontainer) GetEndpointSources() []string`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *Ipv6networkcontainer) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
+`func (o *Ipv6networkcontainer) GetEndpointSourcesOk() (*[]string, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *Ipv6networkcontainer) SetEndpointSources(v []map[string]interface{})`
+`func (o *Ipv6networkcontainer) SetEndpointSources(v []string)`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -590,30 +589,30 @@ SetEndpointSources sets EndpointSources field to given value.
 
 HasEndpointSources returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Ipv6networkcontainer) GetExtattrs() map[string]ExtAttrs`
+`func (o *Ipv6networkcontainer) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Ipv6networkcontainer) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Ipv6networkcontainer) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Ipv6networkcontainer) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Ipv6networkcontainer) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Ipv6networkcontainer) HasExtattrs() bool`
+`func (o *Ipv6networkcontainer) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFederatedRealms
 
@@ -864,31 +863,6 @@ SetNetworkView sets NetworkView field to given value.
 `func (o *Ipv6networkcontainer) HasNetworkView() bool`
 
 HasNetworkView returns a boolean if a field has been set.
-
-### GetNextAvailableNetwork
-
-`func (o *Ipv6networkcontainer) GetNextAvailableNetwork() map[string]interface{}`
-
-GetNextAvailableNetwork returns the NextAvailableNetwork field if non-nil, zero value otherwise.
-
-### GetNextAvailableNetworkOk
-
-`func (o *Ipv6networkcontainer) GetNextAvailableNetworkOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableNetworkOk returns a tuple with the NextAvailableNetwork field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableNetwork
-
-`func (o *Ipv6networkcontainer) SetNextAvailableNetwork(v map[string]interface{})`
-
-SetNextAvailableNetwork sets NextAvailableNetwork field to given value.
-
-### HasNextAvailableNetwork
-
-`func (o *Ipv6networkcontainer) HasNextAvailableNetwork() bool`
-
-HasNextAvailableNetwork returns a boolean if a field has been set.
 
 ### GetOptions
 

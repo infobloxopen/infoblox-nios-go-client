@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **AuditToSyslogEnable** | Pointer to **bool** | If set to True, audit log messages are also copied to the syslog. | [optional] 
 **AutomatedTrafficCaptureSetting** | Pointer to [**GridAutomatedTrafficCaptureSetting**](GridAutomatedTrafficCaptureSetting.md) |  | [optional] 
 **ConsentBannerSetting** | Pointer to [**GridConsentBannerSetting**](GridConsentBannerSetting.md) |  | [optional] 
-**ControlIpAddress** | Pointer to **map[string]interface{}** |  | [optional] 
 **CspApiConfig** | Pointer to [**GridCspApiConfig**](GridCspApiConfig.md) |  | [optional] 
 **CspGridSetting** | Pointer to [**GridCspGridSetting**](GridCspGridSetting.md) |  | [optional] 
 **DenyMgmSnapshots** | Pointer to **bool** | If set to True, the managed Grid will not send snapshots to the Multi-Grid Master. | [optional] 
@@ -18,7 +17,6 @@ Name | Type | Description | Notes
 **DnsResolverSetting** | Pointer to [**GridDnsResolverSetting**](GridDnsResolverSetting.md) |  | [optional] 
 **Dscp** | Pointer to **int64** | The DSCP value. Valid values are integers between 0 and 63 inclusive. | [optional] 
 **EmailSetting** | Pointer to [**GridEmailSetting**](GridEmailSetting.md) |  | [optional] 
-**EmptyRecycleBin** | Pointer to **map[string]interface{}** |  | [optional] 
 **EnableFederation** | Pointer to **bool** | Determines if the federation feature is enabled or not. Test Setting will be performed for any change in enable_federation. | [optional] 
 **EnableForceSyncJoinTokenToGmc** | Pointer to **bool** | Determines if the force sync join token from GM to GMC is enabled or not. | [optional] 
 **EnableGuiApiForLanVip** | Pointer to **bool** | If set to True, GUI and API access are enabled on the LAN/VIP port and MGMT port (if configured). | [optional] 
@@ -28,21 +26,11 @@ Name | Type | Description | Notes
 **EnableRirSwip** | Pointer to **bool** | Determines if the RIR/SWIP support is enabled or not. | [optional] 
 **ExternalSyslogBackupServers** | Pointer to [**[]GridExternalSyslogBackupServers**](GridExternalSyslogBackupServers.md) | The list of external backup syslog servers. | [optional] 
 **ExternalSyslogServerEnable** | Pointer to **bool** | If set to True, external syslog servers are enabled. | [optional] 
-**GenerateTsigKey** | Pointer to **map[string]interface{}** |  | [optional] 
-**GetAllTemplateVendorId** | Pointer to **map[string]interface{}** |  | [optional] 
-**GetGridRevertStatus** | Pointer to **map[string]interface{}** |  | [optional] 
-**GetRpzThreatDetails** | Pointer to **map[string]interface{}** |  | [optional] 
-**GetTemplateSchemaVersions** | Pointer to **map[string]interface{}** |  | [optional] 
 **HttpProxyServerSetting** | Pointer to [**GridHttpProxyServerSetting**](GridHttpProxyServerSetting.md) |  | [optional] 
 **InformationalBannerSetting** | Pointer to [**GridInformationalBannerSetting**](GridInformationalBannerSetting.md) |  | [optional] 
 **IsGridVisualizationVisible** | Pointer to **bool** | If set to True, graphical visualization of the Grid is enabled. | [optional] 
-**Join** | Pointer to **map[string]interface{}** |  | [optional] 
-**JoinMgm** | Pointer to **map[string]interface{}** |  | [optional] 
-**JoinMgmMod2** | Pointer to **map[string]interface{}** |  | [optional] 
-**LeaveMgm** | Pointer to **map[string]interface{}** |  | [optional] 
 **LockoutSetting** | Pointer to [**GridLockoutSetting**](GridLockoutSetting.md) |  | [optional] 
 **LomUsers** | Pointer to [**[]GridLomUsers**](GridLomUsers.md) | The list of LOM users. | [optional] 
-**MemberUpgrade** | Pointer to **map[string]interface{}** |  | [optional] 
 **MgmStrictDelegateMode** | Pointer to **bool** | Determines if strict delegate mode for the Grid managed by the Master Grid is enabled or not. | [optional] 
 **MsSetting** | Pointer to [**GridMsSetting**](GridMsSetting.md) |  | [optional] 
 **Name** | Pointer to **string** | The grid name. | [optional] 
@@ -50,12 +38,8 @@ Name | Type | Description | Notes
 **NtpSetting** | Pointer to [**GridNtpSetting**](GridNtpSetting.md) |  | [optional] 
 **ObjectsChangesTrackingSetting** | Pointer to [**GridObjectsChangesTrackingSetting**](GridObjectsChangesTrackingSetting.md) |  | [optional] 
 **PasswordSetting** | Pointer to [**GridPasswordSetting**](GridPasswordSetting.md) |  | [optional] 
-**PublishChanges** | Pointer to **map[string]interface{}** |  | [optional] 
-**QueryFqdnOnMember** | Pointer to **map[string]interface{}** |  | [optional] 
-**Requestrestartservicestatus** | Pointer to **map[string]interface{}** |  | [optional] 
 **RestartBannerSetting** | Pointer to [**GridRestartBannerSetting**](GridRestartBannerSetting.md) |  | [optional] 
 **RestartStatus** | Pointer to **string** | The restart status for the Grid. | [optional] [readonly] 
-**Restartservices** | Pointer to **map[string]interface{}** |  | [optional] 
 **RpzHitRateInterval** | Pointer to **int64** | The time interval (in seconds) that determines how often the appliance calculates the RPZ hit rate. | [optional] 
 **RpzHitRateMaxQuery** | Pointer to **int64** | The maximum number of incoming queries between the RPZ hit rate checks. | [optional] 
 **RpzHitRateMinQuery** | Pointer to **int64** | The minimum number of incoming queries between the RPZ hit rate checks. | [optional] 
@@ -64,15 +48,11 @@ Name | Type | Description | Notes
 **SecurityBannerSetting** | Pointer to [**GridSecurityBannerSetting**](GridSecurityBannerSetting.md) |  | [optional] 
 **SecuritySetting** | Pointer to [**GridSecuritySetting**](GridSecuritySetting.md) |  | [optional] 
 **ServiceStatus** | Pointer to **string** | Determines overall service status of the Grid. | [optional] [readonly] 
-**SkipMemberUpgrade** | Pointer to **map[string]interface{}** |  | [optional] 
 **SnmpSetting** | Pointer to [**GridSnmpSetting**](GridSnmpSetting.md) |  | [optional] 
-**StartDiscovery** | Pointer to **map[string]interface{}** |  | [optional] 
 **SupportBundleDownloadTimeout** | Pointer to **int64** | Support bundle download timeout in seconds. | [optional] 
 **SyslogFacility** | Pointer to **string** | If &#39;audit_to_syslog_enable&#39; is set to True, the facility that determines the processes and daemons from which the log messages are generated. | [optional] 
 **SyslogServers** | Pointer to [**[]GridSyslogServers**](GridSyslogServers.md) | The list of external syslog servers. | [optional] 
 **SyslogSize** | Pointer to **int64** | The maximum size for the syslog file expressed in megabytes. | [optional] 
-**TestSyslogBackupServerConnection** | Pointer to **map[string]interface{}** |  | [optional] 
-**TestSyslogConnection** | Pointer to **map[string]interface{}** |  | [optional] 
 **ThresholdTraps** | Pointer to [**[]GridThresholdTraps**](GridThresholdTraps.md) | Determines the list of threshold traps. The user can only change the values for each trap or remove traps. | [optional] 
 **TimeZone** | Pointer to **string** | The time zone of the Grid. The UTC string that represents the time zone, such as \&quot;US/Eastern\&quot;. | [optional] 
 **TokenUsageDelay** | Pointer to **int64** | The delayed usage (in minutes) of a permission token. | [optional] 
@@ -83,10 +63,6 @@ Name | Type | Description | Notes
 **TrafficCaptureRecQueriesSetting** | Pointer to [**GridTrafficCaptureRecQueriesSetting**](GridTrafficCaptureRecQueriesSetting.md) |  | [optional] 
 **TrapNotifications** | Pointer to [**[]GridTrapNotifications**](GridTrapNotifications.md) | Determines configuration of the trap notifications. | [optional] 
 **UpdatesDownloadMemberConfig** | Pointer to [**[]GridUpdatesDownloadMemberConfig**](GridUpdatesDownloadMemberConfig.md) | The list of member configuration structures, which provides information and settings for configuring the member that is responsible for downloading updates. | [optional] 
-**Upgrade** | Pointer to **map[string]interface{}** |  | [optional] 
-**UpgradeGroupNow** | Pointer to **map[string]interface{}** |  | [optional] 
-**UploadKeytab** | Pointer to **map[string]interface{}** |  | [optional] 
-**Validatecertificates** | Pointer to **map[string]interface{}** |  | [optional] 
 **VpnPort** | Pointer to **int64** | The VPN port. | [optional] 
 **Result** | Pointer to [**Grid**](Grid.md) |  | [optional] 
 
@@ -258,31 +234,6 @@ SetConsentBannerSetting sets ConsentBannerSetting field to given value.
 `func (o *GetGridResponse) HasConsentBannerSetting() bool`
 
 HasConsentBannerSetting returns a boolean if a field has been set.
-
-### GetControlIpAddress
-
-`func (o *GetGridResponse) GetControlIpAddress() map[string]interface{}`
-
-GetControlIpAddress returns the ControlIpAddress field if non-nil, zero value otherwise.
-
-### GetControlIpAddressOk
-
-`func (o *GetGridResponse) GetControlIpAddressOk() (*map[string]interface{}, bool)`
-
-GetControlIpAddressOk returns a tuple with the ControlIpAddress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetControlIpAddress
-
-`func (o *GetGridResponse) SetControlIpAddress(v map[string]interface{})`
-
-SetControlIpAddress sets ControlIpAddress field to given value.
-
-### HasControlIpAddress
-
-`func (o *GetGridResponse) HasControlIpAddress() bool`
-
-HasControlIpAddress returns a boolean if a field has been set.
 
 ### GetCspApiConfig
 
@@ -458,31 +409,6 @@ SetEmailSetting sets EmailSetting field to given value.
 `func (o *GetGridResponse) HasEmailSetting() bool`
 
 HasEmailSetting returns a boolean if a field has been set.
-
-### GetEmptyRecycleBin
-
-`func (o *GetGridResponse) GetEmptyRecycleBin() map[string]interface{}`
-
-GetEmptyRecycleBin returns the EmptyRecycleBin field if non-nil, zero value otherwise.
-
-### GetEmptyRecycleBinOk
-
-`func (o *GetGridResponse) GetEmptyRecycleBinOk() (*map[string]interface{}, bool)`
-
-GetEmptyRecycleBinOk returns a tuple with the EmptyRecycleBin field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmptyRecycleBin
-
-`func (o *GetGridResponse) SetEmptyRecycleBin(v map[string]interface{})`
-
-SetEmptyRecycleBin sets EmptyRecycleBin field to given value.
-
-### HasEmptyRecycleBin
-
-`func (o *GetGridResponse) HasEmptyRecycleBin() bool`
-
-HasEmptyRecycleBin returns a boolean if a field has been set.
 
 ### GetEnableFederation
 
@@ -709,131 +635,6 @@ SetExternalSyslogServerEnable sets ExternalSyslogServerEnable field to given val
 
 HasExternalSyslogServerEnable returns a boolean if a field has been set.
 
-### GetGenerateTsigKey
-
-`func (o *GetGridResponse) GetGenerateTsigKey() map[string]interface{}`
-
-GetGenerateTsigKey returns the GenerateTsigKey field if non-nil, zero value otherwise.
-
-### GetGenerateTsigKeyOk
-
-`func (o *GetGridResponse) GetGenerateTsigKeyOk() (*map[string]interface{}, bool)`
-
-GetGenerateTsigKeyOk returns a tuple with the GenerateTsigKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGenerateTsigKey
-
-`func (o *GetGridResponse) SetGenerateTsigKey(v map[string]interface{})`
-
-SetGenerateTsigKey sets GenerateTsigKey field to given value.
-
-### HasGenerateTsigKey
-
-`func (o *GetGridResponse) HasGenerateTsigKey() bool`
-
-HasGenerateTsigKey returns a boolean if a field has been set.
-
-### GetGetAllTemplateVendorId
-
-`func (o *GetGridResponse) GetGetAllTemplateVendorId() map[string]interface{}`
-
-GetGetAllTemplateVendorId returns the GetAllTemplateVendorId field if non-nil, zero value otherwise.
-
-### GetGetAllTemplateVendorIdOk
-
-`func (o *GetGridResponse) GetGetAllTemplateVendorIdOk() (*map[string]interface{}, bool)`
-
-GetGetAllTemplateVendorIdOk returns a tuple with the GetAllTemplateVendorId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGetAllTemplateVendorId
-
-`func (o *GetGridResponse) SetGetAllTemplateVendorId(v map[string]interface{})`
-
-SetGetAllTemplateVendorId sets GetAllTemplateVendorId field to given value.
-
-### HasGetAllTemplateVendorId
-
-`func (o *GetGridResponse) HasGetAllTemplateVendorId() bool`
-
-HasGetAllTemplateVendorId returns a boolean if a field has been set.
-
-### GetGetGridRevertStatus
-
-`func (o *GetGridResponse) GetGetGridRevertStatus() map[string]interface{}`
-
-GetGetGridRevertStatus returns the GetGridRevertStatus field if non-nil, zero value otherwise.
-
-### GetGetGridRevertStatusOk
-
-`func (o *GetGridResponse) GetGetGridRevertStatusOk() (*map[string]interface{}, bool)`
-
-GetGetGridRevertStatusOk returns a tuple with the GetGridRevertStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGetGridRevertStatus
-
-`func (o *GetGridResponse) SetGetGridRevertStatus(v map[string]interface{})`
-
-SetGetGridRevertStatus sets GetGridRevertStatus field to given value.
-
-### HasGetGridRevertStatus
-
-`func (o *GetGridResponse) HasGetGridRevertStatus() bool`
-
-HasGetGridRevertStatus returns a boolean if a field has been set.
-
-### GetGetRpzThreatDetails
-
-`func (o *GetGridResponse) GetGetRpzThreatDetails() map[string]interface{}`
-
-GetGetRpzThreatDetails returns the GetRpzThreatDetails field if non-nil, zero value otherwise.
-
-### GetGetRpzThreatDetailsOk
-
-`func (o *GetGridResponse) GetGetRpzThreatDetailsOk() (*map[string]interface{}, bool)`
-
-GetGetRpzThreatDetailsOk returns a tuple with the GetRpzThreatDetails field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGetRpzThreatDetails
-
-`func (o *GetGridResponse) SetGetRpzThreatDetails(v map[string]interface{})`
-
-SetGetRpzThreatDetails sets GetRpzThreatDetails field to given value.
-
-### HasGetRpzThreatDetails
-
-`func (o *GetGridResponse) HasGetRpzThreatDetails() bool`
-
-HasGetRpzThreatDetails returns a boolean if a field has been set.
-
-### GetGetTemplateSchemaVersions
-
-`func (o *GetGridResponse) GetGetTemplateSchemaVersions() map[string]interface{}`
-
-GetGetTemplateSchemaVersions returns the GetTemplateSchemaVersions field if non-nil, zero value otherwise.
-
-### GetGetTemplateSchemaVersionsOk
-
-`func (o *GetGridResponse) GetGetTemplateSchemaVersionsOk() (*map[string]interface{}, bool)`
-
-GetGetTemplateSchemaVersionsOk returns a tuple with the GetTemplateSchemaVersions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGetTemplateSchemaVersions
-
-`func (o *GetGridResponse) SetGetTemplateSchemaVersions(v map[string]interface{})`
-
-SetGetTemplateSchemaVersions sets GetTemplateSchemaVersions field to given value.
-
-### HasGetTemplateSchemaVersions
-
-`func (o *GetGridResponse) HasGetTemplateSchemaVersions() bool`
-
-HasGetTemplateSchemaVersions returns a boolean if a field has been set.
-
 ### GetHttpProxyServerSetting
 
 `func (o *GetGridResponse) GetHttpProxyServerSetting() GridHttpProxyServerSetting`
@@ -909,106 +710,6 @@ SetIsGridVisualizationVisible sets IsGridVisualizationVisible field to given val
 
 HasIsGridVisualizationVisible returns a boolean if a field has been set.
 
-### GetJoin
-
-`func (o *GetGridResponse) GetJoin() map[string]interface{}`
-
-GetJoin returns the Join field if non-nil, zero value otherwise.
-
-### GetJoinOk
-
-`func (o *GetGridResponse) GetJoinOk() (*map[string]interface{}, bool)`
-
-GetJoinOk returns a tuple with the Join field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetJoin
-
-`func (o *GetGridResponse) SetJoin(v map[string]interface{})`
-
-SetJoin sets Join field to given value.
-
-### HasJoin
-
-`func (o *GetGridResponse) HasJoin() bool`
-
-HasJoin returns a boolean if a field has been set.
-
-### GetJoinMgm
-
-`func (o *GetGridResponse) GetJoinMgm() map[string]interface{}`
-
-GetJoinMgm returns the JoinMgm field if non-nil, zero value otherwise.
-
-### GetJoinMgmOk
-
-`func (o *GetGridResponse) GetJoinMgmOk() (*map[string]interface{}, bool)`
-
-GetJoinMgmOk returns a tuple with the JoinMgm field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetJoinMgm
-
-`func (o *GetGridResponse) SetJoinMgm(v map[string]interface{})`
-
-SetJoinMgm sets JoinMgm field to given value.
-
-### HasJoinMgm
-
-`func (o *GetGridResponse) HasJoinMgm() bool`
-
-HasJoinMgm returns a boolean if a field has been set.
-
-### GetJoinMgmMod2
-
-`func (o *GetGridResponse) GetJoinMgmMod2() map[string]interface{}`
-
-GetJoinMgmMod2 returns the JoinMgmMod2 field if non-nil, zero value otherwise.
-
-### GetJoinMgmMod2Ok
-
-`func (o *GetGridResponse) GetJoinMgmMod2Ok() (*map[string]interface{}, bool)`
-
-GetJoinMgmMod2Ok returns a tuple with the JoinMgmMod2 field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetJoinMgmMod2
-
-`func (o *GetGridResponse) SetJoinMgmMod2(v map[string]interface{})`
-
-SetJoinMgmMod2 sets JoinMgmMod2 field to given value.
-
-### HasJoinMgmMod2
-
-`func (o *GetGridResponse) HasJoinMgmMod2() bool`
-
-HasJoinMgmMod2 returns a boolean if a field has been set.
-
-### GetLeaveMgm
-
-`func (o *GetGridResponse) GetLeaveMgm() map[string]interface{}`
-
-GetLeaveMgm returns the LeaveMgm field if non-nil, zero value otherwise.
-
-### GetLeaveMgmOk
-
-`func (o *GetGridResponse) GetLeaveMgmOk() (*map[string]interface{}, bool)`
-
-GetLeaveMgmOk returns a tuple with the LeaveMgm field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLeaveMgm
-
-`func (o *GetGridResponse) SetLeaveMgm(v map[string]interface{})`
-
-SetLeaveMgm sets LeaveMgm field to given value.
-
-### HasLeaveMgm
-
-`func (o *GetGridResponse) HasLeaveMgm() bool`
-
-HasLeaveMgm returns a boolean if a field has been set.
-
 ### GetLockoutSetting
 
 `func (o *GetGridResponse) GetLockoutSetting() GridLockoutSetting`
@@ -1058,31 +759,6 @@ SetLomUsers sets LomUsers field to given value.
 `func (o *GetGridResponse) HasLomUsers() bool`
 
 HasLomUsers returns a boolean if a field has been set.
-
-### GetMemberUpgrade
-
-`func (o *GetGridResponse) GetMemberUpgrade() map[string]interface{}`
-
-GetMemberUpgrade returns the MemberUpgrade field if non-nil, zero value otherwise.
-
-### GetMemberUpgradeOk
-
-`func (o *GetGridResponse) GetMemberUpgradeOk() (*map[string]interface{}, bool)`
-
-GetMemberUpgradeOk returns a tuple with the MemberUpgrade field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMemberUpgrade
-
-`func (o *GetGridResponse) SetMemberUpgrade(v map[string]interface{})`
-
-SetMemberUpgrade sets MemberUpgrade field to given value.
-
-### HasMemberUpgrade
-
-`func (o *GetGridResponse) HasMemberUpgrade() bool`
-
-HasMemberUpgrade returns a boolean if a field has been set.
 
 ### GetMgmStrictDelegateMode
 
@@ -1259,81 +935,6 @@ SetPasswordSetting sets PasswordSetting field to given value.
 
 HasPasswordSetting returns a boolean if a field has been set.
 
-### GetPublishChanges
-
-`func (o *GetGridResponse) GetPublishChanges() map[string]interface{}`
-
-GetPublishChanges returns the PublishChanges field if non-nil, zero value otherwise.
-
-### GetPublishChangesOk
-
-`func (o *GetGridResponse) GetPublishChangesOk() (*map[string]interface{}, bool)`
-
-GetPublishChangesOk returns a tuple with the PublishChanges field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPublishChanges
-
-`func (o *GetGridResponse) SetPublishChanges(v map[string]interface{})`
-
-SetPublishChanges sets PublishChanges field to given value.
-
-### HasPublishChanges
-
-`func (o *GetGridResponse) HasPublishChanges() bool`
-
-HasPublishChanges returns a boolean if a field has been set.
-
-### GetQueryFqdnOnMember
-
-`func (o *GetGridResponse) GetQueryFqdnOnMember() map[string]interface{}`
-
-GetQueryFqdnOnMember returns the QueryFqdnOnMember field if non-nil, zero value otherwise.
-
-### GetQueryFqdnOnMemberOk
-
-`func (o *GetGridResponse) GetQueryFqdnOnMemberOk() (*map[string]interface{}, bool)`
-
-GetQueryFqdnOnMemberOk returns a tuple with the QueryFqdnOnMember field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQueryFqdnOnMember
-
-`func (o *GetGridResponse) SetQueryFqdnOnMember(v map[string]interface{})`
-
-SetQueryFqdnOnMember sets QueryFqdnOnMember field to given value.
-
-### HasQueryFqdnOnMember
-
-`func (o *GetGridResponse) HasQueryFqdnOnMember() bool`
-
-HasQueryFqdnOnMember returns a boolean if a field has been set.
-
-### GetRequestrestartservicestatus
-
-`func (o *GetGridResponse) GetRequestrestartservicestatus() map[string]interface{}`
-
-GetRequestrestartservicestatus returns the Requestrestartservicestatus field if non-nil, zero value otherwise.
-
-### GetRequestrestartservicestatusOk
-
-`func (o *GetGridResponse) GetRequestrestartservicestatusOk() (*map[string]interface{}, bool)`
-
-GetRequestrestartservicestatusOk returns a tuple with the Requestrestartservicestatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestrestartservicestatus
-
-`func (o *GetGridResponse) SetRequestrestartservicestatus(v map[string]interface{})`
-
-SetRequestrestartservicestatus sets Requestrestartservicestatus field to given value.
-
-### HasRequestrestartservicestatus
-
-`func (o *GetGridResponse) HasRequestrestartservicestatus() bool`
-
-HasRequestrestartservicestatus returns a boolean if a field has been set.
-
 ### GetRestartBannerSetting
 
 `func (o *GetGridResponse) GetRestartBannerSetting() GridRestartBannerSetting`
@@ -1383,31 +984,6 @@ SetRestartStatus sets RestartStatus field to given value.
 `func (o *GetGridResponse) HasRestartStatus() bool`
 
 HasRestartStatus returns a boolean if a field has been set.
-
-### GetRestartservices
-
-`func (o *GetGridResponse) GetRestartservices() map[string]interface{}`
-
-GetRestartservices returns the Restartservices field if non-nil, zero value otherwise.
-
-### GetRestartservicesOk
-
-`func (o *GetGridResponse) GetRestartservicesOk() (*map[string]interface{}, bool)`
-
-GetRestartservicesOk returns a tuple with the Restartservices field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRestartservices
-
-`func (o *GetGridResponse) SetRestartservices(v map[string]interface{})`
-
-SetRestartservices sets Restartservices field to given value.
-
-### HasRestartservices
-
-`func (o *GetGridResponse) HasRestartservices() bool`
-
-HasRestartservices returns a boolean if a field has been set.
 
 ### GetRpzHitRateInterval
 
@@ -1609,31 +1185,6 @@ SetServiceStatus sets ServiceStatus field to given value.
 
 HasServiceStatus returns a boolean if a field has been set.
 
-### GetSkipMemberUpgrade
-
-`func (o *GetGridResponse) GetSkipMemberUpgrade() map[string]interface{}`
-
-GetSkipMemberUpgrade returns the SkipMemberUpgrade field if non-nil, zero value otherwise.
-
-### GetSkipMemberUpgradeOk
-
-`func (o *GetGridResponse) GetSkipMemberUpgradeOk() (*map[string]interface{}, bool)`
-
-GetSkipMemberUpgradeOk returns a tuple with the SkipMemberUpgrade field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSkipMemberUpgrade
-
-`func (o *GetGridResponse) SetSkipMemberUpgrade(v map[string]interface{})`
-
-SetSkipMemberUpgrade sets SkipMemberUpgrade field to given value.
-
-### HasSkipMemberUpgrade
-
-`func (o *GetGridResponse) HasSkipMemberUpgrade() bool`
-
-HasSkipMemberUpgrade returns a boolean if a field has been set.
-
 ### GetSnmpSetting
 
 `func (o *GetGridResponse) GetSnmpSetting() GridSnmpSetting`
@@ -1658,31 +1209,6 @@ SetSnmpSetting sets SnmpSetting field to given value.
 `func (o *GetGridResponse) HasSnmpSetting() bool`
 
 HasSnmpSetting returns a boolean if a field has been set.
-
-### GetStartDiscovery
-
-`func (o *GetGridResponse) GetStartDiscovery() map[string]interface{}`
-
-GetStartDiscovery returns the StartDiscovery field if non-nil, zero value otherwise.
-
-### GetStartDiscoveryOk
-
-`func (o *GetGridResponse) GetStartDiscoveryOk() (*map[string]interface{}, bool)`
-
-GetStartDiscoveryOk returns a tuple with the StartDiscovery field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartDiscovery
-
-`func (o *GetGridResponse) SetStartDiscovery(v map[string]interface{})`
-
-SetStartDiscovery sets StartDiscovery field to given value.
-
-### HasStartDiscovery
-
-`func (o *GetGridResponse) HasStartDiscovery() bool`
-
-HasStartDiscovery returns a boolean if a field has been set.
 
 ### GetSupportBundleDownloadTimeout
 
@@ -1783,56 +1309,6 @@ SetSyslogSize sets SyslogSize field to given value.
 `func (o *GetGridResponse) HasSyslogSize() bool`
 
 HasSyslogSize returns a boolean if a field has been set.
-
-### GetTestSyslogBackupServerConnection
-
-`func (o *GetGridResponse) GetTestSyslogBackupServerConnection() map[string]interface{}`
-
-GetTestSyslogBackupServerConnection returns the TestSyslogBackupServerConnection field if non-nil, zero value otherwise.
-
-### GetTestSyslogBackupServerConnectionOk
-
-`func (o *GetGridResponse) GetTestSyslogBackupServerConnectionOk() (*map[string]interface{}, bool)`
-
-GetTestSyslogBackupServerConnectionOk returns a tuple with the TestSyslogBackupServerConnection field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTestSyslogBackupServerConnection
-
-`func (o *GetGridResponse) SetTestSyslogBackupServerConnection(v map[string]interface{})`
-
-SetTestSyslogBackupServerConnection sets TestSyslogBackupServerConnection field to given value.
-
-### HasTestSyslogBackupServerConnection
-
-`func (o *GetGridResponse) HasTestSyslogBackupServerConnection() bool`
-
-HasTestSyslogBackupServerConnection returns a boolean if a field has been set.
-
-### GetTestSyslogConnection
-
-`func (o *GetGridResponse) GetTestSyslogConnection() map[string]interface{}`
-
-GetTestSyslogConnection returns the TestSyslogConnection field if non-nil, zero value otherwise.
-
-### GetTestSyslogConnectionOk
-
-`func (o *GetGridResponse) GetTestSyslogConnectionOk() (*map[string]interface{}, bool)`
-
-GetTestSyslogConnectionOk returns a tuple with the TestSyslogConnection field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTestSyslogConnection
-
-`func (o *GetGridResponse) SetTestSyslogConnection(v map[string]interface{})`
-
-SetTestSyslogConnection sets TestSyslogConnection field to given value.
-
-### HasTestSyslogConnection
-
-`func (o *GetGridResponse) HasTestSyslogConnection() bool`
-
-HasTestSyslogConnection returns a boolean if a field has been set.
 
 ### GetThresholdTraps
 
@@ -2083,106 +1559,6 @@ SetUpdatesDownloadMemberConfig sets UpdatesDownloadMemberConfig field to given v
 `func (o *GetGridResponse) HasUpdatesDownloadMemberConfig() bool`
 
 HasUpdatesDownloadMemberConfig returns a boolean if a field has been set.
-
-### GetUpgrade
-
-`func (o *GetGridResponse) GetUpgrade() map[string]interface{}`
-
-GetUpgrade returns the Upgrade field if non-nil, zero value otherwise.
-
-### GetUpgradeOk
-
-`func (o *GetGridResponse) GetUpgradeOk() (*map[string]interface{}, bool)`
-
-GetUpgradeOk returns a tuple with the Upgrade field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpgrade
-
-`func (o *GetGridResponse) SetUpgrade(v map[string]interface{})`
-
-SetUpgrade sets Upgrade field to given value.
-
-### HasUpgrade
-
-`func (o *GetGridResponse) HasUpgrade() bool`
-
-HasUpgrade returns a boolean if a field has been set.
-
-### GetUpgradeGroupNow
-
-`func (o *GetGridResponse) GetUpgradeGroupNow() map[string]interface{}`
-
-GetUpgradeGroupNow returns the UpgradeGroupNow field if non-nil, zero value otherwise.
-
-### GetUpgradeGroupNowOk
-
-`func (o *GetGridResponse) GetUpgradeGroupNowOk() (*map[string]interface{}, bool)`
-
-GetUpgradeGroupNowOk returns a tuple with the UpgradeGroupNow field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpgradeGroupNow
-
-`func (o *GetGridResponse) SetUpgradeGroupNow(v map[string]interface{})`
-
-SetUpgradeGroupNow sets UpgradeGroupNow field to given value.
-
-### HasUpgradeGroupNow
-
-`func (o *GetGridResponse) HasUpgradeGroupNow() bool`
-
-HasUpgradeGroupNow returns a boolean if a field has been set.
-
-### GetUploadKeytab
-
-`func (o *GetGridResponse) GetUploadKeytab() map[string]interface{}`
-
-GetUploadKeytab returns the UploadKeytab field if non-nil, zero value otherwise.
-
-### GetUploadKeytabOk
-
-`func (o *GetGridResponse) GetUploadKeytabOk() (*map[string]interface{}, bool)`
-
-GetUploadKeytabOk returns a tuple with the UploadKeytab field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUploadKeytab
-
-`func (o *GetGridResponse) SetUploadKeytab(v map[string]interface{})`
-
-SetUploadKeytab sets UploadKeytab field to given value.
-
-### HasUploadKeytab
-
-`func (o *GetGridResponse) HasUploadKeytab() bool`
-
-HasUploadKeytab returns a boolean if a field has been set.
-
-### GetValidatecertificates
-
-`func (o *GetGridResponse) GetValidatecertificates() map[string]interface{}`
-
-GetValidatecertificates returns the Validatecertificates field if non-nil, zero value otherwise.
-
-### GetValidatecertificatesOk
-
-`func (o *GetGridResponse) GetValidatecertificatesOk() (*map[string]interface{}, bool)`
-
-GetValidatecertificatesOk returns a tuple with the Validatecertificates field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValidatecertificates
-
-`func (o *GetGridResponse) SetValidatecertificates(v map[string]interface{})`
-
-SetValidatecertificates sets Validatecertificates field to given value.
-
-### HasValidatecertificates
-
-`func (o *GetGridResponse) HasValidatecertificates() bool`
-
-HasValidatecertificates returns a boolean if a field has been set.
 
 ### GetVpnPort
 

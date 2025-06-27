@@ -20,8 +20,7 @@ var _ MappedNullable = &LdapAuthService{}
 // LdapAuthService struct for LdapAuthService
 type LdapAuthService struct {
 	// The reference to the object.
-	Ref                     *string                `json:"_ref,omitempty"`
-	CheckLdapServerSettings map[string]interface{} `json:"check_ldap_server_settings,omitempty"`
+	Ref *string `json:"_ref,omitempty"`
 	// The LDAP descriptive comment.
 	Comment *string `json:"comment,omitempty"`
 	// Determines if the LDAP authentication service is disabled.
@@ -97,38 +96,6 @@ func (o *LdapAuthService) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *LdapAuthService) SetRef(v string) {
 	o.Ref = &v
-}
-
-// GetCheckLdapServerSettings returns the CheckLdapServerSettings field value if set, zero value otherwise.
-func (o *LdapAuthService) GetCheckLdapServerSettings() map[string]interface{} {
-	if o == nil || IsNil(o.CheckLdapServerSettings) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.CheckLdapServerSettings
-}
-
-// GetCheckLdapServerSettingsOk returns a tuple with the CheckLdapServerSettings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LdapAuthService) GetCheckLdapServerSettingsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CheckLdapServerSettings) {
-		return map[string]interface{}{}, false
-	}
-	return o.CheckLdapServerSettings, true
-}
-
-// HasCheckLdapServerSettings returns a boolean if a field has been set.
-func (o *LdapAuthService) HasCheckLdapServerSettings() bool {
-	if o != nil && !IsNil(o.CheckLdapServerSettings) {
-		return true
-	}
-
-	return false
-}
-
-// SetCheckLdapServerSettings gets a reference to the given map[string]interface{} and assigns it to the CheckLdapServerSettings field.
-func (o *LdapAuthService) SetCheckLdapServerSettings(v map[string]interface{}) {
-	o.CheckLdapServerSettings = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -559,9 +526,6 @@ func (o LdapAuthService) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
-	}
-	if !IsNil(o.CheckLdapServerSettings) {
-		toSerialize["check_ldap_server_settings"] = o.CheckLdapServerSettings
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment

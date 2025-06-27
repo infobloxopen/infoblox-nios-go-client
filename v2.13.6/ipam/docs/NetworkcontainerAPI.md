@@ -4,17 +4,154 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](NetworkcontainerAPI.md#Get) | **Get** /networkcontainer | Retrieve networkcontainer objects
-[**Post**](NetworkcontainerAPI.md#Post) | **Post** /networkcontainer | Create a networkcontainer object
-[**ReferenceDelete**](NetworkcontainerAPI.md#ReferenceDelete) | **Delete** /networkcontainer/{reference} | Delete a networkcontainer object
-[**ReferenceGet**](NetworkcontainerAPI.md#ReferenceGet) | **Get** /networkcontainer/{reference} | Get a specific networkcontainer object
-[**ReferencePut**](NetworkcontainerAPI.md#ReferencePut) | **Put** /networkcontainer/{reference} | Update a networkcontainer object
+[**Create**](NetworkcontainerAPI.md#Create) | **Post** /networkcontainer | Create a networkcontainer object
+[**Delete**](NetworkcontainerAPI.md#Delete) | **Delete** /networkcontainer/{reference} | Delete a networkcontainer object
+[**List**](NetworkcontainerAPI.md#List) | **Get** /networkcontainer | Retrieve networkcontainer objects
+[**Read**](NetworkcontainerAPI.md#Read) | **Get** /networkcontainer/{reference} | Get a specific networkcontainer object
+[**Update**](NetworkcontainerAPI.md#Update) | **Put** /networkcontainer/{reference} | Update a networkcontainer object
 
 
 
-## Get
+## Create
 
-> ListNetworkcontainerResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateNetworkcontainerResponse Create(ctx).Networkcontainer(networkcontainer).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a networkcontainer object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	networkcontainer := *ipam.NewNetworkcontainer() // Networkcontainer | Object data to create
+
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.NetworkcontainerAPI.Create(context.Background()).Networkcontainer(networkcontainer).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateNetworkcontainerResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkcontainerAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `NetworkcontainerAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**networkcontainer** | [**Networkcontainer**](Networkcontainer.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateNetworkcontainerResponse**](CreateNetworkcontainerResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).RemoveSubnets(removeSubnets).Execute()
+
+Delete a networkcontainer object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the networkcontainer object
+
+	apiClient := ipam.NewAPIClient()
+	r, err := apiClient.NetworkcontainerAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the networkcontainer object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `NetworkcontainerAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**removeSubnets** | **bool** | Remove subnets delete option. Determines whether all child objects should be removed alongside with the network container or child objects should be assigned to another parental container. By default child objects are deleted with the network container. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListNetworkcontainerResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve networkcontainer objects
 
@@ -36,13 +173,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkcontainerAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.NetworkcontainerAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListNetworkcontainerResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkcontainerAPI.Get`: %v\n", resp)
+	// response from `List`: ListNetworkcontainerResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkcontainerAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +189,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NetworkcontainerAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NetworkcontainerAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,146 +221,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateNetworkcontainerResponse Post(ctx).Networkcontainer(networkcontainer).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a networkcontainer object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	networkcontainer := *ipam.NewNetworkcontainer() // Networkcontainer | Object data to create
-
-	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkcontainerAPI.Post(context.Background()).Networkcontainer(networkcontainer).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateNetworkcontainerResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkcontainerAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NetworkcontainerAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**networkcontainer** | [**Networkcontainer**](Networkcontainer.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateNetworkcontainerResponse**](CreateNetworkcontainerResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).RemoveSubnets(removeSubnets).Execute()
-
-Delete a networkcontainer object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the networkcontainer object
-
-	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.NetworkcontainerAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the networkcontainer object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `NetworkcontainerAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**removeSubnets** | **bool** | Remove subnets delete option. Determines whether all child objects should be removed alongside with the network container or child objects should be assigned to another parental container. By default child objects are deleted with the network container. | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetNetworkcontainerResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetNetworkcontainerResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific networkcontainer object
 
@@ -246,13 +246,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the networkcontainer object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkcontainerAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.NetworkcontainerAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetNetworkcontainerResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkcontainerAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetNetworkcontainerResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkcontainerAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -266,13 +266,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NetworkcontainerAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NetworkcontainerAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -293,9 +293,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateNetworkcontainerResponse ReferencePut(ctx, reference).Networkcontainer(networkcontainer).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateNetworkcontainerResponse Update(ctx, reference).Networkcontainer(networkcontainer).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a networkcontainer object
 
@@ -319,13 +319,13 @@ func main() {
 	networkcontainer := *ipam.NewNetworkcontainer() // Networkcontainer | Object data to update
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.NetworkcontainerAPI.ReferencePut(context.Background(), reference).Networkcontainer(networkcontainer).Execute()
+	resp, r, err := apiClient.NetworkcontainerAPI.Update(context.Background(), reference).Networkcontainer(networkcontainer).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `NetworkcontainerAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateNetworkcontainerResponse
-	fmt.Fprintf(os.Stdout, "Response from `NetworkcontainerAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateNetworkcontainerResponse
+	fmt.Fprintf(os.Stdout, "Response from `NetworkcontainerAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -339,14 +339,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `NetworkcontainerAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `NetworkcontainerAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **networkcontainer** | [**Networkcontainer**](Networkcontainer.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

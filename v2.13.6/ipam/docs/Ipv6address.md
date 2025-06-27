@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DiscoverNowStatus** | Pointer to **string** | Discover now status for this address. | [optional] [readonly] 
 **DiscoveredData** | Pointer to [**Ipv6addressDiscoveredData**](Ipv6addressDiscoveredData.md) |  | [optional] 
 **Duid** | Pointer to **string** | DHCPv6 Unique Identifier (DUID) of the address object. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Fingerprint** | Pointer to **string** | DHCP fingerprint for the address. | [optional] [readonly] 
 **IpAddress** | Pointer to **string** | IPv6 addresses of the address object. | [optional] [readonly] 
 **IsConflict** | Pointer to **bool** | IP address has either a duid conflict or a DHCP lease conflict detected through a network discovery. | [optional] [readonly] 
@@ -194,30 +194,30 @@ SetDuid sets Duid field to given value.
 
 HasDuid returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Ipv6address) GetExtattrs() map[string]ExtAttrs`
+`func (o *Ipv6address) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Ipv6address) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Ipv6address) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Ipv6address) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Ipv6address) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Ipv6address) HasExtattrs() bool`
+`func (o *Ipv6address) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFingerprint
 

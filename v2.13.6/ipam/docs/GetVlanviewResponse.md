@@ -8,9 +8,8 @@ Name | Type | Description | Notes
 **AllowRangeOverlapping** | Pointer to **bool** | When set to true VLAN Ranges under VLAN View can have overlapping ID. | [optional] 
 **Comment** | Pointer to **string** | A descriptive comment for this VLAN View. | [optional] 
 **EndVlanId** | Pointer to **int64** | End ID for VLAN View. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | Name of the VLAN View. | [optional] 
-**NextAvailableVlanId** | Pointer to **map[string]interface{}** |  | [optional] 
 **PreCreateVlan** | Pointer to **bool** | If set on creation VLAN objects will be created once VLAN View created. | [optional] 
 **StartVlanId** | Pointer to **int64** | Start ID for VLAN View. | [optional] 
 **VlanNamePrefix** | Pointer to **string** | If set on creation prefix string will be used for VLAN name. | [optional] 
@@ -135,30 +134,30 @@ SetEndVlanId sets EndVlanId field to given value.
 
 HasEndVlanId returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetVlanviewResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetVlanviewResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetVlanviewResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetVlanviewResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetVlanviewResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetVlanviewResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetVlanviewResponse) HasExtattrs() bool`
+`func (o *GetVlanviewResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetName
 
@@ -184,31 +183,6 @@ SetName sets Name field to given value.
 `func (o *GetVlanviewResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetNextAvailableVlanId
-
-`func (o *GetVlanviewResponse) GetNextAvailableVlanId() map[string]interface{}`
-
-GetNextAvailableVlanId returns the NextAvailableVlanId field if non-nil, zero value otherwise.
-
-### GetNextAvailableVlanIdOk
-
-`func (o *GetVlanviewResponse) GetNextAvailableVlanIdOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableVlanIdOk returns a tuple with the NextAvailableVlanId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableVlanId
-
-`func (o *GetVlanviewResponse) SetNextAvailableVlanId(v map[string]interface{})`
-
-SetNextAvailableVlanId sets NextAvailableVlanId field to given value.
-
-### HasNextAvailableVlanId
-
-`func (o *GetVlanviewResponse) HasNextAvailableVlanId() bool`
-
-HasNextAvailableVlanId returns a boolean if a field has been set.
 
 ### GetPreCreateVlan
 

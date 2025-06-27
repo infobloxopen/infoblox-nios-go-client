@@ -42,7 +42,7 @@ type Ipv6sharednetwork struct {
 	// The dynamic DNS updates flag of an IPv6 shared network object. If set to True, the DHCP server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers.
 	EnableDdns *bool `json:"enable_ddns,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// This field contains the logic filters to be applied on the this IPv6 shared network. This list corresponds to the match rules that are written to the DHCPv6 configuration file.
 	LogicFilterRules []Ipv6sharednetworkLogicFilterRules `json:"logic_filter_rules,omitempty"`
 	// The name of the IPv6 Shared Network.
@@ -50,7 +50,7 @@ type Ipv6sharednetwork struct {
 	// The name of the network view in which this IPv6 shared network resides.
 	NetworkView *string `json:"network_view,omitempty"`
 	// A list of IPv6 networks belonging to the shared network Each individual list item must be specified as an object containing a '_ref' parameter to a network reference, for example:: [{ \"_ref\": \"ipv6network/ZG5zdHdvcmskMTAuAvMTYvMA\", }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \"_ref\": { 'network': 'aabb::/64', } }] note that in this case the search must match exactly one network for the assignment to be successful.
-	Networks []map[string]interface{} `json:"networks,omitempty"`
+	Networks []string `json:"networks,omitempty"`
 	// An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object.
 	Options []Ipv6sharednetworkOptions `json:"options,omitempty"`
 	// Use this method to set or retrieve the preferred lifetime value of a DHCP IPv6 Shared Network object.
@@ -454,36 +454,36 @@ func (o *Ipv6sharednetwork) SetEnableDdns(v bool) {
 	o.EnableDdns = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *Ipv6sharednetwork) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Ipv6sharednetwork) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6sharednetwork) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *Ipv6sharednetwork) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *Ipv6sharednetwork) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Ipv6sharednetwork) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *Ipv6sharednetwork) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Ipv6sharednetwork) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetLogicFilterRules returns the LogicFilterRules field value if set, zero value otherwise.
@@ -583,9 +583,9 @@ func (o *Ipv6sharednetwork) SetNetworkView(v string) {
 }
 
 // GetNetworks returns the Networks field value if set, zero value otherwise.
-func (o *Ipv6sharednetwork) GetNetworks() []map[string]interface{} {
+func (o *Ipv6sharednetwork) GetNetworks() []string {
 	if o == nil || IsNil(o.Networks) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Networks
@@ -593,7 +593,7 @@ func (o *Ipv6sharednetwork) GetNetworks() []map[string]interface{} {
 
 // GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6sharednetwork) GetNetworksOk() ([]map[string]interface{}, bool) {
+func (o *Ipv6sharednetwork) GetNetworksOk() ([]string, bool) {
 	if o == nil || IsNil(o.Networks) {
 		return nil, false
 	}
@@ -609,8 +609,8 @@ func (o *Ipv6sharednetwork) HasNetworks() bool {
 	return false
 }
 
-// SetNetworks gets a reference to the given []map[string]interface{} and assigns it to the Networks field.
-func (o *Ipv6sharednetwork) SetNetworks(v []map[string]interface{}) {
+// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
+func (o *Ipv6sharednetwork) SetNetworks(v []string) {
 	o.Networks = v
 }
 
@@ -1169,8 +1169,8 @@ func (o Ipv6sharednetwork) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableDdns) {
 		toSerialize["enable_ddns"] = o.EnableDdns
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.LogicFilterRules) {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules

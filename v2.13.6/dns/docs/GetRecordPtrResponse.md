@@ -16,10 +16,11 @@ Name | Type | Description | Notes
 **DiscoveredData** | Pointer to [**RecordPtrDiscoveredData**](RecordPtrDiscoveredData.md) |  | [optional] 
 **DnsName** | Pointer to **string** | The name for a DNS PTR record in punycode format. | [optional] [readonly] 
 **DnsPtrdname** | Pointer to **string** | The domain name of the DNS PTR record in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ForbidReclamation** | Pointer to **bool** | Determines if the reclamation is allowed for the record or not. | [optional] 
-**Ipv4addr** | Pointer to **string** | The IPv4 Address of the record. | [optional] 
-**Ipv6addr** | Pointer to **string** | The IPv6 Address of the record. | [optional] 
+**Ipv4addr** | Pointer to [**RecordPtrIpv4addr**](RecordPtrIpv4addr.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
+**Ipv6addr** | Pointer to [**RecordPtrIpv6addr**](RecordPtrIpv6addr.md) |  | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**RecordPtrMsAdUserData**](RecordPtrMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the DNS PTR record in FQDN format. | [optional] 
@@ -351,30 +352,30 @@ SetDnsPtrdname sets DnsPtrdname field to given value.
 
 HasDnsPtrdname returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetRecordPtrResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetRecordPtrResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetRecordPtrResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetRecordPtrResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetRecordPtrResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetRecordPtrResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetRecordPtrResponse) HasExtattrs() bool`
+`func (o *GetRecordPtrResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetForbidReclamation
 
@@ -403,20 +404,20 @@ HasForbidReclamation returns a boolean if a field has been set.
 
 ### GetIpv4addr
 
-`func (o *GetRecordPtrResponse) GetIpv4addr() string`
+`func (o *GetRecordPtrResponse) GetIpv4addr() RecordPtrIpv4addr`
 
 GetIpv4addr returns the Ipv4addr field if non-nil, zero value otherwise.
 
 ### GetIpv4addrOk
 
-`func (o *GetRecordPtrResponse) GetIpv4addrOk() (*string, bool)`
+`func (o *GetRecordPtrResponse) GetIpv4addrOk() (*RecordPtrIpv4addr, bool)`
 
 GetIpv4addrOk returns a tuple with the Ipv4addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv4addr
 
-`func (o *GetRecordPtrResponse) SetIpv4addr(v string)`
+`func (o *GetRecordPtrResponse) SetIpv4addr(v RecordPtrIpv4addr)`
 
 SetIpv4addr sets Ipv4addr field to given value.
 
@@ -426,22 +427,47 @@ SetIpv4addr sets Ipv4addr field to given value.
 
 HasIpv4addr returns a boolean if a field has been set.
 
+### GetFuncCall
+
+`func (o *GetRecordPtrResponse) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *GetRecordPtrResponse) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *GetRecordPtrResponse) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *GetRecordPtrResponse) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
+
 ### GetIpv6addr
 
-`func (o *GetRecordPtrResponse) GetIpv6addr() string`
+`func (o *GetRecordPtrResponse) GetIpv6addr() RecordPtrIpv6addr`
 
 GetIpv6addr returns the Ipv6addr field if non-nil, zero value otherwise.
 
 ### GetIpv6addrOk
 
-`func (o *GetRecordPtrResponse) GetIpv6addrOk() (*string, bool)`
+`func (o *GetRecordPtrResponse) GetIpv6addrOk() (*RecordPtrIpv6addr, bool)`
 
 GetIpv6addrOk returns a tuple with the Ipv6addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv6addr
 
-`func (o *GetRecordPtrResponse) SetIpv6addr(v string)`
+`func (o *GetRecordPtrResponse) SetIpv6addr(v RecordPtrIpv6addr)`
 
 SetIpv6addr sets Ipv6addr field to given value.
 

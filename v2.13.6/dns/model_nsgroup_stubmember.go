@@ -24,7 +24,7 @@ type NsgroupStubmember struct {
 	// Comment for the Stub Member Name Server Group; maximum 256 characters.
 	Comment *string `json:"comment,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The name of the Stub Member Name Server Group.
 	Name *string `json:"name,omitempty"`
 	// The Grid member servers of this stub zone. Note that the lead/stealth/grid_replicate/ preferred_primaries/override_preferred_primaries fields of the struct will be ignored when set in this field.
@@ -112,36 +112,36 @@ func (o *NsgroupStubmember) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *NsgroupStubmember) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *NsgroupStubmember) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NsgroupStubmember) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *NsgroupStubmember) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *NsgroupStubmember) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *NsgroupStubmember) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *NsgroupStubmember) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *NsgroupStubmember) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -224,8 +224,8 @@ func (o NsgroupStubmember) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

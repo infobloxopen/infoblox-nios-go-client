@@ -22,7 +22,7 @@ type Vlan struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
 	// List of objects VLAN is assigned to.
-	AssignedTo []map[string]interface{} `json:"assigned_to,omitempty"`
+	AssignedTo []string `json:"assigned_to,omitempty"`
 	// A descriptive comment for this VLAN.
 	Comment *string `json:"comment,omitempty"`
 	// Contact information for person/team managing or using VLAN.
@@ -32,7 +32,7 @@ type Vlan struct {
 	// Description for the VLAN object, may be potentially used for longer VLAN names.
 	Description *string `json:"description,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// VLAN ID value.
 	Id *int64 `json:"id,omitempty"`
 	// Name of the VLAN.
@@ -95,9 +95,9 @@ func (o *Vlan) SetRef(v string) {
 }
 
 // GetAssignedTo returns the AssignedTo field value if set, zero value otherwise.
-func (o *Vlan) GetAssignedTo() []map[string]interface{} {
+func (o *Vlan) GetAssignedTo() []string {
 	if o == nil || IsNil(o.AssignedTo) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.AssignedTo
@@ -105,7 +105,7 @@ func (o *Vlan) GetAssignedTo() []map[string]interface{} {
 
 // GetAssignedToOk returns a tuple with the AssignedTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Vlan) GetAssignedToOk() ([]map[string]interface{}, bool) {
+func (o *Vlan) GetAssignedToOk() ([]string, bool) {
 	if o == nil || IsNil(o.AssignedTo) {
 		return nil, false
 	}
@@ -121,8 +121,8 @@ func (o *Vlan) HasAssignedTo() bool {
 	return false
 }
 
-// SetAssignedTo gets a reference to the given []map[string]interface{} and assigns it to the AssignedTo field.
-func (o *Vlan) SetAssignedTo(v []map[string]interface{}) {
+// SetAssignedTo gets a reference to the given []string and assigns it to the AssignedTo field.
+func (o *Vlan) SetAssignedTo(v []string) {
 	o.AssignedTo = v
 }
 
@@ -254,36 +254,36 @@ func (o *Vlan) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *Vlan) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Vlan) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Vlan) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *Vlan) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *Vlan) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Vlan) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *Vlan) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Vlan) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -474,8 +474,8 @@ func (o Vlan) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

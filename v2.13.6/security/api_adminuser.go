@@ -23,150 +23,386 @@ import (
 
 type AdminuserAPI interface {
 	/*
-		Get Retrieve adminuser objects
-
-		Returns a list of adminuser objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AdminuserAPIGetRequest
-	*/
-	Get(ctx context.Context) AdminuserAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListAdminuserResponse
-	GetExecute(r AdminuserAPIGetRequest) (*ListAdminuserResponse, *http.Response, error)
-	/*
-		Post Create a adminuser object
+		Create Create a adminuser object
 
 		Creates a new adminuser object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AdminuserAPIPostRequest
+		@return AdminuserAPICreateRequest
 	*/
-	Post(ctx context.Context) AdminuserAPIPostRequest
+	Create(ctx context.Context) AdminuserAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateAdminuserResponse
-	PostExecute(r AdminuserAPIPostRequest) (*CreateAdminuserResponse, *http.Response, error)
+	CreateExecute(r AdminuserAPICreateRequest) (*CreateAdminuserResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a adminuser object
+		Delete Delete a adminuser object
 
 		Deletes a specific adminuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the adminuser object
-		@return AdminuserAPIReferenceDeleteRequest
+		@return AdminuserAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) AdminuserAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) AdminuserAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r AdminuserAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r AdminuserAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific adminuser object
+		List Retrieve adminuser objects
+
+		Returns a list of adminuser objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return AdminuserAPIListRequest
+	*/
+	List(ctx context.Context) AdminuserAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListAdminuserResponse
+	ListExecute(r AdminuserAPIListRequest) (*ListAdminuserResponse, *http.Response, error)
+	/*
+		Read Get a specific adminuser object
 
 		Returns a specific adminuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the adminuser object
-		@return AdminuserAPIReferenceGetRequest
+		@return AdminuserAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AdminuserAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AdminuserAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAdminuserResponse
-	ReferenceGetExecute(r AdminuserAPIReferenceGetRequest) (*GetAdminuserResponse, *http.Response, error)
+	ReadExecute(r AdminuserAPIReadRequest) (*GetAdminuserResponse, *http.Response, error)
 	/*
-		ReferencePut Update a adminuser object
+		Update Update a adminuser object
 
 		Updates a specific adminuser object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the adminuser object
-		@return AdminuserAPIReferencePutRequest
+		@return AdminuserAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) AdminuserAPIReferencePutRequest
+	Update(ctx context.Context, reference string) AdminuserAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAdminuserResponse
-	ReferencePutExecute(r AdminuserAPIReferencePutRequest) (*UpdateAdminuserResponse, *http.Response, error)
+	UpdateExecute(r AdminuserAPIUpdateRequest) (*UpdateAdminuserResponse, *http.Response, error)
 }
 
 // AdminuserAPIService AdminuserAPI service
 type AdminuserAPIService internal.Service
 
-type AdminuserAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     AdminuserAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type AdminuserAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       AdminuserAPI
+	adminuser        *Adminuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r AdminuserAPICreateRequest) Adminuser(adminuser Adminuser) AdminuserAPICreateRequest {
+	r.adminuser = &adminuser
+	return r
 }
 
 // Enter the field names followed by comma
-func (r AdminuserAPIGetRequest) ReturnFields(returnFields string) AdminuserAPIGetRequest {
+func (r AdminuserAPICreateRequest) ReturnFields(returnFields string) AdminuserAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdminuserAPIGetRequest) ReturnFields2(returnFields2 string) AdminuserAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AdminuserAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) AdminuserAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r AdminuserAPICreateRequest) ReturnAsObject(returnAsObject int32) AdminuserAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r AdminuserAPICreateRequest) Execute() (*CreateAdminuserResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a adminuser object
+
+Creates a new adminuser object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return AdminuserAPICreateRequest
+*/
+func (a *AdminuserAPIService) Create(ctx context.Context) AdminuserAPICreateRequest {
+	return AdminuserAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateAdminuserResponse
+func (a *AdminuserAPIService) CreateExecute(r AdminuserAPICreateRequest) (*CreateAdminuserResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateAdminuserResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/adminuser"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.adminuser == nil {
+		return localVarReturnValue, nil, internal.ReportError("adminuser is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.adminuser != nil {
+		if r.adminuser.ExtAttrs == nil {
+			r.adminuser.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.adminuser.ExtAttrs)[k]; !ok {
+				(*r.adminuser.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.adminuser
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type AdminuserAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService AdminuserAPI
+	reference  string
+}
+
+func (r AdminuserAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a adminuser object
+
+Deletes a specific adminuser object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the adminuser object
+	@return AdminuserAPIDeleteRequest
+*/
+func (a *AdminuserAPIService) Delete(ctx context.Context, reference string) AdminuserAPIDeleteRequest {
+	return AdminuserAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *AdminuserAPIService) DeleteExecute(r AdminuserAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/adminuser/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type AdminuserAPIListRequest struct {
+	ctx              context.Context
+	ApiService       AdminuserAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r AdminuserAPIListRequest) ReturnFields(returnFields string) AdminuserAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r AdminuserAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AdminuserAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AdminuserAPIGetRequest) MaxResults(maxResults int32) AdminuserAPIGetRequest {
+func (r AdminuserAPIListRequest) MaxResults(maxResults int32) AdminuserAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdminuserAPIGetRequest) ReturnAsObject(returnAsObject int32) AdminuserAPIGetRequest {
+func (r AdminuserAPIListRequest) ReturnAsObject(returnAsObject int32) AdminuserAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AdminuserAPIGetRequest) Paging(paging int32) AdminuserAPIGetRequest {
+func (r AdminuserAPIListRequest) Paging(paging int32) AdminuserAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AdminuserAPIGetRequest) PageId(pageId string) AdminuserAPIGetRequest {
+func (r AdminuserAPIListRequest) PageId(pageId string) AdminuserAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AdminuserAPIGetRequest) Filters(filters map[string]interface{}) AdminuserAPIGetRequest {
+func (r AdminuserAPIListRequest) Filters(filters map[string]interface{}) AdminuserAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AdminuserAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AdminuserAPIGetRequest {
+func (r AdminuserAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AdminuserAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AdminuserAPIGetRequest) Execute() (*ListAdminuserResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AdminuserAPIListRequest) Execute() (*ListAdminuserResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve adminuser objects
+List Retrieve adminuser objects
 
 Returns a list of adminuser objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AdminuserAPIGetRequest
+	@return AdminuserAPIListRequest
 */
-func (a *AdminuserAPIService) Get(ctx context.Context) AdminuserAPIGetRequest {
-	return AdminuserAPIGetRequest{
+func (a *AdminuserAPIService) List(ctx context.Context) AdminuserAPIListRequest {
+	return AdminuserAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *AdminuserAPIService) Get(ctx context.Context) AdminuserAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListAdminuserResponse
-func (a *AdminuserAPIService) GetExecute(r AdminuserAPIGetRequest) (*ListAdminuserResponse, *http.Response, error) {
+func (a *AdminuserAPIService) ListExecute(r AdminuserAPIListRequest) (*ListAdminuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *AdminuserAPIService) GetExecute(r AdminuserAPIGetRequest) (*ListAdminus
 		localVarReturnValue *ListAdminuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *AdminuserAPIService) GetExecute(r AdminuserAPIGetRequest) (*ListAdminus
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *AdminuserAPIService) GetExecute(r AdminuserAPIGetRequest) (*ListAdminus
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AdminuserAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     AdminuserAPI
-	adminuser      *Adminuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r AdminuserAPIPostRequest) Adminuser(adminuser Adminuser) AdminuserAPIPostRequest {
-	r.adminuser = &adminuser
-	return r
+type AdminuserAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       AdminuserAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r AdminuserAPIPostRequest) ReturnFields(returnFields string) AdminuserAPIPostRequest {
+func (r AdminuserAPIReadRequest) ReturnFields(returnFields string) AdminuserAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdminuserAPIPostRequest) ReturnFields2(returnFields2 string) AdminuserAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r AdminuserAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AdminuserAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdminuserAPIPostRequest) ReturnAsObject(returnAsObject int32) AdminuserAPIPostRequest {
+func (r AdminuserAPIReadRequest) ReturnAsObject(returnAsObject int32) AdminuserAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdminuserAPIPostRequest) Execute() (*CreateAdminuserResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r AdminuserAPIReadRequest) Execute() (*GetAdminuserResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a adminuser object
-
-Creates a new adminuser object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AdminuserAPIPostRequest
-*/
-func (a *AdminuserAPIService) Post(ctx context.Context) AdminuserAPIPostRequest {
-	return AdminuserAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateAdminuserResponse
-func (a *AdminuserAPIService) PostExecute(r AdminuserAPIPostRequest) (*CreateAdminuserResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateAdminuserResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/adminuser"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.adminuser == nil {
-		return localVarReturnValue, nil, internal.ReportError("adminuser is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.adminuser != nil {
-		if r.adminuser.Extattrs == nil {
-			r.adminuser.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.adminuser.Extattrs)[k]; !ok {
-				(*r.adminuser.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.adminuser
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type AdminuserAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService AdminuserAPI
-	reference  string
-}
-
-func (r AdminuserAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a adminuser object
-
-Deletes a specific adminuser object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the adminuser object
-	@return AdminuserAPIReferenceDeleteRequest
-*/
-func (a *AdminuserAPIService) ReferenceDelete(ctx context.Context, reference string) AdminuserAPIReferenceDeleteRequest {
-	return AdminuserAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *AdminuserAPIService) ReferenceDeleteExecute(r AdminuserAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/adminuser/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type AdminuserAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     AdminuserAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r AdminuserAPIReferenceGetRequest) ReturnFields(returnFields string) AdminuserAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdminuserAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AdminuserAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r AdminuserAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AdminuserAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r AdminuserAPIReferenceGetRequest) Execute() (*GetAdminuserResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific adminuser object
+Read Get a specific adminuser object
 
 Returns a specific adminuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the adminuser object
-	@return AdminuserAPIReferenceGetRequest
+	@return AdminuserAPIReadRequest
 */
-func (a *AdminuserAPIService) ReferenceGet(ctx context.Context, reference string) AdminuserAPIReferenceGetRequest {
-	return AdminuserAPIReferenceGetRequest{
+func (a *AdminuserAPIService) Read(ctx context.Context, reference string) AdminuserAPIReadRequest {
+	return AdminuserAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *AdminuserAPIService) ReferenceGet(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return GetAdminuserResponse
-func (a *AdminuserAPIService) ReferenceGetExecute(r AdminuserAPIReferenceGetRequest) (*GetAdminuserResponse, *http.Response, error) {
+func (a *AdminuserAPIService) ReadExecute(r AdminuserAPIReadRequest) (*GetAdminuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *AdminuserAPIService) ReferenceGetExecute(r AdminuserAPIReferenceGetRequ
 		localVarReturnValue *GetAdminuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *AdminuserAPIService) ReferenceGetExecute(r AdminuserAPIReferenceGetRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *AdminuserAPIService) ReferenceGetExecute(r AdminuserAPIReferenceGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AdminuserAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     AdminuserAPI
-	reference      string
-	adminuser      *Adminuser
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type AdminuserAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       AdminuserAPI
+	reference        string
+	adminuser        *Adminuser
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r AdminuserAPIReferencePutRequest) Adminuser(adminuser Adminuser) AdminuserAPIReferencePutRequest {
+func (r AdminuserAPIUpdateRequest) Adminuser(adminuser Adminuser) AdminuserAPIUpdateRequest {
 	r.adminuser = &adminuser
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AdminuserAPIReferencePutRequest) ReturnFields(returnFields string) AdminuserAPIReferencePutRequest {
+func (r AdminuserAPIUpdateRequest) ReturnFields(returnFields string) AdminuserAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AdminuserAPIReferencePutRequest) ReturnFields2(returnFields2 string) AdminuserAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r AdminuserAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AdminuserAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AdminuserAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) AdminuserAPIReferencePutRequest {
+func (r AdminuserAPIUpdateRequest) ReturnAsObject(returnAsObject int32) AdminuserAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AdminuserAPIReferencePutRequest) Execute() (*UpdateAdminuserResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r AdminuserAPIUpdateRequest) Execute() (*UpdateAdminuserResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a adminuser object
+Update Update a adminuser object
 
 Updates a specific adminuser object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the adminuser object
-	@return AdminuserAPIReferencePutRequest
+	@return AdminuserAPIUpdateRequest
 */
-func (a *AdminuserAPIService) ReferencePut(ctx context.Context, reference string) AdminuserAPIReferencePutRequest {
-	return AdminuserAPIReferencePutRequest{
+func (a *AdminuserAPIService) Update(ctx context.Context, reference string) AdminuserAPIUpdateRequest {
+	return AdminuserAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *AdminuserAPIService) ReferencePut(ctx context.Context, reference string
 // Execute executes the request
 //
 //	@return UpdateAdminuserResponse
-func (a *AdminuserAPIService) ReferencePutExecute(r AdminuserAPIReferencePutRequest) (*UpdateAdminuserResponse, *http.Response, error) {
+func (a *AdminuserAPIService) UpdateExecute(r AdminuserAPIUpdateRequest) (*UpdateAdminuserResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *AdminuserAPIService) ReferencePutExecute(r AdminuserAPIReferencePutRequ
 		localVarReturnValue *UpdateAdminuserResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AdminuserAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *AdminuserAPIService) ReferencePutExecute(r AdminuserAPIReferencePutRequ
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *AdminuserAPIService) ReferencePutExecute(r AdminuserAPIReferencePutRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.adminuser != nil {
-		if r.adminuser.Extattrs == nil {
-			r.adminuser.Extattrs = &map[string]ExtAttrs{}
+		if r.adminuser.ExtAttrs == nil {
+			r.adminuser.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.adminuser.Extattrs)[k]; !ok {
-				(*r.adminuser.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.adminuser.ExtAttrs)[k]; !ok {
+				(*r.adminuser.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

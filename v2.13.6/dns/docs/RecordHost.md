@@ -22,9 +22,9 @@ Name | Type | Description | Notes
 **DnsAliases** | Pointer to **[]string** | The list of aliases for the host in punycode format. | [optional] 
 **DnsName** | Pointer to **string** | The name for a host record in punycode format. | [optional] [readonly] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the record should be immediately enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**Ipv4addrs** | Pointer to **[]map[string]interface{}** | This is a list of IPv4 Addresses for the host. | [optional] 
-**Ipv6addrs** | Pointer to **[]map[string]interface{}** | This is a list of IPv6 Addresses for the host. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**Ipv4addrs** | Pointer to **[]string** | This is a list of IPv4 Addresses for the host. | [optional] 
+**Ipv6addrs** | Pointer to **[]string** | This is a list of IPv6 Addresses for the host. | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**RecordHostMsAdUserData**](RecordHostMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | The host name in FQDN format This value can be in unicode format. Regular expression search is not supported for unicode values. | [optional] 
@@ -511,47 +511,47 @@ SetEnableImmediateDiscovery sets EnableImmediateDiscovery field to given value.
 
 HasEnableImmediateDiscovery returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *RecordHost) GetExtattrs() map[string]ExtAttrs`
+`func (o *RecordHost) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *RecordHost) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *RecordHost) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *RecordHost) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *RecordHost) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *RecordHost) HasExtattrs() bool`
+`func (o *RecordHost) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIpv4addrs
 
-`func (o *RecordHost) GetIpv4addrs() []map[string]interface{}`
+`func (o *RecordHost) GetIpv4addrs() []string`
 
 GetIpv4addrs returns the Ipv4addrs field if non-nil, zero value otherwise.
 
 ### GetIpv4addrsOk
 
-`func (o *RecordHost) GetIpv4addrsOk() (*[]map[string]interface{}, bool)`
+`func (o *RecordHost) GetIpv4addrsOk() (*[]string, bool)`
 
 GetIpv4addrsOk returns a tuple with the Ipv4addrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv4addrs
 
-`func (o *RecordHost) SetIpv4addrs(v []map[string]interface{})`
+`func (o *RecordHost) SetIpv4addrs(v []string)`
 
 SetIpv4addrs sets Ipv4addrs field to given value.
 
@@ -563,20 +563,20 @@ HasIpv4addrs returns a boolean if a field has been set.
 
 ### GetIpv6addrs
 
-`func (o *RecordHost) GetIpv6addrs() []map[string]interface{}`
+`func (o *RecordHost) GetIpv6addrs() []string`
 
 GetIpv6addrs returns the Ipv6addrs field if non-nil, zero value otherwise.
 
 ### GetIpv6addrsOk
 
-`func (o *RecordHost) GetIpv6addrsOk() (*[]map[string]interface{}, bool)`
+`func (o *RecordHost) GetIpv6addrsOk() (*[]string, bool)`
 
 GetIpv6addrsOk returns a tuple with the Ipv6addrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv6addrs
 
-`func (o *RecordHost) SetIpv6addrs(v []map[string]interface{})`
+`func (o *RecordHost) SetIpv6addrs(v []string)`
 
 SetIpv6addrs sets Ipv6addrs field to given value.
 

@@ -24,28 +24,28 @@ type APIClient struct {
 
 	// API Services
 	AllrpzrecordsAPI AllrpzrecordsAPI
-	OrderedresponsepolicyzonesAPI OrderedresponsepolicyzonesAPI
-	RecordrpzaAPI RecordrpzaAPI
-	RecordrpzaaaaAPI RecordrpzaaaaAPI
-	RecordrpzaaaaipaddressAPI RecordrpzaaaaipaddressAPI
-	RecordrpzaipaddressAPI RecordrpzaipaddressAPI
-	RecordrpzcnameAPI RecordrpzcnameAPI
-	RecordrpzcnameclientipaddressAPI RecordrpzcnameclientipaddressAPI
-	RecordrpzcnameclientipaddressdnAPI RecordrpzcnameclientipaddressdnAPI
-	RecordrpzcnameipaddressAPI RecordrpzcnameipaddressAPI
-	RecordrpzcnameipaddressdnAPI RecordrpzcnameipaddressdnAPI
-	RecordrpzmxAPI RecordrpzmxAPI
-	RecordrpznaptrAPI RecordrpznaptrAPI
-	RecordrpzptrAPI RecordrpzptrAPI
-	RecordrpzsrvAPI RecordrpzsrvAPI
-	RecordrpztxtAPI RecordrpztxtAPI
+	RecordRpzAAPI RecordRpzAAPI
+	RecordRpzAIpaddressAPI RecordRpzAIpaddressAPI
+	RecordRpzAaaaAPI RecordRpzAaaaAPI
+	RecordRpzAaaaIpaddressAPI RecordRpzAaaaIpaddressAPI
+	RecordRpzCnameAPI RecordRpzCnameAPI
+	RecordRpzCnameClientipaddressAPI RecordRpzCnameClientipaddressAPI
+	RecordRpzCnameClientipaddressdnAPI RecordRpzCnameClientipaddressdnAPI
+	RecordRpzCnameIpaddressAPI RecordRpzCnameIpaddressAPI
+	RecordRpzCnameIpaddressdnAPI RecordRpzCnameIpaddressdnAPI
+	RecordRpzMxAPI RecordRpzMxAPI
+	RecordRpzNaptrAPI RecordRpzNaptrAPI
+	RecordRpzPtrAPI RecordRpzPtrAPI
+	RecordRpzSrvAPI RecordRpzSrvAPI
+	RecordRpzTxtAPI RecordRpzTxtAPI
 }
 
 // NewAPIClient creates a new API client.
 // The client can be configured with a variadic option. The following options are available:
 // - WithClientName(string) sets the name of the client using the SDK.
 // - WithNIOSHostUrl(string) sets the URL for NIOS Portal.
-// - WithNIOSAuth(string) sets the NIOSAuth for accessing the NIOS Portal.
+// - WithNIOSUsername(string) sets the Username for the NIOS Portal.
+// - WithNIOSPassword(string) sets the Password for the NIOS Portal.
 // - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
 // - WithDefaultExtAttrs(map[string]struct{ Value string }) sets the tags the client can set by default for objects that has tags support.
 // - WithDebug() sets the debug mode.
@@ -60,21 +60,20 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 
 	// API Services
 	c.AllrpzrecordsAPI = (*AllrpzrecordsAPIService)(&c.Common)
-	c.OrderedresponsepolicyzonesAPI = (*OrderedresponsepolicyzonesAPIService)(&c.Common)
-	c.RecordrpzaAPI = (*RecordrpzaAPIService)(&c.Common)
-	c.RecordrpzaaaaAPI = (*RecordrpzaaaaAPIService)(&c.Common)
-	c.RecordrpzaaaaipaddressAPI = (*RecordrpzaaaaipaddressAPIService)(&c.Common)
-	c.RecordrpzaipaddressAPI = (*RecordrpzaipaddressAPIService)(&c.Common)
-	c.RecordrpzcnameAPI = (*RecordrpzcnameAPIService)(&c.Common)
-	c.RecordrpzcnameclientipaddressAPI = (*RecordrpzcnameclientipaddressAPIService)(&c.Common)
-	c.RecordrpzcnameclientipaddressdnAPI = (*RecordrpzcnameclientipaddressdnAPIService)(&c.Common)
-	c.RecordrpzcnameipaddressAPI = (*RecordrpzcnameipaddressAPIService)(&c.Common)
-	c.RecordrpzcnameipaddressdnAPI = (*RecordrpzcnameipaddressdnAPIService)(&c.Common)
-	c.RecordrpzmxAPI = (*RecordrpzmxAPIService)(&c.Common)
-	c.RecordrpznaptrAPI = (*RecordrpznaptrAPIService)(&c.Common)
-	c.RecordrpzptrAPI = (*RecordrpzptrAPIService)(&c.Common)
-	c.RecordrpzsrvAPI = (*RecordrpzsrvAPIService)(&c.Common)
-	c.RecordrpztxtAPI = (*RecordrpztxtAPIService)(&c.Common)
+	c.RecordRpzAAPI = (*RecordRpzAAPIService)(&c.Common)
+	c.RecordRpzAIpaddressAPI = (*RecordRpzAIpaddressAPIService)(&c.Common)
+	c.RecordRpzAaaaAPI = (*RecordRpzAaaaAPIService)(&c.Common)
+	c.RecordRpzAaaaIpaddressAPI = (*RecordRpzAaaaIpaddressAPIService)(&c.Common)
+	c.RecordRpzCnameAPI = (*RecordRpzCnameAPIService)(&c.Common)
+	c.RecordRpzCnameClientipaddressAPI = (*RecordRpzCnameClientipaddressAPIService)(&c.Common)
+	c.RecordRpzCnameClientipaddressdnAPI = (*RecordRpzCnameClientipaddressdnAPIService)(&c.Common)
+	c.RecordRpzCnameIpaddressAPI = (*RecordRpzCnameIpaddressAPIService)(&c.Common)
+	c.RecordRpzCnameIpaddressdnAPI = (*RecordRpzCnameIpaddressdnAPIService)(&c.Common)
+	c.RecordRpzMxAPI = (*RecordRpzMxAPIService)(&c.Common)
+	c.RecordRpzNaptrAPI = (*RecordRpzNaptrAPIService)(&c.Common)
+	c.RecordRpzPtrAPI = (*RecordRpzPtrAPIService)(&c.Common)
+	c.RecordRpzSrvAPI = (*RecordRpzSrvAPIService)(&c.Common)
+	c.RecordRpzTxtAPI = (*RecordRpzTxtAPIService)(&c.Common)
 
 	return c
 }

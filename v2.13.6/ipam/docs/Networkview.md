@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Comment for the network view; maximum 256 characters. | [optional] 
 **DdnsDnsView** | Pointer to **string** | DNS views that will receive the updates if you enable the appliance to send updates to Grid members. | [optional] 
 **DdnsZonePrimaries** | Pointer to [**[]NetworkviewDdnsZonePrimaries**](NetworkviewDdnsZonePrimaries.md) | An array of Ddns Zone Primary dhcpddns structs that lists the information of primary zone to wich DDNS updates should be sent. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FederatedRealms** | Pointer to [**[]NetworkviewFederatedRealms**](NetworkviewFederatedRealms.md) | This field contains the federated realms associated to this network view | [optional] 
-**InternalForwardZones** | Pointer to **[]map[string]interface{}** | The list of linked authoritative DNS zones. | [optional] 
+**InternalForwardZones** | Pointer to **[]string** | The list of linked authoritative DNS zones. | [optional] 
 **IsDefault** | Pointer to **bool** | The NIOS appliance provides one default network view. You can rename the default view and change its settings, but you cannot delete it. There must always be at least one network view in the appliance. | [optional] [readonly] 
 **MgmPrivate** | Pointer to **bool** | This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized. | [optional] 
 **MsAdUserData** | Pointer to [**NetworkviewMsAdUserData**](NetworkviewMsAdUserData.md) |  | [optional] 
@@ -215,30 +215,30 @@ SetDdnsZonePrimaries sets DdnsZonePrimaries field to given value.
 
 HasDdnsZonePrimaries returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Networkview) GetExtattrs() map[string]ExtAttrs`
+`func (o *Networkview) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Networkview) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Networkview) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Networkview) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Networkview) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Networkview) HasExtattrs() bool`
+`func (o *Networkview) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFederatedRealms
 
@@ -267,20 +267,20 @@ HasFederatedRealms returns a boolean if a field has been set.
 
 ### GetInternalForwardZones
 
-`func (o *Networkview) GetInternalForwardZones() []map[string]interface{}`
+`func (o *Networkview) GetInternalForwardZones() []string`
 
 GetInternalForwardZones returns the InternalForwardZones field if non-nil, zero value otherwise.
 
 ### GetInternalForwardZonesOk
 
-`func (o *Networkview) GetInternalForwardZonesOk() (*[]map[string]interface{}, bool)`
+`func (o *Networkview) GetInternalForwardZonesOk() (*[]string, bool)`
 
 GetInternalForwardZonesOk returns a tuple with the InternalForwardZones field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalForwardZones
 
-`func (o *Networkview) SetInternalForwardZones(v []map[string]interface{})`
+`func (o *Networkview) SetInternalForwardZones(v []string)`
 
 SetInternalForwardZones sets InternalForwardZones field to given value.
 

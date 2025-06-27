@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CreationTime** | Pointer to **int64** | The creation time of the record. | [optional] [readonly] 
 **Creator** | Pointer to **string** | The record creator. | [optional] [readonly] 
 **DnsName** | Pointer to **string** | Name of a DNSKEY record in punycode format. | [optional] [readonly] 
-**Flags** | Pointer to **int32** | The flags field is a 16-bit unsigned integer. Currently, only two bits of this value are used: the least significant bit and bit 7. The other bits are reserved for future use and must be zero. If bit 7 is set to 1, the key is a DNS zone key. Otherwise, the key is not a zone key and cannot be used to verify zone data. The least significant bit indicates \&quot;secure entry point property\&quot;. If it is not zero, the key is a key signing key (KSK type). Otherwise, the key type is ZSK. | [optional] [readonly] 
+**Flags** | Pointer to **int64** | The flags field is a 16-bit unsigned integer. Currently, only two bits of this value are used: the least significant bit and bit 7. The other bits are reserved for future use and must be zero. If bit 7 is set to 1, the key is a DNS zone key. Otherwise, the key is not a zone key and cannot be used to verify zone data. The least significant bit indicates \&quot;secure entry point property\&quot;. If it is not zero, the key is a key signing key (KSK type). Otherwise, the key type is ZSK. | [optional] [readonly] 
 **KeyTag** | Pointer to **int64** | The key tag identifying the public key of a DNSKEY Record object. | [optional] [readonly] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the DNSKEY record in FQDN format. It has to be the same as the zone, where the record resides. | [optional] [readonly] 
@@ -191,20 +191,20 @@ HasDnsName returns a boolean if a field has been set.
 
 ### GetFlags
 
-`func (o *RecordDnskey) GetFlags() int32`
+`func (o *RecordDnskey) GetFlags() int64`
 
 GetFlags returns the Flags field if non-nil, zero value otherwise.
 
 ### GetFlagsOk
 
-`func (o *RecordDnskey) GetFlagsOk() (*int32, bool)`
+`func (o *RecordDnskey) GetFlagsOk() (*int64, bool)`
 
 GetFlagsOk returns a tuple with the Flags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlags
 
-`func (o *RecordDnskey) SetFlags(v int32)`
+`func (o *RecordDnskey) SetFlags(v int64)`
 
 SetFlags sets Flags field to given value.
 

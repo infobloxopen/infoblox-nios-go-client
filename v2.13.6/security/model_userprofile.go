@@ -26,7 +26,7 @@ type Userprofile struct {
 	// The Admin Group object to which the admin belongs. An admin user can belong to only one admin group at a time.
 	AdminGroup *string `json:"admin_group,omitempty"`
 	// The number of days left before the admin's password expires.
-	DaysToExpire *int32 `json:"days_to_expire,omitempty"`
+	DaysToExpire *int64 `json:"days_to_expire,omitempty"`
 	// The email address of the admin.
 	Email *string `json:"email,omitempty"`
 	// Determines if extensible attribute values will be returned by global search or not.
@@ -173,9 +173,9 @@ func (o *Userprofile) SetAdminGroup(v string) {
 }
 
 // GetDaysToExpire returns the DaysToExpire field value if set, zero value otherwise.
-func (o *Userprofile) GetDaysToExpire() int32 {
+func (o *Userprofile) GetDaysToExpire() int64 {
 	if o == nil || IsNil(o.DaysToExpire) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DaysToExpire
@@ -183,7 +183,7 @@ func (o *Userprofile) GetDaysToExpire() int32 {
 
 // GetDaysToExpireOk returns a tuple with the DaysToExpire field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Userprofile) GetDaysToExpireOk() (*int32, bool) {
+func (o *Userprofile) GetDaysToExpireOk() (*int64, bool) {
 	if o == nil || IsNil(o.DaysToExpire) {
 		return nil, false
 	}
@@ -199,8 +199,8 @@ func (o *Userprofile) HasDaysToExpire() bool {
 	return false
 }
 
-// SetDaysToExpire gets a reference to the given int32 and assigns it to the DaysToExpire field.
-func (o *Userprofile) SetDaysToExpire(v int32) {
+// SetDaysToExpire gets a reference to the given int64 and assigns it to the DaysToExpire field.
+func (o *Userprofile) SetDaysToExpire(v int64) {
 	o.DaysToExpire = &v
 }
 

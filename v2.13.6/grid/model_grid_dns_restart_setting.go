@@ -22,7 +22,7 @@ type GridDnsRestartSetting struct {
 	// The time duration to delay a restart for a restart group.
 	Delay *int64 `json:"delay,omitempty"`
 	// The duration of timeout for a restart group. The value \"-1\" means infinite.
-	Timeout *int32 `json:"timeout,omitempty"`
+	Timeout *int64 `json:"timeout,omitempty"`
 	// Determines whether the Grid should try to restart offline member.
 	RestartOffline       *bool `json:"restart_offline,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -80,9 +80,9 @@ func (o *GridDnsRestartSetting) SetDelay(v int64) {
 }
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
-func (o *GridDnsRestartSetting) GetTimeout() int32 {
+func (o *GridDnsRestartSetting) GetTimeout() int64 {
 	if o == nil || IsNil(o.Timeout) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Timeout
@@ -90,7 +90,7 @@ func (o *GridDnsRestartSetting) GetTimeout() int32 {
 
 // GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridDnsRestartSetting) GetTimeoutOk() (*int32, bool) {
+func (o *GridDnsRestartSetting) GetTimeoutOk() (*int64, bool) {
 	if o == nil || IsNil(o.Timeout) {
 		return nil, false
 	}
@@ -106,8 +106,8 @@ func (o *GridDnsRestartSetting) HasTimeout() bool {
 	return false
 }
 
-// SetTimeout gets a reference to the given int32 and assigns it to the Timeout field.
-func (o *GridDnsRestartSetting) SetTimeout(v int32) {
+// SetTimeout gets a reference to the given int64 and assigns it to the Timeout field.
+func (o *GridDnsRestartSetting) SetTimeout(v int64) {
 	o.Timeout = &v
 }
 

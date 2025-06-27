@@ -1,20 +1,156 @@
-# DtcpoolAPI
+# DtcPoolAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcpoolAPI.md#Get) | **Get** /dtc:pool | Retrieve dtc:pool objects
-[**Post**](DtcpoolAPI.md#Post) | **Post** /dtc:pool | Create a dtc:pool object
-[**ReferenceDelete**](DtcpoolAPI.md#ReferenceDelete) | **Delete** /dtc:pool/{reference} | Delete a dtc:pool object
-[**ReferenceGet**](DtcpoolAPI.md#ReferenceGet) | **Get** /dtc:pool/{reference} | Get a specific dtc:pool object
-[**ReferencePut**](DtcpoolAPI.md#ReferencePut) | **Put** /dtc:pool/{reference} | Update a dtc:pool object
+[**Create**](DtcPoolAPI.md#Create) | **Post** /dtc:pool | Create a dtc:pool object
+[**Delete**](DtcPoolAPI.md#Delete) | **Delete** /dtc:pool/{reference} | Delete a dtc:pool object
+[**List**](DtcPoolAPI.md#List) | **Get** /dtc:pool | Retrieve dtc:pool objects
+[**Read**](DtcPoolAPI.md#Read) | **Get** /dtc:pool/{reference} | Get a specific dtc:pool object
+[**Update**](DtcPoolAPI.md#Update) | **Put** /dtc:pool/{reference} | Update a dtc:pool object
 
 
 
-## Get
+## Create
 
-> ListDtcPoolResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateDtcPoolResponse Create(ctx).DtcPool(dtcPool).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a dtc:pool object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
+)
+
+func main() {
+	dtcPool := *dtc.NewDtcPool() // DtcPool | Object data to create
+
+	apiClient := dtc.NewAPIClient()
+	resp, r, err := apiClient.DtcPoolAPI.Create(context.Background()).DtcPool(dtcPool).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcPoolAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateDtcPoolResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcPoolAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DtcPoolAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**dtcPool** | [**DtcPool**](DtcPool.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateDtcPoolResponse**](CreateDtcPoolResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a dtc:pool object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the dtc:pool object
+
+	apiClient := dtc.NewAPIClient()
+	r, err := apiClient.DtcPoolAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcPoolAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the dtc:pool object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DtcPoolAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListDtcPoolResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:pool objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcpoolAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcPoolAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcpoolAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcPoolAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcPoolResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcpoolAPI.Get`: %v\n", resp)
+	// response from `List`: ListDtcPoolResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcPoolAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcpoolAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcPoolAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateDtcPoolResponse Post(ctx).DtcPool(dtcPool).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a dtc:pool object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
-)
-
-func main() {
-	dtcPool := *dtc.NewDtcPool() // DtcPool | Object data to create
-
-	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcpoolAPI.Post(context.Background()).DtcPool(dtcPool).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcpoolAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateDtcPoolResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcpoolAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DtcpoolAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**dtcPool** | [**DtcPool**](DtcPool.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateDtcPoolResponse**](CreateDtcPoolResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a dtc:pool object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the dtc:pool object
-
-	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtcpoolAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcpoolAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the dtc:pool object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DtcpoolAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetDtcPoolResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcPoolResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:pool object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:pool object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcpoolAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcPoolAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcpoolAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcPoolAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcPoolResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcpoolAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDtcPoolResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcPoolAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcpoolAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcPoolAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDtcPoolResponse ReferencePut(ctx, reference).DtcPool(dtcPool).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcPoolResponse Update(ctx, reference).DtcPool(dtcPool).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:pool object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcPool := *dtc.NewDtcPool() // DtcPool | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcpoolAPI.ReferencePut(context.Background(), reference).DtcPool(dtcPool).Execute()
+	resp, r, err := apiClient.DtcPoolAPI.Update(context.Background(), reference).DtcPool(dtcPool).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcpoolAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcPoolAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcPoolResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcpoolAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDtcPoolResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcPoolAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcpoolAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcPoolAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **dtcPool** | [**DtcPool**](DtcPool.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

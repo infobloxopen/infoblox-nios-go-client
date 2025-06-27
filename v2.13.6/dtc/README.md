@@ -79,108 +79,103 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DtcAPI* | [**Get**](docs/DtcAPI.md#get) | **Get** /dtc | Retrieve dtc objects
-*DtcAPI* | [**ReferenceGet**](docs/DtcAPI.md#referenceget) | **Get** /dtc/{reference} | Get a specific dtc object
-*DtcAPI* | [**ReferencePut**](docs/DtcAPI.md#referenceput) | **Put** /dtc/{reference} | Update a dtc object
-*DtcallrecordsAPI* | [**Get**](docs/DtcallrecordsAPI.md#get) | **Get** /dtc:allrecords | Retrieve dtc:allrecords objects
-*DtcallrecordsAPI* | [**ReferenceGet**](docs/DtcallrecordsAPI.md#referenceget) | **Get** /dtc:allrecords/{reference} | Get a specific dtc:allrecords object
-*DtcallrecordsAPI* | [**ReferencePut**](docs/DtcallrecordsAPI.md#referenceput) | **Put** /dtc:allrecords/{reference} | Update a dtc:allrecords object
-*DtccertificateAPI* | [**Get**](docs/DtccertificateAPI.md#get) | **Get** /dtc:certificate | Retrieve dtc:certificate objects
-*DtccertificateAPI* | [**ReferenceGet**](docs/DtccertificateAPI.md#referenceget) | **Get** /dtc:certificate/{reference} | Get a specific dtc:certificate object
-*DtclbdnAPI* | [**Get**](docs/DtclbdnAPI.md#get) | **Get** /dtc:lbdn | Retrieve dtc:lbdn objects
-*DtclbdnAPI* | [**Post**](docs/DtclbdnAPI.md#post) | **Post** /dtc:lbdn | Create a dtc:lbdn object
-*DtclbdnAPI* | [**ReferenceDelete**](docs/DtclbdnAPI.md#referencedelete) | **Delete** /dtc:lbdn/{reference} | Delete a dtc:lbdn object
-*DtclbdnAPI* | [**ReferenceGet**](docs/DtclbdnAPI.md#referenceget) | **Get** /dtc:lbdn/{reference} | Get a specific dtc:lbdn object
-*DtclbdnAPI* | [**ReferencePut**](docs/DtclbdnAPI.md#referenceput) | **Put** /dtc:lbdn/{reference} | Update a dtc:lbdn object
-*DtcmonitorAPI* | [**Get**](docs/DtcmonitorAPI.md#get) | **Get** /dtc:monitor | Retrieve dtc:monitor objects
-*DtcmonitorAPI* | [**ReferenceGet**](docs/DtcmonitorAPI.md#referenceget) | **Get** /dtc:monitor/{reference} | Get a specific dtc:monitor object
-*DtcmonitorAPI* | [**ReferencePut**](docs/DtcmonitorAPI.md#referenceput) | **Put** /dtc:monitor/{reference} | Update a dtc:monitor object
-*DtcmonitorhttpAPI* | [**Get**](docs/DtcmonitorhttpAPI.md#get) | **Get** /dtc:monitor:http | Retrieve dtc:monitor:http objects
-*DtcmonitorhttpAPI* | [**Post**](docs/DtcmonitorhttpAPI.md#post) | **Post** /dtc:monitor:http | Create a dtc:monitor:http object
-*DtcmonitorhttpAPI* | [**ReferenceDelete**](docs/DtcmonitorhttpAPI.md#referencedelete) | **Delete** /dtc:monitor:http/{reference} | Delete a dtc:monitor:http object
-*DtcmonitorhttpAPI* | [**ReferenceGet**](docs/DtcmonitorhttpAPI.md#referenceget) | **Get** /dtc:monitor:http/{reference} | Get a specific dtc:monitor:http object
-*DtcmonitorhttpAPI* | [**ReferencePut**](docs/DtcmonitorhttpAPI.md#referenceput) | **Put** /dtc:monitor:http/{reference} | Update a dtc:monitor:http object
-*DtcmonitoricmpAPI* | [**Get**](docs/DtcmonitoricmpAPI.md#get) | **Get** /dtc:monitor:icmp | Retrieve dtc:monitor:icmp objects
-*DtcmonitoricmpAPI* | [**Post**](docs/DtcmonitoricmpAPI.md#post) | **Post** /dtc:monitor:icmp | Create a dtc:monitor:icmp object
-*DtcmonitoricmpAPI* | [**ReferenceDelete**](docs/DtcmonitoricmpAPI.md#referencedelete) | **Delete** /dtc:monitor:icmp/{reference} | Delete a dtc:monitor:icmp object
-*DtcmonitoricmpAPI* | [**ReferenceGet**](docs/DtcmonitoricmpAPI.md#referenceget) | **Get** /dtc:monitor:icmp/{reference} | Get a specific dtc:monitor:icmp object
-*DtcmonitoricmpAPI* | [**ReferencePut**](docs/DtcmonitoricmpAPI.md#referenceput) | **Put** /dtc:monitor:icmp/{reference} | Update a dtc:monitor:icmp object
-*DtcmonitorpdpAPI* | [**Get**](docs/DtcmonitorpdpAPI.md#get) | **Get** /dtc:monitor:pdp | Retrieve dtc:monitor:pdp objects
-*DtcmonitorpdpAPI* | [**Post**](docs/DtcmonitorpdpAPI.md#post) | **Post** /dtc:monitor:pdp | Create a dtc:monitor:pdp object
-*DtcmonitorpdpAPI* | [**ReferenceDelete**](docs/DtcmonitorpdpAPI.md#referencedelete) | **Delete** /dtc:monitor:pdp/{reference} | Delete a dtc:monitor:pdp object
-*DtcmonitorpdpAPI* | [**ReferenceGet**](docs/DtcmonitorpdpAPI.md#referenceget) | **Get** /dtc:monitor:pdp/{reference} | Get a specific dtc:monitor:pdp object
-*DtcmonitorpdpAPI* | [**ReferencePut**](docs/DtcmonitorpdpAPI.md#referenceput) | **Put** /dtc:monitor:pdp/{reference} | Update a dtc:monitor:pdp object
-*DtcmonitorsipAPI* | [**Get**](docs/DtcmonitorsipAPI.md#get) | **Get** /dtc:monitor:sip | Retrieve dtc:monitor:sip objects
-*DtcmonitorsipAPI* | [**Post**](docs/DtcmonitorsipAPI.md#post) | **Post** /dtc:monitor:sip | Create a dtc:monitor:sip object
-*DtcmonitorsipAPI* | [**ReferenceDelete**](docs/DtcmonitorsipAPI.md#referencedelete) | **Delete** /dtc:monitor:sip/{reference} | Delete a dtc:monitor:sip object
-*DtcmonitorsipAPI* | [**ReferenceGet**](docs/DtcmonitorsipAPI.md#referenceget) | **Get** /dtc:monitor:sip/{reference} | Get a specific dtc:monitor:sip object
-*DtcmonitorsipAPI* | [**ReferencePut**](docs/DtcmonitorsipAPI.md#referenceput) | **Put** /dtc:monitor:sip/{reference} | Update a dtc:monitor:sip object
-*DtcmonitorsnmpAPI* | [**Get**](docs/DtcmonitorsnmpAPI.md#get) | **Get** /dtc:monitor:snmp | Retrieve dtc:monitor:snmp objects
-*DtcmonitorsnmpAPI* | [**Post**](docs/DtcmonitorsnmpAPI.md#post) | **Post** /dtc:monitor:snmp | Create a dtc:monitor:snmp object
-*DtcmonitorsnmpAPI* | [**ReferenceDelete**](docs/DtcmonitorsnmpAPI.md#referencedelete) | **Delete** /dtc:monitor:snmp/{reference} | Delete a dtc:monitor:snmp object
-*DtcmonitorsnmpAPI* | [**ReferenceGet**](docs/DtcmonitorsnmpAPI.md#referenceget) | **Get** /dtc:monitor:snmp/{reference} | Get a specific dtc:monitor:snmp object
-*DtcmonitorsnmpAPI* | [**ReferencePut**](docs/DtcmonitorsnmpAPI.md#referenceput) | **Put** /dtc:monitor:snmp/{reference} | Update a dtc:monitor:snmp object
-*DtcmonitortcpAPI* | [**Get**](docs/DtcmonitortcpAPI.md#get) | **Get** /dtc:monitor:tcp | Retrieve dtc:monitor:tcp objects
-*DtcmonitortcpAPI* | [**Post**](docs/DtcmonitortcpAPI.md#post) | **Post** /dtc:monitor:tcp | Create a dtc:monitor:tcp object
-*DtcmonitortcpAPI* | [**ReferenceDelete**](docs/DtcmonitortcpAPI.md#referencedelete) | **Delete** /dtc:monitor:tcp/{reference} | Delete a dtc:monitor:tcp object
-*DtcmonitortcpAPI* | [**ReferenceGet**](docs/DtcmonitortcpAPI.md#referenceget) | **Get** /dtc:monitor:tcp/{reference} | Get a specific dtc:monitor:tcp object
-*DtcmonitortcpAPI* | [**ReferencePut**](docs/DtcmonitortcpAPI.md#referenceput) | **Put** /dtc:monitor:tcp/{reference} | Update a dtc:monitor:tcp object
-*DtcobjectAPI* | [**Get**](docs/DtcobjectAPI.md#get) | **Get** /dtc:object | Retrieve dtc:object objects
-*DtcobjectAPI* | [**ReferenceGet**](docs/DtcobjectAPI.md#referenceget) | **Get** /dtc:object/{reference} | Get a specific dtc:object object
-*DtcobjectAPI* | [**ReferencePut**](docs/DtcobjectAPI.md#referenceput) | **Put** /dtc:object/{reference} | Update a dtc:object object
-*DtcpoolAPI* | [**Get**](docs/DtcpoolAPI.md#get) | **Get** /dtc:pool | Retrieve dtc:pool objects
-*DtcpoolAPI* | [**Post**](docs/DtcpoolAPI.md#post) | **Post** /dtc:pool | Create a dtc:pool object
-*DtcpoolAPI* | [**ReferenceDelete**](docs/DtcpoolAPI.md#referencedelete) | **Delete** /dtc:pool/{reference} | Delete a dtc:pool object
-*DtcpoolAPI* | [**ReferenceGet**](docs/DtcpoolAPI.md#referenceget) | **Get** /dtc:pool/{reference} | Get a specific dtc:pool object
-*DtcpoolAPI* | [**ReferencePut**](docs/DtcpoolAPI.md#referenceput) | **Put** /dtc:pool/{reference} | Update a dtc:pool object
-*DtcrecordaAPI* | [**Get**](docs/DtcrecordaAPI.md#get) | **Get** /dtc:record:a | Retrieve dtc:record:a objects
-*DtcrecordaAPI* | [**Post**](docs/DtcrecordaAPI.md#post) | **Post** /dtc:record:a | Create a dtc:record:a object
-*DtcrecordaAPI* | [**ReferenceDelete**](docs/DtcrecordaAPI.md#referencedelete) | **Delete** /dtc:record:a/{reference} | Delete a dtc:record:a object
-*DtcrecordaAPI* | [**ReferenceGet**](docs/DtcrecordaAPI.md#referenceget) | **Get** /dtc:record:a/{reference} | Get a specific dtc:record:a object
-*DtcrecordaAPI* | [**ReferencePut**](docs/DtcrecordaAPI.md#referenceput) | **Put** /dtc:record:a/{reference} | Update a dtc:record:a object
-*DtcrecordaaaaAPI* | [**Get**](docs/DtcrecordaaaaAPI.md#get) | **Get** /dtc:record:aaaa | Retrieve dtc:record:aaaa objects
-*DtcrecordaaaaAPI* | [**Post**](docs/DtcrecordaaaaAPI.md#post) | **Post** /dtc:record:aaaa | Create a dtc:record:aaaa object
-*DtcrecordaaaaAPI* | [**ReferenceDelete**](docs/DtcrecordaaaaAPI.md#referencedelete) | **Delete** /dtc:record:aaaa/{reference} | Delete a dtc:record:aaaa object
-*DtcrecordaaaaAPI* | [**ReferenceGet**](docs/DtcrecordaaaaAPI.md#referenceget) | **Get** /dtc:record:aaaa/{reference} | Get a specific dtc:record:aaaa object
-*DtcrecordaaaaAPI* | [**ReferencePut**](docs/DtcrecordaaaaAPI.md#referenceput) | **Put** /dtc:record:aaaa/{reference} | Update a dtc:record:aaaa object
-*DtcrecordcnameAPI* | [**Get**](docs/DtcrecordcnameAPI.md#get) | **Get** /dtc:record:cname | Retrieve dtc:record:cname objects
-*DtcrecordcnameAPI* | [**Post**](docs/DtcrecordcnameAPI.md#post) | **Post** /dtc:record:cname | Create a dtc:record:cname object
-*DtcrecordcnameAPI* | [**ReferenceDelete**](docs/DtcrecordcnameAPI.md#referencedelete) | **Delete** /dtc:record:cname/{reference} | Delete a dtc:record:cname object
-*DtcrecordcnameAPI* | [**ReferenceGet**](docs/DtcrecordcnameAPI.md#referenceget) | **Get** /dtc:record:cname/{reference} | Get a specific dtc:record:cname object
-*DtcrecordcnameAPI* | [**ReferencePut**](docs/DtcrecordcnameAPI.md#referenceput) | **Put** /dtc:record:cname/{reference} | Update a dtc:record:cname object
-*DtcrecordnaptrAPI* | [**Get**](docs/DtcrecordnaptrAPI.md#get) | **Get** /dtc:record:naptr | Retrieve dtc:record:naptr objects
-*DtcrecordnaptrAPI* | [**Post**](docs/DtcrecordnaptrAPI.md#post) | **Post** /dtc:record:naptr | Create a dtc:record:naptr object
-*DtcrecordnaptrAPI* | [**ReferenceDelete**](docs/DtcrecordnaptrAPI.md#referencedelete) | **Delete** /dtc:record:naptr/{reference} | Delete a dtc:record:naptr object
-*DtcrecordnaptrAPI* | [**ReferenceGet**](docs/DtcrecordnaptrAPI.md#referenceget) | **Get** /dtc:record:naptr/{reference} | Get a specific dtc:record:naptr object
-*DtcrecordnaptrAPI* | [**ReferencePut**](docs/DtcrecordnaptrAPI.md#referenceput) | **Put** /dtc:record:naptr/{reference} | Update a dtc:record:naptr object
-*DtcrecordsrvAPI* | [**Get**](docs/DtcrecordsrvAPI.md#get) | **Get** /dtc:record:srv | Retrieve dtc:record:srv objects
-*DtcrecordsrvAPI* | [**Post**](docs/DtcrecordsrvAPI.md#post) | **Post** /dtc:record:srv | Create a dtc:record:srv object
-*DtcrecordsrvAPI* | [**ReferenceDelete**](docs/DtcrecordsrvAPI.md#referencedelete) | **Delete** /dtc:record:srv/{reference} | Delete a dtc:record:srv object
-*DtcrecordsrvAPI* | [**ReferenceGet**](docs/DtcrecordsrvAPI.md#referenceget) | **Get** /dtc:record:srv/{reference} | Get a specific dtc:record:srv object
-*DtcrecordsrvAPI* | [**ReferencePut**](docs/DtcrecordsrvAPI.md#referenceput) | **Put** /dtc:record:srv/{reference} | Update a dtc:record:srv object
-*DtcserverAPI* | [**Get**](docs/DtcserverAPI.md#get) | **Get** /dtc:server | Retrieve dtc:server objects
-*DtcserverAPI* | [**Post**](docs/DtcserverAPI.md#post) | **Post** /dtc:server | Create a dtc:server object
-*DtcserverAPI* | [**ReferenceDelete**](docs/DtcserverAPI.md#referencedelete) | **Delete** /dtc:server/{reference} | Delete a dtc:server object
-*DtcserverAPI* | [**ReferenceGet**](docs/DtcserverAPI.md#referenceget) | **Get** /dtc:server/{reference} | Get a specific dtc:server object
-*DtcserverAPI* | [**ReferencePut**](docs/DtcserverAPI.md#referenceput) | **Put** /dtc:server/{reference} | Update a dtc:server object
-*DtctopologyAPI* | [**Get**](docs/DtctopologyAPI.md#get) | **Get** /dtc:topology | Retrieve dtc:topology objects
-*DtctopologyAPI* | [**Post**](docs/DtctopologyAPI.md#post) | **Post** /dtc:topology | Create a dtc:topology object
-*DtctopologyAPI* | [**ReferenceDelete**](docs/DtctopologyAPI.md#referencedelete) | **Delete** /dtc:topology/{reference} | Delete a dtc:topology object
-*DtctopologyAPI* | [**ReferenceGet**](docs/DtctopologyAPI.md#referenceget) | **Get** /dtc:topology/{reference} | Get a specific dtc:topology object
-*DtctopologyAPI* | [**ReferencePut**](docs/DtctopologyAPI.md#referenceput) | **Put** /dtc:topology/{reference} | Update a dtc:topology object
-*DtctopologylabelAPI* | [**Get**](docs/DtctopologylabelAPI.md#get) | **Get** /dtc:topology:label | Retrieve dtc:topology:label objects
-*DtctopologylabelAPI* | [**ReferenceGet**](docs/DtctopologylabelAPI.md#referenceget) | **Get** /dtc:topology:label/{reference} | Get a specific dtc:topology:label object
-*DtctopologyruleAPI* | [**Get**](docs/DtctopologyruleAPI.md#get) | **Get** /dtc:topology:rule | Retrieve dtc:topology:rule objects
-*DtctopologyruleAPI* | [**ReferenceGet**](docs/DtctopologyruleAPI.md#referenceget) | **Get** /dtc:topology:rule/{reference} | Get a specific dtc:topology:rule object
-*DtctopologyruleAPI* | [**ReferencePut**](docs/DtctopologyruleAPI.md#referenceput) | **Put** /dtc:topology:rule/{reference} | Update a dtc:topology:rule object
+*DtcAPI* | [**List**](docs/DtcAPI.md#list) | **Get** /dtc | Retrieve dtc objects
+*DtcAPI* | [**Read**](docs/DtcAPI.md#read) | **Get** /dtc/{reference} | Get a specific dtc object
+*DtcAllrecordsAPI* | [**List**](docs/DtcAllrecordsAPI.md#list) | **Get** /dtc:allrecords | Retrieve dtc:allrecords objects
+*DtcAllrecordsAPI* | [**Read**](docs/DtcAllrecordsAPI.md#read) | **Get** /dtc:allrecords/{reference} | Get a specific dtc:allrecords object
+*DtcAllrecordsAPI* | [**Update**](docs/DtcAllrecordsAPI.md#update) | **Put** /dtc:allrecords/{reference} | Update a dtc:allrecords object
+*DtcCertificateAPI* | [**List**](docs/DtcCertificateAPI.md#list) | **Get** /dtc:certificate | Retrieve dtc:certificate objects
+*DtcCertificateAPI* | [**Read**](docs/DtcCertificateAPI.md#read) | **Get** /dtc:certificate/{reference} | Get a specific dtc:certificate object
+*DtcLbdnAPI* | [**Create**](docs/DtcLbdnAPI.md#create) | **Post** /dtc:lbdn | Create a dtc:lbdn object
+*DtcLbdnAPI* | [**Delete**](docs/DtcLbdnAPI.md#delete) | **Delete** /dtc:lbdn/{reference} | Delete a dtc:lbdn object
+*DtcLbdnAPI* | [**List**](docs/DtcLbdnAPI.md#list) | **Get** /dtc:lbdn | Retrieve dtc:lbdn objects
+*DtcLbdnAPI* | [**Read**](docs/DtcLbdnAPI.md#read) | **Get** /dtc:lbdn/{reference} | Get a specific dtc:lbdn object
+*DtcLbdnAPI* | [**Update**](docs/DtcLbdnAPI.md#update) | **Put** /dtc:lbdn/{reference} | Update a dtc:lbdn object
+*DtcMonitorAPI* | [**List**](docs/DtcMonitorAPI.md#list) | **Get** /dtc:monitor | Retrieve dtc:monitor objects
+*DtcMonitorAPI* | [**Read**](docs/DtcMonitorAPI.md#read) | **Get** /dtc:monitor/{reference} | Get a specific dtc:monitor object
+*DtcMonitorAPI* | [**Update**](docs/DtcMonitorAPI.md#update) | **Put** /dtc:monitor/{reference} | Update a dtc:monitor object
+*DtcMonitorHttpAPI* | [**Create**](docs/DtcMonitorHttpAPI.md#create) | **Post** /dtc:monitor:http | Create a dtc:monitor:http object
+*DtcMonitorHttpAPI* | [**Delete**](docs/DtcMonitorHttpAPI.md#delete) | **Delete** /dtc:monitor:http/{reference} | Delete a dtc:monitor:http object
+*DtcMonitorHttpAPI* | [**List**](docs/DtcMonitorHttpAPI.md#list) | **Get** /dtc:monitor:http | Retrieve dtc:monitor:http objects
+*DtcMonitorHttpAPI* | [**Read**](docs/DtcMonitorHttpAPI.md#read) | **Get** /dtc:monitor:http/{reference} | Get a specific dtc:monitor:http object
+*DtcMonitorHttpAPI* | [**Update**](docs/DtcMonitorHttpAPI.md#update) | **Put** /dtc:monitor:http/{reference} | Update a dtc:monitor:http object
+*DtcMonitorIcmpAPI* | [**Create**](docs/DtcMonitorIcmpAPI.md#create) | **Post** /dtc:monitor:icmp | Create a dtc:monitor:icmp object
+*DtcMonitorIcmpAPI* | [**Delete**](docs/DtcMonitorIcmpAPI.md#delete) | **Delete** /dtc:monitor:icmp/{reference} | Delete a dtc:monitor:icmp object
+*DtcMonitorIcmpAPI* | [**List**](docs/DtcMonitorIcmpAPI.md#list) | **Get** /dtc:monitor:icmp | Retrieve dtc:monitor:icmp objects
+*DtcMonitorIcmpAPI* | [**Read**](docs/DtcMonitorIcmpAPI.md#read) | **Get** /dtc:monitor:icmp/{reference} | Get a specific dtc:monitor:icmp object
+*DtcMonitorIcmpAPI* | [**Update**](docs/DtcMonitorIcmpAPI.md#update) | **Put** /dtc:monitor:icmp/{reference} | Update a dtc:monitor:icmp object
+*DtcMonitorPdpAPI* | [**Create**](docs/DtcMonitorPdpAPI.md#create) | **Post** /dtc:monitor:pdp | Create a dtc:monitor:pdp object
+*DtcMonitorPdpAPI* | [**Delete**](docs/DtcMonitorPdpAPI.md#delete) | **Delete** /dtc:monitor:pdp/{reference} | Delete a dtc:monitor:pdp object
+*DtcMonitorPdpAPI* | [**List**](docs/DtcMonitorPdpAPI.md#list) | **Get** /dtc:monitor:pdp | Retrieve dtc:monitor:pdp objects
+*DtcMonitorPdpAPI* | [**Read**](docs/DtcMonitorPdpAPI.md#read) | **Get** /dtc:monitor:pdp/{reference} | Get a specific dtc:monitor:pdp object
+*DtcMonitorPdpAPI* | [**Update**](docs/DtcMonitorPdpAPI.md#update) | **Put** /dtc:monitor:pdp/{reference} | Update a dtc:monitor:pdp object
+*DtcMonitorSipAPI* | [**Create**](docs/DtcMonitorSipAPI.md#create) | **Post** /dtc:monitor:sip | Create a dtc:monitor:sip object
+*DtcMonitorSipAPI* | [**Delete**](docs/DtcMonitorSipAPI.md#delete) | **Delete** /dtc:monitor:sip/{reference} | Delete a dtc:monitor:sip object
+*DtcMonitorSipAPI* | [**List**](docs/DtcMonitorSipAPI.md#list) | **Get** /dtc:monitor:sip | Retrieve dtc:monitor:sip objects
+*DtcMonitorSipAPI* | [**Read**](docs/DtcMonitorSipAPI.md#read) | **Get** /dtc:monitor:sip/{reference} | Get a specific dtc:monitor:sip object
+*DtcMonitorSipAPI* | [**Update**](docs/DtcMonitorSipAPI.md#update) | **Put** /dtc:monitor:sip/{reference} | Update a dtc:monitor:sip object
+*DtcMonitorSnmpAPI* | [**Create**](docs/DtcMonitorSnmpAPI.md#create) | **Post** /dtc:monitor:snmp | Create a dtc:monitor:snmp object
+*DtcMonitorSnmpAPI* | [**Delete**](docs/DtcMonitorSnmpAPI.md#delete) | **Delete** /dtc:monitor:snmp/{reference} | Delete a dtc:monitor:snmp object
+*DtcMonitorSnmpAPI* | [**List**](docs/DtcMonitorSnmpAPI.md#list) | **Get** /dtc:monitor:snmp | Retrieve dtc:monitor:snmp objects
+*DtcMonitorSnmpAPI* | [**Read**](docs/DtcMonitorSnmpAPI.md#read) | **Get** /dtc:monitor:snmp/{reference} | Get a specific dtc:monitor:snmp object
+*DtcMonitorSnmpAPI* | [**Update**](docs/DtcMonitorSnmpAPI.md#update) | **Put** /dtc:monitor:snmp/{reference} | Update a dtc:monitor:snmp object
+*DtcMonitorTcpAPI* | [**Create**](docs/DtcMonitorTcpAPI.md#create) | **Post** /dtc:monitor:tcp | Create a dtc:monitor:tcp object
+*DtcMonitorTcpAPI* | [**Delete**](docs/DtcMonitorTcpAPI.md#delete) | **Delete** /dtc:monitor:tcp/{reference} | Delete a dtc:monitor:tcp object
+*DtcMonitorTcpAPI* | [**List**](docs/DtcMonitorTcpAPI.md#list) | **Get** /dtc:monitor:tcp | Retrieve dtc:monitor:tcp objects
+*DtcMonitorTcpAPI* | [**Read**](docs/DtcMonitorTcpAPI.md#read) | **Get** /dtc:monitor:tcp/{reference} | Get a specific dtc:monitor:tcp object
+*DtcMonitorTcpAPI* | [**Update**](docs/DtcMonitorTcpAPI.md#update) | **Put** /dtc:monitor:tcp/{reference} | Update a dtc:monitor:tcp object
+*DtcObjectAPI* | [**List**](docs/DtcObjectAPI.md#list) | **Get** /dtc:object | Retrieve dtc:object objects
+*DtcObjectAPI* | [**Read**](docs/DtcObjectAPI.md#read) | **Get** /dtc:object/{reference} | Get a specific dtc:object object
+*DtcObjectAPI* | [**Update**](docs/DtcObjectAPI.md#update) | **Put** /dtc:object/{reference} | Update a dtc:object object
+*DtcPoolAPI* | [**Create**](docs/DtcPoolAPI.md#create) | **Post** /dtc:pool | Create a dtc:pool object
+*DtcPoolAPI* | [**Delete**](docs/DtcPoolAPI.md#delete) | **Delete** /dtc:pool/{reference} | Delete a dtc:pool object
+*DtcPoolAPI* | [**List**](docs/DtcPoolAPI.md#list) | **Get** /dtc:pool | Retrieve dtc:pool objects
+*DtcPoolAPI* | [**Read**](docs/DtcPoolAPI.md#read) | **Get** /dtc:pool/{reference} | Get a specific dtc:pool object
+*DtcPoolAPI* | [**Update**](docs/DtcPoolAPI.md#update) | **Put** /dtc:pool/{reference} | Update a dtc:pool object
+*DtcRecordAAPI* | [**Create**](docs/DtcRecordAAPI.md#create) | **Post** /dtc:record:a | Create a dtc:record:a object
+*DtcRecordAAPI* | [**Delete**](docs/DtcRecordAAPI.md#delete) | **Delete** /dtc:record:a/{reference} | Delete a dtc:record:a object
+*DtcRecordAAPI* | [**List**](docs/DtcRecordAAPI.md#list) | **Get** /dtc:record:a | Retrieve dtc:record:a objects
+*DtcRecordAAPI* | [**Read**](docs/DtcRecordAAPI.md#read) | **Get** /dtc:record:a/{reference} | Get a specific dtc:record:a object
+*DtcRecordAAPI* | [**Update**](docs/DtcRecordAAPI.md#update) | **Put** /dtc:record:a/{reference} | Update a dtc:record:a object
+*DtcRecordAaaaAPI* | [**Create**](docs/DtcRecordAaaaAPI.md#create) | **Post** /dtc:record:aaaa | Create a dtc:record:aaaa object
+*DtcRecordAaaaAPI* | [**Delete**](docs/DtcRecordAaaaAPI.md#delete) | **Delete** /dtc:record:aaaa/{reference} | Delete a dtc:record:aaaa object
+*DtcRecordAaaaAPI* | [**List**](docs/DtcRecordAaaaAPI.md#list) | **Get** /dtc:record:aaaa | Retrieve dtc:record:aaaa objects
+*DtcRecordAaaaAPI* | [**Read**](docs/DtcRecordAaaaAPI.md#read) | **Get** /dtc:record:aaaa/{reference} | Get a specific dtc:record:aaaa object
+*DtcRecordAaaaAPI* | [**Update**](docs/DtcRecordAaaaAPI.md#update) | **Put** /dtc:record:aaaa/{reference} | Update a dtc:record:aaaa object
+*DtcRecordCnameAPI* | [**Create**](docs/DtcRecordCnameAPI.md#create) | **Post** /dtc:record:cname | Create a dtc:record:cname object
+*DtcRecordCnameAPI* | [**Delete**](docs/DtcRecordCnameAPI.md#delete) | **Delete** /dtc:record:cname/{reference} | Delete a dtc:record:cname object
+*DtcRecordCnameAPI* | [**List**](docs/DtcRecordCnameAPI.md#list) | **Get** /dtc:record:cname | Retrieve dtc:record:cname objects
+*DtcRecordCnameAPI* | [**Read**](docs/DtcRecordCnameAPI.md#read) | **Get** /dtc:record:cname/{reference} | Get a specific dtc:record:cname object
+*DtcRecordCnameAPI* | [**Update**](docs/DtcRecordCnameAPI.md#update) | **Put** /dtc:record:cname/{reference} | Update a dtc:record:cname object
+*DtcRecordNaptrAPI* | [**Create**](docs/DtcRecordNaptrAPI.md#create) | **Post** /dtc:record:naptr | Create a dtc:record:naptr object
+*DtcRecordNaptrAPI* | [**Delete**](docs/DtcRecordNaptrAPI.md#delete) | **Delete** /dtc:record:naptr/{reference} | Delete a dtc:record:naptr object
+*DtcRecordNaptrAPI* | [**List**](docs/DtcRecordNaptrAPI.md#list) | **Get** /dtc:record:naptr | Retrieve dtc:record:naptr objects
+*DtcRecordNaptrAPI* | [**Read**](docs/DtcRecordNaptrAPI.md#read) | **Get** /dtc:record:naptr/{reference} | Get a specific dtc:record:naptr object
+*DtcRecordNaptrAPI* | [**Update**](docs/DtcRecordNaptrAPI.md#update) | **Put** /dtc:record:naptr/{reference} | Update a dtc:record:naptr object
+*DtcRecordSrvAPI* | [**Create**](docs/DtcRecordSrvAPI.md#create) | **Post** /dtc:record:srv | Create a dtc:record:srv object
+*DtcRecordSrvAPI* | [**Delete**](docs/DtcRecordSrvAPI.md#delete) | **Delete** /dtc:record:srv/{reference} | Delete a dtc:record:srv object
+*DtcRecordSrvAPI* | [**List**](docs/DtcRecordSrvAPI.md#list) | **Get** /dtc:record:srv | Retrieve dtc:record:srv objects
+*DtcRecordSrvAPI* | [**Read**](docs/DtcRecordSrvAPI.md#read) | **Get** /dtc:record:srv/{reference} | Get a specific dtc:record:srv object
+*DtcRecordSrvAPI* | [**Update**](docs/DtcRecordSrvAPI.md#update) | **Put** /dtc:record:srv/{reference} | Update a dtc:record:srv object
+*DtcServerAPI* | [**Create**](docs/DtcServerAPI.md#create) | **Post** /dtc:server | Create a dtc:server object
+*DtcServerAPI* | [**Delete**](docs/DtcServerAPI.md#delete) | **Delete** /dtc:server/{reference} | Delete a dtc:server object
+*DtcServerAPI* | [**List**](docs/DtcServerAPI.md#list) | **Get** /dtc:server | Retrieve dtc:server objects
+*DtcServerAPI* | [**Read**](docs/DtcServerAPI.md#read) | **Get** /dtc:server/{reference} | Get a specific dtc:server object
+*DtcServerAPI* | [**Update**](docs/DtcServerAPI.md#update) | **Put** /dtc:server/{reference} | Update a dtc:server object
+*DtcTopologyAPI* | [**Create**](docs/DtcTopologyAPI.md#create) | **Post** /dtc:topology | Create a dtc:topology object
+*DtcTopologyAPI* | [**Delete**](docs/DtcTopologyAPI.md#delete) | **Delete** /dtc:topology/{reference} | Delete a dtc:topology object
+*DtcTopologyAPI* | [**List**](docs/DtcTopologyAPI.md#list) | **Get** /dtc:topology | Retrieve dtc:topology objects
+*DtcTopologyAPI* | [**Read**](docs/DtcTopologyAPI.md#read) | **Get** /dtc:topology/{reference} | Get a specific dtc:topology object
+*DtcTopologyAPI* | [**Update**](docs/DtcTopologyAPI.md#update) | **Put** /dtc:topology/{reference} | Update a dtc:topology object
+*DtcTopologyLabelAPI* | [**List**](docs/DtcTopologyLabelAPI.md#list) | **Get** /dtc:topology:label | Retrieve dtc:topology:label objects
+*DtcTopologyLabelAPI* | [**Read**](docs/DtcTopologyLabelAPI.md#read) | **Get** /dtc:topology:label/{reference} | Get a specific dtc:topology:label object
+*DtcTopologyRuleAPI* | [**List**](docs/DtcTopologyRuleAPI.md#list) | **Get** /dtc:topology:rule | Retrieve dtc:topology:rule objects
+*DtcTopologyRuleAPI* | [**Read**](docs/DtcTopologyRuleAPI.md#read) | **Get** /dtc:topology:rule/{reference} | Get a specific dtc:topology:rule object
+*DtcTopologyRuleAPI* | [**Update**](docs/DtcTopologyRuleAPI.md#update) | **Put** /dtc:topology:rule/{reference} | Update a dtc:topology:rule object
 
 
 ## Documentation For Models
 
- - [CreateDtcAllrecordsResponse](docs/CreateDtcAllrecordsResponse.md)
- - [CreateDtcAllrecordsResponseAsObject](docs/CreateDtcAllrecordsResponseAsObject.md)
- - [CreateDtcCertificateResponse](docs/CreateDtcCertificateResponse.md)
- - [CreateDtcCertificateResponseAsObject](docs/CreateDtcCertificateResponseAsObject.md)
  - [CreateDtcLbdnResponse](docs/CreateDtcLbdnResponse.md)
  - [CreateDtcLbdnResponseAsObject](docs/CreateDtcLbdnResponseAsObject.md)
  - [CreateDtcMonitorHttpResponse](docs/CreateDtcMonitorHttpResponse.md)
@@ -189,16 +184,12 @@ Class | Method | HTTP request | Description
  - [CreateDtcMonitorIcmpResponseAsObject](docs/CreateDtcMonitorIcmpResponseAsObject.md)
  - [CreateDtcMonitorPdpResponse](docs/CreateDtcMonitorPdpResponse.md)
  - [CreateDtcMonitorPdpResponseAsObject](docs/CreateDtcMonitorPdpResponseAsObject.md)
- - [CreateDtcMonitorResponse](docs/CreateDtcMonitorResponse.md)
- - [CreateDtcMonitorResponseAsObject](docs/CreateDtcMonitorResponseAsObject.md)
  - [CreateDtcMonitorSipResponse](docs/CreateDtcMonitorSipResponse.md)
  - [CreateDtcMonitorSipResponseAsObject](docs/CreateDtcMonitorSipResponseAsObject.md)
  - [CreateDtcMonitorSnmpResponse](docs/CreateDtcMonitorSnmpResponse.md)
  - [CreateDtcMonitorSnmpResponseAsObject](docs/CreateDtcMonitorSnmpResponseAsObject.md)
  - [CreateDtcMonitorTcpResponse](docs/CreateDtcMonitorTcpResponse.md)
  - [CreateDtcMonitorTcpResponseAsObject](docs/CreateDtcMonitorTcpResponseAsObject.md)
- - [CreateDtcObjectResponse](docs/CreateDtcObjectResponse.md)
- - [CreateDtcObjectResponseAsObject](docs/CreateDtcObjectResponseAsObject.md)
  - [CreateDtcPoolResponse](docs/CreateDtcPoolResponse.md)
  - [CreateDtcPoolResponseAsObject](docs/CreateDtcPoolResponseAsObject.md)
  - [CreateDtcRecordAResponse](docs/CreateDtcRecordAResponse.md)
@@ -211,16 +202,10 @@ Class | Method | HTTP request | Description
  - [CreateDtcRecordNaptrResponseAsObject](docs/CreateDtcRecordNaptrResponseAsObject.md)
  - [CreateDtcRecordSrvResponse](docs/CreateDtcRecordSrvResponse.md)
  - [CreateDtcRecordSrvResponseAsObject](docs/CreateDtcRecordSrvResponseAsObject.md)
- - [CreateDtcResponse](docs/CreateDtcResponse.md)
- - [CreateDtcResponseAsObject](docs/CreateDtcResponseAsObject.md)
  - [CreateDtcServerResponse](docs/CreateDtcServerResponse.md)
  - [CreateDtcServerResponseAsObject](docs/CreateDtcServerResponseAsObject.md)
- - [CreateDtcTopologyLabelResponse](docs/CreateDtcTopologyLabelResponse.md)
- - [CreateDtcTopologyLabelResponseAsObject](docs/CreateDtcTopologyLabelResponseAsObject.md)
  - [CreateDtcTopologyResponse](docs/CreateDtcTopologyResponse.md)
  - [CreateDtcTopologyResponseAsObject](docs/CreateDtcTopologyResponseAsObject.md)
- - [CreateDtcTopologyRuleResponse](docs/CreateDtcTopologyRuleResponse.md)
- - [CreateDtcTopologyRuleResponseAsObject](docs/CreateDtcTopologyRuleResponseAsObject.md)
  - [Dtc](docs/Dtc.md)
  - [DtcAllrecords](docs/DtcAllrecords.md)
  - [DtcCertificate](docs/DtcCertificate.md)

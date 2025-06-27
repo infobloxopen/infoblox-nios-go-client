@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **CloudInfo** | Pointer to [**ZoneAuthCloudInfo**](ZoneAuthCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the zone; maximum 256 characters. | [optional] 
 **CopyXferToNotify** | Pointer to **bool** | If this flag is set to True then copy allowed IPs from Allow Transfer to Also Notify. | [optional] 
-**Copyzonerecords** | Pointer to **map[string]interface{}** |  | [optional] 
 **CreatePtrForBulkHosts** | Pointer to **bool** | Determines if PTR records are created for hosts automatically, if necessary, when the zone data is imported. This field is meaningful only when import_from is set. | [optional] 
 **CreatePtrForHosts** | Pointer to **bool** | Determines if PTR records are created for hosts automatically, if necessary, when the zone data is imported. This field is meaningful only when import_from is set. | [optional] 
 **CreateUnderscoreZones** | Pointer to **bool** | Determines whether automatic creation of subzones is enabled or not. | [optional] 
@@ -39,20 +38,14 @@ Name | Type | Description | Notes
 **DnsIntegrityMember** | Pointer to **string** | The Grid member that performs DNS integrity checks for this zone. | [optional] 
 **DnsIntegrityVerboseLogging** | Pointer to **bool** | If this is set to True, more information is logged for DNS integrity checks for this zone. | [optional] 
 **DnsSoaEmail** | Pointer to **string** | The SOA email for the zone in punycode format. | [optional] [readonly] 
-**DnssecExport** | Pointer to **map[string]interface{}** |  | [optional] 
-**DnssecGetZoneKeys** | Pointer to **map[string]interface{}** |  | [optional] 
 **DnssecKeyParams** | Pointer to [**ZoneAuthDnssecKeyParams**](ZoneAuthDnssecKeyParams.md) |  | [optional] 
 **DnssecKeys** | Pointer to [**[]ZoneAuthDnssecKeys**](ZoneAuthDnssecKeys.md) | A list of DNSSEC keys for the zone. | [optional] 
 **DnssecKskRolloverDate** | Pointer to **int64** | The rollover date for the Key Signing Key. | [optional] [readonly] 
-**DnssecOperation** | Pointer to **map[string]interface{}** |  | [optional] 
-**DnssecSetZoneKeys** | Pointer to **map[string]interface{}** |  | [optional] 
 **DnssecZskRolloverDate** | Pointer to **int64** | The rollover date for the Zone Signing Key. | [optional] [readonly] 
-**Dnssecgetkskrollover** | Pointer to **map[string]interface{}** |  | [optional] 
 **DoHostAbstraction** | Pointer to **bool** | Determines if hosts and bulk hosts are automatically created when the zone data is imported. This field is meaningful only when import_from is set. | [optional] 
 **EffectiveCheckNamesPolicy** | Pointer to **string** | The value of the check names policy, which indicates the action the appliance takes when it encounters host names that do not comply with the Strict Hostname Checking policy. This value applies only if the host name restriction policy is set to \&quot;Strict Hostname Checking\&quot;. | [optional] 
 **EffectiveRecordNamePolicy** | Pointer to **string** | The selected hostname policy for records under this zone. | [optional] [readonly] 
-**ExecuteDnsParentCheck** | Pointer to **map[string]interface{}** |  | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalPrimaries** | Pointer to [**[]ZoneAuthExternalPrimaries**](ZoneAuthExternalPrimaries.md) | The list of external primary servers. | [optional] 
 **ExternalSecondaries** | Pointer to [**[]ZoneAuthExternalSecondaries**](ZoneAuthExternalSecondaries.md) | The list of external secondary servers. | [optional] 
 **Fqdn** | Pointer to **string** | The name of this DNS zone. For a reverse zone, this is in \&quot;address/cidr\&quot; format. For other zones, this is in FQDN format. This value can be in unicode format. Note that for a reverse zone, the corresponding zone_format value should be set. | [optional] 
@@ -65,7 +58,6 @@ Name | Type | Description | Notes
 **IsMultimaster** | Pointer to **bool** | Determines if multi-master DNS is enabled for the zone. | [optional] [readonly] 
 **LastQueried** | Pointer to **int64** | The time the zone was last queried on. | [optional] [readonly] 
 **LastQueriedAcl** | Pointer to [**[]ZoneAuthLastQueriedAcl**](ZoneAuthLastQueriedAcl.md) | Determines last queried ACL for the specified IPv4 or IPv6 addresses and networks in scavenging settings. | [optional] 
-**LockUnlockZone** | Pointer to **map[string]interface{}** |  | [optional] 
 **Locked** | Pointer to **bool** | If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked. | [optional] 
 **LockedBy** | Pointer to **string** | The name of a superuser or the administrator who locked this zone. | [optional] [readonly] 
 **MaskPrefix** | Pointer to **string** | IPv4 Netmask or IPv6 prefix for this zone. | [optional] [readonly] 
@@ -82,7 +74,7 @@ Name | Type | Description | Notes
 **MsSecondaries** | Pointer to [**[]ZoneAuthMsSecondaries**](ZoneAuthMsSecondaries.md) | The list with the Microsoft DNS servers that are secondary servers for the zone. | [optional] 
 **MsSyncDisabled** | Pointer to **bool** | This flag controls whether this zone is synchronized with Microsoft DNS servers. | [optional] 
 **MsSyncMasterName** | Pointer to **string** | The name of MS synchronization master for this zone. | [optional] [readonly] 
-**NetworkAssociations** | Pointer to **[]map[string]interface{}** | The list with the associated network/network container information. | [optional] [readonly] 
+**NetworkAssociations** | Pointer to **[]string** | The list with the associated network/network container information. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this zone resides. | [optional] [readonly] 
 **NotifyDelay** | Pointer to **int64** | The number of seconds in delay with which notify messages are sent to secondaries. | [optional] 
 **NsGroup** | Pointer to **string** | The name server group that serves DNS for this zone. | [optional] 
@@ -94,7 +86,6 @@ Name | Type | Description | Notes
 **RemoveSubzones** | Pointer to **bool** | Remove subzones delete option. Determines whether all child objects should be removed alongside with the parent zone or child objects should be assigned to another parental zone. By default child objects are deleted with the parent zone. | [optional] 
 **RestartIfNeeded** | Pointer to **bool** | Restarts the member service. | [optional] 
 **RrNotQueriedEnabledTime** | Pointer to **int64** | The time data collection for Not Queried Resource Record was enabled for this zone. | [optional] [readonly] 
-**RunScavenging** | Pointer to **map[string]interface{}** |  | [optional] 
 **ScavengingSettings** | Pointer to [**ZoneAuthScavengingSettings**](ZoneAuthScavengingSettings.md) |  | [optional] 
 **SetSoaSerialNumber** | Pointer to **bool** | The serial number in the SOA record incrementally changes every time the record is modified. The Infoblox appliance allows you to change the serial number (in the SOA record) for the primary server so it is higher than the secondary server, thereby ensuring zone transfers come from the primary server (as they should). To change the serial number you need to set a new value at \&quot;soa_serial_number\&quot; and pass \&quot;set_soa_serial_number\&quot; as True. | [optional] 
 **SoaDefaultTtl** | Pointer to **int64** | The Time to Live (TTL) value of the SOA record of this zone. This value is the number of seconds that data is cached. | [optional] 
@@ -500,31 +491,6 @@ SetCopyXferToNotify sets CopyXferToNotify field to given value.
 `func (o *GetZoneAuthResponse) HasCopyXferToNotify() bool`
 
 HasCopyXferToNotify returns a boolean if a field has been set.
-
-### GetCopyzonerecords
-
-`func (o *GetZoneAuthResponse) GetCopyzonerecords() map[string]interface{}`
-
-GetCopyzonerecords returns the Copyzonerecords field if non-nil, zero value otherwise.
-
-### GetCopyzonerecordsOk
-
-`func (o *GetZoneAuthResponse) GetCopyzonerecordsOk() (*map[string]interface{}, bool)`
-
-GetCopyzonerecordsOk returns a tuple with the Copyzonerecords field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCopyzonerecords
-
-`func (o *GetZoneAuthResponse) SetCopyzonerecords(v map[string]interface{})`
-
-SetCopyzonerecords sets Copyzonerecords field to given value.
-
-### HasCopyzonerecords
-
-`func (o *GetZoneAuthResponse) HasCopyzonerecords() bool`
-
-HasCopyzonerecords returns a boolean if a field has been set.
 
 ### GetCreatePtrForBulkHosts
 
@@ -1026,56 +992,6 @@ SetDnsSoaEmail sets DnsSoaEmail field to given value.
 
 HasDnsSoaEmail returns a boolean if a field has been set.
 
-### GetDnssecExport
-
-`func (o *GetZoneAuthResponse) GetDnssecExport() map[string]interface{}`
-
-GetDnssecExport returns the DnssecExport field if non-nil, zero value otherwise.
-
-### GetDnssecExportOk
-
-`func (o *GetZoneAuthResponse) GetDnssecExportOk() (*map[string]interface{}, bool)`
-
-GetDnssecExportOk returns a tuple with the DnssecExport field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDnssecExport
-
-`func (o *GetZoneAuthResponse) SetDnssecExport(v map[string]interface{})`
-
-SetDnssecExport sets DnssecExport field to given value.
-
-### HasDnssecExport
-
-`func (o *GetZoneAuthResponse) HasDnssecExport() bool`
-
-HasDnssecExport returns a boolean if a field has been set.
-
-### GetDnssecGetZoneKeys
-
-`func (o *GetZoneAuthResponse) GetDnssecGetZoneKeys() map[string]interface{}`
-
-GetDnssecGetZoneKeys returns the DnssecGetZoneKeys field if non-nil, zero value otherwise.
-
-### GetDnssecGetZoneKeysOk
-
-`func (o *GetZoneAuthResponse) GetDnssecGetZoneKeysOk() (*map[string]interface{}, bool)`
-
-GetDnssecGetZoneKeysOk returns a tuple with the DnssecGetZoneKeys field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDnssecGetZoneKeys
-
-`func (o *GetZoneAuthResponse) SetDnssecGetZoneKeys(v map[string]interface{})`
-
-SetDnssecGetZoneKeys sets DnssecGetZoneKeys field to given value.
-
-### HasDnssecGetZoneKeys
-
-`func (o *GetZoneAuthResponse) HasDnssecGetZoneKeys() bool`
-
-HasDnssecGetZoneKeys returns a boolean if a field has been set.
-
 ### GetDnssecKeyParams
 
 `func (o *GetZoneAuthResponse) GetDnssecKeyParams() ZoneAuthDnssecKeyParams`
@@ -1151,56 +1067,6 @@ SetDnssecKskRolloverDate sets DnssecKskRolloverDate field to given value.
 
 HasDnssecKskRolloverDate returns a boolean if a field has been set.
 
-### GetDnssecOperation
-
-`func (o *GetZoneAuthResponse) GetDnssecOperation() map[string]interface{}`
-
-GetDnssecOperation returns the DnssecOperation field if non-nil, zero value otherwise.
-
-### GetDnssecOperationOk
-
-`func (o *GetZoneAuthResponse) GetDnssecOperationOk() (*map[string]interface{}, bool)`
-
-GetDnssecOperationOk returns a tuple with the DnssecOperation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDnssecOperation
-
-`func (o *GetZoneAuthResponse) SetDnssecOperation(v map[string]interface{})`
-
-SetDnssecOperation sets DnssecOperation field to given value.
-
-### HasDnssecOperation
-
-`func (o *GetZoneAuthResponse) HasDnssecOperation() bool`
-
-HasDnssecOperation returns a boolean if a field has been set.
-
-### GetDnssecSetZoneKeys
-
-`func (o *GetZoneAuthResponse) GetDnssecSetZoneKeys() map[string]interface{}`
-
-GetDnssecSetZoneKeys returns the DnssecSetZoneKeys field if non-nil, zero value otherwise.
-
-### GetDnssecSetZoneKeysOk
-
-`func (o *GetZoneAuthResponse) GetDnssecSetZoneKeysOk() (*map[string]interface{}, bool)`
-
-GetDnssecSetZoneKeysOk returns a tuple with the DnssecSetZoneKeys field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDnssecSetZoneKeys
-
-`func (o *GetZoneAuthResponse) SetDnssecSetZoneKeys(v map[string]interface{})`
-
-SetDnssecSetZoneKeys sets DnssecSetZoneKeys field to given value.
-
-### HasDnssecSetZoneKeys
-
-`func (o *GetZoneAuthResponse) HasDnssecSetZoneKeys() bool`
-
-HasDnssecSetZoneKeys returns a boolean if a field has been set.
-
 ### GetDnssecZskRolloverDate
 
 `func (o *GetZoneAuthResponse) GetDnssecZskRolloverDate() int64`
@@ -1225,31 +1091,6 @@ SetDnssecZskRolloverDate sets DnssecZskRolloverDate field to given value.
 `func (o *GetZoneAuthResponse) HasDnssecZskRolloverDate() bool`
 
 HasDnssecZskRolloverDate returns a boolean if a field has been set.
-
-### GetDnssecgetkskrollover
-
-`func (o *GetZoneAuthResponse) GetDnssecgetkskrollover() map[string]interface{}`
-
-GetDnssecgetkskrollover returns the Dnssecgetkskrollover field if non-nil, zero value otherwise.
-
-### GetDnssecgetkskrolloverOk
-
-`func (o *GetZoneAuthResponse) GetDnssecgetkskrolloverOk() (*map[string]interface{}, bool)`
-
-GetDnssecgetkskrolloverOk returns a tuple with the Dnssecgetkskrollover field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDnssecgetkskrollover
-
-`func (o *GetZoneAuthResponse) SetDnssecgetkskrollover(v map[string]interface{})`
-
-SetDnssecgetkskrollover sets Dnssecgetkskrollover field to given value.
-
-### HasDnssecgetkskrollover
-
-`func (o *GetZoneAuthResponse) HasDnssecgetkskrollover() bool`
-
-HasDnssecgetkskrollover returns a boolean if a field has been set.
 
 ### GetDoHostAbstraction
 
@@ -1326,55 +1167,30 @@ SetEffectiveRecordNamePolicy sets EffectiveRecordNamePolicy field to given value
 
 HasEffectiveRecordNamePolicy returns a boolean if a field has been set.
 
-### GetExecuteDnsParentCheck
+### GetExtAttrs
 
-`func (o *GetZoneAuthResponse) GetExecuteDnsParentCheck() map[string]interface{}`
+`func (o *GetZoneAuthResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExecuteDnsParentCheck returns the ExecuteDnsParentCheck field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExecuteDnsParentCheckOk
+### GetExtAttrsOk
 
-`func (o *GetZoneAuthResponse) GetExecuteDnsParentCheckOk() (*map[string]interface{}, bool)`
+`func (o *GetZoneAuthResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExecuteDnsParentCheckOk returns a tuple with the ExecuteDnsParentCheck field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExecuteDnsParentCheck
+### SetExtAttrs
 
-`func (o *GetZoneAuthResponse) SetExecuteDnsParentCheck(v map[string]interface{})`
+`func (o *GetZoneAuthResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExecuteDnsParentCheck sets ExecuteDnsParentCheck field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExecuteDnsParentCheck
+### HasExtAttrs
 
-`func (o *GetZoneAuthResponse) HasExecuteDnsParentCheck() bool`
+`func (o *GetZoneAuthResponse) HasExtAttrs() bool`
 
-HasExecuteDnsParentCheck returns a boolean if a field has been set.
-
-### GetExtattrs
-
-`func (o *GetZoneAuthResponse) GetExtattrs() map[string]ExtAttrs`
-
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
-
-### GetExtattrsOk
-
-`func (o *GetZoneAuthResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
-
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtattrs
-
-`func (o *GetZoneAuthResponse) SetExtattrs(v map[string]ExtAttrs)`
-
-SetExtattrs sets Extattrs field to given value.
-
-### HasExtattrs
-
-`func (o *GetZoneAuthResponse) HasExtattrs() bool`
-
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetExternalPrimaries
 
@@ -1675,31 +1491,6 @@ SetLastQueriedAcl sets LastQueriedAcl field to given value.
 `func (o *GetZoneAuthResponse) HasLastQueriedAcl() bool`
 
 HasLastQueriedAcl returns a boolean if a field has been set.
-
-### GetLockUnlockZone
-
-`func (o *GetZoneAuthResponse) GetLockUnlockZone() map[string]interface{}`
-
-GetLockUnlockZone returns the LockUnlockZone field if non-nil, zero value otherwise.
-
-### GetLockUnlockZoneOk
-
-`func (o *GetZoneAuthResponse) GetLockUnlockZoneOk() (*map[string]interface{}, bool)`
-
-GetLockUnlockZoneOk returns a tuple with the LockUnlockZone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLockUnlockZone
-
-`func (o *GetZoneAuthResponse) SetLockUnlockZone(v map[string]interface{})`
-
-SetLockUnlockZone sets LockUnlockZone field to given value.
-
-### HasLockUnlockZone
-
-`func (o *GetZoneAuthResponse) HasLockUnlockZone() bool`
-
-HasLockUnlockZone returns a boolean if a field has been set.
 
 ### GetLocked
 
@@ -2103,20 +1894,20 @@ HasMsSyncMasterName returns a boolean if a field has been set.
 
 ### GetNetworkAssociations
 
-`func (o *GetZoneAuthResponse) GetNetworkAssociations() []map[string]interface{}`
+`func (o *GetZoneAuthResponse) GetNetworkAssociations() []string`
 
 GetNetworkAssociations returns the NetworkAssociations field if non-nil, zero value otherwise.
 
 ### GetNetworkAssociationsOk
 
-`func (o *GetZoneAuthResponse) GetNetworkAssociationsOk() (*[]map[string]interface{}, bool)`
+`func (o *GetZoneAuthResponse) GetNetworkAssociationsOk() (*[]string, bool)`
 
 GetNetworkAssociationsOk returns a tuple with the NetworkAssociations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworkAssociations
 
-`func (o *GetZoneAuthResponse) SetNetworkAssociations(v []map[string]interface{})`
+`func (o *GetZoneAuthResponse) SetNetworkAssociations(v []string)`
 
 SetNetworkAssociations sets NetworkAssociations field to given value.
 
@@ -2400,31 +2191,6 @@ SetRrNotQueriedEnabledTime sets RrNotQueriedEnabledTime field to given value.
 `func (o *GetZoneAuthResponse) HasRrNotQueriedEnabledTime() bool`
 
 HasRrNotQueriedEnabledTime returns a boolean if a field has been set.
-
-### GetRunScavenging
-
-`func (o *GetZoneAuthResponse) GetRunScavenging() map[string]interface{}`
-
-GetRunScavenging returns the RunScavenging field if non-nil, zero value otherwise.
-
-### GetRunScavengingOk
-
-`func (o *GetZoneAuthResponse) GetRunScavengingOk() (*map[string]interface{}, bool)`
-
-GetRunScavengingOk returns a tuple with the RunScavenging field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRunScavenging
-
-`func (o *GetZoneAuthResponse) SetRunScavenging(v map[string]interface{})`
-
-SetRunScavenging sets RunScavenging field to given value.
-
-### HasRunScavenging
-
-`func (o *GetZoneAuthResponse) HasRunScavenging() bool`
-
-HasRunScavenging returns a boolean if a field has been set.
 
 ### GetScavengingSettings
 

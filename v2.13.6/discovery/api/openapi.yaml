@@ -15,37 +15,38 @@ servers:
   url: /wapi/v2.13.6
 tags:
 - description: Operations for discovery objects
-  name: discovery
+  name: Discovery
 - description: Operations for discovery:credentialgroup objects
-  name: discovery:credentialgroup
+  name: DiscoveryCredentialgroup
 - description: Operations for discovery:device objects
-  name: discovery:device
+  name: DiscoveryDevice
 - description: Operations for discovery:devicecomponent objects
-  name: discovery:devicecomponent
+  name: DiscoveryDevicecomponent
 - description: Operations for discovery:deviceinterface objects
-  name: discovery:deviceinterface
+  name: DiscoveryDeviceinterface
 - description: Operations for discovery:deviceneighbor objects
-  name: discovery:deviceneighbor
+  name: DiscoveryDeviceneighbor
 - description: Operations for discovery:devicesupportbundle objects
-  name: discovery:devicesupportbundle
+  name: DiscoveryDevicesupportbundle
 - description: Operations for discovery:diagnostictask objects
-  name: discovery:diagnostictask
+  name: DiscoveryDiagnostictask
 - description: Operations for discovery:gridproperties objects
-  name: discovery:gridproperties
+  name: DiscoveryGridproperties
 - description: Operations for discovery:memberproperties objects
-  name: discovery:memberproperties
+  name: DiscoveryMemberproperties
 - description: Operations for discovery:sdnnetwork objects
-  name: discovery:sdnnetwork
+  name: DiscoverySdnnetwork
 - description: Operations for discovery:status objects
-  name: discovery:status
+  name: DiscoveryStatus
 - description: Operations for discovery:vrf objects
-  name: discovery:vrf
+  name: DiscoveryVrf
 - description: Operations for vdiscoverytask objects
-  name: vdiscoverytask
+  name: Vdiscoverytask
 paths:
   /discovery:
     get:
       description: Returns a list of discovery objects matching the search criteria
+      operationId: DiscoveryList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -139,10 +140,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery objects
       tags:
-      - discovery
+      - Discovery
   /discovery/{reference}:
     get:
       description: Returns a specific discovery object by reference
+      operationId: DiscoveryRead
       parameters:
       - description: Reference of the discovery object
         explode: false
@@ -199,77 +201,12 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery object
       tags:
-      - discovery
-    put:
-      description: Updates a specific discovery object by reference
-      parameters:
-      - description: Reference of the discovery object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Discovery'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDiscoveryResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a discovery object
-      tags:
-      - discovery
+      - Discovery
   /discovery:credentialgroup:
     get:
       description: Returns a list of discovery:credentialgroup objects matching the
         search criteria
+      operationId: DiscoveryCredentialgroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -363,9 +300,10 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:credentialgroup objects
       tags:
-      - discovery:credentialgroup
+      - DiscoveryCredentialgroup
     post:
       description: Creates a new discovery:credentialgroup object
+      operationId: DiscoveryCredentialgroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -419,12 +357,13 @@ paths:
       - basicAuth: []
       summary: Create a discovery:credentialgroup object
       tags:
-      - discovery:credentialgroup
-      x-tf-resource: resource_nios_DiscoveryCredentialgroup
-      x-tf-datasource: datasource_nios_DiscoveryCredentialgroup
+      - DiscoveryCredentialgroup
+      x-tf-resource: discovery_credentialgroup
+      x-tf-datasource: discovery_credentialgroup
   /discovery:credentialgroup/{reference}:
     delete:
       description: Deletes a specific discovery:credentialgroup object by reference
+      operationId: DiscoveryCredentialgroupDelete
       parameters:
       - description: Reference of the discovery:credentialgroup object
         explode: false
@@ -449,9 +388,10 @@ paths:
       - basicAuth: []
       summary: Delete a discovery:credentialgroup object
       tags:
-      - discovery:credentialgroup
+      - DiscoveryCredentialgroup
     get:
       description: Returns a specific discovery:credentialgroup object by reference
+      operationId: DiscoveryCredentialgroupRead
       parameters:
       - description: Reference of the discovery:credentialgroup object
         explode: false
@@ -508,9 +448,10 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:credentialgroup object
       tags:
-      - discovery:credentialgroup
+      - DiscoveryCredentialgroup
     put:
       description: Updates a specific discovery:credentialgroup object by reference
+      operationId: DiscoveryCredentialgroupUpdate
       parameters:
       - description: Reference of the discovery:credentialgroup object
         explode: false
@@ -574,11 +515,12 @@ paths:
       - basicAuth: []
       summary: Update a discovery:credentialgroup object
       tags:
-      - discovery:credentialgroup
+      - DiscoveryCredentialgroup
   /discovery:device:
     get:
       description: Returns a list of discovery:device objects matching the search
         criteria
+      operationId: DiscoveryDeviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -672,10 +614,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:device objects
       tags:
-      - discovery:device
+      - DiscoveryDevice
   /discovery:device/{reference}:
     get:
       description: Returns a specific discovery:device object by reference
+      operationId: DiscoveryDeviceRead
       parameters:
       - description: Reference of the discovery:device object
         explode: false
@@ -732,9 +675,10 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:device object
       tags:
-      - discovery:device
+      - DiscoveryDevice
     put:
       description: Updates a specific discovery:device object by reference
+      operationId: DiscoveryDeviceUpdate
       parameters:
       - description: Reference of the discovery:device object
         explode: false
@@ -798,12 +742,13 @@ paths:
       - basicAuth: []
       summary: Update a discovery:device object
       tags:
-      - discovery:device
+      - DiscoveryDevice
       x-sdk-default-ext-attrs: true
   /discovery:devicecomponent:
     get:
       description: Returns a list of discovery:devicecomponent objects matching the
         search criteria
+      operationId: DiscoveryDevicecomponentList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -897,10 +842,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:devicecomponent objects
       tags:
-      - discovery:devicecomponent
+      - DiscoveryDevicecomponent
   /discovery:devicecomponent/{reference}:
     get:
       description: Returns a specific discovery:devicecomponent object by reference
+      operationId: DiscoveryDevicecomponentRead
       parameters:
       - description: Reference of the discovery:devicecomponent object
         explode: false
@@ -957,11 +903,12 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:devicecomponent object
       tags:
-      - discovery:devicecomponent
+      - DiscoveryDevicecomponent
   /discovery:deviceinterface:
     get:
       description: Returns a list of discovery:deviceinterface objects matching the
         search criteria
+      operationId: DiscoveryDeviceinterfaceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1055,10 +1002,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:deviceinterface objects
       tags:
-      - discovery:deviceinterface
+      - DiscoveryDeviceinterface
   /discovery:deviceinterface/{reference}:
     get:
       description: Returns a specific discovery:deviceinterface object by reference
+      operationId: DiscoveryDeviceinterfaceRead
       parameters:
       - description: Reference of the discovery:deviceinterface object
         explode: false
@@ -1115,9 +1063,10 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:deviceinterface object
       tags:
-      - discovery:deviceinterface
+      - DiscoveryDeviceinterface
     put:
       description: Updates a specific discovery:deviceinterface object by reference
+      operationId: DiscoveryDeviceinterfaceUpdate
       parameters:
       - description: Reference of the discovery:deviceinterface object
         explode: false
@@ -1181,12 +1130,13 @@ paths:
       - basicAuth: []
       summary: Update a discovery:deviceinterface object
       tags:
-      - discovery:deviceinterface
+      - DiscoveryDeviceinterface
       x-sdk-default-ext-attrs: true
   /discovery:deviceneighbor:
     get:
       description: Returns a list of discovery:deviceneighbor objects matching the
         search criteria
+      operationId: DiscoveryDeviceneighborList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1280,10 +1230,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:deviceneighbor objects
       tags:
-      - discovery:deviceneighbor
+      - DiscoveryDeviceneighbor
   /discovery:deviceneighbor/{reference}:
     get:
       description: Returns a specific discovery:deviceneighbor object by reference
+      operationId: DiscoveryDeviceneighborRead
       parameters:
       - description: Reference of the discovery:deviceneighbor object
         explode: false
@@ -1340,11 +1291,12 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:deviceneighbor object
       tags:
-      - discovery:deviceneighbor
+      - DiscoveryDeviceneighbor
   /discovery:devicesupportbundle:
     get:
       description: Returns a list of discovery:devicesupportbundle objects matching
         the search criteria
+      operationId: DiscoveryDevicesupportbundleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1438,10 +1390,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:devicesupportbundle objects
       tags:
-      - discovery:devicesupportbundle
+      - DiscoveryDevicesupportbundle
   /discovery:devicesupportbundle/{reference}:
     delete:
       description: Deletes a specific discovery:devicesupportbundle object by reference
+      operationId: DiscoveryDevicesupportbundleDelete
       parameters:
       - description: Reference of the discovery:devicesupportbundle object
         explode: false
@@ -1466,9 +1419,10 @@ paths:
       - basicAuth: []
       summary: Delete a discovery:devicesupportbundle object
       tags:
-      - discovery:devicesupportbundle
+      - DiscoveryDevicesupportbundle
     get:
       description: Returns a specific discovery:devicesupportbundle object by reference
+      operationId: DiscoveryDevicesupportbundleRead
       parameters:
       - description: Reference of the discovery:devicesupportbundle object
         explode: false
@@ -1525,11 +1479,12 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:devicesupportbundle object
       tags:
-      - discovery:devicesupportbundle
+      - DiscoveryDevicesupportbundle
   /discovery:diagnostictask:
     get:
       description: Returns a list of discovery:diagnostictask objects matching the
         search criteria
+      operationId: DiscoveryDiagnostictaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1623,10 +1578,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:diagnostictask objects
       tags:
-      - discovery:diagnostictask
+      - DiscoveryDiagnostictask
   /discovery:diagnostictask/{reference}:
     get:
       description: Returns a specific discovery:diagnostictask object by reference
+      operationId: DiscoveryDiagnostictaskRead
       parameters:
       - description: Reference of the discovery:diagnostictask object
         explode: false
@@ -1683,9 +1639,10 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:diagnostictask object
       tags:
-      - discovery:diagnostictask
+      - DiscoveryDiagnostictask
     put:
       description: Updates a specific discovery:diagnostictask object by reference
+      operationId: DiscoveryDiagnostictaskUpdate
       parameters:
       - description: Reference of the discovery:diagnostictask object
         explode: false
@@ -1749,11 +1706,12 @@ paths:
       - basicAuth: []
       summary: Update a discovery:diagnostictask object
       tags:
-      - discovery:diagnostictask
+      - DiscoveryDiagnostictask
   /discovery:gridproperties:
     get:
       description: Returns a list of discovery:gridproperties objects matching the
         search criteria
+      operationId: DiscoveryGridpropertiesList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1847,10 +1805,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:gridproperties objects
       tags:
-      - discovery:gridproperties
+      - DiscoveryGridproperties
   /discovery:gridproperties/{reference}:
     get:
       description: Returns a specific discovery:gridproperties object by reference
+      operationId: DiscoveryGridpropertiesRead
       parameters:
       - description: Reference of the discovery:gridproperties object
         explode: false
@@ -1907,9 +1866,10 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:gridproperties object
       tags:
-      - discovery:gridproperties
+      - DiscoveryGridproperties
     put:
       description: Updates a specific discovery:gridproperties object by reference
+      operationId: DiscoveryGridpropertiesUpdate
       parameters:
       - description: Reference of the discovery:gridproperties object
         explode: false
@@ -1973,11 +1933,12 @@ paths:
       - basicAuth: []
       summary: Update a discovery:gridproperties object
       tags:
-      - discovery:gridproperties
+      - DiscoveryGridproperties
   /discovery:memberproperties:
     get:
       description: Returns a list of discovery:memberproperties objects matching the
         search criteria
+      operationId: DiscoveryMemberpropertiesList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2071,10 +2032,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:memberproperties objects
       tags:
-      - discovery:memberproperties
+      - DiscoveryMemberproperties
   /discovery:memberproperties/{reference}:
     get:
       description: Returns a specific discovery:memberproperties object by reference
+      operationId: DiscoveryMemberpropertiesRead
       parameters:
       - description: Reference of the discovery:memberproperties object
         explode: false
@@ -2131,9 +2093,10 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:memberproperties object
       tags:
-      - discovery:memberproperties
+      - DiscoveryMemberproperties
     put:
       description: Updates a specific discovery:memberproperties object by reference
+      operationId: DiscoveryMemberpropertiesUpdate
       parameters:
       - description: Reference of the discovery:memberproperties object
         explode: false
@@ -2197,11 +2160,12 @@ paths:
       - basicAuth: []
       summary: Update a discovery:memberproperties object
       tags:
-      - discovery:memberproperties
+      - DiscoveryMemberproperties
   /discovery:sdnnetwork:
     get:
       description: Returns a list of discovery:sdnnetwork objects matching the search
         criteria
+      operationId: DiscoverySdnnetworkList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2295,10 +2259,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:sdnnetwork objects
       tags:
-      - discovery:sdnnetwork
+      - DiscoverySdnnetwork
   /discovery:sdnnetwork/{reference}:
     get:
       description: Returns a specific discovery:sdnnetwork object by reference
+      operationId: DiscoverySdnnetworkRead
       parameters:
       - description: Reference of the discovery:sdnnetwork object
         explode: false
@@ -2355,11 +2320,12 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:sdnnetwork object
       tags:
-      - discovery:sdnnetwork
+      - DiscoverySdnnetwork
   /discovery:status:
     get:
       description: Returns a list of discovery:status objects matching the search
         criteria
+      operationId: DiscoveryStatusList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2453,10 +2419,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:status objects
       tags:
-      - discovery:status
+      - DiscoveryStatus
   /discovery:status/{reference}:
     get:
       description: Returns a specific discovery:status object by reference
+      operationId: DiscoveryStatusRead
       parameters:
       - description: Reference of the discovery:status object
         explode: false
@@ -2513,10 +2480,11 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:status object
       tags:
-      - discovery:status
+      - DiscoveryStatus
   /discovery:vrf:
     get:
       description: Returns a list of discovery:vrf objects matching the search criteria
+      operationId: DiscoveryVrfList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2610,10 +2578,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discovery:vrf objects
       tags:
-      - discovery:vrf
+      - DiscoveryVrf
   /discovery:vrf/{reference}:
     get:
       description: Returns a specific discovery:vrf object by reference
+      operationId: DiscoveryVrfRead
       parameters:
       - description: Reference of the discovery:vrf object
         explode: false
@@ -2670,10 +2639,11 @@ paths:
       - basicAuth: []
       summary: Get a specific discovery:vrf object
       tags:
-      - discovery:vrf
+      - DiscoveryVrf
   /vdiscoverytask:
     get:
       description: Returns a list of vdiscoverytask objects matching the search criteria
+      operationId: VdiscoverytaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2767,9 +2737,10 @@ paths:
       - basicAuth: []
       summary: Retrieve vdiscoverytask objects
       tags:
-      - vdiscoverytask
+      - Vdiscoverytask
     post:
       description: Creates a new vdiscoverytask object
+      operationId: VdiscoverytaskCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2823,12 +2794,13 @@ paths:
       - basicAuth: []
       summary: Create a vdiscoverytask object
       tags:
-      - vdiscoverytask
-      x-tf-resource: resource_nios_Vdiscoverytask
-      x-tf-datasource: datasource_nios_Vdiscoverytask
+      - Vdiscoverytask
+      x-tf-resource: discovery_vdiscoverytask
+      x-tf-datasource: discovery_vdiscoverytask
   /vdiscoverytask/{reference}:
     delete:
       description: Deletes a specific vdiscoverytask object by reference
+      operationId: VdiscoverytaskDelete
       parameters:
       - description: Reference of the vdiscoverytask object
         explode: false
@@ -2853,9 +2825,10 @@ paths:
       - basicAuth: []
       summary: Delete a vdiscoverytask object
       tags:
-      - vdiscoverytask
+      - Vdiscoverytask
     get:
       description: Returns a specific vdiscoverytask object by reference
+      operationId: VdiscoverytaskRead
       parameters:
       - description: Reference of the vdiscoverytask object
         explode: false
@@ -2912,9 +2885,10 @@ paths:
       - basicAuth: []
       summary: Get a specific vdiscoverytask object
       tags:
-      - vdiscoverytask
+      - Vdiscoverytask
     put:
       description: Updates a specific vdiscoverytask object by reference
+      operationId: VdiscoverytaskUpdate
       parameters:
       - description: Reference of the vdiscoverytask object
         explode: false
@@ -2978,7 +2952,7 @@ paths:
       - basicAuth: []
       summary: Update a vdiscoverytask object
       tags:
-      - vdiscoverytask
+      - Vdiscoverytask
 components:
   parameters:
     ReturnFields:
@@ -3150,99 +3124,21 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
     Discovery:
       additionalProperties: false
       example:
-        modify_vrf_assignment: "{}"
-        clear_network_port_assignment: "{}"
-        get_device_support_info: "{}"
-        discovery_data_conversion: "{}"
-        import_device_support_bundle: "{}"
         _ref: _ref
-        modify_sdn_assignment: "{}"
-        get_job_process_details: "{}"
-        get_job_devices: "{}"
-        provision_network_port: "{}"
-        control_switch_port: "{}"
-        provision_network_dhcp_relay: "{}"
       properties:
         _ref:
           description: The reference to the object.
           type: string
-        clear_network_port_assignment:
-          properties: {}
-          type: object
-        control_switch_port:
-          properties: {}
-          type: object
-        discovery_data_conversion:
-          properties: {}
-          type: object
-        get_device_support_info:
-          properties: {}
-          type: object
-        get_job_devices:
-          properties: {}
-          type: object
-        get_job_process_details:
-          properties: {}
-          type: object
-        import_device_support_bundle:
-          properties: {}
-          type: object
-        modify_sdn_assignment:
-          properties: {}
-          type: object
-        modify_vrf_assignment:
-          properties: {}
-          type: object
-        provision_network_dhcp_relay:
-          properties: {}
-          type: object
-        provision_network_port:
-          properties: {}
-          type: object
-      type: object
-    DiscoveryClearNetworkPortAssignment:
-      properties: {}
-      type: object
-    DiscoveryControlSwitchPort:
-      properties: {}
-      type: object
-    DiscoveryDiscoveryDataConversion:
-      properties: {}
-      type: object
-    DiscoveryGetDeviceSupportInfo:
-      properties: {}
-      type: object
-    DiscoveryGetJobDevices:
-      properties: {}
-      type: object
-    DiscoveryGetJobProcessDetails:
-      properties: {}
-      type: object
-    DiscoveryImportDeviceSupportBundle:
-      properties: {}
-      type: object
-    DiscoveryModifySdnAssignment:
-      properties: {}
-      type: object
-    DiscoveryModifyVrfAssignment:
-      properties: {}
-      type: object
-    DiscoveryProvisionNetworkDhcpRelay:
-      properties: {}
-      type: object
-    DiscoveryProvisionNetworkPort:
-      properties: {}
       type: object
     ListDiscoveryResponse:
       oneOf:
@@ -3252,12 +3148,6 @@ components:
         title: ListDiscoveryResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryResponseObject'
-    CreateDiscoveryResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryResponseAsObject'
-      - description: The response format to create __Discovery__.
-        title: CreateDiscoveryResponse
-        type: string
     GetDiscoveryResponse:
       oneOf:
       - $ref: '#/components/schemas/Discovery'
@@ -3319,16 +3209,16 @@ components:
         cap_description_ind: false
         cap_net_vlan_provisioning_na_reason: Example cap_net_vlan_provisioning_na_reason
         networks:
-        - "{}"
-        - "{}"
+        - network
+        - network
         type: Example type
         network: Example network
         cap_vlan_assignment_ind: false
         cap_voice_vlan_ind: false
         cap_admin_status_na_reason: Example cap_admin_status_na_reason
         neighbors:
-        - "{}"
-        - "{}"
+        - discovery:deviceneighbor
+        - discovery:deviceneighbor
         vendor: Example vendor
         network_infos:
         - network_str: Example network_str
@@ -3342,12 +3232,12 @@ components:
         - available_mgmt_ips
         cap_net_deprovisioning_na_reason: Example cap_net_deprovisioning_na_reason
         interfaces:
-        - "{}"
-        - "{}"
+        - discovery:deviceinterface
+        - discovery:deviceinterface
         address: Example address
         extattrs:
           key:
-            value: value
+            value: ""
         address_ref: Example address_ref
         cap_admin_status_ind: false
         os_version: Example os_version
@@ -3494,7 +3384,7 @@ components:
           items:
             enum:
             - discovery:deviceinterface
-            type: object
+            type: string
           readOnly: true
           type: array
         location:
@@ -3521,7 +3411,7 @@ components:
           items:
             enum:
             - discovery:deviceneighbor
-            type: object
+            type: string
           readOnly: true
           type: array
         network:
@@ -3550,7 +3440,7 @@ components:
           items:
             enum:
             - network
-            type: object
+            type: string
           readOnly: true
           type: array
         os_version:
@@ -3673,12 +3563,6 @@ components:
         title: ListDiscoveryDeviceResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryDeviceResponseObject'
-    CreateDiscoveryDeviceResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryDeviceResponseAsObject'
-      - description: The response format to create __DiscoveryDevice__.
-        title: CreateDiscoveryDeviceResponse
-        type: string
     GetDiscoveryDeviceResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryDevice'
@@ -3743,12 +3627,6 @@ components:
         title: ListDiscoveryDevicecomponentResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryDevicecomponentResponseObject'
-    CreateDiscoveryDevicecomponentResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryDevicecomponentResponseAsObject'
-      - description: The response format to create __DiscoveryDevicecomponent__.
-        title: CreateDiscoveryDevicecomponentResponse
-        type: string
     GetDiscoveryDevicecomponentResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryDevicecomponent'
@@ -3791,7 +3669,7 @@ components:
         cap_if_vlan_assignment_na_reason: Example cap_if_vlan_assignment_na_reason
         extattrs:
           key:
-            value: value
+            value: ""
         cap_if_voice_vlan_ind: false
         last_change: 1
         cap_if_description_ind: false
@@ -3982,6 +3860,7 @@ components:
         index:
           description: "The interface index number, as reported by SNMP."
           example: 1
+          format: int64
           readOnly: true
           type: integer
         last_change:
@@ -4323,12 +4202,6 @@ components:
         title: ListDiscoveryDeviceinterfaceResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryDeviceinterfaceResponseObject'
-    CreateDiscoveryDeviceinterfaceResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryDeviceinterfaceResponseAsObject'
-      - description: The response format to create __DiscoveryDeviceinterface__.
-        title: CreateDiscoveryDeviceinterfaceResponse
-        type: string
     GetDiscoveryDeviceinterfaceResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryDeviceinterface'
@@ -4420,12 +4293,6 @@ components:
         title: ListDiscoveryDeviceneighborResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryDeviceneighborResponseObject'
-    CreateDiscoveryDeviceneighborResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryDeviceneighborResponseAsObject'
-      - description: The response format to create __DiscoveryDeviceneighbor__.
-        title: CreateDiscoveryDeviceneighborResponse
-        type: string
     GetDiscoveryDeviceneighborResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryDeviceneighbor'
@@ -4479,12 +4346,6 @@ components:
         title: ListDiscoveryDevicesupportbundleResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryDevicesupportbundleResponseObject'
-    CreateDiscoveryDevicesupportbundleResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryDevicesupportbundleResponseAsObject'
-      - description: The response format to create __DiscoveryDevicesupportbundle__.
-        title: CreateDiscoveryDevicesupportbundleResponse
-        type: string
     GetDiscoveryDevicesupportbundleResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryDevicesupportbundle'
@@ -4549,12 +4410,6 @@ components:
         title: ListDiscoveryDiagnostictaskResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryDiagnostictaskResponseObject'
-    CreateDiscoveryDiagnostictaskResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryDiagnostictaskResponseAsObject'
-      - description: The response format to create __DiscoveryDiagnostictask__.
-        title: CreateDiscoveryDiagnostictaskResponse
-        type: string
     GetDiscoveryDiagnostictaskResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryDiagnostictask'
@@ -4598,7 +4453,6 @@ components:
           port_scanning: false
           auto_arp_refresh_before_switch_port_polling: false
         enable_advisor: false
-        diagnostic_status: "{}"
         advisor_settings:
           proxy_port: 1
           last_run_now_status: Example last_run_now_status
@@ -4623,7 +4477,6 @@ components:
           last_exec_details: Example last_exec_details
           execution_hour: 1
           username: Example username
-        advisor_test_connection: "{}"
         dns_lookup_throttle: 1
         ports:
         - port: 1
@@ -4665,7 +4518,6 @@ components:
           format: Example format
           comment: Example comment
           type: Example type
-        diagnostic: "{}"
         enable_auto_updates: false
         ignore_conflict_duration: 1
         unmanaged_ips_timeout: 1
@@ -4712,7 +4564,6 @@ components:
         same_port_control_discovery_blackout: false
         grid_name: Example grid_name
         enable_auto_conversion: false
-        advisor_run_now: "{}"
         basic_sdn_polling_settings:
           sdn_discovery: false
           end_host_polling_interval: 1
@@ -4787,14 +4638,8 @@ components:
           $ref: '#/components/schemas/DiscoveryGridpropertiesAdvancedPollingSettings'
         advanced_sdn_polling_settings:
           $ref: '#/components/schemas/DiscoveryGridpropertiesAdvancedSdnPollingSettings'
-        advisor_run_now:
-          properties: {}
-          type: object
         advisor_settings:
           $ref: '#/components/schemas/DiscoveryGridpropertiesAdvisorSettings'
-        advisor_test_connection:
-          properties: {}
-          type: object
         auto_conversion_settings:
           description: Automatic conversion settings.
           enum:
@@ -4820,12 +4665,6 @@ components:
           items:
             $ref: '#/components/schemas/DiscoveryGridpropertiesDeviceHints'
           type: array
-        diagnostic:
-          properties: {}
-          type: object
-        diagnostic_status:
-          properties: {}
-          type: object
         discovery_blackout_setting:
           $ref: '#/components/schemas/DiscoveryGridpropertiesDiscoveryBlackoutSetting'
         dns_lookup_option:
@@ -5038,9 +4877,6 @@ components:
           example: false
           type: boolean
       type: object
-    DiscoveryGridpropertiesAdvisorRunNow:
-      properties: {}
-      type: object
     DiscoveryGridpropertiesAdvisorSettings:
       example:
         proxy_port: 1
@@ -5190,9 +5026,6 @@ components:
           example: Example last_run_now_details
           readOnly: true
           type: string
-      type: object
-    DiscoveryGridpropertiesAdvisorTestConnection:
-      properties: {}
       type: object
     DiscoveryGridpropertiesAutoConversionSettings:
       example:
@@ -5630,12 +5463,6 @@ components:
           example: Example comment
           type: string
       type: object
-    DiscoveryGridpropertiesDiagnostic:
-      properties: {}
-      type: object
-    DiscoveryGridpropertiesDiagnosticStatus:
-      properties: {}
-      type: object
     DiscoveryGridpropertiesDiscoveryBlackoutSetting:
       example:
         enable_blackout: false
@@ -6030,12 +5857,6 @@ components:
         title: ListDiscoveryGridpropertiesResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryGridpropertiesResponseObject'
-    CreateDiscoveryGridpropertiesResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryGridpropertiesResponseAsObject'
-      - description: The response format to create __DiscoveryGridproperties__.
-        title: CreateDiscoveryGridpropertiesResponse
-        type: string
     GetDiscoveryGridpropertiesResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryGridproperties'
@@ -6567,12 +6388,6 @@ components:
         title: ListDiscoveryMemberpropertiesResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryMemberpropertiesResponseObject'
-    CreateDiscoveryMemberpropertiesResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryMemberpropertiesResponseAsObject'
-      - description: The response format to create __DiscoveryMemberproperties__.
-        title: CreateDiscoveryMemberpropertiesResponse
-        type: string
     GetDiscoveryMemberpropertiesResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryMemberproperties'
@@ -6625,12 +6440,6 @@ components:
         title: ListDiscoverySdnnetworkResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoverySdnnetworkResponseObject'
-    CreateDiscoverySdnnetworkResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoverySdnnetworkResponseAsObject'
-      - description: The response format to create __DiscoverySdnnetwork__.
-        title: CreateDiscoverySdnnetworkResponse
-        type: string
     GetDiscoverySdnnetworkResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoverySdnnetwork'
@@ -6974,12 +6783,6 @@ components:
         title: ListDiscoveryStatusResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryStatusResponseObject'
-    CreateDiscoveryStatusResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryStatusResponseAsObject'
-      - description: The response format to create __DiscoveryStatus__.
-        title: CreateDiscoveryStatusResponse
-        type: string
     GetDiscoveryStatusResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryStatus'
@@ -7037,12 +6840,6 @@ components:
         title: ListDiscoveryVrfResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoveryVrfResponseObject'
-    CreateDiscoveryVrfResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoveryVrfResponseAsObject'
-      - description: The response format to create __DiscoveryVrf__.
-        title: CreateDiscoveryVrfResponse
-        type: string
     GetDiscoveryVrfResponse:
       oneOf:
       - $ref: '#/components/schemas/DiscoveryVrf'
@@ -7056,34 +6853,6 @@ components:
     Vdiscoverytask:
       additionalProperties: false
       example:
-        auto_consolidate_managed_tenant: false
-        identity_version: Example identity_version
-        public_network_view_mapping_policy: Example public_network_view_mapping_policy
-        fqdn_or_ip: Example fqdn_or_ip
-        domain_name: Example domain_name
-        password: Example password
-        protocol: Example protocol
-        sync_child_accounts: false
-        state: Example state
-        vdiscovery_control: "{}"
-        service_account_file: Example service_account_file
-        network_filter: Example network_filter
-        update_metadata: false
-        service_account_file_token: Example service_account_file_token
-        allow_unsecured_connection: false
-        govcloud_enabled: false
-        private_network_view: Example private_network_view
-        public_network_view: Example public_network_view
-        cdiscovery_file_token: Example cdiscovery_file_token
-        dns_view_public_ip: Example dns_view_public_ip
-        role_arn: Example role_arn
-        port: 1
-        name: Example name
-        multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-        private_network_view_mapping_policy: Example private_network_view_mapping_policy
-        dns_view_private_ip: Example dns_view_private_ip
-        merge_data: false
-        credentials_type: Example credentials_type
         use_identity: false
         driver_type: Example driver_type
         update_dns_view_private_ip: false
@@ -7102,24 +6871,51 @@ components:
           day_of_month: 1
           hour_of_day: 1
           frequency: Example frequency
+        auto_consolidate_managed_tenant: false
         enable_filter: false
         enabled: false
         auto_create_dns_record: false
         auto_create_dns_record_type: Example auto_create_dns_record_type
+        identity_version: Example identity_version
+        public_network_view_mapping_policy: Example public_network_view_mapping_policy
+        fqdn_or_ip: Example fqdn_or_ip
+        domain_name: Example domain_name
+        password: Example password
+        protocol: Example protocol
         update_dns_view_public_ip: false
+        sync_child_accounts: false
         auto_consolidate_cloud_ea: false
         member: Example member
+        state: Example state
         network_list:
         - network_list
         - network_list
+        service_account_file: Example service_account_file
+        network_filter: Example network_filter
+        update_metadata: false
         state_msg: Example state_msg
+        service_account_file_token: Example service_account_file_token
+        allow_unsecured_connection: false
+        govcloud_enabled: false
         last_run: 1
+        private_network_view: Example private_network_view
+        public_network_view: Example public_network_view
+        cdiscovery_file_token: Example cdiscovery_file_token
         accounts_list: Example accounts_list
+        dns_view_public_ip: Example dns_view_public_ip
         auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
+        role_arn: Example role_arn
         selected_regions: Example selected_regions
+        port: 1
         _ref: _ref
+        name: Example name
         comment: Example comment
+        multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+        private_network_view_mapping_policy: Example private_network_view_mapping_policy
         auto_consolidate_managed_vm: false
+        dns_view_private_ip: Example dns_view_private_ip
+        merge_data: false
+        credentials_type: Example credentials_type
         username: Example username
       properties:
         _ref:
@@ -7376,9 +7172,6 @@ components:
           description: Username used for connecting to the cloud management platform.
           example: Example username
           type: string
-        vdiscovery_control:
-          properties: {}
-          type: object
       type: object
     VdiscoverytaskScheduledRun:
       example:
@@ -7480,9 +7273,6 @@ components:
           example: false
           type: boolean
       type: object
-    VdiscoverytaskVdiscoveryControl:
-      properties: {}
-      type: object
     ListVdiscoverytaskResponse:
       oneOf:
       - description: The response format to retrieve __Vdiscoverytask__ objects.
@@ -7516,13 +7306,6 @@ components:
           type: array
       title: ListDiscoveryResponseObject
       type: object
-    CreateDiscoveryResponseAsObject:
-      description: The response format to create __Discovery__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Discovery'
-      title: CreateDiscoveryResponseAsObject
-      type: object
     GetDiscoveryResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __Discovery__ objects.
@@ -7533,20 +7316,6 @@ components:
       type: object
     UpdateDiscoveryResponseAsObject:
       description: The response format to update __Discovery__ in object format.
-      example:
-        result:
-          modify_vrf_assignment: "{}"
-          clear_network_port_assignment: "{}"
-          get_device_support_info: "{}"
-          discovery_data_conversion: "{}"
-          import_device_support_bundle: "{}"
-          _ref: _ref
-          modify_sdn_assignment: "{}"
-          get_job_process_details: "{}"
-          get_job_devices: "{}"
-          provision_network_port: "{}"
-          control_switch_port: "{}"
-          provision_network_dhcp_relay: "{}"
       properties:
         result:
           $ref: '#/components/schemas/Discovery'
@@ -7602,13 +7371,6 @@ components:
           type: array
       title: ListDiscoveryDeviceResponseObject
       type: object
-    CreateDiscoveryDeviceResponseAsObject:
-      description: The response format to create __DiscoveryDevice__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryDevice'
-      title: CreateDiscoveryDeviceResponseAsObject
-      type: object
     GetDiscoveryDeviceResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __DiscoveryDevice__ objects.
@@ -7630,16 +7392,16 @@ components:
           cap_description_ind: false
           cap_net_vlan_provisioning_na_reason: Example cap_net_vlan_provisioning_na_reason
           networks:
-          - "{}"
-          - "{}"
+          - network
+          - network
           type: Example type
           network: Example network
           cap_vlan_assignment_ind: false
           cap_voice_vlan_ind: false
           cap_admin_status_na_reason: Example cap_admin_status_na_reason
           neighbors:
-          - "{}"
-          - "{}"
+          - discovery:deviceneighbor
+          - discovery:deviceneighbor
           vendor: Example vendor
           network_infos:
           - network_str: Example network_str
@@ -7653,12 +7415,12 @@ components:
           - available_mgmt_ips
           cap_net_deprovisioning_na_reason: Example cap_net_deprovisioning_na_reason
           interfaces:
-          - "{}"
-          - "{}"
+          - discovery:deviceinterface
+          - discovery:deviceinterface
           address: Example address
           extattrs:
             key:
-              value: value
+              value: ""
           address_ref: Example address_ref
           cap_admin_status_ind: false
           os_version: Example os_version
@@ -7696,14 +7458,6 @@ components:
           type: array
       title: ListDiscoveryDevicecomponentResponseObject
       type: object
-    CreateDiscoveryDevicecomponentResponseAsObject:
-      description: The response format to create __DiscoveryDevicecomponent__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryDevicecomponent'
-      title: CreateDiscoveryDevicecomponentResponseAsObject
-      type: object
     GetDiscoveryDevicecomponentResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __DiscoveryDevicecomponent__ objects.
@@ -7728,14 +7482,6 @@ components:
             $ref: '#/components/schemas/DiscoveryDeviceinterface'
           type: array
       title: ListDiscoveryDeviceinterfaceResponseObject
-      type: object
-    CreateDiscoveryDeviceinterfaceResponseAsObject:
-      description: The response format to create __DiscoveryDeviceinterface__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryDeviceinterface'
-      title: CreateDiscoveryDeviceinterfaceResponseAsObject
       type: object
     GetDiscoveryDeviceinterfaceResponseObjectAsResult:
       additionalProperties: false
@@ -7779,7 +7525,7 @@ components:
           cap_if_vlan_assignment_na_reason: Example cap_if_vlan_assignment_na_reason
           extattrs:
             key:
-              value: value
+              value: ""
           cap_if_voice_vlan_ind: false
           last_change: 1
           cap_if_description_ind: false
@@ -7843,14 +7589,6 @@ components:
           type: array
       title: ListDiscoveryDeviceneighborResponseObject
       type: object
-    CreateDiscoveryDeviceneighborResponseAsObject:
-      description: The response format to create __DiscoveryDeviceneighbor__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryDeviceneighbor'
-      title: CreateDiscoveryDeviceneighborResponseAsObject
-      type: object
     GetDiscoveryDeviceneighborResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __DiscoveryDeviceneighbor__ objects.
@@ -7877,14 +7615,6 @@ components:
           type: array
       title: ListDiscoveryDevicesupportbundleResponseObject
       type: object
-    CreateDiscoveryDevicesupportbundleResponseAsObject:
-      description: The response format to create __DiscoveryDevicesupportbundle__
-        in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryDevicesupportbundle'
-      title: CreateDiscoveryDevicesupportbundleResponseAsObject
-      type: object
     GetDiscoveryDevicesupportbundleResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __DiscoveryDevicesupportbundle__
@@ -7910,14 +7640,6 @@ components:
             $ref: '#/components/schemas/DiscoveryDiagnostictask'
           type: array
       title: ListDiscoveryDiagnostictaskResponseObject
-      type: object
-    CreateDiscoveryDiagnostictaskResponseAsObject:
-      description: The response format to create __DiscoveryDiagnostictask__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryDiagnostictask'
-      title: CreateDiscoveryDiagnostictaskResponseAsObject
       type: object
     GetDiscoveryDiagnostictaskResponseObjectAsResult:
       additionalProperties: false
@@ -7953,14 +7675,6 @@ components:
             $ref: '#/components/schemas/DiscoveryGridproperties'
           type: array
       title: ListDiscoveryGridpropertiesResponseObject
-      type: object
-    CreateDiscoveryGridpropertiesResponseAsObject:
-      description: The response format to create __DiscoveryGridproperties__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryGridproperties'
-      title: CreateDiscoveryGridpropertiesResponseAsObject
       type: object
     GetDiscoveryGridpropertiesResponseObjectAsResult:
       additionalProperties: false
@@ -8005,7 +7719,6 @@ components:
             port_scanning: false
             auto_arp_refresh_before_switch_port_polling: false
           enable_advisor: false
-          diagnostic_status: "{}"
           advisor_settings:
             proxy_port: 1
             last_run_now_status: Example last_run_now_status
@@ -8030,7 +7743,6 @@ components:
             last_exec_details: Example last_exec_details
             execution_hour: 1
             username: Example username
-          advisor_test_connection: "{}"
           dns_lookup_throttle: 1
           ports:
           - port: 1
@@ -8072,7 +7784,6 @@ components:
             format: Example format
             comment: Example comment
             type: Example type
-          diagnostic: "{}"
           enable_auto_updates: false
           ignore_conflict_duration: 1
           unmanaged_ips_timeout: 1
@@ -8119,7 +7830,6 @@ components:
           same_port_control_discovery_blackout: false
           grid_name: Example grid_name
           enable_auto_conversion: false
-          advisor_run_now: "{}"
           basic_sdn_polling_settings:
             sdn_discovery: false
             end_host_polling_interval: 1
@@ -8199,14 +7909,6 @@ components:
             $ref: '#/components/schemas/DiscoveryMemberproperties'
           type: array
       title: ListDiscoveryMemberpropertiesResponseObject
-      type: object
-    CreateDiscoveryMemberpropertiesResponseAsObject:
-      description: The response format to create __DiscoveryMemberproperties__ in
-        object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryMemberproperties'
-      title: CreateDiscoveryMemberpropertiesResponseAsObject
       type: object
     GetDiscoveryMemberpropertiesResponseObjectAsResult:
       additionalProperties: false
@@ -8340,14 +8042,6 @@ components:
           type: array
       title: ListDiscoverySdnnetworkResponseObject
       type: object
-    CreateDiscoverySdnnetworkResponseAsObject:
-      description: The response format to create __DiscoverySdnnetwork__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoverySdnnetwork'
-      title: CreateDiscoverySdnnetworkResponseAsObject
-      type: object
     GetDiscoverySdnnetworkResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __DiscoverySdnnetwork__ objects.
@@ -8373,13 +8067,6 @@ components:
           type: array
       title: ListDiscoveryStatusResponseObject
       type: object
-    CreateDiscoveryStatusResponseAsObject:
-      description: The response format to create __DiscoveryStatus__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryStatus'
-      title: CreateDiscoveryStatusResponseAsObject
-      type: object
     GetDiscoveryStatusResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __DiscoveryStatus__ objects.
@@ -8403,13 +8090,6 @@ components:
             $ref: '#/components/schemas/DiscoveryVrf'
           type: array
       title: ListDiscoveryVrfResponseObject
-      type: object
-    CreateDiscoveryVrfResponseAsObject:
-      description: The response format to create __DiscoveryVrf__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/DiscoveryVrf'
-      title: CreateDiscoveryVrfResponseAsObject
       type: object
     GetDiscoveryVrfResponseObjectAsResult:
       additionalProperties: false
@@ -8439,34 +8119,6 @@ components:
       description: The response format to create __Vdiscoverytask__ in object format.
       example:
         result:
-          auto_consolidate_managed_tenant: false
-          identity_version: Example identity_version
-          public_network_view_mapping_policy: Example public_network_view_mapping_policy
-          fqdn_or_ip: Example fqdn_or_ip
-          domain_name: Example domain_name
-          password: Example password
-          protocol: Example protocol
-          sync_child_accounts: false
-          state: Example state
-          vdiscovery_control: "{}"
-          service_account_file: Example service_account_file
-          network_filter: Example network_filter
-          update_metadata: false
-          service_account_file_token: Example service_account_file_token
-          allow_unsecured_connection: false
-          govcloud_enabled: false
-          private_network_view: Example private_network_view
-          public_network_view: Example public_network_view
-          cdiscovery_file_token: Example cdiscovery_file_token
-          dns_view_public_ip: Example dns_view_public_ip
-          role_arn: Example role_arn
-          port: 1
-          name: Example name
-          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-          private_network_view_mapping_policy: Example private_network_view_mapping_policy
-          dns_view_private_ip: Example dns_view_private_ip
-          merge_data: false
-          credentials_type: Example credentials_type
           use_identity: false
           driver_type: Example driver_type
           update_dns_view_private_ip: false
@@ -8485,24 +8137,51 @@ components:
             day_of_month: 1
             hour_of_day: 1
             frequency: Example frequency
+          auto_consolidate_managed_tenant: false
           enable_filter: false
           enabled: false
           auto_create_dns_record: false
           auto_create_dns_record_type: Example auto_create_dns_record_type
+          identity_version: Example identity_version
+          public_network_view_mapping_policy: Example public_network_view_mapping_policy
+          fqdn_or_ip: Example fqdn_or_ip
+          domain_name: Example domain_name
+          password: Example password
+          protocol: Example protocol
           update_dns_view_public_ip: false
+          sync_child_accounts: false
           auto_consolidate_cloud_ea: false
           member: Example member
+          state: Example state
           network_list:
           - network_list
           - network_list
+          service_account_file: Example service_account_file
+          network_filter: Example network_filter
+          update_metadata: false
           state_msg: Example state_msg
+          service_account_file_token: Example service_account_file_token
+          allow_unsecured_connection: false
+          govcloud_enabled: false
           last_run: 1
+          private_network_view: Example private_network_view
+          public_network_view: Example public_network_view
+          cdiscovery_file_token: Example cdiscovery_file_token
           accounts_list: Example accounts_list
+          dns_view_public_ip: Example dns_view_public_ip
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
+          role_arn: Example role_arn
           selected_regions: Example selected_regions
+          port: 1
           _ref: _ref
+          name: Example name
           comment: Example comment
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+          private_network_view_mapping_policy: Example private_network_view_mapping_policy
           auto_consolidate_managed_vm: false
+          dns_view_private_ip: Example dns_view_private_ip
+          merge_data: false
+          credentials_type: Example credentials_type
           username: Example username
       properties:
         result:
@@ -8521,34 +8200,6 @@ components:
       description: The response format to update __Vdiscoverytask__ in object format.
       example:
         result:
-          auto_consolidate_managed_tenant: false
-          identity_version: Example identity_version
-          public_network_view_mapping_policy: Example public_network_view_mapping_policy
-          fqdn_or_ip: Example fqdn_or_ip
-          domain_name: Example domain_name
-          password: Example password
-          protocol: Example protocol
-          sync_child_accounts: false
-          state: Example state
-          vdiscovery_control: "{}"
-          service_account_file: Example service_account_file
-          network_filter: Example network_filter
-          update_metadata: false
-          service_account_file_token: Example service_account_file_token
-          allow_unsecured_connection: false
-          govcloud_enabled: false
-          private_network_view: Example private_network_view
-          public_network_view: Example public_network_view
-          cdiscovery_file_token: Example cdiscovery_file_token
-          dns_view_public_ip: Example dns_view_public_ip
-          role_arn: Example role_arn
-          port: 1
-          name: Example name
-          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-          private_network_view_mapping_policy: Example private_network_view_mapping_policy
-          dns_view_private_ip: Example dns_view_private_ip
-          merge_data: false
-          credentials_type: Example credentials_type
           use_identity: false
           driver_type: Example driver_type
           update_dns_view_private_ip: false
@@ -8567,24 +8218,51 @@ components:
             day_of_month: 1
             hour_of_day: 1
             frequency: Example frequency
+          auto_consolidate_managed_tenant: false
           enable_filter: false
           enabled: false
           auto_create_dns_record: false
           auto_create_dns_record_type: Example auto_create_dns_record_type
+          identity_version: Example identity_version
+          public_network_view_mapping_policy: Example public_network_view_mapping_policy
+          fqdn_or_ip: Example fqdn_or_ip
+          domain_name: Example domain_name
+          password: Example password
+          protocol: Example protocol
           update_dns_view_public_ip: false
+          sync_child_accounts: false
           auto_consolidate_cloud_ea: false
           member: Example member
+          state: Example state
           network_list:
           - network_list
           - network_list
+          service_account_file: Example service_account_file
+          network_filter: Example network_filter
+          update_metadata: false
           state_msg: Example state_msg
+          service_account_file_token: Example service_account_file_token
+          allow_unsecured_connection: false
+          govcloud_enabled: false
           last_run: 1
+          private_network_view: Example private_network_view
+          public_network_view: Example public_network_view
+          cdiscovery_file_token: Example cdiscovery_file_token
           accounts_list: Example accounts_list
+          dns_view_public_ip: Example dns_view_public_ip
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
+          role_arn: Example role_arn
           selected_regions: Example selected_regions
+          port: 1
           _ref: _ref
+          name: Example name
           comment: Example comment
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+          private_network_view_mapping_policy: Example private_network_view_mapping_policy
           auto_consolidate_managed_vm: false
+          dns_view_private_ip: Example dns_view_private_ip
+          merge_data: false
+          credentials_type: Example credentials_type
           username: Example username
       properties:
         result:

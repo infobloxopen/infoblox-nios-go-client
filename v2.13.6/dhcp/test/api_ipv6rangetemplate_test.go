@@ -23,11 +23,11 @@ func TestIpv6rangetemplateAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test Ipv6rangetemplateAPIService Get", func(t *testing.T) {
+	t.Run("Test Ipv6rangetemplateAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6rangetemplateAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Ipv6rangetemplateAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestIpv6rangetemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6rangetemplateAPIService Post", func(t *testing.T) {
+	t.Run("Test Ipv6rangetemplateAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6rangetemplateAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.Ipv6rangetemplateAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test Ipv6rangetemplateAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Ipv6rangetemplateAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestIpv6rangetemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6rangetemplateAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test Ipv6rangetemplateAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.Ipv6rangetemplateAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test Ipv6rangetemplateAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.Ipv6rangetemplateAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6rangetemplateAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestIpv6rangetemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6rangetemplateAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test Ipv6rangetemplateAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.Ipv6rangetemplateAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6rangetemplateAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

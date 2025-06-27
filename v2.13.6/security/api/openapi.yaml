@@ -15,55 +15,52 @@ servers:
   url: /wapi/v2.13.6
 tags:
 - description: Operations for admingroup objects
-  name: admingroup
+  name: Admingroup
 - description: Operations for adminrole objects
-  name: adminrole
+  name: Adminrole
 - description: Operations for adminuser objects
-  name: adminuser
+  name: Adminuser
 - description: Operations for permission objects
-  name: permission
+  name: Permission
 - description: Operations for userprofile objects
-  name: userprofile
+  name: Userprofile
 - description: Operations for authpolicy objects
-  name: authpolicy
+  name: Authpolicy
 - description: Operations for approvalworkflow objects
-  name: approvalworkflow
+  name: Approvalworkflow
 - description: Operations for cacertificate objects
-  name: cacertificate
+  name: Cacertificate
 - description: Operations for certificate:authservice objects
-  name: certificate:authservice
+  name: CertificateAuthservice
 - description: Operations for radius:authservice objects
-  name: radius:authservice
+  name: RadiusAuthservice
 - description: Operations for tacacsplus:authservice objects
-  name: tacacsplus:authservice
+  name: TacacsplusAuthservice
 - description: Operations for ldap_auth_service objects
-  name: ldap_auth_service
+  name: LdapAuthService
 - description: Operations for saml:authservice objects
-  name: saml:authservice
+  name: SamlAuthservice
 - description: Operations for localuser:authservice objects
-  name: localuser:authservice
+  name: LocaluserAuthservice
 - description: Operations for snmpuser objects
-  name: snmpuser
+  name: Snmpuser
 - description: Operations for ftpuser objects
-  name: ftpuser
+  name: Ftpuser
 - description: Operations for networkuser objects
-  name: networkuser
-- description: Operations for threatprotection:profile objects
-  name: threatprotection:profile
-- description: Operations for threatprotection:rule objects
-  name: threatprotection:rule
-- description: Operations for threatprotection:ruleset objects
-  name: threatprotection:ruleset
-- description: Operations for threatprotection:statistics objects
-  name: threatprotection:statistics
-- description: Operations for threatinsight:allowlist objects
-  name: threatinsight:allowlist
-- description: Operations for threatinsight:cloudclient objects
-  name: threatinsight:cloudclient
+  name: Networkuser
+- description: Operations for ad_auth_service objects
+  name: AdAuthService
+- description: Operations for hsm:allgroups objects
+  name: HsmAllgroups
+- description: Operations for hsm:entrustnshieldgroup objects
+  name: HsmEntrustnshieldgroup
+- description: Operations for hsm:thaleslunagroup objects
+  name: HsmThaleslunagroup
 paths:
   /admingroup:
     get:
       description: Returns a list of admingroup objects matching the search criteria
+      operationId: AdmingroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -157,9 +154,10 @@ paths:
       - basicAuth: []
       summary: Retrieve admingroup objects
       tags:
-      - admingroup
+      - Admingroup
     post:
       description: Creates a new admingroup object
+      operationId: AdmingroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -213,13 +211,14 @@ paths:
       - basicAuth: []
       summary: Create a admingroup object
       tags:
-      - admingroup
-      x-tf-resource: resource_nios_Admingroup
-      x-tf-datasource: datasource_nios_Admingroup
+      - Admingroup
+      x-tf-resource: security_admingroup
+      x-tf-datasource: security_admingroup
       x-sdk-default-ext-attrs: true
   /admingroup/{reference}:
     delete:
       description: Deletes a specific admingroup object by reference
+      operationId: AdmingroupDelete
       parameters:
       - description: Reference of the admingroup object
         explode: false
@@ -244,9 +243,10 @@ paths:
       - basicAuth: []
       summary: Delete a admingroup object
       tags:
-      - admingroup
+      - Admingroup
     get:
       description: Returns a specific admingroup object by reference
+      operationId: AdmingroupRead
       parameters:
       - description: Reference of the admingroup object
         explode: false
@@ -303,9 +303,10 @@ paths:
       - basicAuth: []
       summary: Get a specific admingroup object
       tags:
-      - admingroup
+      - Admingroup
     put:
       description: Updates a specific admingroup object by reference
+      operationId: AdmingroupUpdate
       parameters:
       - description: Reference of the admingroup object
         explode: false
@@ -369,11 +370,12 @@ paths:
       - basicAuth: []
       summary: Update a admingroup object
       tags:
-      - admingroup
+      - Admingroup
       x-sdk-default-ext-attrs: true
   /adminrole:
     get:
       description: Returns a list of adminrole objects matching the search criteria
+      operationId: AdminroleList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -467,9 +469,10 @@ paths:
       - basicAuth: []
       summary: Retrieve adminrole objects
       tags:
-      - adminrole
+      - Adminrole
     post:
       description: Creates a new adminrole object
+      operationId: AdminroleCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -523,13 +526,14 @@ paths:
       - basicAuth: []
       summary: Create a adminrole object
       tags:
-      - adminrole
-      x-tf-resource: resource_nios_Adminrole
-      x-tf-datasource: datasource_nios_Adminrole
+      - Adminrole
+      x-tf-resource: security_adminrole
+      x-tf-datasource: security_adminrole
       x-sdk-default-ext-attrs: true
   /adminrole/{reference}:
     delete:
       description: Deletes a specific adminrole object by reference
+      operationId: AdminroleDelete
       parameters:
       - description: Reference of the adminrole object
         explode: false
@@ -554,9 +558,10 @@ paths:
       - basicAuth: []
       summary: Delete a adminrole object
       tags:
-      - adminrole
+      - Adminrole
     get:
       description: Returns a specific adminrole object by reference
+      operationId: AdminroleRead
       parameters:
       - description: Reference of the adminrole object
         explode: false
@@ -613,9 +618,10 @@ paths:
       - basicAuth: []
       summary: Get a specific adminrole object
       tags:
-      - adminrole
+      - Adminrole
     put:
       description: Updates a specific adminrole object by reference
+      operationId: AdminroleUpdate
       parameters:
       - description: Reference of the adminrole object
         explode: false
@@ -679,11 +685,12 @@ paths:
       - basicAuth: []
       summary: Update a adminrole object
       tags:
-      - adminrole
+      - Adminrole
       x-sdk-default-ext-attrs: true
   /adminuser:
     get:
       description: Returns a list of adminuser objects matching the search criteria
+      operationId: AdminuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -777,9 +784,10 @@ paths:
       - basicAuth: []
       summary: Retrieve adminuser objects
       tags:
-      - adminuser
+      - Adminuser
     post:
       description: Creates a new adminuser object
+      operationId: AdminuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -833,13 +841,14 @@ paths:
       - basicAuth: []
       summary: Create a adminuser object
       tags:
-      - adminuser
-      x-tf-resource: resource_nios_Adminuser
-      x-tf-datasource: datasource_nios_Adminuser
+      - Adminuser
+      x-tf-resource: security_adminuser
+      x-tf-datasource: security_adminuser
       x-sdk-default-ext-attrs: true
   /adminuser/{reference}:
     delete:
       description: Deletes a specific adminuser object by reference
+      operationId: AdminuserDelete
       parameters:
       - description: Reference of the adminuser object
         explode: false
@@ -864,9 +873,10 @@ paths:
       - basicAuth: []
       summary: Delete a adminuser object
       tags:
-      - adminuser
+      - Adminuser
     get:
       description: Returns a specific adminuser object by reference
+      operationId: AdminuserRead
       parameters:
       - description: Reference of the adminuser object
         explode: false
@@ -923,9 +933,10 @@ paths:
       - basicAuth: []
       summary: Get a specific adminuser object
       tags:
-      - adminuser
+      - Adminuser
     put:
       description: Updates a specific adminuser object by reference
+      operationId: AdminuserUpdate
       parameters:
       - description: Reference of the adminuser object
         explode: false
@@ -989,11 +1000,12 @@ paths:
       - basicAuth: []
       summary: Update a adminuser object
       tags:
-      - adminuser
+      - Adminuser
       x-sdk-default-ext-attrs: true
   /permission:
     get:
       description: Returns a list of permission objects matching the search criteria
+      operationId: PermissionList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1087,9 +1099,10 @@ paths:
       - basicAuth: []
       summary: Retrieve permission objects
       tags:
-      - permission
+      - Permission
     post:
       description: Creates a new permission object
+      operationId: PermissionCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1143,12 +1156,13 @@ paths:
       - basicAuth: []
       summary: Create a permission object
       tags:
-      - permission
-      x-tf-resource: resource_nios_Permission
-      x-tf-datasource: datasource_nios_Permission
+      - Permission
+      x-tf-resource: security_permission
+      x-tf-datasource: security_permission
   /permission/{reference}:
     delete:
       description: Deletes a specific permission object by reference
+      operationId: PermissionDelete
       parameters:
       - description: Reference of the permission object
         explode: false
@@ -1173,9 +1187,10 @@ paths:
       - basicAuth: []
       summary: Delete a permission object
       tags:
-      - permission
+      - Permission
     get:
       description: Returns a specific permission object by reference
+      operationId: PermissionRead
       parameters:
       - description: Reference of the permission object
         explode: false
@@ -1232,9 +1247,10 @@ paths:
       - basicAuth: []
       summary: Get a specific permission object
       tags:
-      - permission
+      - Permission
     put:
       description: Updates a specific permission object by reference
+      operationId: PermissionUpdate
       parameters:
       - description: Reference of the permission object
         explode: false
@@ -1298,10 +1314,11 @@ paths:
       - basicAuth: []
       summary: Update a permission object
       tags:
-      - permission
+      - Permission
   /userprofile:
     get:
       description: Returns a list of userprofile objects matching the search criteria
+      operationId: UserprofileList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1395,10 +1412,11 @@ paths:
       - basicAuth: []
       summary: Retrieve userprofile objects
       tags:
-      - userprofile
+      - Userprofile
   /userprofile/{reference}:
     get:
       description: Returns a specific userprofile object by reference
+      operationId: UserprofileRead
       parameters:
       - description: Reference of the userprofile object
         explode: false
@@ -1455,9 +1473,10 @@ paths:
       - basicAuth: []
       summary: Get a specific userprofile object
       tags:
-      - userprofile
+      - Userprofile
     put:
       description: Updates a specific userprofile object by reference
+      operationId: UserprofileUpdate
       parameters:
       - description: Reference of the userprofile object
         explode: false
@@ -1521,10 +1540,11 @@ paths:
       - basicAuth: []
       summary: Update a userprofile object
       tags:
-      - userprofile
+      - Userprofile
   /authpolicy:
     get:
       description: Returns a list of authpolicy objects matching the search criteria
+      operationId: AuthpolicyList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1618,10 +1638,11 @@ paths:
       - basicAuth: []
       summary: Retrieve authpolicy objects
       tags:
-      - authpolicy
+      - Authpolicy
   /authpolicy/{reference}:
     get:
       description: Returns a specific authpolicy object by reference
+      operationId: AuthpolicyRead
       parameters:
       - description: Reference of the authpolicy object
         explode: false
@@ -1678,9 +1699,10 @@ paths:
       - basicAuth: []
       summary: Get a specific authpolicy object
       tags:
-      - authpolicy
+      - Authpolicy
     put:
       description: Updates a specific authpolicy object by reference
+      operationId: AuthpolicyUpdate
       parameters:
       - description: Reference of the authpolicy object
         explode: false
@@ -1744,11 +1766,12 @@ paths:
       - basicAuth: []
       summary: Update a authpolicy object
       tags:
-      - authpolicy
+      - Authpolicy
   /approvalworkflow:
     get:
       description: Returns a list of approvalworkflow objects matching the search
         criteria
+      operationId: ApprovalworkflowList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1842,9 +1865,10 @@ paths:
       - basicAuth: []
       summary: Retrieve approvalworkflow objects
       tags:
-      - approvalworkflow
+      - Approvalworkflow
     post:
       description: Creates a new approvalworkflow object
+      operationId: ApprovalworkflowCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1898,13 +1922,14 @@ paths:
       - basicAuth: []
       summary: Create a approvalworkflow object
       tags:
-      - approvalworkflow
-      x-tf-resource: resource_nios_Approvalworkflow
-      x-tf-datasource: datasource_nios_Approvalworkflow
+      - Approvalworkflow
+      x-tf-resource: security_approvalworkflow
+      x-tf-datasource: security_approvalworkflow
       x-sdk-default-ext-attrs: true
   /approvalworkflow/{reference}:
     delete:
       description: Deletes a specific approvalworkflow object by reference
+      operationId: ApprovalworkflowDelete
       parameters:
       - description: Reference of the approvalworkflow object
         explode: false
@@ -1929,9 +1954,10 @@ paths:
       - basicAuth: []
       summary: Delete a approvalworkflow object
       tags:
-      - approvalworkflow
+      - Approvalworkflow
     get:
       description: Returns a specific approvalworkflow object by reference
+      operationId: ApprovalworkflowRead
       parameters:
       - description: Reference of the approvalworkflow object
         explode: false
@@ -1988,9 +2014,10 @@ paths:
       - basicAuth: []
       summary: Get a specific approvalworkflow object
       tags:
-      - approvalworkflow
+      - Approvalworkflow
     put:
       description: Updates a specific approvalworkflow object by reference
+      operationId: ApprovalworkflowUpdate
       parameters:
       - description: Reference of the approvalworkflow object
         explode: false
@@ -2054,11 +2081,12 @@ paths:
       - basicAuth: []
       summary: Update a approvalworkflow object
       tags:
-      - approvalworkflow
+      - Approvalworkflow
       x-sdk-default-ext-attrs: true
   /cacertificate:
     get:
       description: Returns a list of cacertificate objects matching the search criteria
+      operationId: CacertificateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2152,10 +2180,11 @@ paths:
       - basicAuth: []
       summary: Retrieve cacertificate objects
       tags:
-      - cacertificate
+      - Cacertificate
   /cacertificate/{reference}:
     delete:
       description: Deletes a specific cacertificate object by reference
+      operationId: CacertificateDelete
       parameters:
       - description: Reference of the cacertificate object
         explode: false
@@ -2180,9 +2209,10 @@ paths:
       - basicAuth: []
       summary: Delete a cacertificate object
       tags:
-      - cacertificate
+      - Cacertificate
     get:
       description: Returns a specific cacertificate object by reference
+      operationId: CacertificateRead
       parameters:
       - description: Reference of the cacertificate object
         explode: false
@@ -2239,11 +2269,12 @@ paths:
       - basicAuth: []
       summary: Get a specific cacertificate object
       tags:
-      - cacertificate
+      - Cacertificate
   /certificate:authservice:
     get:
       description: Returns a list of certificate:authservice objects matching the
         search criteria
+      operationId: CertificateAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2337,9 +2368,10 @@ paths:
       - basicAuth: []
       summary: Retrieve certificate:authservice objects
       tags:
-      - certificate:authservice
+      - CertificateAuthservice
     post:
       description: Creates a new certificate:authservice object
+      operationId: CertificateAuthserviceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2393,12 +2425,13 @@ paths:
       - basicAuth: []
       summary: Create a certificate:authservice object
       tags:
-      - certificate:authservice
-      x-tf-resource: resource_nios_CertificateAuthservice
-      x-tf-datasource: datasource_nios_CertificateAuthservice
+      - CertificateAuthservice
+      x-tf-resource: security_certificate_authservice
+      x-tf-datasource: security_certificate_authservice
   /certificate:authservice/{reference}:
     delete:
       description: Deletes a specific certificate:authservice object by reference
+      operationId: CertificateAuthserviceDelete
       parameters:
       - description: Reference of the certificate:authservice object
         explode: false
@@ -2423,9 +2456,10 @@ paths:
       - basicAuth: []
       summary: Delete a certificate:authservice object
       tags:
-      - certificate:authservice
+      - CertificateAuthservice
     get:
       description: Returns a specific certificate:authservice object by reference
+      operationId: CertificateAuthserviceRead
       parameters:
       - description: Reference of the certificate:authservice object
         explode: false
@@ -2482,9 +2516,10 @@ paths:
       - basicAuth: []
       summary: Get a specific certificate:authservice object
       tags:
-      - certificate:authservice
+      - CertificateAuthservice
     put:
       description: Updates a specific certificate:authservice object by reference
+      operationId: CertificateAuthserviceUpdate
       parameters:
       - description: Reference of the certificate:authservice object
         explode: false
@@ -2548,11 +2583,12 @@ paths:
       - basicAuth: []
       summary: Update a certificate:authservice object
       tags:
-      - certificate:authservice
+      - CertificateAuthservice
   /radius:authservice:
     get:
       description: Returns a list of radius:authservice objects matching the search
         criteria
+      operationId: RadiusAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2646,9 +2682,10 @@ paths:
       - basicAuth: []
       summary: Retrieve radius:authservice objects
       tags:
-      - radius:authservice
+      - RadiusAuthservice
     post:
       description: Creates a new radius:authservice object
+      operationId: RadiusAuthserviceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2702,12 +2739,13 @@ paths:
       - basicAuth: []
       summary: Create a radius:authservice object
       tags:
-      - radius:authservice
-      x-tf-resource: resource_nios_RadiusAuthservice
-      x-tf-datasource: datasource_nios_RadiusAuthservice
+      - RadiusAuthservice
+      x-tf-resource: security_radius_authservice
+      x-tf-datasource: security_radius_authservice
   /radius:authservice/{reference}:
     delete:
       description: Deletes a specific radius:authservice object by reference
+      operationId: RadiusAuthserviceDelete
       parameters:
       - description: Reference of the radius:authservice object
         explode: false
@@ -2732,9 +2770,10 @@ paths:
       - basicAuth: []
       summary: Delete a radius:authservice object
       tags:
-      - radius:authservice
+      - RadiusAuthservice
     get:
       description: Returns a specific radius:authservice object by reference
+      operationId: RadiusAuthserviceRead
       parameters:
       - description: Reference of the radius:authservice object
         explode: false
@@ -2791,9 +2830,10 @@ paths:
       - basicAuth: []
       summary: Get a specific radius:authservice object
       tags:
-      - radius:authservice
+      - RadiusAuthservice
     put:
       description: Updates a specific radius:authservice object by reference
+      operationId: RadiusAuthserviceUpdate
       parameters:
       - description: Reference of the radius:authservice object
         explode: false
@@ -2857,11 +2897,12 @@ paths:
       - basicAuth: []
       summary: Update a radius:authservice object
       tags:
-      - radius:authservice
+      - RadiusAuthservice
   /tacacsplus:authservice:
     get:
       description: Returns a list of tacacsplus:authservice objects matching the search
         criteria
+      operationId: TacacsplusAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2955,9 +2996,10 @@ paths:
       - basicAuth: []
       summary: Retrieve tacacsplus:authservice objects
       tags:
-      - tacacsplus:authservice
+      - TacacsplusAuthservice
     post:
       description: Creates a new tacacsplus:authservice object
+      operationId: TacacsplusAuthserviceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3011,12 +3053,13 @@ paths:
       - basicAuth: []
       summary: Create a tacacsplus:authservice object
       tags:
-      - tacacsplus:authservice
-      x-tf-resource: resource_nios_TacacsplusAuthservice
-      x-tf-datasource: datasource_nios_TacacsplusAuthservice
+      - TacacsplusAuthservice
+      x-tf-resource: security_tacacsplus_authservice
+      x-tf-datasource: security_tacacsplus_authservice
   /tacacsplus:authservice/{reference}:
     delete:
       description: Deletes a specific tacacsplus:authservice object by reference
+      operationId: TacacsplusAuthserviceDelete
       parameters:
       - description: Reference of the tacacsplus:authservice object
         explode: false
@@ -3041,9 +3084,10 @@ paths:
       - basicAuth: []
       summary: Delete a tacacsplus:authservice object
       tags:
-      - tacacsplus:authservice
+      - TacacsplusAuthservice
     get:
       description: Returns a specific tacacsplus:authservice object by reference
+      operationId: TacacsplusAuthserviceRead
       parameters:
       - description: Reference of the tacacsplus:authservice object
         explode: false
@@ -3100,9 +3144,10 @@ paths:
       - basicAuth: []
       summary: Get a specific tacacsplus:authservice object
       tags:
-      - tacacsplus:authservice
+      - TacacsplusAuthservice
     put:
       description: Updates a specific tacacsplus:authservice object by reference
+      operationId: TacacsplusAuthserviceUpdate
       parameters:
       - description: Reference of the tacacsplus:authservice object
         explode: false
@@ -3166,11 +3211,12 @@ paths:
       - basicAuth: []
       summary: Update a tacacsplus:authservice object
       tags:
-      - tacacsplus:authservice
+      - TacacsplusAuthservice
   /ldap_auth_service:
     get:
       description: Returns a list of ldap_auth_service objects matching the search
         criteria
+      operationId: LdapAuthServiceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3264,9 +3310,10 @@ paths:
       - basicAuth: []
       summary: Retrieve ldap_auth_service objects
       tags:
-      - ldap_auth_service
+      - LdapAuthService
     post:
       description: Creates a new ldap_auth_service object
+      operationId: LdapAuthServiceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3320,12 +3367,13 @@ paths:
       - basicAuth: []
       summary: Create a ldap_auth_service object
       tags:
-      - ldap_auth_service
-      x-tf-resource: resource_nios_LdapAuthService
-      x-tf-datasource: datasource_nios_LdapAuthService
+      - LdapAuthService
+      x-tf-resource: security_ldap_auth_service
+      x-tf-datasource: security_ldap_auth_service
   /ldap_auth_service/{reference}:
     delete:
       description: Deletes a specific ldap_auth_service object by reference
+      operationId: LdapAuthServiceDelete
       parameters:
       - description: Reference of the ldap_auth_service object
         explode: false
@@ -3350,9 +3398,10 @@ paths:
       - basicAuth: []
       summary: Delete a ldap_auth_service object
       tags:
-      - ldap_auth_service
+      - LdapAuthService
     get:
       description: Returns a specific ldap_auth_service object by reference
+      operationId: LdapAuthServiceRead
       parameters:
       - description: Reference of the ldap_auth_service object
         explode: false
@@ -3409,9 +3458,10 @@ paths:
       - basicAuth: []
       summary: Get a specific ldap_auth_service object
       tags:
-      - ldap_auth_service
+      - LdapAuthService
     put:
       description: Updates a specific ldap_auth_service object by reference
+      operationId: LdapAuthServiceUpdate
       parameters:
       - description: Reference of the ldap_auth_service object
         explode: false
@@ -3475,11 +3525,12 @@ paths:
       - basicAuth: []
       summary: Update a ldap_auth_service object
       tags:
-      - ldap_auth_service
+      - LdapAuthService
   /saml:authservice:
     get:
       description: Returns a list of saml:authservice objects matching the search
         criteria
+      operationId: SamlAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3573,9 +3624,10 @@ paths:
       - basicAuth: []
       summary: Retrieve saml:authservice objects
       tags:
-      - saml:authservice
+      - SamlAuthservice
     post:
       description: Creates a new saml:authservice object
+      operationId: SamlAuthserviceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3629,12 +3681,13 @@ paths:
       - basicAuth: []
       summary: Create a saml:authservice object
       tags:
-      - saml:authservice
-      x-tf-resource: resource_nios_SamlAuthservice
-      x-tf-datasource: datasource_nios_SamlAuthservice
+      - SamlAuthservice
+      x-tf-resource: security_saml_authservice
+      x-tf-datasource: security_saml_authservice
   /saml:authservice/{reference}:
     delete:
       description: Deletes a specific saml:authservice object by reference
+      operationId: SamlAuthserviceDelete
       parameters:
       - description: Reference of the saml:authservice object
         explode: false
@@ -3659,9 +3712,10 @@ paths:
       - basicAuth: []
       summary: Delete a saml:authservice object
       tags:
-      - saml:authservice
+      - SamlAuthservice
     get:
       description: Returns a specific saml:authservice object by reference
+      operationId: SamlAuthserviceRead
       parameters:
       - description: Reference of the saml:authservice object
         explode: false
@@ -3718,9 +3772,10 @@ paths:
       - basicAuth: []
       summary: Get a specific saml:authservice object
       tags:
-      - saml:authservice
+      - SamlAuthservice
     put:
       description: Updates a specific saml:authservice object by reference
+      operationId: SamlAuthserviceUpdate
       parameters:
       - description: Reference of the saml:authservice object
         explode: false
@@ -3784,11 +3839,12 @@ paths:
       - basicAuth: []
       summary: Update a saml:authservice object
       tags:
-      - saml:authservice
+      - SamlAuthservice
   /localuser:authservice:
     get:
       description: Returns a list of localuser:authservice objects matching the search
         criteria
+      operationId: LocaluserAuthserviceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3882,10 +3938,11 @@ paths:
       - basicAuth: []
       summary: Retrieve localuser:authservice objects
       tags:
-      - localuser:authservice
+      - LocaluserAuthservice
   /localuser:authservice/{reference}:
     get:
       description: Returns a specific localuser:authservice object by reference
+      operationId: LocaluserAuthserviceRead
       parameters:
       - description: Reference of the localuser:authservice object
         explode: false
@@ -3942,10 +3999,11 @@ paths:
       - basicAuth: []
       summary: Get a specific localuser:authservice object
       tags:
-      - localuser:authservice
+      - LocaluserAuthservice
   /snmpuser:
     get:
       description: Returns a list of snmpuser objects matching the search criteria
+      operationId: SnmpuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4039,9 +4097,10 @@ paths:
       - basicAuth: []
       summary: Retrieve snmpuser objects
       tags:
-      - snmpuser
+      - Snmpuser
     post:
       description: Creates a new snmpuser object
+      operationId: SnmpuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4095,13 +4154,14 @@ paths:
       - basicAuth: []
       summary: Create a snmpuser object
       tags:
-      - snmpuser
-      x-tf-resource: resource_nios_Snmpuser
-      x-tf-datasource: datasource_nios_Snmpuser
+      - Snmpuser
+      x-tf-resource: security_snmpuser
+      x-tf-datasource: security_snmpuser
       x-sdk-default-ext-attrs: true
   /snmpuser/{reference}:
     delete:
       description: Deletes a specific snmpuser object by reference
+      operationId: SnmpuserDelete
       parameters:
       - description: Reference of the snmpuser object
         explode: false
@@ -4126,9 +4186,10 @@ paths:
       - basicAuth: []
       summary: Delete a snmpuser object
       tags:
-      - snmpuser
+      - Snmpuser
     get:
       description: Returns a specific snmpuser object by reference
+      operationId: SnmpuserRead
       parameters:
       - description: Reference of the snmpuser object
         explode: false
@@ -4185,9 +4246,10 @@ paths:
       - basicAuth: []
       summary: Get a specific snmpuser object
       tags:
-      - snmpuser
+      - Snmpuser
     put:
       description: Updates a specific snmpuser object by reference
+      operationId: SnmpuserUpdate
       parameters:
       - description: Reference of the snmpuser object
         explode: false
@@ -4251,11 +4313,12 @@ paths:
       - basicAuth: []
       summary: Update a snmpuser object
       tags:
-      - snmpuser
+      - Snmpuser
       x-sdk-default-ext-attrs: true
   /ftpuser:
     get:
       description: Returns a list of ftpuser objects matching the search criteria
+      operationId: FtpuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4349,9 +4412,10 @@ paths:
       - basicAuth: []
       summary: Retrieve ftpuser objects
       tags:
-      - ftpuser
+      - Ftpuser
     post:
       description: Creates a new ftpuser object
+      operationId: FtpuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4405,13 +4469,14 @@ paths:
       - basicAuth: []
       summary: Create a ftpuser object
       tags:
-      - ftpuser
-      x-tf-resource: resource_nios_Ftpuser
-      x-tf-datasource: datasource_nios_Ftpuser
+      - Ftpuser
+      x-tf-resource: security_ftpuser
+      x-tf-datasource: security_ftpuser
       x-sdk-default-ext-attrs: true
   /ftpuser/{reference}:
     delete:
       description: Deletes a specific ftpuser object by reference
+      operationId: FtpuserDelete
       parameters:
       - description: Reference of the ftpuser object
         explode: false
@@ -4436,9 +4501,10 @@ paths:
       - basicAuth: []
       summary: Delete a ftpuser object
       tags:
-      - ftpuser
+      - Ftpuser
     get:
       description: Returns a specific ftpuser object by reference
+      operationId: FtpuserRead
       parameters:
       - description: Reference of the ftpuser object
         explode: false
@@ -4495,9 +4561,10 @@ paths:
       - basicAuth: []
       summary: Get a specific ftpuser object
       tags:
-      - ftpuser
+      - Ftpuser
     put:
       description: Updates a specific ftpuser object by reference
+      operationId: FtpuserUpdate
       parameters:
       - description: Reference of the ftpuser object
         explode: false
@@ -4561,11 +4628,12 @@ paths:
       - basicAuth: []
       summary: Update a ftpuser object
       tags:
-      - ftpuser
+      - Ftpuser
       x-sdk-default-ext-attrs: true
   /networkuser:
     get:
       description: Returns a list of networkuser objects matching the search criteria
+      operationId: NetworkuserList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4659,9 +4727,10 @@ paths:
       - basicAuth: []
       summary: Retrieve networkuser objects
       tags:
-      - networkuser
+      - Networkuser
     post:
       description: Creates a new networkuser object
+      operationId: NetworkuserCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4715,12 +4784,13 @@ paths:
       - basicAuth: []
       summary: Create a networkuser object
       tags:
-      - networkuser
-      x-tf-resource: resource_nios_Networkuser
-      x-tf-datasource: datasource_nios_Networkuser
+      - Networkuser
+      x-tf-resource: security_networkuser
+      x-tf-datasource: security_networkuser
   /networkuser/{reference}:
     delete:
       description: Deletes a specific networkuser object by reference
+      operationId: NetworkuserDelete
       parameters:
       - description: Reference of the networkuser object
         explode: false
@@ -4745,9 +4815,10 @@ paths:
       - basicAuth: []
       summary: Delete a networkuser object
       tags:
-      - networkuser
+      - Networkuser
     get:
       description: Returns a specific networkuser object by reference
+      operationId: NetworkuserRead
       parameters:
       - description: Reference of the networkuser object
         explode: false
@@ -4804,9 +4875,10 @@ paths:
       - basicAuth: []
       summary: Get a specific networkuser object
       tags:
-      - networkuser
+      - Networkuser
     put:
       description: Updates a specific networkuser object by reference
+      operationId: NetworkuserUpdate
       parameters:
       - description: Reference of the networkuser object
         explode: false
@@ -4870,11 +4942,11 @@ paths:
       - basicAuth: []
       summary: Update a networkuser object
       tags:
-      - networkuser
-  /threatprotection:profile:
+      - Networkuser
+  /ad_auth_service:
     get:
-      description: Returns a list of threatprotection:profile objects matching the
-        search criteria
+      description: Returns a list of ad_auth_service objects matching the search criteria
+      operationId: AdAuthServiceList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4954,7 +5026,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThreatprotectionProfileResponse'
+                $ref: '#/components/schemas/ListAdAuthServiceResponse'
           description: Successful operation
         "400":
           description: Bad request
@@ -4966,11 +5038,12 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Retrieve threatprotection:profile objects
+      summary: Retrieve ad_auth_service objects
       tags:
-      - threatprotection:profile
+      - AdAuthService
     post:
-      description: Creates a new threatprotection:profile object
+      description: Creates a new ad_auth_service object
+      operationId: AdAuthServiceCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5004,7 +5077,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ThreatprotectionProfile'
+              $ref: '#/components/schemas/AdAuthService'
         description: Object data to create
         required: true
       responses:
@@ -5012,7 +5085,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateThreatprotectionProfileResponse'
+                $ref: '#/components/schemas/CreateAdAuthServiceResponse'
           description: Object created successfully
         "400":
           description: Bad request
@@ -5022,17 +5095,17 @@ paths:
           description: Forbidden
       security:
       - basicAuth: []
-      summary: Create a threatprotection:profile object
+      summary: Create a ad_auth_service object
       tags:
-      - threatprotection:profile
-      x-tf-resource: resource_nios_ThreatprotectionProfile
-      x-tf-datasource: datasource_nios_ThreatprotectionProfile
-      x-sdk-default-ext-attrs: true
-  /threatprotection:profile/{reference}:
+      - AdAuthService
+      x-tf-resource: security_ad_auth_service
+      x-tf-datasource: security_ad_auth_service
+  /ad_auth_service/{reference}:
     delete:
-      description: Deletes a specific threatprotection:profile object by reference
+      description: Deletes a specific ad_auth_service object by reference
+      operationId: AdAuthServiceDelete
       parameters:
-      - description: Reference of the threatprotection:profile object
+      - description: Reference of the ad_auth_service object
         explode: false
         in: path
         name: reference
@@ -5053,13 +5126,14 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Delete a threatprotection:profile object
+      summary: Delete a ad_auth_service object
       tags:
-      - threatprotection:profile
+      - AdAuthService
     get:
-      description: Returns a specific threatprotection:profile object by reference
+      description: Returns a specific ad_auth_service object by reference
+      operationId: AdAuthServiceRead
       parameters:
-      - description: Reference of the threatprotection:profile object
+      - description: Reference of the ad_auth_service object
         explode: false
         in: path
         name: reference
@@ -5100,7 +5174,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetThreatprotectionProfileResponse'
+                $ref: '#/components/schemas/GetAdAuthServiceResponse'
           description: Successful operation
         "400":
           description: Bad request
@@ -5112,13 +5186,14 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Get a specific threatprotection:profile object
+      summary: Get a specific ad_auth_service object
       tags:
-      - threatprotection:profile
+      - AdAuthService
     put:
-      description: Updates a specific threatprotection:profile object by reference
+      description: Updates a specific ad_auth_service object by reference
+      operationId: AdAuthServiceUpdate
       parameters:
-      - description: Reference of the threatprotection:profile object
+      - description: Reference of the ad_auth_service object
         explode: false
         in: path
         name: reference
@@ -5158,7 +5233,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ThreatprotectionProfile'
+              $ref: '#/components/schemas/AdAuthService'
         description: Object data to update
         required: true
       responses:
@@ -5166,7 +5241,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateThreatprotectionProfileResponse'
+                $ref: '#/components/schemas/UpdateAdAuthServiceResponse'
           description: Object updated successfully
         "400":
           description: Bad request
@@ -5178,14 +5253,554 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Update a threatprotection:profile object
+      summary: Update a ad_auth_service object
       tags:
-      - threatprotection:profile
-      x-sdk-default-ext-attrs: true
-  /threatprotection:rule:
+      - AdAuthService
+  /hsm:allgroups:
     get:
-      description: Returns a list of threatprotection:rule objects matching the search
+      description: Returns a list of hsm:allgroups objects matching the search criteria
+      operationId: HsmAllgroupsList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListHsmAllgroupsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve hsm:allgroups objects
+      tags:
+      - HsmAllgroups
+  /hsm:allgroups/{reference}:
+    get:
+      description: Returns a specific hsm:allgroups object by reference
+      operationId: HsmAllgroupsRead
+      parameters:
+      - description: Reference of the hsm:allgroups object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetHsmAllgroupsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific hsm:allgroups object
+      tags:
+      - HsmAllgroups
+    put:
+      description: Updates a specific hsm:allgroups object by reference
+      operationId: HsmAllgroupsUpdate
+      parameters:
+      - description: Reference of the hsm:allgroups object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HsmAllgroups'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateHsmAllgroupsResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a hsm:allgroups object
+      tags:
+      - HsmAllgroups
+  /hsm:entrustnshieldgroup:
+    get:
+      description: Returns a list of hsm:entrustnshieldgroup objects matching the
+        search criteria
+      operationId: HsmEntrustnshieldgroupList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListHsmEntrustnshieldgroupResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve hsm:entrustnshieldgroup objects
+      tags:
+      - HsmEntrustnshieldgroup
+    post:
+      description: Creates a new hsm:entrustnshieldgroup object
+      operationId: HsmEntrustnshieldgroupCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HsmEntrustnshieldgroup'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateHsmEntrustnshieldgroupResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a hsm:entrustnshieldgroup object
+      tags:
+      - HsmEntrustnshieldgroup
+      x-tf-resource: security_hsm_entrustnshieldgroup
+      x-tf-datasource: security_hsm_entrustnshieldgroup
+  /hsm:entrustnshieldgroup/{reference}:
+    delete:
+      description: Deletes a specific hsm:entrustnshieldgroup object by reference
+      operationId: HsmEntrustnshieldgroupDelete
+      parameters:
+      - description: Reference of the hsm:entrustnshieldgroup object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a hsm:entrustnshieldgroup object
+      tags:
+      - HsmEntrustnshieldgroup
+    get:
+      description: Returns a specific hsm:entrustnshieldgroup object by reference
+      operationId: HsmEntrustnshieldgroupRead
+      parameters:
+      - description: Reference of the hsm:entrustnshieldgroup object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetHsmEntrustnshieldgroupResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific hsm:entrustnshieldgroup object
+      tags:
+      - HsmEntrustnshieldgroup
+    put:
+      description: Updates a specific hsm:entrustnshieldgroup object by reference
+      operationId: HsmEntrustnshieldgroupUpdate
+      parameters:
+      - description: Reference of the hsm:entrustnshieldgroup object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HsmEntrustnshieldgroup'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateHsmEntrustnshieldgroupResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a hsm:entrustnshieldgroup object
+      tags:
+      - HsmEntrustnshieldgroup
+  /hsm:thaleslunagroup:
+    get:
+      description: Returns a list of hsm:thaleslunagroup objects matching the search
         criteria
+      operationId: HsmThaleslunagroupList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5265,7 +5880,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThreatprotectionRuleResponse'
+                $ref: '#/components/schemas/ListHsmThaleslunagroupResponse'
           description: Successful operation
         "400":
           description: Bad request
@@ -5277,644 +5892,12 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Retrieve threatprotection:rule objects
+      summary: Retrieve hsm:thaleslunagroup objects
       tags:
-      - threatprotection:rule
-  /threatprotection:rule/{reference}:
-    get:
-      description: Returns a specific threatprotection:rule object by reference
-      parameters:
-      - description: Reference of the threatprotection:rule object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetThreatprotectionRuleResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Get a specific threatprotection:rule object
-      tags:
-      - threatprotection:rule
-    put:
-      description: Updates a specific threatprotection:rule object by reference
-      parameters:
-      - description: Reference of the threatprotection:rule object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ThreatprotectionRule'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThreatprotectionRuleResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a threatprotection:rule object
-      tags:
-      - threatprotection:rule
-  /threatprotection:ruleset:
-    get:
-      description: Returns a list of threatprotection:ruleset objects matching the
-        search criteria
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Control paging of results
-        explode: true
-        in: query
-        name: _paging
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Page id for retrieving next page of results
-        explode: true
-        in: query
-        name: _page_id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: query
-        name: filters
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      - explode: false
-        in: query
-        name: extattrfilter
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListThreatprotectionRulesetResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Retrieve threatprotection:ruleset objects
-      tags:
-      - threatprotection:ruleset
-  /threatprotection:ruleset/{reference}:
-    delete:
-      description: Deletes a specific threatprotection:ruleset object by reference
-      parameters:
-      - description: Reference of the threatprotection:ruleset object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          description: Object deleted successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Delete a threatprotection:ruleset object
-      tags:
-      - threatprotection:ruleset
-    get:
-      description: Returns a specific threatprotection:ruleset object by reference
-      parameters:
-      - description: Reference of the threatprotection:ruleset object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetThreatprotectionRulesetResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Get a specific threatprotection:ruleset object
-      tags:
-      - threatprotection:ruleset
-    put:
-      description: Updates a specific threatprotection:ruleset object by reference
-      parameters:
-      - description: Reference of the threatprotection:ruleset object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ThreatprotectionRuleset'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThreatprotectionRulesetResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a threatprotection:ruleset object
-      tags:
-      - threatprotection:ruleset
-  /threatprotection:statistics:
-    get:
-      description: Returns a list of threatprotection:statistics objects matching
-        the search criteria
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Control paging of results
-        explode: true
-        in: query
-        name: _paging
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Page id for retrieving next page of results
-        explode: true
-        in: query
-        name: _page_id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: query
-        name: filters
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      - explode: false
-        in: query
-        name: extattrfilter
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListThreatprotectionStatisticsResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Retrieve threatprotection:statistics objects
-      tags:
-      - threatprotection:statistics
-  /threatprotection:statistics/{reference}:
-    get:
-      description: Returns a specific threatprotection:statistics object by reference
-      parameters:
-      - description: Reference of the threatprotection:statistics object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetThreatprotectionStatisticsResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Get a specific threatprotection:statistics object
-      tags:
-      - threatprotection:statistics
-  /threatinsight:allowlist:
-    get:
-      description: Returns a list of threatinsight:allowlist objects matching the
-        search criteria
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Control paging of results
-        explode: true
-        in: query
-        name: _paging
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Page id for retrieving next page of results
-        explode: true
-        in: query
-        name: _page_id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: query
-        name: filters
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      - explode: false
-        in: query
-        name: extattrfilter
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListThreatinsightAllowlistResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Retrieve threatinsight:allowlist objects
-      tags:
-      - threatinsight:allowlist
+      - HsmThaleslunagroup
     post:
-      description: Creates a new threatinsight:allowlist object
+      description: Creates a new hsm:thaleslunagroup object
+      operationId: HsmThaleslunagroupCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5948,7 +5931,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ThreatinsightAllowlist'
+              $ref: '#/components/schemas/HsmThaleslunagroup'
         description: Object data to create
         required: true
       responses:
@@ -5956,7 +5939,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateThreatinsightAllowlistResponse'
+                $ref: '#/components/schemas/CreateHsmThaleslunagroupResponse'
           description: Object created successfully
         "400":
           description: Bad request
@@ -5966,16 +5949,17 @@ paths:
           description: Forbidden
       security:
       - basicAuth: []
-      summary: Create a threatinsight:allowlist object
+      summary: Create a hsm:thaleslunagroup object
       tags:
-      - threatinsight:allowlist
-      x-tf-resource: resource_nios_ThreatinsightAllowlist
-      x-tf-datasource: datasource_nios_ThreatinsightAllowlist
-  /threatinsight:allowlist/{reference}:
+      - HsmThaleslunagroup
+      x-tf-resource: security_hsm_thaleslunagroup
+      x-tf-datasource: security_hsm_thaleslunagroup
+  /hsm:thaleslunagroup/{reference}:
     delete:
-      description: Deletes a specific threatinsight:allowlist object by reference
+      description: Deletes a specific hsm:thaleslunagroup object by reference
+      operationId: HsmThaleslunagroupDelete
       parameters:
-      - description: Reference of the threatinsight:allowlist object
+      - description: Reference of the hsm:thaleslunagroup object
         explode: false
         in: path
         name: reference
@@ -5996,13 +5980,14 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Delete a threatinsight:allowlist object
+      summary: Delete a hsm:thaleslunagroup object
       tags:
-      - threatinsight:allowlist
+      - HsmThaleslunagroup
     get:
-      description: Returns a specific threatinsight:allowlist object by reference
+      description: Returns a specific hsm:thaleslunagroup object by reference
+      operationId: HsmThaleslunagroupRead
       parameters:
-      - description: Reference of the threatinsight:allowlist object
+      - description: Reference of the hsm:thaleslunagroup object
         explode: false
         in: path
         name: reference
@@ -6043,7 +6028,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetThreatinsightAllowlistResponse'
+                $ref: '#/components/schemas/GetHsmThaleslunagroupResponse'
           description: Successful operation
         "400":
           description: Bad request
@@ -6055,13 +6040,14 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Get a specific threatinsight:allowlist object
+      summary: Get a specific hsm:thaleslunagroup object
       tags:
-      - threatinsight:allowlist
+      - HsmThaleslunagroup
     put:
-      description: Updates a specific threatinsight:allowlist object by reference
+      description: Updates a specific hsm:thaleslunagroup object by reference
+      operationId: HsmThaleslunagroupUpdate
       parameters:
-      - description: Reference of the threatinsight:allowlist object
+      - description: Reference of the hsm:thaleslunagroup object
         explode: false
         in: path
         name: reference
@@ -6101,7 +6087,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ThreatinsightAllowlist'
+              $ref: '#/components/schemas/HsmThaleslunagroup'
         description: Object data to update
         required: true
       responses:
@@ -6109,7 +6095,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateThreatinsightAllowlistResponse'
+                $ref: '#/components/schemas/UpdateHsmThaleslunagroupResponse'
           description: Object updated successfully
         "400":
           description: Bad request
@@ -6121,233 +6107,9 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Update a threatinsight:allowlist object
+      summary: Update a hsm:thaleslunagroup object
       tags:
-      - threatinsight:allowlist
-  /threatinsight:cloudclient:
-    get:
-      description: Returns a list of threatinsight:cloudclient objects matching the
-        search criteria
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Control paging of results
-        explode: true
-        in: query
-        name: _paging
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Page id for retrieving next page of results
-        explode: true
-        in: query
-        name: _page_id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: query
-        name: filters
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      - explode: false
-        in: query
-        name: extattrfilter
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListThreatinsightCloudclientResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Retrieve threatinsight:cloudclient objects
-      tags:
-      - threatinsight:cloudclient
-  /threatinsight:cloudclient/{reference}:
-    get:
-      description: Returns a specific threatinsight:cloudclient object by reference
-      parameters:
-      - description: Reference of the threatinsight:cloudclient object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetThreatinsightCloudclientResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Get a specific threatinsight:cloudclient object
-      tags:
-      - threatinsight:cloudclient
-    put:
-      description: Updates a specific threatinsight:cloudclient object by reference
-      parameters:
-      - description: Reference of the threatinsight:cloudclient object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ThreatinsightCloudclient'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThreatinsightCloudclientResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a threatinsight:cloudclient object
-      tags:
-      - threatinsight:cloudclient
+      - HsmThaleslunagroup
 components:
   parameters:
     ReturnFields:
@@ -6519,11 +6281,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -6836,7 +6597,7 @@ components:
           expire_days: 1
         extattrs:
           key:
-            value: value
+            value: ""
         security_show_commands:
           show_check_ssl_certificate: false
           show_adp_debug: false
@@ -9032,7 +8793,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         disable: false
         _ref: _ref
         name: Example name
@@ -9092,7 +8853,7 @@ components:
         auth_type: Example auth_type
         extattrs:
           key:
-            value: value
+            value: ""
         use_ssh_keys: false
         time_zone: Example time_zone
         admin_groups:
@@ -9493,6 +9254,7 @@ components:
         days_to_expire:
           description: The number of days left before the admin's password expires.
           example: 1
+          format: int64
           readOnly: true
           type: integer
         email:
@@ -9589,12 +9351,6 @@ components:
         title: ListUserprofileResponseArray
         type: array
       - $ref: '#/components/schemas/ListUserprofileResponseObject'
-    CreateUserprofileResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateUserprofileResponseAsObject'
-      - description: The response format to create __Userprofile__.
-        title: CreateUserprofileResponse
-        type: string
     GetUserprofileResponse:
       oneOf:
       - $ref: '#/components/schemas/Userprofile'
@@ -9609,8 +9365,8 @@ components:
       additionalProperties: false
       example:
         auth_services:
-        - "{}"
-        - "{}"
+        - localuser:authservice
+        - localuser:authservice
         usage_type: Example usage_type
         _ref: _ref
         default_group: Example default_group
@@ -9641,7 +9397,7 @@ components:
           items:
             enum:
             - localuser:authservice
-            type: object
+            type: string
           type: array
         default_group:
           description: The default admin group that provides authentication in case
@@ -9664,12 +9420,6 @@ components:
         title: ListAuthpolicyResponseArray
         type: array
       - $ref: '#/components/schemas/ListAuthpolicyResponseObject'
-    CreateAuthpolicyResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateAuthpolicyResponseAsObject'
-      - description: The response format to create __Authpolicy__.
-        title: CreateAuthpolicyResponse
-        type: string
     GetAuthpolicyResponse:
       oneOf:
       - $ref: '#/components/schemas/Authpolicy'
@@ -9686,7 +9436,7 @@ components:
         submitter_group: Example submitter_group
         extattrs:
           key:
-            value: value
+            value: ""
         failed_notify_to: Example failed_notify_to
         enable_notify_user: false
         enable_rejected_notify: false
@@ -9913,12 +9663,6 @@ components:
         title: ListCacertificateResponseArray
         type: array
       - $ref: '#/components/schemas/ListCacertificateResponseObject'
-    CreateCacertificateResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateCacertificateResponseAsObject'
-      - description: The response format to create __Cacertificate__.
-        title: CreateCacertificateResponse
-        type: string
     GetCacertificateResponse:
       oneOf:
       - $ref: '#/components/schemas/Cacertificate'
@@ -9955,10 +9699,9 @@ components:
         user_match_type: Example user_match_type
         recovery_interval: 1
         remote_lookup_username: Example remote_lookup_username
-        test_ocsp_responder_settings: "{}"
         ca_certificates:
-        - "{}"
-        - "{}"
+        - cacertificate
+        - cacertificate
         remote_lookup_password: Example remote_lookup_password
         _ref: _ref
         name: Example name
@@ -9988,7 +9731,7 @@ components:
           items:
             enum:
             - cacertificate
-            type: object
+            type: string
           type: array
         comment:
           description: The descriptive comment for the certificate authentication
@@ -10062,9 +9805,6 @@ components:
           example: 1
           format: int64
           type: integer
-        test_ocsp_responder_settings:
-          properties: {}
-          type: object
         trust_model:
           description: The OCSP trust model.
           enum:
@@ -10119,9 +9859,6 @@ components:
           type: string
           writeOnly: true
       type: object
-    CertificateAuthserviceTestOcspResponderSettings:
-      properties: {}
-      type: object
     ListCertificateAuthserviceResponse:
       oneOf:
       - description: The response format to retrieve __CertificateAuthservice__ objects.
@@ -10154,7 +9891,6 @@ components:
         acct_retries: 1
         recovery_interval: 1
         mode: Example mode
-        check_radius_server_settings: "{}"
         servers:
         - acct_port: 1
           auth_type: Example auth_type
@@ -10214,9 +9950,6 @@ components:
           example: 1
           format: int64
           type: integer
-        check_radius_server_settings:
-          properties: {}
-          type: object
         comment:
           description: The RADIUS descriptive comment.
           example: Example comment
@@ -10253,9 +9986,6 @@ components:
           items:
             $ref: '#/components/schemas/RadiusAuthserviceServers'
           type: array
-      type: object
-    RadiusAuthserviceCheckRadiusServerSettings:
-      properties: {}
       type: object
     RadiusAuthserviceServers:
       example:
@@ -10360,7 +10090,6 @@ components:
           use_mgmt_port: false
           shared_secret: Example shared_secret
           comment: Example comment
-        check_tacacsplus_server_settings: "{}"
         disable: false
         _ref: _ref
         name: Example name
@@ -10394,9 +10123,6 @@ components:
           example: 1
           format: int64
           type: integer
-        check_tacacsplus_server_settings:
-          properties: {}
-          type: object
         comment:
           description: The TACACS+ authentication service descriptive comment.
           example: Example comment
@@ -10417,9 +10143,6 @@ components:
           items:
             $ref: '#/components/schemas/TacacsplusAuthserviceServers'
           type: array
-      type: object
-    TacacsplusAuthserviceCheckTacacsplusServerSettings:
-      properties: {}
       type: object
     TacacsplusAuthserviceServers:
       example:
@@ -10510,7 +10233,6 @@ components:
         search_scope: Example search_scope
         timeout: 1
         mode: Example mode
-        check_ldap_server_settings: "{}"
         retries: 1
         servers:
         - address: Example address
@@ -10544,9 +10266,6 @@ components:
         _ref:
           description: The reference to the object.
           type: string
-        check_ldap_server_settings:
-          properties: {}
-          type: object
         comment:
           description: The LDAP descriptive comment.
           example: Example comment
@@ -10619,9 +10338,6 @@ components:
           example: 1
           format: int64
           type: integer
-      type: object
-    LdapAuthServiceCheckLdapServerSettings:
-      properties: {}
       type: object
     LdapAuthServiceEaMapping:
       example:
@@ -10868,12 +10584,6 @@ components:
         title: ListLocaluserAuthserviceResponseArray
         type: array
       - $ref: '#/components/schemas/ListLocaluserAuthserviceResponseObject'
-    CreateLocaluserAuthserviceResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateLocaluserAuthserviceResponseAsObject'
-      - description: The response format to create __LocaluserAuthservice__.
-        title: CreateLocaluserAuthserviceResponse
-        type: string
     GetLocaluserAuthserviceResponse:
       oneOf:
       - $ref: '#/components/schemas/LocaluserAuthservice'
@@ -10890,7 +10600,7 @@ components:
         authentication_password: Example authentication_password
         extattrs:
           key:
-            value: value
+            value: ""
         privacy_protocol: Example privacy_protocol
         disable: false
         _ref: _ref
@@ -10978,7 +10688,7 @@ components:
         password: Example password
         extattrs:
           key:
-            value: value
+            value: ""
         home_dir: Example home_dir
         _ref: _ref
         create_home_dir: false
@@ -11168,600 +10878,473 @@ components:
       - description: The response format to update __Networkuser__ .
         title: UpdateNetworkuserResponse
         type: string
-    ThreatprotectionProfile:
+    AdAuthService:
       additionalProperties: false
       example:
-        source_member: Example source_member
-        extattrs:
-          key:
-            value: value
-        use_disable_multiple_dns_tcp_request: false
-        use_current_ruleset: false
-        use_events_per_second_per_rule: false
-        current_ruleset: Example current_ruleset
-        members:
-        - members
-        - members
+        nested_group_querying: false
+        ad_domain: Example ad_domain
         _ref: _ref
         name: Example name
         comment: Example comment
-        disable_multiple_dns_tcp_request: false
-        events_per_second_per_rule: 1
-        source_profile: Example source_profile
+        disabled: false
+        domain_controllers:
+        - fqdn_or_ip: Example fqdn_or_ip
+          encryption: Example encryption
+          use_mgmt_port: false
+          auth_port: 1
+          comment: Example comment
+          disabled: false
+          mgmt_port: false
+        - fqdn_or_ip: Example fqdn_or_ip
+          encryption: Example encryption
+          use_mgmt_port: false
+          auth_port: 1
+          comment: Example comment
+          disabled: false
+          mgmt_port: false
+        timeout: 1
       properties:
         _ref:
           description: The reference to the object.
           type: string
+        ad_domain:
+          description: The Active Directory domain to which this server belongs.
+          example: Example ad_domain
+          type: string
         comment:
-          description: The comment for the Threat Protection profile.
+          description: The descriptive comment for the AD authentication service.
           example: Example comment
           type: string
-        current_ruleset:
-          description: The current Threat Protection profile ruleset.
-          example: Example current_ruleset
-          type: string
-        disable_multiple_dns_tcp_request:
-          description: Determines if multiple BIND responses via TCP connection are
-            disabled.
+        disabled:
+          description: Determines if Active Directory Authentication Service is disabled.
           example: false
           type: boolean
-        events_per_second_per_rule:
-          description: The number of events logged per second per rule.
-          example: 1
-          format: int64
-          type: integer
-        extattrs:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrs'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs:values}."
-          type: object
-        members:
-          description: The list of members that are associated with the profile.
+        domain_controllers:
+          description: The AD authentication server list.
           enum:
-          - string
+          - ad_auth_server
           items:
-            type: string
+            $ref: '#/components/schemas/AdAuthServiceDomainControllers'
           type: array
         name:
-          description: The name of the Threat Protection profile.
+          description: The AD authentication service name.
           example: Example name
           type: string
-        source_member:
-          description: The source member. It can be used only during the create operation
-            for cloning a profile from an existing member.
-          example: Example source_member
-          type: string
-          writeOnly: true
-        source_profile:
-          description: The source profile. It can be used only during the create operation
-            for cloning a profile from an existing profile.
-          example: Example source_profile
-          type: string
-          writeOnly: true
-        use_current_ruleset:
-          description: "Use flag for: current_ruleset"
+        nested_group_querying:
+          description: Determines whether the nested group querying is enabled.
           example: false
           type: boolean
-        use_disable_multiple_dns_tcp_request:
-          description: "Use flag for: disable_multiple_dns_tcp_request"
-          example: false
-          type: boolean
-        use_events_per_second_per_rule:
-          description: "Use flag for: events_per_second_per_rule"
-          example: false
-          type: boolean
-      type: object
-    ListThreatprotectionProfileResponse:
-      oneOf:
-      - description: The response format to retrieve __ThreatprotectionProfile__ objects.
-        items:
-          $ref: '#/components/schemas/ThreatprotectionProfile'
-        title: ListThreatprotectionProfileResponseArray
-        type: array
-      - $ref: '#/components/schemas/ListThreatprotectionProfileResponseObject'
-    CreateThreatprotectionProfileResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateThreatprotectionProfileResponseAsObject'
-      - description: The response format to create __ThreatprotectionProfile__.
-        title: CreateThreatprotectionProfileResponse
-        type: string
-    GetThreatprotectionProfileResponse:
-      oneOf:
-      - $ref: '#/components/schemas/ThreatprotectionProfile'
-      - $ref: '#/components/schemas/GetThreatprotectionProfileResponseObjectAsResult'
-    UpdateThreatprotectionProfileResponse:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateThreatprotectionProfileResponseAsObject'
-      - description: The response format to update __ThreatprotectionProfile__ .
-        title: UpdateThreatprotectionProfileResponse
-        type: string
-    ThreatprotectionRule:
-      additionalProperties: false
-      example:
-        use_disable: false
-        disable: false
-        _ref: _ref
-        member: Example member
-        rule: Example rule
-        config:
-          log_severity: Example log_severity
-          action: Example action
-          params:
-            min: 1
-            max: 1
-            read_only: false
-            enum_values:
-            - enum_values
-            - enum_values
-            name: Example name
-            description: Example description
-            syntax: Example syntax
-            value: Example value
-        use_config: false
-        sid: 1
-      properties:
-        _ref:
-          description: The reference to the object.
-          type: string
-        config:
-          $ref: '#/components/schemas/ThreatprotectionRuleConfig'
-        disable:
-          description: Determines if the rule is enabled or not for the member.
-          example: false
-          type: boolean
-        member:
-          description: The name of the Threat protection member.
-          example: Example member
-          readOnly: true
-          type: string
-        rule:
-          description: The rule object name.
-          example: Example rule
-          readOnly: true
-          type: string
-        sid:
-          description: The Rule ID.
+        timeout:
+          description: The number of seconds that the appliance waits for a response
+            from the AD server.
           example: 1
           format: int64
-          readOnly: true
           type: integer
-        use_config:
-          description: "Use flag for: config"
-          example: false
-          type: boolean
-        use_disable:
-          description: "Use flag for: disable"
-          example: false
-          type: boolean
       type: object
-    ThreatprotectionRuleConfig:
+    AdAuthServiceDomainControllers:
       example:
-        log_severity: Example log_severity
-        action: Example action
-        params:
-          min: 1
-          max: 1
-          read_only: false
-          enum_values:
-          - enum_values
-          - enum_values
-          name: Example name
-          description: Example description
-          syntax: Example syntax
-          value: Example value
-      properties:
-        action:
-          description: The rule action.
-          enum:
-          - ALERT
-          - DROP
-          - PASS
-          example: Example action
-          type: string
-        log_severity:
-          description: The rule log severity.
-          enum:
-          - CRITICAL
-          - MAJOR
-          - WARNING
-          - INFORMATIONAL
-          example: Example log_severity
-          type: string
-        params:
-          $ref: '#/components/schemas/ThreatprotectionruleconfigParams'
-      type: object
-    ThreatprotectionruleconfigParams:
-      example:
-        min: 1
-        max: 1
-        read_only: false
-        enum_values:
-        - enum_values
-        - enum_values
-        name: Example name
-        description: Example description
-        syntax: Example syntax
-        value: Example value
-      properties:
-        name:
-          description: The rule parameter name.
-          example: Example name
-          type: string
-        description:
-          description: The rule parameter description.
-          example: Example description
-          readOnly: true
-          type: string
-        syntax:
-          description: The rule parameter syntax.
-          example: Example syntax
-          readOnly: true
-          type: string
-        value:
-          description: The rule parameter value.
-          example: Example value
-          type: string
-        min:
-          description: The rule parameter minimum.
-          example: 1
-          format: int64
-          readOnly: true
-          type: integer
-        max:
-          description: The rule parameter maximum.
-          example: 1
-          format: int64
-          readOnly: true
-          type: integer
-        read_only:
-          description: Determines if parameter value is editable at member level.
-          example: false
-          readOnly: true
-          type: boolean
-        enum_values:
-          description: The rule parameter enum values.
-          enum:
-          - string
-          items:
-            type: string
-          readOnly: true
-          type: array
-      type: object
-    ListThreatprotectionRuleResponse:
-      oneOf:
-      - description: The response format to retrieve __ThreatprotectionRule__ objects.
-        items:
-          $ref: '#/components/schemas/ThreatprotectionRule'
-        title: ListThreatprotectionRuleResponseArray
-        type: array
-      - $ref: '#/components/schemas/ListThreatprotectionRuleResponseObject'
-    CreateThreatprotectionRuleResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateThreatprotectionRuleResponseAsObject'
-      - description: The response format to create __ThreatprotectionRule__.
-        title: CreateThreatprotectionRuleResponse
-        type: string
-    GetThreatprotectionRuleResponse:
-      oneOf:
-      - $ref: '#/components/schemas/ThreatprotectionRule'
-      - $ref: '#/components/schemas/GetThreatprotectionRuleResponseObjectAsResult'
-    UpdateThreatprotectionRuleResponse:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateThreatprotectionRuleResponseAsObject'
-      - description: The response format to update __ThreatprotectionRule__ .
-        title: UpdateThreatprotectionRuleResponse
-        type: string
-    ThreatprotectionRuleset:
-      additionalProperties: false
-      example:
-        added_time: 1
-        is_factory_reset_enabled: false
-        do_not_delete: false
-        _ref: _ref
+        fqdn_or_ip: Example fqdn_or_ip
+        encryption: Example encryption
+        use_mgmt_port: false
+        auth_port: 1
         comment: Example comment
-        used_by:
-        - used_by
-        - used_by
-        version: Example version
-        add_type: Example add_type
+        disabled: false
+        mgmt_port: false
       properties:
-        _ref:
-          description: The reference to the object.
+        fqdn_or_ip:
+          description: The FQDN (Fully Qualified Domain Name) or IP address of the
+            server.
+          example: Example fqdn_or_ip
           type: string
-        add_type:
-          description: Determines the way the ruleset was added.
-          enum:
-          - AUTOMATIC
-          - MANUAL
-          example: Example add_type
-          readOnly: true
-          type: string
-        added_time:
-          description: The time when the ruleset was added.
+        auth_port:
+          description: The authentication port.
           example: 1
           format: int64
-          readOnly: true
           type: integer
         comment:
-          description: The human readable comment for the ruleset.
+          description: The descriptive comment for the AD authentication server.
           example: Example comment
           type: string
-        do_not_delete:
-          description: Determines if the ruleset will not be deleted during upgrade.
+        disabled:
+          description: Determines if the AD authorization server is disabled.
           example: false
           type: boolean
-        is_factory_reset_enabled:
-          description: Determines if factory reset is enabled for this ruleset.
-          example: false
-          readOnly: true
-          type: boolean
-        used_by:
-          description: The users of the ruleset.
+        encryption:
+          description: The type of encryption to use.
           enum:
-          - string
-          items:
-            type: string
-          readOnly: true
-          type: array
-        version:
-          description: The ruleset version.
-          example: Example version
-          readOnly: true
+          - SSL
+          - NONE
+          example: Example encryption
           type: string
+        mgmt_port:
+          description: Determine if the MGMT port is enabled for the AD authentication
+            server.
+          example: false
+          type: boolean
+        use_mgmt_port:
+          description: "Use flag for: mgmt_port"
+          example: false
+          type: boolean
       type: object
-    ListThreatprotectionRulesetResponse:
+    ListAdAuthServiceResponse:
       oneOf:
-      - description: The response format to retrieve __ThreatprotectionRuleset__ objects.
+      - description: The response format to retrieve __AdAuthService__ objects.
         items:
-          $ref: '#/components/schemas/ThreatprotectionRuleset'
-        title: ListThreatprotectionRulesetResponseArray
+          $ref: '#/components/schemas/AdAuthService'
+        title: ListAdAuthServiceResponseArray
         type: array
-      - $ref: '#/components/schemas/ListThreatprotectionRulesetResponseObject'
-    CreateThreatprotectionRulesetResponse:
+      - $ref: '#/components/schemas/ListAdAuthServiceResponseObject'
+    CreateAdAuthServiceResponse:
       oneOf:
-      - $ref: '#/components/schemas/CreateThreatprotectionRulesetResponseAsObject'
-      - description: The response format to create __ThreatprotectionRuleset__.
-        title: CreateThreatprotectionRulesetResponse
+      - $ref: '#/components/schemas/CreateAdAuthServiceResponseAsObject'
+      - description: The response format to create __AdAuthService__.
+        title: CreateAdAuthServiceResponse
         type: string
-    GetThreatprotectionRulesetResponse:
+    GetAdAuthServiceResponse:
       oneOf:
-      - $ref: '#/components/schemas/ThreatprotectionRuleset'
-      - $ref: '#/components/schemas/GetThreatprotectionRulesetResponseObjectAsResult'
-    UpdateThreatprotectionRulesetResponse:
+      - $ref: '#/components/schemas/AdAuthService'
+      - $ref: '#/components/schemas/GetAdAuthServiceResponseObjectAsResult'
+    UpdateAdAuthServiceResponse:
       oneOf:
-      - $ref: '#/components/schemas/UpdateThreatprotectionRulesetResponseAsObject'
-      - description: The response format to update __ThreatprotectionRuleset__ .
-        title: UpdateThreatprotectionRulesetResponse
+      - $ref: '#/components/schemas/UpdateAdAuthServiceResponseAsObject'
+      - description: The response format to update __AdAuthService__ .
+        title: UpdateAdAuthServiceResponse
         type: string
-    ThreatprotectionStatistics:
+    HsmAllgroups:
       additionalProperties: false
       example:
-        stat_infos:
-        - total: "{}"
-          critical: "{}"
-          major: "{}"
-          warning: "{}"
-          informational: "{}"
-          timestamp: 1
-        - total: "{}"
-          critical: "{}"
-          major: "{}"
-          warning: "{}"
-          informational: "{}"
-          timestamp: 1
         _ref: _ref
-        member: Example member
+        groups:
+        - hsm:thaleslunagroup
+        - hsm:thaleslunagroup
       properties:
         _ref:
           description: The reference to the object.
           type: string
-        member:
-          description: The Grid member name to get threat protection statistics. If
-            nothing is specified then event statistics is returned for the Grid.
-          example: Example member
-          readOnly: true
-          type: string
-        stat_infos:
-          description: The list of event statistical information for the Grid or particular
-            members.
+        groups:
+          description: The list of HSM groups configured on the appliance.
           enum:
-          - threatprotection:statinfo
-          items:
-            $ref: '#/components/schemas/ThreatprotectionStatisticsStatInfos'
-          readOnly: true
-          type: array
-      type: object
-    ThreatprotectionStatisticsStatInfos:
-      example:
-        total: "{}"
-        critical: "{}"
-        major: "{}"
-        warning: "{}"
-        informational: "{}"
-        timestamp: 1
-      properties:
-        timestamp:
-          description: The timestamp when data was collected.
-          example: 1
-          format: int64
-          readOnly: true
-          type: integer
-        critical:
-          description: The number of critical events.
-          enum:
-          - unsigned long integer
-          type: object
-        major:
-          description: The number of major events.
-          enum:
-          - unsigned long integer
-          type: object
-        warning:
-          description: The number of warning events.
-          enum:
-          - unsigned long integer
-          type: object
-        informational:
-          description: The number of informational events.
-          enum:
-          - unsigned long integer
-          type: object
-        total:
-          description: The total number of events.
-          enum:
-          - unsigned long integer
-          type: object
-      type: object
-    ListThreatprotectionStatisticsResponse:
-      oneOf:
-      - description: The response format to retrieve __ThreatprotectionStatistics__
-          objects.
-        items:
-          $ref: '#/components/schemas/ThreatprotectionStatistics'
-        title: ListThreatprotectionStatisticsResponseArray
-        type: array
-      - $ref: '#/components/schemas/ListThreatprotectionStatisticsResponseObject'
-    CreateThreatprotectionStatisticsResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateThreatprotectionStatisticsResponseAsObject'
-      - description: The response format to create __ThreatprotectionStatistics__.
-        title: CreateThreatprotectionStatisticsResponse
-        type: string
-    GetThreatprotectionStatisticsResponse:
-      oneOf:
-      - $ref: '#/components/schemas/ThreatprotectionStatistics'
-      - $ref: '#/components/schemas/GetThreatprotectionStatisticsResponseObjectAsResult'
-    UpdateThreatprotectionStatisticsResponse:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateThreatprotectionStatisticsResponseAsObject'
-      - description: The response format to update __ThreatprotectionStatistics__
-          .
-        title: UpdateThreatprotectionStatisticsResponse
-        type: string
-    ThreatinsightAllowlist:
-      additionalProperties: false
-      example:
-        fqdn: Example fqdn
-        disable: false
-        _ref: _ref
-        comment: Example comment
-        type: Example type
-      properties:
-        _ref:
-          description: The reference to the object.
-          type: string
-        comment:
-          description: The descriptive comment for the threat insight allowlist.
-          example: Example comment
-          type: string
-        disable:
-          description: Determines whether the threat insight allowlist is disabled.
-          example: false
-          type: boolean
-        fqdn:
-          description: The FQDN of the threat insight allowlist.
-          example: Example fqdn
-          type: string
-        type:
-          description: The type of the threat insight allowlist.
-          enum:
-          - SYSTEM
-          - CUSTOM
-          - BOTH
-          example: Example type
-          readOnly: true
-          type: string
-      type: object
-    ListThreatinsightAllowlistResponse:
-      oneOf:
-      - description: The response format to retrieve __ThreatinsightAllowlist__ objects.
-        items:
-          $ref: '#/components/schemas/ThreatinsightAllowlist'
-        title: ListThreatinsightAllowlistResponseArray
-        type: array
-      - $ref: '#/components/schemas/ListThreatinsightAllowlistResponseObject'
-    CreateThreatinsightAllowlistResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateThreatinsightAllowlistResponseAsObject'
-      - description: The response format to create __ThreatinsightAllowlist__.
-        title: CreateThreatinsightAllowlistResponse
-        type: string
-    GetThreatinsightAllowlistResponse:
-      oneOf:
-      - $ref: '#/components/schemas/ThreatinsightAllowlist'
-      - $ref: '#/components/schemas/GetThreatinsightAllowlistResponseObjectAsResult'
-    UpdateThreatinsightAllowlistResponse:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateThreatinsightAllowlistResponseAsObject'
-      - description: The response format to update __ThreatinsightAllowlist__ .
-        title: UpdateThreatinsightAllowlistResponse
-        type: string
-    ThreatinsightCloudclient:
-      additionalProperties: false
-      example:
-        enable: false
-        _ref: _ref
-        interval: 1
-        force_refresh: false
-        blacklist_rpz_list:
-        - "{}"
-        - "{}"
-      properties:
-        _ref:
-          description: The reference to the object.
-          type: string
-        blacklist_rpz_list:
-          description: The RPZs to which you apply newly detected domains through
-            the Infoblox Threat Insight Cloud Client.
-          enum:
-          - zone_rp
+          - hsm:thaleslunagroup
           items:
             enum:
-            - zone_rp
-            type: object
+            - hsm:thaleslunagroup
+            type: string
           type: array
-        enable:
-          description: Determines whether the Threat Insight in Cloud Client is enabled.
-          example: false
-          type: boolean
-        force_refresh:
-          description: Force a refresh if at least one RPZ is configured.
-          example: false
-          type: boolean
-          writeOnly: true
-        interval:
-          description: The time interval (in seconds) for requesting newly detected
-            domains by the Infoblox Threat Insight Cloud Client and applying them
-            to the list of configured RPZs.
+      type: object
+    ListHsmAllgroupsResponse:
+      oneOf:
+      - description: The response format to retrieve __HsmAllgroups__ objects.
+        items:
+          $ref: '#/components/schemas/HsmAllgroups'
+        title: ListHsmAllgroupsResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListHsmAllgroupsResponseObject'
+    GetHsmAllgroupsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/HsmAllgroups'
+      - $ref: '#/components/schemas/GetHsmAllgroupsResponseObjectAsResult'
+    UpdateHsmAllgroupsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateHsmAllgroupsResponseAsObject'
+      - description: The response format to update __HsmAllgroups__ .
+        title: UpdateHsmAllgroupsResponse
+        type: string
+    HsmEntrustnshieldgroup:
+      additionalProperties: false
+      example:
+        entrustnshield_hsm:
+        - remote_esn: Example remote_esn
+          remote_ip: Example remote_ip
+          keyhash: Example keyhash
+          disable: false
+          remote_port: 1
+          status: Example status
+        - remote_esn: Example remote_esn
+          remote_ip: Example remote_ip
+          keyhash: Example keyhash
+          disable: false
+          remote_port: 1
+          status: Example status
+        pass_phrase: Example pass_phrase
+        _ref: _ref
+        card_name: Example card_name
+        name: Example name
+        comment: Example comment
+        key_server_port: 1
+        protection: Example protection
+        key_server_ip: Example key_server_ip
+        status: Example status
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        card_name:
+          description: The Entrust nShield HSM softcard name.
+          example: Example card_name
+          type: string
+        comment:
+          description: The Entrust nShield HSM group comment.
+          example: Example comment
+          type: string
+        entrustnshield_hsm:
+          description: The list of Entrust nShield HSM devices.
+          enum:
+          - hsm:entrustnshield
+          items:
+            $ref: '#/components/schemas/HsmEntrustnshieldgroupEntrustnshieldHsm'
+          type: array
+        key_server_ip:
+          description: The remote file server (RFS) IPv4 Address.
+          example: Example key_server_ip
+          type: string
+        key_server_port:
+          description: The remote file server (RFS) port.
           example: 1
           format: int64
           type: integer
+        name:
+          description: The Entrust nShield HSM group name.
+          example: Example name
+          type: string
+        pass_phrase:
+          description: The password phrase used to unlock the Entrust nShield HSM
+            keystore.
+          example: Example pass_phrase
+          type: string
+          writeOnly: true
+        protection:
+          description: The level of protection that the HSM group uses for the DNSSEC
+            key data.
+          enum:
+          - MODULE
+          - SOFTCARD
+          example: Example protection
+          type: string
+        status:
+          description: The status of all Entrust nShield HSM devices in the group.
+          enum:
+          - UP
+          - DOWN
+          example: Example status
+          readOnly: true
+          type: string
       type: object
-    ListThreatinsightCloudclientResponse:
+    HsmEntrustnshieldgroupEntrustnshieldHsm:
+      example:
+        remote_esn: Example remote_esn
+        remote_ip: Example remote_ip
+        keyhash: Example keyhash
+        disable: false
+        remote_port: 1
+        status: Example status
+      properties:
+        remote_ip:
+          description: The IPv4 Address of the Entrust nShield HSM device.
+          example: Example remote_ip
+          type: string
+        remote_port:
+          description: The Entrust nShield HSM device destination port.
+          example: 1
+          format: int64
+          type: integer
+        status:
+          description: The Entrust nShield HSM device status.
+          enum:
+          - UP
+          - DOWN
+          example: Example status
+          readOnly: true
+          type: string
+        remote_esn:
+          description: The Entrust nShield HSM device electronic serial number.
+          example: Example remote_esn
+          readOnly: true
+          type: string
+        keyhash:
+          description: The Entrust nShield HSM device public key digest.
+          example: Example keyhash
+          type: string
+        disable:
+          description: Determines whether the Entrust nShield HSM device is disabled.
+          example: false
+          type: boolean
+      type: object
+    ListHsmEntrustnshieldgroupResponse:
       oneOf:
-      - description: The response format to retrieve __ThreatinsightCloudclient__
-          objects.
+      - description: The response format to retrieve __HsmEntrustnshieldgroup__ objects.
         items:
-          $ref: '#/components/schemas/ThreatinsightCloudclient'
-        title: ListThreatinsightCloudclientResponseArray
+          $ref: '#/components/schemas/HsmEntrustnshieldgroup'
+        title: ListHsmEntrustnshieldgroupResponseArray
         type: array
-      - $ref: '#/components/schemas/ListThreatinsightCloudclientResponseObject'
-    CreateThreatinsightCloudclientResponse:
+      - $ref: '#/components/schemas/ListHsmEntrustnshieldgroupResponseObject'
+    CreateHsmEntrustnshieldgroupResponse:
       oneOf:
-      - $ref: '#/components/schemas/CreateThreatinsightCloudclientResponseAsObject'
-      - description: The response format to create __ThreatinsightCloudclient__.
-        title: CreateThreatinsightCloudclientResponse
+      - $ref: '#/components/schemas/CreateHsmEntrustnshieldgroupResponseAsObject'
+      - description: The response format to create __HsmEntrustnshieldgroup__.
+        title: CreateHsmEntrustnshieldgroupResponse
         type: string
-    GetThreatinsightCloudclientResponse:
+    GetHsmEntrustnshieldgroupResponse:
       oneOf:
-      - $ref: '#/components/schemas/ThreatinsightCloudclient'
-      - $ref: '#/components/schemas/GetThreatinsightCloudclientResponseObjectAsResult'
-    UpdateThreatinsightCloudclientResponse:
+      - $ref: '#/components/schemas/HsmEntrustnshieldgroup'
+      - $ref: '#/components/schemas/GetHsmEntrustnshieldgroupResponseObjectAsResult'
+    UpdateHsmEntrustnshieldgroupResponse:
       oneOf:
-      - $ref: '#/components/schemas/UpdateThreatinsightCloudclientResponseAsObject'
-      - description: The response format to update __ThreatinsightCloudclient__ .
-        title: UpdateThreatinsightCloudclientResponse
+      - $ref: '#/components/schemas/UpdateHsmEntrustnshieldgroupResponseAsObject'
+      - description: The response format to update __HsmEntrustnshieldgroup__ .
+        title: UpdateHsmEntrustnshieldgroupResponse
+        type: string
+    HsmThaleslunagroup:
+      additionalProperties: false
+      example:
+        thalesluna:
+        - partition_id: Example partition_id
+          server_cert: Example server_cert
+          partition_serial_number: Example partition_serial_number
+          is_fips_compliant: false
+          disable: false
+          name: Example name
+          partition_capacity: 1
+          status: Example status
+        - partition_id: Example partition_id
+          server_cert: Example server_cert
+          partition_serial_number: Example partition_serial_number
+          is_fips_compliant: false
+          disable: false
+          name: Example name
+          partition_capacity: 1
+          status: Example status
+        pass_phrase: Example pass_phrase
+        group_sn: Example group_sn
+        hsm_version: Example hsm_version
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+        status: Example status
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        comment:
+          description: The HSM Thales Luna group comment.
+          example: Example comment
+          type: string
+        group_sn:
+          description: The HSM Thales Luna group serial number.
+          example: Example group_sn
+          readOnly: true
+          type: string
+        hsm_version:
+          description: The HSM Thales Luna version.
+          enum:
+          - Luna_4
+          - Luna_5
+          - Luna_6
+          - Luna_7_CPL
+          example: Example hsm_version
+          type: string
+        name:
+          description: The HSM Thales Luna group name.
+          example: Example name
+          type: string
+        pass_phrase:
+          description: The pass phrase used to unlock the HSM Thales Luna keystore.
+          example: Example pass_phrase
+          type: string
+          writeOnly: true
+        status:
+          description: The status of all HSM Thales Luna devices in the group.
+          enum:
+          - UP
+          - DOWN
+          example: Example status
+          readOnly: true
+          type: string
+        thalesluna:
+          description: The list of HSM Thales Luna devices.
+          enum:
+          - hsm:thalesluna
+          items:
+            $ref: '#/components/schemas/HsmThaleslunagroupThalesluna'
+          type: array
+      type: object
+    HsmThaleslunagroupThalesluna:
+      example:
+        partition_id: Example partition_id
+        server_cert: Example server_cert
+        partition_serial_number: Example partition_serial_number
+        is_fips_compliant: false
+        disable: false
+        name: Example name
+        partition_capacity: 1
+        status: Example status
+      properties:
+        name:
+          description: The HSM Thales Luna device IPv4 Address or FQDN.
+          example: Example name
+          type: string
+        partition_serial_number:
+          description: The HSM Thales Luna device partition serial number (PSN).
+          example: Example partition_serial_number
+          type: string
+        disable:
+          description: Determines whether the HSM Thales Luna device is disabled.
+          example: false
+          type: boolean
+        partition_id:
+          description: Partition ID that is displayed after the appliance has successfully
+            connected to the HSM Thales Luna device.
+          example: Example partition_id
+          readOnly: true
+          type: string
+        is_fips_compliant:
+          description: Determines whether the HSM Thales Luna device is FIPS compliant.
+          example: false
+          readOnly: true
+          type: boolean
+        server_cert:
+          description: The token returned by the uploadinit function call in object
+            fileop for a Thales Luna HSM device certificate.
+          example: Example server_cert
+          type: string
+          writeOnly: true
+        partition_capacity:
+          description: The HSM Thales Luna device partition capacity percentage used.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        status:
+          description: The HSM Thales Luna device status.
+          enum:
+          - UP
+          - DOWN
+          example: Example status
+          readOnly: true
+          type: string
+      type: object
+    ListHsmThaleslunagroupResponse:
+      oneOf:
+      - description: The response format to retrieve __HsmThaleslunagroup__ objects.
+        items:
+          $ref: '#/components/schemas/HsmThaleslunagroup'
+        title: ListHsmThaleslunagroupResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListHsmThaleslunagroupResponseObject'
+    CreateHsmThaleslunagroupResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateHsmThaleslunagroupResponseAsObject'
+      - description: The response format to create __HsmThaleslunagroup__.
+        title: CreateHsmThaleslunagroupResponse
+        type: string
+    GetHsmThaleslunagroupResponse:
+      oneOf:
+      - $ref: '#/components/schemas/HsmThaleslunagroup'
+      - $ref: '#/components/schemas/GetHsmThaleslunagroupResponseObjectAsResult'
+    UpdateHsmThaleslunagroupResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateHsmThaleslunagroupResponseAsObject'
+      - description: The response format to update __HsmThaleslunagroup__ .
+        title: UpdateHsmThaleslunagroupResponse
         type: string
     ListAdmingroupResponseObject:
       description: The response format to retrieve __Admingroup__ objects.
@@ -12082,7 +11665,7 @@ components:
             expire_days: 1
           extattrs:
             key:
-              value: value
+              value: ""
           security_show_commands:
             show_check_ssl_certificate: false
             show_adp_debug: false
@@ -12510,7 +12093,7 @@ components:
             expire_days: 1
           extattrs:
             key:
-              value: value
+              value: ""
           security_show_commands:
             show_check_ssl_certificate: false
             show_adp_debug: false
@@ -12635,7 +12218,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -12659,7 +12242,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -12687,7 +12270,7 @@ components:
           auth_type: Example auth_type
           extattrs:
             key:
-              value: value
+              value: ""
           use_ssh_keys: false
           time_zone: Example time_zone
           admin_groups:
@@ -12732,7 +12315,7 @@ components:
           auth_type: Example auth_type
           extattrs:
             key:
-              value: value
+              value: ""
           use_ssh_keys: false
           time_zone: Example time_zone
           admin_groups:
@@ -12816,13 +12399,6 @@ components:
           type: array
       title: ListUserprofileResponseObject
       type: object
-    CreateUserprofileResponseAsObject:
-      description: The response format to create __Userprofile__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Userprofile'
-      title: CreateUserprofileResponseAsObject
-      type: object
     GetUserprofileResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __Userprofile__ objects.
@@ -12870,13 +12446,6 @@ components:
           type: array
       title: ListAuthpolicyResponseObject
       type: object
-    CreateAuthpolicyResponseAsObject:
-      description: The response format to create __Authpolicy__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Authpolicy'
-      title: CreateAuthpolicyResponseAsObject
-      type: object
     GetAuthpolicyResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __Authpolicy__ objects.
@@ -12890,8 +12459,8 @@ components:
       example:
         result:
           auth_services:
-          - "{}"
-          - "{}"
+          - localuser:authservice
+          - localuser:authservice
           usage_type: Example usage_type
           _ref: _ref
           default_group: Example default_group
@@ -12919,7 +12488,7 @@ components:
           submitter_group: Example submitter_group
           extattrs:
             key:
-              value: value
+              value: ""
           failed_notify_to: Example failed_notify_to
           enable_notify_user: false
           enable_rejected_notify: false
@@ -12959,7 +12528,7 @@ components:
           submitter_group: Example submitter_group
           extattrs:
             key:
-              value: value
+              value: ""
           failed_notify_to: Example failed_notify_to
           enable_notify_user: false
           enable_rejected_notify: false
@@ -12992,13 +12561,6 @@ components:
             $ref: '#/components/schemas/Cacertificate'
           type: array
       title: ListCacertificateResponseObject
-      type: object
-    CreateCacertificateResponseAsObject:
-      description: The response format to create __Cacertificate__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Cacertificate'
-      title: CreateCacertificateResponseAsObject
       type: object
     GetCacertificateResponseObjectAsResult:
       additionalProperties: false
@@ -13052,10 +12614,9 @@ components:
           user_match_type: Example user_match_type
           recovery_interval: 1
           remote_lookup_username: Example remote_lookup_username
-          test_ocsp_responder_settings: "{}"
           ca_certificates:
-          - "{}"
-          - "{}"
+          - cacertificate
+          - cacertificate
           remote_lookup_password: Example remote_lookup_password
           _ref: _ref
           name: Example name
@@ -13103,10 +12664,9 @@ components:
           user_match_type: Example user_match_type
           recovery_interval: 1
           remote_lookup_username: Example remote_lookup_username
-          test_ocsp_responder_settings: "{}"
           ca_certificates:
-          - "{}"
-          - "{}"
+          - cacertificate
+          - cacertificate
           remote_lookup_password: Example remote_lookup_password
           _ref: _ref
           name: Example name
@@ -13136,7 +12696,6 @@ components:
           acct_retries: 1
           recovery_interval: 1
           mode: Example mode
-          check_radius_server_settings: "{}"
           servers:
           - acct_port: 1
             auth_type: Example auth_type
@@ -13185,7 +12744,6 @@ components:
           acct_retries: 1
           recovery_interval: 1
           mode: Example mode
-          check_radius_server_settings: "{}"
           servers:
           - acct_port: 1
             auth_type: Example auth_type
@@ -13249,7 +12807,6 @@ components:
             use_mgmt_port: false
             shared_secret: Example shared_secret
             comment: Example comment
-          check_tacacsplus_server_settings: "{}"
           disable: false
           _ref: _ref
           name: Example name
@@ -13293,7 +12850,6 @@ components:
             use_mgmt_port: false
             shared_secret: Example shared_secret
             comment: Example comment
-          check_tacacsplus_server_settings: "{}"
           disable: false
           _ref: _ref
           name: Example name
@@ -13330,7 +12886,6 @@ components:
           search_scope: Example search_scope
           timeout: 1
           mode: Example mode
-          check_ldap_server_settings: "{}"
           retries: 1
           servers:
           - address: Example address
@@ -13388,7 +12943,6 @@ components:
           search_scope: Example search_scope
           timeout: 1
           mode: Example mode
-          check_ldap_server_settings: "{}"
           retries: 1
           servers:
           - address: Example address
@@ -13489,14 +13043,6 @@ components:
           type: array
       title: ListLocaluserAuthserviceResponseObject
       type: object
-    CreateLocaluserAuthserviceResponseAsObject:
-      description: The response format to create __LocaluserAuthservice__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/LocaluserAuthservice'
-      title: CreateLocaluserAuthserviceResponseAsObject
-      type: object
     GetLocaluserAuthserviceResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __LocaluserAuthservice__ objects.
@@ -13529,7 +13075,7 @@ components:
           authentication_password: Example authentication_password
           extattrs:
             key:
-              value: value
+              value: ""
           privacy_protocol: Example privacy_protocol
           disable: false
           _ref: _ref
@@ -13557,7 +13103,7 @@ components:
           authentication_password: Example authentication_password
           extattrs:
             key:
-              value: value
+              value: ""
           privacy_protocol: Example privacy_protocol
           disable: false
           _ref: _ref
@@ -13586,7 +13132,7 @@ components:
           password: Example password
           extattrs:
             key:
-              value: value
+              value: ""
           home_dir: Example home_dir
           _ref: _ref
           create_home_dir: false
@@ -13612,7 +13158,7 @@ components:
           password: Example password
           extattrs:
             key:
-              value: value
+              value: ""
           home_dir: Example home_dir
           _ref: _ref
           create_home_dir: false
@@ -13690,301 +13236,280 @@ components:
           $ref: '#/components/schemas/Networkuser'
       title: UpdateNetworkuserResponseAsObject
       type: object
-    ListThreatprotectionProfileResponseObject:
-      description: The response format to retrieve __ThreatprotectionProfile__ objects.
+    ListAdAuthServiceResponseObject:
+      description: The response format to retrieve __AdAuthService__ objects.
       properties:
         result:
           items:
-            $ref: '#/components/schemas/ThreatprotectionProfile'
+            $ref: '#/components/schemas/AdAuthService'
           type: array
-      title: ListThreatprotectionProfileResponseObject
+      title: ListAdAuthServiceResponseObject
       type: object
-    CreateThreatprotectionProfileResponseAsObject:
-      description: The response format to create __ThreatprotectionProfile__ in object
-        format.
+    CreateAdAuthServiceResponseAsObject:
+      description: The response format to create __AdAuthService__ in object format.
       example:
         result:
-          source_member: Example source_member
-          extattrs:
-            key:
-              value: value
-          use_disable_multiple_dns_tcp_request: false
-          use_current_ruleset: false
-          use_events_per_second_per_rule: false
-          current_ruleset: Example current_ruleset
-          members:
-          - members
-          - members
+          nested_group_querying: false
+          ad_domain: Example ad_domain
           _ref: _ref
           name: Example name
           comment: Example comment
-          disable_multiple_dns_tcp_request: false
-          events_per_second_per_rule: 1
-          source_profile: Example source_profile
+          disabled: false
+          domain_controllers:
+          - fqdn_or_ip: Example fqdn_or_ip
+            encryption: Example encryption
+            use_mgmt_port: false
+            auth_port: 1
+            comment: Example comment
+            disabled: false
+            mgmt_port: false
+          - fqdn_or_ip: Example fqdn_or_ip
+            encryption: Example encryption
+            use_mgmt_port: false
+            auth_port: 1
+            comment: Example comment
+            disabled: false
+            mgmt_port: false
+          timeout: 1
       properties:
         result:
-          $ref: '#/components/schemas/ThreatprotectionProfile'
-      title: CreateThreatprotectionProfileResponseAsObject
+          $ref: '#/components/schemas/AdAuthService'
+      title: CreateAdAuthServiceResponseAsObject
       type: object
-    GetThreatprotectionProfileResponseObjectAsResult:
+    GetAdAuthServiceResponseObjectAsResult:
       additionalProperties: false
-      description: The response format to retrieve __ThreatprotectionProfile__ objects.
+      description: The response format to retrieve __AdAuthService__ objects.
       properties:
         result:
-          $ref: '#/components/schemas/ThreatprotectionProfile'
-      title: GetThreatprotectionProfileResponseObjectAsResult
+          $ref: '#/components/schemas/AdAuthService'
+      title: GetAdAuthServiceResponseObjectAsResult
       type: object
-    UpdateThreatprotectionProfileResponseAsObject:
-      description: The response format to update __ThreatprotectionProfile__ in object
-        format.
+    UpdateAdAuthServiceResponseAsObject:
+      description: The response format to update __AdAuthService__ in object format.
       example:
         result:
-          source_member: Example source_member
-          extattrs:
-            key:
-              value: value
-          use_disable_multiple_dns_tcp_request: false
-          use_current_ruleset: false
-          use_events_per_second_per_rule: false
-          current_ruleset: Example current_ruleset
-          members:
-          - members
-          - members
+          nested_group_querying: false
+          ad_domain: Example ad_domain
           _ref: _ref
           name: Example name
           comment: Example comment
-          disable_multiple_dns_tcp_request: false
-          events_per_second_per_rule: 1
-          source_profile: Example source_profile
+          disabled: false
+          domain_controllers:
+          - fqdn_or_ip: Example fqdn_or_ip
+            encryption: Example encryption
+            use_mgmt_port: false
+            auth_port: 1
+            comment: Example comment
+            disabled: false
+            mgmt_port: false
+          - fqdn_or_ip: Example fqdn_or_ip
+            encryption: Example encryption
+            use_mgmt_port: false
+            auth_port: 1
+            comment: Example comment
+            disabled: false
+            mgmt_port: false
+          timeout: 1
       properties:
         result:
-          $ref: '#/components/schemas/ThreatprotectionProfile'
-      title: UpdateThreatprotectionProfileResponseAsObject
+          $ref: '#/components/schemas/AdAuthService'
+      title: UpdateAdAuthServiceResponseAsObject
       type: object
-    ListThreatprotectionRuleResponseObject:
-      description: The response format to retrieve __ThreatprotectionRule__ objects.
-      properties:
-        result:
-          items:
-            $ref: '#/components/schemas/ThreatprotectionRule'
-          type: array
-      title: ListThreatprotectionRuleResponseObject
-      type: object
-    CreateThreatprotectionRuleResponseAsObject:
-      description: The response format to create __ThreatprotectionRule__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatprotectionRule'
-      title: CreateThreatprotectionRuleResponseAsObject
-      type: object
-    GetThreatprotectionRuleResponseObjectAsResult:
-      additionalProperties: false
-      description: The response format to retrieve __ThreatprotectionRule__ objects.
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatprotectionRule'
-      title: GetThreatprotectionRuleResponseObjectAsResult
-      type: object
-    UpdateThreatprotectionRuleResponseAsObject:
-      description: The response format to update __ThreatprotectionRule__ in object
-        format.
-      example:
-        result:
-          use_disable: false
-          disable: false
-          _ref: _ref
-          member: Example member
-          rule: Example rule
-          config:
-            log_severity: Example log_severity
-            action: Example action
-            params:
-              min: 1
-              max: 1
-              read_only: false
-              enum_values:
-              - enum_values
-              - enum_values
-              name: Example name
-              description: Example description
-              syntax: Example syntax
-              value: Example value
-          use_config: false
-          sid: 1
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatprotectionRule'
-      title: UpdateThreatprotectionRuleResponseAsObject
-      type: object
-    ListThreatprotectionRulesetResponseObject:
-      description: The response format to retrieve __ThreatprotectionRuleset__ objects.
+    ListHsmAllgroupsResponseObject:
+      description: The response format to retrieve __HsmAllgroups__ objects.
       properties:
         result:
           items:
-            $ref: '#/components/schemas/ThreatprotectionRuleset'
+            $ref: '#/components/schemas/HsmAllgroups'
           type: array
-      title: ListThreatprotectionRulesetResponseObject
+      title: ListHsmAllgroupsResponseObject
       type: object
-    CreateThreatprotectionRulesetResponseAsObject:
-      description: The response format to create __ThreatprotectionRuleset__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatprotectionRuleset'
-      title: CreateThreatprotectionRulesetResponseAsObject
-      type: object
-    GetThreatprotectionRulesetResponseObjectAsResult:
+    GetHsmAllgroupsResponseObjectAsResult:
       additionalProperties: false
-      description: The response format to retrieve __ThreatprotectionRuleset__ objects.
+      description: The response format to retrieve __HsmAllgroups__ objects.
       properties:
         result:
-          $ref: '#/components/schemas/ThreatprotectionRuleset'
-      title: GetThreatprotectionRulesetResponseObjectAsResult
+          $ref: '#/components/schemas/HsmAllgroups'
+      title: GetHsmAllgroupsResponseObjectAsResult
       type: object
-    UpdateThreatprotectionRulesetResponseAsObject:
-      description: The response format to update __ThreatprotectionRuleset__ in object
+    UpdateHsmAllgroupsResponseAsObject:
+      description: The response format to update __HsmAllgroups__ in object format.
+      example:
+        result:
+          _ref: _ref
+          groups:
+          - hsm:thaleslunagroup
+          - hsm:thaleslunagroup
+      properties:
+        result:
+          $ref: '#/components/schemas/HsmAllgroups'
+      title: UpdateHsmAllgroupsResponseAsObject
+      type: object
+    ListHsmEntrustnshieldgroupResponseObject:
+      description: The response format to retrieve __HsmEntrustnshieldgroup__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/HsmEntrustnshieldgroup'
+          type: array
+      title: ListHsmEntrustnshieldgroupResponseObject
+      type: object
+    CreateHsmEntrustnshieldgroupResponseAsObject:
+      description: The response format to create __HsmEntrustnshieldgroup__ in object
         format.
       example:
         result:
-          added_time: 1
-          is_factory_reset_enabled: false
-          do_not_delete: false
+          entrustnshield_hsm:
+          - remote_esn: Example remote_esn
+            remote_ip: Example remote_ip
+            keyhash: Example keyhash
+            disable: false
+            remote_port: 1
+            status: Example status
+          - remote_esn: Example remote_esn
+            remote_ip: Example remote_ip
+            keyhash: Example keyhash
+            disable: false
+            remote_port: 1
+            status: Example status
+          pass_phrase: Example pass_phrase
           _ref: _ref
+          card_name: Example card_name
+          name: Example name
           comment: Example comment
-          used_by:
-          - used_by
-          - used_by
-          version: Example version
-          add_type: Example add_type
+          key_server_port: 1
+          protection: Example protection
+          key_server_ip: Example key_server_ip
+          status: Example status
       properties:
         result:
-          $ref: '#/components/schemas/ThreatprotectionRuleset'
-      title: UpdateThreatprotectionRulesetResponseAsObject
+          $ref: '#/components/schemas/HsmEntrustnshieldgroup'
+      title: CreateHsmEntrustnshieldgroupResponseAsObject
       type: object
-    ListThreatprotectionStatisticsResponseObject:
-      description: The response format to retrieve __ThreatprotectionStatistics__
-        objects.
-      properties:
-        result:
-          items:
-            $ref: '#/components/schemas/ThreatprotectionStatistics'
-          type: array
-      title: ListThreatprotectionStatisticsResponseObject
-      type: object
-    CreateThreatprotectionStatisticsResponseAsObject:
-      description: The response format to create __ThreatprotectionStatistics__ in
-        object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatprotectionStatistics'
-      title: CreateThreatprotectionStatisticsResponseAsObject
-      type: object
-    GetThreatprotectionStatisticsResponseObjectAsResult:
+    GetHsmEntrustnshieldgroupResponseObjectAsResult:
       additionalProperties: false
-      description: The response format to retrieve __ThreatprotectionStatistics__
-        objects.
+      description: The response format to retrieve __HsmEntrustnshieldgroup__ objects.
       properties:
         result:
-          $ref: '#/components/schemas/ThreatprotectionStatistics'
-      title: GetThreatprotectionStatisticsResponseObjectAsResult
+          $ref: '#/components/schemas/HsmEntrustnshieldgroup'
+      title: GetHsmEntrustnshieldgroupResponseObjectAsResult
       type: object
-    UpdateThreatprotectionStatisticsResponseAsObject:
-      description: The response format to update __ThreatprotectionStatistics__ in
-        object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatprotectionStatistics'
-      title: UpdateThreatprotectionStatisticsResponseAsObject
-      type: object
-    ListThreatinsightAllowlistResponseObject:
-      description: The response format to retrieve __ThreatinsightAllowlist__ objects.
-      properties:
-        result:
-          items:
-            $ref: '#/components/schemas/ThreatinsightAllowlist'
-          type: array
-      title: ListThreatinsightAllowlistResponseObject
-      type: object
-    CreateThreatinsightAllowlistResponseAsObject:
-      description: The response format to create __ThreatinsightAllowlist__ in object
+    UpdateHsmEntrustnshieldgroupResponseAsObject:
+      description: The response format to update __HsmEntrustnshieldgroup__ in object
         format.
       example:
         result:
-          fqdn: Example fqdn
-          disable: false
+          entrustnshield_hsm:
+          - remote_esn: Example remote_esn
+            remote_ip: Example remote_ip
+            keyhash: Example keyhash
+            disable: false
+            remote_port: 1
+            status: Example status
+          - remote_esn: Example remote_esn
+            remote_ip: Example remote_ip
+            keyhash: Example keyhash
+            disable: false
+            remote_port: 1
+            status: Example status
+          pass_phrase: Example pass_phrase
           _ref: _ref
+          card_name: Example card_name
+          name: Example name
           comment: Example comment
-          type: Example type
+          key_server_port: 1
+          protection: Example protection
+          key_server_ip: Example key_server_ip
+          status: Example status
       properties:
         result:
-          $ref: '#/components/schemas/ThreatinsightAllowlist'
-      title: CreateThreatinsightAllowlistResponseAsObject
+          $ref: '#/components/schemas/HsmEntrustnshieldgroup'
+      title: UpdateHsmEntrustnshieldgroupResponseAsObject
       type: object
-    GetThreatinsightAllowlistResponseObjectAsResult:
-      additionalProperties: false
-      description: The response format to retrieve __ThreatinsightAllowlist__ objects.
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatinsightAllowlist'
-      title: GetThreatinsightAllowlistResponseObjectAsResult
-      type: object
-    UpdateThreatinsightAllowlistResponseAsObject:
-      description: The response format to update __ThreatinsightAllowlist__ in object
-        format.
-      example:
-        result:
-          fqdn: Example fqdn
-          disable: false
-          _ref: _ref
-          comment: Example comment
-          type: Example type
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatinsightAllowlist'
-      title: UpdateThreatinsightAllowlistResponseAsObject
-      type: object
-    ListThreatinsightCloudclientResponseObject:
-      description: The response format to retrieve __ThreatinsightCloudclient__ objects.
+    ListHsmThaleslunagroupResponseObject:
+      description: The response format to retrieve __HsmThaleslunagroup__ objects.
       properties:
         result:
           items:
-            $ref: '#/components/schemas/ThreatinsightCloudclient'
+            $ref: '#/components/schemas/HsmThaleslunagroup'
           type: array
-      title: ListThreatinsightCloudclientResponseObject
+      title: ListHsmThaleslunagroupResponseObject
       type: object
-    CreateThreatinsightCloudclientResponseAsObject:
-      description: The response format to create __ThreatinsightCloudclient__ in object
-        format.
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatinsightCloudclient'
-      title: CreateThreatinsightCloudclientResponseAsObject
-      type: object
-    GetThreatinsightCloudclientResponseObjectAsResult:
-      additionalProperties: false
-      description: The response format to retrieve __ThreatinsightCloudclient__ objects.
-      properties:
-        result:
-          $ref: '#/components/schemas/ThreatinsightCloudclient'
-      title: GetThreatinsightCloudclientResponseObjectAsResult
-      type: object
-    UpdateThreatinsightCloudclientResponseAsObject:
-      description: The response format to update __ThreatinsightCloudclient__ in object
+    CreateHsmThaleslunagroupResponseAsObject:
+      description: The response format to create __HsmThaleslunagroup__ in object
         format.
       example:
         result:
-          enable: false
+          thalesluna:
+          - partition_id: Example partition_id
+            server_cert: Example server_cert
+            partition_serial_number: Example partition_serial_number
+            is_fips_compliant: false
+            disable: false
+            name: Example name
+            partition_capacity: 1
+            status: Example status
+          - partition_id: Example partition_id
+            server_cert: Example server_cert
+            partition_serial_number: Example partition_serial_number
+            is_fips_compliant: false
+            disable: false
+            name: Example name
+            partition_capacity: 1
+            status: Example status
+          pass_phrase: Example pass_phrase
+          group_sn: Example group_sn
+          hsm_version: Example hsm_version
           _ref: _ref
-          interval: 1
-          force_refresh: false
-          blacklist_rpz_list:
-          - "{}"
-          - "{}"
+          name: Example name
+          comment: Example comment
+          status: Example status
       properties:
         result:
-          $ref: '#/components/schemas/ThreatinsightCloudclient'
-      title: UpdateThreatinsightCloudclientResponseAsObject
+          $ref: '#/components/schemas/HsmThaleslunagroup'
+      title: CreateHsmThaleslunagroupResponseAsObject
+      type: object
+    GetHsmThaleslunagroupResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __HsmThaleslunagroup__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/HsmThaleslunagroup'
+      title: GetHsmThaleslunagroupResponseObjectAsResult
+      type: object
+    UpdateHsmThaleslunagroupResponseAsObject:
+      description: The response format to update __HsmThaleslunagroup__ in object
+        format.
+      example:
+        result:
+          thalesluna:
+          - partition_id: Example partition_id
+            server_cert: Example server_cert
+            partition_serial_number: Example partition_serial_number
+            is_fips_compliant: false
+            disable: false
+            name: Example name
+            partition_capacity: 1
+            status: Example status
+          - partition_id: Example partition_id
+            server_cert: Example server_cert
+            partition_serial_number: Example partition_serial_number
+            is_fips_compliant: false
+            disable: false
+            name: Example name
+            partition_capacity: 1
+            status: Example status
+          pass_phrase: Example pass_phrase
+          group_sn: Example group_sn
+          hsm_version: Example hsm_version
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          status: Example status
+      properties:
+        result:
+          $ref: '#/components/schemas/HsmThaleslunagroup'
+      title: UpdateHsmThaleslunagroupResponseAsObject
       type: object
   securitySchemes:
     basicAuth:

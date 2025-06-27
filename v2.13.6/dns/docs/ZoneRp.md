@@ -7,18 +7,16 @@ Name | Type | Description | Notes
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **Address** | Pointer to **string** | The IP address of the server that is serving this zone. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the zone; maximum 256 characters. | [optional] 
-**CopyRpzRecords** | Pointer to **map[string]interface{}** |  | [optional] 
 **Disable** | Pointer to **bool** | Determines whether a zone is disabled or not. When this is set to False, the zone is enabled. | [optional] 
 **DisplayDomain** | Pointer to **string** | The displayed name of the DNS zone. | [optional] [readonly] 
 **DnsSoaEmail** | Pointer to **string** | The SOA email for the zone in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalPrimaries** | Pointer to [**[]ZoneRpExternalPrimaries**](ZoneRpExternalPrimaries.md) | The list of external primary servers. | [optional] 
 **ExternalSecondaries** | Pointer to [**[]ZoneRpExternalSecondaries**](ZoneRpExternalSecondaries.md) | The list of external secondary servers. | [optional] 
 **FireeyeRuleMapping** | Pointer to [**ZoneRpFireeyeRuleMapping**](ZoneRpFireeyeRuleMapping.md) |  | [optional] 
 **Fqdn** | Pointer to **string** | The name of this DNS zone in FQDN format. | [optional] 
 **GridPrimary** | Pointer to [**[]ZoneRpGridPrimary**](ZoneRpGridPrimary.md) | The grid primary servers for this zone. | [optional] 
 **GridSecondaries** | Pointer to [**[]ZoneRpGridSecondaries**](ZoneRpGridSecondaries.md) | The list with Grid members that are secondary servers for this zone. | [optional] 
-**LockUnlockZone** | Pointer to **map[string]interface{}** |  | [optional] 
 **Locked** | Pointer to **bool** | If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked. | [optional] 
 **LockedBy** | Pointer to **string** | The name of a superuser or the administrator who locked this zone. | [optional] [readonly] 
 **LogRpz** | Pointer to **bool** | Determines whether RPZ logging enabled or not at zone level. When this is set to False, the logging is disabled. | [optional] 
@@ -151,31 +149,6 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetCopyRpzRecords
-
-`func (o *ZoneRp) GetCopyRpzRecords() map[string]interface{}`
-
-GetCopyRpzRecords returns the CopyRpzRecords field if non-nil, zero value otherwise.
-
-### GetCopyRpzRecordsOk
-
-`func (o *ZoneRp) GetCopyRpzRecordsOk() (*map[string]interface{}, bool)`
-
-GetCopyRpzRecordsOk returns a tuple with the CopyRpzRecords field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCopyRpzRecords
-
-`func (o *ZoneRp) SetCopyRpzRecords(v map[string]interface{})`
-
-SetCopyRpzRecords sets CopyRpzRecords field to given value.
-
-### HasCopyRpzRecords
-
-`func (o *ZoneRp) HasCopyRpzRecords() bool`
-
-HasCopyRpzRecords returns a boolean if a field has been set.
-
 ### GetDisable
 
 `func (o *ZoneRp) GetDisable() bool`
@@ -251,30 +224,30 @@ SetDnsSoaEmail sets DnsSoaEmail field to given value.
 
 HasDnsSoaEmail returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *ZoneRp) GetExtattrs() map[string]ExtAttrs`
+`func (o *ZoneRp) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *ZoneRp) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *ZoneRp) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *ZoneRp) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *ZoneRp) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *ZoneRp) HasExtattrs() bool`
+`func (o *ZoneRp) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetExternalPrimaries
 
@@ -425,31 +398,6 @@ SetGridSecondaries sets GridSecondaries field to given value.
 `func (o *ZoneRp) HasGridSecondaries() bool`
 
 HasGridSecondaries returns a boolean if a field has been set.
-
-### GetLockUnlockZone
-
-`func (o *ZoneRp) GetLockUnlockZone() map[string]interface{}`
-
-GetLockUnlockZone returns the LockUnlockZone field if non-nil, zero value otherwise.
-
-### GetLockUnlockZoneOk
-
-`func (o *ZoneRp) GetLockUnlockZoneOk() (*map[string]interface{}, bool)`
-
-GetLockUnlockZoneOk returns a tuple with the LockUnlockZone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLockUnlockZone
-
-`func (o *ZoneRp) SetLockUnlockZone(v map[string]interface{})`
-
-SetLockUnlockZone sets LockUnlockZone field to given value.
-
-### HasLockUnlockZone
-
-`func (o *ZoneRp) HasLockUnlockZone() bool`
-
-HasLockUnlockZone returns a boolean if a field has been set.
 
 ### GetLocked
 

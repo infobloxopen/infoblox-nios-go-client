@@ -24,7 +24,7 @@ type Orderedranges struct {
 	// The reference to the network that contains ranges.
 	Network *string `json:"network,omitempty"`
 	// The ordered list of references to ranges.
-	Ranges []map[string]interface{} `json:"ranges,omitempty"`
+	Ranges []string `json:"ranges,omitempty"`
 }
 
 // NewOrderedranges instantiates a new Orderedranges object
@@ -109,9 +109,9 @@ func (o *Orderedranges) SetNetwork(v string) {
 }
 
 // GetRanges returns the Ranges field value if set, zero value otherwise.
-func (o *Orderedranges) GetRanges() []map[string]interface{} {
+func (o *Orderedranges) GetRanges() []string {
 	if o == nil || IsNil(o.Ranges) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Ranges
@@ -119,7 +119,7 @@ func (o *Orderedranges) GetRanges() []map[string]interface{} {
 
 // GetRangesOk returns a tuple with the Ranges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Orderedranges) GetRangesOk() ([]map[string]interface{}, bool) {
+func (o *Orderedranges) GetRangesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Ranges) {
 		return nil, false
 	}
@@ -135,8 +135,8 @@ func (o *Orderedranges) HasRanges() bool {
 	return false
 }
 
-// SetRanges gets a reference to the given []map[string]interface{} and assigns it to the Ranges field.
-func (o *Orderedranges) SetRanges(v []map[string]interface{}) {
+// SetRanges gets a reference to the given []string and assigns it to the Ranges field.
+func (o *Orderedranges) SetRanges(v []string) {
 	o.Ranges = v
 }
 

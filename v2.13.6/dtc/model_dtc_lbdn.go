@@ -22,7 +22,7 @@ type DtcLbdn struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
 	// List of linked auth zones.
-	AuthZones []map[string]interface{} `json:"auth_zones,omitempty"`
+	AuthZones []string `json:"auth_zones,omitempty"`
 	// Flag for enabling auto managing DTC Consolidated Monitors on related DTC Pools.
 	AutoConsolidatedMonitors *bool `json:"auto_consolidated_monitors,omitempty"`
 	// Comment for the DTC LBDN; maximum 256 characters.
@@ -30,7 +30,7 @@ type DtcLbdn struct {
 	// Determines whether the DTC LBDN is disabled or not. When this is set to False, the fixed address is enabled.
 	Disable *bool `json:"disable,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	Health   *DtcLbdnHealth       `json:"health,omitempty"`
 	// The load balancing method. Used to select pool.
 	LbMethod *string `json:"lb_method,omitempty"`
@@ -104,9 +104,9 @@ func (o *DtcLbdn) SetRef(v string) {
 }
 
 // GetAuthZones returns the AuthZones field value if set, zero value otherwise.
-func (o *DtcLbdn) GetAuthZones() []map[string]interface{} {
+func (o *DtcLbdn) GetAuthZones() []string {
 	if o == nil || IsNil(o.AuthZones) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.AuthZones
@@ -114,7 +114,7 @@ func (o *DtcLbdn) GetAuthZones() []map[string]interface{} {
 
 // GetAuthZonesOk returns a tuple with the AuthZones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcLbdn) GetAuthZonesOk() ([]map[string]interface{}, bool) {
+func (o *DtcLbdn) GetAuthZonesOk() ([]string, bool) {
 	if o == nil || IsNil(o.AuthZones) {
 		return nil, false
 	}
@@ -130,8 +130,8 @@ func (o *DtcLbdn) HasAuthZones() bool {
 	return false
 }
 
-// SetAuthZones gets a reference to the given []map[string]interface{} and assigns it to the AuthZones field.
-func (o *DtcLbdn) SetAuthZones(v []map[string]interface{}) {
+// SetAuthZones gets a reference to the given []string and assigns it to the AuthZones field.
+func (o *DtcLbdn) SetAuthZones(v []string) {
 	o.AuthZones = v
 }
 
@@ -231,36 +231,36 @@ func (o *DtcLbdn) SetDisable(v bool) {
 	o.Disable = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *DtcLbdn) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *DtcLbdn) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcLbdn) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *DtcLbdn) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *DtcLbdn) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *DtcLbdn) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *DtcLbdn) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *DtcLbdn) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetHealth returns the Health field value if set, zero value otherwise.
@@ -640,8 +640,8 @@ func (o DtcLbdn) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Health) {
 		toSerialize["health"] = o.Health

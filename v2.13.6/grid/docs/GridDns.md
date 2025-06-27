@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **BlacklistRedirectAddresses** | Pointer to **[]string** | The IP addresses the appliance includes in the response it sends in place of a blacklisted IP address. | [optional] 
 **BlacklistRedirectTtl** | Pointer to **int64** | The TTL value (in seconds) of the synthetic DNS responses that result from blacklist redirection. | [optional] 
 **BlacklistRulesets** | Pointer to **[]string** | The DNS Ruleset object names assigned at the Grid level for blacklist redirection. | [optional] 
-**BulkHostNameTemplates** | Pointer to **[]map[string]interface{}** | The list of bulk host name templates. There are four Infoblox predefined bulk host name templates. Template Name Template Format \&quot;Four Octets\&quot; -$1-$2-$3-$4 \&quot;Three Octets\&quot; -$2-$3-$4 \&quot;Two Octets\&quot; -$3-$4 \&quot;One Octet\&quot; -$4 | [optional] 
+**BulkHostNameTemplates** | Pointer to **[]string** | The list of bulk host name templates. There are four Infoblox predefined bulk host name templates. Template Name Template Format \&quot;Four Octets\&quot; -$1-$2-$3-$4 \&quot;Three Octets\&quot; -$2-$3-$4 \&quot;Two Octets\&quot; -$3-$4 \&quot;One Octet\&quot; -$4 | [optional] 
 **CaptureDnsQueriesOnAllDomains** | Pointer to **bool** | Determines if the capture of DNS queries for all domains is enabled or disabled. | [optional] 
 **CheckNamesForDdnsAndZoneTransfer** | Pointer to **bool** | Determines whether the application of BIND check-names for zone transfers and DDNS updates are enabled. | [optional] 
 **ClientSubnetDomains** | Pointer to [**[]GridDnsClientSubnetDomains**](GridDnsClientSubnetDomains.md) | The list of zone domain names that are allowed or forbidden for EDNS client subnet (ECS) recursion. | [optional] 
@@ -107,7 +107,7 @@ Name | Type | Description | Notes
 **GenEadbFromNetworkContainers** | Pointer to **bool** | Flag for taking EA values from IPAM Network Containers into consideration for the DTC topology EA database. | [optional] 
 **GenEadbFromNetworks** | Pointer to **bool** | Flag for taking EA values from IPAM Network into consideration for the DTC topology EA database. | [optional] 
 **GenEadbFromRanges** | Pointer to **bool** | Flag for taking EA values from IPAM Ranges into consideration for the DTC topology EA database. | [optional] 
-**GssTsigKeys** | Pointer to **[]map[string]interface{}** | The list of GSS-TSIG keys for a Grid DNS object. | [optional] 
+**GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a Grid DNS object. | [optional] 
 **LastQueriedAcl** | Pointer to [**[]GridDnsLastQueriedAcl**](GridDnsLastQueriedAcl.md) | Determines last queried ACL for the specified IPv4 or IPv6 addresses and networks in scavenging settings. | [optional] 
 **LoggingCategories** | Pointer to [**GridDnsLoggingCategories**](GridDnsLoggingCategories.md) |  | [optional] 
 **MaxCacheTtl** | Pointer to **int64** | The maximum time (in seconds) for which the server will cache positive answers. | [optional] 
@@ -127,7 +127,7 @@ Name | Type | Description | Notes
 **NxdomainRedirectTtl** | Pointer to **int64** | The TTL value (in seconds) of synthetic DNS responses that result from NXDOMAIN redirection. | [optional] 
 **NxdomainRulesets** | Pointer to **[]string** | The Ruleset object names assigned at the Grid level for NXDOMAIN redirection. | [optional] 
 **PreserveHostRrsetOrderOnSecondaries** | Pointer to **bool** | Determines if the host RRset order on secondaries is preserved or not. | [optional] 
-**ProtocolRecordNamePolicies** | Pointer to **[]map[string]interface{}** | The list of record name policies. | [optional] 
+**ProtocolRecordNamePolicies** | Pointer to **[]string** | The list of record name policies. | [optional] 
 **QueryRewriteDomainNames** | Pointer to **[]string** | The list of domain names that trigger DNS query rewrite. | [optional] 
 **QueryRewritePrefix** | Pointer to **string** | The domain name prefix for DNS query rewrite. | [optional] 
 **QuerySourcePort** | Pointer to **int64** | The source port for queries. Specifying a source port number for recursive queries ensures that a firewall will allow the response. Valid values are between 1 and 63999. The default is picked by BIND. | [optional] 
@@ -143,7 +143,6 @@ Name | Type | Description | Notes
 **RpzDropIpRuleMinPrefixLengthIpv4** | Pointer to **int64** | The minimum prefix length for IPv4 RPZ-IP triggers. The appliance ignores RPZ-IP triggers with prefix lengths less than the specified minimum IPv4 prefix length. | [optional] 
 **RpzDropIpRuleMinPrefixLengthIpv6** | Pointer to **int64** | The minimum prefix length for IPv6 RPZ-IP triggers. The appliance ignores RPZ-IP triggers with prefix lengths less than the specified minimum IPv6 prefix length. | [optional] 
 **RpzQnameWaitRecurse** | Pointer to **bool** | Determines if recursive RPZ lookups are enabled. | [optional] 
-**RunScavenging** | Pointer to **map[string]interface{}** |  | [optional] 
 **ScavengingSettings** | Pointer to [**GridDnsScavengingSettings**](GridDnsScavengingSettings.md) |  | [optional] 
 **SerialQueryRate** | Pointer to **int64** | The number of maximum concurrent SOA queries per second. Valid values are unsigned integer between 20 and 1000, inclusive. | [optional] 
 **ServerIdDirective** | Pointer to **string** | The value of the server-id directive for BIND DNS. | [optional] 
@@ -653,20 +652,20 @@ HasBlacklistRulesets returns a boolean if a field has been set.
 
 ### GetBulkHostNameTemplates
 
-`func (o *GridDns) GetBulkHostNameTemplates() []map[string]interface{}`
+`func (o *GridDns) GetBulkHostNameTemplates() []string`
 
 GetBulkHostNameTemplates returns the BulkHostNameTemplates field if non-nil, zero value otherwise.
 
 ### GetBulkHostNameTemplatesOk
 
-`func (o *GridDns) GetBulkHostNameTemplatesOk() (*[]map[string]interface{}, bool)`
+`func (o *GridDns) GetBulkHostNameTemplatesOk() (*[]string, bool)`
 
 GetBulkHostNameTemplatesOk returns a tuple with the BulkHostNameTemplates field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBulkHostNameTemplates
 
-`func (o *GridDns) SetBulkHostNameTemplates(v []map[string]interface{})`
+`func (o *GridDns) SetBulkHostNameTemplates(v []string)`
 
 SetBulkHostNameTemplates sets BulkHostNameTemplates field to given value.
 
@@ -2753,20 +2752,20 @@ HasGenEadbFromRanges returns a boolean if a field has been set.
 
 ### GetGssTsigKeys
 
-`func (o *GridDns) GetGssTsigKeys() []map[string]interface{}`
+`func (o *GridDns) GetGssTsigKeys() []string`
 
 GetGssTsigKeys returns the GssTsigKeys field if non-nil, zero value otherwise.
 
 ### GetGssTsigKeysOk
 
-`func (o *GridDns) GetGssTsigKeysOk() (*[]map[string]interface{}, bool)`
+`func (o *GridDns) GetGssTsigKeysOk() (*[]string, bool)`
 
 GetGssTsigKeysOk returns a tuple with the GssTsigKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGssTsigKeys
 
-`func (o *GridDns) SetGssTsigKeys(v []map[string]interface{})`
+`func (o *GridDns) SetGssTsigKeys(v []string)`
 
 SetGssTsigKeys sets GssTsigKeys field to given value.
 
@@ -3253,20 +3252,20 @@ HasPreserveHostRrsetOrderOnSecondaries returns a boolean if a field has been set
 
 ### GetProtocolRecordNamePolicies
 
-`func (o *GridDns) GetProtocolRecordNamePolicies() []map[string]interface{}`
+`func (o *GridDns) GetProtocolRecordNamePolicies() []string`
 
 GetProtocolRecordNamePolicies returns the ProtocolRecordNamePolicies field if non-nil, zero value otherwise.
 
 ### GetProtocolRecordNamePoliciesOk
 
-`func (o *GridDns) GetProtocolRecordNamePoliciesOk() (*[]map[string]interface{}, bool)`
+`func (o *GridDns) GetProtocolRecordNamePoliciesOk() (*[]string, bool)`
 
 GetProtocolRecordNamePoliciesOk returns a tuple with the ProtocolRecordNamePolicies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProtocolRecordNamePolicies
 
-`func (o *GridDns) SetProtocolRecordNamePolicies(v []map[string]interface{})`
+`func (o *GridDns) SetProtocolRecordNamePolicies(v []string)`
 
 SetProtocolRecordNamePolicies sets ProtocolRecordNamePolicies field to given value.
 
@@ -3650,31 +3649,6 @@ SetRpzQnameWaitRecurse sets RpzQnameWaitRecurse field to given value.
 `func (o *GridDns) HasRpzQnameWaitRecurse() bool`
 
 HasRpzQnameWaitRecurse returns a boolean if a field has been set.
-
-### GetRunScavenging
-
-`func (o *GridDns) GetRunScavenging() map[string]interface{}`
-
-GetRunScavenging returns the RunScavenging field if non-nil, zero value otherwise.
-
-### GetRunScavengingOk
-
-`func (o *GridDns) GetRunScavengingOk() (*map[string]interface{}, bool)`
-
-GetRunScavengingOk returns a tuple with the RunScavenging field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRunScavenging
-
-`func (o *GridDns) SetRunScavenging(v map[string]interface{})`
-
-SetRunScavenging sets RunScavenging field to given value.
-
-### HasRunScavenging
-
-`func (o *GridDns) HasRunScavenging() bool`
-
-HasRunScavenging returns a boolean if a field has been set.
 
 ### GetScavengingSettings
 

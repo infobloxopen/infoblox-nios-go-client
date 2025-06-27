@@ -24,17 +24,17 @@ Name | Type | Description | Notes
 **CapVoiceVlanNaReason** | Pointer to **string** | The reason that voice VLAN assignment action is not available. | [optional] [readonly] 
 **ChassisSerialNumber** | Pointer to **string** | The device chassis serial number. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the device. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**Interfaces** | Pointer to **[]map[string]interface{}** | List of the device interfaces. | [optional] [readonly] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**Interfaces** | Pointer to **[]string** | List of the device interfaces. | [optional] [readonly] 
 **Location** | Pointer to **string** | The location of the device. | [optional] [readonly] 
 **Model** | Pointer to **string** | The model name of the device. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**DiscoveryDeviceMsAdUserData**](DiscoveryDeviceMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the device. | [optional] [readonly] 
-**Neighbors** | Pointer to **[]map[string]interface{}** | List of the device neighbors. | [optional] [readonly] 
+**Neighbors** | Pointer to **[]string** | List of the device neighbors. | [optional] [readonly] 
 **Network** | Pointer to **string** | The ref to the network to which belongs the management IP address belongs. | [optional] [readonly] 
 **NetworkInfos** | Pointer to [**[]DiscoveryDeviceNetworkInfos**](DiscoveryDeviceNetworkInfos.md) | The list of networks to which the device interfaces belong. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this device resides. | [optional] [readonly] 
-**Networks** | Pointer to **[]map[string]interface{}** | The list of networks to which the device interfaces belong. | [optional] [readonly] 
+**Networks** | Pointer to **[]string** | The list of networks to which the device interfaces belong. | [optional] [readonly] 
 **OsVersion** | Pointer to **string** | The Operating System version running on the device. | [optional] [readonly] 
 **PortStats** | Pointer to [**DiscoveryDevicePortStats**](DiscoveryDevicePortStats.md) |  | [optional] 
 **PrivilegedPolling** | Pointer to **bool** | A flag indicated that NI should send enable command when interacting with device. | [optional] 
@@ -562,47 +562,47 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *DiscoveryDevice) GetExtattrs() map[string]ExtAttrs`
+`func (o *DiscoveryDevice) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *DiscoveryDevice) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *DiscoveryDevice) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *DiscoveryDevice) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *DiscoveryDevice) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *DiscoveryDevice) HasExtattrs() bool`
+`func (o *DiscoveryDevice) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetInterfaces
 
-`func (o *DiscoveryDevice) GetInterfaces() []map[string]interface{}`
+`func (o *DiscoveryDevice) GetInterfaces() []string`
 
 GetInterfaces returns the Interfaces field if non-nil, zero value otherwise.
 
 ### GetInterfacesOk
 
-`func (o *DiscoveryDevice) GetInterfacesOk() (*[]map[string]interface{}, bool)`
+`func (o *DiscoveryDevice) GetInterfacesOk() (*[]string, bool)`
 
 GetInterfacesOk returns a tuple with the Interfaces field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInterfaces
 
-`func (o *DiscoveryDevice) SetInterfaces(v []map[string]interface{})`
+`func (o *DiscoveryDevice) SetInterfaces(v []string)`
 
 SetInterfaces sets Interfaces field to given value.
 
@@ -714,20 +714,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetNeighbors
 
-`func (o *DiscoveryDevice) GetNeighbors() []map[string]interface{}`
+`func (o *DiscoveryDevice) GetNeighbors() []string`
 
 GetNeighbors returns the Neighbors field if non-nil, zero value otherwise.
 
 ### GetNeighborsOk
 
-`func (o *DiscoveryDevice) GetNeighborsOk() (*[]map[string]interface{}, bool)`
+`func (o *DiscoveryDevice) GetNeighborsOk() (*[]string, bool)`
 
 GetNeighborsOk returns a tuple with the Neighbors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNeighbors
 
-`func (o *DiscoveryDevice) SetNeighbors(v []map[string]interface{})`
+`func (o *DiscoveryDevice) SetNeighbors(v []string)`
 
 SetNeighbors sets Neighbors field to given value.
 
@@ -814,20 +814,20 @@ HasNetworkView returns a boolean if a field has been set.
 
 ### GetNetworks
 
-`func (o *DiscoveryDevice) GetNetworks() []map[string]interface{}`
+`func (o *DiscoveryDevice) GetNetworks() []string`
 
 GetNetworks returns the Networks field if non-nil, zero value otherwise.
 
 ### GetNetworksOk
 
-`func (o *DiscoveryDevice) GetNetworksOk() (*[]map[string]interface{}, bool)`
+`func (o *DiscoveryDevice) GetNetworksOk() (*[]string, bool)`
 
 GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworks
 
-`func (o *DiscoveryDevice) SetNetworks(v []map[string]interface{})`
+`func (o *DiscoveryDevice) SetNetworks(v []string)`
 
 SetNetworks sets Networks field to given value.
 

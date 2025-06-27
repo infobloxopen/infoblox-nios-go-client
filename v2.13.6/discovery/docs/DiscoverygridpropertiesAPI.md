@@ -1,18 +1,18 @@
-# DiscoverygridpropertiesAPI
+# DiscoveryGridpropertiesAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoverygridpropertiesAPI.md#Get) | **Get** /discovery:gridproperties | Retrieve discovery:gridproperties objects
-[**ReferenceGet**](DiscoverygridpropertiesAPI.md#ReferenceGet) | **Get** /discovery:gridproperties/{reference} | Get a specific discovery:gridproperties object
-[**ReferencePut**](DiscoverygridpropertiesAPI.md#ReferencePut) | **Put** /discovery:gridproperties/{reference} | Update a discovery:gridproperties object
+[**List**](DiscoveryGridpropertiesAPI.md#List) | **Get** /discovery:gridproperties | Retrieve discovery:gridproperties objects
+[**Read**](DiscoveryGridpropertiesAPI.md#Read) | **Get** /discovery:gridproperties/{reference} | Get a specific discovery:gridproperties object
+[**Update**](DiscoveryGridpropertiesAPI.md#Update) | **Put** /discovery:gridproperties/{reference} | Update a discovery:gridproperties object
 
 
 
-## Get
+## List
 
-> ListDiscoveryGridpropertiesResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryGridpropertiesResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:gridproperties objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverygridpropertiesAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryGridpropertiesAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverygridpropertiesAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryGridpropertiesAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoveryGridpropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverygridpropertiesAPI.Get`: %v\n", resp)
+	// response from `List`: ListDiscoveryGridpropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryGridpropertiesAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverygridpropertiesAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryGridpropertiesAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDiscoveryGridpropertiesResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryGridpropertiesResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:gridproperties object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:gridproperties object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverygridpropertiesAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryGridpropertiesAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverygridpropertiesAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryGridpropertiesAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoveryGridpropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverygridpropertiesAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDiscoveryGridpropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryGridpropertiesAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverygridpropertiesAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryGridpropertiesAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDiscoveryGridpropertiesResponse ReferencePut(ctx, reference).DiscoveryGridproperties(discoveryGridproperties).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDiscoveryGridpropertiesResponse Update(ctx, reference).DiscoveryGridproperties(discoveryGridproperties).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a discovery:gridproperties object
 
@@ -180,13 +180,13 @@ func main() {
 	discoveryGridproperties := *discovery.NewDiscoveryGridproperties() // DiscoveryGridproperties | Object data to update
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverygridpropertiesAPI.ReferencePut(context.Background(), reference).DiscoveryGridproperties(discoveryGridproperties).Execute()
+	resp, r, err := apiClient.DiscoveryGridpropertiesAPI.Update(context.Background(), reference).DiscoveryGridproperties(discoveryGridproperties).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverygridpropertiesAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryGridpropertiesAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDiscoveryGridpropertiesResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverygridpropertiesAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDiscoveryGridpropertiesResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryGridpropertiesAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverygridpropertiesAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryGridpropertiesAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **discoveryGridproperties** | [**DiscoveryGridproperties**](DiscoveryGridproperties.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

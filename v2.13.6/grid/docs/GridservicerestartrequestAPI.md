@@ -1,17 +1,17 @@
-# GridservicerestartrequestAPI
+# GridServicerestartRequestAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](GridservicerestartrequestAPI.md#Get) | **Get** /grid:servicerestart:request | Retrieve grid:servicerestart:request objects
-[**ReferenceGet**](GridservicerestartrequestAPI.md#ReferenceGet) | **Get** /grid:servicerestart:request/{reference} | Get a specific grid:servicerestart:request object
+[**List**](GridServicerestartRequestAPI.md#List) | **Get** /grid:servicerestart:request | Retrieve grid:servicerestart:request objects
+[**Read**](GridServicerestartRequestAPI.md#Read) | **Get** /grid:servicerestart:request/{reference} | Get a specific grid:servicerestart:request object
 
 
 
-## Get
+## List
 
-> ListGridServicerestartRequestResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridServicerestartRequestResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:servicerestart:request objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridservicerestartrequestAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GridServicerestartRequestAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridservicerestartrequestAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartRequestAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGridServicerestartRequestResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridservicerestartrequestAPI.Get`: %v\n", resp)
+	// response from `List`: ListGridServicerestartRequestResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartRequestAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridservicerestartrequestAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartRequestAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetGridServicerestartRequestResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridServicerestartRequestResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:servicerestart:request object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:servicerestart:request object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.GridservicerestartrequestAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridServicerestartRequestAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GridservicerestartrequestAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridServicerestartRequestAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGridServicerestartRequestResponse
-	fmt.Fprintf(os.Stdout, "Response from `GridservicerestartrequestAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridServicerestartRequestResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridServicerestartRequestAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `GridservicerestartrequestAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridServicerestartRequestAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

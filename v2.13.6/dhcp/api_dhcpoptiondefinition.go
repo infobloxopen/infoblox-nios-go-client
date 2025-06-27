@@ -23,150 +23,374 @@ import (
 
 type DhcpoptiondefinitionAPI interface {
 	/*
-		Get Retrieve dhcpoptiondefinition objects
-
-		Returns a list of dhcpoptiondefinition objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DhcpoptiondefinitionAPIGetRequest
-	*/
-	Get(ctx context.Context) DhcpoptiondefinitionAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListDhcpoptiondefinitionResponse
-	GetExecute(r DhcpoptiondefinitionAPIGetRequest) (*ListDhcpoptiondefinitionResponse, *http.Response, error)
-	/*
-		Post Create a dhcpoptiondefinition object
+		Create Create a dhcpoptiondefinition object
 
 		Creates a new dhcpoptiondefinition object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DhcpoptiondefinitionAPIPostRequest
+		@return DhcpoptiondefinitionAPICreateRequest
 	*/
-	Post(ctx context.Context) DhcpoptiondefinitionAPIPostRequest
+	Create(ctx context.Context) DhcpoptiondefinitionAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDhcpoptiondefinitionResponse
-	PostExecute(r DhcpoptiondefinitionAPIPostRequest) (*CreateDhcpoptiondefinitionResponse, *http.Response, error)
+	CreateExecute(r DhcpoptiondefinitionAPICreateRequest) (*CreateDhcpoptiondefinitionResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a dhcpoptiondefinition object
+		Delete Delete a dhcpoptiondefinition object
 
 		Deletes a specific dhcpoptiondefinition object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpoptiondefinition object
-		@return DhcpoptiondefinitionAPIReferenceDeleteRequest
+		@return DhcpoptiondefinitionAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) DhcpoptiondefinitionAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DhcpoptiondefinitionAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r DhcpoptiondefinitionAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DhcpoptiondefinitionAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific dhcpoptiondefinition object
+		List Retrieve dhcpoptiondefinition objects
+
+		Returns a list of dhcpoptiondefinition objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DhcpoptiondefinitionAPIListRequest
+	*/
+	List(ctx context.Context) DhcpoptiondefinitionAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDhcpoptiondefinitionResponse
+	ListExecute(r DhcpoptiondefinitionAPIListRequest) (*ListDhcpoptiondefinitionResponse, *http.Response, error)
+	/*
+		Read Get a specific dhcpoptiondefinition object
 
 		Returns a specific dhcpoptiondefinition object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpoptiondefinition object
-		@return DhcpoptiondefinitionAPIReferenceGetRequest
+		@return DhcpoptiondefinitionAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DhcpoptiondefinitionAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DhcpoptiondefinitionAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDhcpoptiondefinitionResponse
-	ReferenceGetExecute(r DhcpoptiondefinitionAPIReferenceGetRequest) (*GetDhcpoptiondefinitionResponse, *http.Response, error)
+	ReadExecute(r DhcpoptiondefinitionAPIReadRequest) (*GetDhcpoptiondefinitionResponse, *http.Response, error)
 	/*
-		ReferencePut Update a dhcpoptiondefinition object
+		Update Update a dhcpoptiondefinition object
 
 		Updates a specific dhcpoptiondefinition object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpoptiondefinition object
-		@return DhcpoptiondefinitionAPIReferencePutRequest
+		@return DhcpoptiondefinitionAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) DhcpoptiondefinitionAPIReferencePutRequest
+	Update(ctx context.Context, reference string) DhcpoptiondefinitionAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDhcpoptiondefinitionResponse
-	ReferencePutExecute(r DhcpoptiondefinitionAPIReferencePutRequest) (*UpdateDhcpoptiondefinitionResponse, *http.Response, error)
+	UpdateExecute(r DhcpoptiondefinitionAPIUpdateRequest) (*UpdateDhcpoptiondefinitionResponse, *http.Response, error)
 }
 
 // DhcpoptiondefinitionAPIService DhcpoptiondefinitionAPI service
 type DhcpoptiondefinitionAPIService internal.Service
 
-type DhcpoptiondefinitionAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     DhcpoptiondefinitionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DhcpoptiondefinitionAPICreateRequest struct {
+	ctx                  context.Context
+	ApiService           DhcpoptiondefinitionAPI
+	dhcpoptiondefinition *Dhcpoptiondefinition
+	returnFields         *string
+	returnFieldsPlus     *string
+	returnAsObject       *int32
+}
+
+// Object data to create
+func (r DhcpoptiondefinitionAPICreateRequest) Dhcpoptiondefinition(dhcpoptiondefinition Dhcpoptiondefinition) DhcpoptiondefinitionAPICreateRequest {
+	r.dhcpoptiondefinition = &dhcpoptiondefinition
+	return r
 }
 
 // Enter the field names followed by comma
-func (r DhcpoptiondefinitionAPIGetRequest) ReturnFields(returnFields string) DhcpoptiondefinitionAPIGetRequest {
+func (r DhcpoptiondefinitionAPICreateRequest) ReturnFields(returnFields string) DhcpoptiondefinitionAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptiondefinitionAPIGetRequest) ReturnFields2(returnFields2 string) DhcpoptiondefinitionAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptiondefinitionAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptiondefinitionAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DhcpoptiondefinitionAPICreateRequest) ReturnAsObject(returnAsObject int32) DhcpoptiondefinitionAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DhcpoptiondefinitionAPICreateRequest) Execute() (*CreateDhcpoptiondefinitionResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a dhcpoptiondefinition object
+
+Creates a new dhcpoptiondefinition object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DhcpoptiondefinitionAPICreateRequest
+*/
+func (a *DhcpoptiondefinitionAPIService) Create(ctx context.Context) DhcpoptiondefinitionAPICreateRequest {
+	return DhcpoptiondefinitionAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDhcpoptiondefinitionResponse
+func (a *DhcpoptiondefinitionAPIService) CreateExecute(r DhcpoptiondefinitionAPICreateRequest) (*CreateDhcpoptiondefinitionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDhcpoptiondefinitionResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dhcpoptiondefinition"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.dhcpoptiondefinition == nil {
+		return localVarReturnValue, nil, internal.ReportError("dhcpoptiondefinition is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.dhcpoptiondefinition
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DhcpoptiondefinitionAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DhcpoptiondefinitionAPI
+	reference  string
+}
+
+func (r DhcpoptiondefinitionAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a dhcpoptiondefinition object
+
+Deletes a specific dhcpoptiondefinition object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the dhcpoptiondefinition object
+	@return DhcpoptiondefinitionAPIDeleteRequest
+*/
+func (a *DhcpoptiondefinitionAPIService) Delete(ctx context.Context, reference string) DhcpoptiondefinitionAPIDeleteRequest {
+	return DhcpoptiondefinitionAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DhcpoptiondefinitionAPIService) DeleteExecute(r DhcpoptiondefinitionAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dhcpoptiondefinition/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DhcpoptiondefinitionAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DhcpoptiondefinitionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DhcpoptiondefinitionAPIListRequest) ReturnFields(returnFields string) DhcpoptiondefinitionAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DhcpoptiondefinitionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptiondefinitionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DhcpoptiondefinitionAPIGetRequest) MaxResults(maxResults int32) DhcpoptiondefinitionAPIGetRequest {
+func (r DhcpoptiondefinitionAPIListRequest) MaxResults(maxResults int32) DhcpoptiondefinitionAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpoptiondefinitionAPIGetRequest) ReturnAsObject(returnAsObject int32) DhcpoptiondefinitionAPIGetRequest {
+func (r DhcpoptiondefinitionAPIListRequest) ReturnAsObject(returnAsObject int32) DhcpoptiondefinitionAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DhcpoptiondefinitionAPIGetRequest) Paging(paging int32) DhcpoptiondefinitionAPIGetRequest {
+func (r DhcpoptiondefinitionAPIListRequest) Paging(paging int32) DhcpoptiondefinitionAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DhcpoptiondefinitionAPIGetRequest) PageId(pageId string) DhcpoptiondefinitionAPIGetRequest {
+func (r DhcpoptiondefinitionAPIListRequest) PageId(pageId string) DhcpoptiondefinitionAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DhcpoptiondefinitionAPIGetRequest) Filters(filters map[string]interface{}) DhcpoptiondefinitionAPIGetRequest {
+func (r DhcpoptiondefinitionAPIListRequest) Filters(filters map[string]interface{}) DhcpoptiondefinitionAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DhcpoptiondefinitionAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DhcpoptiondefinitionAPIGetRequest {
+func (r DhcpoptiondefinitionAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DhcpoptiondefinitionAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DhcpoptiondefinitionAPIGetRequest) Execute() (*ListDhcpoptiondefinitionResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DhcpoptiondefinitionAPIListRequest) Execute() (*ListDhcpoptiondefinitionResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve dhcpoptiondefinition objects
+List Retrieve dhcpoptiondefinition objects
 
 Returns a list of dhcpoptiondefinition objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DhcpoptiondefinitionAPIGetRequest
+	@return DhcpoptiondefinitionAPIListRequest
 */
-func (a *DhcpoptiondefinitionAPIService) Get(ctx context.Context) DhcpoptiondefinitionAPIGetRequest {
-	return DhcpoptiondefinitionAPIGetRequest{
+func (a *DhcpoptiondefinitionAPIService) List(ctx context.Context) DhcpoptiondefinitionAPIListRequest {
+	return DhcpoptiondefinitionAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *DhcpoptiondefinitionAPIService) Get(ctx context.Context) Dhcpoptiondefi
 // Execute executes the request
 //
 //	@return ListDhcpoptiondefinitionResponse
-func (a *DhcpoptiondefinitionAPIService) GetExecute(r DhcpoptiondefinitionAPIGetRequest) (*ListDhcpoptiondefinitionResponse, *http.Response, error) {
+func (a *DhcpoptiondefinitionAPIService) ListExecute(r DhcpoptiondefinitionAPIListRequest) (*ListDhcpoptiondefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *DhcpoptiondefinitionAPIService) GetExecute(r DhcpoptiondefinitionAPIGet
 		localVarReturnValue *ListDhcpoptiondefinitionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *DhcpoptiondefinitionAPIService) GetExecute(r DhcpoptiondefinitionAPIGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *DhcpoptiondefinitionAPIService) GetExecute(r DhcpoptiondefinitionAPIGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DhcpoptiondefinitionAPIPostRequest struct {
-	ctx                  context.Context
-	ApiService           DhcpoptiondefinitionAPI
-	dhcpoptiondefinition *Dhcpoptiondefinition
-	returnFields         *string
-	returnFields2        *string
-	returnAsObject       *int32
-}
-
-// Object data to create
-func (r DhcpoptiondefinitionAPIPostRequest) Dhcpoptiondefinition(dhcpoptiondefinition Dhcpoptiondefinition) DhcpoptiondefinitionAPIPostRequest {
-	r.dhcpoptiondefinition = &dhcpoptiondefinition
-	return r
+type DhcpoptiondefinitionAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DhcpoptiondefinitionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DhcpoptiondefinitionAPIPostRequest) ReturnFields(returnFields string) DhcpoptiondefinitionAPIPostRequest {
+func (r DhcpoptiondefinitionAPIReadRequest) ReturnFields(returnFields string) DhcpoptiondefinitionAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptiondefinitionAPIPostRequest) ReturnFields2(returnFields2 string) DhcpoptiondefinitionAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptiondefinitionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptiondefinitionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpoptiondefinitionAPIPostRequest) ReturnAsObject(returnAsObject int32) DhcpoptiondefinitionAPIPostRequest {
+func (r DhcpoptiondefinitionAPIReadRequest) ReturnAsObject(returnAsObject int32) DhcpoptiondefinitionAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DhcpoptiondefinitionAPIPostRequest) Execute() (*CreateDhcpoptiondefinitionResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r DhcpoptiondefinitionAPIReadRequest) Execute() (*GetDhcpoptiondefinitionResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a dhcpoptiondefinition object
-
-Creates a new dhcpoptiondefinition object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DhcpoptiondefinitionAPIPostRequest
-*/
-func (a *DhcpoptiondefinitionAPIService) Post(ctx context.Context) DhcpoptiondefinitionAPIPostRequest {
-	return DhcpoptiondefinitionAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDhcpoptiondefinitionResponse
-func (a *DhcpoptiondefinitionAPIService) PostExecute(r DhcpoptiondefinitionAPIPostRequest) (*CreateDhcpoptiondefinitionResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDhcpoptiondefinitionResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dhcpoptiondefinition"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.dhcpoptiondefinition == nil {
-		return localVarReturnValue, nil, internal.ReportError("dhcpoptiondefinition is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.dhcpoptiondefinition
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DhcpoptiondefinitionAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DhcpoptiondefinitionAPI
-	reference  string
-}
-
-func (r DhcpoptiondefinitionAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a dhcpoptiondefinition object
-
-Deletes a specific dhcpoptiondefinition object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the dhcpoptiondefinition object
-	@return DhcpoptiondefinitionAPIReferenceDeleteRequest
-*/
-func (a *DhcpoptiondefinitionAPIService) ReferenceDelete(ctx context.Context, reference string) DhcpoptiondefinitionAPIReferenceDeleteRequest {
-	return DhcpoptiondefinitionAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DhcpoptiondefinitionAPIService) ReferenceDeleteExecute(r DhcpoptiondefinitionAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dhcpoptiondefinition/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DhcpoptiondefinitionAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DhcpoptiondefinitionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r DhcpoptiondefinitionAPIReferenceGetRequest) ReturnFields(returnFields string) DhcpoptiondefinitionAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptiondefinitionAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DhcpoptiondefinitionAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DhcpoptiondefinitionAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DhcpoptiondefinitionAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DhcpoptiondefinitionAPIReferenceGetRequest) Execute() (*GetDhcpoptiondefinitionResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific dhcpoptiondefinition object
+Read Get a specific dhcpoptiondefinition object
 
 Returns a specific dhcpoptiondefinition object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dhcpoptiondefinition object
-	@return DhcpoptiondefinitionAPIReferenceGetRequest
+	@return DhcpoptiondefinitionAPIReadRequest
 */
-func (a *DhcpoptiondefinitionAPIService) ReferenceGet(ctx context.Context, reference string) DhcpoptiondefinitionAPIReferenceGetRequest {
-	return DhcpoptiondefinitionAPIReferenceGetRequest{
+func (a *DhcpoptiondefinitionAPIService) Read(ctx context.Context, reference string) DhcpoptiondefinitionAPIReadRequest {
+	return DhcpoptiondefinitionAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *DhcpoptiondefinitionAPIService) ReferenceGet(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return GetDhcpoptiondefinitionResponse
-func (a *DhcpoptiondefinitionAPIService) ReferenceGetExecute(r DhcpoptiondefinitionAPIReferenceGetRequest) (*GetDhcpoptiondefinitionResponse, *http.Response, error) {
+func (a *DhcpoptiondefinitionAPIService) ReadExecute(r DhcpoptiondefinitionAPIReadRequest) (*GetDhcpoptiondefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *DhcpoptiondefinitionAPIService) ReferenceGetExecute(r Dhcpoptiondefinit
 		localVarReturnValue *GetDhcpoptiondefinitionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *DhcpoptiondefinitionAPIService) ReferenceGetExecute(r Dhcpoptiondefinit
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *DhcpoptiondefinitionAPIService) ReferenceGetExecute(r Dhcpoptiondefinit
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DhcpoptiondefinitionAPIReferencePutRequest struct {
+type DhcpoptiondefinitionAPIUpdateRequest struct {
 	ctx                  context.Context
 	ApiService           DhcpoptiondefinitionAPI
 	reference            string
 	dhcpoptiondefinition *Dhcpoptiondefinition
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
 // Object data to update
-func (r DhcpoptiondefinitionAPIReferencePutRequest) Dhcpoptiondefinition(dhcpoptiondefinition Dhcpoptiondefinition) DhcpoptiondefinitionAPIReferencePutRequest {
+func (r DhcpoptiondefinitionAPIUpdateRequest) Dhcpoptiondefinition(dhcpoptiondefinition Dhcpoptiondefinition) DhcpoptiondefinitionAPIUpdateRequest {
 	r.dhcpoptiondefinition = &dhcpoptiondefinition
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DhcpoptiondefinitionAPIReferencePutRequest) ReturnFields(returnFields string) DhcpoptiondefinitionAPIReferencePutRequest {
+func (r DhcpoptiondefinitionAPIUpdateRequest) ReturnFields(returnFields string) DhcpoptiondefinitionAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptiondefinitionAPIReferencePutRequest) ReturnFields2(returnFields2 string) DhcpoptiondefinitionAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptiondefinitionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptiondefinitionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpoptiondefinitionAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) DhcpoptiondefinitionAPIReferencePutRequest {
+func (r DhcpoptiondefinitionAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DhcpoptiondefinitionAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DhcpoptiondefinitionAPIReferencePutRequest) Execute() (*UpdateDhcpoptiondefinitionResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r DhcpoptiondefinitionAPIUpdateRequest) Execute() (*UpdateDhcpoptiondefinitionResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a dhcpoptiondefinition object
+Update Update a dhcpoptiondefinition object
 
 Updates a specific dhcpoptiondefinition object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dhcpoptiondefinition object
-	@return DhcpoptiondefinitionAPIReferencePutRequest
+	@return DhcpoptiondefinitionAPIUpdateRequest
 */
-func (a *DhcpoptiondefinitionAPIService) ReferencePut(ctx context.Context, reference string) DhcpoptiondefinitionAPIReferencePutRequest {
-	return DhcpoptiondefinitionAPIReferencePutRequest{
+func (a *DhcpoptiondefinitionAPIService) Update(ctx context.Context, reference string) DhcpoptiondefinitionAPIUpdateRequest {
+	return DhcpoptiondefinitionAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *DhcpoptiondefinitionAPIService) ReferencePut(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return UpdateDhcpoptiondefinitionResponse
-func (a *DhcpoptiondefinitionAPIService) ReferencePutExecute(r DhcpoptiondefinitionAPIReferencePutRequest) (*UpdateDhcpoptiondefinitionResponse, *http.Response, error) {
+func (a *DhcpoptiondefinitionAPIService) UpdateExecute(r DhcpoptiondefinitionAPIUpdateRequest) (*UpdateDhcpoptiondefinitionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *DhcpoptiondefinitionAPIService) ReferencePutExecute(r Dhcpoptiondefinit
 		localVarReturnValue *UpdateDhcpoptiondefinitionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptiondefinitionAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *DhcpoptiondefinitionAPIService) ReferencePutExecute(r Dhcpoptiondefinit
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

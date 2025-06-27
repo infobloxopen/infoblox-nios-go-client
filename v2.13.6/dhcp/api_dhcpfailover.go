@@ -23,150 +23,386 @@ import (
 
 type DhcpfailoverAPI interface {
 	/*
-		Get Retrieve dhcpfailover objects
-
-		Returns a list of dhcpfailover objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DhcpfailoverAPIGetRequest
-	*/
-	Get(ctx context.Context) DhcpfailoverAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListDhcpfailoverResponse
-	GetExecute(r DhcpfailoverAPIGetRequest) (*ListDhcpfailoverResponse, *http.Response, error)
-	/*
-		Post Create a dhcpfailover object
+		Create Create a dhcpfailover object
 
 		Creates a new dhcpfailover object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DhcpfailoverAPIPostRequest
+		@return DhcpfailoverAPICreateRequest
 	*/
-	Post(ctx context.Context) DhcpfailoverAPIPostRequest
+	Create(ctx context.Context) DhcpfailoverAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDhcpfailoverResponse
-	PostExecute(r DhcpfailoverAPIPostRequest) (*CreateDhcpfailoverResponse, *http.Response, error)
+	CreateExecute(r DhcpfailoverAPICreateRequest) (*CreateDhcpfailoverResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a dhcpfailover object
+		Delete Delete a dhcpfailover object
 
 		Deletes a specific dhcpfailover object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpfailover object
-		@return DhcpfailoverAPIReferenceDeleteRequest
+		@return DhcpfailoverAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) DhcpfailoverAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DhcpfailoverAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r DhcpfailoverAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DhcpfailoverAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific dhcpfailover object
+		List Retrieve dhcpfailover objects
+
+		Returns a list of dhcpfailover objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DhcpfailoverAPIListRequest
+	*/
+	List(ctx context.Context) DhcpfailoverAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDhcpfailoverResponse
+	ListExecute(r DhcpfailoverAPIListRequest) (*ListDhcpfailoverResponse, *http.Response, error)
+	/*
+		Read Get a specific dhcpfailover object
 
 		Returns a specific dhcpfailover object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpfailover object
-		@return DhcpfailoverAPIReferenceGetRequest
+		@return DhcpfailoverAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DhcpfailoverAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DhcpfailoverAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDhcpfailoverResponse
-	ReferenceGetExecute(r DhcpfailoverAPIReferenceGetRequest) (*GetDhcpfailoverResponse, *http.Response, error)
+	ReadExecute(r DhcpfailoverAPIReadRequest) (*GetDhcpfailoverResponse, *http.Response, error)
 	/*
-		ReferencePut Update a dhcpfailover object
+		Update Update a dhcpfailover object
 
 		Updates a specific dhcpfailover object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpfailover object
-		@return DhcpfailoverAPIReferencePutRequest
+		@return DhcpfailoverAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) DhcpfailoverAPIReferencePutRequest
+	Update(ctx context.Context, reference string) DhcpfailoverAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDhcpfailoverResponse
-	ReferencePutExecute(r DhcpfailoverAPIReferencePutRequest) (*UpdateDhcpfailoverResponse, *http.Response, error)
+	UpdateExecute(r DhcpfailoverAPIUpdateRequest) (*UpdateDhcpfailoverResponse, *http.Response, error)
 }
 
 // DhcpfailoverAPIService DhcpfailoverAPI service
 type DhcpfailoverAPIService internal.Service
 
-type DhcpfailoverAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     DhcpfailoverAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DhcpfailoverAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       DhcpfailoverAPI
+	dhcpfailover     *Dhcpfailover
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r DhcpfailoverAPICreateRequest) Dhcpfailover(dhcpfailover Dhcpfailover) DhcpfailoverAPICreateRequest {
+	r.dhcpfailover = &dhcpfailover
+	return r
 }
 
 // Enter the field names followed by comma
-func (r DhcpfailoverAPIGetRequest) ReturnFields(returnFields string) DhcpfailoverAPIGetRequest {
+func (r DhcpfailoverAPICreateRequest) ReturnFields(returnFields string) DhcpfailoverAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpfailoverAPIGetRequest) ReturnFields2(returnFields2 string) DhcpfailoverAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpfailoverAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpfailoverAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DhcpfailoverAPICreateRequest) ReturnAsObject(returnAsObject int32) DhcpfailoverAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DhcpfailoverAPICreateRequest) Execute() (*CreateDhcpfailoverResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a dhcpfailover object
+
+Creates a new dhcpfailover object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DhcpfailoverAPICreateRequest
+*/
+func (a *DhcpfailoverAPIService) Create(ctx context.Context) DhcpfailoverAPICreateRequest {
+	return DhcpfailoverAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDhcpfailoverResponse
+func (a *DhcpfailoverAPIService) CreateExecute(r DhcpfailoverAPICreateRequest) (*CreateDhcpfailoverResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDhcpfailoverResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dhcpfailover"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.dhcpfailover == nil {
+		return localVarReturnValue, nil, internal.ReportError("dhcpfailover is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dhcpfailover != nil {
+		if r.dhcpfailover.ExtAttrs == nil {
+			r.dhcpfailover.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.dhcpfailover.ExtAttrs)[k]; !ok {
+				(*r.dhcpfailover.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.dhcpfailover
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DhcpfailoverAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DhcpfailoverAPI
+	reference  string
+}
+
+func (r DhcpfailoverAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a dhcpfailover object
+
+Deletes a specific dhcpfailover object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the dhcpfailover object
+	@return DhcpfailoverAPIDeleteRequest
+*/
+func (a *DhcpfailoverAPIService) Delete(ctx context.Context, reference string) DhcpfailoverAPIDeleteRequest {
+	return DhcpfailoverAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DhcpfailoverAPIService) DeleteExecute(r DhcpfailoverAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dhcpfailover/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DhcpfailoverAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DhcpfailoverAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DhcpfailoverAPIListRequest) ReturnFields(returnFields string) DhcpfailoverAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DhcpfailoverAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpfailoverAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DhcpfailoverAPIGetRequest) MaxResults(maxResults int32) DhcpfailoverAPIGetRequest {
+func (r DhcpfailoverAPIListRequest) MaxResults(maxResults int32) DhcpfailoverAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpfailoverAPIGetRequest) ReturnAsObject(returnAsObject int32) DhcpfailoverAPIGetRequest {
+func (r DhcpfailoverAPIListRequest) ReturnAsObject(returnAsObject int32) DhcpfailoverAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DhcpfailoverAPIGetRequest) Paging(paging int32) DhcpfailoverAPIGetRequest {
+func (r DhcpfailoverAPIListRequest) Paging(paging int32) DhcpfailoverAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DhcpfailoverAPIGetRequest) PageId(pageId string) DhcpfailoverAPIGetRequest {
+func (r DhcpfailoverAPIListRequest) PageId(pageId string) DhcpfailoverAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DhcpfailoverAPIGetRequest) Filters(filters map[string]interface{}) DhcpfailoverAPIGetRequest {
+func (r DhcpfailoverAPIListRequest) Filters(filters map[string]interface{}) DhcpfailoverAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DhcpfailoverAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DhcpfailoverAPIGetRequest {
+func (r DhcpfailoverAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DhcpfailoverAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DhcpfailoverAPIGetRequest) Execute() (*ListDhcpfailoverResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DhcpfailoverAPIListRequest) Execute() (*ListDhcpfailoverResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve dhcpfailover objects
+List Retrieve dhcpfailover objects
 
 Returns a list of dhcpfailover objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DhcpfailoverAPIGetRequest
+	@return DhcpfailoverAPIListRequest
 */
-func (a *DhcpfailoverAPIService) Get(ctx context.Context) DhcpfailoverAPIGetRequest {
-	return DhcpfailoverAPIGetRequest{
+func (a *DhcpfailoverAPIService) List(ctx context.Context) DhcpfailoverAPIListRequest {
+	return DhcpfailoverAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *DhcpfailoverAPIService) Get(ctx context.Context) DhcpfailoverAPIGetRequ
 // Execute executes the request
 //
 //	@return ListDhcpfailoverResponse
-func (a *DhcpfailoverAPIService) GetExecute(r DhcpfailoverAPIGetRequest) (*ListDhcpfailoverResponse, *http.Response, error) {
+func (a *DhcpfailoverAPIService) ListExecute(r DhcpfailoverAPIListRequest) (*ListDhcpfailoverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *DhcpfailoverAPIService) GetExecute(r DhcpfailoverAPIGetRequest) (*ListD
 		localVarReturnValue *ListDhcpfailoverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *DhcpfailoverAPIService) GetExecute(r DhcpfailoverAPIGetRequest) (*ListD
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *DhcpfailoverAPIService) GetExecute(r DhcpfailoverAPIGetRequest) (*ListD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DhcpfailoverAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     DhcpfailoverAPI
-	dhcpfailover   *Dhcpfailover
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r DhcpfailoverAPIPostRequest) Dhcpfailover(dhcpfailover Dhcpfailover) DhcpfailoverAPIPostRequest {
-	r.dhcpfailover = &dhcpfailover
-	return r
+type DhcpfailoverAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DhcpfailoverAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DhcpfailoverAPIPostRequest) ReturnFields(returnFields string) DhcpfailoverAPIPostRequest {
+func (r DhcpfailoverAPIReadRequest) ReturnFields(returnFields string) DhcpfailoverAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpfailoverAPIPostRequest) ReturnFields2(returnFields2 string) DhcpfailoverAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpfailoverAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpfailoverAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpfailoverAPIPostRequest) ReturnAsObject(returnAsObject int32) DhcpfailoverAPIPostRequest {
+func (r DhcpfailoverAPIReadRequest) ReturnAsObject(returnAsObject int32) DhcpfailoverAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DhcpfailoverAPIPostRequest) Execute() (*CreateDhcpfailoverResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r DhcpfailoverAPIReadRequest) Execute() (*GetDhcpfailoverResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a dhcpfailover object
-
-Creates a new dhcpfailover object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DhcpfailoverAPIPostRequest
-*/
-func (a *DhcpfailoverAPIService) Post(ctx context.Context) DhcpfailoverAPIPostRequest {
-	return DhcpfailoverAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDhcpfailoverResponse
-func (a *DhcpfailoverAPIService) PostExecute(r DhcpfailoverAPIPostRequest) (*CreateDhcpfailoverResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDhcpfailoverResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dhcpfailover"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.dhcpfailover == nil {
-		return localVarReturnValue, nil, internal.ReportError("dhcpfailover is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dhcpfailover != nil {
-		if r.dhcpfailover.Extattrs == nil {
-			r.dhcpfailover.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dhcpfailover.Extattrs)[k]; !ok {
-				(*r.dhcpfailover.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.dhcpfailover
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DhcpfailoverAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DhcpfailoverAPI
-	reference  string
-}
-
-func (r DhcpfailoverAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a dhcpfailover object
-
-Deletes a specific dhcpfailover object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the dhcpfailover object
-	@return DhcpfailoverAPIReferenceDeleteRequest
-*/
-func (a *DhcpfailoverAPIService) ReferenceDelete(ctx context.Context, reference string) DhcpfailoverAPIReferenceDeleteRequest {
-	return DhcpfailoverAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DhcpfailoverAPIService) ReferenceDeleteExecute(r DhcpfailoverAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dhcpfailover/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DhcpfailoverAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DhcpfailoverAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r DhcpfailoverAPIReferenceGetRequest) ReturnFields(returnFields string) DhcpfailoverAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpfailoverAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DhcpfailoverAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DhcpfailoverAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DhcpfailoverAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DhcpfailoverAPIReferenceGetRequest) Execute() (*GetDhcpfailoverResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific dhcpfailover object
+Read Get a specific dhcpfailover object
 
 Returns a specific dhcpfailover object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dhcpfailover object
-	@return DhcpfailoverAPIReferenceGetRequest
+	@return DhcpfailoverAPIReadRequest
 */
-func (a *DhcpfailoverAPIService) ReferenceGet(ctx context.Context, reference string) DhcpfailoverAPIReferenceGetRequest {
-	return DhcpfailoverAPIReferenceGetRequest{
+func (a *DhcpfailoverAPIService) Read(ctx context.Context, reference string) DhcpfailoverAPIReadRequest {
+	return DhcpfailoverAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *DhcpfailoverAPIService) ReferenceGet(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return GetDhcpfailoverResponse
-func (a *DhcpfailoverAPIService) ReferenceGetExecute(r DhcpfailoverAPIReferenceGetRequest) (*GetDhcpfailoverResponse, *http.Response, error) {
+func (a *DhcpfailoverAPIService) ReadExecute(r DhcpfailoverAPIReadRequest) (*GetDhcpfailoverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *DhcpfailoverAPIService) ReferenceGetExecute(r DhcpfailoverAPIReferenceG
 		localVarReturnValue *GetDhcpfailoverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *DhcpfailoverAPIService) ReferenceGetExecute(r DhcpfailoverAPIReferenceG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *DhcpfailoverAPIService) ReferenceGetExecute(r DhcpfailoverAPIReferenceG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DhcpfailoverAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     DhcpfailoverAPI
-	reference      string
-	dhcpfailover   *Dhcpfailover
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DhcpfailoverAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       DhcpfailoverAPI
+	reference        string
+	dhcpfailover     *Dhcpfailover
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r DhcpfailoverAPIReferencePutRequest) Dhcpfailover(dhcpfailover Dhcpfailover) DhcpfailoverAPIReferencePutRequest {
+func (r DhcpfailoverAPIUpdateRequest) Dhcpfailover(dhcpfailover Dhcpfailover) DhcpfailoverAPIUpdateRequest {
 	r.dhcpfailover = &dhcpfailover
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DhcpfailoverAPIReferencePutRequest) ReturnFields(returnFields string) DhcpfailoverAPIReferencePutRequest {
+func (r DhcpfailoverAPIUpdateRequest) ReturnFields(returnFields string) DhcpfailoverAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpfailoverAPIReferencePutRequest) ReturnFields2(returnFields2 string) DhcpfailoverAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpfailoverAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpfailoverAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpfailoverAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) DhcpfailoverAPIReferencePutRequest {
+func (r DhcpfailoverAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DhcpfailoverAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DhcpfailoverAPIReferencePutRequest) Execute() (*UpdateDhcpfailoverResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r DhcpfailoverAPIUpdateRequest) Execute() (*UpdateDhcpfailoverResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a dhcpfailover object
+Update Update a dhcpfailover object
 
 Updates a specific dhcpfailover object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dhcpfailover object
-	@return DhcpfailoverAPIReferencePutRequest
+	@return DhcpfailoverAPIUpdateRequest
 */
-func (a *DhcpfailoverAPIService) ReferencePut(ctx context.Context, reference string) DhcpfailoverAPIReferencePutRequest {
-	return DhcpfailoverAPIReferencePutRequest{
+func (a *DhcpfailoverAPIService) Update(ctx context.Context, reference string) DhcpfailoverAPIUpdateRequest {
+	return DhcpfailoverAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *DhcpfailoverAPIService) ReferencePut(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return UpdateDhcpfailoverResponse
-func (a *DhcpfailoverAPIService) ReferencePutExecute(r DhcpfailoverAPIReferencePutRequest) (*UpdateDhcpfailoverResponse, *http.Response, error) {
+func (a *DhcpfailoverAPIService) UpdateExecute(r DhcpfailoverAPIUpdateRequest) (*UpdateDhcpfailoverResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *DhcpfailoverAPIService) ReferencePutExecute(r DhcpfailoverAPIReferenceP
 		localVarReturnValue *UpdateDhcpfailoverResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpfailoverAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *DhcpfailoverAPIService) ReferencePutExecute(r DhcpfailoverAPIReferenceP
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *DhcpfailoverAPIService) ReferencePutExecute(r DhcpfailoverAPIReferenceP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.dhcpfailover != nil {
-		if r.dhcpfailover.Extattrs == nil {
-			r.dhcpfailover.Extattrs = &map[string]ExtAttrs{}
+		if r.dhcpfailover.ExtAttrs == nil {
+			r.dhcpfailover.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.dhcpfailover.Extattrs)[k]; !ok {
-				(*r.dhcpfailover.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.dhcpfailover.ExtAttrs)[k]; !ok {
+				(*r.dhcpfailover.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

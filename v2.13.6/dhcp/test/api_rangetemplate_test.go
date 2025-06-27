@@ -23,11 +23,11 @@ func TestRangetemplateAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test RangetemplateAPIService Get", func(t *testing.T) {
+	t.Run("Test RangetemplateAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RangetemplateAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RangetemplateAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRangetemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RangetemplateAPIService Post", func(t *testing.T) {
+	t.Run("Test RangetemplateAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RangetemplateAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RangetemplateAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RangetemplateAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RangetemplateAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRangetemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RangetemplateAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test RangetemplateAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RangetemplateAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RangetemplateAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RangetemplateAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RangetemplateAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRangetemplateAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RangetemplateAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test RangetemplateAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RangetemplateAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RangetemplateAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

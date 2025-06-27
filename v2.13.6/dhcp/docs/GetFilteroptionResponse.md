@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Bootserver** | Pointer to **string** | Determines the boot server of a DHCP filter option object. You can specify the name and/or IP address of the boot server that host needs to boot. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment of a DHCP filter option object. | [optional] 
 **Expression** | Pointer to **string** | The conditional expression of a DHCP filter option object. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **LeaseTime** | Pointer to **int64** | Determines the lease time of a DHCP filter option object. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP option filter object. | [optional] 
 **NextServer** | Pointer to **string** | Determines the next server of a DHCP filter option object. You can specify the name and/or IP address of the next server that the host needs to boot. | [optional] 
@@ -188,30 +188,30 @@ SetExpression sets Expression field to given value.
 
 HasExpression returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetFilteroptionResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetFilteroptionResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetFilteroptionResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetFilteroptionResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetFilteroptionResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetFilteroptionResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetFilteroptionResponse) HasExtattrs() bool`
+`func (o *GetFilteroptionResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLeaseTime
 

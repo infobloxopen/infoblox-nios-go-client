@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **AssociationType** | Pointer to **string** | The value indicating whether the failover assoctaion is Microsoft or Grid based. This is a read-only attribute. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment about a DHCP failover object. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FailoverPort** | Pointer to **int64** | Determines the TCP port on which the server should listen for connections from its failover peer. Valid values are between 1 and 63999. | [optional] 
 **LoadBalanceSplit** | Pointer to **int64** | A load balancing split value of a DHCP failover object. Specify the value of the maximum load balancing delay in a 8-bit integer format (range from 0 to 256). | [optional] 
 **MaxClientLeadTime** | Pointer to **int64** | The maximum client lead time value of a DHCP failover object. Specify the value of the maximum client lead time in a 32-bit integer format (range from 0 to 4294967295) that represents the duration in seconds. Valid values are between 1 and 4294967295. | [optional] 
@@ -34,8 +34,6 @@ Name | Type | Description | Notes
 **Secondary** | Pointer to **string** | The secondary server of a DHCP failover object. | [optional] 
 **SecondaryServerType** | Pointer to **string** | The type of the secondary server of DHCP Failover association object. | [optional] 
 **SecondaryState** | Pointer to **string** | The secondary server status of a DHCP failover object. | [optional] [readonly] 
-**SetDhcpFailoverPartnerDown** | Pointer to **map[string]interface{}** |  | [optional] 
-**SetDhcpFailoverSecondaryRecovery** | Pointer to **map[string]interface{}** |  | [optional] 
 **UseFailoverPort** | Pointer to **bool** | Use flag for: failover_port | [optional] 
 **UseMsSwitchoverInterval** | Pointer to **bool** | Use flag for: ms_switchover_interval | [optional] 
 **UseRecycleLeases** | Pointer to **bool** | Use flag for: recycle_leases | [optional] 
@@ -134,30 +132,30 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Dhcpfailover) GetExtattrs() map[string]ExtAttrs`
+`func (o *Dhcpfailover) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Dhcpfailover) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Dhcpfailover) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Dhcpfailover) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Dhcpfailover) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Dhcpfailover) HasExtattrs() bool`
+`func (o *Dhcpfailover) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFailoverPort
 
@@ -808,56 +806,6 @@ SetSecondaryState sets SecondaryState field to given value.
 `func (o *Dhcpfailover) HasSecondaryState() bool`
 
 HasSecondaryState returns a boolean if a field has been set.
-
-### GetSetDhcpFailoverPartnerDown
-
-`func (o *Dhcpfailover) GetSetDhcpFailoverPartnerDown() map[string]interface{}`
-
-GetSetDhcpFailoverPartnerDown returns the SetDhcpFailoverPartnerDown field if non-nil, zero value otherwise.
-
-### GetSetDhcpFailoverPartnerDownOk
-
-`func (o *Dhcpfailover) GetSetDhcpFailoverPartnerDownOk() (*map[string]interface{}, bool)`
-
-GetSetDhcpFailoverPartnerDownOk returns a tuple with the SetDhcpFailoverPartnerDown field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSetDhcpFailoverPartnerDown
-
-`func (o *Dhcpfailover) SetSetDhcpFailoverPartnerDown(v map[string]interface{})`
-
-SetSetDhcpFailoverPartnerDown sets SetDhcpFailoverPartnerDown field to given value.
-
-### HasSetDhcpFailoverPartnerDown
-
-`func (o *Dhcpfailover) HasSetDhcpFailoverPartnerDown() bool`
-
-HasSetDhcpFailoverPartnerDown returns a boolean if a field has been set.
-
-### GetSetDhcpFailoverSecondaryRecovery
-
-`func (o *Dhcpfailover) GetSetDhcpFailoverSecondaryRecovery() map[string]interface{}`
-
-GetSetDhcpFailoverSecondaryRecovery returns the SetDhcpFailoverSecondaryRecovery field if non-nil, zero value otherwise.
-
-### GetSetDhcpFailoverSecondaryRecoveryOk
-
-`func (o *Dhcpfailover) GetSetDhcpFailoverSecondaryRecoveryOk() (*map[string]interface{}, bool)`
-
-GetSetDhcpFailoverSecondaryRecoveryOk returns a tuple with the SetDhcpFailoverSecondaryRecovery field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSetDhcpFailoverSecondaryRecovery
-
-`func (o *Dhcpfailover) SetSetDhcpFailoverSecondaryRecovery(v map[string]interface{})`
-
-SetSetDhcpFailoverSecondaryRecovery sets SetDhcpFailoverSecondaryRecovery field to given value.
-
-### HasSetDhcpFailoverSecondaryRecovery
-
-`func (o *Dhcpfailover) HasSetDhcpFailoverSecondaryRecovery() bool`
-
-HasSetDhcpFailoverSecondaryRecovery returns a boolean if a field has been set.
 
 ### GetUseFailoverPort
 

@@ -15,51 +15,50 @@ servers:
   url: /wapi/v2.13.6
 tags:
 - description: Operations for ipv4address objects
-  name: ipv4address
+  name: Ipv4address
 - description: Operations for ipv6address objects
-  name: ipv6address
+  name: Ipv6address
 - description: Operations for network objects
-  name: network
+  name: Network
 - description: Operations for networkcontainer objects
-  name: networkcontainer
+  name: Networkcontainer
 - description: Operations for networktemplate objects
-  name: networktemplate
+  name: Networktemplate
 - description: Operations for networkview objects
-  name: networkview
+  name: Networkview
 - description: Operations for ipv6network objects
-  name: ipv6network
+  name: Ipv6network
 - description: Operations for ipv6networkcontainer objects
-  name: ipv6networkcontainer
+  name: Ipv6networkcontainer
 - description: Operations for ipv6networktemplate objects
-  name: ipv6networktemplate
+  name: Ipv6networktemplate
 - description: Operations for ipam:statistics objects
-  name: ipam:statistics
-- description: Operations for rir objects
-  name: rir
-- description: Operations for rir:organization objects
-  name: rir:organization
+  name: IpamStatistics
 - description: Operations for vlan objects
-  name: vlan
+  name: Vlan
 - description: Operations for vlanview objects
-  name: vlanview
+  name: Vlanview
 - description: Operations for vlanrange objects
-  name: vlanrange
+  name: Vlanrange
 - description: Operations for bulkhost objects
-  name: bulkhost
+  name: Bulkhost
 - description: Operations for bulkhostnametemplate objects
-  name: bulkhostnametemplate
-- description: Operations for capacityreport objects
-  name: capacityreport
+  name: Bulkhostnametemplate
 - description: Operations for discoverytask objects
-  name: discoverytask
+  name: Discoverytask
 - description: Operations for network_discovery objects
-  name: network_discovery
-- description: Operations for natgroup objects
-  name: natgroup
+  name: NetworkDiscovery
+- description: Operations for superhost objects
+  name: Superhost
+- description: Operations for superhostchild objects
+  name: Superhostchild
+- description: Operations for hostnamerewritepolicy objects
+  name: Hostnamerewritepolicy
 paths:
   /ipv4address:
     get:
       description: Returns a list of ipv4address objects matching the search criteria
+      operationId: Ipv4addressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -153,10 +152,11 @@ paths:
       - basicAuth: []
       summary: Retrieve ipv4address objects
       tags:
-      - ipv4address
+      - Ipv4address
   /ipv4address/{reference}:
     delete:
       description: Deletes a specific ipv4address object by reference
+      operationId: Ipv4addressDelete
       parameters:
       - description: Reference of the ipv4address object
         explode: false
@@ -181,9 +181,10 @@ paths:
       - basicAuth: []
       summary: Delete a ipv4address object
       tags:
-      - ipv4address
+      - Ipv4address
     get:
       description: Returns a specific ipv4address object by reference
+      operationId: Ipv4addressRead
       parameters:
       - description: Reference of the ipv4address object
         explode: false
@@ -240,9 +241,10 @@ paths:
       - basicAuth: []
       summary: Get a specific ipv4address object
       tags:
-      - ipv4address
+      - Ipv4address
     put:
       description: Updates a specific ipv4address object by reference
+      operationId: Ipv4addressUpdate
       parameters:
       - description: Reference of the ipv4address object
         explode: false
@@ -306,11 +308,12 @@ paths:
       - basicAuth: []
       summary: Update a ipv4address object
       tags:
-      - ipv4address
+      - Ipv4address
       x-sdk-default-ext-attrs: true
   /ipv6address:
     get:
       description: Returns a list of ipv6address objects matching the search criteria
+      operationId: Ipv6addressList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -404,10 +407,11 @@ paths:
       - basicAuth: []
       summary: Retrieve ipv6address objects
       tags:
-      - ipv6address
+      - Ipv6address
   /ipv6address/{reference}:
     delete:
       description: Deletes a specific ipv6address object by reference
+      operationId: Ipv6addressDelete
       parameters:
       - description: Reference of the ipv6address object
         explode: false
@@ -432,9 +436,10 @@ paths:
       - basicAuth: []
       summary: Delete a ipv6address object
       tags:
-      - ipv6address
+      - Ipv6address
     get:
       description: Returns a specific ipv6address object by reference
+      operationId: Ipv6addressRead
       parameters:
       - description: Reference of the ipv6address object
         explode: false
@@ -491,9 +496,10 @@ paths:
       - basicAuth: []
       summary: Get a specific ipv6address object
       tags:
-      - ipv6address
+      - Ipv6address
     put:
       description: Updates a specific ipv6address object by reference
+      operationId: Ipv6addressUpdate
       parameters:
       - description: Reference of the ipv6address object
         explode: false
@@ -557,11 +563,12 @@ paths:
       - basicAuth: []
       summary: Update a ipv6address object
       tags:
-      - ipv6address
+      - Ipv6address
       x-sdk-default-ext-attrs: true
   /network:
     get:
       description: Returns a list of network objects matching the search criteria
+      operationId: NetworkList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -655,9 +662,10 @@ paths:
       - basicAuth: []
       summary: Retrieve network objects
       tags:
-      - network
+      - Network
     post:
       description: Creates a new network object
+      operationId: NetworkCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -711,13 +719,17 @@ paths:
       - basicAuth: []
       summary: Create a network object
       tags:
-      - network
-      x-tf-resource: resource_nios_Network
-      x-tf-datasource: datasource_nios_Network
+      - Network
+      x-tf-resource: ipam_network
+      x-tf-datasource: ipam_network
       x-sdk-default-ext-attrs: true
+      x-sdk-post-function-call:
+      - Network
+      x-tf-function-call: true
   /network/{reference}:
     delete:
       description: Deletes a specific network object by reference
+      operationId: NetworkDelete
       parameters:
       - description: Reference of the network object
         explode: false
@@ -742,9 +754,10 @@ paths:
       - basicAuth: []
       summary: Delete a network object
       tags:
-      - network
+      - Network
     get:
       description: Returns a specific network object by reference
+      operationId: NetworkRead
       parameters:
       - description: Reference of the network object
         explode: false
@@ -801,9 +814,10 @@ paths:
       - basicAuth: []
       summary: Get a specific network object
       tags:
-      - network
+      - Network
     put:
       description: Updates a specific network object by reference
+      operationId: NetworkUpdate
       parameters:
       - description: Reference of the network object
         explode: false
@@ -867,12 +881,16 @@ paths:
       - basicAuth: []
       summary: Update a network object
       tags:
-      - network
+      - Network
       x-sdk-default-ext-attrs: true
+      x-sdk-put-function-call:
+      - Network
+      x-tf-function-call: true
   /networkcontainer:
     get:
       description: Returns a list of networkcontainer objects matching the search
         criteria
+      operationId: NetworkcontainerList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -966,9 +984,10 @@ paths:
       - basicAuth: []
       summary: Retrieve networkcontainer objects
       tags:
-      - networkcontainer
+      - Networkcontainer
     post:
       description: Creates a new networkcontainer object
+      operationId: NetworkcontainerCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1022,13 +1041,17 @@ paths:
       - basicAuth: []
       summary: Create a networkcontainer object
       tags:
-      - networkcontainer
-      x-tf-resource: resource_nios_Networkcontainer
-      x-tf-datasource: datasource_nios_Networkcontainer
+      - Networkcontainer
+      x-tf-resource: ipam_networkcontainer
+      x-tf-datasource: ipam_networkcontainer
       x-sdk-default-ext-attrs: true
+      x-sdk-post-function-call:
+      - Network
+      x-tf-function-call: true
   /networkcontainer/{reference}:
     delete:
       description: Deletes a specific networkcontainer object by reference
+      operationId: NetworkcontainerDelete
       parameters:
       - description: Reference of the networkcontainer object
         explode: false
@@ -1064,9 +1087,10 @@ paths:
       - basicAuth: []
       summary: Delete a networkcontainer object
       tags:
-      - networkcontainer
+      - Networkcontainer
     get:
       description: Returns a specific networkcontainer object by reference
+      operationId: NetworkcontainerRead
       parameters:
       - description: Reference of the networkcontainer object
         explode: false
@@ -1123,9 +1147,10 @@ paths:
       - basicAuth: []
       summary: Get a specific networkcontainer object
       tags:
-      - networkcontainer
+      - Networkcontainer
     put:
       description: Updates a specific networkcontainer object by reference
+      operationId: NetworkcontainerUpdate
       parameters:
       - description: Reference of the networkcontainer object
         explode: false
@@ -1189,11 +1214,15 @@ paths:
       - basicAuth: []
       summary: Update a networkcontainer object
       tags:
-      - networkcontainer
+      - Networkcontainer
       x-sdk-default-ext-attrs: true
+      x-sdk-put-function-call:
+      - Network
+      x-tf-function-call: true
   /networktemplate:
     get:
       description: Returns a list of networktemplate objects matching the search criteria
+      operationId: NetworktemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1287,9 +1316,10 @@ paths:
       - basicAuth: []
       summary: Retrieve networktemplate objects
       tags:
-      - networktemplate
+      - Networktemplate
     post:
       description: Creates a new networktemplate object
+      operationId: NetworktemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1343,13 +1373,14 @@ paths:
       - basicAuth: []
       summary: Create a networktemplate object
       tags:
-      - networktemplate
-      x-tf-resource: resource_nios_Networktemplate
-      x-tf-datasource: datasource_nios_Networktemplate
+      - Networktemplate
+      x-tf-resource: ipam_networktemplate
+      x-tf-datasource: ipam_networktemplate
       x-sdk-default-ext-attrs: true
   /networktemplate/{reference}:
     delete:
       description: Deletes a specific networktemplate object by reference
+      operationId: NetworktemplateDelete
       parameters:
       - description: Reference of the networktemplate object
         explode: false
@@ -1374,9 +1405,10 @@ paths:
       - basicAuth: []
       summary: Delete a networktemplate object
       tags:
-      - networktemplate
+      - Networktemplate
     get:
       description: Returns a specific networktemplate object by reference
+      operationId: NetworktemplateRead
       parameters:
       - description: Reference of the networktemplate object
         explode: false
@@ -1433,9 +1465,10 @@ paths:
       - basicAuth: []
       summary: Get a specific networktemplate object
       tags:
-      - networktemplate
+      - Networktemplate
     put:
       description: Updates a specific networktemplate object by reference
+      operationId: NetworktemplateUpdate
       parameters:
       - description: Reference of the networktemplate object
         explode: false
@@ -1499,11 +1532,12 @@ paths:
       - basicAuth: []
       summary: Update a networktemplate object
       tags:
-      - networktemplate
+      - Networktemplate
       x-sdk-default-ext-attrs: true
   /networkview:
     get:
       description: Returns a list of networkview objects matching the search criteria
+      operationId: NetworkviewList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1597,9 +1631,10 @@ paths:
       - basicAuth: []
       summary: Retrieve networkview objects
       tags:
-      - networkview
+      - Networkview
     post:
       description: Creates a new networkview object
+      operationId: NetworkviewCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1653,13 +1688,14 @@ paths:
       - basicAuth: []
       summary: Create a networkview object
       tags:
-      - networkview
-      x-tf-resource: resource_nios_Networkview
-      x-tf-datasource: datasource_nios_Networkview
+      - Networkview
+      x-tf-resource: ipam_networkview
+      x-tf-datasource: ipam_networkview
       x-sdk-default-ext-attrs: true
   /networkview/{reference}:
     delete:
       description: Deletes a specific networkview object by reference
+      operationId: NetworkviewDelete
       parameters:
       - description: Reference of the networkview object
         explode: false
@@ -1684,9 +1720,10 @@ paths:
       - basicAuth: []
       summary: Delete a networkview object
       tags:
-      - networkview
+      - Networkview
     get:
       description: Returns a specific networkview object by reference
+      operationId: NetworkviewRead
       parameters:
       - description: Reference of the networkview object
         explode: false
@@ -1743,9 +1780,10 @@ paths:
       - basicAuth: []
       summary: Get a specific networkview object
       tags:
-      - networkview
+      - Networkview
     put:
       description: Updates a specific networkview object by reference
+      operationId: NetworkviewUpdate
       parameters:
       - description: Reference of the networkview object
         explode: false
@@ -1809,11 +1847,12 @@ paths:
       - basicAuth: []
       summary: Update a networkview object
       tags:
-      - networkview
+      - Networkview
       x-sdk-default-ext-attrs: true
   /ipv6network:
     get:
       description: Returns a list of ipv6network objects matching the search criteria
+      operationId: Ipv6networkList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1907,9 +1946,10 @@ paths:
       - basicAuth: []
       summary: Retrieve ipv6network objects
       tags:
-      - ipv6network
+      - Ipv6network
     post:
       description: Creates a new ipv6network object
+      operationId: Ipv6networkCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -1963,13 +2003,14 @@ paths:
       - basicAuth: []
       summary: Create a ipv6network object
       tags:
-      - ipv6network
-      x-tf-resource: resource_nios_Ipv6network
-      x-tf-datasource: datasource_nios_Ipv6network
+      - Ipv6network
+      x-tf-resource: ipam_ipv6network
+      x-tf-datasource: ipam_ipv6network
       x-sdk-default-ext-attrs: true
   /ipv6network/{reference}:
     delete:
       description: Deletes a specific ipv6network object by reference
+      operationId: Ipv6networkDelete
       parameters:
       - description: Reference of the ipv6network object
         explode: false
@@ -1994,9 +2035,10 @@ paths:
       - basicAuth: []
       summary: Delete a ipv6network object
       tags:
-      - ipv6network
+      - Ipv6network
     get:
       description: Returns a specific ipv6network object by reference
+      operationId: Ipv6networkRead
       parameters:
       - description: Reference of the ipv6network object
         explode: false
@@ -2053,9 +2095,10 @@ paths:
       - basicAuth: []
       summary: Get a specific ipv6network object
       tags:
-      - ipv6network
+      - Ipv6network
     put:
       description: Updates a specific ipv6network object by reference
+      operationId: Ipv6networkUpdate
       parameters:
       - description: Reference of the ipv6network object
         explode: false
@@ -2119,12 +2162,13 @@ paths:
       - basicAuth: []
       summary: Update a ipv6network object
       tags:
-      - ipv6network
+      - Ipv6network
       x-sdk-default-ext-attrs: true
   /ipv6networkcontainer:
     get:
       description: Returns a list of ipv6networkcontainer objects matching the search
         criteria
+      operationId: Ipv6networkcontainerList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2218,9 +2262,10 @@ paths:
       - basicAuth: []
       summary: Retrieve ipv6networkcontainer objects
       tags:
-      - ipv6networkcontainer
+      - Ipv6networkcontainer
     post:
       description: Creates a new ipv6networkcontainer object
+      operationId: Ipv6networkcontainerCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2274,13 +2319,14 @@ paths:
       - basicAuth: []
       summary: Create a ipv6networkcontainer object
       tags:
-      - ipv6networkcontainer
-      x-tf-resource: resource_nios_Ipv6networkcontainer
-      x-tf-datasource: datasource_nios_Ipv6networkcontainer
+      - Ipv6networkcontainer
+      x-tf-resource: ipam_ipv6networkcontainer
+      x-tf-datasource: ipam_ipv6networkcontainer
       x-sdk-default-ext-attrs: true
   /ipv6networkcontainer/{reference}:
     delete:
       description: Deletes a specific ipv6networkcontainer object by reference
+      operationId: Ipv6networkcontainerDelete
       parameters:
       - description: Reference of the ipv6networkcontainer object
         explode: false
@@ -2316,9 +2362,10 @@ paths:
       - basicAuth: []
       summary: Delete a ipv6networkcontainer object
       tags:
-      - ipv6networkcontainer
+      - Ipv6networkcontainer
     get:
       description: Returns a specific ipv6networkcontainer object by reference
+      operationId: Ipv6networkcontainerRead
       parameters:
       - description: Reference of the ipv6networkcontainer object
         explode: false
@@ -2375,9 +2422,10 @@ paths:
       - basicAuth: []
       summary: Get a specific ipv6networkcontainer object
       tags:
-      - ipv6networkcontainer
+      - Ipv6networkcontainer
     put:
       description: Updates a specific ipv6networkcontainer object by reference
+      operationId: Ipv6networkcontainerUpdate
       parameters:
       - description: Reference of the ipv6networkcontainer object
         explode: false
@@ -2441,12 +2489,13 @@ paths:
       - basicAuth: []
       summary: Update a ipv6networkcontainer object
       tags:
-      - ipv6networkcontainer
+      - Ipv6networkcontainer
       x-sdk-default-ext-attrs: true
   /ipv6networktemplate:
     get:
       description: Returns a list of ipv6networktemplate objects matching the search
         criteria
+      operationId: Ipv6networktemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2540,9 +2589,10 @@ paths:
       - basicAuth: []
       summary: Retrieve ipv6networktemplate objects
       tags:
-      - ipv6networktemplate
+      - Ipv6networktemplate
     post:
       description: Creates a new ipv6networktemplate object
+      operationId: Ipv6networktemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2596,13 +2646,14 @@ paths:
       - basicAuth: []
       summary: Create a ipv6networktemplate object
       tags:
-      - ipv6networktemplate
-      x-tf-resource: resource_nios_Ipv6networktemplate
-      x-tf-datasource: datasource_nios_Ipv6networktemplate
+      - Ipv6networktemplate
+      x-tf-resource: ipam_ipv6networktemplate
+      x-tf-datasource: ipam_ipv6networktemplate
       x-sdk-default-ext-attrs: true
   /ipv6networktemplate/{reference}:
     delete:
       description: Deletes a specific ipv6networktemplate object by reference
+      operationId: Ipv6networktemplateDelete
       parameters:
       - description: Reference of the ipv6networktemplate object
         explode: false
@@ -2627,9 +2678,10 @@ paths:
       - basicAuth: []
       summary: Delete a ipv6networktemplate object
       tags:
-      - ipv6networktemplate
+      - Ipv6networktemplate
     get:
       description: Returns a specific ipv6networktemplate object by reference
+      operationId: Ipv6networktemplateRead
       parameters:
       - description: Reference of the ipv6networktemplate object
         explode: false
@@ -2686,9 +2738,10 @@ paths:
       - basicAuth: []
       summary: Get a specific ipv6networktemplate object
       tags:
-      - ipv6networktemplate
+      - Ipv6networktemplate
     put:
       description: Updates a specific ipv6networktemplate object by reference
+      operationId: Ipv6networktemplateUpdate
       parameters:
       - description: Reference of the ipv6networktemplate object
         explode: false
@@ -2752,11 +2805,12 @@ paths:
       - basicAuth: []
       summary: Update a ipv6networktemplate object
       tags:
-      - ipv6networktemplate
+      - Ipv6networktemplate
       x-sdk-default-ext-attrs: true
   /ipam:statistics:
     get:
       description: Returns a list of ipam:statistics objects matching the search criteria
+      operationId: IpamStatisticsList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -2850,10 +2904,11 @@ paths:
       - basicAuth: []
       summary: Retrieve ipam:statistics objects
       tags:
-      - ipam:statistics
+      - IpamStatistics
   /ipam:statistics/{reference}:
     get:
       description: Returns a specific ipam:statistics object by reference
+      operationId: IpamStatisticsRead
       parameters:
       - description: Reference of the ipam:statistics object
         explode: false
@@ -2910,544 +2965,11 @@ paths:
       - basicAuth: []
       summary: Get a specific ipam:statistics object
       tags:
-      - ipam:statistics
-  /rir:
-    get:
-      description: Returns a list of rir objects matching the search criteria
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Control paging of results
-        explode: true
-        in: query
-        name: _paging
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Page id for retrieving next page of results
-        explode: true
-        in: query
-        name: _page_id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: query
-        name: filters
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      - explode: false
-        in: query
-        name: extattrfilter
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRirResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Retrieve rir objects
-      tags:
-      - rir
-  /rir/{reference}:
-    get:
-      description: Returns a specific rir object by reference
-      parameters:
-      - description: Reference of the rir object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetRirResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Get a specific rir object
-      tags:
-      - rir
-    put:
-      description: Updates a specific rir object by reference
-      parameters:
-      - description: Reference of the rir object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Rir'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRirResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a rir object
-      tags:
-      - rir
-  /rir:organization:
-    get:
-      description: Returns a list of rir:organization objects matching the search
-        criteria
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Control paging of results
-        explode: true
-        in: query
-        name: _paging
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Page id for retrieving next page of results
-        explode: true
-        in: query
-        name: _page_id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: query
-        name: filters
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      - explode: false
-        in: query
-        name: extattrfilter
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListRirOrganizationResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Retrieve rir:organization objects
-      tags:
-      - rir:organization
-    post:
-      description: Creates a new rir:organization object
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RirOrganization'
-        description: Object data to create
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateRirOrganizationResponse'
-          description: Object created successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-      security:
-      - basicAuth: []
-      summary: Create a rir:organization object
-      tags:
-      - rir:organization
-      x-tf-resource: resource_nios_RirOrganization
-      x-tf-datasource: datasource_nios_RirOrganization
-      x-sdk-default-ext-attrs: true
-  /rir:organization/{reference}:
-    delete:
-      description: Deletes a specific rir:organization object by reference
-      parameters:
-      - description: Reference of the rir:organization object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          description: Object deleted successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Delete a rir:organization object
-      tags:
-      - rir:organization
-    get:
-      description: Returns a specific rir:organization object by reference
-      parameters:
-      - description: Reference of the rir:organization object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetRirOrganizationResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Get a specific rir:organization object
-      tags:
-      - rir:organization
-    put:
-      description: Updates a specific rir:organization object by reference
-      parameters:
-      - description: Reference of the rir:organization object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RirOrganization'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRirOrganizationResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a rir:organization object
-      tags:
-      - rir:organization
-      x-sdk-default-ext-attrs: true
+      - IpamStatistics
   /vlan:
     get:
       description: Returns a list of vlan objects matching the search criteria
+      operationId: VlanList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3541,9 +3063,10 @@ paths:
       - basicAuth: []
       summary: Retrieve vlan objects
       tags:
-      - vlan
+      - Vlan
     post:
       description: Creates a new vlan object
+      operationId: VlanCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3597,13 +3120,14 @@ paths:
       - basicAuth: []
       summary: Create a vlan object
       tags:
-      - vlan
-      x-tf-resource: resource_nios_Vlan
-      x-tf-datasource: datasource_nios_Vlan
+      - Vlan
+      x-tf-resource: ipam_vlan
+      x-tf-datasource: ipam_vlan
       x-sdk-default-ext-attrs: true
   /vlan/{reference}:
     delete:
       description: Deletes a specific vlan object by reference
+      operationId: VlanDelete
       parameters:
       - description: Reference of the vlan object
         explode: false
@@ -3628,9 +3152,10 @@ paths:
       - basicAuth: []
       summary: Delete a vlan object
       tags:
-      - vlan
+      - Vlan
     get:
       description: Returns a specific vlan object by reference
+      operationId: VlanRead
       parameters:
       - description: Reference of the vlan object
         explode: false
@@ -3687,9 +3212,10 @@ paths:
       - basicAuth: []
       summary: Get a specific vlan object
       tags:
-      - vlan
+      - Vlan
     put:
       description: Updates a specific vlan object by reference
+      operationId: VlanUpdate
       parameters:
       - description: Reference of the vlan object
         explode: false
@@ -3753,11 +3279,12 @@ paths:
       - basicAuth: []
       summary: Update a vlan object
       tags:
-      - vlan
+      - Vlan
       x-sdk-default-ext-attrs: true
   /vlanview:
     get:
       description: Returns a list of vlanview objects matching the search criteria
+      operationId: VlanviewList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3851,9 +3378,10 @@ paths:
       - basicAuth: []
       summary: Retrieve vlanview objects
       tags:
-      - vlanview
+      - Vlanview
     post:
       description: Creates a new vlanview object
+      operationId: VlanviewCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -3907,13 +3435,14 @@ paths:
       - basicAuth: []
       summary: Create a vlanview object
       tags:
-      - vlanview
-      x-tf-resource: resource_nios_Vlanview
-      x-tf-datasource: datasource_nios_Vlanview
+      - Vlanview
+      x-tf-resource: ipam_vlanview
+      x-tf-datasource: ipam_vlanview
       x-sdk-default-ext-attrs: true
   /vlanview/{reference}:
     delete:
       description: Deletes a specific vlanview object by reference
+      operationId: VlanviewDelete
       parameters:
       - description: Reference of the vlanview object
         explode: false
@@ -3938,9 +3467,10 @@ paths:
       - basicAuth: []
       summary: Delete a vlanview object
       tags:
-      - vlanview
+      - Vlanview
     get:
       description: Returns a specific vlanview object by reference
+      operationId: VlanviewRead
       parameters:
       - description: Reference of the vlanview object
         explode: false
@@ -3997,9 +3527,10 @@ paths:
       - basicAuth: []
       summary: Get a specific vlanview object
       tags:
-      - vlanview
+      - Vlanview
     put:
       description: Updates a specific vlanview object by reference
+      operationId: VlanviewUpdate
       parameters:
       - description: Reference of the vlanview object
         explode: false
@@ -4063,11 +3594,12 @@ paths:
       - basicAuth: []
       summary: Update a vlanview object
       tags:
-      - vlanview
+      - Vlanview
       x-sdk-default-ext-attrs: true
   /vlanrange:
     get:
       description: Returns a list of vlanrange objects matching the search criteria
+      operationId: VlanrangeList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4161,9 +3693,10 @@ paths:
       - basicAuth: []
       summary: Retrieve vlanrange objects
       tags:
-      - vlanrange
+      - Vlanrange
     post:
       description: Creates a new vlanrange object
+      operationId: VlanrangeCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4217,13 +3750,14 @@ paths:
       - basicAuth: []
       summary: Create a vlanrange object
       tags:
-      - vlanrange
-      x-tf-resource: resource_nios_Vlanrange
-      x-tf-datasource: datasource_nios_Vlanrange
+      - Vlanrange
+      x-tf-resource: ipam_vlanrange
+      x-tf-datasource: ipam_vlanrange
       x-sdk-default-ext-attrs: true
   /vlanrange/{reference}:
     delete:
       description: Deletes a specific vlanrange object by reference
+      operationId: VlanrangeDelete
       parameters:
       - description: Reference of the vlanrange object
         explode: false
@@ -4258,9 +3792,10 @@ paths:
       - basicAuth: []
       summary: Delete a vlanrange object
       tags:
-      - vlanrange
+      - Vlanrange
     get:
       description: Returns a specific vlanrange object by reference
+      operationId: VlanrangeRead
       parameters:
       - description: Reference of the vlanrange object
         explode: false
@@ -4317,9 +3852,10 @@ paths:
       - basicAuth: []
       summary: Get a specific vlanrange object
       tags:
-      - vlanrange
+      - Vlanrange
     put:
       description: Updates a specific vlanrange object by reference
+      operationId: VlanrangeUpdate
       parameters:
       - description: Reference of the vlanrange object
         explode: false
@@ -4383,11 +3919,12 @@ paths:
       - basicAuth: []
       summary: Update a vlanrange object
       tags:
-      - vlanrange
+      - Vlanrange
       x-sdk-default-ext-attrs: true
   /bulkhost:
     get:
       description: Returns a list of bulkhost objects matching the search criteria
+      operationId: BulkhostList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4481,9 +4018,10 @@ paths:
       - basicAuth: []
       summary: Retrieve bulkhost objects
       tags:
-      - bulkhost
+      - Bulkhost
     post:
       description: Creates a new bulkhost object
+      operationId: BulkhostCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4537,13 +4075,14 @@ paths:
       - basicAuth: []
       summary: Create a bulkhost object
       tags:
-      - bulkhost
-      x-tf-resource: resource_nios_Bulkhost
-      x-tf-datasource: datasource_nios_Bulkhost
+      - Bulkhost
+      x-tf-resource: ipam_bulkhost
+      x-tf-datasource: ipam_bulkhost
       x-sdk-default-ext-attrs: true
   /bulkhost/{reference}:
     delete:
       description: Deletes a specific bulkhost object by reference
+      operationId: BulkhostDelete
       parameters:
       - description: Reference of the bulkhost object
         explode: false
@@ -4568,9 +4107,10 @@ paths:
       - basicAuth: []
       summary: Delete a bulkhost object
       tags:
-      - bulkhost
+      - Bulkhost
     get:
       description: Returns a specific bulkhost object by reference
+      operationId: BulkhostRead
       parameters:
       - description: Reference of the bulkhost object
         explode: false
@@ -4627,9 +4167,10 @@ paths:
       - basicAuth: []
       summary: Get a specific bulkhost object
       tags:
-      - bulkhost
+      - Bulkhost
     put:
       description: Updates a specific bulkhost object by reference
+      operationId: BulkhostUpdate
       parameters:
       - description: Reference of the bulkhost object
         explode: false
@@ -4693,12 +4234,13 @@ paths:
       - basicAuth: []
       summary: Update a bulkhost object
       tags:
-      - bulkhost
+      - Bulkhost
       x-sdk-default-ext-attrs: true
   /bulkhostnametemplate:
     get:
       description: Returns a list of bulkhostnametemplate objects matching the search
         criteria
+      operationId: BulkhostnametemplateList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4792,9 +4334,10 @@ paths:
       - basicAuth: []
       summary: Retrieve bulkhostnametemplate objects
       tags:
-      - bulkhostnametemplate
+      - Bulkhostnametemplate
     post:
       description: Creates a new bulkhostnametemplate object
+      operationId: BulkhostnametemplateCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -4848,12 +4391,13 @@ paths:
       - basicAuth: []
       summary: Create a bulkhostnametemplate object
       tags:
-      - bulkhostnametemplate
-      x-tf-resource: resource_nios_Bulkhostnametemplate
-      x-tf-datasource: datasource_nios_Bulkhostnametemplate
+      - Bulkhostnametemplate
+      x-tf-resource: ipam_bulkhostnametemplate
+      x-tf-datasource: ipam_bulkhostnametemplate
   /bulkhostnametemplate/{reference}:
     delete:
       description: Deletes a specific bulkhostnametemplate object by reference
+      operationId: BulkhostnametemplateDelete
       parameters:
       - description: Reference of the bulkhostnametemplate object
         explode: false
@@ -4878,9 +4422,10 @@ paths:
       - basicAuth: []
       summary: Delete a bulkhostnametemplate object
       tags:
-      - bulkhostnametemplate
+      - Bulkhostnametemplate
     get:
       description: Returns a specific bulkhostnametemplate object by reference
+      operationId: BulkhostnametemplateRead
       parameters:
       - description: Reference of the bulkhostnametemplate object
         explode: false
@@ -4937,9 +4482,10 @@ paths:
       - basicAuth: []
       summary: Get a specific bulkhostnametemplate object
       tags:
-      - bulkhostnametemplate
+      - Bulkhostnametemplate
     put:
       description: Updates a specific bulkhostnametemplate object by reference
+      operationId: BulkhostnametemplateUpdate
       parameters:
       - description: Reference of the bulkhostnametemplate object
         explode: false
@@ -5003,167 +4549,11 @@ paths:
       - basicAuth: []
       summary: Update a bulkhostnametemplate object
       tags:
-      - bulkhostnametemplate
-  /capacityreport:
-    get:
-      description: Returns a list of capacityreport objects matching the search criteria
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Enter the number of results to be fetched
-        explode: true
-        in: query
-        name: _max_results
-        required: false
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Control paging of results
-        explode: true
-        in: query
-        name: _paging
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      - description: Page id for retrieving next page of results
-        explode: true
-        in: query
-        name: _page_id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: query
-        name: filters
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      - explode: false
-        in: query
-        name: extattrfilter
-        required: false
-        schema:
-          additionalProperties: true
-          type: object
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListCapacityreportResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Retrieve capacityreport objects
-      tags:
-      - capacityreport
-  /capacityreport/{reference}:
-    get:
-      description: Returns a specific capacityreport object by reference
-      parameters:
-      - description: Reference of the capacityreport object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetCapacityreportResponse'
-          description: Successful operation
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Get a specific capacityreport object
-      tags:
-      - capacityreport
+      - Bulkhostnametemplate
   /discoverytask:
     get:
       description: Returns a list of discoverytask objects matching the search criteria
+      operationId: DiscoverytaskList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5257,10 +4647,11 @@ paths:
       - basicAuth: []
       summary: Retrieve discoverytask objects
       tags:
-      - discoverytask
+      - Discoverytask
   /discoverytask/{reference}:
     get:
       description: Returns a specific discoverytask object by reference
+      operationId: DiscoverytaskRead
       parameters:
       - description: Reference of the discoverytask object
         explode: false
@@ -5317,9 +4708,10 @@ paths:
       - basicAuth: []
       summary: Get a specific discoverytask object
       tags:
-      - discoverytask
+      - Discoverytask
     put:
       description: Updates a specific discoverytask object by reference
+      operationId: DiscoverytaskUpdate
       parameters:
       - description: Reference of the discoverytask object
         explode: false
@@ -5383,11 +4775,12 @@ paths:
       - basicAuth: []
       summary: Update a discoverytask object
       tags:
-      - discoverytask
+      - Discoverytask
   /network_discovery:
     get:
       description: Returns a list of network_discovery objects matching the search
         criteria
+      operationId: NetworkDiscoveryList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5481,10 +4874,11 @@ paths:
       - basicAuth: []
       summary: Retrieve network_discovery objects
       tags:
-      - network_discovery
+      - NetworkDiscovery
   /network_discovery/{reference}:
     get:
       description: Returns a specific network_discovery object by reference
+      operationId: NetworkDiscoveryRead
       parameters:
       - description: Reference of the network_discovery object
         explode: false
@@ -5541,76 +4935,11 @@ paths:
       - basicAuth: []
       summary: Get a specific network_discovery object
       tags:
-      - network_discovery
-    put:
-      description: Updates a specific network_discovery object by reference
-      parameters:
-      - description: Reference of the network_discovery object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NetworkDiscovery'
-        description: Object data to update
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNetworkDiscoveryResponse'
-          description: Object updated successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Update a network_discovery object
-      tags:
-      - network_discovery
-  /natgroup:
+      - NetworkDiscovery
+  /superhost:
     get:
-      description: Returns a list of natgroup objects matching the search criteria
+      description: Returns a list of superhost objects matching the search criteria
+      operationId: SuperhostList
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5690,7 +5019,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListNatgroupResponse'
+                $ref: '#/components/schemas/ListSuperhostResponse'
           description: Successful operation
         "400":
           description: Bad request
@@ -5702,11 +5031,12 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Retrieve natgroup objects
+      summary: Retrieve superhost objects
       tags:
-      - natgroup
+      - Superhost
     post:
-      description: Creates a new natgroup object
+      description: Creates a new superhost object
+      operationId: SuperhostCreate
       parameters:
       - description: Enter the field names followed by comma
         explode: true
@@ -5740,7 +5070,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Natgroup'
+              $ref: '#/components/schemas/Superhost'
         description: Object data to create
         required: true
       responses:
@@ -5748,7 +5078,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateNatgroupResponse'
+                $ref: '#/components/schemas/CreateSuperhostResponse'
           description: Object created successfully
         "400":
           description: Bad request
@@ -5758,16 +5088,18 @@ paths:
           description: Forbidden
       security:
       - basicAuth: []
-      summary: Create a natgroup object
+      summary: Create a superhost object
       tags:
-      - natgroup
-      x-tf-resource: resource_nios_Natgroup
-      x-tf-datasource: datasource_nios_Natgroup
-  /natgroup/{reference}:
+      - Superhost
+      x-tf-resource: ipam_superhost
+      x-tf-datasource: ipam_superhost
+      x-sdk-default-ext-attrs: true
+  /superhost/{reference}:
     delete:
-      description: Deletes a specific natgroup object by reference
+      description: Deletes a specific superhost object by reference
+      operationId: SuperhostDelete
       parameters:
-      - description: Reference of the natgroup object
+      - description: Reference of the superhost object
         explode: false
         in: path
         name: reference
@@ -5788,13 +5120,14 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Delete a natgroup object
+      summary: Delete a superhost object
       tags:
-      - natgroup
+      - Superhost
     get:
-      description: Returns a specific natgroup object by reference
+      description: Returns a specific superhost object by reference
+      operationId: SuperhostRead
       parameters:
-      - description: Reference of the natgroup object
+      - description: Reference of the superhost object
         explode: false
         in: path
         name: reference
@@ -5835,7 +5168,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetNatgroupResponse'
+                $ref: '#/components/schemas/GetSuperhostResponse'
           description: Successful operation
         "400":
           description: Bad request
@@ -5847,13 +5180,14 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Get a specific natgroup object
+      summary: Get a specific superhost object
       tags:
-      - natgroup
+      - Superhost
     put:
-      description: Updates a specific natgroup object by reference
+      description: Updates a specific superhost object by reference
+      operationId: SuperhostUpdate
       parameters:
-      - description: Reference of the natgroup object
+      - description: Reference of the superhost object
         explode: false
         in: path
         name: reference
@@ -5893,7 +5227,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Natgroup'
+              $ref: '#/components/schemas/Superhost'
         description: Object data to update
         required: true
       responses:
@@ -5901,7 +5235,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateNatgroupResponse'
+                $ref: '#/components/schemas/UpdateSuperhostResponse'
           description: Object updated successfully
         "400":
           description: Bad request
@@ -5913,9 +5247,396 @@ paths:
           description: Not found
       security:
       - basicAuth: []
-      summary: Update a natgroup object
+      summary: Update a superhost object
       tags:
-      - natgroup
+      - Superhost
+      x-sdk-default-ext-attrs: true
+  /superhostchild:
+    get:
+      description: Returns a list of superhostchild objects matching the search criteria
+      operationId: SuperhostchildList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSuperhostchildResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve superhostchild objects
+      tags:
+      - Superhostchild
+  /superhostchild/{reference}:
+    get:
+      description: Returns a specific superhostchild object by reference
+      operationId: SuperhostchildRead
+      parameters:
+      - description: Reference of the superhostchild object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSuperhostchildResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific superhostchild object
+      tags:
+      - Superhostchild
+  /hostnamerewritepolicy:
+    get:
+      description: Returns a list of hostnamerewritepolicy objects matching the search
+        criteria
+      operationId: HostnamerewritepolicyList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListHostnamerewritepolicyResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve hostnamerewritepolicy objects
+      tags:
+      - Hostnamerewritepolicy
+  /hostnamerewritepolicy/{reference}:
+    get:
+      description: Returns a specific hostnamerewritepolicy object by reference
+      operationId: HostnamerewritepolicyRead
+      parameters:
+      - description: Reference of the hostnamerewritepolicy object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetHostnamerewritepolicyResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific hostnamerewritepolicy object
+      tags:
+      - Hostnamerewritepolicy
+    put:
+      description: Updates a specific hostnamerewritepolicy object by reference
+      operationId: HostnamerewritepolicyUpdate
+      parameters:
+      - description: Reference of the hostnamerewritepolicy object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hostnamerewritepolicy'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateHostnamerewritepolicyResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a hostnamerewritepolicy object
+      tags:
+      - Hostnamerewritepolicy
 components:
   parameters:
     ReturnFields:
@@ -6087,11 +5808,10 @@ components:
     ExtAttrs:
       description: Extensible attributes associated with the object.
       example:
-        value: value
+        value: ""
       properties:
         value:
           description: The value of the extensible attribute.
-          type: string
       required:
       - value
       type: object
@@ -6104,7 +5824,7 @@ components:
         - types
         extattrs:
           key:
-            value: value
+            value: ""
         is_invalid_mac: false
         objects: Example objects
         usage:
@@ -7060,12 +6780,6 @@ components:
         title: ListIpv4addressResponseArray
         type: array
       - $ref: '#/components/schemas/ListIpv4addressResponseObject'
-    CreateIpv4addressResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateIpv4addressResponseAsObject'
-      - description: The response format to create __Ipv4address__.
-        title: CreateIpv4addressResponse
-        type: string
     GetIpv4addressResponse:
       oneOf:
       - $ref: '#/components/schemas/Ipv4address'
@@ -7086,7 +6800,7 @@ components:
         duid: Example duid
         extattrs:
           key:
-            value: value
+            value: ""
         objects: Example objects
         usage:
         - usage
@@ -8025,12 +7739,6 @@ components:
         title: ListIpv6addressResponseArray
         type: array
       - $ref: '#/components/schemas/ListIpv6addressResponseObject'
-    CreateIpv6addressResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateIpv6addressResponseAsObject'
-      - description: The response format to create __Ipv6address__.
-        title: CreateIpv6addressResponse
-        type: string
     GetIpv6addressResponse:
       oneOf:
       - $ref: '#/components/schemas/Ipv6address'
@@ -8102,7 +7810,6 @@ components:
         ipam_threshold_settings:
           reset_value: 1
           trigger_value: 1
-        next_available_network: "{}"
         utilization: 1
         ipv4addr: Example ipv4addr
         use_nextserver: false
@@ -8111,8 +7818,8 @@ components:
         deny_bootp: false
         last_rir_registration_update_status: Example last_rir_registration_update_status
         endpoint_sources:
-        - "{}"
-        - "{}"
+        - pxgrid:endpoint
+        - pxgrid:endpoint
         unmanaged: false
         use_ipam_trap_settings: false
         discovered_vlan_id: Example discovered_vlan_id
@@ -8174,7 +7881,7 @@ components:
         discovered_vrf_description: Example discovered_vrf_description
         extattrs:
           key:
-            value: value
+            value: ""
         rir_registration_action: Example rir_registration_action
         use_bootfile: false
         last_rir_registration_update_sent: 1
@@ -8223,8 +7930,14 @@ components:
         nextserver: Example nextserver
         use_ddns_update_fixed_addresses: false
         use_pxe_lease_time: false
-        expand_network: "{}"
-        next_available_ip: "{}"
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          _object_ref: _object_ref
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         discovered_vlan_name: Example discovered_vlan_name
         use_authority: false
         use_lease_scavenge_time: false
@@ -8237,7 +7950,6 @@ components:
           ipv6addr: Example ipv6addr
         use_blackout_setting: false
         use_ignore_dhcp_option_list_request: false
-        next_available_vlan: "{}"
         ddns_server_always_updates: false
         use_enable_ddns: false
         enable_dhcp_thresholds: false
@@ -8245,7 +7957,6 @@ components:
         use_deny_bootp: false
         discovered_bridge_domain: Example discovered_bridge_domain
         same_port_control_discovery_blackout: false
-        split_network: "{}"
         dhcp_utilization_status: Example dhcp_utilization_status
         unmanaged_count: 1
         use_discovery_basic_polling_settings: false
@@ -8270,7 +7981,7 @@ components:
         use_ddns_ttl: false
         enable_discovery: false
         rir_registration_status: Example rir_registration_status
-        network: Example network
+        network: Network_network
         use_logic_filter_rules: false
         use_subscribe_settings: false
         ddns_use_option81: false
@@ -8298,7 +8009,6 @@ components:
         use_recycle_leases: false
         _ref: _ref
         use_mgm_private: false
-        resize: "{}"
         comment: Example comment
         send_rir_request: false
         dhcp_utilization: 1
@@ -8550,12 +8260,9 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: object
+            type: string
           readOnly: true
           type: array
-        expand_network:
-          properties: {}
-          type: object
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -8644,6 +8351,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
@@ -8704,13 +8412,9 @@ components:
           format: int64
           type: integer
         network:
-          description: "The network address in IPv4 Address/CIDR format. For regular\
-            \ expression searches, only the IPv4 Address portion is supported. Searches\
-            \ for the CIDR portion is always an exact match. For example, both network\
-            \ containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression '.0'\
-            \ and only 20.1.0.0/16 is matched by '.0/16'."
-          example: Example network
-          type: string
+          $ref: '#/components/schemas/Network_network'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         network_container:
           description: The network container to which this network belongs (if any).
           example: Example network_container
@@ -8720,15 +8424,6 @@ components:
           description: The name of the network view in which this network resides.
           example: Example network_view
           type: string
-        next_available_ip:
-          properties: {}
-          type: object
-        next_available_network:
-          properties: {}
-          type: object
-        next_available_vlan:
-          properties: {}
-          type: object
         nextserver:
           description: The name in FQDN and/or IPv4 Address of the next server that
             the host needs to boot.
@@ -8762,9 +8457,6 @@ components:
             \ deleted."
           example: false
           type: boolean
-        resize:
-          properties: {}
-          type: object
         restart_if_needed:
           description: Restarts the member service.
           example: false
@@ -8809,9 +8501,6 @@ components:
           example: false
           type: boolean
           writeOnly: true
-        split_network:
-          properties: {}
-          type: object
         static_hosts:
           description: The number of static DHCP addresses configured in the network.
           example: 1
@@ -8999,6 +8688,42 @@ components:
           items:
             $ref: '#/components/schemas/NetworkZoneAssociations'
           type: array
+      type: object
+    FuncCall:
+      description: Function Call attribute
+      example:
+        _result_field: _result_field
+        _object_function: _object_function
+        _object_parameters: "{}"
+        _object_ref: _object_ref
+        attribute_name: attribute_name
+        _object: _object
+        _parameters: "{}"
+      properties:
+        attribute_name:
+          description: The attribute to be called.
+          type: string
+        _object_function:
+          description: The function to be called.
+          type: string
+        _parameters:
+          description: The parameters for the function.
+          type: object
+        _result_field:
+          description: The result field of the function.
+          type: string
+        _object:
+          description: The object to be called.
+          type: string
+        _object_parameters:
+          description: The parameters for the object.
+          type: object
+        _object_ref:
+          description: A WAPI object reference on which the function calls. Either
+            _object or _object_ref must be set.
+          type: string
+      required:
+      - attribute_name
       type: object
     NetworkCloudInfo:
       example:
@@ -9416,9 +9141,6 @@ components:
           example: false
           type: boolean
       type: object
-    NetworkExpandNetwork:
-      properties: {}
-      type: object
     NetworkFederatedRealms:
       example:
         name: Example name
@@ -9509,15 +9231,6 @@ components:
           format: int64
           readOnly: true
           type: integer
-      type: object
-    NetworkNextAvailableIp:
-      properties: {}
-      type: object
-    NetworkNextAvailableNetwork:
-      properties: {}
-      type: object
-    NetworkNextAvailableVlan:
-      properties: {}
       type: object
     NetworkOptions:
       example:
@@ -9683,12 +9396,6 @@ components:
           description: "If set to True, the scheduled task is disabled."
           example: false
           type: boolean
-      type: object
-    NetworkResize:
-      properties: {}
-      type: object
-    NetworkSplitNetwork:
-      properties: {}
       type: object
     NetworkSubscribeSettings:
       example:
@@ -9864,7 +9571,6 @@ components:
         ipam_threshold_settings:
           reset_value: 1
           trigger_value: 1
-        next_available_network: "{}"
         utilization: 1
         use_nextserver: false
         enable_immediate_discovery: false
@@ -9872,8 +9578,8 @@ components:
         deny_bootp: false
         last_rir_registration_update_status: Example last_rir_registration_update_status
         endpoint_sources:
-        - "{}"
-        - "{}"
+        - pxgrid:endpoint
+        - pxgrid:endpoint
         unmanaged: false
         use_ipam_trap_settings: false
         high_water_mark_reset: 1
@@ -9930,7 +9636,7 @@ components:
         auto_create_reversezone: false
         extattrs:
           key:
-            value: value
+            value: ""
         rir_registration_action: Example rir_registration_action
         use_bootfile: false
         last_rir_registration_update_sent: 1
@@ -9977,6 +9683,14 @@ components:
         nextserver: Example nextserver
         use_ddns_update_fixed_addresses: false
         use_pxe_lease_time: false
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          _object_ref: _object_ref
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         use_authority: false
         use_lease_scavenge_time: false
         use_blackout_setting: false
@@ -10002,7 +9716,7 @@ components:
         use_ddns_ttl: false
         enable_discovery: false
         rir_registration_status: Example rir_registration_status
-        network: Example network
+        network: Networkcontainer_network
         use_logic_filter_rules: false
         use_subscribe_settings: false
         ddns_use_option81: false
@@ -10026,7 +9740,6 @@ components:
         use_recycle_leases: false
         _ref: _ref
         use_mgm_private: false
-        resize: "{}"
         comment: Example comment
         send_rir_request: false
         use_enable_discovery: false
@@ -10190,7 +9903,7 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: object
+            type: string
           readOnly: true
           type: array
         extattrs:
@@ -10276,6 +9989,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
@@ -10321,13 +10035,9 @@ components:
         ms_ad_user_data:
           $ref: '#/components/schemas/NetworkcontainerMsAdUserData'
         network:
-          description: "The network address in IPv4 Address/CIDR format. For regular\
-            \ expression searches, only the IPv4 Address portion is supported. Searches\
-            \ for the CIDR portion is always an exact match. For example, both network\
-            \ containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression '.0'\
-            \ and only 20.1.0.0/16 is matched by '.0/16'."
-          example: Example network
-          type: string
+          $ref: '#/components/schemas/Networkcontainer_network'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         network_container:
           description: "The network container to which this network belongs, if any."
           example: Example network_container
@@ -10337,9 +10047,6 @@ components:
           description: The name of the network view in which this network resides.
           example: Example network_view
           type: string
-        next_available_network:
-          properties: {}
-          type: object
         nextserver:
           description: The name in FQDN and/or IPv4 Address of the next server that
             the host needs to boot.
@@ -10380,9 +10087,6 @@ components:
             objects are deleted with the network container.
           example: false
           type: boolean
-        resize:
-          properties: {}
-          type: object
         restart_if_needed:
           description: Restarts the member service.
           example: false
@@ -11062,9 +10766,6 @@ components:
           readOnly: true
           type: integer
       type: object
-    NetworkcontainerNextAvailableNetwork:
-      properties: {}
-      type: object
     NetworkcontainerOptions:
       example:
         vendor_class: Example vendor_class
@@ -11229,9 +10930,6 @@ components:
           description: "If set to True, the scheduled task is disabled."
           example: false
           type: boolean
-      type: object
-    NetworkcontainerResize:
-      properties: {}
       type: object
     NetworkcontainerSubscribeSettings:
       example:
@@ -11412,7 +11110,7 @@ components:
         auto_create_reversezone: false
         extattrs:
           key:
-            value: value
+            value: ""
         rir_registration_action: Example rir_registration_action
         fixed_address_templates:
         - fixed_address_templates
@@ -11613,6 +11311,7 @@ components:
             \ to -1. The minimum positive value must be greater than 86400 seconds\
             \ (1 day)."
           example: 1
+          format: int64
           type: integer
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
@@ -11979,7 +11678,7 @@ components:
         - associated_dns_views
         extattrs:
           key:
-            value: value
+            value: ""
         associated_members:
         - failovers:
           - failovers
@@ -12025,8 +11724,8 @@ components:
           delegated_root: Example delegated_root
         is_default: false
         internal_forward_zones:
-        - "{}"
-        - "{}"
+        - zone_auth
+        - zone_auth
         ms_ad_user_data:
           active_users_count: 1
         remote_forward_zones:
@@ -12122,7 +11821,7 @@ components:
           items:
             enum:
             - zone_auth
-            type: object
+            type: string
           type: array
         is_default:
           description: "The NIOS appliance provides one default network view. You\
@@ -12477,12 +12176,10 @@ components:
         use_enable_ifmap_publishing: false
         enable_ifmap_publishing: false
         use_valid_lifetime: false
-        expand_network: "{}"
         delete_reason: Example delete_reason
         domain_name_servers:
         - domain_name_servers
         - domain_name_servers
-        next_available_ip: "{}"
         domain_name: Example domain_name
         use_ddns_domainname: false
         discovered_vlan_name: Example discovered_vlan_name
@@ -12506,7 +12203,6 @@ components:
           value: Example value
         use_blackout_setting: false
         rir: Example rir
-        next_available_vlan: "{}"
         ddns_server_always_updates: false
         use_enable_ddns: false
         use_preferred_lifetime: false
@@ -12539,8 +12235,6 @@ components:
           is_default: false
         discovered_bridge_domain: Example discovered_bridge_domain
         same_port_control_discovery_blackout: false
-        next_available_network: "{}"
-        split_network: "{}"
         unmanaged_count: 1
         use_discovery_basic_polling_settings: false
         enable_immediate_discovery: false
@@ -12550,8 +12244,8 @@ components:
         last_rir_registration_update_status: Example last_rir_registration_update_status
         use_domain_name_servers: false
         endpoint_sources:
-        - "{}"
-        - "{}"
+        - pxgrid:endpoint
+        - pxgrid:endpoint
         mgm_private: false
         unmanaged: false
         ddns_domainname: Example ddns_domainname
@@ -12630,7 +12324,7 @@ components:
         discovered_vrf_description: Example discovered_vrf_description
         extattrs:
           key:
-            value: value
+            value: ""
         network_container: Example network_container
         rir_registration_action: Example rir_registration_action
         federated_realms:
@@ -12852,12 +12546,9 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: object
+            type: string
           readOnly: true
           type: array
-        expand_network:
-          properties: {}
-          type: object
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -12935,15 +12626,6 @@ components:
           description: The name of the network view in which this network resides.
           example: Example network_view
           type: string
-        next_available_ip:
-          properties: {}
-          type: object
-        next_available_network:
-          properties: {}
-          type: object
-        next_available_vlan:
-          properties: {}
-          type: object
         options:
           description: An array of DHCP option dhcpoption structs that lists the DHCP
             options associated with the object.
@@ -13011,9 +12693,6 @@ components:
           example: false
           type: boolean
           writeOnly: true
-        split_network:
-          properties: {}
-          type: object
         subscribe_settings:
           $ref: '#/components/schemas/Ipv6networkSubscribeSettings'
         template:
@@ -13556,9 +13235,6 @@ components:
           example: false
           type: boolean
       type: object
-    Ipv6networkExpandNetwork:
-      properties: {}
-      type: object
     Ipv6networkFederatedRealms:
       example:
         name: Example name
@@ -13616,15 +13292,6 @@ components:
           format: int64
           readOnly: true
           type: integer
-      type: object
-    Ipv6networkNextAvailableIp:
-      properties: {}
-      type: object
-    Ipv6networkNextAvailableNetwork:
-      properties: {}
-      type: object
-    Ipv6networkNextAvailableVlan:
-      properties: {}
       type: object
     Ipv6networkOptions:
       example:
@@ -13790,9 +13457,6 @@ components:
           description: "If set to True, the scheduled task is disabled."
           example: false
           type: boolean
-      type: object
-    Ipv6networkSplitNetwork:
-      properties: {}
       type: object
     Ipv6networkSubscribeSettings:
       example:
@@ -13974,7 +13638,6 @@ components:
           fqdn: Example fqdn
           is_default: false
         same_port_control_discovery_blackout: false
-        next_available_network: "{}"
         utilization: 1
         use_discovery_basic_polling_settings: false
         enable_immediate_discovery: false
@@ -13984,8 +13647,8 @@ components:
         last_rir_registration_update_status: Example last_rir_registration_update_status
         use_domain_name_servers: false
         endpoint_sources:
-        - "{}"
-        - "{}"
+        - pxgrid:endpoint
+        - pxgrid:endpoint
         mgm_private: false
         unmanaged: false
         ddns_domainname: Example ddns_domainname
@@ -14049,7 +13712,7 @@ components:
         auto_create_reversezone: false
         extattrs:
           key:
-            value: value
+            value: ""
         network_container: Example network_container
         rir_registration_action: Example rir_registration_action
         federated_realms:
@@ -14211,7 +13874,7 @@ components:
           items:
             enum:
             - pxgrid:endpoint
-            type: object
+            type: string
           readOnly: true
           type: array
         extattrs:
@@ -14281,9 +13944,6 @@ components:
           description: The name of the network view in which this network resides.
           example: Example network_view
           type: string
-        next_available_network:
-          properties: {}
-          type: object
         options:
           description: An array of DHCP option dhcpoption structs that lists the DHCP
             options associated with the object.
@@ -14907,9 +14567,6 @@ components:
           readOnly: true
           type: integer
       type: object
-    Ipv6networkcontainerNextAvailableNetwork:
-      properties: {}
-      type: object
     Ipv6networkcontainerOptions:
       example:
         vendor_class: Example vendor_class
@@ -15222,7 +14879,7 @@ components:
         auto_create_reversezone: false
         extattrs:
           key:
-            value: value
+            value: ""
         rir_registration_action: Example rir_registration_action
         use_update_dns_on_lease_renewal: false
         fixed_address_templates:
@@ -15695,12 +15352,6 @@ components:
         title: ListIpamStatisticsResponseArray
         type: array
       - $ref: '#/components/schemas/ListIpamStatisticsResponseObject'
-    CreateIpamStatisticsResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateIpamStatisticsResponseAsObject'
-      - description: The response format to create __IpamStatistics__.
-        title: CreateIpamStatisticsResponse
-        type: string
     GetIpamStatisticsResponse:
       oneOf:
       - $ref: '#/components/schemas/IpamStatistics'
@@ -15711,155 +15362,13 @@ components:
       - description: The response format to update __IpamStatistics__ .
         title: UpdateIpamStatisticsResponse
         type: string
-    Rir:
-      additionalProperties: false
-      example:
-        communication_mode: Example communication_mode
-        use_email: false
-        use_url: false
-        _ref: _ref
-        name: Example name
-        email: Example email
-        url: Example url
-      properties:
-        _ref:
-          description: The reference to the object.
-          type: string
-        communication_mode:
-          description: The communication mode for RIR.
-          enum:
-          - EMAIL
-          - API
-          - NONE
-          example: Example communication_mode
-          type: string
-        email:
-          description: The e-mail address for RIR.
-          example: Example email
-          type: string
-        name:
-          description: The name of RIR.
-          enum:
-          - RIPE
-          example: Example name
-          type: string
-        url:
-          description: The WebAPI URL for RIR.
-          example: Example url
-          type: string
-        use_email:
-          description: "Use flag for: email"
-          example: false
-          type: boolean
-        use_url:
-          description: "Use flag for: url"
-          example: false
-          type: boolean
-      type: object
-    ListRirResponse:
-      oneOf:
-      - description: The response format to retrieve __Rir__ objects.
-        items:
-          $ref: '#/components/schemas/Rir'
-        title: ListRirResponseArray
-        type: array
-      - $ref: '#/components/schemas/ListRirResponseObject'
-    CreateRirResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateRirResponseAsObject'
-      - description: The response format to create __Rir__.
-        title: CreateRirResponse
-        type: string
-    GetRirResponse:
-      oneOf:
-      - $ref: '#/components/schemas/Rir'
-      - $ref: '#/components/schemas/GetRirResponseObjectAsResult'
-    UpdateRirResponse:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateRirResponseAsObject'
-      - description: The response format to update __Rir__ .
-        title: UpdateRirResponse
-        type: string
-    RirOrganization:
-      additionalProperties: false
-      example:
-        password: Example password
-        extattrs:
-          key:
-            value: value
-        _ref: _ref
-        name: Example name
-        rir: Example rir
-        id: Example id
-        maintainer: Example maintainer
-        sender_email: Example sender_email
-      properties:
-        _ref:
-          description: The reference to the object.
-          type: string
-        extattrs:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrs'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs:values}."
-          type: object
-        id:
-          description: The RIR organization identifier.
-          example: Example id
-          type: string
-        maintainer:
-          description: The RIR organization maintainer.
-          example: Example maintainer
-          type: string
-        name:
-          description: The RIR organization name.
-          example: Example name
-          type: string
-        password:
-          description: The password for the maintainer of RIR organization.
-          example: Example password
-          type: string
-          writeOnly: true
-        rir:
-          description: The RIR associated with RIR organization.
-          example: Example rir
-          type: string
-        sender_email:
-          description: The sender e-mail address for RIR organization.
-          example: Example sender_email
-          type: string
-      type: object
-    ListRirOrganizationResponse:
-      oneOf:
-      - description: The response format to retrieve __RirOrganization__ objects.
-        items:
-          $ref: '#/components/schemas/RirOrganization'
-        title: ListRirOrganizationResponseArray
-        type: array
-      - $ref: '#/components/schemas/ListRirOrganizationResponseObject'
-    CreateRirOrganizationResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateRirOrganizationResponseAsObject'
-      - description: The response format to create __RirOrganization__.
-        title: CreateRirOrganizationResponse
-        type: string
-    GetRirOrganizationResponse:
-      oneOf:
-      - $ref: '#/components/schemas/RirOrganization'
-      - $ref: '#/components/schemas/GetRirOrganizationResponseObjectAsResult'
-    UpdateRirOrganizationResponse:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateRirOrganizationResponseAsObject'
-      - description: The response format to update __RirOrganization__ .
-        title: UpdateRirOrganizationResponse
-        type: string
     Vlan:
       additionalProperties: false
       example:
         parent: Example parent
         extattrs:
           key:
-            value: value
+            value: ""
         reserved: false
         contact: Example contact
         _ref: _ref
@@ -15869,8 +15378,8 @@ components:
         id: 1
         department: Example department
         assigned_to:
-        - "{}"
-        - "{}"
+        - network
+        - network
         status: Example status
       properties:
         _ref:
@@ -15883,7 +15392,7 @@ components:
           items:
             enum:
             - network
-            type: object
+            type: string
           readOnly: true
           type: array
         comment:
@@ -15965,7 +15474,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         start_vlan_id: 1
         _ref: _ref
         name: Example name
@@ -15973,7 +15482,6 @@ components:
         end_vlan_id: 1
         allow_range_overlapping: false
         vlan_name_prefix: Example vlan_name_prefix
-        next_available_vlan_id: "{}"
         pre_create_vlan: false
       properties:
         _ref:
@@ -16003,9 +15511,6 @@ components:
           description: Name of the VLAN View.
           example: Example name
           type: string
-        next_available_vlan_id:
-          properties: {}
-          type: object
         pre_create_vlan:
           description: If set on creation VLAN objects will be created once VLAN View
             created.
@@ -16020,9 +15525,6 @@ components:
           description: If set on creation prefix string will be used for VLAN name.
           example: Example vlan_name_prefix
           type: string
-      type: object
-    VlanviewNextAvailableVlanId:
-      properties: {}
       type: object
     ListVlanviewResponse:
       oneOf:
@@ -16053,7 +15555,7 @@ components:
       example:
         extattrs:
           key:
-            value: value
+            value: ""
         start_vlan_id: 1
         _ref: _ref
         name: Example name
@@ -16062,7 +15564,6 @@ components:
         end_vlan_id: 1
         vlan_name_prefix: Example vlan_name_prefix
         vlan_view: Example vlan_view
-        next_available_vlan_id: "{}"
         pre_create_vlan: false
       properties:
         _ref:
@@ -16093,9 +15594,6 @@ components:
           description: Name of the VLAN Range.
           example: Example name
           type: string
-        next_available_vlan_id:
-          properties: {}
-          type: object
         pre_create_vlan:
           description: If set on creation VLAN objects will be created once VLAN Range
             created.
@@ -16114,9 +15612,6 @@ components:
           description: The VLAN View to which this VLAN Range belongs.
           example: Example vlan_view
           type: string
-      type: object
-    VlanrangeNextAvailableVlanId:
-      properties: {}
       type: object
     ListVlanrangeResponse:
       oneOf:
@@ -16148,7 +15643,7 @@ components:
         network_view: Example network_view
         extattrs:
           key:
-            value: value
+            value: ""
         end_addr: Example end_addr
         prefix: Example prefix
         use_ttl: false
@@ -16440,109 +15935,6 @@ components:
       - description: The response format to update __Bulkhostnametemplate__ .
         title: UpdateBulkhostnametemplateResponse
         type: string
-    Capacityreport:
-      additionalProperties: false
-      example:
-        percent_used: 1
-        role: Example role
-        hardware_type: Example hardware_type
-        total_objects: 1
-        max_capacity: 1
-        _ref: _ref
-        name: Example name
-        object_counts:
-        - type_name: Example type_name
-          count: 1
-        - type_name: Example type_name
-          count: 1
-      properties:
-        _ref:
-          description: The reference to the object.
-          type: string
-        hardware_type:
-          description: Hardware type of a Grid member.
-          example: Example hardware_type
-          readOnly: true
-          type: string
-        max_capacity:
-          description: The maximum amount of capacity available for the Grid member.
-          example: 1
-          format: int64
-          readOnly: true
-          type: integer
-        name:
-          description: The Grid member name.
-          example: Example name
-          readOnly: true
-          type: string
-        object_counts:
-          description: A list of instance counts for object types created on the Grid
-            member.
-          enum:
-          - capacityreport:objectcount
-          items:
-            $ref: '#/components/schemas/CapacityreportObjectCounts'
-          readOnly: true
-          type: array
-        percent_used:
-          description: The percentage of the capacity in use by the Grid member.
-          example: 1
-          format: int64
-          readOnly: true
-          type: integer
-        role:
-          description: The Grid member role.
-          example: Example role
-          readOnly: true
-          type: string
-        total_objects:
-          description: The total number of objects created by the Grid member.
-          example: 1
-          format: int64
-          readOnly: true
-          type: integer
-      type: object
-    CapacityreportObjectCounts:
-      example:
-        type_name: Example type_name
-        count: 1
-      properties:
-        type_name:
-          description: Object type name.
-          example: Example type_name
-          readOnly: true
-          type: string
-        count:
-          description: Number of object type instances created.
-          example: 1
-          format: int64
-          readOnly: true
-          type: integer
-      type: object
-    ListCapacityreportResponse:
-      oneOf:
-      - description: The response format to retrieve __Capacityreport__ objects.
-        items:
-          $ref: '#/components/schemas/Capacityreport'
-        title: ListCapacityreportResponseArray
-        type: array
-      - $ref: '#/components/schemas/ListCapacityreportResponseObject'
-    CreateCapacityreportResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateCapacityreportResponseAsObject'
-      - description: The response format to create __Capacityreport__.
-        title: CreateCapacityreportResponse
-        type: string
-    GetCapacityreportResponse:
-      oneOf:
-      - $ref: '#/components/schemas/Capacityreport'
-      - $ref: '#/components/schemas/GetCapacityreportResponseObjectAsResult'
-    UpdateCapacityreportResponse:
-      oneOf:
-      - $ref: '#/components/schemas/UpdateCapacityreportResponseAsObject'
-      - description: The response format to update __Capacityreport__ .
-        title: UpdateCapacityreportResponse
-        type: string
     Discoverytask:
       additionalProperties: false
       example:
@@ -16568,8 +15960,8 @@ components:
         discovery_task_oid: Example discovery_task_oid
         member_name: Example member_name
         networks:
-        - "{}"
-        - "{}"
+        - network
+        - network
         v_network_view: Example v_network_view
         ping_timeout: 1
         mode: Example mode
@@ -16589,7 +15981,6 @@ components:
           username: Example username
         _ref: _ref
         csv_file_name: Example csv_file_name
-        network_discovery_control: "{}"
         warning: Example warning
         state: Example state
         status_time: 1
@@ -16642,9 +16033,6 @@ components:
           - CSV
           example: Example mode
           type: string
-        network_discovery_control:
-          properties: {}
-          type: object
         network_view:
           description: Name of the network view in which target networks for network
             discovery reside.
@@ -16658,7 +16046,7 @@ components:
           items:
             enum:
             - network
-            type: object
+            type: string
           type: array
         ping_retries:
           description: The number of times to perfrom ping for ICMP and FULL modes.
@@ -16733,9 +16121,6 @@ components:
           example: Example warning
           readOnly: true
           type: string
-      type: object
-    DiscoverytaskNetworkDiscoveryControl:
-      properties: {}
       type: object
     DiscoverytaskScheduledRun:
       example:
@@ -16900,12 +16285,6 @@ components:
         title: ListDiscoverytaskResponseArray
         type: array
       - $ref: '#/components/schemas/ListDiscoverytaskResponseObject'
-    CreateDiscoverytaskResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDiscoverytaskResponseAsObject'
-      - description: The response format to create __Discoverytask__.
-        title: CreateDiscoverytaskResponse
-        type: string
     GetDiscoverytaskResponse:
       oneOf:
       - $ref: '#/components/schemas/Discoverytask'
@@ -16920,17 +16299,10 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
-        clear_discovery_data: "{}"
       properties:
         _ref:
           description: The reference to the object.
           type: string
-        clear_discovery_data:
-          properties: {}
-          type: object
-      type: object
-    NetworkDiscoveryClearDiscoveryData:
-      properties: {}
       type: object
     ListNetworkDiscoveryResponse:
       oneOf:
@@ -16940,12 +16312,6 @@ components:
         title: ListNetworkDiscoveryResponseArray
         type: array
       - $ref: '#/components/schemas/ListNetworkDiscoveryResponseObject'
-    CreateNetworkDiscoveryResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateNetworkDiscoveryResponseAsObject'
-      - description: The response format to create __NetworkDiscovery__.
-        title: CreateNetworkDiscoveryResponse
-        type: string
     GetNetworkDiscoveryResponse:
       oneOf:
       - $ref: '#/components/schemas/NetworkDiscovery'
@@ -16956,48 +16322,254 @@ components:
       - description: The response format to update __NetworkDiscovery__ .
         title: UpdateNetworkDiscoveryResponse
         type: string
-    Natgroup:
+    Superhost:
       additionalProperties: false
       example:
+        extattrs:
+          key:
+            value: ""
+        dhcp_associated_objects:
+        - fixedaddress
+        - fixedaddress
+        delete_associated_objects: false
         _ref: _ref
         name: Example name
         comment: Example comment
+        disabled: false
+        dns_associated_objects:
+        - record:a
+        - record:a
       properties:
         _ref:
           description: The reference to the object.
           type: string
         comment:
-          description: The NAT group descriptive comment.
+          description: The comment for Super Host.
           example: Example comment
           type: string
+        delete_associated_objects:
+          description: "True if we have to delete all DNS/DHCP associated objects\
+            \ with Super Host, false by default."
+          example: false
+          type: boolean
+          writeOnly: true
+        dhcp_associated_objects:
+          description: A list of DHCP objects refs which are associated with Super
+            Host.
+          enum:
+          - fixedaddress
+          items:
+            enum:
+            - fixedaddress
+            type: string
+          type: array
+        disabled:
+          description: "Disable all DNS/DHCP associated objects with Super Host if\
+            \ True, False by default."
+          example: false
+          type: boolean
+        dns_associated_objects:
+          description: A list of object refs of the DNS resource records which are
+            associated with Super Host.
+          enum:
+          - record:a
+          items:
+            enum:
+            - record:a
+            type: string
+          type: array
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
         name:
-          description: The name of a NAT group object.
+          description: Name of the Superhost.
           example: Example name
           type: string
       type: object
-    ListNatgroupResponse:
+    ListSuperhostResponse:
       oneOf:
-      - description: The response format to retrieve __Natgroup__ objects.
+      - description: The response format to retrieve __Superhost__ objects.
         items:
-          $ref: '#/components/schemas/Natgroup'
-        title: ListNatgroupResponseArray
+          $ref: '#/components/schemas/Superhost'
+        title: ListSuperhostResponseArray
         type: array
-      - $ref: '#/components/schemas/ListNatgroupResponseObject'
-    CreateNatgroupResponse:
+      - $ref: '#/components/schemas/ListSuperhostResponseObject'
+    CreateSuperhostResponse:
       oneOf:
-      - $ref: '#/components/schemas/CreateNatgroupResponseAsObject'
-      - description: The response format to create __Natgroup__.
-        title: CreateNatgroupResponse
+      - $ref: '#/components/schemas/CreateSuperhostResponseAsObject'
+      - description: The response format to create __Superhost__.
+        title: CreateSuperhostResponse
         type: string
-    GetNatgroupResponse:
+    GetSuperhostResponse:
       oneOf:
-      - $ref: '#/components/schemas/Natgroup'
-      - $ref: '#/components/schemas/GetNatgroupResponseObjectAsResult'
-    UpdateNatgroupResponse:
+      - $ref: '#/components/schemas/Superhost'
+      - $ref: '#/components/schemas/GetSuperhostResponseObjectAsResult'
+    UpdateSuperhostResponse:
       oneOf:
-      - $ref: '#/components/schemas/UpdateNatgroupResponseAsObject'
-      - description: The response format to update __Natgroup__ .
-        title: UpdateNatgroupResponse
+      - $ref: '#/components/schemas/UpdateSuperhostResponseAsObject'
+      - description: The response format to update __Superhost__ .
+        title: UpdateSuperhostResponse
+        type: string
+    Superhostchild:
+      additionalProperties: false
+      example:
+        network_view: Example network_view
+        parent: Example parent
+        view: Example view
+        associated_object: Example associated_object
+        data: Example data
+        creation_timestamp: 1
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+        disabled: false
+        record_parent: Example record_parent
+        type: Example type
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        associated_object:
+          description: "The record object, if supported by the WAPI. Otherwise, the\
+            \ value is \"None\"."
+          example: Example associated_object
+          readOnly: true
+          type: string
+        comment:
+          description: The record comment.
+          example: Example comment
+          readOnly: true
+          type: string
+        creation_timestamp:
+          description: Time at which DNS RR was created.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        data:
+          description: Specific data of DNS/DHCP records.
+          example: Example data
+          readOnly: true
+          type: string
+        disabled:
+          description: True if the child DNS/DHCP object is disabled.
+          example: false
+          readOnly: true
+          type: boolean
+        name:
+          description: Name of the associated DNS/DHCP object.
+          example: Example name
+          readOnly: true
+          type: string
+        network_view:
+          description: The name of the network view in which this network record resides.
+          example: Example network_view
+          readOnly: true
+          type: string
+        parent:
+          description: Name of the Super Host object in which record resides.
+          example: Example parent
+          readOnly: true
+          type: string
+        record_parent:
+          description: Name of a parent zone/network.
+          example: Example record_parent
+          readOnly: true
+          type: string
+        type:
+          description: "The record type. When searching for an unspecified record\
+            \ type, the search is performed for all records."
+          enum:
+          - ARecord
+          - AaaaRecord
+          - FixedAddress
+          - HostRecord
+          - IPv6FixedAddress
+          - PtrRecord
+          example: Example type
+          readOnly: true
+          type: string
+        view:
+          description: Name of the DNS View in which the record resides.
+          example: Example view
+          readOnly: true
+          type: string
+      type: object
+    ListSuperhostchildResponse:
+      oneOf:
+      - description: The response format to retrieve __Superhostchild__ objects.
+        items:
+          $ref: '#/components/schemas/Superhostchild'
+        title: ListSuperhostchildResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListSuperhostchildResponseObject'
+    GetSuperhostchildResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Superhostchild'
+      - $ref: '#/components/schemas/GetSuperhostchildResponseObjectAsResult'
+    UpdateSuperhostchildResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateSuperhostchildResponseAsObject'
+      - description: The response format to update __Superhostchild__ .
+        title: UpdateSuperhostchildResponse
+        type: string
+    Hostnamerewritepolicy:
+      additionalProperties: false
+      example:
+        valid_characters: Example valid_characters
+        pre_defined: false
+        _ref: _ref
+        name: Example name
+        replacement_character: Example replacement_character
+        is_default: false
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        is_default:
+          description: True if the policy is the Grid default.
+          example: false
+          readOnly: true
+          type: boolean
+        name:
+          description: The name of a hostname rewrite policy object.
+          example: Example name
+          type: string
+        pre_defined:
+          description: Determines whether the policy is a predefined one.
+          example: false
+          readOnly: true
+          type: boolean
+        replacement_character:
+          description: The replacement character for symbols in hostnames that do
+            not conform to the hostname policy.
+          example: Example replacement_character
+          type: string
+        valid_characters:
+          description: The set of valid characters represented in string format.
+          example: Example valid_characters
+          type: string
+      type: object
+    ListHostnamerewritepolicyResponse:
+      oneOf:
+      - description: The response format to retrieve __Hostnamerewritepolicy__ objects.
+        items:
+          $ref: '#/components/schemas/Hostnamerewritepolicy'
+        title: ListHostnamerewritepolicyResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListHostnamerewritepolicyResponseObject'
+    GetHostnamerewritepolicyResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Hostnamerewritepolicy'
+      - $ref: '#/components/schemas/GetHostnamerewritepolicyResponseObjectAsResult'
+    UpdateHostnamerewritepolicyResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateHostnamerewritepolicyResponseAsObject'
+      - description: The response format to update __Hostnamerewritepolicy__ .
+        title: UpdateHostnamerewritepolicyResponse
         type: string
     ListIpv4addressResponseObject:
       description: The response format to retrieve __Ipv4address__ objects.
@@ -17007,13 +16579,6 @@ components:
             $ref: '#/components/schemas/Ipv4address'
           type: array
       title: ListIpv4addressResponseObject
-      type: object
-    CreateIpv4addressResponseAsObject:
-      description: The response format to create __Ipv4address__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Ipv4address'
-      title: CreateIpv4addressResponseAsObject
       type: object
     GetIpv4addressResponseObjectAsResult:
       additionalProperties: false
@@ -17033,7 +16598,7 @@ components:
           - types
           extattrs:
             key:
-              value: value
+              value: ""
           is_invalid_mac: false
           objects: Example objects
           usage:
@@ -17171,13 +16736,6 @@ components:
           type: array
       title: ListIpv6addressResponseObject
       type: object
-    CreateIpv6addressResponseAsObject:
-      description: The response format to create __Ipv6address__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Ipv6address'
-      title: CreateIpv6addressResponseAsObject
-      type: object
     GetIpv6addressResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __Ipv6address__ objects.
@@ -17197,7 +16755,7 @@ components:
           duid: Example duid
           extattrs:
             key:
-              value: value
+              value: ""
           objects: Example objects
           usage:
           - usage
@@ -17322,6 +16880,42 @@ components:
           $ref: '#/components/schemas/Ipv6address'
       title: UpdateIpv6addressResponseAsObject
       type: object
+    Network_network_oneOf:
+      description: "network: The network address in IPv4 Address/CIDR format. For\
+        \ regular expression searches, only the IPv4 Address portion is supported.\
+        \ Searches for the CIDR portion is always an exact match. For example, both\
+        \ network containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression\
+        \ '.0' and only 20.1.0.0/16 is matched by '.0/16'."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+        _object_ref:
+          description: A WAPI object reference on which the function calls. Either
+            _object or _object_ref must be set.
+          type: string
+      type: object
+    Network_network:
+      description: "The network address in IPv4 Address/CIDR format. For regular expression\
+        \ searches, only the IPv4 Address portion is supported. Searches for the CIDR\
+        \ portion is always an exact match. For example, both network containers 10.0.0.0/8\
+        \ and 20.1.0.0/16 are matched by expression '.0' and only 20.1.0.0/16 is matched\
+        \ by '.0/16'."
+      oneOf:
+      - description: "network: The network address in IPv4 Address/CIDR format. For\
+          \ regular expression searches, only the IPv4 Address portion is supported.\
+          \ Searches for the CIDR portion is always an exact match. For example, both\
+          \ network containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression\
+          \ '.0' and only 20.1.0.0/16 is matched by '.0/16'."
+        type: string
+      - $ref: '#/components/schemas/Network_network_oneOf'
     ListNetworkResponseObject:
       description: The response format to retrieve __Network__ objects.
       properties:
@@ -17393,7 +16987,6 @@ components:
           ipam_threshold_settings:
             reset_value: 1
             trigger_value: 1
-          next_available_network: "{}"
           utilization: 1
           ipv4addr: Example ipv4addr
           use_nextserver: false
@@ -17402,8 +16995,8 @@ components:
           deny_bootp: false
           last_rir_registration_update_status: Example last_rir_registration_update_status
           endpoint_sources:
-          - "{}"
-          - "{}"
+          - pxgrid:endpoint
+          - pxgrid:endpoint
           unmanaged: false
           use_ipam_trap_settings: false
           discovered_vlan_id: Example discovered_vlan_id
@@ -17465,7 +17058,7 @@ components:
           discovered_vrf_description: Example discovered_vrf_description
           extattrs:
             key:
-              value: value
+              value: ""
           rir_registration_action: Example rir_registration_action
           use_bootfile: false
           last_rir_registration_update_sent: 1
@@ -17514,8 +17107,14 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
-          expand_network: "{}"
-          next_available_ip: "{}"
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           discovered_vlan_name: Example discovered_vlan_name
           use_authority: false
           use_lease_scavenge_time: false
@@ -17528,7 +17127,6 @@ components:
             ipv6addr: Example ipv6addr
           use_blackout_setting: false
           use_ignore_dhcp_option_list_request: false
-          next_available_vlan: "{}"
           ddns_server_always_updates: false
           use_enable_ddns: false
           enable_dhcp_thresholds: false
@@ -17536,7 +17134,6 @@ components:
           use_deny_bootp: false
           discovered_bridge_domain: Example discovered_bridge_domain
           same_port_control_discovery_blackout: false
-          split_network: "{}"
           dhcp_utilization_status: Example dhcp_utilization_status
           unmanaged_count: 1
           use_discovery_basic_polling_settings: false
@@ -17561,7 +17158,7 @@ components:
           use_ddns_ttl: false
           enable_discovery: false
           rir_registration_status: Example rir_registration_status
-          network: Example network
+          network: Network_network
           use_logic_filter_rules: false
           use_subscribe_settings: false
           ddns_use_option81: false
@@ -17589,7 +17186,6 @@ components:
           use_recycle_leases: false
           _ref: _ref
           use_mgm_private: false
-          resize: "{}"
           comment: Example comment
           send_rir_request: false
           dhcp_utilization: 1
@@ -17669,7 +17265,6 @@ components:
           ipam_threshold_settings:
             reset_value: 1
             trigger_value: 1
-          next_available_network: "{}"
           utilization: 1
           ipv4addr: Example ipv4addr
           use_nextserver: false
@@ -17678,8 +17273,8 @@ components:
           deny_bootp: false
           last_rir_registration_update_status: Example last_rir_registration_update_status
           endpoint_sources:
-          - "{}"
-          - "{}"
+          - pxgrid:endpoint
+          - pxgrid:endpoint
           unmanaged: false
           use_ipam_trap_settings: false
           discovered_vlan_id: Example discovered_vlan_id
@@ -17741,7 +17336,7 @@ components:
           discovered_vrf_description: Example discovered_vrf_description
           extattrs:
             key:
-              value: value
+              value: ""
           rir_registration_action: Example rir_registration_action
           use_bootfile: false
           last_rir_registration_update_sent: 1
@@ -17790,8 +17385,14 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
-          expand_network: "{}"
-          next_available_ip: "{}"
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           discovered_vlan_name: Example discovered_vlan_name
           use_authority: false
           use_lease_scavenge_time: false
@@ -17804,7 +17405,6 @@ components:
             ipv6addr: Example ipv6addr
           use_blackout_setting: false
           use_ignore_dhcp_option_list_request: false
-          next_available_vlan: "{}"
           ddns_server_always_updates: false
           use_enable_ddns: false
           enable_dhcp_thresholds: false
@@ -17812,7 +17412,6 @@ components:
           use_deny_bootp: false
           discovered_bridge_domain: Example discovered_bridge_domain
           same_port_control_discovery_blackout: false
-          split_network: "{}"
           dhcp_utilization_status: Example dhcp_utilization_status
           unmanaged_count: 1
           use_discovery_basic_polling_settings: false
@@ -17837,7 +17436,7 @@ components:
           use_ddns_ttl: false
           enable_discovery: false
           rir_registration_status: Example rir_registration_status
-          network: Example network
+          network: Network_network
           use_logic_filter_rules: false
           use_subscribe_settings: false
           ddns_use_option81: false
@@ -17865,7 +17464,6 @@ components:
           use_recycle_leases: false
           _ref: _ref
           use_mgm_private: false
-          resize: "{}"
           comment: Example comment
           send_rir_request: false
           dhcp_utilization: 1
@@ -17875,6 +17473,42 @@ components:
           $ref: '#/components/schemas/Network'
       title: UpdateNetworkResponseAsObject
       type: object
+    Networkcontainer_network_oneOf:
+      description: "networkcontainer: The network address in IPv4 Address/CIDR format.\
+        \ For regular expression searches, only the IPv4 Address portion is supported.\
+        \ Searches for the CIDR portion is always an exact match. For example, both\
+        \ network containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression\
+        \ '.0' and only 20.1.0.0/16 is matched by '.0/16'."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+        _object_ref:
+          description: A WAPI object reference on which the function calls. Either
+            _object or _object_ref must be set.
+          type: string
+      type: object
+    Networkcontainer_network:
+      description: "The network address in IPv4 Address/CIDR format. For regular expression\
+        \ searches, only the IPv4 Address portion is supported. Searches for the CIDR\
+        \ portion is always an exact match. For example, both network containers 10.0.0.0/8\
+        \ and 20.1.0.0/16 are matched by expression '.0' and only 20.1.0.0/16 is matched\
+        \ by '.0/16'."
+      oneOf:
+      - description: "networkcontainer: The network address in IPv4 Address/CIDR format.\
+          \ For regular expression searches, only the IPv4 Address portion is supported.\
+          \ Searches for the CIDR portion is always an exact match. For example, both\
+          \ network containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression\
+          \ '.0' and only 20.1.0.0/16 is matched by '.0/16'."
+        type: string
+      - $ref: '#/components/schemas/Networkcontainer_network_oneOf'
     ListNetworkcontainerResponseObject:
       description: The response format to retrieve __Networkcontainer__ objects.
       properties:
@@ -17941,7 +17575,6 @@ components:
           ipam_threshold_settings:
             reset_value: 1
             trigger_value: 1
-          next_available_network: "{}"
           utilization: 1
           use_nextserver: false
           enable_immediate_discovery: false
@@ -17949,8 +17582,8 @@ components:
           deny_bootp: false
           last_rir_registration_update_status: Example last_rir_registration_update_status
           endpoint_sources:
-          - "{}"
-          - "{}"
+          - pxgrid:endpoint
+          - pxgrid:endpoint
           unmanaged: false
           use_ipam_trap_settings: false
           high_water_mark_reset: 1
@@ -18007,7 +17640,7 @@ components:
           auto_create_reversezone: false
           extattrs:
             key:
-              value: value
+              value: ""
           rir_registration_action: Example rir_registration_action
           use_bootfile: false
           last_rir_registration_update_sent: 1
@@ -18054,6 +17687,14 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           use_authority: false
           use_lease_scavenge_time: false
           use_blackout_setting: false
@@ -18079,7 +17720,7 @@ components:
           use_ddns_ttl: false
           enable_discovery: false
           rir_registration_status: Example rir_registration_status
-          network: Example network
+          network: Networkcontainer_network
           use_logic_filter_rules: false
           use_subscribe_settings: false
           ddns_use_option81: false
@@ -18103,7 +17744,6 @@ components:
           use_recycle_leases: false
           _ref: _ref
           use_mgm_private: false
-          resize: "{}"
           comment: Example comment
           send_rir_request: false
           use_enable_discovery: false
@@ -18177,7 +17817,6 @@ components:
           ipam_threshold_settings:
             reset_value: 1
             trigger_value: 1
-          next_available_network: "{}"
           utilization: 1
           use_nextserver: false
           enable_immediate_discovery: false
@@ -18185,8 +17824,8 @@ components:
           deny_bootp: false
           last_rir_registration_update_status: Example last_rir_registration_update_status
           endpoint_sources:
-          - "{}"
-          - "{}"
+          - pxgrid:endpoint
+          - pxgrid:endpoint
           unmanaged: false
           use_ipam_trap_settings: false
           high_water_mark_reset: 1
@@ -18243,7 +17882,7 @@ components:
           auto_create_reversezone: false
           extattrs:
             key:
-              value: value
+              value: ""
           rir_registration_action: Example rir_registration_action
           use_bootfile: false
           last_rir_registration_update_sent: 1
@@ -18290,6 +17929,14 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           use_authority: false
           use_lease_scavenge_time: false
           use_blackout_setting: false
@@ -18315,7 +17962,7 @@ components:
           use_ddns_ttl: false
           enable_discovery: false
           rir_registration_status: Example rir_registration_status
-          network: Example network
+          network: Networkcontainer_network
           use_logic_filter_rules: false
           use_subscribe_settings: false
           ddns_use_option81: false
@@ -18339,7 +17986,6 @@ components:
           use_recycle_leases: false
           _ref: _ref
           use_mgm_private: false
-          resize: "{}"
           comment: Example comment
           send_rir_request: false
           use_enable_discovery: false
@@ -18442,7 +18088,7 @@ components:
           auto_create_reversezone: false
           extattrs:
             key:
-              value: value
+              value: ""
           rir_registration_action: Example rir_registration_action
           fixed_address_templates:
           - fixed_address_templates
@@ -18567,7 +18213,7 @@ components:
           auto_create_reversezone: false
           extattrs:
             key:
-              value: value
+              value: ""
           rir_registration_action: Example rir_registration_action
           fixed_address_templates:
           - fixed_address_templates
@@ -18617,7 +18263,7 @@ components:
           - associated_dns_views
           extattrs:
             key:
-              value: value
+              value: ""
           associated_members:
           - failovers:
             - failovers
@@ -18663,8 +18309,8 @@ components:
             delegated_root: Example delegated_root
           is_default: false
           internal_forward_zones:
-          - "{}"
-          - "{}"
+          - zone_auth
+          - zone_auth
           ms_ad_user_data:
             active_users_count: 1
           remote_forward_zones:
@@ -18722,7 +18368,7 @@ components:
           - associated_dns_views
           extattrs:
             key:
-              value: value
+              value: ""
           associated_members:
           - failovers:
             - failovers
@@ -18768,8 +18414,8 @@ components:
             delegated_root: Example delegated_root
           is_default: false
           internal_forward_zones:
-          - "{}"
-          - "{}"
+          - zone_auth
+          - zone_auth
           ms_ad_user_data:
             active_users_count: 1
           remote_forward_zones:
@@ -18834,12 +18480,10 @@ components:
           use_enable_ifmap_publishing: false
           enable_ifmap_publishing: false
           use_valid_lifetime: false
-          expand_network: "{}"
           delete_reason: Example delete_reason
           domain_name_servers:
           - domain_name_servers
           - domain_name_servers
-          next_available_ip: "{}"
           domain_name: Example domain_name
           use_ddns_domainname: false
           discovered_vlan_name: Example discovered_vlan_name
@@ -18863,7 +18507,6 @@ components:
             value: Example value
           use_blackout_setting: false
           rir: Example rir
-          next_available_vlan: "{}"
           ddns_server_always_updates: false
           use_enable_ddns: false
           use_preferred_lifetime: false
@@ -18896,8 +18539,6 @@ components:
             is_default: false
           discovered_bridge_domain: Example discovered_bridge_domain
           same_port_control_discovery_blackout: false
-          next_available_network: "{}"
-          split_network: "{}"
           unmanaged_count: 1
           use_discovery_basic_polling_settings: false
           enable_immediate_discovery: false
@@ -18907,8 +18548,8 @@ components:
           last_rir_registration_update_status: Example last_rir_registration_update_status
           use_domain_name_servers: false
           endpoint_sources:
-          - "{}"
-          - "{}"
+          - pxgrid:endpoint
+          - pxgrid:endpoint
           mgm_private: false
           unmanaged: false
           ddns_domainname: Example ddns_domainname
@@ -18987,7 +18628,7 @@ components:
           discovered_vrf_description: Example discovered_vrf_description
           extattrs:
             key:
-              value: value
+              value: ""
           network_container: Example network_container
           rir_registration_action: Example rir_registration_action
           federated_realms:
@@ -19060,12 +18701,10 @@ components:
           use_enable_ifmap_publishing: false
           enable_ifmap_publishing: false
           use_valid_lifetime: false
-          expand_network: "{}"
           delete_reason: Example delete_reason
           domain_name_servers:
           - domain_name_servers
           - domain_name_servers
-          next_available_ip: "{}"
           domain_name: Example domain_name
           use_ddns_domainname: false
           discovered_vlan_name: Example discovered_vlan_name
@@ -19089,7 +18728,6 @@ components:
             value: Example value
           use_blackout_setting: false
           rir: Example rir
-          next_available_vlan: "{}"
           ddns_server_always_updates: false
           use_enable_ddns: false
           use_preferred_lifetime: false
@@ -19122,8 +18760,6 @@ components:
             is_default: false
           discovered_bridge_domain: Example discovered_bridge_domain
           same_port_control_discovery_blackout: false
-          next_available_network: "{}"
-          split_network: "{}"
           unmanaged_count: 1
           use_discovery_basic_polling_settings: false
           enable_immediate_discovery: false
@@ -19133,8 +18769,8 @@ components:
           last_rir_registration_update_status: Example last_rir_registration_update_status
           use_domain_name_servers: false
           endpoint_sources:
-          - "{}"
-          - "{}"
+          - pxgrid:endpoint
+          - pxgrid:endpoint
           mgm_private: false
           unmanaged: false
           ddns_domainname: Example ddns_domainname
@@ -19213,7 +18849,7 @@ components:
           discovered_vrf_description: Example discovered_vrf_description
           extattrs:
             key:
-              value: value
+              value: ""
           network_container: Example network_container
           rir_registration_action: Example rir_registration_action
           federated_realms:
@@ -19336,7 +18972,6 @@ components:
             fqdn: Example fqdn
             is_default: false
           same_port_control_discovery_blackout: false
-          next_available_network: "{}"
           utilization: 1
           use_discovery_basic_polling_settings: false
           enable_immediate_discovery: false
@@ -19346,8 +18981,8 @@ components:
           last_rir_registration_update_status: Example last_rir_registration_update_status
           use_domain_name_servers: false
           endpoint_sources:
-          - "{}"
-          - "{}"
+          - pxgrid:endpoint
+          - pxgrid:endpoint
           mgm_private: false
           unmanaged: false
           ddns_domainname: Example ddns_domainname
@@ -19411,7 +19046,7 @@ components:
           auto_create_reversezone: false
           extattrs:
             key:
-              value: value
+              value: ""
           network_container: Example network_container
           rir_registration_action: Example rir_registration_action
           federated_realms:
@@ -19530,7 +19165,6 @@ components:
             fqdn: Example fqdn
             is_default: false
           same_port_control_discovery_blackout: false
-          next_available_network: "{}"
           utilization: 1
           use_discovery_basic_polling_settings: false
           enable_immediate_discovery: false
@@ -19540,8 +19174,8 @@ components:
           last_rir_registration_update_status: Example last_rir_registration_update_status
           use_domain_name_servers: false
           endpoint_sources:
-          - "{}"
-          - "{}"
+          - pxgrid:endpoint
+          - pxgrid:endpoint
           mgm_private: false
           unmanaged: false
           ddns_domainname: Example ddns_domainname
@@ -19605,7 +19239,7 @@ components:
           auto_create_reversezone: false
           extattrs:
             key:
-              value: value
+              value: ""
           network_container: Example network_container
           rir_registration_action: Example rir_registration_action
           federated_realms:
@@ -19715,7 +19349,7 @@ components:
           auto_create_reversezone: false
           extattrs:
             key:
-              value: value
+              value: ""
           rir_registration_action: Example rir_registration_action
           use_update_dns_on_lease_renewal: false
           fixed_address_templates:
@@ -19809,7 +19443,7 @@ components:
           auto_create_reversezone: false
           extattrs:
             key:
-              value: value
+              value: ""
           rir_registration_action: Example rir_registration_action
           use_update_dns_on_lease_renewal: false
           fixed_address_templates:
@@ -19850,13 +19484,6 @@ components:
           type: array
       title: ListIpamStatisticsResponseObject
       type: object
-    CreateIpamStatisticsResponseAsObject:
-      description: The response format to create __IpamStatistics__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/IpamStatistics'
-      title: CreateIpamStatisticsResponseAsObject
-      type: object
     GetIpamStatisticsResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __IpamStatistics__ objects.
@@ -19871,101 +19498,6 @@ components:
         result:
           $ref: '#/components/schemas/IpamStatistics'
       title: UpdateIpamStatisticsResponseAsObject
-      type: object
-    ListRirResponseObject:
-      description: The response format to retrieve __Rir__ objects.
-      properties:
-        result:
-          items:
-            $ref: '#/components/schemas/Rir'
-          type: array
-      title: ListRirResponseObject
-      type: object
-    CreateRirResponseAsObject:
-      description: The response format to create __Rir__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Rir'
-      title: CreateRirResponseAsObject
-      type: object
-    GetRirResponseObjectAsResult:
-      additionalProperties: false
-      description: The response format to retrieve __Rir__ objects.
-      properties:
-        result:
-          $ref: '#/components/schemas/Rir'
-      title: GetRirResponseObjectAsResult
-      type: object
-    UpdateRirResponseAsObject:
-      description: The response format to update __Rir__ in object format.
-      example:
-        result:
-          communication_mode: Example communication_mode
-          use_email: false
-          use_url: false
-          _ref: _ref
-          name: Example name
-          email: Example email
-          url: Example url
-      properties:
-        result:
-          $ref: '#/components/schemas/Rir'
-      title: UpdateRirResponseAsObject
-      type: object
-    ListRirOrganizationResponseObject:
-      description: The response format to retrieve __RirOrganization__ objects.
-      properties:
-        result:
-          items:
-            $ref: '#/components/schemas/RirOrganization'
-          type: array
-      title: ListRirOrganizationResponseObject
-      type: object
-    CreateRirOrganizationResponseAsObject:
-      description: The response format to create __RirOrganization__ in object format.
-      example:
-        result:
-          password: Example password
-          extattrs:
-            key:
-              value: value
-          _ref: _ref
-          name: Example name
-          rir: Example rir
-          id: Example id
-          maintainer: Example maintainer
-          sender_email: Example sender_email
-      properties:
-        result:
-          $ref: '#/components/schemas/RirOrganization'
-      title: CreateRirOrganizationResponseAsObject
-      type: object
-    GetRirOrganizationResponseObjectAsResult:
-      additionalProperties: false
-      description: The response format to retrieve __RirOrganization__ objects.
-      properties:
-        result:
-          $ref: '#/components/schemas/RirOrganization'
-      title: GetRirOrganizationResponseObjectAsResult
-      type: object
-    UpdateRirOrganizationResponseAsObject:
-      description: The response format to update __RirOrganization__ in object format.
-      example:
-        result:
-          password: Example password
-          extattrs:
-            key:
-              value: value
-          _ref: _ref
-          name: Example name
-          rir: Example rir
-          id: Example id
-          maintainer: Example maintainer
-          sender_email: Example sender_email
-      properties:
-        result:
-          $ref: '#/components/schemas/RirOrganization'
-      title: UpdateRirOrganizationResponseAsObject
       type: object
     ListVlanResponseObject:
       description: The response format to retrieve __Vlan__ objects.
@@ -19983,7 +19515,7 @@ components:
           parent: Example parent
           extattrs:
             key:
-              value: value
+              value: ""
           reserved: false
           contact: Example contact
           _ref: _ref
@@ -19993,8 +19525,8 @@ components:
           id: 1
           department: Example department
           assigned_to:
-          - "{}"
-          - "{}"
+          - network
+          - network
           status: Example status
       properties:
         result:
@@ -20016,7 +19548,7 @@ components:
           parent: Example parent
           extattrs:
             key:
-              value: value
+              value: ""
           reserved: false
           contact: Example contact
           _ref: _ref
@@ -20026,8 +19558,8 @@ components:
           id: 1
           department: Example department
           assigned_to:
-          - "{}"
-          - "{}"
+          - network
+          - network
           status: Example status
       properties:
         result:
@@ -20049,7 +19581,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           start_vlan_id: 1
           _ref: _ref
           name: Example name
@@ -20057,7 +19589,6 @@ components:
           end_vlan_id: 1
           allow_range_overlapping: false
           vlan_name_prefix: Example vlan_name_prefix
-          next_available_vlan_id: "{}"
           pre_create_vlan: false
       properties:
         result:
@@ -20078,7 +19609,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           start_vlan_id: 1
           _ref: _ref
           name: Example name
@@ -20086,7 +19617,6 @@ components:
           end_vlan_id: 1
           allow_range_overlapping: false
           vlan_name_prefix: Example vlan_name_prefix
-          next_available_vlan_id: "{}"
           pre_create_vlan: false
       properties:
         result:
@@ -20108,7 +19638,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           start_vlan_id: 1
           _ref: _ref
           name: Example name
@@ -20117,7 +19647,6 @@ components:
           end_vlan_id: 1
           vlan_name_prefix: Example vlan_name_prefix
           vlan_view: Example vlan_view
-          next_available_vlan_id: "{}"
           pre_create_vlan: false
       properties:
         result:
@@ -20138,7 +19667,7 @@ components:
         result:
           extattrs:
             key:
-              value: value
+              value: ""
           start_vlan_id: 1
           _ref: _ref
           name: Example name
@@ -20147,7 +19676,6 @@ components:
           end_vlan_id: 1
           vlan_name_prefix: Example vlan_name_prefix
           vlan_view: Example vlan_view
-          next_available_vlan_id: "{}"
           pre_create_vlan: false
       properties:
         result:
@@ -20170,7 +19698,7 @@ components:
           network_view: Example network_view
           extattrs:
             key:
-              value: value
+              value: ""
           end_addr: Example end_addr
           prefix: Example prefix
           use_ttl: false
@@ -20220,7 +19748,7 @@ components:
           network_view: Example network_view
           extattrs:
             key:
-              value: value
+              value: ""
           end_addr: Example end_addr
           prefix: Example prefix
           use_ttl: false
@@ -20302,37 +19830,6 @@ components:
           $ref: '#/components/schemas/Bulkhostnametemplate'
       title: UpdateBulkhostnametemplateResponseAsObject
       type: object
-    ListCapacityreportResponseObject:
-      description: The response format to retrieve __Capacityreport__ objects.
-      properties:
-        result:
-          items:
-            $ref: '#/components/schemas/Capacityreport'
-          type: array
-      title: ListCapacityreportResponseObject
-      type: object
-    CreateCapacityreportResponseAsObject:
-      description: The response format to create __Capacityreport__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Capacityreport'
-      title: CreateCapacityreportResponseAsObject
-      type: object
-    GetCapacityreportResponseObjectAsResult:
-      additionalProperties: false
-      description: The response format to retrieve __Capacityreport__ objects.
-      properties:
-        result:
-          $ref: '#/components/schemas/Capacityreport'
-      title: GetCapacityreportResponseObjectAsResult
-      type: object
-    UpdateCapacityreportResponseAsObject:
-      description: The response format to update __Capacityreport__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Capacityreport'
-      title: UpdateCapacityreportResponseAsObject
-      type: object
     ListDiscoverytaskResponseObject:
       description: The response format to retrieve __Discoverytask__ objects.
       properties:
@@ -20341,13 +19838,6 @@ components:
             $ref: '#/components/schemas/Discoverytask'
           type: array
       title: ListDiscoverytaskResponseObject
-      type: object
-    CreateDiscoverytaskResponseAsObject:
-      description: The response format to create __Discoverytask__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/Discoverytask'
-      title: CreateDiscoverytaskResponseAsObject
       type: object
     GetDiscoverytaskResponseObjectAsResult:
       additionalProperties: false
@@ -20383,8 +19873,8 @@ components:
           discovery_task_oid: Example discovery_task_oid
           member_name: Example member_name
           networks:
-          - "{}"
-          - "{}"
+          - network
+          - network
           v_network_view: Example v_network_view
           ping_timeout: 1
           mode: Example mode
@@ -20404,7 +19894,6 @@ components:
             username: Example username
           _ref: _ref
           csv_file_name: Example csv_file_name
-          network_discovery_control: "{}"
           warning: Example warning
           state: Example state
           status_time: 1
@@ -20430,13 +19919,6 @@ components:
           type: array
       title: ListNetworkDiscoveryResponseObject
       type: object
-    CreateNetworkDiscoveryResponseAsObject:
-      description: The response format to create __NetworkDiscovery__ in object format.
-      properties:
-        result:
-          $ref: '#/components/schemas/NetworkDiscovery'
-      title: CreateNetworkDiscoveryResponseAsObject
-      type: object
     GetNetworkDiscoveryResponseObjectAsResult:
       additionalProperties: false
       description: The response format to retrieve __NetworkDiscovery__ objects.
@@ -20447,55 +19929,130 @@ components:
       type: object
     UpdateNetworkDiscoveryResponseAsObject:
       description: The response format to update __NetworkDiscovery__ in object format.
-      example:
-        result:
-          _ref: _ref
-          clear_discovery_data: "{}"
       properties:
         result:
           $ref: '#/components/schemas/NetworkDiscovery'
       title: UpdateNetworkDiscoveryResponseAsObject
       type: object
-    ListNatgroupResponseObject:
-      description: The response format to retrieve __Natgroup__ objects.
+    ListSuperhostResponseObject:
+      description: The response format to retrieve __Superhost__ objects.
       properties:
         result:
           items:
-            $ref: '#/components/schemas/Natgroup'
+            $ref: '#/components/schemas/Superhost'
           type: array
-      title: ListNatgroupResponseObject
+      title: ListSuperhostResponseObject
       type: object
-    CreateNatgroupResponseAsObject:
-      description: The response format to create __Natgroup__ in object format.
+    CreateSuperhostResponseAsObject:
+      description: The response format to create __Superhost__ in object format.
       example:
         result:
+          extattrs:
+            key:
+              value: ""
+          dhcp_associated_objects:
+          - fixedaddress
+          - fixedaddress
+          delete_associated_objects: false
           _ref: _ref
           name: Example name
           comment: Example comment
+          disabled: false
+          dns_associated_objects:
+          - record:a
+          - record:a
       properties:
         result:
-          $ref: '#/components/schemas/Natgroup'
-      title: CreateNatgroupResponseAsObject
+          $ref: '#/components/schemas/Superhost'
+      title: CreateSuperhostResponseAsObject
       type: object
-    GetNatgroupResponseObjectAsResult:
+    GetSuperhostResponseObjectAsResult:
       additionalProperties: false
-      description: The response format to retrieve __Natgroup__ objects.
+      description: The response format to retrieve __Superhost__ objects.
       properties:
         result:
-          $ref: '#/components/schemas/Natgroup'
-      title: GetNatgroupResponseObjectAsResult
+          $ref: '#/components/schemas/Superhost'
+      title: GetSuperhostResponseObjectAsResult
       type: object
-    UpdateNatgroupResponseAsObject:
-      description: The response format to update __Natgroup__ in object format.
+    UpdateSuperhostResponseAsObject:
+      description: The response format to update __Superhost__ in object format.
       example:
         result:
+          extattrs:
+            key:
+              value: ""
+          dhcp_associated_objects:
+          - fixedaddress
+          - fixedaddress
+          delete_associated_objects: false
           _ref: _ref
           name: Example name
           comment: Example comment
+          disabled: false
+          dns_associated_objects:
+          - record:a
+          - record:a
       properties:
         result:
-          $ref: '#/components/schemas/Natgroup'
-      title: UpdateNatgroupResponseAsObject
+          $ref: '#/components/schemas/Superhost'
+      title: UpdateSuperhostResponseAsObject
+      type: object
+    ListSuperhostchildResponseObject:
+      description: The response format to retrieve __Superhostchild__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Superhostchild'
+          type: array
+      title: ListSuperhostchildResponseObject
+      type: object
+    GetSuperhostchildResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Superhostchild__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Superhostchild'
+      title: GetSuperhostchildResponseObjectAsResult
+      type: object
+    UpdateSuperhostchildResponseAsObject:
+      description: The response format to update __Superhostchild__ in object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/Superhostchild'
+      title: UpdateSuperhostchildResponseAsObject
+      type: object
+    ListHostnamerewritepolicyResponseObject:
+      description: The response format to retrieve __Hostnamerewritepolicy__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Hostnamerewritepolicy'
+          type: array
+      title: ListHostnamerewritepolicyResponseObject
+      type: object
+    GetHostnamerewritepolicyResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Hostnamerewritepolicy__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Hostnamerewritepolicy'
+      title: GetHostnamerewritepolicyResponseObjectAsResult
+      type: object
+    UpdateHostnamerewritepolicyResponseAsObject:
+      description: The response format to update __Hostnamerewritepolicy__ in object
+        format.
+      example:
+        result:
+          valid_characters: Example valid_characters
+          pre_defined: false
+          _ref: _ref
+          name: Example name
+          replacement_character: Example replacement_character
+          is_default: false
+      properties:
+        result:
+          $ref: '#/components/schemas/Hostnamerewritepolicy'
+      title: UpdateHostnamerewritepolicyResponseAsObject
       type: object
   securitySchemes:
     basicAuth:

@@ -23,11 +23,11 @@ func TestVlanrangeAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test VlanrangeAPIService Get", func(t *testing.T) {
+	t.Run("Test VlanrangeAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.VlanrangeAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.VlanrangeAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestVlanrangeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test VlanrangeAPIService Post", func(t *testing.T) {
+	t.Run("Test VlanrangeAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.VlanrangeAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.VlanrangeAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test VlanrangeAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.VlanrangeAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestVlanrangeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test VlanrangeAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test VlanrangeAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.VlanrangeAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test VlanrangeAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.VlanrangeAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.VlanrangeAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestVlanrangeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test VlanrangeAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test VlanrangeAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.VlanrangeAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.VlanrangeAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

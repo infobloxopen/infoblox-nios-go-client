@@ -23,110 +23,110 @@ import (
 
 type AllrecordsAPI interface {
 	/*
-		Get Retrieve allrecords objects
+		List Retrieve allrecords objects
 
 		Returns a list of allrecords objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AllrecordsAPIGetRequest
+		@return AllrecordsAPIListRequest
 	*/
-	Get(ctx context.Context) AllrecordsAPIGetRequest
+	List(ctx context.Context) AllrecordsAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListAllrecordsResponse
-	GetExecute(r AllrecordsAPIGetRequest) (*ListAllrecordsResponse, *http.Response, error)
+	ListExecute(r AllrecordsAPIListRequest) (*ListAllrecordsResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific allrecords object
+		Read Get a specific allrecords object
 
 		Returns a specific allrecords object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the allrecords object
-		@return AllrecordsAPIReferenceGetRequest
+		@return AllrecordsAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AllrecordsAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AllrecordsAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAllrecordsResponse
-	ReferenceGetExecute(r AllrecordsAPIReferenceGetRequest) (*GetAllrecordsResponse, *http.Response, error)
+	ReadExecute(r AllrecordsAPIReadRequest) (*GetAllrecordsResponse, *http.Response, error)
 }
 
 // AllrecordsAPIService AllrecordsAPI service
 type AllrecordsAPIService internal.Service
 
-type AllrecordsAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     AllrecordsAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type AllrecordsAPIListRequest struct {
+	ctx              context.Context
+	ApiService       AllrecordsAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r AllrecordsAPIGetRequest) ReturnFields(returnFields string) AllrecordsAPIGetRequest {
+func (r AllrecordsAPIListRequest) ReturnFields(returnFields string) AllrecordsAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllrecordsAPIGetRequest) ReturnFields2(returnFields2 string) AllrecordsAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AllrecordsAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AllrecordsAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AllrecordsAPIGetRequest) MaxResults(maxResults int32) AllrecordsAPIGetRequest {
+func (r AllrecordsAPIListRequest) MaxResults(maxResults int32) AllrecordsAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AllrecordsAPIGetRequest) ReturnAsObject(returnAsObject int32) AllrecordsAPIGetRequest {
+func (r AllrecordsAPIListRequest) ReturnAsObject(returnAsObject int32) AllrecordsAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AllrecordsAPIGetRequest) Paging(paging int32) AllrecordsAPIGetRequest {
+func (r AllrecordsAPIListRequest) Paging(paging int32) AllrecordsAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AllrecordsAPIGetRequest) PageId(pageId string) AllrecordsAPIGetRequest {
+func (r AllrecordsAPIListRequest) PageId(pageId string) AllrecordsAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AllrecordsAPIGetRequest) Filters(filters map[string]interface{}) AllrecordsAPIGetRequest {
+func (r AllrecordsAPIListRequest) Filters(filters map[string]interface{}) AllrecordsAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AllrecordsAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AllrecordsAPIGetRequest {
+func (r AllrecordsAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AllrecordsAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AllrecordsAPIGetRequest) Execute() (*ListAllrecordsResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AllrecordsAPIListRequest) Execute() (*ListAllrecordsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve allrecords objects
+List Retrieve allrecords objects
 
 Returns a list of allrecords objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AllrecordsAPIGetRequest
+	@return AllrecordsAPIListRequest
 */
-func (a *AllrecordsAPIService) Get(ctx context.Context) AllrecordsAPIGetRequest {
-	return AllrecordsAPIGetRequest{
+func (a *AllrecordsAPIService) List(ctx context.Context) AllrecordsAPIListRequest {
+	return AllrecordsAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -135,7 +135,7 @@ func (a *AllrecordsAPIService) Get(ctx context.Context) AllrecordsAPIGetRequest 
 // Execute executes the request
 //
 //	@return ListAllrecordsResponse
-func (a *AllrecordsAPIService) GetExecute(r AllrecordsAPIGetRequest) (*ListAllrecordsResponse, *http.Response, error) {
+func (a *AllrecordsAPIService) ListExecute(r AllrecordsAPIListRequest) (*ListAllrecordsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -143,7 +143,7 @@ func (a *AllrecordsAPIService) GetExecute(r AllrecordsAPIGetRequest) (*ListAllre
 		localVarReturnValue *ListAllrecordsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllrecordsAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllrecordsAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -157,8 +157,8 @@ func (a *AllrecordsAPIService) GetExecute(r AllrecordsAPIGetRequest) (*ListAllre
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -225,48 +225,48 @@ func (a *AllrecordsAPIService) GetExecute(r AllrecordsAPIGetRequest) (*ListAllre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AllrecordsAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     AllrecordsAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type AllrecordsAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       AllrecordsAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r AllrecordsAPIReferenceGetRequest) ReturnFields(returnFields string) AllrecordsAPIReferenceGetRequest {
+func (r AllrecordsAPIReadRequest) ReturnFields(returnFields string) AllrecordsAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AllrecordsAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AllrecordsAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AllrecordsAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AllrecordsAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AllrecordsAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AllrecordsAPIReferenceGetRequest {
+func (r AllrecordsAPIReadRequest) ReturnAsObject(returnAsObject int32) AllrecordsAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AllrecordsAPIReferenceGetRequest) Execute() (*GetAllrecordsResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AllrecordsAPIReadRequest) Execute() (*GetAllrecordsResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific allrecords object
+Read Get a specific allrecords object
 
 Returns a specific allrecords object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the allrecords object
-	@return AllrecordsAPIReferenceGetRequest
+	@return AllrecordsAPIReadRequest
 */
-func (a *AllrecordsAPIService) ReferenceGet(ctx context.Context, reference string) AllrecordsAPIReferenceGetRequest {
-	return AllrecordsAPIReferenceGetRequest{
+func (a *AllrecordsAPIService) Read(ctx context.Context, reference string) AllrecordsAPIReadRequest {
+	return AllrecordsAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -276,7 +276,7 @@ func (a *AllrecordsAPIService) ReferenceGet(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return GetAllrecordsResponse
-func (a *AllrecordsAPIService) ReferenceGetExecute(r AllrecordsAPIReferenceGetRequest) (*GetAllrecordsResponse, *http.Response, error) {
+func (a *AllrecordsAPIService) ReadExecute(r AllrecordsAPIReadRequest) (*GetAllrecordsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -284,7 +284,7 @@ func (a *AllrecordsAPIService) ReferenceGetExecute(r AllrecordsAPIReferenceGetRe
 		localVarReturnValue *GetAllrecordsResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllrecordsAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AllrecordsAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -299,8 +299,8 @@ func (a *AllrecordsAPIService) ReferenceGetExecute(r AllrecordsAPIReferenceGetRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

@@ -34,7 +34,7 @@ type ZoneForward struct {
 	// The name of this DNS zone in punycode format. For a reverse zone, this is in \"address/cidr\" format. For other zones, this is in FQDN format in punycode format.
 	DnsFqdn *string `json:"dns_fqdn,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// A forward stub server name server group.
 	ExternalNsGroup *string `json:"external_ns_group,omitempty"`
 	// The information for the remote name servers to which you want the Infoblox appliance to forward queries for a specified domain name.
@@ -44,8 +44,7 @@ type ZoneForward struct {
 	// The information for the Grid members to which you want the Infoblox appliance to forward queries for a specified domain name.
 	ForwardingServers []ZoneForwardForwardingServers `json:"forwarding_servers,omitempty"`
 	// The name of this DNS zone. For a reverse zone, this is in \"address/cidr\" format. For other zones, this is in FQDN format. This value can be in unicode format. Note that for a reverse zone, the corresponding zone_format value should be set.
-	Fqdn           *string                `json:"fqdn,omitempty"`
-	LockUnlockZone map[string]interface{} `json:"lock_unlock_zone,omitempty"`
+	Fqdn *string `json:"fqdn,omitempty"`
 	// If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked.
 	Locked *bool `json:"locked,omitempty"`
 	// The name of a superuser or the administrator who locked this zone.
@@ -317,36 +316,36 @@ func (o *ZoneForward) SetDnsFqdn(v string) {
 	o.DnsFqdn = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *ZoneForward) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *ZoneForward) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneForward) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *ZoneForward) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *ZoneForward) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *ZoneForward) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *ZoneForward) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *ZoneForward) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetExternalNsGroup returns the ExternalNsGroup field value if set, zero value otherwise.
@@ -507,38 +506,6 @@ func (o *ZoneForward) HasFqdn() bool {
 // SetFqdn gets a reference to the given string and assigns it to the Fqdn field.
 func (o *ZoneForward) SetFqdn(v string) {
 	o.Fqdn = &v
-}
-
-// GetLockUnlockZone returns the LockUnlockZone field value if set, zero value otherwise.
-func (o *ZoneForward) GetLockUnlockZone() map[string]interface{} {
-	if o == nil || IsNil(o.LockUnlockZone) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.LockUnlockZone
-}
-
-// GetLockUnlockZoneOk returns a tuple with the LockUnlockZone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneForward) GetLockUnlockZoneOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.LockUnlockZone) {
-		return map[string]interface{}{}, false
-	}
-	return o.LockUnlockZone, true
-}
-
-// HasLockUnlockZone returns a boolean if a field has been set.
-func (o *ZoneForward) HasLockUnlockZone() bool {
-	if o != nil && !IsNil(o.LockUnlockZone) {
-		return true
-	}
-
-	return false
-}
-
-// SetLockUnlockZone gets a reference to the given map[string]interface{} and assigns it to the LockUnlockZone field.
-func (o *ZoneForward) SetLockUnlockZone(v map[string]interface{}) {
-	o.LockUnlockZone = v
 }
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
@@ -1020,8 +987,8 @@ func (o ZoneForward) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsFqdn) {
 		toSerialize["dns_fqdn"] = o.DnsFqdn
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.ExternalNsGroup) {
 		toSerialize["external_ns_group"] = o.ExternalNsGroup
@@ -1037,9 +1004,6 @@ func (o ZoneForward) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Fqdn) {
 		toSerialize["fqdn"] = o.Fqdn
-	}
-	if !IsNil(o.LockUnlockZone) {
-		toSerialize["lock_unlock_zone"] = o.LockUnlockZone
 	}
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked

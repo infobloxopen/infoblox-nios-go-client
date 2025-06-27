@@ -23,11 +23,11 @@ func TestZoneAuthAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test ZoneAuthAPIService Get", func(t *testing.T) {
+	t.Run("Test ZoneAuthAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ZoneAuthAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ZoneAuthAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestZoneAuthAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneAuthAPIService Post", func(t *testing.T) {
+	t.Run("Test ZoneAuthAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ZoneAuthAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ZoneAuthAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ZoneAuthAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ZoneAuthAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestZoneAuthAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneAuthAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test ZoneAuthAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ZoneAuthAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ZoneAuthAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ZoneAuthAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ZoneAuthAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestZoneAuthAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ZoneAuthAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test ZoneAuthAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ZoneAuthAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ZoneAuthAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

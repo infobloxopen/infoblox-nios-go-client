@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DhcpoptiondefinitionAPI.md#Get) | **Get** /dhcpoptiondefinition | Retrieve dhcpoptiondefinition objects
-[**Post**](DhcpoptiondefinitionAPI.md#Post) | **Post** /dhcpoptiondefinition | Create a dhcpoptiondefinition object
-[**ReferenceDelete**](DhcpoptiondefinitionAPI.md#ReferenceDelete) | **Delete** /dhcpoptiondefinition/{reference} | Delete a dhcpoptiondefinition object
-[**ReferenceGet**](DhcpoptiondefinitionAPI.md#ReferenceGet) | **Get** /dhcpoptiondefinition/{reference} | Get a specific dhcpoptiondefinition object
-[**ReferencePut**](DhcpoptiondefinitionAPI.md#ReferencePut) | **Put** /dhcpoptiondefinition/{reference} | Update a dhcpoptiondefinition object
+[**Create**](DhcpoptiondefinitionAPI.md#Create) | **Post** /dhcpoptiondefinition | Create a dhcpoptiondefinition object
+[**Delete**](DhcpoptiondefinitionAPI.md#Delete) | **Delete** /dhcpoptiondefinition/{reference} | Delete a dhcpoptiondefinition object
+[**List**](DhcpoptiondefinitionAPI.md#List) | **Get** /dhcpoptiondefinition | Retrieve dhcpoptiondefinition objects
+[**Read**](DhcpoptiondefinitionAPI.md#Read) | **Get** /dhcpoptiondefinition/{reference} | Get a specific dhcpoptiondefinition object
+[**Update**](DhcpoptiondefinitionAPI.md#Update) | **Put** /dhcpoptiondefinition/{reference} | Update a dhcpoptiondefinition object
 
 
 
-## Get
+## Create
 
-> ListDhcpoptiondefinitionResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateDhcpoptiondefinitionResponse Create(ctx).Dhcpoptiondefinition(dhcpoptiondefinition).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a dhcpoptiondefinition object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+)
+
+func main() {
+	dhcpoptiondefinition := *dhcp.NewDhcpoptiondefinition() // Dhcpoptiondefinition | Object data to create
+
+	apiClient := dhcp.NewAPIClient()
+	resp, r, err := apiClient.DhcpoptiondefinitionAPI.Create(context.Background()).Dhcpoptiondefinition(dhcpoptiondefinition).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateDhcpoptiondefinitionResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpoptiondefinitionAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**dhcpoptiondefinition** | [**Dhcpoptiondefinition**](Dhcpoptiondefinition.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateDhcpoptiondefinitionResponse**](CreateDhcpoptiondefinitionResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a dhcpoptiondefinition object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the dhcpoptiondefinition object
+
+	apiClient := dhcp.NewAPIClient()
+	r, err := apiClient.DhcpoptiondefinitionAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the dhcpoptiondefinition object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListDhcpoptiondefinitionResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dhcpoptiondefinition objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.DhcpoptiondefinitionAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DhcpoptiondefinitionAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDhcpoptiondefinitionResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpoptiondefinitionAPI.Get`: %v\n", resp)
+	// response from `List`: ListDhcpoptiondefinitionResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpoptiondefinitionAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateDhcpoptiondefinitionResponse Post(ctx).Dhcpoptiondefinition(dhcpoptiondefinition).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a dhcpoptiondefinition object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-)
-
-func main() {
-	dhcpoptiondefinition := *dhcp.NewDhcpoptiondefinition() // Dhcpoptiondefinition | Object data to create
-
-	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.DhcpoptiondefinitionAPI.Post(context.Background()).Dhcpoptiondefinition(dhcpoptiondefinition).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateDhcpoptiondefinitionResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpoptiondefinitionAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**dhcpoptiondefinition** | [**Dhcpoptiondefinition**](Dhcpoptiondefinition.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateDhcpoptiondefinitionResponse**](CreateDhcpoptiondefinitionResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a dhcpoptiondefinition object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the dhcpoptiondefinition object
-
-	apiClient := dhcp.NewAPIClient()
-	r, err := apiClient.DhcpoptiondefinitionAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the dhcpoptiondefinition object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetDhcpoptiondefinitionResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDhcpoptiondefinitionResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dhcpoptiondefinition object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dhcpoptiondefinition object
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.DhcpoptiondefinitionAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DhcpoptiondefinitionAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDhcpoptiondefinitionResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpoptiondefinitionAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDhcpoptiondefinitionResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpoptiondefinitionAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDhcpoptiondefinitionResponse ReferencePut(ctx, reference).Dhcpoptiondefinition(dhcpoptiondefinition).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDhcpoptiondefinitionResponse Update(ctx, reference).Dhcpoptiondefinition(dhcpoptiondefinition).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a dhcpoptiondefinition object
 
@@ -318,13 +318,13 @@ func main() {
 	dhcpoptiondefinition := *dhcp.NewDhcpoptiondefinition() // Dhcpoptiondefinition | Object data to update
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.DhcpoptiondefinitionAPI.ReferencePut(context.Background(), reference).Dhcpoptiondefinition(dhcpoptiondefinition).Execute()
+	resp, r, err := apiClient.DhcpoptiondefinitionAPI.Update(context.Background(), reference).Dhcpoptiondefinition(dhcpoptiondefinition).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DhcpoptiondefinitionAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDhcpoptiondefinitionResponse
-	fmt.Fprintf(os.Stdout, "Response from `DhcpoptiondefinitionAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDhcpoptiondefinitionResponse
+	fmt.Fprintf(os.Stdout, "Response from `DhcpoptiondefinitionAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DhcpoptiondefinitionAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **dhcpoptiondefinition** | [**Dhcpoptiondefinition**](Dhcpoptiondefinition.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

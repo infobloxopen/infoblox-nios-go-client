@@ -1,18 +1,85 @@
-# RecorddsAPI
+# RecordDsAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecorddsAPI.md#Get) | **Get** /record:ds | Retrieve record:ds objects
-[**ReferenceDelete**](RecorddsAPI.md#ReferenceDelete) | **Delete** /record:ds/{reference} | Delete a record:ds object
-[**ReferenceGet**](RecorddsAPI.md#ReferenceGet) | **Get** /record:ds/{reference} | Get a specific record:ds object
+[**Delete**](RecordDsAPI.md#Delete) | **Delete** /record:ds/{reference} | Delete a record:ds object
+[**List**](RecordDsAPI.md#List) | **Get** /record:ds | Retrieve record:ds objects
+[**Read**](RecordDsAPI.md#Read) | **Get** /record:ds/{reference} | Get a specific record:ds object
 
 
 
-## Get
+## Delete
 
-> ListRecordDsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> Delete(ctx, reference).Execute()
+
+Delete a record:ds object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the record:ds object
+
+	apiClient := dns.NewAPIClient()
+	r, err := apiClient.RecordDsAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDsAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the record:ds object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordDsAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListRecordDsResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:ds objects
 
@@ -34,13 +101,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecorddsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordDsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordDsResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecorddsAPI.Get`: %v\n", resp)
+	// response from `List`: ListRecordDsResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordDsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +117,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,76 +149,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceDelete
+## Read
 
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a record:ds object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the record:ds object
-
-	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecorddsAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddsAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the record:ds object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecorddsAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetRecordDsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordDsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:ds object
 
@@ -174,13 +174,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:ds object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecorddsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordDsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordDsResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecorddsAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordDsResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordDsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -194,13 +194,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

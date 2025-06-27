@@ -23,11 +23,11 @@ func TestVdiscoverytaskAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test VdiscoverytaskAPIService Get", func(t *testing.T) {
+	t.Run("Test VdiscoverytaskAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.VdiscoverytaskAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.VdiscoverytaskAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestVdiscoverytaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test VdiscoverytaskAPIService Post", func(t *testing.T) {
+	t.Run("Test VdiscoverytaskAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.VdiscoverytaskAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.VdiscoverytaskAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test VdiscoverytaskAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.VdiscoverytaskAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestVdiscoverytaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test VdiscoverytaskAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test VdiscoverytaskAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.VdiscoverytaskAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test VdiscoverytaskAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.VdiscoverytaskAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.VdiscoverytaskAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestVdiscoverytaskAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test VdiscoverytaskAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test VdiscoverytaskAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.VdiscoverytaskAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.VdiscoverytaskAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

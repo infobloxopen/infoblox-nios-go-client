@@ -23,11 +23,11 @@ func TestDns64groupAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test Dns64groupAPIService Get", func(t *testing.T) {
+	t.Run("Test Dns64groupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Dns64groupAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Dns64groupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestDns64groupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Dns64groupAPIService Post", func(t *testing.T) {
+	t.Run("Test Dns64groupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Dns64groupAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.Dns64groupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test Dns64groupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Dns64groupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestDns64groupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Dns64groupAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test Dns64groupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.Dns64groupAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test Dns64groupAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.Dns64groupAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Dns64groupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestDns64groupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Dns64groupAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test Dns64groupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.Dns64groupAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Dns64groupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

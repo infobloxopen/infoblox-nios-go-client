@@ -23,124 +23,110 @@ import (
 
 type NetworkDiscoveryAPI interface {
 	/*
-		Get Retrieve network_discovery objects
+		List Retrieve network_discovery objects
 
 		Returns a list of network_discovery objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NetworkDiscoveryAPIGetRequest
+		@return NetworkDiscoveryAPIListRequest
 	*/
-	Get(ctx context.Context) NetworkDiscoveryAPIGetRequest
+	List(ctx context.Context) NetworkDiscoveryAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListNetworkDiscoveryResponse
-	GetExecute(r NetworkDiscoveryAPIGetRequest) (*ListNetworkDiscoveryResponse, *http.Response, error)
+	ListExecute(r NetworkDiscoveryAPIListRequest) (*ListNetworkDiscoveryResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific network_discovery object
+		Read Get a specific network_discovery object
 
 		Returns a specific network_discovery object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the network_discovery object
-		@return NetworkDiscoveryAPIReferenceGetRequest
+		@return NetworkDiscoveryAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) NetworkDiscoveryAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) NetworkDiscoveryAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNetworkDiscoveryResponse
-	ReferenceGetExecute(r NetworkDiscoveryAPIReferenceGetRequest) (*GetNetworkDiscoveryResponse, *http.Response, error)
-	/*
-		ReferencePut Update a network_discovery object
-
-		Updates a specific network_discovery object by reference
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param reference Reference of the network_discovery object
-		@return NetworkDiscoveryAPIReferencePutRequest
-	*/
-	ReferencePut(ctx context.Context, reference string) NetworkDiscoveryAPIReferencePutRequest
-
-	// ReferencePutExecute executes the request
-	//  @return UpdateNetworkDiscoveryResponse
-	ReferencePutExecute(r NetworkDiscoveryAPIReferencePutRequest) (*UpdateNetworkDiscoveryResponse, *http.Response, error)
+	ReadExecute(r NetworkDiscoveryAPIReadRequest) (*GetNetworkDiscoveryResponse, *http.Response, error)
 }
 
 // NetworkDiscoveryAPIService NetworkDiscoveryAPI service
 type NetworkDiscoveryAPIService internal.Service
 
-type NetworkDiscoveryAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     NetworkDiscoveryAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type NetworkDiscoveryAPIListRequest struct {
+	ctx              context.Context
+	ApiService       NetworkDiscoveryAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r NetworkDiscoveryAPIGetRequest) ReturnFields(returnFields string) NetworkDiscoveryAPIGetRequest {
+func (r NetworkDiscoveryAPIListRequest) ReturnFields(returnFields string) NetworkDiscoveryAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkDiscoveryAPIGetRequest) ReturnFields2(returnFields2 string) NetworkDiscoveryAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkDiscoveryAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkDiscoveryAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r NetworkDiscoveryAPIGetRequest) MaxResults(maxResults int32) NetworkDiscoveryAPIGetRequest {
+func (r NetworkDiscoveryAPIListRequest) MaxResults(maxResults int32) NetworkDiscoveryAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworkDiscoveryAPIGetRequest) ReturnAsObject(returnAsObject int32) NetworkDiscoveryAPIGetRequest {
+func (r NetworkDiscoveryAPIListRequest) ReturnAsObject(returnAsObject int32) NetworkDiscoveryAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r NetworkDiscoveryAPIGetRequest) Paging(paging int32) NetworkDiscoveryAPIGetRequest {
+func (r NetworkDiscoveryAPIListRequest) Paging(paging int32) NetworkDiscoveryAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r NetworkDiscoveryAPIGetRequest) PageId(pageId string) NetworkDiscoveryAPIGetRequest {
+func (r NetworkDiscoveryAPIListRequest) PageId(pageId string) NetworkDiscoveryAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r NetworkDiscoveryAPIGetRequest) Filters(filters map[string]interface{}) NetworkDiscoveryAPIGetRequest {
+func (r NetworkDiscoveryAPIListRequest) Filters(filters map[string]interface{}) NetworkDiscoveryAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r NetworkDiscoveryAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworkDiscoveryAPIGetRequest {
+func (r NetworkDiscoveryAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworkDiscoveryAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r NetworkDiscoveryAPIGetRequest) Execute() (*ListNetworkDiscoveryResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r NetworkDiscoveryAPIListRequest) Execute() (*ListNetworkDiscoveryResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve network_discovery objects
+List Retrieve network_discovery objects
 
 Returns a list of network_discovery objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NetworkDiscoveryAPIGetRequest
+	@return NetworkDiscoveryAPIListRequest
 */
-func (a *NetworkDiscoveryAPIService) Get(ctx context.Context) NetworkDiscoveryAPIGetRequest {
-	return NetworkDiscoveryAPIGetRequest{
+func (a *NetworkDiscoveryAPIService) List(ctx context.Context) NetworkDiscoveryAPIListRequest {
+	return NetworkDiscoveryAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +135,7 @@ func (a *NetworkDiscoveryAPIService) Get(ctx context.Context) NetworkDiscoveryAP
 // Execute executes the request
 //
 //	@return ListNetworkDiscoveryResponse
-func (a *NetworkDiscoveryAPIService) GetExecute(r NetworkDiscoveryAPIGetRequest) (*ListNetworkDiscoveryResponse, *http.Response, error) {
+func (a *NetworkDiscoveryAPIService) ListExecute(r NetworkDiscoveryAPIListRequest) (*ListNetworkDiscoveryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +143,7 @@ func (a *NetworkDiscoveryAPIService) GetExecute(r NetworkDiscoveryAPIGetRequest)
 		localVarReturnValue *ListNetworkDiscoveryResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkDiscoveryAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkDiscoveryAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +157,8 @@ func (a *NetworkDiscoveryAPIService) GetExecute(r NetworkDiscoveryAPIGetRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +225,48 @@ func (a *NetworkDiscoveryAPIService) GetExecute(r NetworkDiscoveryAPIGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NetworkDiscoveryAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     NetworkDiscoveryAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type NetworkDiscoveryAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       NetworkDiscoveryAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r NetworkDiscoveryAPIReferenceGetRequest) ReturnFields(returnFields string) NetworkDiscoveryAPIReferenceGetRequest {
+func (r NetworkDiscoveryAPIReadRequest) ReturnFields(returnFields string) NetworkDiscoveryAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkDiscoveryAPIReferenceGetRequest) ReturnFields2(returnFields2 string) NetworkDiscoveryAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkDiscoveryAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkDiscoveryAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworkDiscoveryAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) NetworkDiscoveryAPIReferenceGetRequest {
+func (r NetworkDiscoveryAPIReadRequest) ReturnAsObject(returnAsObject int32) NetworkDiscoveryAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NetworkDiscoveryAPIReferenceGetRequest) Execute() (*GetNetworkDiscoveryResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r NetworkDiscoveryAPIReadRequest) Execute() (*GetNetworkDiscoveryResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific network_discovery object
+Read Get a specific network_discovery object
 
 Returns a specific network_discovery object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the network_discovery object
-	@return NetworkDiscoveryAPIReferenceGetRequest
+	@return NetworkDiscoveryAPIReadRequest
 */
-func (a *NetworkDiscoveryAPIService) ReferenceGet(ctx context.Context, reference string) NetworkDiscoveryAPIReferenceGetRequest {
-	return NetworkDiscoveryAPIReferenceGetRequest{
+func (a *NetworkDiscoveryAPIService) Read(ctx context.Context, reference string) NetworkDiscoveryAPIReadRequest {
+	return NetworkDiscoveryAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +276,7 @@ func (a *NetworkDiscoveryAPIService) ReferenceGet(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return GetNetworkDiscoveryResponse
-func (a *NetworkDiscoveryAPIService) ReferenceGetExecute(r NetworkDiscoveryAPIReferenceGetRequest) (*GetNetworkDiscoveryResponse, *http.Response, error) {
+func (a *NetworkDiscoveryAPIService) ReadExecute(r NetworkDiscoveryAPIReadRequest) (*GetNetworkDiscoveryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +284,7 @@ func (a *NetworkDiscoveryAPIService) ReferenceGetExecute(r NetworkDiscoveryAPIRe
 		localVarReturnValue *GetNetworkDiscoveryResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkDiscoveryAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkDiscoveryAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +299,8 @@ func (a *NetworkDiscoveryAPIService) ReferenceGetExecute(r NetworkDiscoveryAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -336,145 +322,6 @@ func (a *NetworkDiscoveryAPIService) ReferenceGetExecute(r NetworkDiscoveryAPIRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NetworkDiscoveryAPIReferencePutRequest struct {
-	ctx              context.Context
-	ApiService       NetworkDiscoveryAPI
-	reference        string
-	networkDiscovery *NetworkDiscovery
-	returnFields     *string
-	returnFields2    *string
-	returnAsObject   *int32
-}
-
-// Object data to update
-func (r NetworkDiscoveryAPIReferencePutRequest) NetworkDiscovery(networkDiscovery NetworkDiscovery) NetworkDiscoveryAPIReferencePutRequest {
-	r.networkDiscovery = &networkDiscovery
-	return r
-}
-
-// Enter the field names followed by comma
-func (r NetworkDiscoveryAPIReferencePutRequest) ReturnFields(returnFields string) NetworkDiscoveryAPIReferencePutRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkDiscoveryAPIReferencePutRequest) ReturnFields2(returnFields2 string) NetworkDiscoveryAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NetworkDiscoveryAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) NetworkDiscoveryAPIReferencePutRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r NetworkDiscoveryAPIReferencePutRequest) Execute() (*UpdateNetworkDiscoveryResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
-}
-
-/*
-ReferencePut Update a network_discovery object
-
-Updates a specific network_discovery object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the network_discovery object
-	@return NetworkDiscoveryAPIReferencePutRequest
-*/
-func (a *NetworkDiscoveryAPIService) ReferencePut(ctx context.Context, reference string) NetworkDiscoveryAPIReferencePutRequest {
-	return NetworkDiscoveryAPIReferencePutRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-//
-//	@return UpdateNetworkDiscoveryResponse
-func (a *NetworkDiscoveryAPIService) ReferencePutExecute(r NetworkDiscoveryAPIReferencePutRequest) (*UpdateNetworkDiscoveryResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *UpdateNetworkDiscoveryResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkDiscoveryAPIService.ReferencePut")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/network_discovery/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.networkDiscovery == nil {
-		return localVarReturnValue, nil, internal.ReportError("networkDiscovery is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.networkDiscovery
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**AssignedTo** | Pointer to **[]map[string]interface{}** | List of objects VLAN is assigned to. | [optional] [readonly] 
+**AssignedTo** | Pointer to **[]string** | List of objects VLAN is assigned to. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment for this VLAN. | [optional] 
 **Contact** | Pointer to **string** | Contact information for person/team managing or using VLAN. | [optional] 
 **Department** | Pointer to **string** | Department where VLAN is used. | [optional] 
 **Description** | Pointer to **string** | Description for the VLAN object, may be potentially used for longer VLAN names. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Id** | Pointer to **int64** | VLAN ID value. | [optional] 
 **Name** | Pointer to **string** | Name of the VLAN. | [optional] 
 **Parent** | Pointer to **string** | The VLAN View or VLAN Range to which this VLAN belongs. | [optional] 
@@ -64,20 +64,20 @@ HasRef returns a boolean if a field has been set.
 
 ### GetAssignedTo
 
-`func (o *GetVlanResponse) GetAssignedTo() []map[string]interface{}`
+`func (o *GetVlanResponse) GetAssignedTo() []string`
 
 GetAssignedTo returns the AssignedTo field if non-nil, zero value otherwise.
 
 ### GetAssignedToOk
 
-`func (o *GetVlanResponse) GetAssignedToOk() (*[]map[string]interface{}, bool)`
+`func (o *GetVlanResponse) GetAssignedToOk() (*[]string, bool)`
 
 GetAssignedToOk returns a tuple with the AssignedTo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedTo
 
-`func (o *GetVlanResponse) SetAssignedTo(v []map[string]interface{})`
+`func (o *GetVlanResponse) SetAssignedTo(v []string)`
 
 SetAssignedTo sets AssignedTo field to given value.
 
@@ -187,30 +187,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetVlanResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetVlanResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetVlanResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetVlanResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetVlanResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetVlanResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetVlanResponse) HasExtattrs() bool`
+`func (o *GetVlanResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetId
 

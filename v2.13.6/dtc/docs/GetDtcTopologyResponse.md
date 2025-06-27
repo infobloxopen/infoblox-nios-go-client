@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **Comment** | Pointer to **string** | The comment for the DTC TOPOLOGY monitor object; maximum 256 characters. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | Display name of the DTC Topology. | [optional] 
-**Rules** | Pointer to **[]map[string]interface{}** | Topology rules. | [optional] 
+**Rules** | Pointer to **[]string** | Topology rules. | [optional] 
 **Result** | Pointer to [**DtcTopology**](DtcTopology.md) |  | [optional] 
 
 ## Methods
@@ -80,30 +80,30 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetDtcTopologyResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetDtcTopologyResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetDtcTopologyResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetDtcTopologyResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetDtcTopologyResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetDtcTopologyResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetDtcTopologyResponse) HasExtattrs() bool`
+`func (o *GetDtcTopologyResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetName
 
@@ -132,20 +132,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetRules
 
-`func (o *GetDtcTopologyResponse) GetRules() []map[string]interface{}`
+`func (o *GetDtcTopologyResponse) GetRules() []string`
 
 GetRules returns the Rules field if non-nil, zero value otherwise.
 
 ### GetRulesOk
 
-`func (o *GetDtcTopologyResponse) GetRulesOk() (*[]map[string]interface{}, bool)`
+`func (o *GetDtcTopologyResponse) GetRulesOk() (*[]string, bool)`
 
 GetRulesOk returns a tuple with the Rules field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRules
 
-`func (o *GetDtcTopologyResponse) SetRules(v []map[string]interface{})`
+`func (o *GetDtcTopologyResponse) SetRules(v []string)`
 
 SetRules sets Rules field to given value.
 

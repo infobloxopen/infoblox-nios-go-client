@@ -1,0 +1,633 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Infoblox
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI FEDERATEDREALMS objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox FEDERATEDREALMS API
+  version: 2.13.6
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.13.6
+tags:
+- description: Operations for federatedrealms objects
+  name: Federatedrealms
+- description: Operations for fedipamop objects
+  name: Fedipamop
+paths:
+  /federatedrealms:
+    get:
+      description: Returns a list of federatedrealms objects matching the search criteria
+      operationId: FederatedrealmsList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFederatedrealmsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve federatedrealms objects
+      tags:
+      - Federatedrealms
+  /federatedrealms/{reference}:
+    get:
+      description: Returns a specific federatedrealms object by reference
+      operationId: FederatedrealmsRead
+      parameters:
+      - description: Reference of the federatedrealms object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFederatedrealmsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific federatedrealms object
+      tags:
+      - Federatedrealms
+  /fedipamop:
+    get:
+      description: Returns a list of fedipamop objects matching the search criteria
+      operationId: FedipamopList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFedipamopResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve fedipamop objects
+      tags:
+      - Fedipamop
+  /fedipamop/{reference}:
+    get:
+      description: Returns a specific fedipamop object by reference
+      operationId: FedipamopRead
+      parameters:
+      - description: Reference of the fedipamop object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFedipamopResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific fedipamop object
+      tags:
+      - Fedipamop
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    Federatedrealms:
+      additionalProperties: false
+      example:
+        _ref: _ref
+        name: Example name
+        id: Example id
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        id:
+          description: Federated realm id.
+          example: Example id
+          readOnly: true
+          type: string
+        name:
+          description: Federated realm name.
+          example: Example name
+          readOnly: true
+          type: string
+      type: object
+    ListFederatedrealmsResponse:
+      oneOf:
+      - description: The response format to retrieve __Federatedrealms__ objects.
+        items:
+          $ref: '#/components/schemas/Federatedrealms'
+        title: ListFederatedrealmsResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListFederatedrealmsResponseObject'
+    GetFederatedrealmsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Federatedrealms'
+      - $ref: '#/components/schemas/GetFederatedrealmsResponseObjectAsResult'
+    UpdateFederatedrealmsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateFederatedrealmsResponseAsObject'
+      - description: The response format to update __Federatedrealms__ .
+        title: UpdateFederatedrealmsResponse
+        type: string
+    Fedipamop:
+      additionalProperties: false
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+      type: object
+    ListFedipamopResponse:
+      oneOf:
+      - description: The response format to retrieve __Fedipamop__ objects.
+        items:
+          $ref: '#/components/schemas/Fedipamop'
+        title: ListFedipamopResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListFedipamopResponseObject'
+    GetFedipamopResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Fedipamop'
+      - $ref: '#/components/schemas/GetFedipamopResponseObjectAsResult'
+    UpdateFedipamopResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateFedipamopResponseAsObject'
+      - description: The response format to update __Fedipamop__ .
+        title: UpdateFedipamopResponse
+        type: string
+    ListFederatedrealmsResponseObject:
+      description: The response format to retrieve __Federatedrealms__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Federatedrealms'
+          type: array
+      title: ListFederatedrealmsResponseObject
+      type: object
+    GetFederatedrealmsResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Federatedrealms__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Federatedrealms'
+      title: GetFederatedrealmsResponseObjectAsResult
+      type: object
+    UpdateFederatedrealmsResponseAsObject:
+      description: The response format to update __Federatedrealms__ in object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/Federatedrealms'
+      title: UpdateFederatedrealmsResponseAsObject
+      type: object
+    ListFedipamopResponseObject:
+      description: The response format to retrieve __Fedipamop__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Fedipamop'
+          type: array
+      title: ListFedipamopResponseObject
+      type: object
+    GetFedipamopResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Fedipamop__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Fedipamop'
+      title: GetFedipamopResponseObjectAsResult
+      type: object
+    UpdateFedipamopResponseAsObject:
+      description: The response format to update __Fedipamop__ in object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/Fedipamop'
+      title: UpdateFedipamopResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http

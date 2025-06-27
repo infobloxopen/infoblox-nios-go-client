@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**ClearDiscoveryData** | Pointer to **map[string]interface{}** |  | [optional] 
 **Result** | Pointer to [**NetworkDiscovery**](NetworkDiscovery.md) |  | [optional] 
 
 ## Methods
@@ -51,31 +50,6 @@ SetRef sets Ref field to given value.
 `func (o *GetNetworkDiscoveryResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
-
-### GetClearDiscoveryData
-
-`func (o *GetNetworkDiscoveryResponse) GetClearDiscoveryData() map[string]interface{}`
-
-GetClearDiscoveryData returns the ClearDiscoveryData field if non-nil, zero value otherwise.
-
-### GetClearDiscoveryDataOk
-
-`func (o *GetNetworkDiscoveryResponse) GetClearDiscoveryDataOk() (*map[string]interface{}, bool)`
-
-GetClearDiscoveryDataOk returns a tuple with the ClearDiscoveryData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClearDiscoveryData
-
-`func (o *GetNetworkDiscoveryResponse) SetClearDiscoveryData(v map[string]interface{})`
-
-SetClearDiscoveryData sets ClearDiscoveryData field to given value.
-
-### HasClearDiscoveryData
-
-`func (o *GetNetworkDiscoveryResponse) HasClearDiscoveryData() bool`
-
-HasClearDiscoveryData returns a boolean if a field has been set.
 
 ### GetResult
 

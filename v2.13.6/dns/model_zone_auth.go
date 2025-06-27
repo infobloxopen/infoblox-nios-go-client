@@ -44,8 +44,7 @@ type ZoneAuth struct {
 	// Comment for the zone; maximum 256 characters.
 	Comment *string `json:"comment,omitempty"`
 	// If this flag is set to True then copy allowed IPs from Allow Transfer to Also Notify.
-	CopyXferToNotify *bool                  `json:"copy_xfer_to_notify,omitempty"`
-	Copyzonerecords  map[string]interface{} `json:"copyzonerecords,omitempty"`
+	CopyXferToNotify *bool `json:"copy_xfer_to_notify,omitempty"`
 	// Determines if PTR records are created for hosts automatically, if necessary, when the zone data is imported. This field is meaningful only when import_from is set.
 	CreatePtrForBulkHosts *bool `json:"create_ptr_for_bulk_hosts,omitempty"`
 	// Determines if PTR records are created for hosts automatically, if necessary, when the zone data is imported. This field is meaningful only when import_from is set.
@@ -85,28 +84,22 @@ type ZoneAuth struct {
 	// If this is set to True, more information is logged for DNS integrity checks for this zone.
 	DnsIntegrityVerboseLogging *bool `json:"dns_integrity_verbose_logging,omitempty"`
 	// The SOA email for the zone in punycode format.
-	DnsSoaEmail       *string                  `json:"dns_soa_email,omitempty"`
-	DnssecExport      map[string]interface{}   `json:"dnssec_export,omitempty"`
-	DnssecGetZoneKeys map[string]interface{}   `json:"dnssec_get_zone_keys,omitempty"`
-	DnssecKeyParams   *ZoneAuthDnssecKeyParams `json:"dnssec_key_params,omitempty"`
+	DnsSoaEmail     *string                  `json:"dns_soa_email,omitempty"`
+	DnssecKeyParams *ZoneAuthDnssecKeyParams `json:"dnssec_key_params,omitempty"`
 	// A list of DNSSEC keys for the zone.
 	DnssecKeys []ZoneAuthDnssecKeys `json:"dnssec_keys,omitempty"`
 	// The rollover date for the Key Signing Key.
-	DnssecKskRolloverDate *int64                 `json:"dnssec_ksk_rollover_date,omitempty"`
-	DnssecOperation       map[string]interface{} `json:"dnssec_operation,omitempty"`
-	DnssecSetZoneKeys     map[string]interface{} `json:"dnssec_set_zone_keys,omitempty"`
+	DnssecKskRolloverDate *int64 `json:"dnssec_ksk_rollover_date,omitempty"`
 	// The rollover date for the Zone Signing Key.
-	DnssecZskRolloverDate *int64                 `json:"dnssec_zsk_rollover_date,omitempty"`
-	Dnssecgetkskrollover  map[string]interface{} `json:"dnssecgetkskrollover,omitempty"`
+	DnssecZskRolloverDate *int64 `json:"dnssec_zsk_rollover_date,omitempty"`
 	// Determines if hosts and bulk hosts are automatically created when the zone data is imported. This field is meaningful only when import_from is set.
 	DoHostAbstraction *bool `json:"do_host_abstraction,omitempty"`
 	// The value of the check names policy, which indicates the action the appliance takes when it encounters host names that do not comply with the Strict Hostname Checking policy. This value applies only if the host name restriction policy is set to \"Strict Hostname Checking\".
 	EffectiveCheckNamesPolicy *string `json:"effective_check_names_policy,omitempty"`
 	// The selected hostname policy for records under this zone.
-	EffectiveRecordNamePolicy *string                `json:"effective_record_name_policy,omitempty"`
-	ExecuteDnsParentCheck     map[string]interface{} `json:"execute_dns_parent_check,omitempty"`
+	EffectiveRecordNamePolicy *string `json:"effective_record_name_policy,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The list of external primary servers.
 	ExternalPrimaries []ZoneAuthExternalPrimaries `json:"external_primaries,omitempty"`
 	// The list of external secondary servers.
@@ -131,7 +124,6 @@ type ZoneAuth struct {
 	LastQueried *int64 `json:"last_queried,omitempty"`
 	// Determines last queried ACL for the specified IPv4 or IPv6 addresses and networks in scavenging settings.
 	LastQueriedAcl []ZoneAuthLastQueriedAcl `json:"last_queried_acl,omitempty"`
-	LockUnlockZone map[string]interface{}   `json:"lock_unlock_zone,omitempty"`
 	// If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked.
 	Locked *bool `json:"locked,omitempty"`
 	// The name of a superuser or the administrator who locked this zone.
@@ -165,7 +157,7 @@ type ZoneAuth struct {
 	// The name of MS synchronization master for this zone.
 	MsSyncMasterName *string `json:"ms_sync_master_name,omitempty"`
 	// The list with the associated network/network container information.
-	NetworkAssociations []map[string]interface{} `json:"network_associations,omitempty"`
+	NetworkAssociations []string `json:"network_associations,omitempty"`
 	// The name of the network view in which this zone resides.
 	NetworkView *string `json:"network_view,omitempty"`
 	// The number of seconds in delay with which notify messages are sent to secondaries.
@@ -188,7 +180,6 @@ type ZoneAuth struct {
 	RestartIfNeeded *bool `json:"restart_if_needed,omitempty"`
 	// The time data collection for Not Queried Resource Record was enabled for this zone.
 	RrNotQueriedEnabledTime *int64                      `json:"rr_not_queried_enabled_time,omitempty"`
-	RunScavenging           map[string]interface{}      `json:"run_scavenging,omitempty"`
 	ScavengingSettings      *ZoneAuthScavengingSettings `json:"scavenging_settings,omitempty"`
 	// The serial number in the SOA record incrementally changes every time the record is modified. The Infoblox appliance allows you to change the serial number (in the SOA record) for the primary server so it is higher than the secondary server, thereby ensuring zone transfers come from the primary server (as they should). To change the serial number you need to set a new value at \"soa_serial_number\" and pass \"set_soa_serial_number\" as True.
 	SetSoaSerialNumber *bool `json:"set_soa_serial_number,omitempty"`
@@ -723,38 +714,6 @@ func (o *ZoneAuth) HasCopyXferToNotify() bool {
 // SetCopyXferToNotify gets a reference to the given bool and assigns it to the CopyXferToNotify field.
 func (o *ZoneAuth) SetCopyXferToNotify(v bool) {
 	o.CopyXferToNotify = &v
-}
-
-// GetCopyzonerecords returns the Copyzonerecords field value if set, zero value otherwise.
-func (o *ZoneAuth) GetCopyzonerecords() map[string]interface{} {
-	if o == nil || IsNil(o.Copyzonerecords) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Copyzonerecords
-}
-
-// GetCopyzonerecordsOk returns a tuple with the Copyzonerecords field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetCopyzonerecordsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Copyzonerecords) {
-		return map[string]interface{}{}, false
-	}
-	return o.Copyzonerecords, true
-}
-
-// HasCopyzonerecords returns a boolean if a field has been set.
-func (o *ZoneAuth) HasCopyzonerecords() bool {
-	if o != nil && !IsNil(o.Copyzonerecords) {
-		return true
-	}
-
-	return false
-}
-
-// SetCopyzonerecords gets a reference to the given map[string]interface{} and assigns it to the Copyzonerecords field.
-func (o *ZoneAuth) SetCopyzonerecords(v map[string]interface{}) {
-	o.Copyzonerecords = v
 }
 
 // GetCreatePtrForBulkHosts returns the CreatePtrForBulkHosts field value if set, zero value otherwise.
@@ -1397,70 +1356,6 @@ func (o *ZoneAuth) SetDnsSoaEmail(v string) {
 	o.DnsSoaEmail = &v
 }
 
-// GetDnssecExport returns the DnssecExport field value if set, zero value otherwise.
-func (o *ZoneAuth) GetDnssecExport() map[string]interface{} {
-	if o == nil || IsNil(o.DnssecExport) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.DnssecExport
-}
-
-// GetDnssecExportOk returns a tuple with the DnssecExport field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetDnssecExportOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.DnssecExport) {
-		return map[string]interface{}{}, false
-	}
-	return o.DnssecExport, true
-}
-
-// HasDnssecExport returns a boolean if a field has been set.
-func (o *ZoneAuth) HasDnssecExport() bool {
-	if o != nil && !IsNil(o.DnssecExport) {
-		return true
-	}
-
-	return false
-}
-
-// SetDnssecExport gets a reference to the given map[string]interface{} and assigns it to the DnssecExport field.
-func (o *ZoneAuth) SetDnssecExport(v map[string]interface{}) {
-	o.DnssecExport = v
-}
-
-// GetDnssecGetZoneKeys returns the DnssecGetZoneKeys field value if set, zero value otherwise.
-func (o *ZoneAuth) GetDnssecGetZoneKeys() map[string]interface{} {
-	if o == nil || IsNil(o.DnssecGetZoneKeys) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.DnssecGetZoneKeys
-}
-
-// GetDnssecGetZoneKeysOk returns a tuple with the DnssecGetZoneKeys field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetDnssecGetZoneKeysOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.DnssecGetZoneKeys) {
-		return map[string]interface{}{}, false
-	}
-	return o.DnssecGetZoneKeys, true
-}
-
-// HasDnssecGetZoneKeys returns a boolean if a field has been set.
-func (o *ZoneAuth) HasDnssecGetZoneKeys() bool {
-	if o != nil && !IsNil(o.DnssecGetZoneKeys) {
-		return true
-	}
-
-	return false
-}
-
-// SetDnssecGetZoneKeys gets a reference to the given map[string]interface{} and assigns it to the DnssecGetZoneKeys field.
-func (o *ZoneAuth) SetDnssecGetZoneKeys(v map[string]interface{}) {
-	o.DnssecGetZoneKeys = v
-}
-
 // GetDnssecKeyParams returns the DnssecKeyParams field value if set, zero value otherwise.
 func (o *ZoneAuth) GetDnssecKeyParams() ZoneAuthDnssecKeyParams {
 	if o == nil || IsNil(o.DnssecKeyParams) {
@@ -1557,70 +1452,6 @@ func (o *ZoneAuth) SetDnssecKskRolloverDate(v int64) {
 	o.DnssecKskRolloverDate = &v
 }
 
-// GetDnssecOperation returns the DnssecOperation field value if set, zero value otherwise.
-func (o *ZoneAuth) GetDnssecOperation() map[string]interface{} {
-	if o == nil || IsNil(o.DnssecOperation) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.DnssecOperation
-}
-
-// GetDnssecOperationOk returns a tuple with the DnssecOperation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetDnssecOperationOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.DnssecOperation) {
-		return map[string]interface{}{}, false
-	}
-	return o.DnssecOperation, true
-}
-
-// HasDnssecOperation returns a boolean if a field has been set.
-func (o *ZoneAuth) HasDnssecOperation() bool {
-	if o != nil && !IsNil(o.DnssecOperation) {
-		return true
-	}
-
-	return false
-}
-
-// SetDnssecOperation gets a reference to the given map[string]interface{} and assigns it to the DnssecOperation field.
-func (o *ZoneAuth) SetDnssecOperation(v map[string]interface{}) {
-	o.DnssecOperation = v
-}
-
-// GetDnssecSetZoneKeys returns the DnssecSetZoneKeys field value if set, zero value otherwise.
-func (o *ZoneAuth) GetDnssecSetZoneKeys() map[string]interface{} {
-	if o == nil || IsNil(o.DnssecSetZoneKeys) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.DnssecSetZoneKeys
-}
-
-// GetDnssecSetZoneKeysOk returns a tuple with the DnssecSetZoneKeys field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetDnssecSetZoneKeysOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.DnssecSetZoneKeys) {
-		return map[string]interface{}{}, false
-	}
-	return o.DnssecSetZoneKeys, true
-}
-
-// HasDnssecSetZoneKeys returns a boolean if a field has been set.
-func (o *ZoneAuth) HasDnssecSetZoneKeys() bool {
-	if o != nil && !IsNil(o.DnssecSetZoneKeys) {
-		return true
-	}
-
-	return false
-}
-
-// SetDnssecSetZoneKeys gets a reference to the given map[string]interface{} and assigns it to the DnssecSetZoneKeys field.
-func (o *ZoneAuth) SetDnssecSetZoneKeys(v map[string]interface{}) {
-	o.DnssecSetZoneKeys = v
-}
-
 // GetDnssecZskRolloverDate returns the DnssecZskRolloverDate field value if set, zero value otherwise.
 func (o *ZoneAuth) GetDnssecZskRolloverDate() int64 {
 	if o == nil || IsNil(o.DnssecZskRolloverDate) {
@@ -1651,38 +1482,6 @@ func (o *ZoneAuth) HasDnssecZskRolloverDate() bool {
 // SetDnssecZskRolloverDate gets a reference to the given int64 and assigns it to the DnssecZskRolloverDate field.
 func (o *ZoneAuth) SetDnssecZskRolloverDate(v int64) {
 	o.DnssecZskRolloverDate = &v
-}
-
-// GetDnssecgetkskrollover returns the Dnssecgetkskrollover field value if set, zero value otherwise.
-func (o *ZoneAuth) GetDnssecgetkskrollover() map[string]interface{} {
-	if o == nil || IsNil(o.Dnssecgetkskrollover) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Dnssecgetkskrollover
-}
-
-// GetDnssecgetkskrolloverOk returns a tuple with the Dnssecgetkskrollover field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetDnssecgetkskrolloverOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Dnssecgetkskrollover) {
-		return map[string]interface{}{}, false
-	}
-	return o.Dnssecgetkskrollover, true
-}
-
-// HasDnssecgetkskrollover returns a boolean if a field has been set.
-func (o *ZoneAuth) HasDnssecgetkskrollover() bool {
-	if o != nil && !IsNil(o.Dnssecgetkskrollover) {
-		return true
-	}
-
-	return false
-}
-
-// SetDnssecgetkskrollover gets a reference to the given map[string]interface{} and assigns it to the Dnssecgetkskrollover field.
-func (o *ZoneAuth) SetDnssecgetkskrollover(v map[string]interface{}) {
-	o.Dnssecgetkskrollover = v
 }
 
 // GetDoHostAbstraction returns the DoHostAbstraction field value if set, zero value otherwise.
@@ -1781,68 +1580,36 @@ func (o *ZoneAuth) SetEffectiveRecordNamePolicy(v string) {
 	o.EffectiveRecordNamePolicy = &v
 }
 
-// GetExecuteDnsParentCheck returns the ExecuteDnsParentCheck field value if set, zero value otherwise.
-func (o *ZoneAuth) GetExecuteDnsParentCheck() map[string]interface{} {
-	if o == nil || IsNil(o.ExecuteDnsParentCheck) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ExecuteDnsParentCheck
-}
-
-// GetExecuteDnsParentCheckOk returns a tuple with the ExecuteDnsParentCheck field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetExecuteDnsParentCheckOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.ExecuteDnsParentCheck) {
-		return map[string]interface{}{}, false
-	}
-	return o.ExecuteDnsParentCheck, true
-}
-
-// HasExecuteDnsParentCheck returns a boolean if a field has been set.
-func (o *ZoneAuth) HasExecuteDnsParentCheck() bool {
-	if o != nil && !IsNil(o.ExecuteDnsParentCheck) {
-		return true
-	}
-
-	return false
-}
-
-// SetExecuteDnsParentCheck gets a reference to the given map[string]interface{} and assigns it to the ExecuteDnsParentCheck field.
-func (o *ZoneAuth) SetExecuteDnsParentCheck(v map[string]interface{}) {
-	o.ExecuteDnsParentCheck = v
-}
-
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *ZoneAuth) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *ZoneAuth) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *ZoneAuth) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *ZoneAuth) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *ZoneAuth) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *ZoneAuth) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *ZoneAuth) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetExternalPrimaries returns the ExternalPrimaries field value if set, zero value otherwise.
@@ -2227,38 +1994,6 @@ func (o *ZoneAuth) HasLastQueriedAcl() bool {
 // SetLastQueriedAcl gets a reference to the given []ZoneAuthLastQueriedAcl and assigns it to the LastQueriedAcl field.
 func (o *ZoneAuth) SetLastQueriedAcl(v []ZoneAuthLastQueriedAcl) {
 	o.LastQueriedAcl = v
-}
-
-// GetLockUnlockZone returns the LockUnlockZone field value if set, zero value otherwise.
-func (o *ZoneAuth) GetLockUnlockZone() map[string]interface{} {
-	if o == nil || IsNil(o.LockUnlockZone) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.LockUnlockZone
-}
-
-// GetLockUnlockZoneOk returns a tuple with the LockUnlockZone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetLockUnlockZoneOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.LockUnlockZone) {
-		return map[string]interface{}{}, false
-	}
-	return o.LockUnlockZone, true
-}
-
-// HasLockUnlockZone returns a boolean if a field has been set.
-func (o *ZoneAuth) HasLockUnlockZone() bool {
-	if o != nil && !IsNil(o.LockUnlockZone) {
-		return true
-	}
-
-	return false
-}
-
-// SetLockUnlockZone gets a reference to the given map[string]interface{} and assigns it to the LockUnlockZone field.
-func (o *ZoneAuth) SetLockUnlockZone(v map[string]interface{}) {
-	o.LockUnlockZone = v
 }
 
 // GetLocked returns the Locked field value if set, zero value otherwise.
@@ -2774,9 +2509,9 @@ func (o *ZoneAuth) SetMsSyncMasterName(v string) {
 }
 
 // GetNetworkAssociations returns the NetworkAssociations field value if set, zero value otherwise.
-func (o *ZoneAuth) GetNetworkAssociations() []map[string]interface{} {
+func (o *ZoneAuth) GetNetworkAssociations() []string {
 	if o == nil || IsNil(o.NetworkAssociations) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.NetworkAssociations
@@ -2784,7 +2519,7 @@ func (o *ZoneAuth) GetNetworkAssociations() []map[string]interface{} {
 
 // GetNetworkAssociationsOk returns a tuple with the NetworkAssociations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetNetworkAssociationsOk() ([]map[string]interface{}, bool) {
+func (o *ZoneAuth) GetNetworkAssociationsOk() ([]string, bool) {
 	if o == nil || IsNil(o.NetworkAssociations) {
 		return nil, false
 	}
@@ -2800,8 +2535,8 @@ func (o *ZoneAuth) HasNetworkAssociations() bool {
 	return false
 }
 
-// SetNetworkAssociations gets a reference to the given []map[string]interface{} and assigns it to the NetworkAssociations field.
-func (o *ZoneAuth) SetNetworkAssociations(v []map[string]interface{}) {
+// SetNetworkAssociations gets a reference to the given []string and assigns it to the NetworkAssociations field.
+func (o *ZoneAuth) SetNetworkAssociations(v []string) {
 	o.NetworkAssociations = v
 }
 
@@ -3155,38 +2890,6 @@ func (o *ZoneAuth) HasRrNotQueriedEnabledTime() bool {
 // SetRrNotQueriedEnabledTime gets a reference to the given int64 and assigns it to the RrNotQueriedEnabledTime field.
 func (o *ZoneAuth) SetRrNotQueriedEnabledTime(v int64) {
 	o.RrNotQueriedEnabledTime = &v
-}
-
-// GetRunScavenging returns the RunScavenging field value if set, zero value otherwise.
-func (o *ZoneAuth) GetRunScavenging() map[string]interface{} {
-	if o == nil || IsNil(o.RunScavenging) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.RunScavenging
-}
-
-// GetRunScavengingOk returns a tuple with the RunScavenging field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuth) GetRunScavengingOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.RunScavenging) {
-		return map[string]interface{}{}, false
-	}
-	return o.RunScavenging, true
-}
-
-// HasRunScavenging returns a boolean if a field has been set.
-func (o *ZoneAuth) HasRunScavenging() bool {
-	if o != nil && !IsNil(o.RunScavenging) {
-		return true
-	}
-
-	return false
-}
-
-// SetRunScavenging gets a reference to the given map[string]interface{} and assigns it to the RunScavenging field.
-func (o *ZoneAuth) SetRunScavenging(v map[string]interface{}) {
-	o.RunScavenging = v
 }
 
 // GetScavengingSettings returns the ScavengingSettings field value if set, zero value otherwise.
@@ -4361,9 +4064,6 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CopyXferToNotify) {
 		toSerialize["copy_xfer_to_notify"] = o.CopyXferToNotify
 	}
-	if !IsNil(o.Copyzonerecords) {
-		toSerialize["copyzonerecords"] = o.Copyzonerecords
-	}
 	if !IsNil(o.CreatePtrForBulkHosts) {
 		toSerialize["create_ptr_for_bulk_hosts"] = o.CreatePtrForBulkHosts
 	}
@@ -4424,12 +4124,6 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsSoaEmail) {
 		toSerialize["dns_soa_email"] = o.DnsSoaEmail
 	}
-	if !IsNil(o.DnssecExport) {
-		toSerialize["dnssec_export"] = o.DnssecExport
-	}
-	if !IsNil(o.DnssecGetZoneKeys) {
-		toSerialize["dnssec_get_zone_keys"] = o.DnssecGetZoneKeys
-	}
 	if !IsNil(o.DnssecKeyParams) {
 		toSerialize["dnssec_key_params"] = o.DnssecKeyParams
 	}
@@ -4439,17 +4133,8 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnssecKskRolloverDate) {
 		toSerialize["dnssec_ksk_rollover_date"] = o.DnssecKskRolloverDate
 	}
-	if !IsNil(o.DnssecOperation) {
-		toSerialize["dnssec_operation"] = o.DnssecOperation
-	}
-	if !IsNil(o.DnssecSetZoneKeys) {
-		toSerialize["dnssec_set_zone_keys"] = o.DnssecSetZoneKeys
-	}
 	if !IsNil(o.DnssecZskRolloverDate) {
 		toSerialize["dnssec_zsk_rollover_date"] = o.DnssecZskRolloverDate
-	}
-	if !IsNil(o.Dnssecgetkskrollover) {
-		toSerialize["dnssecgetkskrollover"] = o.Dnssecgetkskrollover
 	}
 	if !IsNil(o.DoHostAbstraction) {
 		toSerialize["do_host_abstraction"] = o.DoHostAbstraction
@@ -4460,11 +4145,8 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EffectiveRecordNamePolicy) {
 		toSerialize["effective_record_name_policy"] = o.EffectiveRecordNamePolicy
 	}
-	if !IsNil(o.ExecuteDnsParentCheck) {
-		toSerialize["execute_dns_parent_check"] = o.ExecuteDnsParentCheck
-	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.ExternalPrimaries) {
 		toSerialize["external_primaries"] = o.ExternalPrimaries
@@ -4501,9 +4183,6 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LastQueriedAcl) {
 		toSerialize["last_queried_acl"] = o.LastQueriedAcl
-	}
-	if !IsNil(o.LockUnlockZone) {
-		toSerialize["lock_unlock_zone"] = o.LockUnlockZone
 	}
 	if !IsNil(o.Locked) {
 		toSerialize["locked"] = o.Locked
@@ -4588,9 +4267,6 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RrNotQueriedEnabledTime) {
 		toSerialize["rr_not_queried_enabled_time"] = o.RrNotQueriedEnabledTime
-	}
-	if !IsNil(o.RunScavenging) {
-		toSerialize["run_scavenging"] = o.RunScavenging
 	}
 	if !IsNil(o.ScavengingSettings) {
 		toSerialize["scavenging_settings"] = o.ScavengingSettings

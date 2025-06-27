@@ -1,0 +1,969 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Infoblox
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI RIR objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox RIR API
+  version: 2.13.6
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.13.6
+tags:
+- description: Operations for rir objects
+  name: Rir
+- description: Operations for rir:organization objects
+  name: RirOrganization
+paths:
+  /rir:
+    get:
+      description: Returns a list of rir objects matching the search criteria
+      operationId: RirList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRirResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve rir objects
+      tags:
+      - Rir
+  /rir/{reference}:
+    get:
+      description: Returns a specific rir object by reference
+      operationId: RirRead
+      parameters:
+      - description: Reference of the rir object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRirResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific rir object
+      tags:
+      - Rir
+    put:
+      description: Updates a specific rir object by reference
+      operationId: RirUpdate
+      parameters:
+      - description: Reference of the rir object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rir'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateRirResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a rir object
+      tags:
+      - Rir
+  /rir:organization:
+    get:
+      description: Returns a list of rir:organization objects matching the search
+        criteria
+      operationId: RirOrganizationList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRirOrganizationResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve rir:organization objects
+      tags:
+      - RirOrganization
+    post:
+      description: Creates a new rir:organization object
+      operationId: RirOrganizationCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RirOrganization'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRirOrganizationResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a rir:organization object
+      tags:
+      - RirOrganization
+      x-tf-resource: rir_organization
+      x-tf-datasource: rir_organization
+      x-sdk-default-ext-attrs: true
+  /rir:organization/{reference}:
+    delete:
+      description: Deletes a specific rir:organization object by reference
+      operationId: RirOrganizationDelete
+      parameters:
+      - description: Reference of the rir:organization object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a rir:organization object
+      tags:
+      - RirOrganization
+    get:
+      description: Returns a specific rir:organization object by reference
+      operationId: RirOrganizationRead
+      parameters:
+      - description: Reference of the rir:organization object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRirOrganizationResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific rir:organization object
+      tags:
+      - RirOrganization
+    put:
+      description: Updates a specific rir:organization object by reference
+      operationId: RirOrganizationUpdate
+      parameters:
+      - description: Reference of the rir:organization object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RirOrganization'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateRirOrganizationResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a rir:organization object
+      tags:
+      - RirOrganization
+      x-sdk-default-ext-attrs: true
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      example:
+        value: ""
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    Rir:
+      additionalProperties: false
+      example:
+        communication_mode: Example communication_mode
+        use_email: false
+        use_url: false
+        _ref: _ref
+        name: Example name
+        email: Example email
+        url: Example url
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        communication_mode:
+          description: The communication mode for RIR.
+          enum:
+          - EMAIL
+          - API
+          - NONE
+          example: Example communication_mode
+          type: string
+        email:
+          description: The e-mail address for RIR.
+          example: Example email
+          type: string
+        name:
+          description: The name of RIR.
+          enum:
+          - RIPE
+          example: Example name
+          type: string
+        url:
+          description: The WebAPI URL for RIR.
+          example: Example url
+          type: string
+        use_email:
+          description: "Use flag for: email"
+          example: false
+          type: boolean
+        use_url:
+          description: "Use flag for: url"
+          example: false
+          type: boolean
+      type: object
+    ListRirResponse:
+      oneOf:
+      - description: The response format to retrieve __Rir__ objects.
+        items:
+          $ref: '#/components/schemas/Rir'
+        title: ListRirResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListRirResponseObject'
+    GetRirResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Rir'
+      - $ref: '#/components/schemas/GetRirResponseObjectAsResult'
+    UpdateRirResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateRirResponseAsObject'
+      - description: The response format to update __Rir__ .
+        title: UpdateRirResponse
+        type: string
+    RirOrganization:
+      additionalProperties: false
+      example:
+        password: Example password
+        extattrs:
+          key:
+            value: ""
+        _ref: _ref
+        name: Example name
+        rir: Example rir
+        id: Example id
+        maintainer: Example maintainer
+        sender_email: Example sender_email
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        id:
+          description: The RIR organization identifier.
+          example: Example id
+          type: string
+        maintainer:
+          description: The RIR organization maintainer.
+          example: Example maintainer
+          type: string
+        name:
+          description: The RIR organization name.
+          example: Example name
+          type: string
+        password:
+          description: The password for the maintainer of RIR organization.
+          example: Example password
+          type: string
+          writeOnly: true
+        rir:
+          description: The RIR associated with RIR organization.
+          example: Example rir
+          type: string
+        sender_email:
+          description: The sender e-mail address for RIR organization.
+          example: Example sender_email
+          type: string
+      type: object
+    ListRirOrganizationResponse:
+      oneOf:
+      - description: The response format to retrieve __RirOrganization__ objects.
+        items:
+          $ref: '#/components/schemas/RirOrganization'
+        title: ListRirOrganizationResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListRirOrganizationResponseObject'
+    CreateRirOrganizationResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateRirOrganizationResponseAsObject'
+      - description: The response format to create __RirOrganization__.
+        title: CreateRirOrganizationResponse
+        type: string
+    GetRirOrganizationResponse:
+      oneOf:
+      - $ref: '#/components/schemas/RirOrganization'
+      - $ref: '#/components/schemas/GetRirOrganizationResponseObjectAsResult'
+    UpdateRirOrganizationResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateRirOrganizationResponseAsObject'
+      - description: The response format to update __RirOrganization__ .
+        title: UpdateRirOrganizationResponse
+        type: string
+    ListRirResponseObject:
+      description: The response format to retrieve __Rir__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Rir'
+          type: array
+      title: ListRirResponseObject
+      type: object
+    GetRirResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Rir__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Rir'
+      title: GetRirResponseObjectAsResult
+      type: object
+    UpdateRirResponseAsObject:
+      description: The response format to update __Rir__ in object format.
+      example:
+        result:
+          communication_mode: Example communication_mode
+          use_email: false
+          use_url: false
+          _ref: _ref
+          name: Example name
+          email: Example email
+          url: Example url
+      properties:
+        result:
+          $ref: '#/components/schemas/Rir'
+      title: UpdateRirResponseAsObject
+      type: object
+    ListRirOrganizationResponseObject:
+      description: The response format to retrieve __RirOrganization__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/RirOrganization'
+          type: array
+      title: ListRirOrganizationResponseObject
+      type: object
+    CreateRirOrganizationResponseAsObject:
+      description: The response format to create __RirOrganization__ in object format.
+      example:
+        result:
+          password: Example password
+          extattrs:
+            key:
+              value: ""
+          _ref: _ref
+          name: Example name
+          rir: Example rir
+          id: Example id
+          maintainer: Example maintainer
+          sender_email: Example sender_email
+      properties:
+        result:
+          $ref: '#/components/schemas/RirOrganization'
+      title: CreateRirOrganizationResponseAsObject
+      type: object
+    GetRirOrganizationResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __RirOrganization__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/RirOrganization'
+      title: GetRirOrganizationResponseObjectAsResult
+      type: object
+    UpdateRirOrganizationResponseAsObject:
+      description: The response format to update __RirOrganization__ in object format.
+      example:
+        result:
+          password: Example password
+          extattrs:
+            key:
+              value: ""
+          _ref: _ref
+          name: Example name
+          rir: Example rir
+          id: Example id
+          maintainer: Example maintainer
+          sender_email: Example sender_email
+      properties:
+        result:
+          $ref: '#/components/schemas/RirOrganization'
+      title: UpdateRirOrganizationResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http

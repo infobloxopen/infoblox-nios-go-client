@@ -23,11 +23,11 @@ func TestNetworkAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test NetworkAPIService Get", func(t *testing.T) {
+	t.Run("Test NetworkAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworkAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NetworkAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkAPIService Post", func(t *testing.T) {
+	t.Run("Test NetworkAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworkAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NetworkAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NetworkAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NetworkAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test NetworkAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NetworkAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NetworkAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NetworkAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NetworkAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNetworkAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test NetworkAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NetworkAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NetworkAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

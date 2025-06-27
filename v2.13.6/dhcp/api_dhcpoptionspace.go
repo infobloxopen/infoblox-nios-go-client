@@ -23,150 +23,374 @@ import (
 
 type DhcpoptionspaceAPI interface {
 	/*
-		Get Retrieve dhcpoptionspace objects
-
-		Returns a list of dhcpoptionspace objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DhcpoptionspaceAPIGetRequest
-	*/
-	Get(ctx context.Context) DhcpoptionspaceAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListDhcpoptionspaceResponse
-	GetExecute(r DhcpoptionspaceAPIGetRequest) (*ListDhcpoptionspaceResponse, *http.Response, error)
-	/*
-		Post Create a dhcpoptionspace object
+		Create Create a dhcpoptionspace object
 
 		Creates a new dhcpoptionspace object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DhcpoptionspaceAPIPostRequest
+		@return DhcpoptionspaceAPICreateRequest
 	*/
-	Post(ctx context.Context) DhcpoptionspaceAPIPostRequest
+	Create(ctx context.Context) DhcpoptionspaceAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateDhcpoptionspaceResponse
-	PostExecute(r DhcpoptionspaceAPIPostRequest) (*CreateDhcpoptionspaceResponse, *http.Response, error)
+	CreateExecute(r DhcpoptionspaceAPICreateRequest) (*CreateDhcpoptionspaceResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a dhcpoptionspace object
+		Delete Delete a dhcpoptionspace object
 
 		Deletes a specific dhcpoptionspace object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpoptionspace object
-		@return DhcpoptionspaceAPIReferenceDeleteRequest
+		@return DhcpoptionspaceAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) DhcpoptionspaceAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) DhcpoptionspaceAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r DhcpoptionspaceAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r DhcpoptionspaceAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific dhcpoptionspace object
+		List Retrieve dhcpoptionspace objects
+
+		Returns a list of dhcpoptionspace objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return DhcpoptionspaceAPIListRequest
+	*/
+	List(ctx context.Context) DhcpoptionspaceAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListDhcpoptionspaceResponse
+	ListExecute(r DhcpoptionspaceAPIListRequest) (*ListDhcpoptionspaceResponse, *http.Response, error)
+	/*
+		Read Get a specific dhcpoptionspace object
 
 		Returns a specific dhcpoptionspace object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpoptionspace object
-		@return DhcpoptionspaceAPIReferenceGetRequest
+		@return DhcpoptionspaceAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DhcpoptionspaceAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DhcpoptionspaceAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDhcpoptionspaceResponse
-	ReferenceGetExecute(r DhcpoptionspaceAPIReferenceGetRequest) (*GetDhcpoptionspaceResponse, *http.Response, error)
+	ReadExecute(r DhcpoptionspaceAPIReadRequest) (*GetDhcpoptionspaceResponse, *http.Response, error)
 	/*
-		ReferencePut Update a dhcpoptionspace object
+		Update Update a dhcpoptionspace object
 
 		Updates a specific dhcpoptionspace object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dhcpoptionspace object
-		@return DhcpoptionspaceAPIReferencePutRequest
+		@return DhcpoptionspaceAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) DhcpoptionspaceAPIReferencePutRequest
+	Update(ctx context.Context, reference string) DhcpoptionspaceAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateDhcpoptionspaceResponse
-	ReferencePutExecute(r DhcpoptionspaceAPIReferencePutRequest) (*UpdateDhcpoptionspaceResponse, *http.Response, error)
+	UpdateExecute(r DhcpoptionspaceAPIUpdateRequest) (*UpdateDhcpoptionspaceResponse, *http.Response, error)
 }
 
 // DhcpoptionspaceAPIService DhcpoptionspaceAPI service
 type DhcpoptionspaceAPIService internal.Service
 
-type DhcpoptionspaceAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     DhcpoptionspaceAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DhcpoptionspaceAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       DhcpoptionspaceAPI
+	dhcpoptionspace  *Dhcpoptionspace
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r DhcpoptionspaceAPICreateRequest) Dhcpoptionspace(dhcpoptionspace Dhcpoptionspace) DhcpoptionspaceAPICreateRequest {
+	r.dhcpoptionspace = &dhcpoptionspace
+	return r
 }
 
 // Enter the field names followed by comma
-func (r DhcpoptionspaceAPIGetRequest) ReturnFields(returnFields string) DhcpoptionspaceAPIGetRequest {
+func (r DhcpoptionspaceAPICreateRequest) ReturnFields(returnFields string) DhcpoptionspaceAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptionspaceAPIGetRequest) ReturnFields2(returnFields2 string) DhcpoptionspaceAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptionspaceAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptionspaceAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r DhcpoptionspaceAPICreateRequest) ReturnAsObject(returnAsObject int32) DhcpoptionspaceAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r DhcpoptionspaceAPICreateRequest) Execute() (*CreateDhcpoptionspaceResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a dhcpoptionspace object
+
+Creates a new dhcpoptionspace object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DhcpoptionspaceAPICreateRequest
+*/
+func (a *DhcpoptionspaceAPIService) Create(ctx context.Context) DhcpoptionspaceAPICreateRequest {
+	return DhcpoptionspaceAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateDhcpoptionspaceResponse
+func (a *DhcpoptionspaceAPIService) CreateExecute(r DhcpoptionspaceAPICreateRequest) (*CreateDhcpoptionspaceResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateDhcpoptionspaceResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dhcpoptionspace"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.dhcpoptionspace == nil {
+		return localVarReturnValue, nil, internal.ReportError("dhcpoptionspace is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.dhcpoptionspace
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DhcpoptionspaceAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService DhcpoptionspaceAPI
+	reference  string
+}
+
+func (r DhcpoptionspaceAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a dhcpoptionspace object
+
+Deletes a specific dhcpoptionspace object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the dhcpoptionspace object
+	@return DhcpoptionspaceAPIDeleteRequest
+*/
+func (a *DhcpoptionspaceAPIService) Delete(ctx context.Context, reference string) DhcpoptionspaceAPIDeleteRequest {
+	return DhcpoptionspaceAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *DhcpoptionspaceAPIService) DeleteExecute(r DhcpoptionspaceAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/dhcpoptionspace/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DhcpoptionspaceAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DhcpoptionspaceAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r DhcpoptionspaceAPIListRequest) ReturnFields(returnFields string) DhcpoptionspaceAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r DhcpoptionspaceAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptionspaceAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DhcpoptionspaceAPIGetRequest) MaxResults(maxResults int32) DhcpoptionspaceAPIGetRequest {
+func (r DhcpoptionspaceAPIListRequest) MaxResults(maxResults int32) DhcpoptionspaceAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpoptionspaceAPIGetRequest) ReturnAsObject(returnAsObject int32) DhcpoptionspaceAPIGetRequest {
+func (r DhcpoptionspaceAPIListRequest) ReturnAsObject(returnAsObject int32) DhcpoptionspaceAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DhcpoptionspaceAPIGetRequest) Paging(paging int32) DhcpoptionspaceAPIGetRequest {
+func (r DhcpoptionspaceAPIListRequest) Paging(paging int32) DhcpoptionspaceAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DhcpoptionspaceAPIGetRequest) PageId(pageId string) DhcpoptionspaceAPIGetRequest {
+func (r DhcpoptionspaceAPIListRequest) PageId(pageId string) DhcpoptionspaceAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DhcpoptionspaceAPIGetRequest) Filters(filters map[string]interface{}) DhcpoptionspaceAPIGetRequest {
+func (r DhcpoptionspaceAPIListRequest) Filters(filters map[string]interface{}) DhcpoptionspaceAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DhcpoptionspaceAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DhcpoptionspaceAPIGetRequest {
+func (r DhcpoptionspaceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DhcpoptionspaceAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DhcpoptionspaceAPIGetRequest) Execute() (*ListDhcpoptionspaceResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DhcpoptionspaceAPIListRequest) Execute() (*ListDhcpoptionspaceResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve dhcpoptionspace objects
+List Retrieve dhcpoptionspace objects
 
 Returns a list of dhcpoptionspace objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DhcpoptionspaceAPIGetRequest
+	@return DhcpoptionspaceAPIListRequest
 */
-func (a *DhcpoptionspaceAPIService) Get(ctx context.Context) DhcpoptionspaceAPIGetRequest {
-	return DhcpoptionspaceAPIGetRequest{
+func (a *DhcpoptionspaceAPIService) List(ctx context.Context) DhcpoptionspaceAPIListRequest {
+	return DhcpoptionspaceAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +399,7 @@ func (a *DhcpoptionspaceAPIService) Get(ctx context.Context) DhcpoptionspaceAPIG
 // Execute executes the request
 //
 //	@return ListDhcpoptionspaceResponse
-func (a *DhcpoptionspaceAPIService) GetExecute(r DhcpoptionspaceAPIGetRequest) (*ListDhcpoptionspaceResponse, *http.Response, error) {
+func (a *DhcpoptionspaceAPIService) ListExecute(r DhcpoptionspaceAPIListRequest) (*ListDhcpoptionspaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +407,7 @@ func (a *DhcpoptionspaceAPIService) GetExecute(r DhcpoptionspaceAPIGetRequest) (
 		localVarReturnValue *ListDhcpoptionspaceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +421,8 @@ func (a *DhcpoptionspaceAPIService) GetExecute(r DhcpoptionspaceAPIGetRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,272 +489,48 @@ func (a *DhcpoptionspaceAPIService) GetExecute(r DhcpoptionspaceAPIGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DhcpoptionspaceAPIPostRequest struct {
-	ctx             context.Context
-	ApiService      DhcpoptionspaceAPI
-	dhcpoptionspace *Dhcpoptionspace
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
-}
-
-// Object data to create
-func (r DhcpoptionspaceAPIPostRequest) Dhcpoptionspace(dhcpoptionspace Dhcpoptionspace) DhcpoptionspaceAPIPostRequest {
-	r.dhcpoptionspace = &dhcpoptionspace
-	return r
+type DhcpoptionspaceAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DhcpoptionspaceAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DhcpoptionspaceAPIPostRequest) ReturnFields(returnFields string) DhcpoptionspaceAPIPostRequest {
+func (r DhcpoptionspaceAPIReadRequest) ReturnFields(returnFields string) DhcpoptionspaceAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptionspaceAPIPostRequest) ReturnFields2(returnFields2 string) DhcpoptionspaceAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptionspaceAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptionspaceAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpoptionspaceAPIPostRequest) ReturnAsObject(returnAsObject int32) DhcpoptionspaceAPIPostRequest {
+func (r DhcpoptionspaceAPIReadRequest) ReturnAsObject(returnAsObject int32) DhcpoptionspaceAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DhcpoptionspaceAPIPostRequest) Execute() (*CreateDhcpoptionspaceResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r DhcpoptionspaceAPIReadRequest) Execute() (*GetDhcpoptionspaceResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a dhcpoptionspace object
-
-Creates a new dhcpoptionspace object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DhcpoptionspaceAPIPostRequest
-*/
-func (a *DhcpoptionspaceAPIService) Post(ctx context.Context) DhcpoptionspaceAPIPostRequest {
-	return DhcpoptionspaceAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateDhcpoptionspaceResponse
-func (a *DhcpoptionspaceAPIService) PostExecute(r DhcpoptionspaceAPIPostRequest) (*CreateDhcpoptionspaceResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateDhcpoptionspaceResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dhcpoptionspace"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.dhcpoptionspace == nil {
-		return localVarReturnValue, nil, internal.ReportError("dhcpoptionspace is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.dhcpoptionspace
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DhcpoptionspaceAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService DhcpoptionspaceAPI
-	reference  string
-}
-
-func (r DhcpoptionspaceAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a dhcpoptionspace object
-
-Deletes a specific dhcpoptionspace object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the dhcpoptionspace object
-	@return DhcpoptionspaceAPIReferenceDeleteRequest
-*/
-func (a *DhcpoptionspaceAPIService) ReferenceDelete(ctx context.Context, reference string) DhcpoptionspaceAPIReferenceDeleteRequest {
-	return DhcpoptionspaceAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *DhcpoptionspaceAPIService) ReferenceDeleteExecute(r DhcpoptionspaceAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dhcpoptionspace/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type DhcpoptionspaceAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DhcpoptionspaceAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r DhcpoptionspaceAPIReferenceGetRequest) ReturnFields(returnFields string) DhcpoptionspaceAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptionspaceAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DhcpoptionspaceAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DhcpoptionspaceAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DhcpoptionspaceAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DhcpoptionspaceAPIReferenceGetRequest) Execute() (*GetDhcpoptionspaceResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific dhcpoptionspace object
+Read Get a specific dhcpoptionspace object
 
 Returns a specific dhcpoptionspace object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dhcpoptionspace object
-	@return DhcpoptionspaceAPIReferenceGetRequest
+	@return DhcpoptionspaceAPIReadRequest
 */
-func (a *DhcpoptionspaceAPIService) ReferenceGet(ctx context.Context, reference string) DhcpoptionspaceAPIReferenceGetRequest {
-	return DhcpoptionspaceAPIReferenceGetRequest{
+func (a *DhcpoptionspaceAPIService) Read(ctx context.Context, reference string) DhcpoptionspaceAPIReadRequest {
+	return DhcpoptionspaceAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -540,7 +540,7 @@ func (a *DhcpoptionspaceAPIService) ReferenceGet(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return GetDhcpoptionspaceResponse
-func (a *DhcpoptionspaceAPIService) ReferenceGetExecute(r DhcpoptionspaceAPIReferenceGetRequest) (*GetDhcpoptionspaceResponse, *http.Response, error) {
+func (a *DhcpoptionspaceAPIService) ReadExecute(r DhcpoptionspaceAPIReadRequest) (*GetDhcpoptionspaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -548,7 +548,7 @@ func (a *DhcpoptionspaceAPIService) ReferenceGetExecute(r DhcpoptionspaceAPIRefe
 		localVarReturnValue *GetDhcpoptionspaceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -563,8 +563,8 @@ func (a *DhcpoptionspaceAPIService) ReferenceGetExecute(r DhcpoptionspaceAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -616,55 +616,55 @@ func (a *DhcpoptionspaceAPIService) ReferenceGetExecute(r DhcpoptionspaceAPIRefe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DhcpoptionspaceAPIReferencePutRequest struct {
-	ctx             context.Context
-	ApiService      DhcpoptionspaceAPI
-	reference       string
-	dhcpoptionspace *Dhcpoptionspace
-	returnFields    *string
-	returnFields2   *string
-	returnAsObject  *int32
+type DhcpoptionspaceAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       DhcpoptionspaceAPI
+	reference        string
+	dhcpoptionspace  *Dhcpoptionspace
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r DhcpoptionspaceAPIReferencePutRequest) Dhcpoptionspace(dhcpoptionspace Dhcpoptionspace) DhcpoptionspaceAPIReferencePutRequest {
+func (r DhcpoptionspaceAPIUpdateRequest) Dhcpoptionspace(dhcpoptionspace Dhcpoptionspace) DhcpoptionspaceAPIUpdateRequest {
 	r.dhcpoptionspace = &dhcpoptionspace
 	return r
 }
 
 // Enter the field names followed by comma
-func (r DhcpoptionspaceAPIReferencePutRequest) ReturnFields(returnFields string) DhcpoptionspaceAPIReferencePutRequest {
+func (r DhcpoptionspaceAPIUpdateRequest) ReturnFields(returnFields string) DhcpoptionspaceAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DhcpoptionspaceAPIReferencePutRequest) ReturnFields2(returnFields2 string) DhcpoptionspaceAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r DhcpoptionspaceAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) DhcpoptionspaceAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DhcpoptionspaceAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) DhcpoptionspaceAPIReferencePutRequest {
+func (r DhcpoptionspaceAPIUpdateRequest) ReturnAsObject(returnAsObject int32) DhcpoptionspaceAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DhcpoptionspaceAPIReferencePutRequest) Execute() (*UpdateDhcpoptionspaceResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r DhcpoptionspaceAPIUpdateRequest) Execute() (*UpdateDhcpoptionspaceResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a dhcpoptionspace object
+Update Update a dhcpoptionspace object
 
 Updates a specific dhcpoptionspace object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dhcpoptionspace object
-	@return DhcpoptionspaceAPIReferencePutRequest
+	@return DhcpoptionspaceAPIUpdateRequest
 */
-func (a *DhcpoptionspaceAPIService) ReferencePut(ctx context.Context, reference string) DhcpoptionspaceAPIReferencePutRequest {
-	return DhcpoptionspaceAPIReferencePutRequest{
+func (a *DhcpoptionspaceAPIService) Update(ctx context.Context, reference string) DhcpoptionspaceAPIUpdateRequest {
+	return DhcpoptionspaceAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -674,7 +674,7 @@ func (a *DhcpoptionspaceAPIService) ReferencePut(ctx context.Context, reference 
 // Execute executes the request
 //
 //	@return UpdateDhcpoptionspaceResponse
-func (a *DhcpoptionspaceAPIService) ReferencePutExecute(r DhcpoptionspaceAPIReferencePutRequest) (*UpdateDhcpoptionspaceResponse, *http.Response, error) {
+func (a *DhcpoptionspaceAPIService) UpdateExecute(r DhcpoptionspaceAPIUpdateRequest) (*UpdateDhcpoptionspaceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -682,7 +682,7 @@ func (a *DhcpoptionspaceAPIService) ReferencePutExecute(r DhcpoptionspaceAPIRefe
 		localVarReturnValue *UpdateDhcpoptionspaceResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DhcpoptionspaceAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -700,8 +700,8 @@ func (a *DhcpoptionspaceAPIService) ReferencePutExecute(r DhcpoptionspaceAPIRefe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

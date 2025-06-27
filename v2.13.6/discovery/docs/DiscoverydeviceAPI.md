@@ -1,18 +1,18 @@
-# DiscoverydeviceAPI
+# DiscoveryDeviceAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DiscoverydeviceAPI.md#Get) | **Get** /discovery:device | Retrieve discovery:device objects
-[**ReferenceGet**](DiscoverydeviceAPI.md#ReferenceGet) | **Get** /discovery:device/{reference} | Get a specific discovery:device object
-[**ReferencePut**](DiscoverydeviceAPI.md#ReferencePut) | **Put** /discovery:device/{reference} | Update a discovery:device object
+[**List**](DiscoveryDeviceAPI.md#List) | **Get** /discovery:device | Retrieve discovery:device objects
+[**Read**](DiscoveryDeviceAPI.md#Read) | **Get** /discovery:device/{reference} | Get a specific discovery:device object
+[**Update**](DiscoveryDeviceAPI.md#Update) | **Put** /discovery:device/{reference} | Update a discovery:device object
 
 
 
-## Get
+## List
 
-> ListDiscoveryDeviceResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryDeviceResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve discovery:device objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverydeviceAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DiscoveryDeviceAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydeviceAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDiscoveryDeviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverydeviceAPI.Get`: %v\n", resp)
+	// response from `List`: ListDiscoveryDeviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydeviceAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDeviceAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDiscoveryDeviceResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDiscoveryDeviceResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific discovery:device object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the discovery:device object
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverydeviceAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DiscoveryDeviceAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydeviceAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDiscoveryDeviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverydeviceAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDiscoveryDeviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydeviceAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDeviceAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDiscoveryDeviceResponse ReferencePut(ctx, reference).DiscoveryDevice(discoveryDevice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDiscoveryDeviceResponse Update(ctx, reference).DiscoveryDevice(discoveryDevice).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a discovery:device object
 
@@ -180,13 +180,13 @@ func main() {
 	discoveryDevice := *discovery.NewDiscoveryDevice() // DiscoveryDevice | Object data to update
 
 	apiClient := discovery.NewAPIClient()
-	resp, r, err := apiClient.DiscoverydeviceAPI.ReferencePut(context.Background(), reference).DiscoveryDevice(discoveryDevice).Execute()
+	resp, r, err := apiClient.DiscoveryDeviceAPI.Update(context.Background(), reference).DiscoveryDevice(discoveryDevice).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DiscoverydeviceAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DiscoveryDeviceAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDiscoveryDeviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `DiscoverydeviceAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDiscoveryDeviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `DiscoveryDeviceAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DiscoverydeviceAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DiscoveryDeviceAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **discoveryDevice** | [**DiscoveryDevice**](DiscoveryDevice.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -23,11 +23,11 @@ func TestPermissionAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test PermissionAPIService Get", func(t *testing.T) {
+	t.Run("Test PermissionAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.PermissionAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PermissionAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestPermissionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PermissionAPIService Post", func(t *testing.T) {
+	t.Run("Test PermissionAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.PermissionAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.PermissionAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PermissionAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.PermissionAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestPermissionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PermissionAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test PermissionAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.PermissionAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PermissionAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.PermissionAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.PermissionAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestPermissionAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PermissionAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test PermissionAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.PermissionAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.PermissionAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

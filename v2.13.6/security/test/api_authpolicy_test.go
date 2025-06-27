@@ -23,11 +23,11 @@ func TestAuthpolicyAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test AuthpolicyAPIService Get", func(t *testing.T) {
+	t.Run("Test AuthpolicyAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AuthpolicyAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AuthpolicyAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestAuthpolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AuthpolicyAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test AuthpolicyAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.AuthpolicyAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AuthpolicyAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestAuthpolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AuthpolicyAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test AuthpolicyAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.AuthpolicyAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.AuthpolicyAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

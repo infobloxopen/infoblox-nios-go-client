@@ -23,137 +23,226 @@ import (
 
 type Ipv6addressAPI interface {
 	/*
-		Get Retrieve ipv6address objects
-
-		Returns a list of ipv6address objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6addressAPIGetRequest
-	*/
-	Get(ctx context.Context) Ipv6addressAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListIpv6addressResponse
-	GetExecute(r Ipv6addressAPIGetRequest) (*ListIpv6addressResponse, *http.Response, error)
-	/*
-		ReferenceDelete Delete a ipv6address object
+		Delete Delete a ipv6address object
 
 		Deletes a specific ipv6address object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6address object
-		@return Ipv6addressAPIReferenceDeleteRequest
+		@return Ipv6addressAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) Ipv6addressAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) Ipv6addressAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r Ipv6addressAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r Ipv6addressAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ipv6address object
+		List Retrieve ipv6address objects
+
+		Returns a list of ipv6address objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return Ipv6addressAPIListRequest
+	*/
+	List(ctx context.Context) Ipv6addressAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListIpv6addressResponse
+	ListExecute(r Ipv6addressAPIListRequest) (*ListIpv6addressResponse, *http.Response, error)
+	/*
+		Read Get a specific ipv6address object
 
 		Returns a specific ipv6address object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6address object
-		@return Ipv6addressAPIReferenceGetRequest
+		@return Ipv6addressAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) Ipv6addressAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) Ipv6addressAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetIpv6addressResponse
-	ReferenceGetExecute(r Ipv6addressAPIReferenceGetRequest) (*GetIpv6addressResponse, *http.Response, error)
+	ReadExecute(r Ipv6addressAPIReadRequest) (*GetIpv6addressResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ipv6address object
+		Update Update a ipv6address object
 
 		Updates a specific ipv6address object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6address object
-		@return Ipv6addressAPIReferencePutRequest
+		@return Ipv6addressAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) Ipv6addressAPIReferencePutRequest
+	Update(ctx context.Context, reference string) Ipv6addressAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateIpv6addressResponse
-	ReferencePutExecute(r Ipv6addressAPIReferencePutRequest) (*UpdateIpv6addressResponse, *http.Response, error)
+	UpdateExecute(r Ipv6addressAPIUpdateRequest) (*UpdateIpv6addressResponse, *http.Response, error)
 }
 
 // Ipv6addressAPIService Ipv6addressAPI service
 type Ipv6addressAPIService internal.Service
 
-type Ipv6addressAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6addressAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type Ipv6addressAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService Ipv6addressAPI
+	reference  string
+}
+
+func (r Ipv6addressAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ipv6address object
+
+Deletes a specific ipv6address object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ipv6address object
+	@return Ipv6addressAPIDeleteRequest
+*/
+func (a *Ipv6addressAPIService) Delete(ctx context.Context, reference string) Ipv6addressAPIDeleteRequest {
+	return Ipv6addressAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *Ipv6addressAPIService) DeleteExecute(r Ipv6addressAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6addressAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv6address/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type Ipv6addressAPIListRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6addressAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r Ipv6addressAPIGetRequest) ReturnFields(returnFields string) Ipv6addressAPIGetRequest {
+func (r Ipv6addressAPIListRequest) ReturnFields(returnFields string) Ipv6addressAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6addressAPIGetRequest) ReturnFields2(returnFields2 string) Ipv6addressAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6addressAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6addressAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r Ipv6addressAPIGetRequest) MaxResults(maxResults int32) Ipv6addressAPIGetRequest {
+func (r Ipv6addressAPIListRequest) MaxResults(maxResults int32) Ipv6addressAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6addressAPIGetRequest) ReturnAsObject(returnAsObject int32) Ipv6addressAPIGetRequest {
+func (r Ipv6addressAPIListRequest) ReturnAsObject(returnAsObject int32) Ipv6addressAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r Ipv6addressAPIGetRequest) Paging(paging int32) Ipv6addressAPIGetRequest {
+func (r Ipv6addressAPIListRequest) Paging(paging int32) Ipv6addressAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r Ipv6addressAPIGetRequest) PageId(pageId string) Ipv6addressAPIGetRequest {
+func (r Ipv6addressAPIListRequest) PageId(pageId string) Ipv6addressAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r Ipv6addressAPIGetRequest) Filters(filters map[string]interface{}) Ipv6addressAPIGetRequest {
+func (r Ipv6addressAPIListRequest) Filters(filters map[string]interface{}) Ipv6addressAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r Ipv6addressAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6addressAPIGetRequest {
+func (r Ipv6addressAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6addressAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r Ipv6addressAPIGetRequest) Execute() (*ListIpv6addressResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r Ipv6addressAPIListRequest) Execute() (*ListIpv6addressResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ipv6address objects
+List Retrieve ipv6address objects
 
 Returns a list of ipv6address objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6addressAPIGetRequest
+	@return Ipv6addressAPIListRequest
 */
-func (a *Ipv6addressAPIService) Get(ctx context.Context) Ipv6addressAPIGetRequest {
-	return Ipv6addressAPIGetRequest{
+func (a *Ipv6addressAPIService) List(ctx context.Context) Ipv6addressAPIListRequest {
+	return Ipv6addressAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -162,7 +251,7 @@ func (a *Ipv6addressAPIService) Get(ctx context.Context) Ipv6addressAPIGetReques
 // Execute executes the request
 //
 //	@return ListIpv6addressResponse
-func (a *Ipv6addressAPIService) GetExecute(r Ipv6addressAPIGetRequest) (*ListIpv6addressResponse, *http.Response, error) {
+func (a *Ipv6addressAPIService) ListExecute(r Ipv6addressAPIListRequest) (*ListIpv6addressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -170,7 +259,7 @@ func (a *Ipv6addressAPIService) GetExecute(r Ipv6addressAPIGetRequest) (*ListIpv
 		localVarReturnValue *ListIpv6addressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6addressAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6addressAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -184,8 +273,8 @@ func (a *Ipv6addressAPIService) GetExecute(r Ipv6addressAPIGetRequest) (*ListIpv
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -252,137 +341,48 @@ func (a *Ipv6addressAPIService) GetExecute(r Ipv6addressAPIGetRequest) (*ListIpv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6addressAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService Ipv6addressAPI
-	reference  string
-}
-
-func (r Ipv6addressAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ipv6address object
-
-Deletes a specific ipv6address object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ipv6address object
-	@return Ipv6addressAPIReferenceDeleteRequest
-*/
-func (a *Ipv6addressAPIService) ReferenceDelete(ctx context.Context, reference string) Ipv6addressAPIReferenceDeleteRequest {
-	return Ipv6addressAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *Ipv6addressAPIService) ReferenceDeleteExecute(r Ipv6addressAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6addressAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv6address/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type Ipv6addressAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6addressAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type Ipv6addressAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6addressAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r Ipv6addressAPIReferenceGetRequest) ReturnFields(returnFields string) Ipv6addressAPIReferenceGetRequest {
+func (r Ipv6addressAPIReadRequest) ReturnFields(returnFields string) Ipv6addressAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6addressAPIReferenceGetRequest) ReturnFields2(returnFields2 string) Ipv6addressAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6addressAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6addressAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6addressAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) Ipv6addressAPIReferenceGetRequest {
+func (r Ipv6addressAPIReadRequest) ReturnAsObject(returnAsObject int32) Ipv6addressAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6addressAPIReferenceGetRequest) Execute() (*GetIpv6addressResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r Ipv6addressAPIReadRequest) Execute() (*GetIpv6addressResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific ipv6address object
+Read Get a specific ipv6address object
 
 Returns a specific ipv6address object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6address object
-	@return Ipv6addressAPIReferenceGetRequest
+	@return Ipv6addressAPIReadRequest
 */
-func (a *Ipv6addressAPIService) ReferenceGet(ctx context.Context, reference string) Ipv6addressAPIReferenceGetRequest {
-	return Ipv6addressAPIReferenceGetRequest{
+func (a *Ipv6addressAPIService) Read(ctx context.Context, reference string) Ipv6addressAPIReadRequest {
+	return Ipv6addressAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -392,7 +392,7 @@ func (a *Ipv6addressAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetIpv6addressResponse
-func (a *Ipv6addressAPIService) ReferenceGetExecute(r Ipv6addressAPIReferenceGetRequest) (*GetIpv6addressResponse, *http.Response, error) {
+func (a *Ipv6addressAPIService) ReadExecute(r Ipv6addressAPIReadRequest) (*GetIpv6addressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -400,7 +400,7 @@ func (a *Ipv6addressAPIService) ReferenceGetExecute(r Ipv6addressAPIReferenceGet
 		localVarReturnValue *GetIpv6addressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6addressAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6addressAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -415,8 +415,8 @@ func (a *Ipv6addressAPIService) ReferenceGetExecute(r Ipv6addressAPIReferenceGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -468,55 +468,55 @@ func (a *Ipv6addressAPIService) ReferenceGetExecute(r Ipv6addressAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6addressAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6addressAPI
-	reference      string
-	ipv6address    *Ipv6address
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type Ipv6addressAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6addressAPI
+	reference        string
+	ipv6address      *Ipv6address
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r Ipv6addressAPIReferencePutRequest) Ipv6address(ipv6address Ipv6address) Ipv6addressAPIReferencePutRequest {
+func (r Ipv6addressAPIUpdateRequest) Ipv6address(ipv6address Ipv6address) Ipv6addressAPIUpdateRequest {
 	r.ipv6address = &ipv6address
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv6addressAPIReferencePutRequest) ReturnFields(returnFields string) Ipv6addressAPIReferencePutRequest {
+func (r Ipv6addressAPIUpdateRequest) ReturnFields(returnFields string) Ipv6addressAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6addressAPIReferencePutRequest) ReturnFields2(returnFields2 string) Ipv6addressAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6addressAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6addressAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6addressAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) Ipv6addressAPIReferencePutRequest {
+func (r Ipv6addressAPIUpdateRequest) ReturnAsObject(returnAsObject int32) Ipv6addressAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6addressAPIReferencePutRequest) Execute() (*UpdateIpv6addressResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r Ipv6addressAPIUpdateRequest) Execute() (*UpdateIpv6addressResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ipv6address object
+Update Update a ipv6address object
 
 Updates a specific ipv6address object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6address object
-	@return Ipv6addressAPIReferencePutRequest
+	@return Ipv6addressAPIUpdateRequest
 */
-func (a *Ipv6addressAPIService) ReferencePut(ctx context.Context, reference string) Ipv6addressAPIReferencePutRequest {
-	return Ipv6addressAPIReferencePutRequest{
+func (a *Ipv6addressAPIService) Update(ctx context.Context, reference string) Ipv6addressAPIUpdateRequest {
+	return Ipv6addressAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -526,7 +526,7 @@ func (a *Ipv6addressAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateIpv6addressResponse
-func (a *Ipv6addressAPIService) ReferencePutExecute(r Ipv6addressAPIReferencePutRequest) (*UpdateIpv6addressResponse, *http.Response, error) {
+func (a *Ipv6addressAPIService) UpdateExecute(r Ipv6addressAPIUpdateRequest) (*UpdateIpv6addressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -534,7 +534,7 @@ func (a *Ipv6addressAPIService) ReferencePutExecute(r Ipv6addressAPIReferencePut
 		localVarReturnValue *UpdateIpv6addressResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6addressAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6addressAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -552,8 +552,8 @@ func (a *Ipv6addressAPIService) ReferencePutExecute(r Ipv6addressAPIReferencePut
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -576,12 +576,12 @@ func (a *Ipv6addressAPIService) ReferencePutExecute(r Ipv6addressAPIReferencePut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6address != nil {
-		if r.ipv6address.Extattrs == nil {
-			r.ipv6address.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6address.ExtAttrs == nil {
+			r.ipv6address.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6address.Extattrs)[k]; !ok {
-				(*r.ipv6address.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6address.ExtAttrs)[k]; !ok {
+				(*r.ipv6address.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

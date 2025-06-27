@@ -28,9 +28,9 @@ Name | Type | Description | Notes
 **DescriptionTaskInfo** | Pointer to [**DiscoveryDeviceinterfaceDescriptionTaskInfo**](DiscoveryDeviceinterfaceDescriptionTaskInfo.md) |  | [optional] 
 **Device** | Pointer to **string** | The ref to the device to which the interface belongs. | [optional] [readonly] 
 **Duplex** | Pointer to **string** | The duplex state of the interface. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **IfaddrInfos** | Pointer to [**[]DiscoveryDeviceinterfaceIfaddrInfos**](DiscoveryDeviceinterfaceIfaddrInfos.md) | List of IFaddr information associated with the interface. | [optional] [readonly] 
-**Index** | Pointer to **int32** | The interface index number, as reported by SNMP. | [optional] [readonly] 
+**Index** | Pointer to **int64** | The interface index number, as reported by SNMP. | [optional] [readonly] 
 **LastChange** | Pointer to **int64** | Timestamp of the last interface property change detected. | [optional] [readonly] 
 **LinkAggregation** | Pointer to **bool** | This field indicates if this is a link aggregation interface. | [optional] [readonly] 
 **Mac** | Pointer to **string** | The MAC address of the interface. | [optional] [readonly] 
@@ -670,30 +670,30 @@ SetDuplex sets Duplex field to given value.
 
 HasDuplex returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *DiscoveryDeviceinterface) GetExtattrs() map[string]ExtAttrs`
+`func (o *DiscoveryDeviceinterface) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *DiscoveryDeviceinterface) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *DiscoveryDeviceinterface) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *DiscoveryDeviceinterface) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *DiscoveryDeviceinterface) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *DiscoveryDeviceinterface) HasExtattrs() bool`
+`func (o *DiscoveryDeviceinterface) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIfaddrInfos
 
@@ -722,20 +722,20 @@ HasIfaddrInfos returns a boolean if a field has been set.
 
 ### GetIndex
 
-`func (o *DiscoveryDeviceinterface) GetIndex() int32`
+`func (o *DiscoveryDeviceinterface) GetIndex() int64`
 
 GetIndex returns the Index field if non-nil, zero value otherwise.
 
 ### GetIndexOk
 
-`func (o *DiscoveryDeviceinterface) GetIndexOk() (*int32, bool)`
+`func (o *DiscoveryDeviceinterface) GetIndexOk() (*int64, bool)`
 
 GetIndexOk returns a tuple with the Index field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIndex
 
-`func (o *DiscoveryDeviceinterface) SetIndex(v int32)`
+`func (o *DiscoveryDeviceinterface) SetIndex(v int64)`
 
 SetIndex sets Index field to given value.
 

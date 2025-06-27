@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Disable** | Pointer to **bool** | Determines whether the admin user is disabled or not. When this is set to False, the admin user is enabled. | [optional] 
 **Email** | Pointer to **string** | The e-mail address for the admin user. | [optional] 
 **EnableCertificateAuthentication** | Pointer to **bool** | Determines whether the user is allowed to log in only with the certificate. Regular username/password authentication will be disabled for this user. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | The name of the admin user. | [optional] 
 **Password** | Pointer to **string** | The password for the administrator to use when logging in. | [optional] 
 **SshKeys** | Pointer to [**[]AdminuserSshKeys**](AdminuserSshKeys.md) | List of ssh keys for a particular user. | [optional] 
@@ -293,30 +293,30 @@ SetEnableCertificateAuthentication sets EnableCertificateAuthentication field to
 
 HasEnableCertificateAuthentication returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetAdminuserResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetAdminuserResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetAdminuserResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetAdminuserResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetAdminuserResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetAdminuserResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetAdminuserResponse) HasExtattrs() bool`
+`func (o *GetAdminuserResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetName
 

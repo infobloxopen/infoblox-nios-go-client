@@ -23,11 +23,11 @@ func TestMacfilteraddressAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test MacfilteraddressAPIService Get", func(t *testing.T) {
+	t.Run("Test MacfilteraddressAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MacfilteraddressAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.MacfilteraddressAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestMacfilteraddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MacfilteraddressAPIService Post", func(t *testing.T) {
+	t.Run("Test MacfilteraddressAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.MacfilteraddressAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.MacfilteraddressAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MacfilteraddressAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.MacfilteraddressAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestMacfilteraddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MacfilteraddressAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test MacfilteraddressAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.MacfilteraddressAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test MacfilteraddressAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.MacfilteraddressAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MacfilteraddressAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestMacfilteraddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test MacfilteraddressAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test MacfilteraddressAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.MacfilteraddressAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.MacfilteraddressAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

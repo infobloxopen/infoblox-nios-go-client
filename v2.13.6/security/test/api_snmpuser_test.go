@@ -23,11 +23,11 @@ func TestSnmpuserAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test SnmpuserAPIService Get", func(t *testing.T) {
+	t.Run("Test SnmpuserAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SnmpuserAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SnmpuserAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestSnmpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SnmpuserAPIService Post", func(t *testing.T) {
+	t.Run("Test SnmpuserAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SnmpuserAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.SnmpuserAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SnmpuserAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.SnmpuserAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestSnmpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SnmpuserAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test SnmpuserAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.SnmpuserAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SnmpuserAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.SnmpuserAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SnmpuserAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestSnmpuserAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SnmpuserAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test SnmpuserAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.SnmpuserAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.SnmpuserAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -23,11 +23,11 @@ func TestIpv6dhcpoptionspaceAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test Ipv6dhcpoptionspaceAPIService Get", func(t *testing.T) {
+	t.Run("Test Ipv6dhcpoptionspaceAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestIpv6dhcpoptionspaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6dhcpoptionspaceAPIService Post", func(t *testing.T) {
+	t.Run("Test Ipv6dhcpoptionspaceAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test Ipv6dhcpoptionspaceAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestIpv6dhcpoptionspaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6dhcpoptionspaceAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test Ipv6dhcpoptionspaceAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test Ipv6dhcpoptionspaceAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestIpv6dhcpoptionspaceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6dhcpoptionspaceAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test Ipv6dhcpoptionspaceAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6dhcpoptionspaceAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

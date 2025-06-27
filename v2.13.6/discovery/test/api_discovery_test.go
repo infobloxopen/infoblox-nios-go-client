@@ -23,11 +23,11 @@ func TestDiscoveryAPIService(t *testing.T) {
 
 	apiClient := discovery.NewAPIClient()
 
-	t.Run("Test DiscoveryAPIService Get", func(t *testing.T) {
+	t.Run("Test DiscoveryAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.DiscoveryAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DiscoveryAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,27 +35,13 @@ func TestDiscoveryAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DiscoveryAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test DiscoveryAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.DiscoveryAPI.ReferenceGet(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test DiscoveryAPIService ReferencePut", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.DiscoveryAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.DiscoveryAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

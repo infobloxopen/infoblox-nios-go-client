@@ -23,11 +23,11 @@ func TestIpv6fixedaddressAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test Ipv6fixedaddressAPIService Get", func(t *testing.T) {
+	t.Run("Test Ipv6fixedaddressAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6fixedaddressAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Ipv6fixedaddressAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestIpv6fixedaddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6fixedaddressAPIService Post", func(t *testing.T) {
+	t.Run("Test Ipv6fixedaddressAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6fixedaddressAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.Ipv6fixedaddressAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test Ipv6fixedaddressAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Ipv6fixedaddressAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestIpv6fixedaddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6fixedaddressAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test Ipv6fixedaddressAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.Ipv6fixedaddressAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test Ipv6fixedaddressAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.Ipv6fixedaddressAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6fixedaddressAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestIpv6fixedaddressAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6fixedaddressAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test Ipv6fixedaddressAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.Ipv6fixedaddressAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6fixedaddressAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

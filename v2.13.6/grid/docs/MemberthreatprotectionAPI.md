@@ -1,18 +1,18 @@
-# MemberthreatprotectionAPI
+# MemberThreatprotectionAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](MemberthreatprotectionAPI.md#Get) | **Get** /member:threatprotection | Retrieve member:threatprotection objects
-[**ReferenceGet**](MemberthreatprotectionAPI.md#ReferenceGet) | **Get** /member:threatprotection/{reference} | Get a specific member:threatprotection object
-[**ReferencePut**](MemberthreatprotectionAPI.md#ReferencePut) | **Put** /member:threatprotection/{reference} | Update a member:threatprotection object
+[**List**](MemberThreatprotectionAPI.md#List) | **Get** /member:threatprotection | Retrieve member:threatprotection objects
+[**Read**](MemberThreatprotectionAPI.md#Read) | **Get** /member:threatprotection/{reference} | Get a specific member:threatprotection object
+[**Update**](MemberThreatprotectionAPI.md#Update) | **Put** /member:threatprotection/{reference} | Update a member:threatprotection object
 
 
 
-## Get
+## List
 
-> ListMemberThreatprotectionResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListMemberThreatprotectionResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve member:threatprotection objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberthreatprotectionAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.MemberThreatprotectionAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberthreatprotectionAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatprotectionAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListMemberThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberthreatprotectionAPI.Get`: %v\n", resp)
+	// response from `List`: ListMemberThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatprotectionAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberthreatprotectionAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatprotectionAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetMemberThreatprotectionResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetMemberThreatprotectionResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific member:threatprotection object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the member:threatprotection object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberthreatprotectionAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.MemberThreatprotectionAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberthreatprotectionAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatprotectionAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetMemberThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberthreatprotectionAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetMemberThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatprotectionAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberthreatprotectionAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatprotectionAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateMemberThreatprotectionResponse ReferencePut(ctx, reference).MemberThreatprotection(memberThreatprotection).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateMemberThreatprotectionResponse Update(ctx, reference).MemberThreatprotection(memberThreatprotection).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a member:threatprotection object
 
@@ -180,13 +180,13 @@ func main() {
 	memberThreatprotection := *grid.NewMemberThreatprotection() // MemberThreatprotection | Object data to update
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.MemberthreatprotectionAPI.ReferencePut(context.Background(), reference).MemberThreatprotection(memberThreatprotection).Execute()
+	resp, r, err := apiClient.MemberThreatprotectionAPI.Update(context.Background(), reference).MemberThreatprotection(memberThreatprotection).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MemberthreatprotectionAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MemberThreatprotectionAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateMemberThreatprotectionResponse
-	fmt.Fprintf(os.Stdout, "Response from `MemberthreatprotectionAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateMemberThreatprotectionResponse
+	fmt.Fprintf(os.Stdout, "Response from `MemberThreatprotectionAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `MemberthreatprotectionAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `MemberThreatprotectionAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **memberThreatprotection** | [**MemberThreatprotection**](MemberThreatprotection.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AllrecordsAPI.md#Get) | **Get** /allrecords | Retrieve allrecords objects
-[**ReferenceGet**](AllrecordsAPI.md#ReferenceGet) | **Get** /allrecords/{reference} | Get a specific allrecords object
+[**List**](AllrecordsAPI.md#List) | **Get** /allrecords | Retrieve allrecords objects
+[**Read**](AllrecordsAPI.md#Read) | **Get** /allrecords/{reference} | Get a specific allrecords object
 
 
 
-## Get
+## List
 
-> ListAllrecordsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListAllrecordsResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve allrecords objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.AllrecordsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AllrecordsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllrecordsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AllrecordsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAllrecordsResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllrecordsAPI.Get`: %v\n", resp)
+	// response from `List`: ListAllrecordsResponse
+	fmt.Fprintf(os.Stdout, "Response from `AllrecordsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AllrecordsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AllrecordsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetAllrecordsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAllrecordsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific allrecords object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the allrecords object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.AllrecordsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AllrecordsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AllrecordsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AllrecordsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAllrecordsResponse
-	fmt.Fprintf(os.Stdout, "Response from `AllrecordsAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAllrecordsResponse
+	fmt.Fprintf(os.Stdout, "Response from `AllrecordsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AllrecordsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AllrecordsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

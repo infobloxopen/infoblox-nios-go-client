@@ -23,150 +23,423 @@ import (
 
 type NetworkcontainerAPI interface {
 	/*
-		Get Retrieve networkcontainer objects
-
-		Returns a list of networkcontainer objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NetworkcontainerAPIGetRequest
-	*/
-	Get(ctx context.Context) NetworkcontainerAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListNetworkcontainerResponse
-	GetExecute(r NetworkcontainerAPIGetRequest) (*ListNetworkcontainerResponse, *http.Response, error)
-	/*
-		Post Create a networkcontainer object
+		Create Create a networkcontainer object
 
 		Creates a new networkcontainer object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return NetworkcontainerAPIPostRequest
+		@return NetworkcontainerAPICreateRequest
 	*/
-	Post(ctx context.Context) NetworkcontainerAPIPostRequest
+	Create(ctx context.Context) NetworkcontainerAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateNetworkcontainerResponse
-	PostExecute(r NetworkcontainerAPIPostRequest) (*CreateNetworkcontainerResponse, *http.Response, error)
+	CreateExecute(r NetworkcontainerAPICreateRequest) (*CreateNetworkcontainerResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a networkcontainer object
+		Delete Delete a networkcontainer object
 
 		Deletes a specific networkcontainer object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networkcontainer object
-		@return NetworkcontainerAPIReferenceDeleteRequest
+		@return NetworkcontainerAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) NetworkcontainerAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) NetworkcontainerAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r NetworkcontainerAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r NetworkcontainerAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific networkcontainer object
+		List Retrieve networkcontainer objects
+
+		Returns a list of networkcontainer objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return NetworkcontainerAPIListRequest
+	*/
+	List(ctx context.Context) NetworkcontainerAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListNetworkcontainerResponse
+	ListExecute(r NetworkcontainerAPIListRequest) (*ListNetworkcontainerResponse, *http.Response, error)
+	/*
+		Read Get a specific networkcontainer object
 
 		Returns a specific networkcontainer object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networkcontainer object
-		@return NetworkcontainerAPIReferenceGetRequest
+		@return NetworkcontainerAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) NetworkcontainerAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) NetworkcontainerAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetNetworkcontainerResponse
-	ReferenceGetExecute(r NetworkcontainerAPIReferenceGetRequest) (*GetNetworkcontainerResponse, *http.Response, error)
+	ReadExecute(r NetworkcontainerAPIReadRequest) (*GetNetworkcontainerResponse, *http.Response, error)
 	/*
-		ReferencePut Update a networkcontainer object
+		Update Update a networkcontainer object
 
 		Updates a specific networkcontainer object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the networkcontainer object
-		@return NetworkcontainerAPIReferencePutRequest
+		@return NetworkcontainerAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) NetworkcontainerAPIReferencePutRequest
+	Update(ctx context.Context, reference string) NetworkcontainerAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateNetworkcontainerResponse
-	ReferencePutExecute(r NetworkcontainerAPIReferencePutRequest) (*UpdateNetworkcontainerResponse, *http.Response, error)
+	UpdateExecute(r NetworkcontainerAPIUpdateRequest) (*UpdateNetworkcontainerResponse, *http.Response, error)
 }
 
 // NetworkcontainerAPIService NetworkcontainerAPI service
 type NetworkcontainerAPIService internal.Service
 
-type NetworkcontainerAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     NetworkcontainerAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type NetworkcontainerAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       NetworkcontainerAPI
+	networkcontainer *Networkcontainer
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r NetworkcontainerAPICreateRequest) Networkcontainer(networkcontainer Networkcontainer) NetworkcontainerAPICreateRequest {
+	r.networkcontainer = &networkcontainer
+	return r
 }
 
 // Enter the field names followed by comma
-func (r NetworkcontainerAPIGetRequest) ReturnFields(returnFields string) NetworkcontainerAPIGetRequest {
+func (r NetworkcontainerAPICreateRequest) ReturnFields(returnFields string) NetworkcontainerAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkcontainerAPIGetRequest) ReturnFields2(returnFields2 string) NetworkcontainerAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkcontainerAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkcontainerAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r NetworkcontainerAPICreateRequest) ReturnAsObject(returnAsObject int32) NetworkcontainerAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r NetworkcontainerAPICreateRequest) Execute() (*CreateNetworkcontainerResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a networkcontainer object
+
+Creates a new networkcontainer object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return NetworkcontainerAPICreateRequest
+*/
+func (a *NetworkcontainerAPIService) Create(ctx context.Context) NetworkcontainerAPICreateRequest {
+	return NetworkcontainerAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateNetworkcontainerResponse
+func (a *NetworkcontainerAPIService) CreateExecute(r NetworkcontainerAPICreateRequest) (*CreateNetworkcontainerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateNetworkcontainerResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/networkcontainer"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.networkcontainer == nil {
+		return localVarReturnValue, nil, internal.ReportError("networkcontainer is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.networkcontainer != nil {
+		if r.networkcontainer.ExtAttrs == nil {
+			r.networkcontainer.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.networkcontainer.ExtAttrs)[k]; !ok {
+				(*r.networkcontainer.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	if r.networkcontainer.FuncCall != nil {
+		bodyForFuncCall := r.networkcontainer
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Network" {
+			if bodyForFuncCall.Network.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Network cannot be provided when function call is used")
+			} else {
+
+				var l NetworkcontainerNetwork
+				var m NetworkcontainerNetworkOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.NetworkcontainerNetworkOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Network = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.networkcontainer = bodyForFuncCall
+	}
+	// body params
+	localVarPostBody = r.networkcontainer
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type NetworkcontainerAPIDeleteRequest struct {
+	ctx           context.Context
+	ApiService    NetworkcontainerAPI
+	reference     string
+	removeSubnets *bool
+}
+
+// Remove subnets delete option. Determines whether all child objects should be removed alongside with the network container or child objects should be assigned to another parental container. By default child objects are deleted with the network container.
+func (r NetworkcontainerAPIDeleteRequest) RemoveSubnets(removeSubnets bool) NetworkcontainerAPIDeleteRequest {
+	r.removeSubnets = &removeSubnets
+	return r
+}
+
+func (r NetworkcontainerAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a networkcontainer object
+
+Deletes a specific networkcontainer object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the networkcontainer object
+	@return NetworkcontainerAPIDeleteRequest
+*/
+func (a *NetworkcontainerAPIService) Delete(ctx context.Context, reference string) NetworkcontainerAPIDeleteRequest {
+	return NetworkcontainerAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *NetworkcontainerAPIService) DeleteExecute(r NetworkcontainerAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/networkcontainer/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.removeSubnets != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "remove_subnets", r.removeSubnets, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type NetworkcontainerAPIListRequest struct {
+	ctx              context.Context
+	ApiService       NetworkcontainerAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r NetworkcontainerAPIListRequest) ReturnFields(returnFields string) NetworkcontainerAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r NetworkcontainerAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkcontainerAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r NetworkcontainerAPIGetRequest) MaxResults(maxResults int32) NetworkcontainerAPIGetRequest {
+func (r NetworkcontainerAPIListRequest) MaxResults(maxResults int32) NetworkcontainerAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworkcontainerAPIGetRequest) ReturnAsObject(returnAsObject int32) NetworkcontainerAPIGetRequest {
+func (r NetworkcontainerAPIListRequest) ReturnAsObject(returnAsObject int32) NetworkcontainerAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r NetworkcontainerAPIGetRequest) Paging(paging int32) NetworkcontainerAPIGetRequest {
+func (r NetworkcontainerAPIListRequest) Paging(paging int32) NetworkcontainerAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r NetworkcontainerAPIGetRequest) PageId(pageId string) NetworkcontainerAPIGetRequest {
+func (r NetworkcontainerAPIListRequest) PageId(pageId string) NetworkcontainerAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r NetworkcontainerAPIGetRequest) Filters(filters map[string]interface{}) NetworkcontainerAPIGetRequest {
+func (r NetworkcontainerAPIListRequest) Filters(filters map[string]interface{}) NetworkcontainerAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r NetworkcontainerAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworkcontainerAPIGetRequest {
+func (r NetworkcontainerAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworkcontainerAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r NetworkcontainerAPIGetRequest) Execute() (*ListNetworkcontainerResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r NetworkcontainerAPIListRequest) Execute() (*ListNetworkcontainerResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve networkcontainer objects
+List Retrieve networkcontainer objects
 
 Returns a list of networkcontainer objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NetworkcontainerAPIGetRequest
+	@return NetworkcontainerAPIListRequest
 */
-func (a *NetworkcontainerAPIService) Get(ctx context.Context) NetworkcontainerAPIGetRequest {
-	return NetworkcontainerAPIGetRequest{
+func (a *NetworkcontainerAPIService) List(ctx context.Context) NetworkcontainerAPIListRequest {
+	return NetworkcontainerAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +448,7 @@ func (a *NetworkcontainerAPIService) Get(ctx context.Context) NetworkcontainerAP
 // Execute executes the request
 //
 //	@return ListNetworkcontainerResponse
-func (a *NetworkcontainerAPIService) GetExecute(r NetworkcontainerAPIGetRequest) (*ListNetworkcontainerResponse, *http.Response, error) {
+func (a *NetworkcontainerAPIService) ListExecute(r NetworkcontainerAPIListRequest) (*ListNetworkcontainerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +456,7 @@ func (a *NetworkcontainerAPIService) GetExecute(r NetworkcontainerAPIGetRequest)
 		localVarReturnValue *ListNetworkcontainerResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +470,8 @@ func (a *NetworkcontainerAPIService) GetExecute(r NetworkcontainerAPIGetRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,294 +538,48 @@ func (a *NetworkcontainerAPIService) GetExecute(r NetworkcontainerAPIGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NetworkcontainerAPIPostRequest struct {
+type NetworkcontainerAPIReadRequest struct {
 	ctx              context.Context
 	ApiService       NetworkcontainerAPI
-	networkcontainer *Networkcontainer
+	reference        string
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
-// Object data to create
-func (r NetworkcontainerAPIPostRequest) Networkcontainer(networkcontainer Networkcontainer) NetworkcontainerAPIPostRequest {
-	r.networkcontainer = &networkcontainer
-	return r
-}
-
 // Enter the field names followed by comma
-func (r NetworkcontainerAPIPostRequest) ReturnFields(returnFields string) NetworkcontainerAPIPostRequest {
+func (r NetworkcontainerAPIReadRequest) ReturnFields(returnFields string) NetworkcontainerAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkcontainerAPIPostRequest) ReturnFields2(returnFields2 string) NetworkcontainerAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkcontainerAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkcontainerAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworkcontainerAPIPostRequest) ReturnAsObject(returnAsObject int32) NetworkcontainerAPIPostRequest {
+func (r NetworkcontainerAPIReadRequest) ReturnAsObject(returnAsObject int32) NetworkcontainerAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NetworkcontainerAPIPostRequest) Execute() (*CreateNetworkcontainerResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r NetworkcontainerAPIReadRequest) Execute() (*GetNetworkcontainerResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a networkcontainer object
-
-Creates a new networkcontainer object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return NetworkcontainerAPIPostRequest
-*/
-func (a *NetworkcontainerAPIService) Post(ctx context.Context) NetworkcontainerAPIPostRequest {
-	return NetworkcontainerAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateNetworkcontainerResponse
-func (a *NetworkcontainerAPIService) PostExecute(r NetworkcontainerAPIPostRequest) (*CreateNetworkcontainerResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateNetworkcontainerResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/networkcontainer"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.networkcontainer == nil {
-		return localVarReturnValue, nil, internal.ReportError("networkcontainer is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.networkcontainer != nil {
-		if r.networkcontainer.Extattrs == nil {
-			r.networkcontainer.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.networkcontainer.Extattrs)[k]; !ok {
-				(*r.networkcontainer.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.networkcontainer
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type NetworkcontainerAPIReferenceDeleteRequest struct {
-	ctx           context.Context
-	ApiService    NetworkcontainerAPI
-	reference     string
-	removeSubnets *bool
-}
-
-// Remove subnets delete option. Determines whether all child objects should be removed alongside with the network container or child objects should be assigned to another parental container. By default child objects are deleted with the network container.
-func (r NetworkcontainerAPIReferenceDeleteRequest) RemoveSubnets(removeSubnets bool) NetworkcontainerAPIReferenceDeleteRequest {
-	r.removeSubnets = &removeSubnets
-	return r
-}
-
-func (r NetworkcontainerAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a networkcontainer object
-
-Deletes a specific networkcontainer object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the networkcontainer object
-	@return NetworkcontainerAPIReferenceDeleteRequest
-*/
-func (a *NetworkcontainerAPIService) ReferenceDelete(ctx context.Context, reference string) NetworkcontainerAPIReferenceDeleteRequest {
-	return NetworkcontainerAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *NetworkcontainerAPIService) ReferenceDeleteExecute(r NetworkcontainerAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/networkcontainer/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.removeSubnets != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "remove_subnets", r.removeSubnets, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type NetworkcontainerAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     NetworkcontainerAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r NetworkcontainerAPIReferenceGetRequest) ReturnFields(returnFields string) NetworkcontainerAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkcontainerAPIReferenceGetRequest) ReturnFields2(returnFields2 string) NetworkcontainerAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r NetworkcontainerAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) NetworkcontainerAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r NetworkcontainerAPIReferenceGetRequest) Execute() (*GetNetworkcontainerResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific networkcontainer object
+Read Get a specific networkcontainer object
 
 Returns a specific networkcontainer object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the networkcontainer object
-	@return NetworkcontainerAPIReferenceGetRequest
+	@return NetworkcontainerAPIReadRequest
 */
-func (a *NetworkcontainerAPIService) ReferenceGet(ctx context.Context, reference string) NetworkcontainerAPIReferenceGetRequest {
-	return NetworkcontainerAPIReferenceGetRequest{
+func (a *NetworkcontainerAPIService) Read(ctx context.Context, reference string) NetworkcontainerAPIReadRequest {
+	return NetworkcontainerAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -562,7 +589,7 @@ func (a *NetworkcontainerAPIService) ReferenceGet(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return GetNetworkcontainerResponse
-func (a *NetworkcontainerAPIService) ReferenceGetExecute(r NetworkcontainerAPIReferenceGetRequest) (*GetNetworkcontainerResponse, *http.Response, error) {
+func (a *NetworkcontainerAPIService) ReadExecute(r NetworkcontainerAPIReadRequest) (*GetNetworkcontainerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -570,7 +597,7 @@ func (a *NetworkcontainerAPIService) ReferenceGetExecute(r NetworkcontainerAPIRe
 		localVarReturnValue *GetNetworkcontainerResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -585,8 +612,8 @@ func (a *NetworkcontainerAPIService) ReferenceGetExecute(r NetworkcontainerAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -638,55 +665,55 @@ func (a *NetworkcontainerAPIService) ReferenceGetExecute(r NetworkcontainerAPIRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type NetworkcontainerAPIReferencePutRequest struct {
+type NetworkcontainerAPIUpdateRequest struct {
 	ctx              context.Context
 	ApiService       NetworkcontainerAPI
 	reference        string
 	networkcontainer *Networkcontainer
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
 // Object data to update
-func (r NetworkcontainerAPIReferencePutRequest) Networkcontainer(networkcontainer Networkcontainer) NetworkcontainerAPIReferencePutRequest {
+func (r NetworkcontainerAPIUpdateRequest) Networkcontainer(networkcontainer Networkcontainer) NetworkcontainerAPIUpdateRequest {
 	r.networkcontainer = &networkcontainer
 	return r
 }
 
 // Enter the field names followed by comma
-func (r NetworkcontainerAPIReferencePutRequest) ReturnFields(returnFields string) NetworkcontainerAPIReferencePutRequest {
+func (r NetworkcontainerAPIUpdateRequest) ReturnFields(returnFields string) NetworkcontainerAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r NetworkcontainerAPIReferencePutRequest) ReturnFields2(returnFields2 string) NetworkcontainerAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r NetworkcontainerAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) NetworkcontainerAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r NetworkcontainerAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) NetworkcontainerAPIReferencePutRequest {
+func (r NetworkcontainerAPIUpdateRequest) ReturnAsObject(returnAsObject int32) NetworkcontainerAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r NetworkcontainerAPIReferencePutRequest) Execute() (*UpdateNetworkcontainerResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r NetworkcontainerAPIUpdateRequest) Execute() (*UpdateNetworkcontainerResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a networkcontainer object
+Update Update a networkcontainer object
 
 Updates a specific networkcontainer object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the networkcontainer object
-	@return NetworkcontainerAPIReferencePutRequest
+	@return NetworkcontainerAPIUpdateRequest
 */
-func (a *NetworkcontainerAPIService) ReferencePut(ctx context.Context, reference string) NetworkcontainerAPIReferencePutRequest {
-	return NetworkcontainerAPIReferencePutRequest{
+func (a *NetworkcontainerAPIService) Update(ctx context.Context, reference string) NetworkcontainerAPIUpdateRequest {
+	return NetworkcontainerAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -696,7 +723,7 @@ func (a *NetworkcontainerAPIService) ReferencePut(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return UpdateNetworkcontainerResponse
-func (a *NetworkcontainerAPIService) ReferencePutExecute(r NetworkcontainerAPIReferencePutRequest) (*UpdateNetworkcontainerResponse, *http.Response, error) {
+func (a *NetworkcontainerAPIService) UpdateExecute(r NetworkcontainerAPIUpdateRequest) (*UpdateNetworkcontainerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -704,7 +731,7 @@ func (a *NetworkcontainerAPIService) ReferencePutExecute(r NetworkcontainerAPIRe
 		localVarReturnValue *UpdateNetworkcontainerResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "NetworkcontainerAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -722,8 +749,8 @@ func (a *NetworkcontainerAPIService) ReferencePutExecute(r NetworkcontainerAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -746,16 +773,22 @@ func (a *NetworkcontainerAPIService) ReferencePutExecute(r NetworkcontainerAPIRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.networkcontainer != nil {
-		if r.networkcontainer.Extattrs == nil {
-			r.networkcontainer.Extattrs = &map[string]ExtAttrs{}
+		if r.networkcontainer.ExtAttrs == nil {
+			r.networkcontainer.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.networkcontainer.Extattrs)[k]; !ok {
-				(*r.networkcontainer.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.networkcontainer.ExtAttrs)[k]; !ok {
+				(*r.networkcontainer.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}
 		}
+	}
+	if r.networkcontainer.FuncCall != nil {
+		bodyForFuncCall := r.networkcontainer
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Network = nil
+		r.networkcontainer = bodyForFuncCall
 	}
 	// body params
 	localVarPostBody = r.networkcontainer

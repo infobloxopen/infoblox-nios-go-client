@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](FtpuserAPI.md#Get) | **Get** /ftpuser | Retrieve ftpuser objects
-[**Post**](FtpuserAPI.md#Post) | **Post** /ftpuser | Create a ftpuser object
-[**ReferenceDelete**](FtpuserAPI.md#ReferenceDelete) | **Delete** /ftpuser/{reference} | Delete a ftpuser object
-[**ReferenceGet**](FtpuserAPI.md#ReferenceGet) | **Get** /ftpuser/{reference} | Get a specific ftpuser object
-[**ReferencePut**](FtpuserAPI.md#ReferencePut) | **Put** /ftpuser/{reference} | Update a ftpuser object
+[**Create**](FtpuserAPI.md#Create) | **Post** /ftpuser | Create a ftpuser object
+[**Delete**](FtpuserAPI.md#Delete) | **Delete** /ftpuser/{reference} | Delete a ftpuser object
+[**List**](FtpuserAPI.md#List) | **Get** /ftpuser | Retrieve ftpuser objects
+[**Read**](FtpuserAPI.md#Read) | **Get** /ftpuser/{reference} | Get a specific ftpuser object
+[**Update**](FtpuserAPI.md#Update) | **Put** /ftpuser/{reference} | Update a ftpuser object
 
 
 
-## Get
+## Create
 
-> ListFtpuserResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateFtpuserResponse Create(ctx).Ftpuser(ftpuser).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a ftpuser object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	ftpuser := *security.NewFtpuser() // Ftpuser | Object data to create
+
+	apiClient := security.NewAPIClient()
+	resp, r, err := apiClient.FtpuserAPI.Create(context.Background()).Ftpuser(ftpuser).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateFtpuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `FtpuserAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `FtpuserAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ftpuser** | [**Ftpuser**](Ftpuser.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateFtpuserResponse**](CreateFtpuserResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a ftpuser object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the ftpuser object
+
+	apiClient := security.NewAPIClient()
+	r, err := apiClient.FtpuserAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the ftpuser object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `FtpuserAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListFtpuserResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve ftpuser objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.FtpuserAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.FtpuserAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListFtpuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `FtpuserAPI.Get`: %v\n", resp)
+	// response from `List`: ListFtpuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `FtpuserAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FtpuserAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FtpuserAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateFtpuserResponse Post(ctx).Ftpuser(ftpuser).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a ftpuser object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	ftpuser := *security.NewFtpuser() // Ftpuser | Object data to create
-
-	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.FtpuserAPI.Post(context.Background()).Ftpuser(ftpuser).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateFtpuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `FtpuserAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `FtpuserAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ftpuser** | [**Ftpuser**](Ftpuser.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateFtpuserResponse**](CreateFtpuserResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a ftpuser object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the ftpuser object
-
-	apiClient := security.NewAPIClient()
-	r, err := apiClient.FtpuserAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the ftpuser object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `FtpuserAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetFtpuserResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetFtpuserResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific ftpuser object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the ftpuser object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.FtpuserAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.FtpuserAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetFtpuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `FtpuserAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetFtpuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `FtpuserAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FtpuserAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FtpuserAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateFtpuserResponse ReferencePut(ctx, reference).Ftpuser(ftpuser).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateFtpuserResponse Update(ctx, reference).Ftpuser(ftpuser).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a ftpuser object
 
@@ -318,13 +318,13 @@ func main() {
 	ftpuser := *security.NewFtpuser() // Ftpuser | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.FtpuserAPI.ReferencePut(context.Background(), reference).Ftpuser(ftpuser).Execute()
+	resp, r, err := apiClient.FtpuserAPI.Update(context.Background(), reference).Ftpuser(ftpuser).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `FtpuserAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateFtpuserResponse
-	fmt.Fprintf(os.Stdout, "Response from `FtpuserAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateFtpuserResponse
+	fmt.Fprintf(os.Stdout, "Response from `FtpuserAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `FtpuserAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `FtpuserAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ftpuser** | [**Ftpuser**](Ftpuser.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

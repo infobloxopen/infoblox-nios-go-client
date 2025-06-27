@@ -23,11 +23,11 @@ func TestIpv6networkcontainerAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test Ipv6networkcontainerAPIService Get", func(t *testing.T) {
+	t.Run("Test Ipv6networkcontainerAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6networkcontainerAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Ipv6networkcontainerAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestIpv6networkcontainerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6networkcontainerAPIService Post", func(t *testing.T) {
+	t.Run("Test Ipv6networkcontainerAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Ipv6networkcontainerAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.Ipv6networkcontainerAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test Ipv6networkcontainerAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Ipv6networkcontainerAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestIpv6networkcontainerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6networkcontainerAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test Ipv6networkcontainerAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.Ipv6networkcontainerAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test Ipv6networkcontainerAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.Ipv6networkcontainerAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6networkcontainerAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestIpv6networkcontainerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Ipv6networkcontainerAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test Ipv6networkcontainerAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.Ipv6networkcontainerAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Ipv6networkcontainerAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

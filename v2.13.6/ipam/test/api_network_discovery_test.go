@@ -23,11 +23,11 @@ func TestNetworkDiscoveryAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test NetworkDiscoveryAPIService Get", func(t *testing.T) {
+	t.Run("Test NetworkDiscoveryAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworkDiscoveryAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NetworkDiscoveryAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,27 +35,13 @@ func TestNetworkDiscoveryAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkDiscoveryAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test NetworkDiscoveryAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NetworkDiscoveryAPI.ReferenceGet(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NetworkDiscoveryAPIService ReferencePut", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NetworkDiscoveryAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NetworkDiscoveryAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

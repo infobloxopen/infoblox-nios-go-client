@@ -1,0 +1,1385 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Infoblox
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI THREATINSIGHT objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox THREATINSIGHT API
+  version: 2.13.6
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.13.6
+tags:
+- description: Operations for threatinsight:allowlist objects
+  name: ThreatinsightAllowlist
+- description: Operations for threatinsight:cloudclient objects
+  name: ThreatinsightCloudclient
+- description: Operations for threatinsight:insight_allowlist objects
+  name: ThreatinsightInsightAllowlist
+- description: Operations for threatinsight:moduleset objects
+  name: ThreatinsightModuleset
+paths:
+  /threatinsight:allowlist:
+    get:
+      description: Returns a list of threatinsight:allowlist objects matching the
+        search criteria
+      operationId: ThreatinsightAllowlistList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatinsightAllowlistResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatinsight:allowlist objects
+      tags:
+      - ThreatinsightAllowlist
+    post:
+      description: Creates a new threatinsight:allowlist object
+      operationId: ThreatinsightAllowlistCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatinsightAllowlist'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateThreatinsightAllowlistResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a threatinsight:allowlist object
+      tags:
+      - ThreatinsightAllowlist
+      x-tf-resource: threatinsight_allowlist
+      x-tf-datasource: threatinsight_allowlist
+  /threatinsight:allowlist/{reference}:
+    delete:
+      description: Deletes a specific threatinsight:allowlist object by reference
+      operationId: ThreatinsightAllowlistDelete
+      parameters:
+      - description: Reference of the threatinsight:allowlist object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a threatinsight:allowlist object
+      tags:
+      - ThreatinsightAllowlist
+    get:
+      description: Returns a specific threatinsight:allowlist object by reference
+      operationId: ThreatinsightAllowlistRead
+      parameters:
+      - description: Reference of the threatinsight:allowlist object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatinsightAllowlistResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatinsight:allowlist object
+      tags:
+      - ThreatinsightAllowlist
+    put:
+      description: Updates a specific threatinsight:allowlist object by reference
+      operationId: ThreatinsightAllowlistUpdate
+      parameters:
+      - description: Reference of the threatinsight:allowlist object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatinsightAllowlist'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateThreatinsightAllowlistResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a threatinsight:allowlist object
+      tags:
+      - ThreatinsightAllowlist
+  /threatinsight:cloudclient:
+    get:
+      description: Returns a list of threatinsight:cloudclient objects matching the
+        search criteria
+      operationId: ThreatinsightCloudclientList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatinsightCloudclientResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatinsight:cloudclient objects
+      tags:
+      - ThreatinsightCloudclient
+  /threatinsight:cloudclient/{reference}:
+    get:
+      description: Returns a specific threatinsight:cloudclient object by reference
+      operationId: ThreatinsightCloudclientRead
+      parameters:
+      - description: Reference of the threatinsight:cloudclient object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatinsightCloudclientResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatinsight:cloudclient object
+      tags:
+      - ThreatinsightCloudclient
+    put:
+      description: Updates a specific threatinsight:cloudclient object by reference
+      operationId: ThreatinsightCloudclientUpdate
+      parameters:
+      - description: Reference of the threatinsight:cloudclient object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatinsightCloudclient'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateThreatinsightCloudclientResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a threatinsight:cloudclient object
+      tags:
+      - ThreatinsightCloudclient
+  /threatinsight:insight_allowlist:
+    get:
+      description: Returns a list of threatinsight:insight_allowlist objects matching
+        the search criteria
+      operationId: ThreatinsightInsightAllowlistList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatinsightInsightAllowlistResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatinsight:insight_allowlist objects
+      tags:
+      - ThreatinsightInsightAllowlist
+  /threatinsight:insight_allowlist/{reference}:
+    get:
+      description: Returns a specific threatinsight:insight_allowlist object by reference
+      operationId: ThreatinsightInsightAllowlistRead
+      parameters:
+      - description: Reference of the threatinsight:insight_allowlist object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatinsightInsightAllowlistResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatinsight:insight_allowlist object
+      tags:
+      - ThreatinsightInsightAllowlist
+  /threatinsight:moduleset:
+    get:
+      description: Returns a list of threatinsight:moduleset objects matching the
+        search criteria
+      operationId: ThreatinsightModulesetList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListThreatinsightModulesetResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve threatinsight:moduleset objects
+      tags:
+      - ThreatinsightModuleset
+  /threatinsight:moduleset/{reference}:
+    get:
+      description: Returns a specific threatinsight:moduleset object by reference
+      operationId: ThreatinsightModulesetRead
+      parameters:
+      - description: Reference of the threatinsight:moduleset object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetThreatinsightModulesetResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific threatinsight:moduleset object
+      tags:
+      - ThreatinsightModuleset
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    ThreatinsightAllowlist:
+      additionalProperties: false
+      example:
+        fqdn: Example fqdn
+        disable: false
+        _ref: _ref
+        comment: Example comment
+        type: Example type
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        comment:
+          description: The descriptive comment for the threat insight allowlist.
+          example: Example comment
+          type: string
+        disable:
+          description: Determines whether the threat insight allowlist is disabled.
+          example: false
+          type: boolean
+        fqdn:
+          description: The FQDN of the threat insight allowlist.
+          example: Example fqdn
+          type: string
+        type:
+          description: The type of the threat insight allowlist.
+          enum:
+          - SYSTEM
+          - CUSTOM
+          - BOTH
+          example: Example type
+          readOnly: true
+          type: string
+      type: object
+    ListThreatinsightAllowlistResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatinsightAllowlist__ objects.
+        items:
+          $ref: '#/components/schemas/ThreatinsightAllowlist'
+        title: ListThreatinsightAllowlistResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatinsightAllowlistResponseObject'
+    CreateThreatinsightAllowlistResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateThreatinsightAllowlistResponseAsObject'
+      - description: The response format to create __ThreatinsightAllowlist__.
+        title: CreateThreatinsightAllowlistResponse
+        type: string
+    GetThreatinsightAllowlistResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatinsightAllowlist'
+      - $ref: '#/components/schemas/GetThreatinsightAllowlistResponseObjectAsResult'
+    UpdateThreatinsightAllowlistResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatinsightAllowlistResponseAsObject'
+      - description: The response format to update __ThreatinsightAllowlist__ .
+        title: UpdateThreatinsightAllowlistResponse
+        type: string
+    ThreatinsightCloudclient:
+      additionalProperties: false
+      example:
+        enable: false
+        _ref: _ref
+        interval: 1
+        force_refresh: false
+        blacklist_rpz_list:
+        - zone_rp
+        - zone_rp
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        blacklist_rpz_list:
+          description: The RPZs to which you apply newly detected domains through
+            the Infoblox Threat Insight Cloud Client.
+          enum:
+          - zone_rp
+          items:
+            enum:
+            - zone_rp
+            type: string
+          type: array
+        enable:
+          description: Determines whether the Threat Insight in Cloud Client is enabled.
+          example: false
+          type: boolean
+        force_refresh:
+          description: Force a refresh if at least one RPZ is configured.
+          example: false
+          type: boolean
+          writeOnly: true
+        interval:
+          description: The time interval (in seconds) for requesting newly detected
+            domains by the Infoblox Threat Insight Cloud Client and applying them
+            to the list of configured RPZs.
+          example: 1
+          format: int64
+          type: integer
+      type: object
+    ListThreatinsightCloudclientResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatinsightCloudclient__
+          objects.
+        items:
+          $ref: '#/components/schemas/ThreatinsightCloudclient'
+        title: ListThreatinsightCloudclientResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatinsightCloudclientResponseObject'
+    GetThreatinsightCloudclientResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatinsightCloudclient'
+      - $ref: '#/components/schemas/GetThreatinsightCloudclientResponseObjectAsResult'
+    UpdateThreatinsightCloudclientResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatinsightCloudclientResponseAsObject'
+      - description: The response format to update __ThreatinsightCloudclient__ .
+        title: UpdateThreatinsightCloudclientResponse
+        type: string
+    ThreatinsightInsightAllowlist:
+      additionalProperties: false
+      example:
+        _ref: _ref
+        version: Example version
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        version:
+          description: Allowlist version string.
+          example: Example version
+          readOnly: true
+          type: string
+      type: object
+    ListThreatinsightInsightAllowlistResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatinsightInsightAllowlist__
+          objects.
+        items:
+          $ref: '#/components/schemas/ThreatinsightInsightAllowlist'
+        title: ListThreatinsightInsightAllowlistResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatinsightInsightAllowlistResponseObject'
+    GetThreatinsightInsightAllowlistResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatinsightInsightAllowlist'
+      - $ref: '#/components/schemas/GetThreatinsightInsightAllowlistResponseObjectAsResult'
+    UpdateThreatinsightInsightAllowlistResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatinsightInsightAllowlistResponseAsObject'
+      - description: The response format to update __ThreatinsightInsightAllowlist__
+          .
+        title: UpdateThreatinsightInsightAllowlistResponse
+        type: string
+    ThreatinsightModuleset:
+      additionalProperties: false
+      example:
+        _ref: _ref
+        version: Example version
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        version:
+          description: The version number of the threat insight module set.
+          example: Example version
+          readOnly: true
+          type: string
+      type: object
+    ListThreatinsightModulesetResponse:
+      oneOf:
+      - description: The response format to retrieve __ThreatinsightModuleset__ objects.
+        items:
+          $ref: '#/components/schemas/ThreatinsightModuleset'
+        title: ListThreatinsightModulesetResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListThreatinsightModulesetResponseObject'
+    GetThreatinsightModulesetResponse:
+      oneOf:
+      - $ref: '#/components/schemas/ThreatinsightModuleset'
+      - $ref: '#/components/schemas/GetThreatinsightModulesetResponseObjectAsResult'
+    UpdateThreatinsightModulesetResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateThreatinsightModulesetResponseAsObject'
+      - description: The response format to update __ThreatinsightModuleset__ .
+        title: UpdateThreatinsightModulesetResponse
+        type: string
+    ListThreatinsightAllowlistResponseObject:
+      description: The response format to retrieve __ThreatinsightAllowlist__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatinsightAllowlist'
+          type: array
+      title: ListThreatinsightAllowlistResponseObject
+      type: object
+    CreateThreatinsightAllowlistResponseAsObject:
+      description: The response format to create __ThreatinsightAllowlist__ in object
+        format.
+      example:
+        result:
+          fqdn: Example fqdn
+          disable: false
+          _ref: _ref
+          comment: Example comment
+          type: Example type
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightAllowlist'
+      title: CreateThreatinsightAllowlistResponseAsObject
+      type: object
+    GetThreatinsightAllowlistResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatinsightAllowlist__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightAllowlist'
+      title: GetThreatinsightAllowlistResponseObjectAsResult
+      type: object
+    UpdateThreatinsightAllowlistResponseAsObject:
+      description: The response format to update __ThreatinsightAllowlist__ in object
+        format.
+      example:
+        result:
+          fqdn: Example fqdn
+          disable: false
+          _ref: _ref
+          comment: Example comment
+          type: Example type
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightAllowlist'
+      title: UpdateThreatinsightAllowlistResponseAsObject
+      type: object
+    ListThreatinsightCloudclientResponseObject:
+      description: The response format to retrieve __ThreatinsightCloudclient__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatinsightCloudclient'
+          type: array
+      title: ListThreatinsightCloudclientResponseObject
+      type: object
+    GetThreatinsightCloudclientResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatinsightCloudclient__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightCloudclient'
+      title: GetThreatinsightCloudclientResponseObjectAsResult
+      type: object
+    UpdateThreatinsightCloudclientResponseAsObject:
+      description: The response format to update __ThreatinsightCloudclient__ in object
+        format.
+      example:
+        result:
+          enable: false
+          _ref: _ref
+          interval: 1
+          force_refresh: false
+          blacklist_rpz_list:
+          - zone_rp
+          - zone_rp
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightCloudclient'
+      title: UpdateThreatinsightCloudclientResponseAsObject
+      type: object
+    ListThreatinsightInsightAllowlistResponseObject:
+      description: The response format to retrieve __ThreatinsightInsightAllowlist__
+        objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatinsightInsightAllowlist'
+          type: array
+      title: ListThreatinsightInsightAllowlistResponseObject
+      type: object
+    GetThreatinsightInsightAllowlistResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatinsightInsightAllowlist__
+        objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightInsightAllowlist'
+      title: GetThreatinsightInsightAllowlistResponseObjectAsResult
+      type: object
+    UpdateThreatinsightInsightAllowlistResponseAsObject:
+      description: The response format to update __ThreatinsightInsightAllowlist__
+        in object format.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightInsightAllowlist'
+      title: UpdateThreatinsightInsightAllowlistResponseAsObject
+      type: object
+    ListThreatinsightModulesetResponseObject:
+      description: The response format to retrieve __ThreatinsightModuleset__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/ThreatinsightModuleset'
+          type: array
+      title: ListThreatinsightModulesetResponseObject
+      type: object
+    GetThreatinsightModulesetResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __ThreatinsightModuleset__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightModuleset'
+      title: GetThreatinsightModulesetResponseObjectAsResult
+      type: object
+    UpdateThreatinsightModulesetResponseAsObject:
+      description: The response format to update __ThreatinsightModuleset__ in object
+        format.
+      properties:
+        result:
+          $ref: '#/components/schemas/ThreatinsightModuleset'
+      title: UpdateThreatinsightModulesetResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http

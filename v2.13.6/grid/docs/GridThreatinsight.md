@@ -9,10 +9,8 @@ Name | Type | Description | Notes
 **ConfigureDomainCollapsing** | Pointer to **bool** | Disable domain collapsing at grid level | [optional] 
 **CurrentAllowlist** | Pointer to **string** | The Grid allowlist. | [optional] [readonly] 
 **CurrentModuleset** | Pointer to **string** | The current threat insight module set. | [optional] [readonly] 
-**DnsTunnelBlockListRpzZones** | Pointer to **[]map[string]interface{}** | The list of response policy zones for DNS tunnelling requests. | [optional] 
+**DnsTunnelBlockListRpzZones** | Pointer to **[]string** | The list of response policy zones for DNS tunnelling requests. | [optional] 
 **DomainCollapsingLevel** | Pointer to **int64** | Level of domain collapsing | [optional] 
-**DownloadThreatInsightAllowlistUpdate** | Pointer to **map[string]interface{}** |  | [optional] 
-**DownloadThreatInsightModulesetUpdate** | Pointer to **map[string]interface{}** |  | [optional] 
 **EnableAllowlistAutoDownload** | Pointer to **bool** | Indicates whether auto download service is enabled | [optional] 
 **EnableAllowlistScheduledDownload** | Pointer to **bool** | Indicates whether the custom scheduled settings for auto download is enabled. If false then default frequency is once per 24 hours | [optional] 
 **EnableAutoDownload** | Pointer to **bool** | Determines whether the automatic threat insight module set download is enabled. | [optional] 
@@ -26,13 +24,9 @@ Name | Type | Description | Notes
 **LastModuleUpdateVersion** | Pointer to **string** | The version number of the last updated threat insight module set. | [optional] [readonly] 
 **LastUpdatedPackageVersion** | Pointer to **string** | The version number of the last updated Moduleset package. | [optional] [readonly] 
 **ModuleUpdatePolicy** | Pointer to **string** | The update policy for the threat insight module set. | [optional] 
-**MoveBlocklistRpzToAllowList** | Pointer to **map[string]interface{}** |  | [optional] 
 **Name** | Pointer to **string** | The Grid name. | [optional] [readonly] 
 **ScheduledAllowlistDownload** | Pointer to [**GridThreatinsightScheduledAllowlistDownload**](GridThreatinsightScheduledAllowlistDownload.md) |  | [optional] 
 **ScheduledDownload** | Pointer to [**GridThreatinsightScheduledDownload**](GridThreatinsightScheduledDownload.md) |  | [optional] 
-**SetLastUploadedThreatInsightModuleset** | Pointer to **map[string]interface{}** |  | [optional] 
-**TestThreatInsightServerConnectivity** | Pointer to **map[string]interface{}** |  | [optional] 
-**UpdateThreatInsightModuleset** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -180,20 +174,20 @@ HasCurrentModuleset returns a boolean if a field has been set.
 
 ### GetDnsTunnelBlockListRpzZones
 
-`func (o *GridThreatinsight) GetDnsTunnelBlockListRpzZones() []map[string]interface{}`
+`func (o *GridThreatinsight) GetDnsTunnelBlockListRpzZones() []string`
 
 GetDnsTunnelBlockListRpzZones returns the DnsTunnelBlockListRpzZones field if non-nil, zero value otherwise.
 
 ### GetDnsTunnelBlockListRpzZonesOk
 
-`func (o *GridThreatinsight) GetDnsTunnelBlockListRpzZonesOk() (*[]map[string]interface{}, bool)`
+`func (o *GridThreatinsight) GetDnsTunnelBlockListRpzZonesOk() (*[]string, bool)`
 
 GetDnsTunnelBlockListRpzZonesOk returns a tuple with the DnsTunnelBlockListRpzZones field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDnsTunnelBlockListRpzZones
 
-`func (o *GridThreatinsight) SetDnsTunnelBlockListRpzZones(v []map[string]interface{})`
+`func (o *GridThreatinsight) SetDnsTunnelBlockListRpzZones(v []string)`
 
 SetDnsTunnelBlockListRpzZones sets DnsTunnelBlockListRpzZones field to given value.
 
@@ -227,56 +221,6 @@ SetDomainCollapsingLevel sets DomainCollapsingLevel field to given value.
 `func (o *GridThreatinsight) HasDomainCollapsingLevel() bool`
 
 HasDomainCollapsingLevel returns a boolean if a field has been set.
-
-### GetDownloadThreatInsightAllowlistUpdate
-
-`func (o *GridThreatinsight) GetDownloadThreatInsightAllowlistUpdate() map[string]interface{}`
-
-GetDownloadThreatInsightAllowlistUpdate returns the DownloadThreatInsightAllowlistUpdate field if non-nil, zero value otherwise.
-
-### GetDownloadThreatInsightAllowlistUpdateOk
-
-`func (o *GridThreatinsight) GetDownloadThreatInsightAllowlistUpdateOk() (*map[string]interface{}, bool)`
-
-GetDownloadThreatInsightAllowlistUpdateOk returns a tuple with the DownloadThreatInsightAllowlistUpdate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDownloadThreatInsightAllowlistUpdate
-
-`func (o *GridThreatinsight) SetDownloadThreatInsightAllowlistUpdate(v map[string]interface{})`
-
-SetDownloadThreatInsightAllowlistUpdate sets DownloadThreatInsightAllowlistUpdate field to given value.
-
-### HasDownloadThreatInsightAllowlistUpdate
-
-`func (o *GridThreatinsight) HasDownloadThreatInsightAllowlistUpdate() bool`
-
-HasDownloadThreatInsightAllowlistUpdate returns a boolean if a field has been set.
-
-### GetDownloadThreatInsightModulesetUpdate
-
-`func (o *GridThreatinsight) GetDownloadThreatInsightModulesetUpdate() map[string]interface{}`
-
-GetDownloadThreatInsightModulesetUpdate returns the DownloadThreatInsightModulesetUpdate field if non-nil, zero value otherwise.
-
-### GetDownloadThreatInsightModulesetUpdateOk
-
-`func (o *GridThreatinsight) GetDownloadThreatInsightModulesetUpdateOk() (*map[string]interface{}, bool)`
-
-GetDownloadThreatInsightModulesetUpdateOk returns a tuple with the DownloadThreatInsightModulesetUpdate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDownloadThreatInsightModulesetUpdate
-
-`func (o *GridThreatinsight) SetDownloadThreatInsightModulesetUpdate(v map[string]interface{})`
-
-SetDownloadThreatInsightModulesetUpdate sets DownloadThreatInsightModulesetUpdate field to given value.
-
-### HasDownloadThreatInsightModulesetUpdate
-
-`func (o *GridThreatinsight) HasDownloadThreatInsightModulesetUpdate() bool`
-
-HasDownloadThreatInsightModulesetUpdate returns a boolean if a field has been set.
 
 ### GetEnableAllowlistAutoDownload
 
@@ -603,31 +547,6 @@ SetModuleUpdatePolicy sets ModuleUpdatePolicy field to given value.
 
 HasModuleUpdatePolicy returns a boolean if a field has been set.
 
-### GetMoveBlocklistRpzToAllowList
-
-`func (o *GridThreatinsight) GetMoveBlocklistRpzToAllowList() map[string]interface{}`
-
-GetMoveBlocklistRpzToAllowList returns the MoveBlocklistRpzToAllowList field if non-nil, zero value otherwise.
-
-### GetMoveBlocklistRpzToAllowListOk
-
-`func (o *GridThreatinsight) GetMoveBlocklistRpzToAllowListOk() (*map[string]interface{}, bool)`
-
-GetMoveBlocklistRpzToAllowListOk returns a tuple with the MoveBlocklistRpzToAllowList field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMoveBlocklistRpzToAllowList
-
-`func (o *GridThreatinsight) SetMoveBlocklistRpzToAllowList(v map[string]interface{})`
-
-SetMoveBlocklistRpzToAllowList sets MoveBlocklistRpzToAllowList field to given value.
-
-### HasMoveBlocklistRpzToAllowList
-
-`func (o *GridThreatinsight) HasMoveBlocklistRpzToAllowList() bool`
-
-HasMoveBlocklistRpzToAllowList returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *GridThreatinsight) GetName() string`
@@ -702,81 +621,6 @@ SetScheduledDownload sets ScheduledDownload field to given value.
 `func (o *GridThreatinsight) HasScheduledDownload() bool`
 
 HasScheduledDownload returns a boolean if a field has been set.
-
-### GetSetLastUploadedThreatInsightModuleset
-
-`func (o *GridThreatinsight) GetSetLastUploadedThreatInsightModuleset() map[string]interface{}`
-
-GetSetLastUploadedThreatInsightModuleset returns the SetLastUploadedThreatInsightModuleset field if non-nil, zero value otherwise.
-
-### GetSetLastUploadedThreatInsightModulesetOk
-
-`func (o *GridThreatinsight) GetSetLastUploadedThreatInsightModulesetOk() (*map[string]interface{}, bool)`
-
-GetSetLastUploadedThreatInsightModulesetOk returns a tuple with the SetLastUploadedThreatInsightModuleset field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSetLastUploadedThreatInsightModuleset
-
-`func (o *GridThreatinsight) SetSetLastUploadedThreatInsightModuleset(v map[string]interface{})`
-
-SetSetLastUploadedThreatInsightModuleset sets SetLastUploadedThreatInsightModuleset field to given value.
-
-### HasSetLastUploadedThreatInsightModuleset
-
-`func (o *GridThreatinsight) HasSetLastUploadedThreatInsightModuleset() bool`
-
-HasSetLastUploadedThreatInsightModuleset returns a boolean if a field has been set.
-
-### GetTestThreatInsightServerConnectivity
-
-`func (o *GridThreatinsight) GetTestThreatInsightServerConnectivity() map[string]interface{}`
-
-GetTestThreatInsightServerConnectivity returns the TestThreatInsightServerConnectivity field if non-nil, zero value otherwise.
-
-### GetTestThreatInsightServerConnectivityOk
-
-`func (o *GridThreatinsight) GetTestThreatInsightServerConnectivityOk() (*map[string]interface{}, bool)`
-
-GetTestThreatInsightServerConnectivityOk returns a tuple with the TestThreatInsightServerConnectivity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTestThreatInsightServerConnectivity
-
-`func (o *GridThreatinsight) SetTestThreatInsightServerConnectivity(v map[string]interface{})`
-
-SetTestThreatInsightServerConnectivity sets TestThreatInsightServerConnectivity field to given value.
-
-### HasTestThreatInsightServerConnectivity
-
-`func (o *GridThreatinsight) HasTestThreatInsightServerConnectivity() bool`
-
-HasTestThreatInsightServerConnectivity returns a boolean if a field has been set.
-
-### GetUpdateThreatInsightModuleset
-
-`func (o *GridThreatinsight) GetUpdateThreatInsightModuleset() map[string]interface{}`
-
-GetUpdateThreatInsightModuleset returns the UpdateThreatInsightModuleset field if non-nil, zero value otherwise.
-
-### GetUpdateThreatInsightModulesetOk
-
-`func (o *GridThreatinsight) GetUpdateThreatInsightModulesetOk() (*map[string]interface{}, bool)`
-
-GetUpdateThreatInsightModulesetOk returns a tuple with the UpdateThreatInsightModuleset field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdateThreatInsightModuleset
-
-`func (o *GridThreatinsight) SetUpdateThreatInsightModuleset(v map[string]interface{})`
-
-SetUpdateThreatInsightModuleset sets UpdateThreatInsightModuleset field to given value.
-
-### HasUpdateThreatInsightModuleset
-
-`func (o *GridThreatinsight) HasUpdateThreatInsightModuleset() bool`
-
-HasUpdateThreatInsightModuleset returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

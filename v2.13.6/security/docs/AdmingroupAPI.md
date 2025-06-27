@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](AdmingroupAPI.md#Get) | **Get** /admingroup | Retrieve admingroup objects
-[**Post**](AdmingroupAPI.md#Post) | **Post** /admingroup | Create a admingroup object
-[**ReferenceDelete**](AdmingroupAPI.md#ReferenceDelete) | **Delete** /admingroup/{reference} | Delete a admingroup object
-[**ReferenceGet**](AdmingroupAPI.md#ReferenceGet) | **Get** /admingroup/{reference} | Get a specific admingroup object
-[**ReferencePut**](AdmingroupAPI.md#ReferencePut) | **Put** /admingroup/{reference} | Update a admingroup object
+[**Create**](AdmingroupAPI.md#Create) | **Post** /admingroup | Create a admingroup object
+[**Delete**](AdmingroupAPI.md#Delete) | **Delete** /admingroup/{reference} | Delete a admingroup object
+[**List**](AdmingroupAPI.md#List) | **Get** /admingroup | Retrieve admingroup objects
+[**Read**](AdmingroupAPI.md#Read) | **Get** /admingroup/{reference} | Get a specific admingroup object
+[**Update**](AdmingroupAPI.md#Update) | **Put** /admingroup/{reference} | Update a admingroup object
 
 
 
-## Get
+## Create
 
-> ListAdmingroupResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateAdmingroupResponse Create(ctx).Admingroup(admingroup).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a admingroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	admingroup := *security.NewAdmingroup() // Admingroup | Object data to create
+
+	apiClient := security.NewAPIClient()
+	resp, r, err := apiClient.AdmingroupAPI.Create(context.Background()).Admingroup(admingroup).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateAdmingroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdmingroupAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AdmingroupAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**admingroup** | [**Admingroup**](Admingroup.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateAdmingroupResponse**](CreateAdmingroupResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a admingroup object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the admingroup object
+
+	apiClient := security.NewAPIClient()
+	r, err := apiClient.AdmingroupAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the admingroup object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `AdmingroupAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListAdmingroupResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve admingroup objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdmingroupAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.AdmingroupAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListAdmingroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdmingroupAPI.Get`: %v\n", resp)
+	// response from `List`: ListAdmingroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdmingroupAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdmingroupAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdmingroupAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateAdmingroupResponse Post(ctx).Admingroup(admingroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a admingroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	admingroup := *security.NewAdmingroup() // Admingroup | Object data to create
-
-	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdmingroupAPI.Post(context.Background()).Admingroup(admingroup).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateAdmingroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdmingroupAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AdmingroupAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**admingroup** | [**Admingroup**](Admingroup.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateAdmingroupResponse**](CreateAdmingroupResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a admingroup object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the admingroup object
-
-	apiClient := security.NewAPIClient()
-	r, err := apiClient.AdmingroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the admingroup object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `AdmingroupAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetAdmingroupResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetAdmingroupResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific admingroup object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the admingroup object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdmingroupAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.AdmingroupAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetAdmingroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdmingroupAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetAdmingroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdmingroupAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdmingroupAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdmingroupAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateAdmingroupResponse ReferencePut(ctx, reference).Admingroup(admingroup).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateAdmingroupResponse Update(ctx, reference).Admingroup(admingroup).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a admingroup object
 
@@ -318,13 +318,13 @@ func main() {
 	admingroup := *security.NewAdmingroup() // Admingroup | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.AdmingroupAPI.ReferencePut(context.Background(), reference).Admingroup(admingroup).Execute()
+	resp, r, err := apiClient.AdmingroupAPI.Update(context.Background(), reference).Admingroup(admingroup).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdmingroupAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateAdmingroupResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdmingroupAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateAdmingroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdmingroupAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `AdmingroupAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `AdmingroupAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **admingroup** | [**Admingroup**](Admingroup.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

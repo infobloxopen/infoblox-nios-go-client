@@ -34,12 +34,11 @@ type Discoverytask struct {
 	// Determines whether to replace or merge new data with existing data.
 	MergeData *bool `json:"merge_data,omitempty"`
 	// Network discovery scanning mode.
-	Mode                    *string                `json:"mode,omitempty"`
-	NetworkDiscoveryControl map[string]interface{} `json:"network_discovery_control,omitempty"`
+	Mode *string `json:"mode,omitempty"`
 	// Name of the network view in which target networks for network discovery reside.
 	NetworkView *string `json:"network_view,omitempty"`
 	// The list of the networks on which the network discovery will be invoked.
-	Networks []map[string]interface{} `json:"networks,omitempty"`
+	Networks []string `json:"networks,omitempty"`
 	// The number of times to perfrom ping for ICMP and FULL modes.
 	PingRetries *int64 `json:"ping_retries,omitempty"`
 	// The ping timeout for ICMP and FULL modes.
@@ -338,38 +337,6 @@ func (o *Discoverytask) SetMode(v string) {
 	o.Mode = &v
 }
 
-// GetNetworkDiscoveryControl returns the NetworkDiscoveryControl field value if set, zero value otherwise.
-func (o *Discoverytask) GetNetworkDiscoveryControl() map[string]interface{} {
-	if o == nil || IsNil(o.NetworkDiscoveryControl) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NetworkDiscoveryControl
-}
-
-// GetNetworkDiscoveryControlOk returns a tuple with the NetworkDiscoveryControl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Discoverytask) GetNetworkDiscoveryControlOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NetworkDiscoveryControl) {
-		return map[string]interface{}{}, false
-	}
-	return o.NetworkDiscoveryControl, true
-}
-
-// HasNetworkDiscoveryControl returns a boolean if a field has been set.
-func (o *Discoverytask) HasNetworkDiscoveryControl() bool {
-	if o != nil && !IsNil(o.NetworkDiscoveryControl) {
-		return true
-	}
-
-	return false
-}
-
-// SetNetworkDiscoveryControl gets a reference to the given map[string]interface{} and assigns it to the NetworkDiscoveryControl field.
-func (o *Discoverytask) SetNetworkDiscoveryControl(v map[string]interface{}) {
-	o.NetworkDiscoveryControl = v
-}
-
 // GetNetworkView returns the NetworkView field value if set, zero value otherwise.
 func (o *Discoverytask) GetNetworkView() string {
 	if o == nil || IsNil(o.NetworkView) {
@@ -403,9 +370,9 @@ func (o *Discoverytask) SetNetworkView(v string) {
 }
 
 // GetNetworks returns the Networks field value if set, zero value otherwise.
-func (o *Discoverytask) GetNetworks() []map[string]interface{} {
+func (o *Discoverytask) GetNetworks() []string {
 	if o == nil || IsNil(o.Networks) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Networks
@@ -413,7 +380,7 @@ func (o *Discoverytask) GetNetworks() []map[string]interface{} {
 
 // GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Discoverytask) GetNetworksOk() ([]map[string]interface{}, bool) {
+func (o *Discoverytask) GetNetworksOk() ([]string, bool) {
 	if o == nil || IsNil(o.Networks) {
 		return nil, false
 	}
@@ -429,8 +396,8 @@ func (o *Discoverytask) HasNetworks() bool {
 	return false
 }
 
-// SetNetworks gets a reference to the given []map[string]interface{} and assigns it to the Networks field.
-func (o *Discoverytask) SetNetworks(v []map[string]interface{}) {
+// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
+func (o *Discoverytask) SetNetworks(v []string) {
 	o.Networks = v
 }
 
@@ -851,9 +818,6 @@ func (o Discoverytask) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
-	}
-	if !IsNil(o.NetworkDiscoveryControl) {
-		toSerialize["network_discovery_control"] = o.NetworkDiscoveryControl
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView

@@ -31,7 +31,6 @@ Name | Type | Description | Notes
 **BlacklistRulesets** | Pointer to **[]string** | The DNS Ruleset object names assigned at the Grid level for blacklist redirection. | [optional] 
 **CaptureDnsQueriesOnAllDomains** | Pointer to **bool** | The flag that indicates whether the capture of DNS queries for all domains is enabled or disabled. | [optional] 
 **CheckNamesForDdnsAndZoneTransfer** | Pointer to **bool** | Determines whether the application of BIND check-names for zone transfers and DDNS updates are enabled. | [optional] 
-**ClearDnsCache** | Pointer to **map[string]interface{}** |  | [optional] 
 **CopyClientIpMacOptions** | Pointer to **bool** | Copy custom IP, MAC and DNS View name ENDS0 options from incoming to outgoing recursive queries. | [optional] 
 **CopyXferToNotify** | Pointer to **bool** | Copies the allowed IPs from the zone transfer list into the also-notify statement in the named.conf file. | [optional] 
 **CustomRootNameServers** | Pointer to [**[]MemberDnsCustomRootNameServers**](MemberDnsCustomRootNameServers.md) | The list of custom root name servers. You can either select and use Internet root name servers or specify custom root name servers by providing a host name and IP address to which the Infoblox appliance can send queries. | [optional] 
@@ -89,7 +88,7 @@ Name | Type | Description | Notes
 **EnableQueryRewrite** | Pointer to **bool** | Determines if the DNS query rewrite is enabled or not for this member. | [optional] 
 **EnableQuerySourcePort** | Pointer to **bool** | Determines if the query source port for a memer is enabled or not. | [optional] 
 **ExcludedDomainNames** | Pointer to **[]string** | The list of domains that are excluded from DNS query and response capture. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FileTransferSetting** | Pointer to [**MemberDnsFileTransferSetting**](MemberDnsFileTransferSetting.md) |  | [optional] 
 **FilterAaaa** | Pointer to **string** | The type of AAAA filtering for this member DNS object. | [optional] 
 **FilterAaaaList** | Pointer to [**[]MemberDnsFilterAaaaList**](MemberDnsFilterAaaaList.md) | The list of IPv4 addresses and networks from which queries are received. AAAA filtering is applied to these addresses. | [optional] 
@@ -100,7 +99,7 @@ Name | Type | Description | Notes
 **FtcExpiredRecordTimeout** | Pointer to **int64** | The timeout interval (in seconds) after which the expired Fault Tolerant Caching (FTC)record is stale and no longer valid. | [optional] 
 **FtcExpiredRecordTtl** | Pointer to **int64** | The TTL value (in seconds) of the expired Fault Tolerant Caching (FTC) record in DNS responses. | [optional] 
 **GlueRecordAddresses** | Pointer to [**[]MemberDnsGlueRecordAddresses**](MemberDnsGlueRecordAddresses.md) | The list of glue record addresses. | [optional] 
-**GssTsigKeys** | Pointer to **[]map[string]interface{}** | The list of GSS-TSIG keys for a member DNS object. | [optional] 
+**GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a member DNS object. | [optional] 
 **HostName** | Pointer to **string** | The host name of the Grid member. | [optional] [readonly] 
 **Ipv4addr** | Pointer to **string** | The IPv4 Address of the Grid member. | [optional] [readonly] 
 **Ipv6GlueRecordAddresses** | Pointer to [**[]MemberDnsIpv6GlueRecordAddresses**](MemberDnsIpv6GlueRecordAddresses.md) | The list of IPv6 glue record addresses. | [optional] 
@@ -906,31 +905,6 @@ SetCheckNamesForDdnsAndZoneTransfer sets CheckNamesForDdnsAndZoneTransfer field 
 `func (o *GetMemberDnsResponse) HasCheckNamesForDdnsAndZoneTransfer() bool`
 
 HasCheckNamesForDdnsAndZoneTransfer returns a boolean if a field has been set.
-
-### GetClearDnsCache
-
-`func (o *GetMemberDnsResponse) GetClearDnsCache() map[string]interface{}`
-
-GetClearDnsCache returns the ClearDnsCache field if non-nil, zero value otherwise.
-
-### GetClearDnsCacheOk
-
-`func (o *GetMemberDnsResponse) GetClearDnsCacheOk() (*map[string]interface{}, bool)`
-
-GetClearDnsCacheOk returns a tuple with the ClearDnsCache field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClearDnsCache
-
-`func (o *GetMemberDnsResponse) SetClearDnsCache(v map[string]interface{})`
-
-SetClearDnsCache sets ClearDnsCache field to given value.
-
-### HasClearDnsCache
-
-`func (o *GetMemberDnsResponse) HasClearDnsCache() bool`
-
-HasClearDnsCache returns a boolean if a field has been set.
 
 ### GetCopyClientIpMacOptions
 
@@ -2357,30 +2331,30 @@ SetExcludedDomainNames sets ExcludedDomainNames field to given value.
 
 HasExcludedDomainNames returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetMemberDnsResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetMemberDnsResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetMemberDnsResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetMemberDnsResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetMemberDnsResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetMemberDnsResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetMemberDnsResponse) HasExtattrs() bool`
+`func (o *GetMemberDnsResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFileTransferSetting
 
@@ -2634,20 +2608,20 @@ HasGlueRecordAddresses returns a boolean if a field has been set.
 
 ### GetGssTsigKeys
 
-`func (o *GetMemberDnsResponse) GetGssTsigKeys() []map[string]interface{}`
+`func (o *GetMemberDnsResponse) GetGssTsigKeys() []string`
 
 GetGssTsigKeys returns the GssTsigKeys field if non-nil, zero value otherwise.
 
 ### GetGssTsigKeysOk
 
-`func (o *GetMemberDnsResponse) GetGssTsigKeysOk() (*[]map[string]interface{}, bool)`
+`func (o *GetMemberDnsResponse) GetGssTsigKeysOk() (*[]string, bool)`
 
 GetGssTsigKeysOk returns a tuple with the GssTsigKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGssTsigKeys
 
-`func (o *GetMemberDnsResponse) SetGssTsigKeys(v []map[string]interface{})`
+`func (o *GetMemberDnsResponse) SetGssTsigKeys(v []string)`
 
 SetGssTsigKeys sets GssTsigKeys field to given value.
 

@@ -23,150 +23,386 @@ import (
 
 type FilteroptionAPI interface {
 	/*
-		Get Retrieve filteroption objects
-
-		Returns a list of filteroption objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FilteroptionAPIGetRequest
-	*/
-	Get(ctx context.Context) FilteroptionAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListFilteroptionResponse
-	GetExecute(r FilteroptionAPIGetRequest) (*ListFilteroptionResponse, *http.Response, error)
-	/*
-		Post Create a filteroption object
+		Create Create a filteroption object
 
 		Creates a new filteroption object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FilteroptionAPIPostRequest
+		@return FilteroptionAPICreateRequest
 	*/
-	Post(ctx context.Context) FilteroptionAPIPostRequest
+	Create(ctx context.Context) FilteroptionAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateFilteroptionResponse
-	PostExecute(r FilteroptionAPIPostRequest) (*CreateFilteroptionResponse, *http.Response, error)
+	CreateExecute(r FilteroptionAPICreateRequest) (*CreateFilteroptionResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a filteroption object
+		Delete Delete a filteroption object
 
 		Deletes a specific filteroption object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filteroption object
-		@return FilteroptionAPIReferenceDeleteRequest
+		@return FilteroptionAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) FilteroptionAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) FilteroptionAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r FilteroptionAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r FilteroptionAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific filteroption object
+		List Retrieve filteroption objects
+
+		Returns a list of filteroption objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return FilteroptionAPIListRequest
+	*/
+	List(ctx context.Context) FilteroptionAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListFilteroptionResponse
+	ListExecute(r FilteroptionAPIListRequest) (*ListFilteroptionResponse, *http.Response, error)
+	/*
+		Read Get a specific filteroption object
 
 		Returns a specific filteroption object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filteroption object
-		@return FilteroptionAPIReferenceGetRequest
+		@return FilteroptionAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FilteroptionAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FilteroptionAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFilteroptionResponse
-	ReferenceGetExecute(r FilteroptionAPIReferenceGetRequest) (*GetFilteroptionResponse, *http.Response, error)
+	ReadExecute(r FilteroptionAPIReadRequest) (*GetFilteroptionResponse, *http.Response, error)
 	/*
-		ReferencePut Update a filteroption object
+		Update Update a filteroption object
 
 		Updates a specific filteroption object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the filteroption object
-		@return FilteroptionAPIReferencePutRequest
+		@return FilteroptionAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) FilteroptionAPIReferencePutRequest
+	Update(ctx context.Context, reference string) FilteroptionAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateFilteroptionResponse
-	ReferencePutExecute(r FilteroptionAPIReferencePutRequest) (*UpdateFilteroptionResponse, *http.Response, error)
+	UpdateExecute(r FilteroptionAPIUpdateRequest) (*UpdateFilteroptionResponse, *http.Response, error)
 }
 
 // FilteroptionAPIService FilteroptionAPI service
 type FilteroptionAPIService internal.Service
 
-type FilteroptionAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     FilteroptionAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type FilteroptionAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       FilteroptionAPI
+	filteroption     *Filteroption
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r FilteroptionAPICreateRequest) Filteroption(filteroption Filteroption) FilteroptionAPICreateRequest {
+	r.filteroption = &filteroption
+	return r
 }
 
 // Enter the field names followed by comma
-func (r FilteroptionAPIGetRequest) ReturnFields(returnFields string) FilteroptionAPIGetRequest {
+func (r FilteroptionAPICreateRequest) ReturnFields(returnFields string) FilteroptionAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilteroptionAPIGetRequest) ReturnFields2(returnFields2 string) FilteroptionAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r FilteroptionAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilteroptionAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r FilteroptionAPICreateRequest) ReturnAsObject(returnAsObject int32) FilteroptionAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r FilteroptionAPICreateRequest) Execute() (*CreateFilteroptionResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a filteroption object
+
+Creates a new filteroption object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return FilteroptionAPICreateRequest
+*/
+func (a *FilteroptionAPIService) Create(ctx context.Context) FilteroptionAPICreateRequest {
+	return FilteroptionAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateFilteroptionResponse
+func (a *FilteroptionAPIService) CreateExecute(r FilteroptionAPICreateRequest) (*CreateFilteroptionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateFilteroptionResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/filteroption"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.filteroption == nil {
+		return localVarReturnValue, nil, internal.ReportError("filteroption is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filteroption != nil {
+		if r.filteroption.ExtAttrs == nil {
+			r.filteroption.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.filteroption.ExtAttrs)[k]; !ok {
+				(*r.filteroption.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.filteroption
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type FilteroptionAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService FilteroptionAPI
+	reference  string
+}
+
+func (r FilteroptionAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a filteroption object
+
+Deletes a specific filteroption object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the filteroption object
+	@return FilteroptionAPIDeleteRequest
+*/
+func (a *FilteroptionAPIService) Delete(ctx context.Context, reference string) FilteroptionAPIDeleteRequest {
+	return FilteroptionAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *FilteroptionAPIService) DeleteExecute(r FilteroptionAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/filteroption/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type FilteroptionAPIListRequest struct {
+	ctx              context.Context
+	ApiService       FilteroptionAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r FilteroptionAPIListRequest) ReturnFields(returnFields string) FilteroptionAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r FilteroptionAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FilteroptionAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r FilteroptionAPIGetRequest) MaxResults(maxResults int32) FilteroptionAPIGetRequest {
+func (r FilteroptionAPIListRequest) MaxResults(maxResults int32) FilteroptionAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilteroptionAPIGetRequest) ReturnAsObject(returnAsObject int32) FilteroptionAPIGetRequest {
+func (r FilteroptionAPIListRequest) ReturnAsObject(returnAsObject int32) FilteroptionAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r FilteroptionAPIGetRequest) Paging(paging int32) FilteroptionAPIGetRequest {
+func (r FilteroptionAPIListRequest) Paging(paging int32) FilteroptionAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r FilteroptionAPIGetRequest) PageId(pageId string) FilteroptionAPIGetRequest {
+func (r FilteroptionAPIListRequest) PageId(pageId string) FilteroptionAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r FilteroptionAPIGetRequest) Filters(filters map[string]interface{}) FilteroptionAPIGetRequest {
+func (r FilteroptionAPIListRequest) Filters(filters map[string]interface{}) FilteroptionAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r FilteroptionAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FilteroptionAPIGetRequest {
+func (r FilteroptionAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FilteroptionAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r FilteroptionAPIGetRequest) Execute() (*ListFilteroptionResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r FilteroptionAPIListRequest) Execute() (*ListFilteroptionResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve filteroption objects
+List Retrieve filteroption objects
 
 Returns a list of filteroption objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FilteroptionAPIGetRequest
+	@return FilteroptionAPIListRequest
 */
-func (a *FilteroptionAPIService) Get(ctx context.Context) FilteroptionAPIGetRequest {
-	return FilteroptionAPIGetRequest{
+func (a *FilteroptionAPIService) List(ctx context.Context) FilteroptionAPIListRequest {
+	return FilteroptionAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *FilteroptionAPIService) Get(ctx context.Context) FilteroptionAPIGetRequ
 // Execute executes the request
 //
 //	@return ListFilteroptionResponse
-func (a *FilteroptionAPIService) GetExecute(r FilteroptionAPIGetRequest) (*ListFilteroptionResponse, *http.Response, error) {
+func (a *FilteroptionAPIService) ListExecute(r FilteroptionAPIListRequest) (*ListFilteroptionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *FilteroptionAPIService) GetExecute(r FilteroptionAPIGetRequest) (*ListF
 		localVarReturnValue *ListFilteroptionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *FilteroptionAPIService) GetExecute(r FilteroptionAPIGetRequest) (*ListF
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *FilteroptionAPIService) GetExecute(r FilteroptionAPIGetRequest) (*ListF
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FilteroptionAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     FilteroptionAPI
-	filteroption   *Filteroption
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r FilteroptionAPIPostRequest) Filteroption(filteroption Filteroption) FilteroptionAPIPostRequest {
-	r.filteroption = &filteroption
-	return r
+type FilteroptionAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       FilteroptionAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r FilteroptionAPIPostRequest) ReturnFields(returnFields string) FilteroptionAPIPostRequest {
+func (r FilteroptionAPIReadRequest) ReturnFields(returnFields string) FilteroptionAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilteroptionAPIPostRequest) ReturnFields2(returnFields2 string) FilteroptionAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r FilteroptionAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FilteroptionAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilteroptionAPIPostRequest) ReturnAsObject(returnAsObject int32) FilteroptionAPIPostRequest {
+func (r FilteroptionAPIReadRequest) ReturnAsObject(returnAsObject int32) FilteroptionAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilteroptionAPIPostRequest) Execute() (*CreateFilteroptionResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r FilteroptionAPIReadRequest) Execute() (*GetFilteroptionResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a filteroption object
-
-Creates a new filteroption object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FilteroptionAPIPostRequest
-*/
-func (a *FilteroptionAPIService) Post(ctx context.Context) FilteroptionAPIPostRequest {
-	return FilteroptionAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateFilteroptionResponse
-func (a *FilteroptionAPIService) PostExecute(r FilteroptionAPIPostRequest) (*CreateFilteroptionResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateFilteroptionResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/filteroption"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.filteroption == nil {
-		return localVarReturnValue, nil, internal.ReportError("filteroption is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filteroption != nil {
-		if r.filteroption.Extattrs == nil {
-			r.filteroption.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.filteroption.Extattrs)[k]; !ok {
-				(*r.filteroption.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.filteroption
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type FilteroptionAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService FilteroptionAPI
-	reference  string
-}
-
-func (r FilteroptionAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a filteroption object
-
-Deletes a specific filteroption object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the filteroption object
-	@return FilteroptionAPIReferenceDeleteRequest
-*/
-func (a *FilteroptionAPIService) ReferenceDelete(ctx context.Context, reference string) FilteroptionAPIReferenceDeleteRequest {
-	return FilteroptionAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *FilteroptionAPIService) ReferenceDeleteExecute(r FilteroptionAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/filteroption/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type FilteroptionAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     FilteroptionAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r FilteroptionAPIReferenceGetRequest) ReturnFields(returnFields string) FilteroptionAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilteroptionAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FilteroptionAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r FilteroptionAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FilteroptionAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r FilteroptionAPIReferenceGetRequest) Execute() (*GetFilteroptionResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific filteroption object
+Read Get a specific filteroption object
 
 Returns a specific filteroption object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filteroption object
-	@return FilteroptionAPIReferenceGetRequest
+	@return FilteroptionAPIReadRequest
 */
-func (a *FilteroptionAPIService) ReferenceGet(ctx context.Context, reference string) FilteroptionAPIReferenceGetRequest {
-	return FilteroptionAPIReferenceGetRequest{
+func (a *FilteroptionAPIService) Read(ctx context.Context, reference string) FilteroptionAPIReadRequest {
+	return FilteroptionAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *FilteroptionAPIService) ReferenceGet(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return GetFilteroptionResponse
-func (a *FilteroptionAPIService) ReferenceGetExecute(r FilteroptionAPIReferenceGetRequest) (*GetFilteroptionResponse, *http.Response, error) {
+func (a *FilteroptionAPIService) ReadExecute(r FilteroptionAPIReadRequest) (*GetFilteroptionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *FilteroptionAPIService) ReferenceGetExecute(r FilteroptionAPIReferenceG
 		localVarReturnValue *GetFilteroptionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *FilteroptionAPIService) ReferenceGetExecute(r FilteroptionAPIReferenceG
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *FilteroptionAPIService) ReferenceGetExecute(r FilteroptionAPIReferenceG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FilteroptionAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     FilteroptionAPI
-	reference      string
-	filteroption   *Filteroption
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type FilteroptionAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       FilteroptionAPI
+	reference        string
+	filteroption     *Filteroption
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r FilteroptionAPIReferencePutRequest) Filteroption(filteroption Filteroption) FilteroptionAPIReferencePutRequest {
+func (r FilteroptionAPIUpdateRequest) Filteroption(filteroption Filteroption) FilteroptionAPIUpdateRequest {
 	r.filteroption = &filteroption
 	return r
 }
 
 // Enter the field names followed by comma
-func (r FilteroptionAPIReferencePutRequest) ReturnFields(returnFields string) FilteroptionAPIReferencePutRequest {
+func (r FilteroptionAPIUpdateRequest) ReturnFields(returnFields string) FilteroptionAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FilteroptionAPIReferencePutRequest) ReturnFields2(returnFields2 string) FilteroptionAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r FilteroptionAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FilteroptionAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FilteroptionAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) FilteroptionAPIReferencePutRequest {
+func (r FilteroptionAPIUpdateRequest) ReturnAsObject(returnAsObject int32) FilteroptionAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FilteroptionAPIReferencePutRequest) Execute() (*UpdateFilteroptionResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r FilteroptionAPIUpdateRequest) Execute() (*UpdateFilteroptionResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a filteroption object
+Update Update a filteroption object
 
 Updates a specific filteroption object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the filteroption object
-	@return FilteroptionAPIReferencePutRequest
+	@return FilteroptionAPIUpdateRequest
 */
-func (a *FilteroptionAPIService) ReferencePut(ctx context.Context, reference string) FilteroptionAPIReferencePutRequest {
-	return FilteroptionAPIReferencePutRequest{
+func (a *FilteroptionAPIService) Update(ctx context.Context, reference string) FilteroptionAPIUpdateRequest {
+	return FilteroptionAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *FilteroptionAPIService) ReferencePut(ctx context.Context, reference str
 // Execute executes the request
 //
 //	@return UpdateFilteroptionResponse
-func (a *FilteroptionAPIService) ReferencePutExecute(r FilteroptionAPIReferencePutRequest) (*UpdateFilteroptionResponse, *http.Response, error) {
+func (a *FilteroptionAPIService) UpdateExecute(r FilteroptionAPIUpdateRequest) (*UpdateFilteroptionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *FilteroptionAPIService) ReferencePutExecute(r FilteroptionAPIReferenceP
 		localVarReturnValue *UpdateFilteroptionResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FilteroptionAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *FilteroptionAPIService) ReferencePutExecute(r FilteroptionAPIReferenceP
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *FilteroptionAPIService) ReferencePutExecute(r FilteroptionAPIReferenceP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.filteroption != nil {
-		if r.filteroption.Extattrs == nil {
-			r.filteroption.Extattrs = &map[string]ExtAttrs{}
+		if r.filteroption.ExtAttrs == nil {
+			r.filteroption.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.filteroption.Extattrs)[k]; !ok {
-				(*r.filteroption.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.filteroption.ExtAttrs)[k]; !ok {
+				(*r.filteroption.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

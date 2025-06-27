@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **Network** | Pointer to **string** | The reference to the network that contains ranges. | [optional] [readonly] 
-**Ranges** | Pointer to **[]map[string]interface{}** | The ordered list of references to ranges. | [optional] 
+**Ranges** | Pointer to **[]string** | The ordered list of references to ranges. | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasNetwork returns a boolean if a field has been set.
 
 ### GetRanges
 
-`func (o *Orderedranges) GetRanges() []map[string]interface{}`
+`func (o *Orderedranges) GetRanges() []string`
 
 GetRanges returns the Ranges field if non-nil, zero value otherwise.
 
 ### GetRangesOk
 
-`func (o *Orderedranges) GetRangesOk() (*[]map[string]interface{}, bool)`
+`func (o *Orderedranges) GetRangesOk() (*[]string, bool)`
 
 GetRangesOk returns a tuple with the Ranges field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRanges
 
-`func (o *Orderedranges) SetRanges(v []map[string]interface{})`
+`func (o *Orderedranges) SetRanges(v []string)`
 
 SetRanges sets Ranges field to given value.
 

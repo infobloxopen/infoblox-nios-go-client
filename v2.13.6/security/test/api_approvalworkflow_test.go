@@ -23,11 +23,11 @@ func TestApprovalworkflowAPIService(t *testing.T) {
 
 	apiClient := security.NewAPIClient()
 
-	t.Run("Test ApprovalworkflowAPIService Get", func(t *testing.T) {
+	t.Run("Test ApprovalworkflowAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ApprovalworkflowAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ApprovalworkflowAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestApprovalworkflowAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApprovalworkflowAPIService Post", func(t *testing.T) {
+	t.Run("Test ApprovalworkflowAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ApprovalworkflowAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.ApprovalworkflowAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ApprovalworkflowAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ApprovalworkflowAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestApprovalworkflowAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApprovalworkflowAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test ApprovalworkflowAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.ApprovalworkflowAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ApprovalworkflowAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.ApprovalworkflowAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ApprovalworkflowAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestApprovalworkflowAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApprovalworkflowAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test ApprovalworkflowAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.ApprovalworkflowAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.ApprovalworkflowAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

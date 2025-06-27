@@ -23,150 +23,386 @@ import (
 
 type Ipv6networkAPI interface {
 	/*
-		Get Retrieve ipv6network objects
-
-		Returns a list of ipv6network objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6networkAPIGetRequest
-	*/
-	Get(ctx context.Context) Ipv6networkAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListIpv6networkResponse
-	GetExecute(r Ipv6networkAPIGetRequest) (*ListIpv6networkResponse, *http.Response, error)
-	/*
-		Post Create a ipv6network object
+		Create Create a ipv6network object
 
 		Creates a new ipv6network object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return Ipv6networkAPIPostRequest
+		@return Ipv6networkAPICreateRequest
 	*/
-	Post(ctx context.Context) Ipv6networkAPIPostRequest
+	Create(ctx context.Context) Ipv6networkAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateIpv6networkResponse
-	PostExecute(r Ipv6networkAPIPostRequest) (*CreateIpv6networkResponse, *http.Response, error)
+	CreateExecute(r Ipv6networkAPICreateRequest) (*CreateIpv6networkResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a ipv6network object
+		Delete Delete a ipv6network object
 
 		Deletes a specific ipv6network object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6network object
-		@return Ipv6networkAPIReferenceDeleteRequest
+		@return Ipv6networkAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) Ipv6networkAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) Ipv6networkAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r Ipv6networkAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r Ipv6networkAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific ipv6network object
+		List Retrieve ipv6network objects
+
+		Returns a list of ipv6network objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return Ipv6networkAPIListRequest
+	*/
+	List(ctx context.Context) Ipv6networkAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListIpv6networkResponse
+	ListExecute(r Ipv6networkAPIListRequest) (*ListIpv6networkResponse, *http.Response, error)
+	/*
+		Read Get a specific ipv6network object
 
 		Returns a specific ipv6network object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6network object
-		@return Ipv6networkAPIReferenceGetRequest
+		@return Ipv6networkAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) Ipv6networkAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) Ipv6networkAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetIpv6networkResponse
-	ReferenceGetExecute(r Ipv6networkAPIReferenceGetRequest) (*GetIpv6networkResponse, *http.Response, error)
+	ReadExecute(r Ipv6networkAPIReadRequest) (*GetIpv6networkResponse, *http.Response, error)
 	/*
-		ReferencePut Update a ipv6network object
+		Update Update a ipv6network object
 
 		Updates a specific ipv6network object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the ipv6network object
-		@return Ipv6networkAPIReferencePutRequest
+		@return Ipv6networkAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) Ipv6networkAPIReferencePutRequest
+	Update(ctx context.Context, reference string) Ipv6networkAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateIpv6networkResponse
-	ReferencePutExecute(r Ipv6networkAPIReferencePutRequest) (*UpdateIpv6networkResponse, *http.Response, error)
+	UpdateExecute(r Ipv6networkAPIUpdateRequest) (*UpdateIpv6networkResponse, *http.Response, error)
 }
 
 // Ipv6networkAPIService Ipv6networkAPI service
 type Ipv6networkAPIService internal.Service
 
-type Ipv6networkAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6networkAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type Ipv6networkAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6networkAPI
+	ipv6network      *Ipv6network
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r Ipv6networkAPICreateRequest) Ipv6network(ipv6network Ipv6network) Ipv6networkAPICreateRequest {
+	r.ipv6network = &ipv6network
+	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv6networkAPIGetRequest) ReturnFields(returnFields string) Ipv6networkAPIGetRequest {
+func (r Ipv6networkAPICreateRequest) ReturnFields(returnFields string) Ipv6networkAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6networkAPIGetRequest) ReturnFields2(returnFields2 string) Ipv6networkAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6networkAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6networkAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r Ipv6networkAPICreateRequest) ReturnAsObject(returnAsObject int32) Ipv6networkAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r Ipv6networkAPICreateRequest) Execute() (*CreateIpv6networkResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a ipv6network object
+
+Creates a new ipv6network object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return Ipv6networkAPICreateRequest
+*/
+func (a *Ipv6networkAPIService) Create(ctx context.Context) Ipv6networkAPICreateRequest {
+	return Ipv6networkAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateIpv6networkResponse
+func (a *Ipv6networkAPIService) CreateExecute(r Ipv6networkAPICreateRequest) (*CreateIpv6networkResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateIpv6networkResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv6network"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ipv6network == nil {
+		return localVarReturnValue, nil, internal.ReportError("ipv6network is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6network != nil {
+		if r.ipv6network.ExtAttrs == nil {
+			r.ipv6network.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.ipv6network.ExtAttrs)[k]; !ok {
+				(*r.ipv6network.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.ipv6network
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type Ipv6networkAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService Ipv6networkAPI
+	reference  string
+}
+
+func (r Ipv6networkAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a ipv6network object
+
+Deletes a specific ipv6network object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the ipv6network object
+	@return Ipv6networkAPIDeleteRequest
+*/
+func (a *Ipv6networkAPIService) Delete(ctx context.Context, reference string) Ipv6networkAPIDeleteRequest {
+	return Ipv6networkAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *Ipv6networkAPIService) DeleteExecute(r Ipv6networkAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/ipv6network/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type Ipv6networkAPIListRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6networkAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r Ipv6networkAPIListRequest) ReturnFields(returnFields string) Ipv6networkAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r Ipv6networkAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6networkAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r Ipv6networkAPIGetRequest) MaxResults(maxResults int32) Ipv6networkAPIGetRequest {
+func (r Ipv6networkAPIListRequest) MaxResults(maxResults int32) Ipv6networkAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6networkAPIGetRequest) ReturnAsObject(returnAsObject int32) Ipv6networkAPIGetRequest {
+func (r Ipv6networkAPIListRequest) ReturnAsObject(returnAsObject int32) Ipv6networkAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r Ipv6networkAPIGetRequest) Paging(paging int32) Ipv6networkAPIGetRequest {
+func (r Ipv6networkAPIListRequest) Paging(paging int32) Ipv6networkAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r Ipv6networkAPIGetRequest) PageId(pageId string) Ipv6networkAPIGetRequest {
+func (r Ipv6networkAPIListRequest) PageId(pageId string) Ipv6networkAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r Ipv6networkAPIGetRequest) Filters(filters map[string]interface{}) Ipv6networkAPIGetRequest {
+func (r Ipv6networkAPIListRequest) Filters(filters map[string]interface{}) Ipv6networkAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r Ipv6networkAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6networkAPIGetRequest {
+func (r Ipv6networkAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6networkAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r Ipv6networkAPIGetRequest) Execute() (*ListIpv6networkResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r Ipv6networkAPIListRequest) Execute() (*ListIpv6networkResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve ipv6network objects
+List Retrieve ipv6network objects
 
 Returns a list of ipv6network objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6networkAPIGetRequest
+	@return Ipv6networkAPIListRequest
 */
-func (a *Ipv6networkAPIService) Get(ctx context.Context) Ipv6networkAPIGetRequest {
-	return Ipv6networkAPIGetRequest{
+func (a *Ipv6networkAPIService) List(ctx context.Context) Ipv6networkAPIListRequest {
+	return Ipv6networkAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *Ipv6networkAPIService) Get(ctx context.Context) Ipv6networkAPIGetReques
 // Execute executes the request
 //
 //	@return ListIpv6networkResponse
-func (a *Ipv6networkAPIService) GetExecute(r Ipv6networkAPIGetRequest) (*ListIpv6networkResponse, *http.Response, error) {
+func (a *Ipv6networkAPIService) ListExecute(r Ipv6networkAPIListRequest) (*ListIpv6networkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *Ipv6networkAPIService) GetExecute(r Ipv6networkAPIGetRequest) (*ListIpv
 		localVarReturnValue *ListIpv6networkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *Ipv6networkAPIService) GetExecute(r Ipv6networkAPIGetRequest) (*ListIpv
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *Ipv6networkAPIService) GetExecute(r Ipv6networkAPIGetRequest) (*ListIpv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6networkAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6networkAPI
-	ipv6network    *Ipv6network
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r Ipv6networkAPIPostRequest) Ipv6network(ipv6network Ipv6network) Ipv6networkAPIPostRequest {
-	r.ipv6network = &ipv6network
-	return r
+type Ipv6networkAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6networkAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r Ipv6networkAPIPostRequest) ReturnFields(returnFields string) Ipv6networkAPIPostRequest {
+func (r Ipv6networkAPIReadRequest) ReturnFields(returnFields string) Ipv6networkAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6networkAPIPostRequest) ReturnFields2(returnFields2 string) Ipv6networkAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6networkAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6networkAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6networkAPIPostRequest) ReturnAsObject(returnAsObject int32) Ipv6networkAPIPostRequest {
+func (r Ipv6networkAPIReadRequest) ReturnAsObject(returnAsObject int32) Ipv6networkAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6networkAPIPostRequest) Execute() (*CreateIpv6networkResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r Ipv6networkAPIReadRequest) Execute() (*GetIpv6networkResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a ipv6network object
-
-Creates a new ipv6network object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return Ipv6networkAPIPostRequest
-*/
-func (a *Ipv6networkAPIService) Post(ctx context.Context) Ipv6networkAPIPostRequest {
-	return Ipv6networkAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateIpv6networkResponse
-func (a *Ipv6networkAPIService) PostExecute(r Ipv6networkAPIPostRequest) (*CreateIpv6networkResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateIpv6networkResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv6network"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.ipv6network == nil {
-		return localVarReturnValue, nil, internal.ReportError("ipv6network is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6network != nil {
-		if r.ipv6network.Extattrs == nil {
-			r.ipv6network.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6network.Extattrs)[k]; !ok {
-				(*r.ipv6network.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.ipv6network
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type Ipv6networkAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService Ipv6networkAPI
-	reference  string
-}
-
-func (r Ipv6networkAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a ipv6network object
-
-Deletes a specific ipv6network object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the ipv6network object
-	@return Ipv6networkAPIReferenceDeleteRequest
-*/
-func (a *Ipv6networkAPIService) ReferenceDelete(ctx context.Context, reference string) Ipv6networkAPIReferenceDeleteRequest {
-	return Ipv6networkAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *Ipv6networkAPIService) ReferenceDeleteExecute(r Ipv6networkAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/ipv6network/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type Ipv6networkAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6networkAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r Ipv6networkAPIReferenceGetRequest) ReturnFields(returnFields string) Ipv6networkAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6networkAPIReferenceGetRequest) ReturnFields2(returnFields2 string) Ipv6networkAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r Ipv6networkAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) Ipv6networkAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r Ipv6networkAPIReferenceGetRequest) Execute() (*GetIpv6networkResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific ipv6network object
+Read Get a specific ipv6network object
 
 Returns a specific ipv6network object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6network object
-	@return Ipv6networkAPIReferenceGetRequest
+	@return Ipv6networkAPIReadRequest
 */
-func (a *Ipv6networkAPIService) ReferenceGet(ctx context.Context, reference string) Ipv6networkAPIReferenceGetRequest {
-	return Ipv6networkAPIReferenceGetRequest{
+func (a *Ipv6networkAPIService) Read(ctx context.Context, reference string) Ipv6networkAPIReadRequest {
+	return Ipv6networkAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *Ipv6networkAPIService) ReferenceGet(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return GetIpv6networkResponse
-func (a *Ipv6networkAPIService) ReferenceGetExecute(r Ipv6networkAPIReferenceGetRequest) (*GetIpv6networkResponse, *http.Response, error) {
+func (a *Ipv6networkAPIService) ReadExecute(r Ipv6networkAPIReadRequest) (*GetIpv6networkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *Ipv6networkAPIService) ReferenceGetExecute(r Ipv6networkAPIReferenceGet
 		localVarReturnValue *GetIpv6networkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *Ipv6networkAPIService) ReferenceGetExecute(r Ipv6networkAPIReferenceGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *Ipv6networkAPIService) ReferenceGetExecute(r Ipv6networkAPIReferenceGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type Ipv6networkAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     Ipv6networkAPI
-	reference      string
-	ipv6network    *Ipv6network
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type Ipv6networkAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       Ipv6networkAPI
+	reference        string
+	ipv6network      *Ipv6network
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r Ipv6networkAPIReferencePutRequest) Ipv6network(ipv6network Ipv6network) Ipv6networkAPIReferencePutRequest {
+func (r Ipv6networkAPIUpdateRequest) Ipv6network(ipv6network Ipv6network) Ipv6networkAPIUpdateRequest {
 	r.ipv6network = &ipv6network
 	return r
 }
 
 // Enter the field names followed by comma
-func (r Ipv6networkAPIReferencePutRequest) ReturnFields(returnFields string) Ipv6networkAPIReferencePutRequest {
+func (r Ipv6networkAPIUpdateRequest) ReturnFields(returnFields string) Ipv6networkAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r Ipv6networkAPIReferencePutRequest) ReturnFields2(returnFields2 string) Ipv6networkAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r Ipv6networkAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) Ipv6networkAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r Ipv6networkAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) Ipv6networkAPIReferencePutRequest {
+func (r Ipv6networkAPIUpdateRequest) ReturnAsObject(returnAsObject int32) Ipv6networkAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r Ipv6networkAPIReferencePutRequest) Execute() (*UpdateIpv6networkResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r Ipv6networkAPIUpdateRequest) Execute() (*UpdateIpv6networkResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a ipv6network object
+Update Update a ipv6network object
 
 Updates a specific ipv6network object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the ipv6network object
-	@return Ipv6networkAPIReferencePutRequest
+	@return Ipv6networkAPIUpdateRequest
 */
-func (a *Ipv6networkAPIService) ReferencePut(ctx context.Context, reference string) Ipv6networkAPIReferencePutRequest {
-	return Ipv6networkAPIReferencePutRequest{
+func (a *Ipv6networkAPIService) Update(ctx context.Context, reference string) Ipv6networkAPIUpdateRequest {
+	return Ipv6networkAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *Ipv6networkAPIService) ReferencePut(ctx context.Context, reference stri
 // Execute executes the request
 //
 //	@return UpdateIpv6networkResponse
-func (a *Ipv6networkAPIService) ReferencePutExecute(r Ipv6networkAPIReferencePutRequest) (*UpdateIpv6networkResponse, *http.Response, error) {
+func (a *Ipv6networkAPIService) UpdateExecute(r Ipv6networkAPIUpdateRequest) (*UpdateIpv6networkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *Ipv6networkAPIService) ReferencePutExecute(r Ipv6networkAPIReferencePut
 		localVarReturnValue *UpdateIpv6networkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "Ipv6networkAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *Ipv6networkAPIService) ReferencePutExecute(r Ipv6networkAPIReferencePut
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *Ipv6networkAPIService) ReferencePutExecute(r Ipv6networkAPIReferencePut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.ipv6network != nil {
-		if r.ipv6network.Extattrs == nil {
-			r.ipv6network.Extattrs = &map[string]ExtAttrs{}
+		if r.ipv6network.ExtAttrs == nil {
+			r.ipv6network.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.ipv6network.Extattrs)[k]; !ok {
-				(*r.ipv6network.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.ipv6network.ExtAttrs)[k]; !ok {
+				(*r.ipv6network.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

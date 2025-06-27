@@ -23,11 +23,11 @@ func TestRecordnamepolicyAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
-	t.Run("Test RecordnamepolicyAPIService Get", func(t *testing.T) {
+	t.Run("Test RecordnamepolicyAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordnamepolicyAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RecordnamepolicyAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRecordnamepolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordnamepolicyAPIService Post", func(t *testing.T) {
+	t.Run("Test RecordnamepolicyAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RecordnamepolicyAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RecordnamepolicyAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RecordnamepolicyAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RecordnamepolicyAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRecordnamepolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordnamepolicyAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test RecordnamepolicyAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RecordnamepolicyAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RecordnamepolicyAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RecordnamepolicyAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordnamepolicyAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRecordnamepolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RecordnamepolicyAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test RecordnamepolicyAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RecordnamepolicyAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RecordnamepolicyAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

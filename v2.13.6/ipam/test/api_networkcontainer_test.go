@@ -23,11 +23,11 @@ func TestNetworkcontainerAPIService(t *testing.T) {
 
 	apiClient := ipam.NewAPIClient()
 
-	t.Run("Test NetworkcontainerAPIService Get", func(t *testing.T) {
+	t.Run("Test NetworkcontainerAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworkcontainerAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NetworkcontainerAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestNetworkcontainerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkcontainerAPIService Post", func(t *testing.T) {
+	t.Run("Test NetworkcontainerAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.NetworkcontainerAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.NetworkcontainerAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test NetworkcontainerAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.NetworkcontainerAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestNetworkcontainerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkcontainerAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test NetworkcontainerAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.NetworkcontainerAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test NetworkcontainerAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.NetworkcontainerAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NetworkcontainerAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestNetworkcontainerAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test NetworkcontainerAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test NetworkcontainerAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.NetworkcontainerAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.NetworkcontainerAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

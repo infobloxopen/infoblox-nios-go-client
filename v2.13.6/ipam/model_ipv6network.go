@@ -77,10 +77,9 @@ type Ipv6network struct {
 	// Determines if the discovery for the network should be immediately enabled.
 	EnableImmediateDiscovery *bool `json:"enable_immediate_discovery,omitempty"`
 	// The endpoints that provides data for the DHCP IPv6 Network object.
-	EndpointSources []map[string]interface{} `json:"endpoint_sources,omitempty"`
-	ExpandNetwork   map[string]interface{}   `json:"expand_network,omitempty"`
+	EndpointSources []string `json:"endpoint_sources,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// This field contains the federated realms associated to this network
 	FederatedRealms []Ipv6networkFederatedRealms `json:"federated_realms,omitempty"`
 	// The timestamp when the last RIR registration update was sent.
@@ -101,10 +100,7 @@ type Ipv6network struct {
 	// The network container to which this network belongs, if any.
 	NetworkContainer *string `json:"network_container,omitempty"`
 	// The name of the network view in which this network resides.
-	NetworkView          *string                `json:"network_view,omitempty"`
-	NextAvailableIp      map[string]interface{} `json:"next_available_ip,omitempty"`
-	NextAvailableNetwork map[string]interface{} `json:"next_available_network,omitempty"`
-	NextAvailableVlan    map[string]interface{} `json:"next_available_vlan,omitempty"`
+	NetworkView *string `json:"network_view,omitempty"`
 	// An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object.
 	Options                    []Ipv6networkOptions                   `json:"options,omitempty"`
 	PortControlBlackoutSetting *Ipv6networkPortControlBlackoutSetting `json:"port_control_blackout_setting,omitempty"`
@@ -126,7 +122,6 @@ type Ipv6network struct {
 	SamePortControlDiscoveryBlackout *bool `json:"same_port_control_discovery_blackout,omitempty"`
 	// Determines whether to send the RIR registration request.
 	SendRirRequest    *bool                         `json:"send_rir_request,omitempty"`
-	SplitNetwork      map[string]interface{}        `json:"split_network,omitempty"`
 	SubscribeSettings *Ipv6networkSubscribeSettings `json:"subscribe_settings,omitempty"`
 	// If set on creation, the network is created according to the values specified in the selected template.
 	Template *string `json:"template,omitempty"`
@@ -1162,9 +1157,9 @@ func (o *Ipv6network) SetEnableImmediateDiscovery(v bool) {
 }
 
 // GetEndpointSources returns the EndpointSources field value if set, zero value otherwise.
-func (o *Ipv6network) GetEndpointSources() []map[string]interface{} {
+func (o *Ipv6network) GetEndpointSources() []string {
 	if o == nil || IsNil(o.EndpointSources) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.EndpointSources
@@ -1172,7 +1167,7 @@ func (o *Ipv6network) GetEndpointSources() []map[string]interface{} {
 
 // GetEndpointSourcesOk returns a tuple with the EndpointSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6network) GetEndpointSourcesOk() ([]map[string]interface{}, bool) {
+func (o *Ipv6network) GetEndpointSourcesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EndpointSources) {
 		return nil, false
 	}
@@ -1188,73 +1183,41 @@ func (o *Ipv6network) HasEndpointSources() bool {
 	return false
 }
 
-// SetEndpointSources gets a reference to the given []map[string]interface{} and assigns it to the EndpointSources field.
-func (o *Ipv6network) SetEndpointSources(v []map[string]interface{}) {
+// SetEndpointSources gets a reference to the given []string and assigns it to the EndpointSources field.
+func (o *Ipv6network) SetEndpointSources(v []string) {
 	o.EndpointSources = v
 }
 
-// GetExpandNetwork returns the ExpandNetwork field value if set, zero value otherwise.
-func (o *Ipv6network) GetExpandNetwork() map[string]interface{} {
-	if o == nil || IsNil(o.ExpandNetwork) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ExpandNetwork
-}
-
-// GetExpandNetworkOk returns a tuple with the ExpandNetwork field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ipv6network) GetExpandNetworkOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.ExpandNetwork) {
-		return map[string]interface{}{}, false
-	}
-	return o.ExpandNetwork, true
-}
-
-// HasExpandNetwork returns a boolean if a field has been set.
-func (o *Ipv6network) HasExpandNetwork() bool {
-	if o != nil && !IsNil(o.ExpandNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetExpandNetwork gets a reference to the given map[string]interface{} and assigns it to the ExpandNetwork field.
-func (o *Ipv6network) SetExpandNetwork(v map[string]interface{}) {
-	o.ExpandNetwork = v
-}
-
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *Ipv6network) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Ipv6network) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6network) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *Ipv6network) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *Ipv6network) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Ipv6network) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *Ipv6network) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Ipv6network) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetFederatedRealms returns the FederatedRealms field value if set, zero value otherwise.
@@ -1609,102 +1572,6 @@ func (o *Ipv6network) SetNetworkView(v string) {
 	o.NetworkView = &v
 }
 
-// GetNextAvailableIp returns the NextAvailableIp field value if set, zero value otherwise.
-func (o *Ipv6network) GetNextAvailableIp() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableIp) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableIp
-}
-
-// GetNextAvailableIpOk returns a tuple with the NextAvailableIp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ipv6network) GetNextAvailableIpOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableIp) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableIp, true
-}
-
-// HasNextAvailableIp returns a boolean if a field has been set.
-func (o *Ipv6network) HasNextAvailableIp() bool {
-	if o != nil && !IsNil(o.NextAvailableIp) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableIp gets a reference to the given map[string]interface{} and assigns it to the NextAvailableIp field.
-func (o *Ipv6network) SetNextAvailableIp(v map[string]interface{}) {
-	o.NextAvailableIp = v
-}
-
-// GetNextAvailableNetwork returns the NextAvailableNetwork field value if set, zero value otherwise.
-func (o *Ipv6network) GetNextAvailableNetwork() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableNetwork) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableNetwork
-}
-
-// GetNextAvailableNetworkOk returns a tuple with the NextAvailableNetwork field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ipv6network) GetNextAvailableNetworkOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableNetwork) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableNetwork, true
-}
-
-// HasNextAvailableNetwork returns a boolean if a field has been set.
-func (o *Ipv6network) HasNextAvailableNetwork() bool {
-	if o != nil && !IsNil(o.NextAvailableNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableNetwork gets a reference to the given map[string]interface{} and assigns it to the NextAvailableNetwork field.
-func (o *Ipv6network) SetNextAvailableNetwork(v map[string]interface{}) {
-	o.NextAvailableNetwork = v
-}
-
-// GetNextAvailableVlan returns the NextAvailableVlan field value if set, zero value otherwise.
-func (o *Ipv6network) GetNextAvailableVlan() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableVlan) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableVlan
-}
-
-// GetNextAvailableVlanOk returns a tuple with the NextAvailableVlan field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ipv6network) GetNextAvailableVlanOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableVlan) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableVlan, true
-}
-
-// HasNextAvailableVlan returns a boolean if a field has been set.
-func (o *Ipv6network) HasNextAvailableVlan() bool {
-	if o != nil && !IsNil(o.NextAvailableVlan) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableVlan gets a reference to the given map[string]interface{} and assigns it to the NextAvailableVlan field.
-func (o *Ipv6network) SetNextAvailableVlan(v map[string]interface{}) {
-	o.NextAvailableVlan = v
-}
-
 // GetOptions returns the Options field value if set, zero value otherwise.
 func (o *Ipv6network) GetOptions() []Ipv6networkOptions {
 	if o == nil || IsNil(o.Options) {
@@ -2055,38 +1922,6 @@ func (o *Ipv6network) HasSendRirRequest() bool {
 // SetSendRirRequest gets a reference to the given bool and assigns it to the SendRirRequest field.
 func (o *Ipv6network) SetSendRirRequest(v bool) {
 	o.SendRirRequest = &v
-}
-
-// GetSplitNetwork returns the SplitNetwork field value if set, zero value otherwise.
-func (o *Ipv6network) GetSplitNetwork() map[string]interface{} {
-	if o == nil || IsNil(o.SplitNetwork) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.SplitNetwork
-}
-
-// GetSplitNetworkOk returns a tuple with the SplitNetwork field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ipv6network) GetSplitNetworkOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.SplitNetwork) {
-		return map[string]interface{}{}, false
-	}
-	return o.SplitNetwork, true
-}
-
-// HasSplitNetwork returns a boolean if a field has been set.
-func (o *Ipv6network) HasSplitNetwork() bool {
-	if o != nil && !IsNil(o.SplitNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetSplitNetwork gets a reference to the given map[string]interface{} and assigns it to the SplitNetwork field.
-func (o *Ipv6network) SetSplitNetwork(v map[string]interface{}) {
-	o.SplitNetwork = v
 }
 
 // GetSubscribeSettings returns the SubscribeSettings field value if set, zero value otherwise.
@@ -3088,11 +2923,8 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndpointSources) {
 		toSerialize["endpoint_sources"] = o.EndpointSources
 	}
-	if !IsNil(o.ExpandNetwork) {
-		toSerialize["expand_network"] = o.ExpandNetwork
-	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.FederatedRealms) {
 		toSerialize["federated_realms"] = o.FederatedRealms
@@ -3127,15 +2959,6 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
 	}
-	if !IsNil(o.NextAvailableIp) {
-		toSerialize["next_available_ip"] = o.NextAvailableIp
-	}
-	if !IsNil(o.NextAvailableNetwork) {
-		toSerialize["next_available_network"] = o.NextAvailableNetwork
-	}
-	if !IsNil(o.NextAvailableVlan) {
-		toSerialize["next_available_vlan"] = o.NextAvailableVlan
-	}
 	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options
 	}
@@ -3168,9 +2991,6 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SendRirRequest) {
 		toSerialize["send_rir_request"] = o.SendRirRequest
-	}
-	if !IsNil(o.SplitNetwork) {
-		toSerialize["split_network"] = o.SplitNetwork
 	}
 	if !IsNil(o.SubscribeSettings) {
 		toSerialize["subscribe_settings"] = o.SubscribeSettings

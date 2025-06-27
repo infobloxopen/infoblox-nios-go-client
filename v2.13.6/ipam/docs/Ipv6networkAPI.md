@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](Ipv6networkAPI.md#Get) | **Get** /ipv6network | Retrieve ipv6network objects
-[**Post**](Ipv6networkAPI.md#Post) | **Post** /ipv6network | Create a ipv6network object
-[**ReferenceDelete**](Ipv6networkAPI.md#ReferenceDelete) | **Delete** /ipv6network/{reference} | Delete a ipv6network object
-[**ReferenceGet**](Ipv6networkAPI.md#ReferenceGet) | **Get** /ipv6network/{reference} | Get a specific ipv6network object
-[**ReferencePut**](Ipv6networkAPI.md#ReferencePut) | **Put** /ipv6network/{reference} | Update a ipv6network object
+[**Create**](Ipv6networkAPI.md#Create) | **Post** /ipv6network | Create a ipv6network object
+[**Delete**](Ipv6networkAPI.md#Delete) | **Delete** /ipv6network/{reference} | Delete a ipv6network object
+[**List**](Ipv6networkAPI.md#List) | **Get** /ipv6network | Retrieve ipv6network objects
+[**Read**](Ipv6networkAPI.md#Read) | **Get** /ipv6network/{reference} | Get a specific ipv6network object
+[**Update**](Ipv6networkAPI.md#Update) | **Put** /ipv6network/{reference} | Update a ipv6network object
 
 
 
-## Get
+## Create
 
-> ListIpv6networkResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateIpv6networkResponse Create(ctx).Ipv6network(ipv6network).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a ipv6network object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	ipv6network := *ipam.NewIpv6network() // Ipv6network | Object data to create
+
+	apiClient := ipam.NewAPIClient()
+	resp, r, err := apiClient.Ipv6networkAPI.Create(context.Background()).Ipv6network(ipv6network).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateIpv6networkResponse
+	fmt.Fprintf(os.Stdout, "Response from `Ipv6networkAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `Ipv6networkAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ipv6network** | [**Ipv6network**](Ipv6network.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateIpv6networkResponse**](CreateIpv6networkResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a ipv6network object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the ipv6network object
+
+	apiClient := ipam.NewAPIClient()
+	r, err := apiClient.Ipv6networkAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the ipv6network object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `Ipv6networkAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListIpv6networkResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve ipv6network objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.Ipv6networkAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.Ipv6networkAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListIpv6networkResponse
-	fmt.Fprintf(os.Stdout, "Response from `Ipv6networkAPI.Get`: %v\n", resp)
+	// response from `List`: ListIpv6networkResponse
+	fmt.Fprintf(os.Stdout, "Response from `Ipv6networkAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Ipv6networkAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `Ipv6networkAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateIpv6networkResponse Post(ctx).Ipv6network(ipv6network).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a ipv6network object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	ipv6network := *ipam.NewIpv6network() // Ipv6network | Object data to create
-
-	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.Ipv6networkAPI.Post(context.Background()).Ipv6network(ipv6network).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateIpv6networkResponse
-	fmt.Fprintf(os.Stdout, "Response from `Ipv6networkAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `Ipv6networkAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ipv6network** | [**Ipv6network**](Ipv6network.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateIpv6networkResponse**](CreateIpv6networkResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a ipv6network object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the ipv6network object
-
-	apiClient := ipam.NewAPIClient()
-	r, err := apiClient.Ipv6networkAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the ipv6network object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `Ipv6networkAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetIpv6networkResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetIpv6networkResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific ipv6network object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the ipv6network object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.Ipv6networkAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.Ipv6networkAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetIpv6networkResponse
-	fmt.Fprintf(os.Stdout, "Response from `Ipv6networkAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetIpv6networkResponse
+	fmt.Fprintf(os.Stdout, "Response from `Ipv6networkAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Ipv6networkAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `Ipv6networkAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateIpv6networkResponse ReferencePut(ctx, reference).Ipv6network(ipv6network).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateIpv6networkResponse Update(ctx, reference).Ipv6network(ipv6network).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a ipv6network object
 
@@ -318,13 +318,13 @@ func main() {
 	ipv6network := *ipam.NewIpv6network() // Ipv6network | Object data to update
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.Ipv6networkAPI.ReferencePut(context.Background(), reference).Ipv6network(ipv6network).Execute()
+	resp, r, err := apiClient.Ipv6networkAPI.Update(context.Background(), reference).Ipv6network(ipv6network).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Ipv6networkAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateIpv6networkResponse
-	fmt.Fprintf(os.Stdout, "Response from `Ipv6networkAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateIpv6networkResponse
+	fmt.Fprintf(os.Stdout, "Response from `Ipv6networkAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Ipv6networkAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `Ipv6networkAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ipv6network** | [**Ipv6network**](Ipv6network.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

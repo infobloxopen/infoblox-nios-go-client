@@ -33,11 +33,11 @@ type Networkview struct {
 	// An array of Ddns Zone Primary dhcpddns structs that lists the information of primary zone to wich DDNS updates should be sent.
 	DdnsZonePrimaries []NetworkviewDdnsZonePrimaries `json:"ddns_zone_primaries,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// This field contains the federated realms associated to this network view
 	FederatedRealms []NetworkviewFederatedRealms `json:"federated_realms,omitempty"`
 	// The list of linked authoritative DNS zones.
-	InternalForwardZones []map[string]interface{} `json:"internal_forward_zones,omitempty"`
+	InternalForwardZones []string `json:"internal_forward_zones,omitempty"`
 	// The NIOS appliance provides one default network view. You can rename the default view and change its settings, but you cannot delete it. There must always be at least one network view in the appliance.
 	IsDefault *bool `json:"is_default,omitempty"`
 	// This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized.
@@ -292,36 +292,36 @@ func (o *Networkview) SetDdnsZonePrimaries(v []NetworkviewDdnsZonePrimaries) {
 	o.DdnsZonePrimaries = v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *Networkview) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Networkview) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Networkview) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *Networkview) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *Networkview) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Networkview) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *Networkview) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Networkview) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetFederatedRealms returns the FederatedRealms field value if set, zero value otherwise.
@@ -357,9 +357,9 @@ func (o *Networkview) SetFederatedRealms(v []NetworkviewFederatedRealms) {
 }
 
 // GetInternalForwardZones returns the InternalForwardZones field value if set, zero value otherwise.
-func (o *Networkview) GetInternalForwardZones() []map[string]interface{} {
+func (o *Networkview) GetInternalForwardZones() []string {
 	if o == nil || IsNil(o.InternalForwardZones) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.InternalForwardZones
@@ -367,7 +367,7 @@ func (o *Networkview) GetInternalForwardZones() []map[string]interface{} {
 
 // GetInternalForwardZonesOk returns a tuple with the InternalForwardZones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Networkview) GetInternalForwardZonesOk() ([]map[string]interface{}, bool) {
+func (o *Networkview) GetInternalForwardZonesOk() ([]string, bool) {
 	if o == nil || IsNil(o.InternalForwardZones) {
 		return nil, false
 	}
@@ -383,8 +383,8 @@ func (o *Networkview) HasInternalForwardZones() bool {
 	return false
 }
 
-// SetInternalForwardZones gets a reference to the given []map[string]interface{} and assigns it to the InternalForwardZones field.
-func (o *Networkview) SetInternalForwardZones(v []map[string]interface{}) {
+// SetInternalForwardZones gets a reference to the given []string and assigns it to the InternalForwardZones field.
+func (o *Networkview) SetInternalForwardZones(v []string) {
 	o.InternalForwardZones = v
 }
 
@@ -611,8 +611,8 @@ func (o Networkview) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsZonePrimaries) {
 		toSerialize["ddns_zone_primaries"] = o.DdnsZonePrimaries
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.FederatedRealms) {
 		toSerialize["federated_realms"] = o.FederatedRealms

@@ -1,20 +1,156 @@
-# RecordcaaAPI
+# RecordCaaAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordcaaAPI.md#Get) | **Get** /record:caa | Retrieve record:caa objects
-[**Post**](RecordcaaAPI.md#Post) | **Post** /record:caa | Create a record:caa object
-[**ReferenceDelete**](RecordcaaAPI.md#ReferenceDelete) | **Delete** /record:caa/{reference} | Delete a record:caa object
-[**ReferenceGet**](RecordcaaAPI.md#ReferenceGet) | **Get** /record:caa/{reference} | Get a specific record:caa object
-[**ReferencePut**](RecordcaaAPI.md#ReferencePut) | **Put** /record:caa/{reference} | Update a record:caa object
+[**Create**](RecordCaaAPI.md#Create) | **Post** /record:caa | Create a record:caa object
+[**Delete**](RecordCaaAPI.md#Delete) | **Delete** /record:caa/{reference} | Delete a record:caa object
+[**List**](RecordCaaAPI.md#List) | **Get** /record:caa | Retrieve record:caa objects
+[**Read**](RecordCaaAPI.md#Read) | **Get** /record:caa/{reference} | Get a specific record:caa object
+[**Update**](RecordCaaAPI.md#Update) | **Put** /record:caa/{reference} | Update a record:caa object
 
 
 
-## Get
+## Create
 
-> ListRecordCaaResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateRecordCaaResponse Create(ctx).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a record:caa object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	recordCaa := *dns.NewRecordCaa() // RecordCaa | Object data to create
+
+	apiClient := dns.NewAPIClient()
+	resp, r, err := apiClient.RecordCaaAPI.Create(context.Background()).RecordCaa(recordCaa).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateRecordCaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCaaAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordCaaAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**recordCaa** | [**RecordCaa**](RecordCaa.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateRecordCaaResponse**](CreateRecordCaaResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a record:caa object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the record:caa object
+
+	apiClient := dns.NewAPIClient()
+	r, err := apiClient.RecordCaaAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the record:caa object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordCaaAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListRecordCaaResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:caa objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordCaaAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.Get`: %v\n", resp)
+	// response from `List`: ListRecordCaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCaaAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcaaAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCaaAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateRecordCaaResponse Post(ctx).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a record:caa object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	recordCaa := *dns.NewRecordCaa() // RecordCaa | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.Post(context.Background()).RecordCaa(recordCaa).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordcaaAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordCaa** | [**RecordCaa**](RecordCaa.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateRecordCaaResponse**](CreateRecordCaaResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a record:caa object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the record:caa object
-
-	apiClient := dns.NewAPIClient()
-	r, err := apiClient.RecordcaaAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the record:caa object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordcaaAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetRecordCaaResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordCaaResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:caa object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:caa object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordCaaAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordCaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCaaAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcaaAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCaaAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateRecordCaaResponse ReferencePut(ctx, reference).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordCaaResponse Update(ctx, reference).RecordCaa(recordCaa).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:caa object
 
@@ -318,13 +318,13 @@ func main() {
 	recordCaa := *dns.NewRecordCaa() // RecordCaa | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecordcaaAPI.ReferencePut(context.Background(), reference).RecordCaa(recordCaa).Execute()
+	resp, r, err := apiClient.RecordCaaAPI.Update(context.Background(), reference).RecordCaa(recordCaa).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordcaaAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordCaaAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordCaaResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordcaaAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateRecordCaaResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordCaaAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordcaaAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordCaaAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **recordCaa** | [**RecordCaa**](RecordCaa.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

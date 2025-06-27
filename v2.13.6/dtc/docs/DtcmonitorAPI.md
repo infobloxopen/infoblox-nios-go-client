@@ -1,18 +1,18 @@
-# DtcmonitorAPI
+# DtcMonitorAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcmonitorAPI.md#Get) | **Get** /dtc:monitor | Retrieve dtc:monitor objects
-[**ReferenceGet**](DtcmonitorAPI.md#ReferenceGet) | **Get** /dtc:monitor/{reference} | Get a specific dtc:monitor object
-[**ReferencePut**](DtcmonitorAPI.md#ReferencePut) | **Put** /dtc:monitor/{reference} | Update a dtc:monitor object
+[**List**](DtcMonitorAPI.md#List) | **Get** /dtc:monitor | Retrieve dtc:monitor objects
+[**Read**](DtcMonitorAPI.md#Read) | **Get** /dtc:monitor/{reference} | Get a specific dtc:monitor object
+[**Update**](DtcMonitorAPI.md#Update) | **Put** /dtc:monitor/{reference} | Update a dtc:monitor object
 
 
 
-## Get
+## List
 
-> ListDtcMonitorResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcMonitorResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:monitor objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcMonitorAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcMonitorResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorAPI.Get`: %v\n", resp)
+	// response from `List`: ListDtcMonitorResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDtcMonitorResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcMonitorResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:monitor object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:monitor object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcMonitorAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcMonitorResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDtcMonitorResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDtcMonitorResponse ReferencePut(ctx, reference).DtcMonitor(dtcMonitor).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcMonitorResponse Update(ctx, reference).DtcMonitor(dtcMonitor).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:monitor object
 
@@ -180,13 +180,13 @@ func main() {
 	dtcMonitor := *dtc.NewDtcMonitor() // DtcMonitor | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcmonitorAPI.ReferencePut(context.Background(), reference).DtcMonitor(dtcMonitor).Execute()
+	resp, r, err := apiClient.DtcMonitorAPI.Update(context.Background(), reference).DtcMonitor(dtcMonitor).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcmonitorAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcMonitorAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcMonitorResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcmonitorAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDtcMonitorResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcMonitorAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcmonitorAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcMonitorAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **dtcMonitor** | [**DtcMonitor**](DtcMonitor.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

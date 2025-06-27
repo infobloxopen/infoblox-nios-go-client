@@ -29,7 +29,6 @@ type Grid struct {
 	AuditToSyslogEnable            *bool                               `json:"audit_to_syslog_enable,omitempty"`
 	AutomatedTrafficCaptureSetting *GridAutomatedTrafficCaptureSetting `json:"automated_traffic_capture_setting,omitempty"`
 	ConsentBannerSetting           *GridConsentBannerSetting           `json:"consent_banner_setting,omitempty"`
-	ControlIpAddress               map[string]interface{}              `json:"control_ip_address,omitempty"`
 	CspApiConfig                   *GridCspApiConfig                   `json:"csp_api_config,omitempty"`
 	CspGridSetting                 *GridCspGridSetting                 `json:"csp_grid_setting,omitempty"`
 	// If set to True, the managed Grid will not send snapshots to the Multi-Grid Master.
@@ -37,9 +36,8 @@ type Grid struct {
 	DescendantsAction  *GridDescendantsAction  `json:"descendants_action,omitempty"`
 	DnsResolverSetting *GridDnsResolverSetting `json:"dns_resolver_setting,omitempty"`
 	// The DSCP value. Valid values are integers between 0 and 63 inclusive.
-	Dscp            *int64                 `json:"dscp,omitempty"`
-	EmailSetting    *GridEmailSetting      `json:"email_setting,omitempty"`
-	EmptyRecycleBin map[string]interface{} `json:"empty_recycle_bin,omitempty"`
+	Dscp         *int64            `json:"dscp,omitempty"`
+	EmailSetting *GridEmailSetting `json:"email_setting,omitempty"`
 	// Determines if the federation feature is enabled or not. Test Setting will be performed for any change in enable_federation.
 	EnableFederation *bool `json:"enable_federation,omitempty"`
 	// Determines if the force sync join token from GM to GMC is enabled or not.
@@ -58,23 +56,13 @@ type Grid struct {
 	ExternalSyslogBackupServers []GridExternalSyslogBackupServers `json:"external_syslog_backup_servers,omitempty"`
 	// If set to True, external syslog servers are enabled.
 	ExternalSyslogServerEnable *bool                           `json:"external_syslog_server_enable,omitempty"`
-	GenerateTsigKey            map[string]interface{}          `json:"generate_tsig_key,omitempty"`
-	GetAllTemplateVendorId     map[string]interface{}          `json:"get_all_template_vendor_id,omitempty"`
-	GetGridRevertStatus        map[string]interface{}          `json:"get_grid_revert_status,omitempty"`
-	GetRpzThreatDetails        map[string]interface{}          `json:"get_rpz_threat_details,omitempty"`
-	GetTemplateSchemaVersions  map[string]interface{}          `json:"get_template_schema_versions,omitempty"`
 	HttpProxyServerSetting     *GridHttpProxyServerSetting     `json:"http_proxy_server_setting,omitempty"`
 	InformationalBannerSetting *GridInformationalBannerSetting `json:"informational_banner_setting,omitempty"`
 	// If set to True, graphical visualization of the Grid is enabled.
-	IsGridVisualizationVisible *bool                  `json:"is_grid_visualization_visible,omitempty"`
-	Join                       map[string]interface{} `json:"join,omitempty"`
-	JoinMgm                    map[string]interface{} `json:"join_mgm,omitempty"`
-	JoinMgmMod2                map[string]interface{} `json:"join_mgm_mod2,omitempty"`
-	LeaveMgm                   map[string]interface{} `json:"leave_mgm,omitempty"`
-	LockoutSetting             *GridLockoutSetting    `json:"lockout_setting,omitempty"`
+	IsGridVisualizationVisible *bool               `json:"is_grid_visualization_visible,omitempty"`
+	LockoutSetting             *GridLockoutSetting `json:"lockout_setting,omitempty"`
 	// The list of LOM users.
-	LomUsers      []GridLomUsers         `json:"lom_users,omitempty"`
-	MemberUpgrade map[string]interface{} `json:"member_upgrade,omitempty"`
+	LomUsers []GridLomUsers `json:"lom_users,omitempty"`
 	// Determines if strict delegate mode for the Grid managed by the Master Grid is enabled or not.
 	MgmStrictDelegateMode *bool          `json:"mgm_strict_delegate_mode,omitempty"`
 	MsSetting             *GridMsSetting `json:"ms_setting,omitempty"`
@@ -85,13 +73,9 @@ type Grid struct {
 	NtpSetting                    *GridNtpSetting                    `json:"ntp_setting,omitempty"`
 	ObjectsChangesTrackingSetting *GridObjectsChangesTrackingSetting `json:"objects_changes_tracking_setting,omitempty"`
 	PasswordSetting               *GridPasswordSetting               `json:"password_setting,omitempty"`
-	PublishChanges                map[string]interface{}             `json:"publish_changes,omitempty"`
-	QueryFqdnOnMember             map[string]interface{}             `json:"query_fqdn_on_member,omitempty"`
-	Requestrestartservicestatus   map[string]interface{}             `json:"requestrestartservicestatus,omitempty"`
 	RestartBannerSetting          *GridRestartBannerSetting          `json:"restart_banner_setting,omitempty"`
 	// The restart status for the Grid.
-	RestartStatus   *string                `json:"restart_status,omitempty"`
-	Restartservices map[string]interface{} `json:"restartservices,omitempty"`
+	RestartStatus *string `json:"restart_status,omitempty"`
 	// The time interval (in seconds) that determines how often the appliance calculates the RPZ hit rate.
 	RpzHitRateInterval *int64 `json:"rpz_hit_rate_interval,omitempty"`
 	// The maximum number of incoming queries between the RPZ hit rate checks.
@@ -104,10 +88,8 @@ type Grid struct {
 	SecurityBannerSetting *GridSecurityBannerSetting `json:"security_banner_setting,omitempty"`
 	SecuritySetting       *GridSecuritySetting       `json:"security_setting,omitempty"`
 	// Determines overall service status of the Grid.
-	ServiceStatus     *string                `json:"service_status,omitempty"`
-	SkipMemberUpgrade map[string]interface{} `json:"skip_member_upgrade,omitempty"`
-	SnmpSetting       *GridSnmpSetting       `json:"snmp_setting,omitempty"`
-	StartDiscovery    map[string]interface{} `json:"start_discovery,omitempty"`
+	ServiceStatus *string          `json:"service_status,omitempty"`
+	SnmpSetting   *GridSnmpSetting `json:"snmp_setting,omitempty"`
 	// Support bundle download timeout in seconds.
 	SupportBundleDownloadTimeout *int64 `json:"support_bundle_download_timeout,omitempty"`
 	// If 'audit_to_syslog_enable' is set to True, the facility that determines the processes and daemons from which the log messages are generated.
@@ -115,9 +97,7 @@ type Grid struct {
 	// The list of external syslog servers.
 	SyslogServers []GridSyslogServers `json:"syslog_servers,omitempty"`
 	// The maximum size for the syslog file expressed in megabytes.
-	SyslogSize                       *int64                 `json:"syslog_size,omitempty"`
-	TestSyslogBackupServerConnection map[string]interface{} `json:"test_syslog_backup_server_connection,omitempty"`
-	TestSyslogConnection             map[string]interface{} `json:"test_syslog_connection,omitempty"`
+	SyslogSize *int64 `json:"syslog_size,omitempty"`
 	// Determines the list of threshold traps. The user can only change the values for each trap or remove traps.
 	ThresholdTraps []GridThresholdTraps `json:"threshold_traps,omitempty"`
 	// The time zone of the Grid. The UTC string that represents the time zone, such as \"US/Eastern\".
@@ -133,10 +113,6 @@ type Grid struct {
 	TrapNotifications []GridTrapNotifications `json:"trap_notifications,omitempty"`
 	// The list of member configuration structures, which provides information and settings for configuring the member that is responsible for downloading updates.
 	UpdatesDownloadMemberConfig []GridUpdatesDownloadMemberConfig `json:"updates_download_member_config,omitempty"`
-	Upgrade                     map[string]interface{}            `json:"upgrade,omitempty"`
-	UpgradeGroupNow             map[string]interface{}            `json:"upgrade_group_now,omitempty"`
-	UploadKeytab                map[string]interface{}            `json:"upload_keytab,omitempty"`
-	Validatecertificates        map[string]interface{}            `json:"validatecertificates,omitempty"`
 	// The VPN port.
 	VpnPort *int64 `json:"vpn_port,omitempty"`
 }
@@ -348,38 +324,6 @@ func (o *Grid) HasConsentBannerSetting() bool {
 // SetConsentBannerSetting gets a reference to the given GridConsentBannerSetting and assigns it to the ConsentBannerSetting field.
 func (o *Grid) SetConsentBannerSetting(v GridConsentBannerSetting) {
 	o.ConsentBannerSetting = &v
-}
-
-// GetControlIpAddress returns the ControlIpAddress field value if set, zero value otherwise.
-func (o *Grid) GetControlIpAddress() map[string]interface{} {
-	if o == nil || IsNil(o.ControlIpAddress) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ControlIpAddress
-}
-
-// GetControlIpAddressOk returns a tuple with the ControlIpAddress field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetControlIpAddressOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.ControlIpAddress) {
-		return map[string]interface{}{}, false
-	}
-	return o.ControlIpAddress, true
-}
-
-// HasControlIpAddress returns a boolean if a field has been set.
-func (o *Grid) HasControlIpAddress() bool {
-	if o != nil && !IsNil(o.ControlIpAddress) {
-		return true
-	}
-
-	return false
-}
-
-// SetControlIpAddress gets a reference to the given map[string]interface{} and assigns it to the ControlIpAddress field.
-func (o *Grid) SetControlIpAddress(v map[string]interface{}) {
-	o.ControlIpAddress = v
 }
 
 // GetCspApiConfig returns the CspApiConfig field value if set, zero value otherwise.
@@ -604,38 +548,6 @@ func (o *Grid) HasEmailSetting() bool {
 // SetEmailSetting gets a reference to the given GridEmailSetting and assigns it to the EmailSetting field.
 func (o *Grid) SetEmailSetting(v GridEmailSetting) {
 	o.EmailSetting = &v
-}
-
-// GetEmptyRecycleBin returns the EmptyRecycleBin field value if set, zero value otherwise.
-func (o *Grid) GetEmptyRecycleBin() map[string]interface{} {
-	if o == nil || IsNil(o.EmptyRecycleBin) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.EmptyRecycleBin
-}
-
-// GetEmptyRecycleBinOk returns a tuple with the EmptyRecycleBin field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetEmptyRecycleBinOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.EmptyRecycleBin) {
-		return map[string]interface{}{}, false
-	}
-	return o.EmptyRecycleBin, true
-}
-
-// HasEmptyRecycleBin returns a boolean if a field has been set.
-func (o *Grid) HasEmptyRecycleBin() bool {
-	if o != nil && !IsNil(o.EmptyRecycleBin) {
-		return true
-	}
-
-	return false
-}
-
-// SetEmptyRecycleBin gets a reference to the given map[string]interface{} and assigns it to the EmptyRecycleBin field.
-func (o *Grid) SetEmptyRecycleBin(v map[string]interface{}) {
-	o.EmptyRecycleBin = v
 }
 
 // GetEnableFederation returns the EnableFederation field value if set, zero value otherwise.
@@ -926,166 +838,6 @@ func (o *Grid) SetExternalSyslogServerEnable(v bool) {
 	o.ExternalSyslogServerEnable = &v
 }
 
-// GetGenerateTsigKey returns the GenerateTsigKey field value if set, zero value otherwise.
-func (o *Grid) GetGenerateTsigKey() map[string]interface{} {
-	if o == nil || IsNil(o.GenerateTsigKey) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.GenerateTsigKey
-}
-
-// GetGenerateTsigKeyOk returns a tuple with the GenerateTsigKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetGenerateTsigKeyOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.GenerateTsigKey) {
-		return map[string]interface{}{}, false
-	}
-	return o.GenerateTsigKey, true
-}
-
-// HasGenerateTsigKey returns a boolean if a field has been set.
-func (o *Grid) HasGenerateTsigKey() bool {
-	if o != nil && !IsNil(o.GenerateTsigKey) {
-		return true
-	}
-
-	return false
-}
-
-// SetGenerateTsigKey gets a reference to the given map[string]interface{} and assigns it to the GenerateTsigKey field.
-func (o *Grid) SetGenerateTsigKey(v map[string]interface{}) {
-	o.GenerateTsigKey = v
-}
-
-// GetGetAllTemplateVendorId returns the GetAllTemplateVendorId field value if set, zero value otherwise.
-func (o *Grid) GetGetAllTemplateVendorId() map[string]interface{} {
-	if o == nil || IsNil(o.GetAllTemplateVendorId) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.GetAllTemplateVendorId
-}
-
-// GetGetAllTemplateVendorIdOk returns a tuple with the GetAllTemplateVendorId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetGetAllTemplateVendorIdOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.GetAllTemplateVendorId) {
-		return map[string]interface{}{}, false
-	}
-	return o.GetAllTemplateVendorId, true
-}
-
-// HasGetAllTemplateVendorId returns a boolean if a field has been set.
-func (o *Grid) HasGetAllTemplateVendorId() bool {
-	if o != nil && !IsNil(o.GetAllTemplateVendorId) {
-		return true
-	}
-
-	return false
-}
-
-// SetGetAllTemplateVendorId gets a reference to the given map[string]interface{} and assigns it to the GetAllTemplateVendorId field.
-func (o *Grid) SetGetAllTemplateVendorId(v map[string]interface{}) {
-	o.GetAllTemplateVendorId = v
-}
-
-// GetGetGridRevertStatus returns the GetGridRevertStatus field value if set, zero value otherwise.
-func (o *Grid) GetGetGridRevertStatus() map[string]interface{} {
-	if o == nil || IsNil(o.GetGridRevertStatus) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.GetGridRevertStatus
-}
-
-// GetGetGridRevertStatusOk returns a tuple with the GetGridRevertStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetGetGridRevertStatusOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.GetGridRevertStatus) {
-		return map[string]interface{}{}, false
-	}
-	return o.GetGridRevertStatus, true
-}
-
-// HasGetGridRevertStatus returns a boolean if a field has been set.
-func (o *Grid) HasGetGridRevertStatus() bool {
-	if o != nil && !IsNil(o.GetGridRevertStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetGetGridRevertStatus gets a reference to the given map[string]interface{} and assigns it to the GetGridRevertStatus field.
-func (o *Grid) SetGetGridRevertStatus(v map[string]interface{}) {
-	o.GetGridRevertStatus = v
-}
-
-// GetGetRpzThreatDetails returns the GetRpzThreatDetails field value if set, zero value otherwise.
-func (o *Grid) GetGetRpzThreatDetails() map[string]interface{} {
-	if o == nil || IsNil(o.GetRpzThreatDetails) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.GetRpzThreatDetails
-}
-
-// GetGetRpzThreatDetailsOk returns a tuple with the GetRpzThreatDetails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetGetRpzThreatDetailsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.GetRpzThreatDetails) {
-		return map[string]interface{}{}, false
-	}
-	return o.GetRpzThreatDetails, true
-}
-
-// HasGetRpzThreatDetails returns a boolean if a field has been set.
-func (o *Grid) HasGetRpzThreatDetails() bool {
-	if o != nil && !IsNil(o.GetRpzThreatDetails) {
-		return true
-	}
-
-	return false
-}
-
-// SetGetRpzThreatDetails gets a reference to the given map[string]interface{} and assigns it to the GetRpzThreatDetails field.
-func (o *Grid) SetGetRpzThreatDetails(v map[string]interface{}) {
-	o.GetRpzThreatDetails = v
-}
-
-// GetGetTemplateSchemaVersions returns the GetTemplateSchemaVersions field value if set, zero value otherwise.
-func (o *Grid) GetGetTemplateSchemaVersions() map[string]interface{} {
-	if o == nil || IsNil(o.GetTemplateSchemaVersions) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.GetTemplateSchemaVersions
-}
-
-// GetGetTemplateSchemaVersionsOk returns a tuple with the GetTemplateSchemaVersions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetGetTemplateSchemaVersionsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.GetTemplateSchemaVersions) {
-		return map[string]interface{}{}, false
-	}
-	return o.GetTemplateSchemaVersions, true
-}
-
-// HasGetTemplateSchemaVersions returns a boolean if a field has been set.
-func (o *Grid) HasGetTemplateSchemaVersions() bool {
-	if o != nil && !IsNil(o.GetTemplateSchemaVersions) {
-		return true
-	}
-
-	return false
-}
-
-// SetGetTemplateSchemaVersions gets a reference to the given map[string]interface{} and assigns it to the GetTemplateSchemaVersions field.
-func (o *Grid) SetGetTemplateSchemaVersions(v map[string]interface{}) {
-	o.GetTemplateSchemaVersions = v
-}
-
 // GetHttpProxyServerSetting returns the HttpProxyServerSetting field value if set, zero value otherwise.
 func (o *Grid) GetHttpProxyServerSetting() GridHttpProxyServerSetting {
 	if o == nil || IsNil(o.HttpProxyServerSetting) {
@@ -1182,134 +934,6 @@ func (o *Grid) SetIsGridVisualizationVisible(v bool) {
 	o.IsGridVisualizationVisible = &v
 }
 
-// GetJoin returns the Join field value if set, zero value otherwise.
-func (o *Grid) GetJoin() map[string]interface{} {
-	if o == nil || IsNil(o.Join) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Join
-}
-
-// GetJoinOk returns a tuple with the Join field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetJoinOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Join) {
-		return map[string]interface{}{}, false
-	}
-	return o.Join, true
-}
-
-// HasJoin returns a boolean if a field has been set.
-func (o *Grid) HasJoin() bool {
-	if o != nil && !IsNil(o.Join) {
-		return true
-	}
-
-	return false
-}
-
-// SetJoin gets a reference to the given map[string]interface{} and assigns it to the Join field.
-func (o *Grid) SetJoin(v map[string]interface{}) {
-	o.Join = v
-}
-
-// GetJoinMgm returns the JoinMgm field value if set, zero value otherwise.
-func (o *Grid) GetJoinMgm() map[string]interface{} {
-	if o == nil || IsNil(o.JoinMgm) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.JoinMgm
-}
-
-// GetJoinMgmOk returns a tuple with the JoinMgm field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetJoinMgmOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.JoinMgm) {
-		return map[string]interface{}{}, false
-	}
-	return o.JoinMgm, true
-}
-
-// HasJoinMgm returns a boolean if a field has been set.
-func (o *Grid) HasJoinMgm() bool {
-	if o != nil && !IsNil(o.JoinMgm) {
-		return true
-	}
-
-	return false
-}
-
-// SetJoinMgm gets a reference to the given map[string]interface{} and assigns it to the JoinMgm field.
-func (o *Grid) SetJoinMgm(v map[string]interface{}) {
-	o.JoinMgm = v
-}
-
-// GetJoinMgmMod2 returns the JoinMgmMod2 field value if set, zero value otherwise.
-func (o *Grid) GetJoinMgmMod2() map[string]interface{} {
-	if o == nil || IsNil(o.JoinMgmMod2) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.JoinMgmMod2
-}
-
-// GetJoinMgmMod2Ok returns a tuple with the JoinMgmMod2 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetJoinMgmMod2Ok() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.JoinMgmMod2) {
-		return map[string]interface{}{}, false
-	}
-	return o.JoinMgmMod2, true
-}
-
-// HasJoinMgmMod2 returns a boolean if a field has been set.
-func (o *Grid) HasJoinMgmMod2() bool {
-	if o != nil && !IsNil(o.JoinMgmMod2) {
-		return true
-	}
-
-	return false
-}
-
-// SetJoinMgmMod2 gets a reference to the given map[string]interface{} and assigns it to the JoinMgmMod2 field.
-func (o *Grid) SetJoinMgmMod2(v map[string]interface{}) {
-	o.JoinMgmMod2 = v
-}
-
-// GetLeaveMgm returns the LeaveMgm field value if set, zero value otherwise.
-func (o *Grid) GetLeaveMgm() map[string]interface{} {
-	if o == nil || IsNil(o.LeaveMgm) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.LeaveMgm
-}
-
-// GetLeaveMgmOk returns a tuple with the LeaveMgm field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetLeaveMgmOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.LeaveMgm) {
-		return map[string]interface{}{}, false
-	}
-	return o.LeaveMgm, true
-}
-
-// HasLeaveMgm returns a boolean if a field has been set.
-func (o *Grid) HasLeaveMgm() bool {
-	if o != nil && !IsNil(o.LeaveMgm) {
-		return true
-	}
-
-	return false
-}
-
-// SetLeaveMgm gets a reference to the given map[string]interface{} and assigns it to the LeaveMgm field.
-func (o *Grid) SetLeaveMgm(v map[string]interface{}) {
-	o.LeaveMgm = v
-}
-
 // GetLockoutSetting returns the LockoutSetting field value if set, zero value otherwise.
 func (o *Grid) GetLockoutSetting() GridLockoutSetting {
 	if o == nil || IsNil(o.LockoutSetting) {
@@ -1372,38 +996,6 @@ func (o *Grid) HasLomUsers() bool {
 // SetLomUsers gets a reference to the given []GridLomUsers and assigns it to the LomUsers field.
 func (o *Grid) SetLomUsers(v []GridLomUsers) {
 	o.LomUsers = v
-}
-
-// GetMemberUpgrade returns the MemberUpgrade field value if set, zero value otherwise.
-func (o *Grid) GetMemberUpgrade() map[string]interface{} {
-	if o == nil || IsNil(o.MemberUpgrade) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.MemberUpgrade
-}
-
-// GetMemberUpgradeOk returns a tuple with the MemberUpgrade field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetMemberUpgradeOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.MemberUpgrade) {
-		return map[string]interface{}{}, false
-	}
-	return o.MemberUpgrade, true
-}
-
-// HasMemberUpgrade returns a boolean if a field has been set.
-func (o *Grid) HasMemberUpgrade() bool {
-	if o != nil && !IsNil(o.MemberUpgrade) {
-		return true
-	}
-
-	return false
-}
-
-// SetMemberUpgrade gets a reference to the given map[string]interface{} and assigns it to the MemberUpgrade field.
-func (o *Grid) SetMemberUpgrade(v map[string]interface{}) {
-	o.MemberUpgrade = v
 }
 
 // GetMgmStrictDelegateMode returns the MgmStrictDelegateMode field value if set, zero value otherwise.
@@ -1630,102 +1222,6 @@ func (o *Grid) SetPasswordSetting(v GridPasswordSetting) {
 	o.PasswordSetting = &v
 }
 
-// GetPublishChanges returns the PublishChanges field value if set, zero value otherwise.
-func (o *Grid) GetPublishChanges() map[string]interface{} {
-	if o == nil || IsNil(o.PublishChanges) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.PublishChanges
-}
-
-// GetPublishChangesOk returns a tuple with the PublishChanges field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetPublishChangesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.PublishChanges) {
-		return map[string]interface{}{}, false
-	}
-	return o.PublishChanges, true
-}
-
-// HasPublishChanges returns a boolean if a field has been set.
-func (o *Grid) HasPublishChanges() bool {
-	if o != nil && !IsNil(o.PublishChanges) {
-		return true
-	}
-
-	return false
-}
-
-// SetPublishChanges gets a reference to the given map[string]interface{} and assigns it to the PublishChanges field.
-func (o *Grid) SetPublishChanges(v map[string]interface{}) {
-	o.PublishChanges = v
-}
-
-// GetQueryFqdnOnMember returns the QueryFqdnOnMember field value if set, zero value otherwise.
-func (o *Grid) GetQueryFqdnOnMember() map[string]interface{} {
-	if o == nil || IsNil(o.QueryFqdnOnMember) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.QueryFqdnOnMember
-}
-
-// GetQueryFqdnOnMemberOk returns a tuple with the QueryFqdnOnMember field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetQueryFqdnOnMemberOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.QueryFqdnOnMember) {
-		return map[string]interface{}{}, false
-	}
-	return o.QueryFqdnOnMember, true
-}
-
-// HasQueryFqdnOnMember returns a boolean if a field has been set.
-func (o *Grid) HasQueryFqdnOnMember() bool {
-	if o != nil && !IsNil(o.QueryFqdnOnMember) {
-		return true
-	}
-
-	return false
-}
-
-// SetQueryFqdnOnMember gets a reference to the given map[string]interface{} and assigns it to the QueryFqdnOnMember field.
-func (o *Grid) SetQueryFqdnOnMember(v map[string]interface{}) {
-	o.QueryFqdnOnMember = v
-}
-
-// GetRequestrestartservicestatus returns the Requestrestartservicestatus field value if set, zero value otherwise.
-func (o *Grid) GetRequestrestartservicestatus() map[string]interface{} {
-	if o == nil || IsNil(o.Requestrestartservicestatus) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Requestrestartservicestatus
-}
-
-// GetRequestrestartservicestatusOk returns a tuple with the Requestrestartservicestatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetRequestrestartservicestatusOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Requestrestartservicestatus) {
-		return map[string]interface{}{}, false
-	}
-	return o.Requestrestartservicestatus, true
-}
-
-// HasRequestrestartservicestatus returns a boolean if a field has been set.
-func (o *Grid) HasRequestrestartservicestatus() bool {
-	if o != nil && !IsNil(o.Requestrestartservicestatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetRequestrestartservicestatus gets a reference to the given map[string]interface{} and assigns it to the Requestrestartservicestatus field.
-func (o *Grid) SetRequestrestartservicestatus(v map[string]interface{}) {
-	o.Requestrestartservicestatus = v
-}
-
 // GetRestartBannerSetting returns the RestartBannerSetting field value if set, zero value otherwise.
 func (o *Grid) GetRestartBannerSetting() GridRestartBannerSetting {
 	if o == nil || IsNil(o.RestartBannerSetting) {
@@ -1788,38 +1284,6 @@ func (o *Grid) HasRestartStatus() bool {
 // SetRestartStatus gets a reference to the given string and assigns it to the RestartStatus field.
 func (o *Grid) SetRestartStatus(v string) {
 	o.RestartStatus = &v
-}
-
-// GetRestartservices returns the Restartservices field value if set, zero value otherwise.
-func (o *Grid) GetRestartservices() map[string]interface{} {
-	if o == nil || IsNil(o.Restartservices) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Restartservices
-}
-
-// GetRestartservicesOk returns a tuple with the Restartservices field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetRestartservicesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Restartservices) {
-		return map[string]interface{}{}, false
-	}
-	return o.Restartservices, true
-}
-
-// HasRestartservices returns a boolean if a field has been set.
-func (o *Grid) HasRestartservices() bool {
-	if o != nil && !IsNil(o.Restartservices) {
-		return true
-	}
-
-	return false
-}
-
-// SetRestartservices gets a reference to the given map[string]interface{} and assigns it to the Restartservices field.
-func (o *Grid) SetRestartservices(v map[string]interface{}) {
-	o.Restartservices = v
 }
 
 // GetRpzHitRateInterval returns the RpzHitRateInterval field value if set, zero value otherwise.
@@ -2078,38 +1542,6 @@ func (o *Grid) SetServiceStatus(v string) {
 	o.ServiceStatus = &v
 }
 
-// GetSkipMemberUpgrade returns the SkipMemberUpgrade field value if set, zero value otherwise.
-func (o *Grid) GetSkipMemberUpgrade() map[string]interface{} {
-	if o == nil || IsNil(o.SkipMemberUpgrade) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.SkipMemberUpgrade
-}
-
-// GetSkipMemberUpgradeOk returns a tuple with the SkipMemberUpgrade field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetSkipMemberUpgradeOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.SkipMemberUpgrade) {
-		return map[string]interface{}{}, false
-	}
-	return o.SkipMemberUpgrade, true
-}
-
-// HasSkipMemberUpgrade returns a boolean if a field has been set.
-func (o *Grid) HasSkipMemberUpgrade() bool {
-	if o != nil && !IsNil(o.SkipMemberUpgrade) {
-		return true
-	}
-
-	return false
-}
-
-// SetSkipMemberUpgrade gets a reference to the given map[string]interface{} and assigns it to the SkipMemberUpgrade field.
-func (o *Grid) SetSkipMemberUpgrade(v map[string]interface{}) {
-	o.SkipMemberUpgrade = v
-}
-
 // GetSnmpSetting returns the SnmpSetting field value if set, zero value otherwise.
 func (o *Grid) GetSnmpSetting() GridSnmpSetting {
 	if o == nil || IsNil(o.SnmpSetting) {
@@ -2140,38 +1572,6 @@ func (o *Grid) HasSnmpSetting() bool {
 // SetSnmpSetting gets a reference to the given GridSnmpSetting and assigns it to the SnmpSetting field.
 func (o *Grid) SetSnmpSetting(v GridSnmpSetting) {
 	o.SnmpSetting = &v
-}
-
-// GetStartDiscovery returns the StartDiscovery field value if set, zero value otherwise.
-func (o *Grid) GetStartDiscovery() map[string]interface{} {
-	if o == nil || IsNil(o.StartDiscovery) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.StartDiscovery
-}
-
-// GetStartDiscoveryOk returns a tuple with the StartDiscovery field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetStartDiscoveryOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.StartDiscovery) {
-		return map[string]interface{}{}, false
-	}
-	return o.StartDiscovery, true
-}
-
-// HasStartDiscovery returns a boolean if a field has been set.
-func (o *Grid) HasStartDiscovery() bool {
-	if o != nil && !IsNil(o.StartDiscovery) {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDiscovery gets a reference to the given map[string]interface{} and assigns it to the StartDiscovery field.
-func (o *Grid) SetStartDiscovery(v map[string]interface{}) {
-	o.StartDiscovery = v
 }
 
 // GetSupportBundleDownloadTimeout returns the SupportBundleDownloadTimeout field value if set, zero value otherwise.
@@ -2300,70 +1700,6 @@ func (o *Grid) HasSyslogSize() bool {
 // SetSyslogSize gets a reference to the given int64 and assigns it to the SyslogSize field.
 func (o *Grid) SetSyslogSize(v int64) {
 	o.SyslogSize = &v
-}
-
-// GetTestSyslogBackupServerConnection returns the TestSyslogBackupServerConnection field value if set, zero value otherwise.
-func (o *Grid) GetTestSyslogBackupServerConnection() map[string]interface{} {
-	if o == nil || IsNil(o.TestSyslogBackupServerConnection) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.TestSyslogBackupServerConnection
-}
-
-// GetTestSyslogBackupServerConnectionOk returns a tuple with the TestSyslogBackupServerConnection field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetTestSyslogBackupServerConnectionOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.TestSyslogBackupServerConnection) {
-		return map[string]interface{}{}, false
-	}
-	return o.TestSyslogBackupServerConnection, true
-}
-
-// HasTestSyslogBackupServerConnection returns a boolean if a field has been set.
-func (o *Grid) HasTestSyslogBackupServerConnection() bool {
-	if o != nil && !IsNil(o.TestSyslogBackupServerConnection) {
-		return true
-	}
-
-	return false
-}
-
-// SetTestSyslogBackupServerConnection gets a reference to the given map[string]interface{} and assigns it to the TestSyslogBackupServerConnection field.
-func (o *Grid) SetTestSyslogBackupServerConnection(v map[string]interface{}) {
-	o.TestSyslogBackupServerConnection = v
-}
-
-// GetTestSyslogConnection returns the TestSyslogConnection field value if set, zero value otherwise.
-func (o *Grid) GetTestSyslogConnection() map[string]interface{} {
-	if o == nil || IsNil(o.TestSyslogConnection) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.TestSyslogConnection
-}
-
-// GetTestSyslogConnectionOk returns a tuple with the TestSyslogConnection field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetTestSyslogConnectionOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.TestSyslogConnection) {
-		return map[string]interface{}{}, false
-	}
-	return o.TestSyslogConnection, true
-}
-
-// HasTestSyslogConnection returns a boolean if a field has been set.
-func (o *Grid) HasTestSyslogConnection() bool {
-	if o != nil && !IsNil(o.TestSyslogConnection) {
-		return true
-	}
-
-	return false
-}
-
-// SetTestSyslogConnection gets a reference to the given map[string]interface{} and assigns it to the TestSyslogConnection field.
-func (o *Grid) SetTestSyslogConnection(v map[string]interface{}) {
-	o.TestSyslogConnection = v
 }
 
 // GetThresholdTraps returns the ThresholdTraps field value if set, zero value otherwise.
@@ -2686,134 +2022,6 @@ func (o *Grid) SetUpdatesDownloadMemberConfig(v []GridUpdatesDownloadMemberConfi
 	o.UpdatesDownloadMemberConfig = v
 }
 
-// GetUpgrade returns the Upgrade field value if set, zero value otherwise.
-func (o *Grid) GetUpgrade() map[string]interface{} {
-	if o == nil || IsNil(o.Upgrade) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Upgrade
-}
-
-// GetUpgradeOk returns a tuple with the Upgrade field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetUpgradeOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Upgrade) {
-		return map[string]interface{}{}, false
-	}
-	return o.Upgrade, true
-}
-
-// HasUpgrade returns a boolean if a field has been set.
-func (o *Grid) HasUpgrade() bool {
-	if o != nil && !IsNil(o.Upgrade) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpgrade gets a reference to the given map[string]interface{} and assigns it to the Upgrade field.
-func (o *Grid) SetUpgrade(v map[string]interface{}) {
-	o.Upgrade = v
-}
-
-// GetUpgradeGroupNow returns the UpgradeGroupNow field value if set, zero value otherwise.
-func (o *Grid) GetUpgradeGroupNow() map[string]interface{} {
-	if o == nil || IsNil(o.UpgradeGroupNow) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.UpgradeGroupNow
-}
-
-// GetUpgradeGroupNowOk returns a tuple with the UpgradeGroupNow field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetUpgradeGroupNowOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.UpgradeGroupNow) {
-		return map[string]interface{}{}, false
-	}
-	return o.UpgradeGroupNow, true
-}
-
-// HasUpgradeGroupNow returns a boolean if a field has been set.
-func (o *Grid) HasUpgradeGroupNow() bool {
-	if o != nil && !IsNil(o.UpgradeGroupNow) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpgradeGroupNow gets a reference to the given map[string]interface{} and assigns it to the UpgradeGroupNow field.
-func (o *Grid) SetUpgradeGroupNow(v map[string]interface{}) {
-	o.UpgradeGroupNow = v
-}
-
-// GetUploadKeytab returns the UploadKeytab field value if set, zero value otherwise.
-func (o *Grid) GetUploadKeytab() map[string]interface{} {
-	if o == nil || IsNil(o.UploadKeytab) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.UploadKeytab
-}
-
-// GetUploadKeytabOk returns a tuple with the UploadKeytab field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetUploadKeytabOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.UploadKeytab) {
-		return map[string]interface{}{}, false
-	}
-	return o.UploadKeytab, true
-}
-
-// HasUploadKeytab returns a boolean if a field has been set.
-func (o *Grid) HasUploadKeytab() bool {
-	if o != nil && !IsNil(o.UploadKeytab) {
-		return true
-	}
-
-	return false
-}
-
-// SetUploadKeytab gets a reference to the given map[string]interface{} and assigns it to the UploadKeytab field.
-func (o *Grid) SetUploadKeytab(v map[string]interface{}) {
-	o.UploadKeytab = v
-}
-
-// GetValidatecertificates returns the Validatecertificates field value if set, zero value otherwise.
-func (o *Grid) GetValidatecertificates() map[string]interface{} {
-	if o == nil || IsNil(o.Validatecertificates) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Validatecertificates
-}
-
-// GetValidatecertificatesOk returns a tuple with the Validatecertificates field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetValidatecertificatesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Validatecertificates) {
-		return map[string]interface{}{}, false
-	}
-	return o.Validatecertificates, true
-}
-
-// HasValidatecertificates returns a boolean if a field has been set.
-func (o *Grid) HasValidatecertificates() bool {
-	if o != nil && !IsNil(o.Validatecertificates) {
-		return true
-	}
-
-	return false
-}
-
-// SetValidatecertificates gets a reference to the given map[string]interface{} and assigns it to the Validatecertificates field.
-func (o *Grid) SetValidatecertificates(v map[string]interface{}) {
-	o.Validatecertificates = v
-}
-
 // GetVpnPort returns the VpnPort field value if set, zero value otherwise.
 func (o *Grid) GetVpnPort() int64 {
 	if o == nil || IsNil(o.VpnPort) {
@@ -2874,9 +2082,6 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConsentBannerSetting) {
 		toSerialize["consent_banner_setting"] = o.ConsentBannerSetting
 	}
-	if !IsNil(o.ControlIpAddress) {
-		toSerialize["control_ip_address"] = o.ControlIpAddress
-	}
 	if !IsNil(o.CspApiConfig) {
 		toSerialize["csp_api_config"] = o.CspApiConfig
 	}
@@ -2897,9 +2102,6 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EmailSetting) {
 		toSerialize["email_setting"] = o.EmailSetting
-	}
-	if !IsNil(o.EmptyRecycleBin) {
-		toSerialize["empty_recycle_bin"] = o.EmptyRecycleBin
 	}
 	if !IsNil(o.EnableFederation) {
 		toSerialize["enable_federation"] = o.EnableFederation
@@ -2928,21 +2130,6 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExternalSyslogServerEnable) {
 		toSerialize["external_syslog_server_enable"] = o.ExternalSyslogServerEnable
 	}
-	if !IsNil(o.GenerateTsigKey) {
-		toSerialize["generate_tsig_key"] = o.GenerateTsigKey
-	}
-	if !IsNil(o.GetAllTemplateVendorId) {
-		toSerialize["get_all_template_vendor_id"] = o.GetAllTemplateVendorId
-	}
-	if !IsNil(o.GetGridRevertStatus) {
-		toSerialize["get_grid_revert_status"] = o.GetGridRevertStatus
-	}
-	if !IsNil(o.GetRpzThreatDetails) {
-		toSerialize["get_rpz_threat_details"] = o.GetRpzThreatDetails
-	}
-	if !IsNil(o.GetTemplateSchemaVersions) {
-		toSerialize["get_template_schema_versions"] = o.GetTemplateSchemaVersions
-	}
 	if !IsNil(o.HttpProxyServerSetting) {
 		toSerialize["http_proxy_server_setting"] = o.HttpProxyServerSetting
 	}
@@ -2952,26 +2139,11 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsGridVisualizationVisible) {
 		toSerialize["is_grid_visualization_visible"] = o.IsGridVisualizationVisible
 	}
-	if !IsNil(o.Join) {
-		toSerialize["join"] = o.Join
-	}
-	if !IsNil(o.JoinMgm) {
-		toSerialize["join_mgm"] = o.JoinMgm
-	}
-	if !IsNil(o.JoinMgmMod2) {
-		toSerialize["join_mgm_mod2"] = o.JoinMgmMod2
-	}
-	if !IsNil(o.LeaveMgm) {
-		toSerialize["leave_mgm"] = o.LeaveMgm
-	}
 	if !IsNil(o.LockoutSetting) {
 		toSerialize["lockout_setting"] = o.LockoutSetting
 	}
 	if !IsNil(o.LomUsers) {
 		toSerialize["lom_users"] = o.LomUsers
-	}
-	if !IsNil(o.MemberUpgrade) {
-		toSerialize["member_upgrade"] = o.MemberUpgrade
 	}
 	if !IsNil(o.MgmStrictDelegateMode) {
 		toSerialize["mgm_strict_delegate_mode"] = o.MgmStrictDelegateMode
@@ -2994,23 +2166,11 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PasswordSetting) {
 		toSerialize["password_setting"] = o.PasswordSetting
 	}
-	if !IsNil(o.PublishChanges) {
-		toSerialize["publish_changes"] = o.PublishChanges
-	}
-	if !IsNil(o.QueryFqdnOnMember) {
-		toSerialize["query_fqdn_on_member"] = o.QueryFqdnOnMember
-	}
-	if !IsNil(o.Requestrestartservicestatus) {
-		toSerialize["requestrestartservicestatus"] = o.Requestrestartservicestatus
-	}
 	if !IsNil(o.RestartBannerSetting) {
 		toSerialize["restart_banner_setting"] = o.RestartBannerSetting
 	}
 	if !IsNil(o.RestartStatus) {
 		toSerialize["restart_status"] = o.RestartStatus
-	}
-	if !IsNil(o.Restartservices) {
-		toSerialize["restartservices"] = o.Restartservices
 	}
 	if !IsNil(o.RpzHitRateInterval) {
 		toSerialize["rpz_hit_rate_interval"] = o.RpzHitRateInterval
@@ -3036,14 +2196,8 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceStatus) {
 		toSerialize["service_status"] = o.ServiceStatus
 	}
-	if !IsNil(o.SkipMemberUpgrade) {
-		toSerialize["skip_member_upgrade"] = o.SkipMemberUpgrade
-	}
 	if !IsNil(o.SnmpSetting) {
 		toSerialize["snmp_setting"] = o.SnmpSetting
-	}
-	if !IsNil(o.StartDiscovery) {
-		toSerialize["start_discovery"] = o.StartDiscovery
 	}
 	if !IsNil(o.SupportBundleDownloadTimeout) {
 		toSerialize["support_bundle_download_timeout"] = o.SupportBundleDownloadTimeout
@@ -3056,12 +2210,6 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SyslogSize) {
 		toSerialize["syslog_size"] = o.SyslogSize
-	}
-	if !IsNil(o.TestSyslogBackupServerConnection) {
-		toSerialize["test_syslog_backup_server_connection"] = o.TestSyslogBackupServerConnection
-	}
-	if !IsNil(o.TestSyslogConnection) {
-		toSerialize["test_syslog_connection"] = o.TestSyslogConnection
 	}
 	if !IsNil(o.ThresholdTraps) {
 		toSerialize["threshold_traps"] = o.ThresholdTraps
@@ -3092,18 +2240,6 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UpdatesDownloadMemberConfig) {
 		toSerialize["updates_download_member_config"] = o.UpdatesDownloadMemberConfig
-	}
-	if !IsNil(o.Upgrade) {
-		toSerialize["upgrade"] = o.Upgrade
-	}
-	if !IsNil(o.UpgradeGroupNow) {
-		toSerialize["upgrade_group_now"] = o.UpgradeGroupNow
-	}
-	if !IsNil(o.UploadKeytab) {
-		toSerialize["upload_keytab"] = o.UploadKeytab
-	}
-	if !IsNil(o.Validatecertificates) {
-		toSerialize["validatecertificates"] = o.Validatecertificates
 	}
 	if !IsNil(o.VpnPort) {
 		toSerialize["vpn_port"] = o.VpnPort

@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **RoleArn** | Pointer to **string** | Role ARN for syncing child accounts; maximum 128 characters. | [optional] 
 **SyncChildAccounts** | Pointer to **bool** | Synchronizing child accounts is enabled or disabled. | [optional] 
 **SyncStatus** | Pointer to **string** | Indicate the overall sync status of this task group. | [optional] [readonly] 
-**TaskControl** | Pointer to **map[string]interface{}** |  | [optional] 
 **TaskList** | Pointer to [**[]Awsrte53taskgroupTaskList**](Awsrte53taskgroupTaskList.md) | List of AWS Route53 tasks in this group. | [optional] 
 **Result** | Pointer to [**Awsrte53taskgroup**](Awsrte53taskgroup.md) |  | [optional] 
 
@@ -442,31 +441,6 @@ SetSyncStatus sets SyncStatus field to given value.
 `func (o *GetAwsrte53taskgroupResponse) HasSyncStatus() bool`
 
 HasSyncStatus returns a boolean if a field has been set.
-
-### GetTaskControl
-
-`func (o *GetAwsrte53taskgroupResponse) GetTaskControl() map[string]interface{}`
-
-GetTaskControl returns the TaskControl field if non-nil, zero value otherwise.
-
-### GetTaskControlOk
-
-`func (o *GetAwsrte53taskgroupResponse) GetTaskControlOk() (*map[string]interface{}, bool)`
-
-GetTaskControlOk returns a tuple with the TaskControl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTaskControl
-
-`func (o *GetAwsrte53taskgroupResponse) SetTaskControl(v map[string]interface{})`
-
-SetTaskControl sets TaskControl field to given value.
-
-### HasTaskControl
-
-`func (o *GetAwsrte53taskgroupResponse) HasTaskControl() bool`
-
-HasTaskControl returns a boolean if a field has been set.
 
 ### GetTaskList
 

@@ -20,8 +20,7 @@ var _ MappedNullable = &GridThreatprotection{}
 // GridThreatprotection struct for GridThreatprotection
 type GridThreatprotection struct {
 	// The reference to the object.
-	Ref            *string                `json:"_ref,omitempty"`
-	AtpObjectReset map[string]interface{} `json:"atp_object_reset,omitempty"`
+	Ref *string `json:"_ref,omitempty"`
 	// The current Grid ruleset.
 	CurrentRuleset *string `json:"current_ruleset,omitempty"`
 	// Determines if multiple BIND responses via TCP connection are disabled.
@@ -48,9 +47,8 @@ type GridThreatprotection struct {
 	NatRules         []GridThreatprotectionNatRules        `json:"nat_rules,omitempty"`
 	OutboundSettings *GridThreatprotectionOutboundSettings `json:"outbound_settings,omitempty"`
 	// The update rule policy.
-	RuleUpdatePolicy          *string                                `json:"rule_update_policy,omitempty"`
-	ScheduledDownload         *GridThreatprotectionScheduledDownload `json:"scheduled_download,omitempty"`
-	TestAtpServerConnectivity map[string]interface{}                 `json:"test_atp_server_connectivity,omitempty"`
+	RuleUpdatePolicy  *string                                `json:"rule_update_policy,omitempty"`
+	ScheduledDownload *GridThreatprotectionScheduledDownload `json:"scheduled_download,omitempty"`
 }
 
 // NewGridThreatprotection instantiates a new GridThreatprotection object
@@ -100,38 +98,6 @@ func (o *GridThreatprotection) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridThreatprotection) SetRef(v string) {
 	o.Ref = &v
-}
-
-// GetAtpObjectReset returns the AtpObjectReset field value if set, zero value otherwise.
-func (o *GridThreatprotection) GetAtpObjectReset() map[string]interface{} {
-	if o == nil || IsNil(o.AtpObjectReset) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.AtpObjectReset
-}
-
-// GetAtpObjectResetOk returns a tuple with the AtpObjectReset field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridThreatprotection) GetAtpObjectResetOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.AtpObjectReset) {
-		return map[string]interface{}{}, false
-	}
-	return o.AtpObjectReset, true
-}
-
-// HasAtpObjectReset returns a boolean if a field has been set.
-func (o *GridThreatprotection) HasAtpObjectReset() bool {
-	if o != nil && !IsNil(o.AtpObjectReset) {
-		return true
-	}
-
-	return false
-}
-
-// SetAtpObjectReset gets a reference to the given map[string]interface{} and assigns it to the AtpObjectReset field.
-func (o *GridThreatprotection) SetAtpObjectReset(v map[string]interface{}) {
-	o.AtpObjectReset = v
 }
 
 // GetCurrentRuleset returns the CurrentRuleset field value if set, zero value otherwise.
@@ -614,38 +580,6 @@ func (o *GridThreatprotection) SetScheduledDownload(v GridThreatprotectionSchedu
 	o.ScheduledDownload = &v
 }
 
-// GetTestAtpServerConnectivity returns the TestAtpServerConnectivity field value if set, zero value otherwise.
-func (o *GridThreatprotection) GetTestAtpServerConnectivity() map[string]interface{} {
-	if o == nil || IsNil(o.TestAtpServerConnectivity) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.TestAtpServerConnectivity
-}
-
-// GetTestAtpServerConnectivityOk returns a tuple with the TestAtpServerConnectivity field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridThreatprotection) GetTestAtpServerConnectivityOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.TestAtpServerConnectivity) {
-		return map[string]interface{}{}, false
-	}
-	return o.TestAtpServerConnectivity, true
-}
-
-// HasTestAtpServerConnectivity returns a boolean if a field has been set.
-func (o *GridThreatprotection) HasTestAtpServerConnectivity() bool {
-	if o != nil && !IsNil(o.TestAtpServerConnectivity) {
-		return true
-	}
-
-	return false
-}
-
-// SetTestAtpServerConnectivity gets a reference to the given map[string]interface{} and assigns it to the TestAtpServerConnectivity field.
-func (o *GridThreatprotection) SetTestAtpServerConnectivity(v map[string]interface{}) {
-	o.TestAtpServerConnectivity = v
-}
-
 func (o GridThreatprotection) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -658,9 +592,6 @@ func (o GridThreatprotection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
-	}
-	if !IsNil(o.AtpObjectReset) {
-		toSerialize["atp_object_reset"] = o.AtpObjectReset
 	}
 	if !IsNil(o.CurrentRuleset) {
 		toSerialize["current_ruleset"] = o.CurrentRuleset
@@ -706,9 +637,6 @@ func (o GridThreatprotection) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ScheduledDownload) {
 		toSerialize["scheduled_download"] = o.ScheduledDownload
-	}
-	if !IsNil(o.TestAtpServerConnectivity) {
-		toSerialize["test_atp_server_connectivity"] = o.TestAtpServerConnectivity
 	}
 	return toSerialize, nil
 }

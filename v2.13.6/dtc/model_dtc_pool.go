@@ -32,7 +32,7 @@ type DtcPool struct {
 	// Determines whether the DTC Pool is disabled or not. When this is set to False, the fixed address is enabled.
 	Disable *bool `json:"disable,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	Health   *DtcPoolHealth       `json:"health,omitempty"`
 	// The alternate load balancing method. Use this to select a method type from the pool if the preferred method does not return any results.
 	LbAlternateMethod *string `json:"lb_alternate_method,omitempty"`
@@ -45,7 +45,7 @@ type DtcPool struct {
 	// The preferred topology for load balancing.
 	LbPreferredTopology *string `json:"lb_preferred_topology,omitempty"`
 	// The monitors related to pool.
-	Monitors []map[string]interface{} `json:"monitors,omitempty"`
+	Monitors []string `json:"monitors,omitempty"`
 	// The DTC Pool display name.
 	Name *string `json:"name,omitempty"`
 	// For availability mode QUORUM, at least this many monitors must report the resource as up for it to be available
@@ -267,36 +267,36 @@ func (o *DtcPool) SetDisable(v bool) {
 	o.Disable = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *DtcPool) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *DtcPool) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcPool) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *DtcPool) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *DtcPool) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *DtcPool) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *DtcPool) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *DtcPool) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetHealth returns the Health field value if set, zero value otherwise.
@@ -524,9 +524,9 @@ func (o *DtcPool) SetLbPreferredTopology(v string) {
 }
 
 // GetMonitors returns the Monitors field value if set, zero value otherwise.
-func (o *DtcPool) GetMonitors() []map[string]interface{} {
+func (o *DtcPool) GetMonitors() []string {
 	if o == nil || IsNil(o.Monitors) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Monitors
@@ -534,7 +534,7 @@ func (o *DtcPool) GetMonitors() []map[string]interface{} {
 
 // GetMonitorsOk returns a tuple with the Monitors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcPool) GetMonitorsOk() ([]map[string]interface{}, bool) {
+func (o *DtcPool) GetMonitorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Monitors) {
 		return nil, false
 	}
@@ -550,8 +550,8 @@ func (o *DtcPool) HasMonitors() bool {
 	return false
 }
 
-// SetMonitors gets a reference to the given []map[string]interface{} and assigns it to the Monitors field.
-func (o *DtcPool) SetMonitors(v []map[string]interface{}) {
+// SetMonitors gets a reference to the given []string and assigns it to the Monitors field.
+func (o *DtcPool) SetMonitors(v []string) {
 	o.Monitors = v
 }
 
@@ -743,8 +743,8 @@ func (o DtcPool) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Health) {
 		toSerialize["health"] = o.Health

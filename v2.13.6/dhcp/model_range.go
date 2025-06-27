@@ -73,11 +73,11 @@ type Range struct {
 	// The IPv4 Address end address of the range.
 	EndAddr *string `json:"end_addr,omitempty"`
 	// The endpoints that provides data for the DHCP Range object.
-	EndpointSources []map[string]interface{} `json:"endpoint_sources,omitempty"`
+	EndpointSources []string `json:"endpoint_sources,omitempty"`
 	// These are ranges of IP addresses that the appliance does not use to assign to clients. You can use these exclusion addresses as static IP addresses. They contain the start and end addresses of the exclusion range, and optionally, information about this exclusion range.
 	Exclude []RangeExclude `json:"exclude,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The name of the failover association: the server in this failover association will serve the IPv4 range in case the main server is out of service. {range:range} must be set to 'FAILOVER' or 'FAILOVER_MS' if you want the failover association specified here to serve the range.
 	FailoverAssociation *string `json:"failover_association,omitempty"`
 	// This field contains the fingerprint filters for this DHCP range. The appliance uses matching rules in these filters to select the address range from which it assigns a lease.
@@ -97,7 +97,7 @@ type Range struct {
 	// Permission for known clients. This can be 'Allow' or 'Deny'. If set to 'Deny' known clients will be denied IP addresses. Known clients include roaming hosts and clients with fixed addresses or DHCP host entries. Unknown clients include clients that are not roaming hosts and clients that do not have fixed addresses or DHCP host entries.
 	KnownClients *string `json:"known_clients,omitempty"`
 	// An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day).
-	LeaseScavengeTime *int32 `json:"lease_scavenge_time,omitempty"`
+	LeaseScavengeTime *int64 `json:"lease_scavenge_time,omitempty"`
 	// This field contains the logic filters to be applied to this range. This list corresponds to the match rules that are written to the dhcpd configuration file.
 	LogicFilterRules []RangeLogicFilterRules `json:"logic_filter_rules,omitempty"`
 	// The percentage of DHCP range usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100.
@@ -118,8 +118,7 @@ type Range struct {
 	// The network to which this range belongs, in IPv4 Address/CIDR format.
 	Network *string `json:"network,omitempty"`
 	// The name of the network view in which this range resides.
-	NetworkView     *string                `json:"network_view,omitempty"`
-	NextAvailableIp map[string]interface{} `json:"next_available_ip,omitempty"`
+	NetworkView *string `json:"network_view,omitempty"`
 	// The name in FQDN and/or IPv4 Address of the next server that the host needs to boot.
 	Nextserver *string `json:"nextserver,omitempty"`
 	// This field contains the Option filters to be applied to this range. The appliance uses the matching rules of these filters to select the address range from which it assigns a lease.
@@ -1121,9 +1120,9 @@ func (o *Range) SetEndAddr(v string) {
 }
 
 // GetEndpointSources returns the EndpointSources field value if set, zero value otherwise.
-func (o *Range) GetEndpointSources() []map[string]interface{} {
+func (o *Range) GetEndpointSources() []string {
 	if o == nil || IsNil(o.EndpointSources) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.EndpointSources
@@ -1131,7 +1130,7 @@ func (o *Range) GetEndpointSources() []map[string]interface{} {
 
 // GetEndpointSourcesOk returns a tuple with the EndpointSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Range) GetEndpointSourcesOk() ([]map[string]interface{}, bool) {
+func (o *Range) GetEndpointSourcesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EndpointSources) {
 		return nil, false
 	}
@@ -1147,8 +1146,8 @@ func (o *Range) HasEndpointSources() bool {
 	return false
 }
 
-// SetEndpointSources gets a reference to the given []map[string]interface{} and assigns it to the EndpointSources field.
-func (o *Range) SetEndpointSources(v []map[string]interface{}) {
+// SetEndpointSources gets a reference to the given []string and assigns it to the EndpointSources field.
+func (o *Range) SetEndpointSources(v []string) {
 	o.EndpointSources = v
 }
 
@@ -1184,36 +1183,36 @@ func (o *Range) SetExclude(v []RangeExclude) {
 	o.Exclude = v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *Range) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Range) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Range) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *Range) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *Range) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Range) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *Range) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Range) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetFailoverAssociation returns the FailoverAssociation field value if set, zero value otherwise.
@@ -1505,9 +1504,9 @@ func (o *Range) SetKnownClients(v string) {
 }
 
 // GetLeaseScavengeTime returns the LeaseScavengeTime field value if set, zero value otherwise.
-func (o *Range) GetLeaseScavengeTime() int32 {
+func (o *Range) GetLeaseScavengeTime() int64 {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LeaseScavengeTime
@@ -1515,7 +1514,7 @@ func (o *Range) GetLeaseScavengeTime() int32 {
 
 // GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Range) GetLeaseScavengeTimeOk() (*int32, bool) {
+func (o *Range) GetLeaseScavengeTimeOk() (*int64, bool) {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
 		return nil, false
 	}
@@ -1531,8 +1530,8 @@ func (o *Range) HasLeaseScavengeTime() bool {
 	return false
 }
 
-// SetLeaseScavengeTime gets a reference to the given int32 and assigns it to the LeaseScavengeTime field.
-func (o *Range) SetLeaseScavengeTime(v int32) {
+// SetLeaseScavengeTime gets a reference to the given int64 and assigns it to the LeaseScavengeTime field.
+func (o *Range) SetLeaseScavengeTime(v int64) {
 	o.LeaseScavengeTime = &v
 }
 
@@ -1918,38 +1917,6 @@ func (o *Range) HasNetworkView() bool {
 // SetNetworkView gets a reference to the given string and assigns it to the NetworkView field.
 func (o *Range) SetNetworkView(v string) {
 	o.NetworkView = &v
-}
-
-// GetNextAvailableIp returns the NextAvailableIp field value if set, zero value otherwise.
-func (o *Range) GetNextAvailableIp() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableIp) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableIp
-}
-
-// GetNextAvailableIpOk returns a tuple with the NextAvailableIp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Range) GetNextAvailableIpOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableIp) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableIp, true
-}
-
-// HasNextAvailableIp returns a boolean if a field has been set.
-func (o *Range) HasNextAvailableIp() bool {
-	if o != nil && !IsNil(o.NextAvailableIp) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableIp gets a reference to the given map[string]interface{} and assigns it to the NextAvailableIp field.
-func (o *Range) SetNextAvailableIp(v map[string]interface{}) {
-	o.NextAvailableIp = v
 }
 
 // GetNextserver returns the Nextserver field value if set, zero value otherwise.
@@ -3460,8 +3427,8 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Exclude) {
 		toSerialize["exclude"] = o.Exclude
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.FailoverAssociation) {
 		toSerialize["failover_association"] = o.FailoverAssociation
@@ -3528,9 +3495,6 @@ func (o Range) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
-	}
-	if !IsNil(o.NextAvailableIp) {
-		toSerialize["next_available_ip"] = o.NextAvailableIp
 	}
 	if !IsNil(o.Nextserver) {
 		toSerialize["nextserver"] = o.Nextserver

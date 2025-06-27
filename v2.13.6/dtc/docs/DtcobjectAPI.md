@@ -1,18 +1,18 @@
-# DtcobjectAPI
+# DtcObjectAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtcobjectAPI.md#Get) | **Get** /dtc:object | Retrieve dtc:object objects
-[**ReferenceGet**](DtcobjectAPI.md#ReferenceGet) | **Get** /dtc:object/{reference} | Get a specific dtc:object object
-[**ReferencePut**](DtcobjectAPI.md#ReferencePut) | **Put** /dtc:object/{reference} | Update a dtc:object object
+[**List**](DtcObjectAPI.md#List) | **Get** /dtc:object | Retrieve dtc:object objects
+[**Read**](DtcObjectAPI.md#Read) | **Get** /dtc:object/{reference} | Get a specific dtc:object object
+[**Update**](DtcObjectAPI.md#Update) | **Put** /dtc:object/{reference} | Update a dtc:object object
 
 
 
-## Get
+## List
 
-> ListDtcObjectResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcObjectResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:object objects
 
@@ -34,13 +34,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcobjectAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcObjectAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcobjectAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcObjectAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcObjectResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcobjectAPI.Get`: %v\n", resp)
+	// response from `List`: ListDtcObjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcObjectAPI.List`: %v\n", resp)
 }
 ```
 
@@ -50,13 +50,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcobjectAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcObjectAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDtcObjectResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcObjectResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:object object
 
@@ -107,13 +107,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:object object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcobjectAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcObjectAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcobjectAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcObjectAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcObjectResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcobjectAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDtcObjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcObjectAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -127,13 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcobjectAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcObjectAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDtcObjectResponse ReferencePut(ctx, reference).DtcObject(dtcObject).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcObjectResponse Update(ctx, reference).DtcObject(dtcObject).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:object object
 
@@ -180,13 +180,13 @@ func main() {
 	dtcObject := *dtc.NewDtcObject() // DtcObject | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtcobjectAPI.ReferencePut(context.Background(), reference).DtcObject(dtcObject).Execute()
+	resp, r, err := apiClient.DtcObjectAPI.Update(context.Background(), reference).DtcObject(dtcObject).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtcobjectAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcObjectAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcObjectResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtcobjectAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDtcObjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcObjectAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -200,14 +200,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtcobjectAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcObjectAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **dtcObject** | [**DtcObject**](DtcObject.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

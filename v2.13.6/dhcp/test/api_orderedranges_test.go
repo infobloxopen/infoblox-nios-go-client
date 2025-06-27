@@ -23,11 +23,11 @@ func TestOrderedrangesAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test OrderedrangesAPIService Get", func(t *testing.T) {
+	t.Run("Test OrderedrangesAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OrderedrangesAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrderedrangesAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,13 +35,13 @@ func TestOrderedrangesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrderedrangesAPIService ReferenceGet", func(t *testing.T) {
+	t.Run("Test OrderedrangesAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.OrderedrangesAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.OrderedrangesAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func TestOrderedrangesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrderedrangesAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test OrderedrangesAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.OrderedrangesAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.OrderedrangesAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

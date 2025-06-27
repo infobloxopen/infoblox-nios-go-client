@@ -23,150 +23,386 @@ import (
 
 type ApprovalworkflowAPI interface {
 	/*
-		Get Retrieve approvalworkflow objects
-
-		Returns a list of approvalworkflow objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApprovalworkflowAPIGetRequest
-	*/
-	Get(ctx context.Context) ApprovalworkflowAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListApprovalworkflowResponse
-	GetExecute(r ApprovalworkflowAPIGetRequest) (*ListApprovalworkflowResponse, *http.Response, error)
-	/*
-		Post Create a approvalworkflow object
+		Create Create a approvalworkflow object
 
 		Creates a new approvalworkflow object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ApprovalworkflowAPIPostRequest
+		@return ApprovalworkflowAPICreateRequest
 	*/
-	Post(ctx context.Context) ApprovalworkflowAPIPostRequest
+	Create(ctx context.Context) ApprovalworkflowAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateApprovalworkflowResponse
-	PostExecute(r ApprovalworkflowAPIPostRequest) (*CreateApprovalworkflowResponse, *http.Response, error)
+	CreateExecute(r ApprovalworkflowAPICreateRequest) (*CreateApprovalworkflowResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a approvalworkflow object
+		Delete Delete a approvalworkflow object
 
 		Deletes a specific approvalworkflow object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the approvalworkflow object
-		@return ApprovalworkflowAPIReferenceDeleteRequest
+		@return ApprovalworkflowAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) ApprovalworkflowAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ApprovalworkflowAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r ApprovalworkflowAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ApprovalworkflowAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific approvalworkflow object
+		List Retrieve approvalworkflow objects
+
+		Returns a list of approvalworkflow objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ApprovalworkflowAPIListRequest
+	*/
+	List(ctx context.Context) ApprovalworkflowAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListApprovalworkflowResponse
+	ListExecute(r ApprovalworkflowAPIListRequest) (*ListApprovalworkflowResponse, *http.Response, error)
+	/*
+		Read Get a specific approvalworkflow object
 
 		Returns a specific approvalworkflow object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the approvalworkflow object
-		@return ApprovalworkflowAPIReferenceGetRequest
+		@return ApprovalworkflowAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ApprovalworkflowAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ApprovalworkflowAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetApprovalworkflowResponse
-	ReferenceGetExecute(r ApprovalworkflowAPIReferenceGetRequest) (*GetApprovalworkflowResponse, *http.Response, error)
+	ReadExecute(r ApprovalworkflowAPIReadRequest) (*GetApprovalworkflowResponse, *http.Response, error)
 	/*
-		ReferencePut Update a approvalworkflow object
+		Update Update a approvalworkflow object
 
 		Updates a specific approvalworkflow object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the approvalworkflow object
-		@return ApprovalworkflowAPIReferencePutRequest
+		@return ApprovalworkflowAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ApprovalworkflowAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ApprovalworkflowAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateApprovalworkflowResponse
-	ReferencePutExecute(r ApprovalworkflowAPIReferencePutRequest) (*UpdateApprovalworkflowResponse, *http.Response, error)
+	UpdateExecute(r ApprovalworkflowAPIUpdateRequest) (*UpdateApprovalworkflowResponse, *http.Response, error)
 }
 
 // ApprovalworkflowAPIService ApprovalworkflowAPI service
 type ApprovalworkflowAPIService internal.Service
 
-type ApprovalworkflowAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     ApprovalworkflowAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type ApprovalworkflowAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       ApprovalworkflowAPI
+	approvalworkflow *Approvalworkflow
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r ApprovalworkflowAPICreateRequest) Approvalworkflow(approvalworkflow Approvalworkflow) ApprovalworkflowAPICreateRequest {
+	r.approvalworkflow = &approvalworkflow
+	return r
 }
 
 // Enter the field names followed by comma
-func (r ApprovalworkflowAPIGetRequest) ReturnFields(returnFields string) ApprovalworkflowAPIGetRequest {
+func (r ApprovalworkflowAPICreateRequest) ReturnFields(returnFields string) ApprovalworkflowAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ApprovalworkflowAPIGetRequest) ReturnFields2(returnFields2 string) ApprovalworkflowAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ApprovalworkflowAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ApprovalworkflowAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ApprovalworkflowAPICreateRequest) ReturnAsObject(returnAsObject int32) ApprovalworkflowAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r ApprovalworkflowAPICreateRequest) Execute() (*CreateApprovalworkflowResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a approvalworkflow object
+
+Creates a new approvalworkflow object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApprovalworkflowAPICreateRequest
+*/
+func (a *ApprovalworkflowAPIService) Create(ctx context.Context) ApprovalworkflowAPICreateRequest {
+	return ApprovalworkflowAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateApprovalworkflowResponse
+func (a *ApprovalworkflowAPIService) CreateExecute(r ApprovalworkflowAPICreateRequest) (*CreateApprovalworkflowResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateApprovalworkflowResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/approvalworkflow"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.approvalworkflow == nil {
+		return localVarReturnValue, nil, internal.ReportError("approvalworkflow is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.approvalworkflow != nil {
+		if r.approvalworkflow.ExtAttrs == nil {
+			r.approvalworkflow.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.approvalworkflow.ExtAttrs)[k]; !ok {
+				(*r.approvalworkflow.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.approvalworkflow
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApprovalworkflowAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ApprovalworkflowAPI
+	reference  string
+}
+
+func (r ApprovalworkflowAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a approvalworkflow object
+
+Deletes a specific approvalworkflow object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the approvalworkflow object
+	@return ApprovalworkflowAPIDeleteRequest
+*/
+func (a *ApprovalworkflowAPIService) Delete(ctx context.Context, reference string) ApprovalworkflowAPIDeleteRequest {
+	return ApprovalworkflowAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ApprovalworkflowAPIService) DeleteExecute(r ApprovalworkflowAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/approvalworkflow/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApprovalworkflowAPIListRequest struct {
+	ctx              context.Context
+	ApiService       ApprovalworkflowAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r ApprovalworkflowAPIListRequest) ReturnFields(returnFields string) ApprovalworkflowAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ApprovalworkflowAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ApprovalworkflowAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ApprovalworkflowAPIGetRequest) MaxResults(maxResults int32) ApprovalworkflowAPIGetRequest {
+func (r ApprovalworkflowAPIListRequest) MaxResults(maxResults int32) ApprovalworkflowAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ApprovalworkflowAPIGetRequest) ReturnAsObject(returnAsObject int32) ApprovalworkflowAPIGetRequest {
+func (r ApprovalworkflowAPIListRequest) ReturnAsObject(returnAsObject int32) ApprovalworkflowAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ApprovalworkflowAPIGetRequest) Paging(paging int32) ApprovalworkflowAPIGetRequest {
+func (r ApprovalworkflowAPIListRequest) Paging(paging int32) ApprovalworkflowAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ApprovalworkflowAPIGetRequest) PageId(pageId string) ApprovalworkflowAPIGetRequest {
+func (r ApprovalworkflowAPIListRequest) PageId(pageId string) ApprovalworkflowAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ApprovalworkflowAPIGetRequest) Filters(filters map[string]interface{}) ApprovalworkflowAPIGetRequest {
+func (r ApprovalworkflowAPIListRequest) Filters(filters map[string]interface{}) ApprovalworkflowAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ApprovalworkflowAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ApprovalworkflowAPIGetRequest {
+func (r ApprovalworkflowAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ApprovalworkflowAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ApprovalworkflowAPIGetRequest) Execute() (*ListApprovalworkflowResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r ApprovalworkflowAPIListRequest) Execute() (*ListApprovalworkflowResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve approvalworkflow objects
+List Retrieve approvalworkflow objects
 
 Returns a list of approvalworkflow objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApprovalworkflowAPIGetRequest
+	@return ApprovalworkflowAPIListRequest
 */
-func (a *ApprovalworkflowAPIService) Get(ctx context.Context) ApprovalworkflowAPIGetRequest {
-	return ApprovalworkflowAPIGetRequest{
+func (a *ApprovalworkflowAPIService) List(ctx context.Context) ApprovalworkflowAPIListRequest {
+	return ApprovalworkflowAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *ApprovalworkflowAPIService) Get(ctx context.Context) ApprovalworkflowAP
 // Execute executes the request
 //
 //	@return ListApprovalworkflowResponse
-func (a *ApprovalworkflowAPIService) GetExecute(r ApprovalworkflowAPIGetRequest) (*ListApprovalworkflowResponse, *http.Response, error) {
+func (a *ApprovalworkflowAPIService) ListExecute(r ApprovalworkflowAPIListRequest) (*ListApprovalworkflowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *ApprovalworkflowAPIService) GetExecute(r ApprovalworkflowAPIGetRequest)
 		localVarReturnValue *ListApprovalworkflowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *ApprovalworkflowAPIService) GetExecute(r ApprovalworkflowAPIGetRequest)
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *ApprovalworkflowAPIService) GetExecute(r ApprovalworkflowAPIGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApprovalworkflowAPIPostRequest struct {
+type ApprovalworkflowAPIReadRequest struct {
 	ctx              context.Context
 	ApiService       ApprovalworkflowAPI
-	approvalworkflow *Approvalworkflow
+	reference        string
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
-// Object data to create
-func (r ApprovalworkflowAPIPostRequest) Approvalworkflow(approvalworkflow Approvalworkflow) ApprovalworkflowAPIPostRequest {
-	r.approvalworkflow = &approvalworkflow
-	return r
-}
-
 // Enter the field names followed by comma
-func (r ApprovalworkflowAPIPostRequest) ReturnFields(returnFields string) ApprovalworkflowAPIPostRequest {
+func (r ApprovalworkflowAPIReadRequest) ReturnFields(returnFields string) ApprovalworkflowAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ApprovalworkflowAPIPostRequest) ReturnFields2(returnFields2 string) ApprovalworkflowAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r ApprovalworkflowAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ApprovalworkflowAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ApprovalworkflowAPIPostRequest) ReturnAsObject(returnAsObject int32) ApprovalworkflowAPIPostRequest {
+func (r ApprovalworkflowAPIReadRequest) ReturnAsObject(returnAsObject int32) ApprovalworkflowAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ApprovalworkflowAPIPostRequest) Execute() (*CreateApprovalworkflowResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r ApprovalworkflowAPIReadRequest) Execute() (*GetApprovalworkflowResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a approvalworkflow object
-
-Creates a new approvalworkflow object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApprovalworkflowAPIPostRequest
-*/
-func (a *ApprovalworkflowAPIService) Post(ctx context.Context) ApprovalworkflowAPIPostRequest {
-	return ApprovalworkflowAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateApprovalworkflowResponse
-func (a *ApprovalworkflowAPIService) PostExecute(r ApprovalworkflowAPIPostRequest) (*CreateApprovalworkflowResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateApprovalworkflowResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/approvalworkflow"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.approvalworkflow == nil {
-		return localVarReturnValue, nil, internal.ReportError("approvalworkflow is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.approvalworkflow != nil {
-		if r.approvalworkflow.Extattrs == nil {
-			r.approvalworkflow.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.approvalworkflow.Extattrs)[k]; !ok {
-				(*r.approvalworkflow.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.approvalworkflow
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApprovalworkflowAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ApprovalworkflowAPI
-	reference  string
-}
-
-func (r ApprovalworkflowAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a approvalworkflow object
-
-Deletes a specific approvalworkflow object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the approvalworkflow object
-	@return ApprovalworkflowAPIReferenceDeleteRequest
-*/
-func (a *ApprovalworkflowAPIService) ReferenceDelete(ctx context.Context, reference string) ApprovalworkflowAPIReferenceDeleteRequest {
-	return ApprovalworkflowAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ApprovalworkflowAPIService) ReferenceDeleteExecute(r ApprovalworkflowAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/approvalworkflow/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApprovalworkflowAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     ApprovalworkflowAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r ApprovalworkflowAPIReferenceGetRequest) ReturnFields(returnFields string) ApprovalworkflowAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ApprovalworkflowAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ApprovalworkflowAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ApprovalworkflowAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ApprovalworkflowAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r ApprovalworkflowAPIReferenceGetRequest) Execute() (*GetApprovalworkflowResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific approvalworkflow object
+Read Get a specific approvalworkflow object
 
 Returns a specific approvalworkflow object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the approvalworkflow object
-	@return ApprovalworkflowAPIReferenceGetRequest
+	@return ApprovalworkflowAPIReadRequest
 */
-func (a *ApprovalworkflowAPIService) ReferenceGet(ctx context.Context, reference string) ApprovalworkflowAPIReferenceGetRequest {
-	return ApprovalworkflowAPIReferenceGetRequest{
+func (a *ApprovalworkflowAPIService) Read(ctx context.Context, reference string) ApprovalworkflowAPIReadRequest {
+	return ApprovalworkflowAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *ApprovalworkflowAPIService) ReferenceGet(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return GetApprovalworkflowResponse
-func (a *ApprovalworkflowAPIService) ReferenceGetExecute(r ApprovalworkflowAPIReferenceGetRequest) (*GetApprovalworkflowResponse, *http.Response, error) {
+func (a *ApprovalworkflowAPIService) ReadExecute(r ApprovalworkflowAPIReadRequest) (*GetApprovalworkflowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *ApprovalworkflowAPIService) ReferenceGetExecute(r ApprovalworkflowAPIRe
 		localVarReturnValue *GetApprovalworkflowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *ApprovalworkflowAPIService) ReferenceGetExecute(r ApprovalworkflowAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *ApprovalworkflowAPIService) ReferenceGetExecute(r ApprovalworkflowAPIRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApprovalworkflowAPIReferencePutRequest struct {
+type ApprovalworkflowAPIUpdateRequest struct {
 	ctx              context.Context
 	ApiService       ApprovalworkflowAPI
 	reference        string
 	approvalworkflow *Approvalworkflow
 	returnFields     *string
-	returnFields2    *string
+	returnFieldsPlus *string
 	returnAsObject   *int32
 }
 
 // Object data to update
-func (r ApprovalworkflowAPIReferencePutRequest) Approvalworkflow(approvalworkflow Approvalworkflow) ApprovalworkflowAPIReferencePutRequest {
+func (r ApprovalworkflowAPIUpdateRequest) Approvalworkflow(approvalworkflow Approvalworkflow) ApprovalworkflowAPIUpdateRequest {
 	r.approvalworkflow = &approvalworkflow
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ApprovalworkflowAPIReferencePutRequest) ReturnFields(returnFields string) ApprovalworkflowAPIReferencePutRequest {
+func (r ApprovalworkflowAPIUpdateRequest) ReturnFields(returnFields string) ApprovalworkflowAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ApprovalworkflowAPIReferencePutRequest) ReturnFields2(returnFields2 string) ApprovalworkflowAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r ApprovalworkflowAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ApprovalworkflowAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ApprovalworkflowAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ApprovalworkflowAPIReferencePutRequest {
+func (r ApprovalworkflowAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ApprovalworkflowAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ApprovalworkflowAPIReferencePutRequest) Execute() (*UpdateApprovalworkflowResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ApprovalworkflowAPIUpdateRequest) Execute() (*UpdateApprovalworkflowResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a approvalworkflow object
+Update Update a approvalworkflow object
 
 Updates a specific approvalworkflow object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the approvalworkflow object
-	@return ApprovalworkflowAPIReferencePutRequest
+	@return ApprovalworkflowAPIUpdateRequest
 */
-func (a *ApprovalworkflowAPIService) ReferencePut(ctx context.Context, reference string) ApprovalworkflowAPIReferencePutRequest {
-	return ApprovalworkflowAPIReferencePutRequest{
+func (a *ApprovalworkflowAPIService) Update(ctx context.Context, reference string) ApprovalworkflowAPIUpdateRequest {
+	return ApprovalworkflowAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *ApprovalworkflowAPIService) ReferencePut(ctx context.Context, reference
 // Execute executes the request
 //
 //	@return UpdateApprovalworkflowResponse
-func (a *ApprovalworkflowAPIService) ReferencePutExecute(r ApprovalworkflowAPIReferencePutRequest) (*UpdateApprovalworkflowResponse, *http.Response, error) {
+func (a *ApprovalworkflowAPIService) UpdateExecute(r ApprovalworkflowAPIUpdateRequest) (*UpdateApprovalworkflowResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *ApprovalworkflowAPIService) ReferencePutExecute(r ApprovalworkflowAPIRe
 		localVarReturnValue *UpdateApprovalworkflowResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ApprovalworkflowAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *ApprovalworkflowAPIService) ReferencePutExecute(r ApprovalworkflowAPIRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *ApprovalworkflowAPIService) ReferencePutExecute(r ApprovalworkflowAPIRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.approvalworkflow != nil {
-		if r.approvalworkflow.Extattrs == nil {
-			r.approvalworkflow.Extattrs = &map[string]ExtAttrs{}
+		if r.approvalworkflow.ExtAttrs == nil {
+			r.approvalworkflow.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.approvalworkflow.Extattrs)[k]; !ok {
-				(*r.approvalworkflow.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.approvalworkflow.ExtAttrs)[k]; !ok {
+				(*r.approvalworkflow.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

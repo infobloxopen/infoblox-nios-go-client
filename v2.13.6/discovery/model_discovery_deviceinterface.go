@@ -66,11 +66,11 @@ type DiscoveryDeviceinterface struct {
 	// The duplex state of the interface.
 	Duplex *string `json:"duplex,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// List of IFaddr information associated with the interface.
 	IfaddrInfos []DiscoveryDeviceinterfaceIfaddrInfos `json:"ifaddr_infos,omitempty"`
 	// The interface index number, as reported by SNMP.
-	Index *int32 `json:"index,omitempty"`
+	Index *int64 `json:"index,omitempty"`
 	// Timestamp of the last interface property change detected.
 	LastChange *int64 `json:"last_change,omitempty"`
 	// This field indicates if this is a link aggregation interface.
@@ -894,36 +894,36 @@ func (o *DiscoveryDeviceinterface) SetDuplex(v string) {
 	o.Duplex = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *DiscoveryDeviceinterface) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *DiscoveryDeviceinterface) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiscoveryDeviceinterface) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *DiscoveryDeviceinterface) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *DiscoveryDeviceinterface) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *DiscoveryDeviceinterface) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *DiscoveryDeviceinterface) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *DiscoveryDeviceinterface) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetIfaddrInfos returns the IfaddrInfos field value if set, zero value otherwise.
@@ -959,9 +959,9 @@ func (o *DiscoveryDeviceinterface) SetIfaddrInfos(v []DiscoveryDeviceinterfaceIf
 }
 
 // GetIndex returns the Index field value if set, zero value otherwise.
-func (o *DiscoveryDeviceinterface) GetIndex() int32 {
+func (o *DiscoveryDeviceinterface) GetIndex() int64 {
 	if o == nil || IsNil(o.Index) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Index
@@ -969,7 +969,7 @@ func (o *DiscoveryDeviceinterface) GetIndex() int32 {
 
 // GetIndexOk returns a tuple with the Index field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiscoveryDeviceinterface) GetIndexOk() (*int32, bool) {
+func (o *DiscoveryDeviceinterface) GetIndexOk() (*int64, bool) {
 	if o == nil || IsNil(o.Index) {
 		return nil, false
 	}
@@ -985,8 +985,8 @@ func (o *DiscoveryDeviceinterface) HasIndex() bool {
 	return false
 }
 
-// SetIndex gets a reference to the given int32 and assigns it to the Index field.
-func (o *DiscoveryDeviceinterface) SetIndex(v int32) {
+// SetIndex gets a reference to the given int64 and assigns it to the Index field.
+func (o *DiscoveryDeviceinterface) SetIndex(v int64) {
 	o.Index = &v
 }
 
@@ -1680,8 +1680,8 @@ func (o DiscoveryDeviceinterface) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Duplex) {
 		toSerialize["duplex"] = o.Duplex
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.IfaddrInfos) {
 		toSerialize["ifaddr_infos"] = o.IfaddrInfos

@@ -23,28 +23,26 @@ type APIClient struct {
 	*internal.APIClient
 
 	// API Services
+	AdAuthServiceAPI AdAuthServiceAPI
 	AdmingroupAPI AdmingroupAPI
 	AdminroleAPI AdminroleAPI
 	AdminuserAPI AdminuserAPI
 	ApprovalworkflowAPI ApprovalworkflowAPI
 	AuthpolicyAPI AuthpolicyAPI
 	CacertificateAPI CacertificateAPI
-	CertificateauthserviceAPI CertificateauthserviceAPI
+	CertificateAuthserviceAPI CertificateAuthserviceAPI
 	FtpuserAPI FtpuserAPI
+	HsmAllgroupsAPI HsmAllgroupsAPI
+	HsmEntrustnshieldgroupAPI HsmEntrustnshieldgroupAPI
+	HsmThaleslunagroupAPI HsmThaleslunagroupAPI
 	LdapAuthServiceAPI LdapAuthServiceAPI
-	LocaluserauthserviceAPI LocaluserauthserviceAPI
+	LocaluserAuthserviceAPI LocaluserAuthserviceAPI
 	NetworkuserAPI NetworkuserAPI
 	PermissionAPI PermissionAPI
-	RadiusauthserviceAPI RadiusauthserviceAPI
-	SamlauthserviceAPI SamlauthserviceAPI
+	RadiusAuthserviceAPI RadiusAuthserviceAPI
+	SamlAuthserviceAPI SamlAuthserviceAPI
 	SnmpuserAPI SnmpuserAPI
-	TacacsplusauthserviceAPI TacacsplusauthserviceAPI
-	ThreatinsightallowlistAPI ThreatinsightallowlistAPI
-	ThreatinsightcloudclientAPI ThreatinsightcloudclientAPI
-	ThreatprotectionprofileAPI ThreatprotectionprofileAPI
-	ThreatprotectionruleAPI ThreatprotectionruleAPI
-	ThreatprotectionrulesetAPI ThreatprotectionrulesetAPI
-	ThreatprotectionstatisticsAPI ThreatprotectionstatisticsAPI
+	TacacsplusAuthserviceAPI TacacsplusAuthserviceAPI
 	UserprofileAPI UserprofileAPI
 }
 
@@ -52,7 +50,8 @@ type APIClient struct {
 // The client can be configured with a variadic option. The following options are available:
 // - WithClientName(string) sets the name of the client using the SDK.
 // - WithNIOSHostUrl(string) sets the URL for NIOS Portal.
-// - WithNIOSAuth(string) sets the NIOSAuth for accessing the NIOS Portal.
+// - WithNIOSUsername(string) sets the Username for the NIOS Portal.
+// - WithNIOSPassword(string) sets the Password for the NIOS Portal.
 // - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
 // - WithDefaultExtAttrs(map[string]struct{ Value string }) sets the tags the client can set by default for objects that has tags support.
 // - WithDebug() sets the debug mode.
@@ -66,28 +65,26 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	c.APIClient = internal.NewAPIClient(serviceBasePath, cfg)
 
 	// API Services
+	c.AdAuthServiceAPI = (*AdAuthServiceAPIService)(&c.Common)
 	c.AdmingroupAPI = (*AdmingroupAPIService)(&c.Common)
 	c.AdminroleAPI = (*AdminroleAPIService)(&c.Common)
 	c.AdminuserAPI = (*AdminuserAPIService)(&c.Common)
 	c.ApprovalworkflowAPI = (*ApprovalworkflowAPIService)(&c.Common)
 	c.AuthpolicyAPI = (*AuthpolicyAPIService)(&c.Common)
 	c.CacertificateAPI = (*CacertificateAPIService)(&c.Common)
-	c.CertificateauthserviceAPI = (*CertificateauthserviceAPIService)(&c.Common)
+	c.CertificateAuthserviceAPI = (*CertificateAuthserviceAPIService)(&c.Common)
 	c.FtpuserAPI = (*FtpuserAPIService)(&c.Common)
+	c.HsmAllgroupsAPI = (*HsmAllgroupsAPIService)(&c.Common)
+	c.HsmEntrustnshieldgroupAPI = (*HsmEntrustnshieldgroupAPIService)(&c.Common)
+	c.HsmThaleslunagroupAPI = (*HsmThaleslunagroupAPIService)(&c.Common)
 	c.LdapAuthServiceAPI = (*LdapAuthServiceAPIService)(&c.Common)
-	c.LocaluserauthserviceAPI = (*LocaluserauthserviceAPIService)(&c.Common)
+	c.LocaluserAuthserviceAPI = (*LocaluserAuthserviceAPIService)(&c.Common)
 	c.NetworkuserAPI = (*NetworkuserAPIService)(&c.Common)
 	c.PermissionAPI = (*PermissionAPIService)(&c.Common)
-	c.RadiusauthserviceAPI = (*RadiusauthserviceAPIService)(&c.Common)
-	c.SamlauthserviceAPI = (*SamlauthserviceAPIService)(&c.Common)
+	c.RadiusAuthserviceAPI = (*RadiusAuthserviceAPIService)(&c.Common)
+	c.SamlAuthserviceAPI = (*SamlAuthserviceAPIService)(&c.Common)
 	c.SnmpuserAPI = (*SnmpuserAPIService)(&c.Common)
-	c.TacacsplusauthserviceAPI = (*TacacsplusauthserviceAPIService)(&c.Common)
-	c.ThreatinsightallowlistAPI = (*ThreatinsightallowlistAPIService)(&c.Common)
-	c.ThreatinsightcloudclientAPI = (*ThreatinsightcloudclientAPIService)(&c.Common)
-	c.ThreatprotectionprofileAPI = (*ThreatprotectionprofileAPIService)(&c.Common)
-	c.ThreatprotectionruleAPI = (*ThreatprotectionruleAPIService)(&c.Common)
-	c.ThreatprotectionrulesetAPI = (*ThreatprotectionrulesetAPIService)(&c.Common)
-	c.ThreatprotectionstatisticsAPI = (*ThreatprotectionstatisticsAPIService)(&c.Common)
+	c.TacacsplusAuthserviceAPI = (*TacacsplusAuthserviceAPIService)(&c.Common)
 	c.UserprofileAPI = (*UserprofileAPIService)(&c.Common)
 
 	return c

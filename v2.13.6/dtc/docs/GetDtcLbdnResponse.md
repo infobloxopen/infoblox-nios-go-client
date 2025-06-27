@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**AuthZones** | Pointer to **[]map[string]interface{}** | List of linked auth zones. | [optional] 
+**AuthZones** | Pointer to **[]string** | List of linked auth zones. | [optional] 
 **AutoConsolidatedMonitors** | Pointer to **bool** | Flag for enabling auto managing DTC Consolidated Monitors on related DTC Pools. | [optional] 
 **Comment** | Pointer to **string** | Comment for the DTC LBDN; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DTC LBDN is disabled or not. When this is set to False, the fixed address is enabled. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Health** | Pointer to [**DtcLbdnHealth**](DtcLbdnHealth.md) |  | [optional] 
 **LbMethod** | Pointer to **string** | The load balancing method. Used to select pool. | [optional] 
 **Name** | Pointer to **string** | The display name of the DTC LBDN, not DNS related. | [optional] 
@@ -69,20 +69,20 @@ HasRef returns a boolean if a field has been set.
 
 ### GetAuthZones
 
-`func (o *GetDtcLbdnResponse) GetAuthZones() []map[string]interface{}`
+`func (o *GetDtcLbdnResponse) GetAuthZones() []string`
 
 GetAuthZones returns the AuthZones field if non-nil, zero value otherwise.
 
 ### GetAuthZonesOk
 
-`func (o *GetDtcLbdnResponse) GetAuthZonesOk() (*[]map[string]interface{}, bool)`
+`func (o *GetDtcLbdnResponse) GetAuthZonesOk() (*[]string, bool)`
 
 GetAuthZonesOk returns a tuple with the AuthZones field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthZones
 
-`func (o *GetDtcLbdnResponse) SetAuthZones(v []map[string]interface{})`
+`func (o *GetDtcLbdnResponse) SetAuthZones(v []string)`
 
 SetAuthZones sets AuthZones field to given value.
 
@@ -167,30 +167,30 @@ SetDisable sets Disable field to given value.
 
 HasDisable returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetDtcLbdnResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetDtcLbdnResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetDtcLbdnResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetDtcLbdnResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetDtcLbdnResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetDtcLbdnResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetDtcLbdnResponse) HasExtattrs() bool`
+`func (o *GetDtcLbdnResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetHealth
 

@@ -1,20 +1,156 @@
-# RadiusauthserviceAPI
+# RadiusAuthserviceAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RadiusauthserviceAPI.md#Get) | **Get** /radius:authservice | Retrieve radius:authservice objects
-[**Post**](RadiusauthserviceAPI.md#Post) | **Post** /radius:authservice | Create a radius:authservice object
-[**ReferenceDelete**](RadiusauthserviceAPI.md#ReferenceDelete) | **Delete** /radius:authservice/{reference} | Delete a radius:authservice object
-[**ReferenceGet**](RadiusauthserviceAPI.md#ReferenceGet) | **Get** /radius:authservice/{reference} | Get a specific radius:authservice object
-[**ReferencePut**](RadiusauthserviceAPI.md#ReferencePut) | **Put** /radius:authservice/{reference} | Update a radius:authservice object
+[**Create**](RadiusAuthserviceAPI.md#Create) | **Post** /radius:authservice | Create a radius:authservice object
+[**Delete**](RadiusAuthserviceAPI.md#Delete) | **Delete** /radius:authservice/{reference} | Delete a radius:authservice object
+[**List**](RadiusAuthserviceAPI.md#List) | **Get** /radius:authservice | Retrieve radius:authservice objects
+[**Read**](RadiusAuthserviceAPI.md#Read) | **Get** /radius:authservice/{reference} | Get a specific radius:authservice object
+[**Update**](RadiusAuthserviceAPI.md#Update) | **Put** /radius:authservice/{reference} | Update a radius:authservice object
 
 
 
-## Get
+## Create
 
-> ListRadiusAuthserviceResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateRadiusAuthserviceResponse Create(ctx).RadiusAuthservice(radiusAuthservice).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a radius:authservice object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	radiusAuthservice := *security.NewRadiusAuthservice() // RadiusAuthservice | Object data to create
+
+	apiClient := security.NewAPIClient()
+	resp, r, err := apiClient.RadiusAuthserviceAPI.Create(context.Background()).RadiusAuthservice(radiusAuthservice).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RadiusAuthserviceAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateRadiusAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `RadiusAuthserviceAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RadiusAuthserviceAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**radiusAuthservice** | [**RadiusAuthservice**](RadiusAuthservice.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateRadiusAuthserviceResponse**](CreateRadiusAuthserviceResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a radius:authservice object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the radius:authservice object
+
+	apiClient := security.NewAPIClient()
+	r, err := apiClient.RadiusAuthserviceAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RadiusAuthserviceAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the radius:authservice object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RadiusAuthserviceAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListRadiusAuthserviceResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve radius:authservice objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.RadiusauthserviceAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RadiusAuthserviceAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RadiusauthserviceAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RadiusAuthserviceAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRadiusAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `RadiusauthserviceAPI.Get`: %v\n", resp)
+	// response from `List`: ListRadiusAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `RadiusAuthserviceAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RadiusauthserviceAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RadiusAuthserviceAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateRadiusAuthserviceResponse Post(ctx).RadiusAuthservice(radiusAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a radius:authservice object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	radiusAuthservice := *security.NewRadiusAuthservice() // RadiusAuthservice | Object data to create
-
-	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.RadiusauthserviceAPI.Post(context.Background()).RadiusAuthservice(radiusAuthservice).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RadiusauthserviceAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateRadiusAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `RadiusauthserviceAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RadiusauthserviceAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**radiusAuthservice** | [**RadiusAuthservice**](RadiusAuthservice.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateRadiusAuthserviceResponse**](CreateRadiusAuthserviceResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a radius:authservice object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the radius:authservice object
-
-	apiClient := security.NewAPIClient()
-	r, err := apiClient.RadiusauthserviceAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RadiusauthserviceAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the radius:authservice object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RadiusauthserviceAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetRadiusAuthserviceResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRadiusAuthserviceResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific radius:authservice object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the radius:authservice object
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.RadiusauthserviceAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RadiusAuthserviceAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RadiusauthserviceAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RadiusAuthserviceAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRadiusAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `RadiusauthserviceAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRadiusAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `RadiusAuthserviceAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RadiusauthserviceAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RadiusAuthserviceAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateRadiusAuthserviceResponse ReferencePut(ctx, reference).RadiusAuthservice(radiusAuthservice).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRadiusAuthserviceResponse Update(ctx, reference).RadiusAuthservice(radiusAuthservice).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a radius:authservice object
 
@@ -318,13 +318,13 @@ func main() {
 	radiusAuthservice := *security.NewRadiusAuthservice() // RadiusAuthservice | Object data to update
 
 	apiClient := security.NewAPIClient()
-	resp, r, err := apiClient.RadiusauthserviceAPI.ReferencePut(context.Background(), reference).RadiusAuthservice(radiusAuthservice).Execute()
+	resp, r, err := apiClient.RadiusAuthserviceAPI.Update(context.Background(), reference).RadiusAuthservice(radiusAuthservice).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RadiusauthserviceAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RadiusAuthserviceAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRadiusAuthserviceResponse
-	fmt.Fprintf(os.Stdout, "Response from `RadiusauthserviceAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateRadiusAuthserviceResponse
+	fmt.Fprintf(os.Stdout, "Response from `RadiusAuthserviceAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RadiusauthserviceAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RadiusAuthserviceAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **radiusAuthservice** | [**RadiusAuthservice**](RadiusAuthservice.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -79,77 +79,52 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DiscoveryAPI* | [**Get**](docs/DiscoveryAPI.md#get) | **Get** /discovery | Retrieve discovery objects
-*DiscoveryAPI* | [**ReferenceGet**](docs/DiscoveryAPI.md#referenceget) | **Get** /discovery/{reference} | Get a specific discovery object
-*DiscoveryAPI* | [**ReferencePut**](docs/DiscoveryAPI.md#referenceput) | **Put** /discovery/{reference} | Update a discovery object
-*DiscoverycredentialgroupAPI* | [**Get**](docs/DiscoverycredentialgroupAPI.md#get) | **Get** /discovery:credentialgroup | Retrieve discovery:credentialgroup objects
-*DiscoverycredentialgroupAPI* | [**Post**](docs/DiscoverycredentialgroupAPI.md#post) | **Post** /discovery:credentialgroup | Create a discovery:credentialgroup object
-*DiscoverycredentialgroupAPI* | [**ReferenceDelete**](docs/DiscoverycredentialgroupAPI.md#referencedelete) | **Delete** /discovery:credentialgroup/{reference} | Delete a discovery:credentialgroup object
-*DiscoverycredentialgroupAPI* | [**ReferenceGet**](docs/DiscoverycredentialgroupAPI.md#referenceget) | **Get** /discovery:credentialgroup/{reference} | Get a specific discovery:credentialgroup object
-*DiscoverycredentialgroupAPI* | [**ReferencePut**](docs/DiscoverycredentialgroupAPI.md#referenceput) | **Put** /discovery:credentialgroup/{reference} | Update a discovery:credentialgroup object
-*DiscoverydeviceAPI* | [**Get**](docs/DiscoverydeviceAPI.md#get) | **Get** /discovery:device | Retrieve discovery:device objects
-*DiscoverydeviceAPI* | [**ReferenceGet**](docs/DiscoverydeviceAPI.md#referenceget) | **Get** /discovery:device/{reference} | Get a specific discovery:device object
-*DiscoverydeviceAPI* | [**ReferencePut**](docs/DiscoverydeviceAPI.md#referenceput) | **Put** /discovery:device/{reference} | Update a discovery:device object
-*DiscoverydevicecomponentAPI* | [**Get**](docs/DiscoverydevicecomponentAPI.md#get) | **Get** /discovery:devicecomponent | Retrieve discovery:devicecomponent objects
-*DiscoverydevicecomponentAPI* | [**ReferenceGet**](docs/DiscoverydevicecomponentAPI.md#referenceget) | **Get** /discovery:devicecomponent/{reference} | Get a specific discovery:devicecomponent object
-*DiscoverydeviceinterfaceAPI* | [**Get**](docs/DiscoverydeviceinterfaceAPI.md#get) | **Get** /discovery:deviceinterface | Retrieve discovery:deviceinterface objects
-*DiscoverydeviceinterfaceAPI* | [**ReferenceGet**](docs/DiscoverydeviceinterfaceAPI.md#referenceget) | **Get** /discovery:deviceinterface/{reference} | Get a specific discovery:deviceinterface object
-*DiscoverydeviceinterfaceAPI* | [**ReferencePut**](docs/DiscoverydeviceinterfaceAPI.md#referenceput) | **Put** /discovery:deviceinterface/{reference} | Update a discovery:deviceinterface object
-*DiscoverydeviceneighborAPI* | [**Get**](docs/DiscoverydeviceneighborAPI.md#get) | **Get** /discovery:deviceneighbor | Retrieve discovery:deviceneighbor objects
-*DiscoverydeviceneighborAPI* | [**ReferenceGet**](docs/DiscoverydeviceneighborAPI.md#referenceget) | **Get** /discovery:deviceneighbor/{reference} | Get a specific discovery:deviceneighbor object
-*DiscoverydevicesupportbundleAPI* | [**Get**](docs/DiscoverydevicesupportbundleAPI.md#get) | **Get** /discovery:devicesupportbundle | Retrieve discovery:devicesupportbundle objects
-*DiscoverydevicesupportbundleAPI* | [**ReferenceDelete**](docs/DiscoverydevicesupportbundleAPI.md#referencedelete) | **Delete** /discovery:devicesupportbundle/{reference} | Delete a discovery:devicesupportbundle object
-*DiscoverydevicesupportbundleAPI* | [**ReferenceGet**](docs/DiscoverydevicesupportbundleAPI.md#referenceget) | **Get** /discovery:devicesupportbundle/{reference} | Get a specific discovery:devicesupportbundle object
-*DiscoverydiagnostictaskAPI* | [**Get**](docs/DiscoverydiagnostictaskAPI.md#get) | **Get** /discovery:diagnostictask | Retrieve discovery:diagnostictask objects
-*DiscoverydiagnostictaskAPI* | [**ReferenceGet**](docs/DiscoverydiagnostictaskAPI.md#referenceget) | **Get** /discovery:diagnostictask/{reference} | Get a specific discovery:diagnostictask object
-*DiscoverydiagnostictaskAPI* | [**ReferencePut**](docs/DiscoverydiagnostictaskAPI.md#referenceput) | **Put** /discovery:diagnostictask/{reference} | Update a discovery:diagnostictask object
-*DiscoverygridpropertiesAPI* | [**Get**](docs/DiscoverygridpropertiesAPI.md#get) | **Get** /discovery:gridproperties | Retrieve discovery:gridproperties objects
-*DiscoverygridpropertiesAPI* | [**ReferenceGet**](docs/DiscoverygridpropertiesAPI.md#referenceget) | **Get** /discovery:gridproperties/{reference} | Get a specific discovery:gridproperties object
-*DiscoverygridpropertiesAPI* | [**ReferencePut**](docs/DiscoverygridpropertiesAPI.md#referenceput) | **Put** /discovery:gridproperties/{reference} | Update a discovery:gridproperties object
-*DiscoverymemberpropertiesAPI* | [**Get**](docs/DiscoverymemberpropertiesAPI.md#get) | **Get** /discovery:memberproperties | Retrieve discovery:memberproperties objects
-*DiscoverymemberpropertiesAPI* | [**ReferenceGet**](docs/DiscoverymemberpropertiesAPI.md#referenceget) | **Get** /discovery:memberproperties/{reference} | Get a specific discovery:memberproperties object
-*DiscoverymemberpropertiesAPI* | [**ReferencePut**](docs/DiscoverymemberpropertiesAPI.md#referenceput) | **Put** /discovery:memberproperties/{reference} | Update a discovery:memberproperties object
-*DiscoverysdnnetworkAPI* | [**Get**](docs/DiscoverysdnnetworkAPI.md#get) | **Get** /discovery:sdnnetwork | Retrieve discovery:sdnnetwork objects
-*DiscoverysdnnetworkAPI* | [**ReferenceGet**](docs/DiscoverysdnnetworkAPI.md#referenceget) | **Get** /discovery:sdnnetwork/{reference} | Get a specific discovery:sdnnetwork object
-*DiscoverystatusAPI* | [**Get**](docs/DiscoverystatusAPI.md#get) | **Get** /discovery:status | Retrieve discovery:status objects
-*DiscoverystatusAPI* | [**ReferenceGet**](docs/DiscoverystatusAPI.md#referenceget) | **Get** /discovery:status/{reference} | Get a specific discovery:status object
-*DiscoveryvrfAPI* | [**Get**](docs/DiscoveryvrfAPI.md#get) | **Get** /discovery:vrf | Retrieve discovery:vrf objects
-*DiscoveryvrfAPI* | [**ReferenceGet**](docs/DiscoveryvrfAPI.md#referenceget) | **Get** /discovery:vrf/{reference} | Get a specific discovery:vrf object
-*VdiscoverytaskAPI* | [**Get**](docs/VdiscoverytaskAPI.md#get) | **Get** /vdiscoverytask | Retrieve vdiscoverytask objects
-*VdiscoverytaskAPI* | [**Post**](docs/VdiscoverytaskAPI.md#post) | **Post** /vdiscoverytask | Create a vdiscoverytask object
-*VdiscoverytaskAPI* | [**ReferenceDelete**](docs/VdiscoverytaskAPI.md#referencedelete) | **Delete** /vdiscoverytask/{reference} | Delete a vdiscoverytask object
-*VdiscoverytaskAPI* | [**ReferenceGet**](docs/VdiscoverytaskAPI.md#referenceget) | **Get** /vdiscoverytask/{reference} | Get a specific vdiscoverytask object
-*VdiscoverytaskAPI* | [**ReferencePut**](docs/VdiscoverytaskAPI.md#referenceput) | **Put** /vdiscoverytask/{reference} | Update a vdiscoverytask object
+*DiscoveryAPI* | [**List**](docs/DiscoveryAPI.md#list) | **Get** /discovery | Retrieve discovery objects
+*DiscoveryAPI* | [**Read**](docs/DiscoveryAPI.md#read) | **Get** /discovery/{reference} | Get a specific discovery object
+*DiscoveryCredentialgroupAPI* | [**Create**](docs/DiscoveryCredentialgroupAPI.md#create) | **Post** /discovery:credentialgroup | Create a discovery:credentialgroup object
+*DiscoveryCredentialgroupAPI* | [**Delete**](docs/DiscoveryCredentialgroupAPI.md#delete) | **Delete** /discovery:credentialgroup/{reference} | Delete a discovery:credentialgroup object
+*DiscoveryCredentialgroupAPI* | [**List**](docs/DiscoveryCredentialgroupAPI.md#list) | **Get** /discovery:credentialgroup | Retrieve discovery:credentialgroup objects
+*DiscoveryCredentialgroupAPI* | [**Read**](docs/DiscoveryCredentialgroupAPI.md#read) | **Get** /discovery:credentialgroup/{reference} | Get a specific discovery:credentialgroup object
+*DiscoveryCredentialgroupAPI* | [**Update**](docs/DiscoveryCredentialgroupAPI.md#update) | **Put** /discovery:credentialgroup/{reference} | Update a discovery:credentialgroup object
+*DiscoveryDeviceAPI* | [**List**](docs/DiscoveryDeviceAPI.md#list) | **Get** /discovery:device | Retrieve discovery:device objects
+*DiscoveryDeviceAPI* | [**Read**](docs/DiscoveryDeviceAPI.md#read) | **Get** /discovery:device/{reference} | Get a specific discovery:device object
+*DiscoveryDeviceAPI* | [**Update**](docs/DiscoveryDeviceAPI.md#update) | **Put** /discovery:device/{reference} | Update a discovery:device object
+*DiscoveryDevicecomponentAPI* | [**List**](docs/DiscoveryDevicecomponentAPI.md#list) | **Get** /discovery:devicecomponent | Retrieve discovery:devicecomponent objects
+*DiscoveryDevicecomponentAPI* | [**Read**](docs/DiscoveryDevicecomponentAPI.md#read) | **Get** /discovery:devicecomponent/{reference} | Get a specific discovery:devicecomponent object
+*DiscoveryDeviceinterfaceAPI* | [**List**](docs/DiscoveryDeviceinterfaceAPI.md#list) | **Get** /discovery:deviceinterface | Retrieve discovery:deviceinterface objects
+*DiscoveryDeviceinterfaceAPI* | [**Read**](docs/DiscoveryDeviceinterfaceAPI.md#read) | **Get** /discovery:deviceinterface/{reference} | Get a specific discovery:deviceinterface object
+*DiscoveryDeviceinterfaceAPI* | [**Update**](docs/DiscoveryDeviceinterfaceAPI.md#update) | **Put** /discovery:deviceinterface/{reference} | Update a discovery:deviceinterface object
+*DiscoveryDeviceneighborAPI* | [**List**](docs/DiscoveryDeviceneighborAPI.md#list) | **Get** /discovery:deviceneighbor | Retrieve discovery:deviceneighbor objects
+*DiscoveryDeviceneighborAPI* | [**Read**](docs/DiscoveryDeviceneighborAPI.md#read) | **Get** /discovery:deviceneighbor/{reference} | Get a specific discovery:deviceneighbor object
+*DiscoveryDevicesupportbundleAPI* | [**Delete**](docs/DiscoveryDevicesupportbundleAPI.md#delete) | **Delete** /discovery:devicesupportbundle/{reference} | Delete a discovery:devicesupportbundle object
+*DiscoveryDevicesupportbundleAPI* | [**List**](docs/DiscoveryDevicesupportbundleAPI.md#list) | **Get** /discovery:devicesupportbundle | Retrieve discovery:devicesupportbundle objects
+*DiscoveryDevicesupportbundleAPI* | [**Read**](docs/DiscoveryDevicesupportbundleAPI.md#read) | **Get** /discovery:devicesupportbundle/{reference} | Get a specific discovery:devicesupportbundle object
+*DiscoveryDiagnostictaskAPI* | [**List**](docs/DiscoveryDiagnostictaskAPI.md#list) | **Get** /discovery:diagnostictask | Retrieve discovery:diagnostictask objects
+*DiscoveryDiagnostictaskAPI* | [**Read**](docs/DiscoveryDiagnostictaskAPI.md#read) | **Get** /discovery:diagnostictask/{reference} | Get a specific discovery:diagnostictask object
+*DiscoveryDiagnostictaskAPI* | [**Update**](docs/DiscoveryDiagnostictaskAPI.md#update) | **Put** /discovery:diagnostictask/{reference} | Update a discovery:diagnostictask object
+*DiscoveryGridpropertiesAPI* | [**List**](docs/DiscoveryGridpropertiesAPI.md#list) | **Get** /discovery:gridproperties | Retrieve discovery:gridproperties objects
+*DiscoveryGridpropertiesAPI* | [**Read**](docs/DiscoveryGridpropertiesAPI.md#read) | **Get** /discovery:gridproperties/{reference} | Get a specific discovery:gridproperties object
+*DiscoveryGridpropertiesAPI* | [**Update**](docs/DiscoveryGridpropertiesAPI.md#update) | **Put** /discovery:gridproperties/{reference} | Update a discovery:gridproperties object
+*DiscoveryMemberpropertiesAPI* | [**List**](docs/DiscoveryMemberpropertiesAPI.md#list) | **Get** /discovery:memberproperties | Retrieve discovery:memberproperties objects
+*DiscoveryMemberpropertiesAPI* | [**Read**](docs/DiscoveryMemberpropertiesAPI.md#read) | **Get** /discovery:memberproperties/{reference} | Get a specific discovery:memberproperties object
+*DiscoveryMemberpropertiesAPI* | [**Update**](docs/DiscoveryMemberpropertiesAPI.md#update) | **Put** /discovery:memberproperties/{reference} | Update a discovery:memberproperties object
+*DiscoverySdnnetworkAPI* | [**List**](docs/DiscoverySdnnetworkAPI.md#list) | **Get** /discovery:sdnnetwork | Retrieve discovery:sdnnetwork objects
+*DiscoverySdnnetworkAPI* | [**Read**](docs/DiscoverySdnnetworkAPI.md#read) | **Get** /discovery:sdnnetwork/{reference} | Get a specific discovery:sdnnetwork object
+*DiscoveryStatusAPI* | [**List**](docs/DiscoveryStatusAPI.md#list) | **Get** /discovery:status | Retrieve discovery:status objects
+*DiscoveryStatusAPI* | [**Read**](docs/DiscoveryStatusAPI.md#read) | **Get** /discovery:status/{reference} | Get a specific discovery:status object
+*DiscoveryVrfAPI* | [**List**](docs/DiscoveryVrfAPI.md#list) | **Get** /discovery:vrf | Retrieve discovery:vrf objects
+*DiscoveryVrfAPI* | [**Read**](docs/DiscoveryVrfAPI.md#read) | **Get** /discovery:vrf/{reference} | Get a specific discovery:vrf object
+*VdiscoverytaskAPI* | [**Create**](docs/VdiscoverytaskAPI.md#create) | **Post** /vdiscoverytask | Create a vdiscoverytask object
+*VdiscoverytaskAPI* | [**Delete**](docs/VdiscoverytaskAPI.md#delete) | **Delete** /vdiscoverytask/{reference} | Delete a vdiscoverytask object
+*VdiscoverytaskAPI* | [**List**](docs/VdiscoverytaskAPI.md#list) | **Get** /vdiscoverytask | Retrieve vdiscoverytask objects
+*VdiscoverytaskAPI* | [**Read**](docs/VdiscoverytaskAPI.md#read) | **Get** /vdiscoverytask/{reference} | Get a specific vdiscoverytask object
+*VdiscoverytaskAPI* | [**Update**](docs/VdiscoverytaskAPI.md#update) | **Put** /vdiscoverytask/{reference} | Update a vdiscoverytask object
 
 
 ## Documentation For Models
 
  - [CreateDiscoveryCredentialgroupResponse](docs/CreateDiscoveryCredentialgroupResponse.md)
  - [CreateDiscoveryCredentialgroupResponseAsObject](docs/CreateDiscoveryCredentialgroupResponseAsObject.md)
- - [CreateDiscoveryDeviceResponse](docs/CreateDiscoveryDeviceResponse.md)
- - [CreateDiscoveryDeviceResponseAsObject](docs/CreateDiscoveryDeviceResponseAsObject.md)
- - [CreateDiscoveryDevicecomponentResponse](docs/CreateDiscoveryDevicecomponentResponse.md)
- - [CreateDiscoveryDevicecomponentResponseAsObject](docs/CreateDiscoveryDevicecomponentResponseAsObject.md)
- - [CreateDiscoveryDeviceinterfaceResponse](docs/CreateDiscoveryDeviceinterfaceResponse.md)
- - [CreateDiscoveryDeviceinterfaceResponseAsObject](docs/CreateDiscoveryDeviceinterfaceResponseAsObject.md)
- - [CreateDiscoveryDeviceneighborResponse](docs/CreateDiscoveryDeviceneighborResponse.md)
- - [CreateDiscoveryDeviceneighborResponseAsObject](docs/CreateDiscoveryDeviceneighborResponseAsObject.md)
- - [CreateDiscoveryDevicesupportbundleResponse](docs/CreateDiscoveryDevicesupportbundleResponse.md)
- - [CreateDiscoveryDevicesupportbundleResponseAsObject](docs/CreateDiscoveryDevicesupportbundleResponseAsObject.md)
- - [CreateDiscoveryDiagnostictaskResponse](docs/CreateDiscoveryDiagnostictaskResponse.md)
- - [CreateDiscoveryDiagnostictaskResponseAsObject](docs/CreateDiscoveryDiagnostictaskResponseAsObject.md)
- - [CreateDiscoveryGridpropertiesResponse](docs/CreateDiscoveryGridpropertiesResponse.md)
- - [CreateDiscoveryGridpropertiesResponseAsObject](docs/CreateDiscoveryGridpropertiesResponseAsObject.md)
- - [CreateDiscoveryMemberpropertiesResponse](docs/CreateDiscoveryMemberpropertiesResponse.md)
- - [CreateDiscoveryMemberpropertiesResponseAsObject](docs/CreateDiscoveryMemberpropertiesResponseAsObject.md)
- - [CreateDiscoveryResponse](docs/CreateDiscoveryResponse.md)
- - [CreateDiscoveryResponseAsObject](docs/CreateDiscoveryResponseAsObject.md)
- - [CreateDiscoverySdnnetworkResponse](docs/CreateDiscoverySdnnetworkResponse.md)
- - [CreateDiscoverySdnnetworkResponseAsObject](docs/CreateDiscoverySdnnetworkResponseAsObject.md)
- - [CreateDiscoveryStatusResponse](docs/CreateDiscoveryStatusResponse.md)
- - [CreateDiscoveryStatusResponseAsObject](docs/CreateDiscoveryStatusResponseAsObject.md)
- - [CreateDiscoveryVrfResponse](docs/CreateDiscoveryVrfResponse.md)
- - [CreateDiscoveryVrfResponseAsObject](docs/CreateDiscoveryVrfResponseAsObject.md)
  - [CreateVdiscoverytaskResponse](docs/CreateVdiscoverytaskResponse.md)
  - [CreateVdiscoverytaskResponseAsObject](docs/CreateVdiscoverytaskResponseAsObject.md)
  - [Discovery](docs/Discovery.md)

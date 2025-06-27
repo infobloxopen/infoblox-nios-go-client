@@ -32,9 +32,9 @@ Name | Type | Description | Notes
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
 **EnableSnmpWarnings** | Pointer to **bool** | Determines if DHCP threshold warnings are send through SNMP. | [optional] 
 **EndAddr** | Pointer to **string** | The IPv4 Address end address of the range. | [optional] 
-**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP Range object. | [optional] [readonly] 
+**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP Range object. | [optional] [readonly] 
 **Exclude** | Pointer to [**[]RangeExclude**](RangeExclude.md) | These are ranges of IP addresses that the appliance does not use to assign to clients. You can use these exclusion addresses as static IP addresses. They contain the start and end addresses of the exclusion range, and optionally, information about this exclusion range. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FailoverAssociation** | Pointer to **string** | The name of the failover association: the server in this failover association will serve the IPv4 range in case the main server is out of service. {range:range} must be set to &#39;FAILOVER&#39; or &#39;FAILOVER_MS&#39; if you want the failover association specified here to serve the range. | [optional] 
 **FingerprintFilterRules** | Pointer to [**[]RangeFingerprintFilterRules**](RangeFingerprintFilterRules.md) | This field contains the fingerprint filters for this DHCP range. The appliance uses matching rules in these filters to select the address range from which it assigns a lease. | [optional] 
 **HighWaterMark** | Pointer to **int64** | The percentage of DHCP range usage threshold above which range usage is not expected and may warrant your attention. When the high watermark is reached, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
@@ -44,7 +44,7 @@ Name | Type | Description | Notes
 **IgnoreMacAddresses** | Pointer to **[]string** | A list of MAC addresses the appliance will ignore. | [optional] 
 **IsSplitScope** | Pointer to **bool** | This field will be &#39;true&#39; if this particular range is part of a split scope. | [optional] [readonly] 
 **KnownClients** | Pointer to **string** | Permission for known clients. This can be &#39;Allow&#39; or &#39;Deny&#39;. If set to &#39;Deny&#39; known clients will be denied IP addresses. Known clients include roaming hosts and clients with fixed addresses or DHCP host entries. Unknown clients include clients that are not roaming hosts and clients that do not have fixed addresses or DHCP host entries. | [optional] 
-**LeaseScavengeTime** | Pointer to **int32** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int64** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogicFilterRules** | Pointer to [**[]RangeLogicFilterRules**](RangeLogicFilterRules.md) | This field contains the logic filters to be applied to this range. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | The percentage of DHCP range usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **LowWaterMarkReset** | Pointer to **int64** | The percentage of DHCP range usage threshold below which range usage is not expected and may warrant your attention. When the low watermark is crossed, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The low watermark reset value must be higher than the low watermark value. | [optional] 
@@ -57,7 +57,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | This field contains the name of the Microsoft scope. | [optional] 
 **Network** | Pointer to **string** | The network to which this range belongs, in IPv4 Address/CIDR format. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this range resides. | [optional] 
-**NextAvailableIp** | Pointer to **map[string]interface{}** |  | [optional] 
 **Nextserver** | Pointer to **string** | The name in FQDN and/or IPv4 Address of the next server that the host needs to boot. | [optional] 
 **OptionFilterRules** | Pointer to [**[]RangeOptionFilterRules**](RangeOptionFilterRules.md) | This field contains the Option filters to be applied to this range. The appliance uses the matching rules of these filters to select the address range from which it assigns a lease. | [optional] 
 **Options** | Pointer to [**[]RangeOptions**](RangeOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
@@ -825,20 +824,20 @@ HasEndAddr returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *GetRangeResponse) GetEndpointSources() []map[string]interface{}`
+`func (o *GetRangeResponse) GetEndpointSources() []string`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *GetRangeResponse) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
+`func (o *GetRangeResponse) GetEndpointSourcesOk() (*[]string, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *GetRangeResponse) SetEndpointSources(v []map[string]interface{})`
+`func (o *GetRangeResponse) SetEndpointSources(v []string)`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -873,30 +872,30 @@ SetExclude sets Exclude field to given value.
 
 HasExclude returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *GetRangeResponse) GetExtattrs() map[string]ExtAttrs`
+`func (o *GetRangeResponse) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *GetRangeResponse) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *GetRangeResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *GetRangeResponse) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *GetRangeResponse) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *GetRangeResponse) HasExtattrs() bool`
+`func (o *GetRangeResponse) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFailoverAssociation
 
@@ -1125,20 +1124,20 @@ HasKnownClients returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *GetRangeResponse) GetLeaseScavengeTime() int32`
+`func (o *GetRangeResponse) GetLeaseScavengeTime() int64`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *GetRangeResponse) GetLeaseScavengeTimeOk() (*int32, bool)`
+`func (o *GetRangeResponse) GetLeaseScavengeTimeOk() (*int64, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *GetRangeResponse) SetLeaseScavengeTime(v int32)`
+`func (o *GetRangeResponse) SetLeaseScavengeTime(v int64)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 
@@ -1447,31 +1446,6 @@ SetNetworkView sets NetworkView field to given value.
 `func (o *GetRangeResponse) HasNetworkView() bool`
 
 HasNetworkView returns a boolean if a field has been set.
-
-### GetNextAvailableIp
-
-`func (o *GetRangeResponse) GetNextAvailableIp() map[string]interface{}`
-
-GetNextAvailableIp returns the NextAvailableIp field if non-nil, zero value otherwise.
-
-### GetNextAvailableIpOk
-
-`func (o *GetRangeResponse) GetNextAvailableIpOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableIpOk returns a tuple with the NextAvailableIp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableIp
-
-`func (o *GetRangeResponse) SetNextAvailableIp(v map[string]interface{})`
-
-SetNextAvailableIp sets NextAvailableIp field to given value.
-
-### HasNextAvailableIp
-
-`func (o *GetRangeResponse) HasNextAvailableIp() bool`
-
-HasNextAvailableIp returns a boolean if a field has been set.
 
 ### GetNextserver
 

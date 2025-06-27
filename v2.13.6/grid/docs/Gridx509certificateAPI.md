@@ -1,17 +1,17 @@
-# Gridx509certificateAPI
+# GridX509certificateAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](Gridx509certificateAPI.md#Get) | **Get** /grid:x509certificate | Retrieve grid:x509certificate objects
-[**ReferenceGet**](Gridx509certificateAPI.md#ReferenceGet) | **Get** /grid:x509certificate/{reference} | Get a specific grid:x509certificate object
+[**List**](GridX509certificateAPI.md#List) | **Get** /grid:x509certificate | Retrieve grid:x509certificate objects
+[**Read**](GridX509certificateAPI.md#Read) | **Get** /grid:x509certificate/{reference} | Get a specific grid:x509certificate object
 
 
 
-## Get
+## List
 
-> ListGridX509certificateResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListGridX509certificateResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve grid:x509certificate objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.Gridx509certificateAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.GridX509certificateAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Gridx509certificateAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridX509certificateAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListGridX509certificateResponse
-	fmt.Fprintf(os.Stdout, "Response from `Gridx509certificateAPI.Get`: %v\n", resp)
+	// response from `List`: ListGridX509certificateResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridX509certificateAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Gridx509certificateAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridX509certificateAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetGridX509certificateResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetGridX509certificateResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific grid:x509certificate object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the grid:x509certificate object
 
 	apiClient := grid.NewAPIClient()
-	resp, r, err := apiClient.Gridx509certificateAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.GridX509certificateAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `Gridx509certificateAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `GridX509certificateAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetGridX509certificateResponse
-	fmt.Fprintf(os.Stdout, "Response from `Gridx509certificateAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetGridX509certificateResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridX509certificateAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `Gridx509certificateAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `GridX509certificateAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

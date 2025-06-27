@@ -47,9 +47,8 @@ Name | Type | Description | Notes
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the network should be immediately enabled. | [optional] 
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
 **EnableSnmpWarnings** | Pointer to **bool** | Determines if DHCP threshold warnings are send through SNMP. | [optional] 
-**EndpointSources** | Pointer to **[]map[string]interface{}** | The endpoints that provides data for the DHCP Network object. | [optional] [readonly] 
-**ExpandNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP Network object. | [optional] [readonly] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FederatedRealms** | Pointer to [**[]NetworkFederatedRealms**](NetworkFederatedRealms.md) | This field contains the federated realms associated to this network | [optional] 
 **HighWaterMark** | Pointer to **int64** | The percentage of DHCP network usage threshold above which network usage is not expected and may warrant your attention. When the high watermark is reached, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **HighWaterMarkReset** | Pointer to **int64** | The percentage of DHCP network usage below which the corresponding SNMP trap is reset. A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value. | [optional] 
@@ -62,7 +61,7 @@ Name | Type | Description | Notes
 **Ipv4addr** | Pointer to **string** | The IPv4 Address of the network. | [optional] 
 **LastRirRegistrationUpdateSent** | Pointer to **int64** | The timestamp when the last RIR registration update was sent. | [optional] [readonly] 
 **LastRirRegistrationUpdateStatus** | Pointer to **string** | Last RIR registration update status. | [optional] [readonly] 
-**LeaseScavengeTime** | Pointer to **int32** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
+**LeaseScavengeTime** | Pointer to **int64** | An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day). | [optional] 
 **LogicFilterRules** | Pointer to [**[]NetworkLogicFilterRules**](NetworkLogicFilterRules.md) | This field contains the logic filters to be applied on the this network. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | The percentage of DHCP network usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **LowWaterMarkReset** | Pointer to **int64** | The percentage of DHCP network usage threshold below which network usage is not expected and may warrant your attention. When the low watermark is crossed, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The low watermark reset value must be higher than the low watermark value. | [optional] 
@@ -71,18 +70,15 @@ Name | Type | Description | Notes
 **MgmPrivateOverridable** | Pointer to **bool** | This field is assumed to be True unless filled by any conforming objects, such as Network, IPv6 Network, Network Container, IPv6 Network Container, and Network View. This value is set to False if mgm_private is set to True in the parent object. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**NetworkMsAdUserData**](NetworkMsAdUserData.md) |  | [optional] 
 **Netmask** | Pointer to **int64** | The netmask of the network in CIDR format. | [optional] 
-**Network** | Pointer to **string** | The network address in IPv4 Address/CIDR format. For regular expression searches, only the IPv4 Address portion is supported. Searches for the CIDR portion is always an exact match. For example, both network containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression &#39;.0&#39; and only 20.1.0.0/16 is matched by &#39;.0/16&#39;. | [optional] 
+**Network** | Pointer to [**NetworkNetwork**](NetworkNetwork.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **NetworkContainer** | Pointer to **string** | The network container to which this network belongs (if any). | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this network resides. | [optional] 
-**NextAvailableIp** | Pointer to **map[string]interface{}** |  | [optional] 
-**NextAvailableNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
-**NextAvailableVlan** | Pointer to **map[string]interface{}** |  | [optional] 
 **Nextserver** | Pointer to **string** | The name in FQDN and/or IPv4 Address of the next server that the host needs to boot. | [optional] 
 **Options** | Pointer to [**[]NetworkOptions**](NetworkOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **PortControlBlackoutSetting** | Pointer to [**NetworkPortControlBlackoutSetting**](NetworkPortControlBlackoutSetting.md) |  | [optional] 
 **PxeLeaseTime** | Pointer to **int64** | The PXE lease time value of a DHCP Network object. Some hosts use PXE (Preboot Execution Environment) to boot remotely from a server. To better manage your IP resources, set a different lease time for PXE boot requests. You can configure the DHCP server to allocate an IP address with a shorter lease time to hosts that send PXE boot requests, so IP addresses are not leased longer than necessary. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached. | [optional] 
 **RecycleLeases** | Pointer to **bool** | If the field is set to True, the leases are kept in the Recycle Bin until one week after expiration. Otherwise, the leases are permanently deleted. | [optional] 
-**Resize** | Pointer to **map[string]interface{}** |  | [optional] 
 **RestartIfNeeded** | Pointer to **bool** | Restarts the member service. | [optional] 
 **Rir** | Pointer to **string** | The registry (RIR) that allocated the network address space. | [optional] [readonly] 
 **RirOrganization** | Pointer to **string** | The RIR organization assoicated with the network. | [optional] 
@@ -90,7 +86,6 @@ Name | Type | Description | Notes
 **RirRegistrationStatus** | Pointer to **string** | The registration status of the network in RIR. | [optional] 
 **SamePortControlDiscoveryBlackout** | Pointer to **bool** | If the field is set to True, the discovery blackout setting will be used for port control blackout setting. | [optional] 
 **SendRirRequest** | Pointer to **bool** | Determines whether to send the RIR registration request. | [optional] 
-**SplitNetwork** | Pointer to **map[string]interface{}** |  | [optional] 
 **StaticHosts** | Pointer to **int64** | The number of static DHCP addresses configured in the network. | [optional] [readonly] 
 **SubscribeSettings** | Pointer to [**NetworkSubscribeSettings**](NetworkSubscribeSettings.md) |  | [optional] 
 **Template** | Pointer to **string** | If set on creation, the network is created according to the values specified in the selected template. | [optional] 
@@ -1230,20 +1225,20 @@ HasEnableSnmpWarnings returns a boolean if a field has been set.
 
 ### GetEndpointSources
 
-`func (o *Network) GetEndpointSources() []map[string]interface{}`
+`func (o *Network) GetEndpointSources() []string`
 
 GetEndpointSources returns the EndpointSources field if non-nil, zero value otherwise.
 
 ### GetEndpointSourcesOk
 
-`func (o *Network) GetEndpointSourcesOk() (*[]map[string]interface{}, bool)`
+`func (o *Network) GetEndpointSourcesOk() (*[]string, bool)`
 
 GetEndpointSourcesOk returns a tuple with the EndpointSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointSources
 
-`func (o *Network) SetEndpointSources(v []map[string]interface{})`
+`func (o *Network) SetEndpointSources(v []string)`
 
 SetEndpointSources sets EndpointSources field to given value.
 
@@ -1253,55 +1248,30 @@ SetEndpointSources sets EndpointSources field to given value.
 
 HasEndpointSources returns a boolean if a field has been set.
 
-### GetExpandNetwork
+### GetExtAttrs
 
-`func (o *Network) GetExpandNetwork() map[string]interface{}`
+`func (o *Network) GetExtAttrs() map[string]ExtAttrs`
 
-GetExpandNetwork returns the ExpandNetwork field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExpandNetworkOk
+### GetExtAttrsOk
 
-`func (o *Network) GetExpandNetworkOk() (*map[string]interface{}, bool)`
+`func (o *Network) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExpandNetworkOk returns a tuple with the ExpandNetwork field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExpandNetwork
+### SetExtAttrs
 
-`func (o *Network) SetExpandNetwork(v map[string]interface{})`
+`func (o *Network) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExpandNetwork sets ExpandNetwork field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExpandNetwork
+### HasExtAttrs
 
-`func (o *Network) HasExpandNetwork() bool`
+`func (o *Network) HasExtAttrs() bool`
 
-HasExpandNetwork returns a boolean if a field has been set.
-
-### GetExtattrs
-
-`func (o *Network) GetExtattrs() map[string]ExtAttrs`
-
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
-
-### GetExtattrsOk
-
-`func (o *Network) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
-
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtattrs
-
-`func (o *Network) SetExtattrs(v map[string]ExtAttrs)`
-
-SetExtattrs sets Extattrs field to given value.
-
-### HasExtattrs
-
-`func (o *Network) HasExtattrs() bool`
-
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFederatedRealms
 
@@ -1605,20 +1575,20 @@ HasLastRirRegistrationUpdateStatus returns a boolean if a field has been set.
 
 ### GetLeaseScavengeTime
 
-`func (o *Network) GetLeaseScavengeTime() int32`
+`func (o *Network) GetLeaseScavengeTime() int64`
 
 GetLeaseScavengeTime returns the LeaseScavengeTime field if non-nil, zero value otherwise.
 
 ### GetLeaseScavengeTimeOk
 
-`func (o *Network) GetLeaseScavengeTimeOk() (*int32, bool)`
+`func (o *Network) GetLeaseScavengeTimeOk() (*int64, bool)`
 
 GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLeaseScavengeTime
 
-`func (o *Network) SetLeaseScavengeTime(v int32)`
+`func (o *Network) SetLeaseScavengeTime(v int64)`
 
 SetLeaseScavengeTime sets LeaseScavengeTime field to given value.
 
@@ -1830,20 +1800,20 @@ HasNetmask returns a boolean if a field has been set.
 
 ### GetNetwork
 
-`func (o *Network) GetNetwork() string`
+`func (o *Network) GetNetwork() NetworkNetwork`
 
 GetNetwork returns the Network field if non-nil, zero value otherwise.
 
 ### GetNetworkOk
 
-`func (o *Network) GetNetworkOk() (*string, bool)`
+`func (o *Network) GetNetworkOk() (*NetworkNetwork, bool)`
 
 GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetwork
 
-`func (o *Network) SetNetwork(v string)`
+`func (o *Network) SetNetwork(v NetworkNetwork)`
 
 SetNetwork sets Network field to given value.
 
@@ -1852,6 +1822,31 @@ SetNetwork sets Network field to given value.
 `func (o *Network) HasNetwork() bool`
 
 HasNetwork returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *Network) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *Network) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *Network) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *Network) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetNetworkContainer
 
@@ -1902,81 +1897,6 @@ SetNetworkView sets NetworkView field to given value.
 `func (o *Network) HasNetworkView() bool`
 
 HasNetworkView returns a boolean if a field has been set.
-
-### GetNextAvailableIp
-
-`func (o *Network) GetNextAvailableIp() map[string]interface{}`
-
-GetNextAvailableIp returns the NextAvailableIp field if non-nil, zero value otherwise.
-
-### GetNextAvailableIpOk
-
-`func (o *Network) GetNextAvailableIpOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableIpOk returns a tuple with the NextAvailableIp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableIp
-
-`func (o *Network) SetNextAvailableIp(v map[string]interface{})`
-
-SetNextAvailableIp sets NextAvailableIp field to given value.
-
-### HasNextAvailableIp
-
-`func (o *Network) HasNextAvailableIp() bool`
-
-HasNextAvailableIp returns a boolean if a field has been set.
-
-### GetNextAvailableNetwork
-
-`func (o *Network) GetNextAvailableNetwork() map[string]interface{}`
-
-GetNextAvailableNetwork returns the NextAvailableNetwork field if non-nil, zero value otherwise.
-
-### GetNextAvailableNetworkOk
-
-`func (o *Network) GetNextAvailableNetworkOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableNetworkOk returns a tuple with the NextAvailableNetwork field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableNetwork
-
-`func (o *Network) SetNextAvailableNetwork(v map[string]interface{})`
-
-SetNextAvailableNetwork sets NextAvailableNetwork field to given value.
-
-### HasNextAvailableNetwork
-
-`func (o *Network) HasNextAvailableNetwork() bool`
-
-HasNextAvailableNetwork returns a boolean if a field has been set.
-
-### GetNextAvailableVlan
-
-`func (o *Network) GetNextAvailableVlan() map[string]interface{}`
-
-GetNextAvailableVlan returns the NextAvailableVlan field if non-nil, zero value otherwise.
-
-### GetNextAvailableVlanOk
-
-`func (o *Network) GetNextAvailableVlanOk() (*map[string]interface{}, bool)`
-
-GetNextAvailableVlanOk returns a tuple with the NextAvailableVlan field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNextAvailableVlan
-
-`func (o *Network) SetNextAvailableVlan(v map[string]interface{})`
-
-SetNextAvailableVlan sets NextAvailableVlan field to given value.
-
-### HasNextAvailableVlan
-
-`func (o *Network) HasNextAvailableVlan() bool`
-
-HasNextAvailableVlan returns a boolean if a field has been set.
 
 ### GetNextserver
 
@@ -2102,31 +2022,6 @@ SetRecycleLeases sets RecycleLeases field to given value.
 `func (o *Network) HasRecycleLeases() bool`
 
 HasRecycleLeases returns a boolean if a field has been set.
-
-### GetResize
-
-`func (o *Network) GetResize() map[string]interface{}`
-
-GetResize returns the Resize field if non-nil, zero value otherwise.
-
-### GetResizeOk
-
-`func (o *Network) GetResizeOk() (*map[string]interface{}, bool)`
-
-GetResizeOk returns a tuple with the Resize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResize
-
-`func (o *Network) SetResize(v map[string]interface{})`
-
-SetResize sets Resize field to given value.
-
-### HasResize
-
-`func (o *Network) HasResize() bool`
-
-HasResize returns a boolean if a field has been set.
 
 ### GetRestartIfNeeded
 
@@ -2302,31 +2197,6 @@ SetSendRirRequest sets SendRirRequest field to given value.
 `func (o *Network) HasSendRirRequest() bool`
 
 HasSendRirRequest returns a boolean if a field has been set.
-
-### GetSplitNetwork
-
-`func (o *Network) GetSplitNetwork() map[string]interface{}`
-
-GetSplitNetwork returns the SplitNetwork field if non-nil, zero value otherwise.
-
-### GetSplitNetworkOk
-
-`func (o *Network) GetSplitNetworkOk() (*map[string]interface{}, bool)`
-
-GetSplitNetworkOk returns a tuple with the SplitNetwork field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSplitNetwork
-
-`func (o *Network) SetSplitNetwork(v map[string]interface{})`
-
-SetSplitNetwork sets SplitNetwork field to given value.
-
-### HasSplitNetwork
-
-`func (o *Network) HasSplitNetwork() bool`
-
-HasSplitNetwork returns a boolean if a field has been set.
 
 ### GetStaticHosts
 

@@ -25,22 +25,21 @@ type APIClient struct {
 	// API Services
 	BulkhostAPI BulkhostAPI
 	BulkhostnametemplateAPI BulkhostnametemplateAPI
-	CapacityreportAPI CapacityreportAPI
 	DiscoverytaskAPI DiscoverytaskAPI
-	IpamstatisticsAPI IpamstatisticsAPI
+	HostnamerewritepolicyAPI HostnamerewritepolicyAPI
+	IpamStatisticsAPI IpamStatisticsAPI
 	Ipv4addressAPI Ipv4addressAPI
 	Ipv6addressAPI Ipv6addressAPI
 	Ipv6networkAPI Ipv6networkAPI
 	Ipv6networkcontainerAPI Ipv6networkcontainerAPI
 	Ipv6networktemplateAPI Ipv6networktemplateAPI
-	NatgroupAPI NatgroupAPI
 	NetworkAPI NetworkAPI
 	NetworkDiscoveryAPI NetworkDiscoveryAPI
 	NetworkcontainerAPI NetworkcontainerAPI
 	NetworktemplateAPI NetworktemplateAPI
 	NetworkviewAPI NetworkviewAPI
-	RirAPI RirAPI
-	RirorganizationAPI RirorganizationAPI
+	SuperhostAPI SuperhostAPI
+	SuperhostchildAPI SuperhostchildAPI
 	VlanAPI VlanAPI
 	VlanrangeAPI VlanrangeAPI
 	VlanviewAPI VlanviewAPI
@@ -50,7 +49,8 @@ type APIClient struct {
 // The client can be configured with a variadic option. The following options are available:
 // - WithClientName(string) sets the name of the client using the SDK.
 // - WithNIOSHostUrl(string) sets the URL for NIOS Portal.
-// - WithNIOSAuth(string) sets the NIOSAuth for accessing the NIOS Portal.
+// - WithNIOSUsername(string) sets the Username for the NIOS Portal.
+// - WithNIOSPassword(string) sets the Password for the NIOS Portal.
 // - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
 // - WithDefaultExtAttrs(map[string]struct{ Value string }) sets the tags the client can set by default for objects that has tags support.
 // - WithDebug() sets the debug mode.
@@ -66,22 +66,21 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	// API Services
 	c.BulkhostAPI = (*BulkhostAPIService)(&c.Common)
 	c.BulkhostnametemplateAPI = (*BulkhostnametemplateAPIService)(&c.Common)
-	c.CapacityreportAPI = (*CapacityreportAPIService)(&c.Common)
 	c.DiscoverytaskAPI = (*DiscoverytaskAPIService)(&c.Common)
-	c.IpamstatisticsAPI = (*IpamstatisticsAPIService)(&c.Common)
+	c.HostnamerewritepolicyAPI = (*HostnamerewritepolicyAPIService)(&c.Common)
+	c.IpamStatisticsAPI = (*IpamStatisticsAPIService)(&c.Common)
 	c.Ipv4addressAPI = (*Ipv4addressAPIService)(&c.Common)
 	c.Ipv6addressAPI = (*Ipv6addressAPIService)(&c.Common)
 	c.Ipv6networkAPI = (*Ipv6networkAPIService)(&c.Common)
 	c.Ipv6networkcontainerAPI = (*Ipv6networkcontainerAPIService)(&c.Common)
 	c.Ipv6networktemplateAPI = (*Ipv6networktemplateAPIService)(&c.Common)
-	c.NatgroupAPI = (*NatgroupAPIService)(&c.Common)
 	c.NetworkAPI = (*NetworkAPIService)(&c.Common)
 	c.NetworkDiscoveryAPI = (*NetworkDiscoveryAPIService)(&c.Common)
 	c.NetworkcontainerAPI = (*NetworkcontainerAPIService)(&c.Common)
 	c.NetworktemplateAPI = (*NetworktemplateAPIService)(&c.Common)
 	c.NetworkviewAPI = (*NetworkviewAPIService)(&c.Common)
-	c.RirAPI = (*RirAPIService)(&c.Common)
-	c.RirorganizationAPI = (*RirorganizationAPIService)(&c.Common)
+	c.SuperhostAPI = (*SuperhostAPIService)(&c.Common)
+	c.SuperhostchildAPI = (*SuperhostchildAPIService)(&c.Common)
 	c.VlanAPI = (*VlanAPIService)(&c.Common)
 	c.VlanrangeAPI = (*VlanrangeAPIService)(&c.Common)
 	c.VlanviewAPI = (*VlanviewAPIService)(&c.Common)

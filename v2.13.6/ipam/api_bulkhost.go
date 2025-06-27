@@ -23,150 +23,386 @@ import (
 
 type BulkhostAPI interface {
 	/*
-		Get Retrieve bulkhost objects
-
-		Returns a list of bulkhost objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return BulkhostAPIGetRequest
-	*/
-	Get(ctx context.Context) BulkhostAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListBulkhostResponse
-	GetExecute(r BulkhostAPIGetRequest) (*ListBulkhostResponse, *http.Response, error)
-	/*
-		Post Create a bulkhost object
+		Create Create a bulkhost object
 
 		Creates a new bulkhost object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return BulkhostAPIPostRequest
+		@return BulkhostAPICreateRequest
 	*/
-	Post(ctx context.Context) BulkhostAPIPostRequest
+	Create(ctx context.Context) BulkhostAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateBulkhostResponse
-	PostExecute(r BulkhostAPIPostRequest) (*CreateBulkhostResponse, *http.Response, error)
+	CreateExecute(r BulkhostAPICreateRequest) (*CreateBulkhostResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a bulkhost object
+		Delete Delete a bulkhost object
 
 		Deletes a specific bulkhost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bulkhost object
-		@return BulkhostAPIReferenceDeleteRequest
+		@return BulkhostAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) BulkhostAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) BulkhostAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r BulkhostAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r BulkhostAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific bulkhost object
+		List Retrieve bulkhost objects
+
+		Returns a list of bulkhost objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return BulkhostAPIListRequest
+	*/
+	List(ctx context.Context) BulkhostAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListBulkhostResponse
+	ListExecute(r BulkhostAPIListRequest) (*ListBulkhostResponse, *http.Response, error)
+	/*
+		Read Get a specific bulkhost object
 
 		Returns a specific bulkhost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bulkhost object
-		@return BulkhostAPIReferenceGetRequest
+		@return BulkhostAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) BulkhostAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) BulkhostAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetBulkhostResponse
-	ReferenceGetExecute(r BulkhostAPIReferenceGetRequest) (*GetBulkhostResponse, *http.Response, error)
+	ReadExecute(r BulkhostAPIReadRequest) (*GetBulkhostResponse, *http.Response, error)
 	/*
-		ReferencePut Update a bulkhost object
+		Update Update a bulkhost object
 
 		Updates a specific bulkhost object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the bulkhost object
-		@return BulkhostAPIReferencePutRequest
+		@return BulkhostAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) BulkhostAPIReferencePutRequest
+	Update(ctx context.Context, reference string) BulkhostAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateBulkhostResponse
-	ReferencePutExecute(r BulkhostAPIReferencePutRequest) (*UpdateBulkhostResponse, *http.Response, error)
+	UpdateExecute(r BulkhostAPIUpdateRequest) (*UpdateBulkhostResponse, *http.Response, error)
 }
 
 // BulkhostAPIService BulkhostAPI service
 type BulkhostAPIService internal.Service
 
-type BulkhostAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     BulkhostAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type BulkhostAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       BulkhostAPI
+	bulkhost         *Bulkhost
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r BulkhostAPICreateRequest) Bulkhost(bulkhost Bulkhost) BulkhostAPICreateRequest {
+	r.bulkhost = &bulkhost
+	return r
 }
 
 // Enter the field names followed by comma
-func (r BulkhostAPIGetRequest) ReturnFields(returnFields string) BulkhostAPIGetRequest {
+func (r BulkhostAPICreateRequest) ReturnFields(returnFields string) BulkhostAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostAPIGetRequest) ReturnFields2(returnFields2 string) BulkhostAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r BulkhostAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) BulkhostAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r BulkhostAPICreateRequest) ReturnAsObject(returnAsObject int32) BulkhostAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r BulkhostAPICreateRequest) Execute() (*CreateBulkhostResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a bulkhost object
+
+Creates a new bulkhost object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return BulkhostAPICreateRequest
+*/
+func (a *BulkhostAPIService) Create(ctx context.Context) BulkhostAPICreateRequest {
+	return BulkhostAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateBulkhostResponse
+func (a *BulkhostAPIService) CreateExecute(r BulkhostAPICreateRequest) (*CreateBulkhostResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateBulkhostResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/bulkhost"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.bulkhost == nil {
+		return localVarReturnValue, nil, internal.ReportError("bulkhost is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.bulkhost != nil {
+		if r.bulkhost.ExtAttrs == nil {
+			r.bulkhost.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.bulkhost.ExtAttrs)[k]; !ok {
+				(*r.bulkhost.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.bulkhost
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type BulkhostAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService BulkhostAPI
+	reference  string
+}
+
+func (r BulkhostAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a bulkhost object
+
+Deletes a specific bulkhost object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the bulkhost object
+	@return BulkhostAPIDeleteRequest
+*/
+func (a *BulkhostAPIService) Delete(ctx context.Context, reference string) BulkhostAPIDeleteRequest {
+	return BulkhostAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *BulkhostAPIService) DeleteExecute(r BulkhostAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/bulkhost/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type BulkhostAPIListRequest struct {
+	ctx              context.Context
+	ApiService       BulkhostAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r BulkhostAPIListRequest) ReturnFields(returnFields string) BulkhostAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r BulkhostAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) BulkhostAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r BulkhostAPIGetRequest) MaxResults(maxResults int32) BulkhostAPIGetRequest {
+func (r BulkhostAPIListRequest) MaxResults(maxResults int32) BulkhostAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BulkhostAPIGetRequest) ReturnAsObject(returnAsObject int32) BulkhostAPIGetRequest {
+func (r BulkhostAPIListRequest) ReturnAsObject(returnAsObject int32) BulkhostAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r BulkhostAPIGetRequest) Paging(paging int32) BulkhostAPIGetRequest {
+func (r BulkhostAPIListRequest) Paging(paging int32) BulkhostAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r BulkhostAPIGetRequest) PageId(pageId string) BulkhostAPIGetRequest {
+func (r BulkhostAPIListRequest) PageId(pageId string) BulkhostAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r BulkhostAPIGetRequest) Filters(filters map[string]interface{}) BulkhostAPIGetRequest {
+func (r BulkhostAPIListRequest) Filters(filters map[string]interface{}) BulkhostAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r BulkhostAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) BulkhostAPIGetRequest {
+func (r BulkhostAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) BulkhostAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r BulkhostAPIGetRequest) Execute() (*ListBulkhostResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r BulkhostAPIListRequest) Execute() (*ListBulkhostResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve bulkhost objects
+List Retrieve bulkhost objects
 
 Returns a list of bulkhost objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return BulkhostAPIGetRequest
+	@return BulkhostAPIListRequest
 */
-func (a *BulkhostAPIService) Get(ctx context.Context) BulkhostAPIGetRequest {
-	return BulkhostAPIGetRequest{
+func (a *BulkhostAPIService) List(ctx context.Context) BulkhostAPIListRequest {
+	return BulkhostAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *BulkhostAPIService) Get(ctx context.Context) BulkhostAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListBulkhostResponse
-func (a *BulkhostAPIService) GetExecute(r BulkhostAPIGetRequest) (*ListBulkhostResponse, *http.Response, error) {
+func (a *BulkhostAPIService) ListExecute(r BulkhostAPIListRequest) (*ListBulkhostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *BulkhostAPIService) GetExecute(r BulkhostAPIGetRequest) (*ListBulkhostR
 		localVarReturnValue *ListBulkhostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *BulkhostAPIService) GetExecute(r BulkhostAPIGetRequest) (*ListBulkhostR
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *BulkhostAPIService) GetExecute(r BulkhostAPIGetRequest) (*ListBulkhostR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type BulkhostAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     BulkhostAPI
-	bulkhost       *Bulkhost
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r BulkhostAPIPostRequest) Bulkhost(bulkhost Bulkhost) BulkhostAPIPostRequest {
-	r.bulkhost = &bulkhost
-	return r
+type BulkhostAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       BulkhostAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r BulkhostAPIPostRequest) ReturnFields(returnFields string) BulkhostAPIPostRequest {
+func (r BulkhostAPIReadRequest) ReturnFields(returnFields string) BulkhostAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostAPIPostRequest) ReturnFields2(returnFields2 string) BulkhostAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r BulkhostAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) BulkhostAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BulkhostAPIPostRequest) ReturnAsObject(returnAsObject int32) BulkhostAPIPostRequest {
+func (r BulkhostAPIReadRequest) ReturnAsObject(returnAsObject int32) BulkhostAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r BulkhostAPIPostRequest) Execute() (*CreateBulkhostResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r BulkhostAPIReadRequest) Execute() (*GetBulkhostResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a bulkhost object
-
-Creates a new bulkhost object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return BulkhostAPIPostRequest
-*/
-func (a *BulkhostAPIService) Post(ctx context.Context) BulkhostAPIPostRequest {
-	return BulkhostAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateBulkhostResponse
-func (a *BulkhostAPIService) PostExecute(r BulkhostAPIPostRequest) (*CreateBulkhostResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateBulkhostResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/bulkhost"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.bulkhost == nil {
-		return localVarReturnValue, nil, internal.ReportError("bulkhost is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.bulkhost != nil {
-		if r.bulkhost.Extattrs == nil {
-			r.bulkhost.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.bulkhost.Extattrs)[k]; !ok {
-				(*r.bulkhost.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.bulkhost
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type BulkhostAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService BulkhostAPI
-	reference  string
-}
-
-func (r BulkhostAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a bulkhost object
-
-Deletes a specific bulkhost object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the bulkhost object
-	@return BulkhostAPIReferenceDeleteRequest
-*/
-func (a *BulkhostAPIService) ReferenceDelete(ctx context.Context, reference string) BulkhostAPIReferenceDeleteRequest {
-	return BulkhostAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *BulkhostAPIService) ReferenceDeleteExecute(r BulkhostAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/bulkhost/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type BulkhostAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     BulkhostAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r BulkhostAPIReferenceGetRequest) ReturnFields(returnFields string) BulkhostAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostAPIReferenceGetRequest) ReturnFields2(returnFields2 string) BulkhostAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r BulkhostAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) BulkhostAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r BulkhostAPIReferenceGetRequest) Execute() (*GetBulkhostResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific bulkhost object
+Read Get a specific bulkhost object
 
 Returns a specific bulkhost object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the bulkhost object
-	@return BulkhostAPIReferenceGetRequest
+	@return BulkhostAPIReadRequest
 */
-func (a *BulkhostAPIService) ReferenceGet(ctx context.Context, reference string) BulkhostAPIReferenceGetRequest {
-	return BulkhostAPIReferenceGetRequest{
+func (a *BulkhostAPIService) Read(ctx context.Context, reference string) BulkhostAPIReadRequest {
+	return BulkhostAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *BulkhostAPIService) ReferenceGet(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return GetBulkhostResponse
-func (a *BulkhostAPIService) ReferenceGetExecute(r BulkhostAPIReferenceGetRequest) (*GetBulkhostResponse, *http.Response, error) {
+func (a *BulkhostAPIService) ReadExecute(r BulkhostAPIReadRequest) (*GetBulkhostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *BulkhostAPIService) ReferenceGetExecute(r BulkhostAPIReferenceGetReques
 		localVarReturnValue *GetBulkhostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *BulkhostAPIService) ReferenceGetExecute(r BulkhostAPIReferenceGetReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *BulkhostAPIService) ReferenceGetExecute(r BulkhostAPIReferenceGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type BulkhostAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     BulkhostAPI
-	reference      string
-	bulkhost       *Bulkhost
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type BulkhostAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       BulkhostAPI
+	reference        string
+	bulkhost         *Bulkhost
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r BulkhostAPIReferencePutRequest) Bulkhost(bulkhost Bulkhost) BulkhostAPIReferencePutRequest {
+func (r BulkhostAPIUpdateRequest) Bulkhost(bulkhost Bulkhost) BulkhostAPIUpdateRequest {
 	r.bulkhost = &bulkhost
 	return r
 }
 
 // Enter the field names followed by comma
-func (r BulkhostAPIReferencePutRequest) ReturnFields(returnFields string) BulkhostAPIReferencePutRequest {
+func (r BulkhostAPIUpdateRequest) ReturnFields(returnFields string) BulkhostAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r BulkhostAPIReferencePutRequest) ReturnFields2(returnFields2 string) BulkhostAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r BulkhostAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) BulkhostAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r BulkhostAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) BulkhostAPIReferencePutRequest {
+func (r BulkhostAPIUpdateRequest) ReturnAsObject(returnAsObject int32) BulkhostAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r BulkhostAPIReferencePutRequest) Execute() (*UpdateBulkhostResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r BulkhostAPIUpdateRequest) Execute() (*UpdateBulkhostResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a bulkhost object
+Update Update a bulkhost object
 
 Updates a specific bulkhost object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the bulkhost object
-	@return BulkhostAPIReferencePutRequest
+	@return BulkhostAPIUpdateRequest
 */
-func (a *BulkhostAPIService) ReferencePut(ctx context.Context, reference string) BulkhostAPIReferencePutRequest {
-	return BulkhostAPIReferencePutRequest{
+func (a *BulkhostAPIService) Update(ctx context.Context, reference string) BulkhostAPIUpdateRequest {
+	return BulkhostAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *BulkhostAPIService) ReferencePut(ctx context.Context, reference string)
 // Execute executes the request
 //
 //	@return UpdateBulkhostResponse
-func (a *BulkhostAPIService) ReferencePutExecute(r BulkhostAPIReferencePutRequest) (*UpdateBulkhostResponse, *http.Response, error) {
+func (a *BulkhostAPIService) UpdateExecute(r BulkhostAPIUpdateRequest) (*UpdateBulkhostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *BulkhostAPIService) ReferencePutExecute(r BulkhostAPIReferencePutReques
 		localVarReturnValue *UpdateBulkhostResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "BulkhostAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *BulkhostAPIService) ReferencePutExecute(r BulkhostAPIReferencePutReques
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *BulkhostAPIService) ReferencePutExecute(r BulkhostAPIReferencePutReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.bulkhost != nil {
-		if r.bulkhost.Extattrs == nil {
-			r.bulkhost.Extattrs = &map[string]ExtAttrs{}
+		if r.bulkhost.ExtAttrs == nil {
+			r.bulkhost.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.bulkhost.Extattrs)[k]; !ok {
-				(*r.bulkhost.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.bulkhost.ExtAttrs)[k]; !ok {
+				(*r.bulkhost.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

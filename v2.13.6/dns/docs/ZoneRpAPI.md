@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](ZoneRpAPI.md#Get) | **Get** /zone_rp | Retrieve zone_rp objects
-[**Post**](ZoneRpAPI.md#Post) | **Post** /zone_rp | Create a zone_rp object
-[**ReferenceDelete**](ZoneRpAPI.md#ReferenceDelete) | **Delete** /zone_rp/{reference} | Delete a zone_rp object
-[**ReferenceGet**](ZoneRpAPI.md#ReferenceGet) | **Get** /zone_rp/{reference} | Get a specific zone_rp object
-[**ReferencePut**](ZoneRpAPI.md#ReferencePut) | **Put** /zone_rp/{reference} | Update a zone_rp object
+[**Create**](ZoneRpAPI.md#Create) | **Post** /zone_rp | Create a zone_rp object
+[**Delete**](ZoneRpAPI.md#Delete) | **Delete** /zone_rp/{reference} | Delete a zone_rp object
+[**List**](ZoneRpAPI.md#List) | **Get** /zone_rp | Retrieve zone_rp objects
+[**Read**](ZoneRpAPI.md#Read) | **Get** /zone_rp/{reference} | Get a specific zone_rp object
+[**Update**](ZoneRpAPI.md#Update) | **Put** /zone_rp/{reference} | Update a zone_rp object
 
 
 
-## Get
+## Create
 
-> ListZoneRpResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateZoneRpResponse Create(ctx).ZoneRp(zoneRp).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a zone_rp object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	zoneRp := *dns.NewZoneRp() // ZoneRp | Object data to create
+
+	apiClient := dns.NewAPIClient()
+	resp, r, err := apiClient.ZoneRpAPI.Create(context.Background()).ZoneRp(zoneRp).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateZoneRpResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ZoneRpAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**zoneRp** | [**ZoneRp**](ZoneRp.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateZoneRpResponse**](CreateZoneRpResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a zone_rp object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the zone_rp object
+
+	apiClient := dns.NewAPIClient()
+	r, err := apiClient.ZoneRpAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the zone_rp object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `ZoneRpAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListZoneRpResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve zone_rp objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneRpAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.ZoneRpAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListZoneRpResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.Get`: %v\n", resp)
+	// response from `List`: ListZoneRpResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ZoneRpAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ZoneRpAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateZoneRpResponse Post(ctx).ZoneRp(zoneRp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a zone_rp object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	zoneRp := *dns.NewZoneRp() // ZoneRp | Object data to create
-
-	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneRpAPI.Post(context.Background()).ZoneRp(zoneRp).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateZoneRpResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ZoneRpAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**zoneRp** | [**ZoneRp**](ZoneRp.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateZoneRpResponse**](CreateZoneRpResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a zone_rp object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the zone_rp object
-
-	apiClient := dns.NewAPIClient()
-	r, err := apiClient.ZoneRpAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the zone_rp object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `ZoneRpAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetZoneRpResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetZoneRpResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific zone_rp object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the zone_rp object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneRpAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.ZoneRpAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetZoneRpResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetZoneRpResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ZoneRpAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ZoneRpAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateZoneRpResponse ReferencePut(ctx, reference).ZoneRp(zoneRp).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateZoneRpResponse Update(ctx, reference).ZoneRp(zoneRp).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a zone_rp object
 
@@ -318,13 +318,13 @@ func main() {
 	zoneRp := *dns.NewZoneRp() // ZoneRp | Object data to update
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.ZoneRpAPI.ReferencePut(context.Background(), reference).ZoneRp(zoneRp).Execute()
+	resp, r, err := apiClient.ZoneRpAPI.Update(context.Background(), reference).ZoneRp(zoneRp).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ZoneRpAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateZoneRpResponse
-	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateZoneRpResponse
+	fmt.Fprintf(os.Stdout, "Response from `ZoneRpAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `ZoneRpAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `ZoneRpAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **zoneRp** | [**ZoneRp**](ZoneRp.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

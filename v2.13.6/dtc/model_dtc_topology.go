@@ -24,11 +24,11 @@ type DtcTopology struct {
 	// The comment for the DTC TOPOLOGY monitor object; maximum 256 characters.
 	Comment *string `json:"comment,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// Display name of the DTC Topology.
 	Name *string `json:"name,omitempty"`
 	// Topology rules.
-	Rules []map[string]interface{} `json:"rules,omitempty"`
+	Rules []string `json:"rules,omitempty"`
 }
 
 // NewDtcTopology instantiates a new DtcTopology object
@@ -112,36 +112,36 @@ func (o *DtcTopology) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *DtcTopology) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *DtcTopology) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcTopology) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *DtcTopology) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *DtcTopology) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *DtcTopology) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *DtcTopology) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *DtcTopology) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -177,9 +177,9 @@ func (o *DtcTopology) SetName(v string) {
 }
 
 // GetRules returns the Rules field value if set, zero value otherwise.
-func (o *DtcTopology) GetRules() []map[string]interface{} {
+func (o *DtcTopology) GetRules() []string {
 	if o == nil || IsNil(o.Rules) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.Rules
@@ -187,7 +187,7 @@ func (o *DtcTopology) GetRules() []map[string]interface{} {
 
 // GetRulesOk returns a tuple with the Rules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcTopology) GetRulesOk() ([]map[string]interface{}, bool) {
+func (o *DtcTopology) GetRulesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Rules) {
 		return nil, false
 	}
@@ -203,8 +203,8 @@ func (o *DtcTopology) HasRules() bool {
 	return false
 }
 
-// SetRules gets a reference to the given []map[string]interface{} and assigns it to the Rules field.
-func (o *DtcTopology) SetRules(v []map[string]interface{}) {
+// SetRules gets a reference to the given []string and assigns it to the Rules field.
+func (o *DtcTopology) SetRules(v []string) {
 	o.Rules = v
 }
 
@@ -224,8 +224,8 @@ func (o DtcTopology) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

@@ -23,124 +23,124 @@ import (
 
 type AuthpolicyAPI interface {
 	/*
-		Get Retrieve authpolicy objects
+		List Retrieve authpolicy objects
 
 		Returns a list of authpolicy objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return AuthpolicyAPIGetRequest
+		@return AuthpolicyAPIListRequest
 	*/
-	Get(ctx context.Context) AuthpolicyAPIGetRequest
+	List(ctx context.Context) AuthpolicyAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListAuthpolicyResponse
-	GetExecute(r AuthpolicyAPIGetRequest) (*ListAuthpolicyResponse, *http.Response, error)
+	ListExecute(r AuthpolicyAPIListRequest) (*ListAuthpolicyResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific authpolicy object
+		Read Get a specific authpolicy object
 
 		Returns a specific authpolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the authpolicy object
-		@return AuthpolicyAPIReferenceGetRequest
+		@return AuthpolicyAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) AuthpolicyAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) AuthpolicyAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetAuthpolicyResponse
-	ReferenceGetExecute(r AuthpolicyAPIReferenceGetRequest) (*GetAuthpolicyResponse, *http.Response, error)
+	ReadExecute(r AuthpolicyAPIReadRequest) (*GetAuthpolicyResponse, *http.Response, error)
 	/*
-		ReferencePut Update a authpolicy object
+		Update Update a authpolicy object
 
 		Updates a specific authpolicy object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the authpolicy object
-		@return AuthpolicyAPIReferencePutRequest
+		@return AuthpolicyAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) AuthpolicyAPIReferencePutRequest
+	Update(ctx context.Context, reference string) AuthpolicyAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateAuthpolicyResponse
-	ReferencePutExecute(r AuthpolicyAPIReferencePutRequest) (*UpdateAuthpolicyResponse, *http.Response, error)
+	UpdateExecute(r AuthpolicyAPIUpdateRequest) (*UpdateAuthpolicyResponse, *http.Response, error)
 }
 
 // AuthpolicyAPIService AuthpolicyAPI service
 type AuthpolicyAPIService internal.Service
 
-type AuthpolicyAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     AuthpolicyAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type AuthpolicyAPIListRequest struct {
+	ctx              context.Context
+	ApiService       AuthpolicyAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r AuthpolicyAPIGetRequest) ReturnFields(returnFields string) AuthpolicyAPIGetRequest {
+func (r AuthpolicyAPIListRequest) ReturnFields(returnFields string) AuthpolicyAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AuthpolicyAPIGetRequest) ReturnFields2(returnFields2 string) AuthpolicyAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AuthpolicyAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) AuthpolicyAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r AuthpolicyAPIGetRequest) MaxResults(maxResults int32) AuthpolicyAPIGetRequest {
+func (r AuthpolicyAPIListRequest) MaxResults(maxResults int32) AuthpolicyAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AuthpolicyAPIGetRequest) ReturnAsObject(returnAsObject int32) AuthpolicyAPIGetRequest {
+func (r AuthpolicyAPIListRequest) ReturnAsObject(returnAsObject int32) AuthpolicyAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r AuthpolicyAPIGetRequest) Paging(paging int32) AuthpolicyAPIGetRequest {
+func (r AuthpolicyAPIListRequest) Paging(paging int32) AuthpolicyAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r AuthpolicyAPIGetRequest) PageId(pageId string) AuthpolicyAPIGetRequest {
+func (r AuthpolicyAPIListRequest) PageId(pageId string) AuthpolicyAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r AuthpolicyAPIGetRequest) Filters(filters map[string]interface{}) AuthpolicyAPIGetRequest {
+func (r AuthpolicyAPIListRequest) Filters(filters map[string]interface{}) AuthpolicyAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r AuthpolicyAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) AuthpolicyAPIGetRequest {
+func (r AuthpolicyAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) AuthpolicyAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r AuthpolicyAPIGetRequest) Execute() (*ListAuthpolicyResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r AuthpolicyAPIListRequest) Execute() (*ListAuthpolicyResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve authpolicy objects
+List Retrieve authpolicy objects
 
 Returns a list of authpolicy objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return AuthpolicyAPIGetRequest
+	@return AuthpolicyAPIListRequest
 */
-func (a *AuthpolicyAPIService) Get(ctx context.Context) AuthpolicyAPIGetRequest {
-	return AuthpolicyAPIGetRequest{
+func (a *AuthpolicyAPIService) List(ctx context.Context) AuthpolicyAPIListRequest {
+	return AuthpolicyAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +149,7 @@ func (a *AuthpolicyAPIService) Get(ctx context.Context) AuthpolicyAPIGetRequest 
 // Execute executes the request
 //
 //	@return ListAuthpolicyResponse
-func (a *AuthpolicyAPIService) GetExecute(r AuthpolicyAPIGetRequest) (*ListAuthpolicyResponse, *http.Response, error) {
+func (a *AuthpolicyAPIService) ListExecute(r AuthpolicyAPIListRequest) (*ListAuthpolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *AuthpolicyAPIService) GetExecute(r AuthpolicyAPIGetRequest) (*ListAuthp
 		localVarReturnValue *ListAuthpolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthpolicyAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthpolicyAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +171,8 @@ func (a *AuthpolicyAPIService) GetExecute(r AuthpolicyAPIGetRequest) (*ListAuthp
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +239,48 @@ func (a *AuthpolicyAPIService) GetExecute(r AuthpolicyAPIGetRequest) (*ListAuthp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AuthpolicyAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     AuthpolicyAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type AuthpolicyAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       AuthpolicyAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r AuthpolicyAPIReferenceGetRequest) ReturnFields(returnFields string) AuthpolicyAPIReferenceGetRequest {
+func (r AuthpolicyAPIReadRequest) ReturnFields(returnFields string) AuthpolicyAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AuthpolicyAPIReferenceGetRequest) ReturnFields2(returnFields2 string) AuthpolicyAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r AuthpolicyAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) AuthpolicyAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AuthpolicyAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) AuthpolicyAPIReferenceGetRequest {
+func (r AuthpolicyAPIReadRequest) ReturnAsObject(returnAsObject int32) AuthpolicyAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AuthpolicyAPIReferenceGetRequest) Execute() (*GetAuthpolicyResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r AuthpolicyAPIReadRequest) Execute() (*GetAuthpolicyResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific authpolicy object
+Read Get a specific authpolicy object
 
 Returns a specific authpolicy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the authpolicy object
-	@return AuthpolicyAPIReferenceGetRequest
+	@return AuthpolicyAPIReadRequest
 */
-func (a *AuthpolicyAPIService) ReferenceGet(ctx context.Context, reference string) AuthpolicyAPIReferenceGetRequest {
-	return AuthpolicyAPIReferenceGetRequest{
+func (a *AuthpolicyAPIService) Read(ctx context.Context, reference string) AuthpolicyAPIReadRequest {
+	return AuthpolicyAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +290,7 @@ func (a *AuthpolicyAPIService) ReferenceGet(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return GetAuthpolicyResponse
-func (a *AuthpolicyAPIService) ReferenceGetExecute(r AuthpolicyAPIReferenceGetRequest) (*GetAuthpolicyResponse, *http.Response, error) {
+func (a *AuthpolicyAPIService) ReadExecute(r AuthpolicyAPIReadRequest) (*GetAuthpolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +298,7 @@ func (a *AuthpolicyAPIService) ReferenceGetExecute(r AuthpolicyAPIReferenceGetRe
 		localVarReturnValue *GetAuthpolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthpolicyAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthpolicyAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +313,8 @@ func (a *AuthpolicyAPIService) ReferenceGetExecute(r AuthpolicyAPIReferenceGetRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -366,55 +366,55 @@ func (a *AuthpolicyAPIService) ReferenceGetExecute(r AuthpolicyAPIReferenceGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type AuthpolicyAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     AuthpolicyAPI
-	reference      string
-	authpolicy     *Authpolicy
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type AuthpolicyAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       AuthpolicyAPI
+	reference        string
+	authpolicy       *Authpolicy
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r AuthpolicyAPIReferencePutRequest) Authpolicy(authpolicy Authpolicy) AuthpolicyAPIReferencePutRequest {
+func (r AuthpolicyAPIUpdateRequest) Authpolicy(authpolicy Authpolicy) AuthpolicyAPIUpdateRequest {
 	r.authpolicy = &authpolicy
 	return r
 }
 
 // Enter the field names followed by comma
-func (r AuthpolicyAPIReferencePutRequest) ReturnFields(returnFields string) AuthpolicyAPIReferencePutRequest {
+func (r AuthpolicyAPIUpdateRequest) ReturnFields(returnFields string) AuthpolicyAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r AuthpolicyAPIReferencePutRequest) ReturnFields2(returnFields2 string) AuthpolicyAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r AuthpolicyAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) AuthpolicyAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r AuthpolicyAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) AuthpolicyAPIReferencePutRequest {
+func (r AuthpolicyAPIUpdateRequest) ReturnAsObject(returnAsObject int32) AuthpolicyAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r AuthpolicyAPIReferencePutRequest) Execute() (*UpdateAuthpolicyResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r AuthpolicyAPIUpdateRequest) Execute() (*UpdateAuthpolicyResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a authpolicy object
+Update Update a authpolicy object
 
 Updates a specific authpolicy object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the authpolicy object
-	@return AuthpolicyAPIReferencePutRequest
+	@return AuthpolicyAPIUpdateRequest
 */
-func (a *AuthpolicyAPIService) ReferencePut(ctx context.Context, reference string) AuthpolicyAPIReferencePutRequest {
-	return AuthpolicyAPIReferencePutRequest{
+func (a *AuthpolicyAPIService) Update(ctx context.Context, reference string) AuthpolicyAPIUpdateRequest {
+	return AuthpolicyAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -424,7 +424,7 @@ func (a *AuthpolicyAPIService) ReferencePut(ctx context.Context, reference strin
 // Execute executes the request
 //
 //	@return UpdateAuthpolicyResponse
-func (a *AuthpolicyAPIService) ReferencePutExecute(r AuthpolicyAPIReferencePutRequest) (*UpdateAuthpolicyResponse, *http.Response, error) {
+func (a *AuthpolicyAPIService) UpdateExecute(r AuthpolicyAPIUpdateRequest) (*UpdateAuthpolicyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *AuthpolicyAPIService) ReferencePutExecute(r AuthpolicyAPIReferencePutRe
 		localVarReturnValue *UpdateAuthpolicyResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthpolicyAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "AuthpolicyAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -450,8 +450,8 @@ func (a *AuthpolicyAPIService) ReferencePutExecute(r AuthpolicyAPIReferencePutRe
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")

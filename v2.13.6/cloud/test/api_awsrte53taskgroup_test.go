@@ -23,11 +23,11 @@ func TestAwsrte53taskgroupAPIService(t *testing.T) {
 
 	apiClient := cloud.NewAPIClient()
 
-	t.Run("Test Awsrte53taskgroupAPIService Get", func(t *testing.T) {
+	t.Run("Test Awsrte53taskgroupAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Awsrte53taskgroupAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Awsrte53taskgroupAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestAwsrte53taskgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Awsrte53taskgroupAPIService Post", func(t *testing.T) {
+	t.Run("Test Awsrte53taskgroupAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.Awsrte53taskgroupAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.Awsrte53taskgroupAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test Awsrte53taskgroupAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Awsrte53taskgroupAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestAwsrte53taskgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Awsrte53taskgroupAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test Awsrte53taskgroupAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.Awsrte53taskgroupAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test Awsrte53taskgroupAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.Awsrte53taskgroupAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Awsrte53taskgroupAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestAwsrte53taskgroupAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test Awsrte53taskgroupAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test Awsrte53taskgroupAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.Awsrte53taskgroupAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.Awsrte53taskgroupAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

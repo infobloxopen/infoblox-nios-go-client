@@ -27,14 +27,11 @@ type Member struct {
 	AdditionalIpList               []MemberAdditionalIpList              `json:"additional_ip_list,omitempty"`
 	AutomatedTrafficCaptureSetting *MemberAutomatedTrafficCaptureSetting `json:"automated_traffic_capture_setting,omitempty"`
 	// The BGP configuration for anycast for a Grid member.
-	BgpAs                 []MemberBgpAs          `json:"bgp_as,omitempty"`
-	CaptureTrafficControl map[string]interface{} `json:"capture_traffic_control,omitempty"`
-	CaptureTrafficStatus  map[string]interface{} `json:"capture_traffic_status,omitempty"`
+	BgpAs []MemberBgpAs `json:"bgp_as,omitempty"`
 	// A descriptive comment of the Grid member.
 	Comment *string `json:"comment,omitempty"`
 	// Address configuration type.
-	ConfigAddrType *string                `json:"config_addr_type,omitempty"`
-	CreateToken    map[string]interface{} `json:"create_token,omitempty"`
+	ConfigAddrType *string `json:"config_addr_type,omitempty"`
 	// CSP portal on-prem host access key
 	CspAccessKey       []string                  `json:"csp_access_key,omitempty"`
 	CspMemberSetting   *MemberCspMemberSetting   `json:"csp_member_setting,omitempty"`
@@ -51,7 +48,7 @@ type Member struct {
 	// If set to True and the member object is a Grid Master Candidate, then read-only API access is enabled.
 	EnableRoApiAccess *bool `json:"enable_ro_api_access,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The list of external syslog backup servers.
 	ExternalSyslogBackupServers []MemberExternalSyslogBackupServers `json:"external_syslog_backup_servers,omitempty"`
 	// Determines if external syslog servers should be enabled.
@@ -75,8 +72,7 @@ type Member struct {
 	// The list of LOM users.
 	LomUsers []MemberLomUsers `json:"lom_users,omitempty"`
 	// Determines if a Grid member is a Grid Master Candidate or not. This flag enables the Grid member to assume the role of the Grid Master as a disaster recovery measure.
-	MasterCandidate      *bool                  `json:"master_candidate,omitempty"`
-	MemberAdminOperation map[string]interface{} `json:"member_admin_operation,omitempty"`
+	MasterCandidate *bool `json:"master_candidate,omitempty"`
 	// Configure communication type for various services.
 	MemberServiceCommunication []MemberMemberServiceCommunication `json:"member_service_communication,omitempty"`
 	MgmtPortSetting            *MemberMgmtPortSetting             `json:"mgmt_port_setting,omitempty"`
@@ -96,12 +92,9 @@ type Member struct {
 	Platform        *string                `json:"platform,omitempty"`
 	PreProvisioning *MemberPreProvisioning `json:"pre_provisioning,omitempty"`
 	// Set this flag to \"true\" to prevent the deletion of the member if any delegated object remains attached to it.
-	PreserveIfOwnsDelegation *bool                  `json:"preserve_if_owns_delegation,omitempty"`
-	ReadToken                map[string]interface{} `json:"read_token,omitempty"`
+	PreserveIfOwnsDelegation *bool `json:"preserve_if_owns_delegation,omitempty"`
 	// If set to True, superuser admins can access the Infoblox CLI from a remote location using an SSH (Secure Shell) v2 client.
-	RemoteConsoleAccessEnable   *bool                  `json:"remote_console_access_enable,omitempty"`
-	Requestrestartservicestatus map[string]interface{} `json:"requestrestartservicestatus,omitempty"`
-	Restartservices             map[string]interface{} `json:"restartservices,omitempty"`
+	RemoteConsoleAccessEnable *bool `json:"remote_console_access_enable,omitempty"`
 	// Virutal router identifier. Provide this ID if \"ha_enabled\" is set to \"true\". This is a unique VRID number (from 1 to 255) for the local subnet.
 	RouterId *int64 `json:"router_id,omitempty"`
 	// The service status list of a grid member.
@@ -355,70 +348,6 @@ func (o *Member) SetBgpAs(v []MemberBgpAs) {
 	o.BgpAs = v
 }
 
-// GetCaptureTrafficControl returns the CaptureTrafficControl field value if set, zero value otherwise.
-func (o *Member) GetCaptureTrafficControl() map[string]interface{} {
-	if o == nil || IsNil(o.CaptureTrafficControl) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.CaptureTrafficControl
-}
-
-// GetCaptureTrafficControlOk returns a tuple with the CaptureTrafficControl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Member) GetCaptureTrafficControlOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CaptureTrafficControl) {
-		return map[string]interface{}{}, false
-	}
-	return o.CaptureTrafficControl, true
-}
-
-// HasCaptureTrafficControl returns a boolean if a field has been set.
-func (o *Member) HasCaptureTrafficControl() bool {
-	if o != nil && !IsNil(o.CaptureTrafficControl) {
-		return true
-	}
-
-	return false
-}
-
-// SetCaptureTrafficControl gets a reference to the given map[string]interface{} and assigns it to the CaptureTrafficControl field.
-func (o *Member) SetCaptureTrafficControl(v map[string]interface{}) {
-	o.CaptureTrafficControl = v
-}
-
-// GetCaptureTrafficStatus returns the CaptureTrafficStatus field value if set, zero value otherwise.
-func (o *Member) GetCaptureTrafficStatus() map[string]interface{} {
-	if o == nil || IsNil(o.CaptureTrafficStatus) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.CaptureTrafficStatus
-}
-
-// GetCaptureTrafficStatusOk returns a tuple with the CaptureTrafficStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Member) GetCaptureTrafficStatusOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CaptureTrafficStatus) {
-		return map[string]interface{}{}, false
-	}
-	return o.CaptureTrafficStatus, true
-}
-
-// HasCaptureTrafficStatus returns a boolean if a field has been set.
-func (o *Member) HasCaptureTrafficStatus() bool {
-	if o != nil && !IsNil(o.CaptureTrafficStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetCaptureTrafficStatus gets a reference to the given map[string]interface{} and assigns it to the CaptureTrafficStatus field.
-func (o *Member) SetCaptureTrafficStatus(v map[string]interface{}) {
-	o.CaptureTrafficStatus = v
-}
-
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *Member) GetComment() string {
 	if o == nil || IsNil(o.Comment) {
@@ -481,38 +410,6 @@ func (o *Member) HasConfigAddrType() bool {
 // SetConfigAddrType gets a reference to the given string and assigns it to the ConfigAddrType field.
 func (o *Member) SetConfigAddrType(v string) {
 	o.ConfigAddrType = &v
-}
-
-// GetCreateToken returns the CreateToken field value if set, zero value otherwise.
-func (o *Member) GetCreateToken() map[string]interface{} {
-	if o == nil || IsNil(o.CreateToken) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.CreateToken
-}
-
-// GetCreateTokenOk returns a tuple with the CreateToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Member) GetCreateTokenOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.CreateToken) {
-		return map[string]interface{}{}, false
-	}
-	return o.CreateToken, true
-}
-
-// HasCreateToken returns a boolean if a field has been set.
-func (o *Member) HasCreateToken() bool {
-	if o != nil && !IsNil(o.CreateToken) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreateToken gets a reference to the given map[string]interface{} and assigns it to the CreateToken field.
-func (o *Member) SetCreateToken(v map[string]interface{}) {
-	o.CreateToken = v
 }
 
 // GetCspAccessKey returns the CspAccessKey field value if set, zero value otherwise.
@@ -803,36 +700,36 @@ func (o *Member) SetEnableRoApiAccess(v bool) {
 	o.EnableRoApiAccess = &v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *Member) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Member) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Member) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *Member) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *Member) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Member) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *Member) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Member) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetExternalSyslogBackupServers returns the ExternalSyslogBackupServers field value if set, zero value otherwise.
@@ -1251,38 +1148,6 @@ func (o *Member) SetMasterCandidate(v bool) {
 	o.MasterCandidate = &v
 }
 
-// GetMemberAdminOperation returns the MemberAdminOperation field value if set, zero value otherwise.
-func (o *Member) GetMemberAdminOperation() map[string]interface{} {
-	if o == nil || IsNil(o.MemberAdminOperation) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.MemberAdminOperation
-}
-
-// GetMemberAdminOperationOk returns a tuple with the MemberAdminOperation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Member) GetMemberAdminOperationOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.MemberAdminOperation) {
-		return map[string]interface{}{}, false
-	}
-	return o.MemberAdminOperation, true
-}
-
-// HasMemberAdminOperation returns a boolean if a field has been set.
-func (o *Member) HasMemberAdminOperation() bool {
-	if o != nil && !IsNil(o.MemberAdminOperation) {
-		return true
-	}
-
-	return false
-}
-
-// SetMemberAdminOperation gets a reference to the given map[string]interface{} and assigns it to the MemberAdminOperation field.
-func (o *Member) SetMemberAdminOperation(v map[string]interface{}) {
-	o.MemberAdminOperation = v
-}
-
 // GetMemberServiceCommunication returns the MemberServiceCommunication field value if set, zero value otherwise.
 func (o *Member) GetMemberServiceCommunication() []MemberMemberServiceCommunication {
 	if o == nil || IsNil(o.MemberServiceCommunication) {
@@ -1667,38 +1532,6 @@ func (o *Member) SetPreserveIfOwnsDelegation(v bool) {
 	o.PreserveIfOwnsDelegation = &v
 }
 
-// GetReadToken returns the ReadToken field value if set, zero value otherwise.
-func (o *Member) GetReadToken() map[string]interface{} {
-	if o == nil || IsNil(o.ReadToken) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.ReadToken
-}
-
-// GetReadTokenOk returns a tuple with the ReadToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Member) GetReadTokenOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.ReadToken) {
-		return map[string]interface{}{}, false
-	}
-	return o.ReadToken, true
-}
-
-// HasReadToken returns a boolean if a field has been set.
-func (o *Member) HasReadToken() bool {
-	if o != nil && !IsNil(o.ReadToken) {
-		return true
-	}
-
-	return false
-}
-
-// SetReadToken gets a reference to the given map[string]interface{} and assigns it to the ReadToken field.
-func (o *Member) SetReadToken(v map[string]interface{}) {
-	o.ReadToken = v
-}
-
 // GetRemoteConsoleAccessEnable returns the RemoteConsoleAccessEnable field value if set, zero value otherwise.
 func (o *Member) GetRemoteConsoleAccessEnable() bool {
 	if o == nil || IsNil(o.RemoteConsoleAccessEnable) {
@@ -1729,70 +1562,6 @@ func (o *Member) HasRemoteConsoleAccessEnable() bool {
 // SetRemoteConsoleAccessEnable gets a reference to the given bool and assigns it to the RemoteConsoleAccessEnable field.
 func (o *Member) SetRemoteConsoleAccessEnable(v bool) {
 	o.RemoteConsoleAccessEnable = &v
-}
-
-// GetRequestrestartservicestatus returns the Requestrestartservicestatus field value if set, zero value otherwise.
-func (o *Member) GetRequestrestartservicestatus() map[string]interface{} {
-	if o == nil || IsNil(o.Requestrestartservicestatus) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Requestrestartservicestatus
-}
-
-// GetRequestrestartservicestatusOk returns a tuple with the Requestrestartservicestatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Member) GetRequestrestartservicestatusOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Requestrestartservicestatus) {
-		return map[string]interface{}{}, false
-	}
-	return o.Requestrestartservicestatus, true
-}
-
-// HasRequestrestartservicestatus returns a boolean if a field has been set.
-func (o *Member) HasRequestrestartservicestatus() bool {
-	if o != nil && !IsNil(o.Requestrestartservicestatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetRequestrestartservicestatus gets a reference to the given map[string]interface{} and assigns it to the Requestrestartservicestatus field.
-func (o *Member) SetRequestrestartservicestatus(v map[string]interface{}) {
-	o.Requestrestartservicestatus = v
-}
-
-// GetRestartservices returns the Restartservices field value if set, zero value otherwise.
-func (o *Member) GetRestartservices() map[string]interface{} {
-	if o == nil || IsNil(o.Restartservices) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Restartservices
-}
-
-// GetRestartservicesOk returns a tuple with the Restartservices field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Member) GetRestartservicesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Restartservices) {
-		return map[string]interface{}{}, false
-	}
-	return o.Restartservices, true
-}
-
-// HasRestartservices returns a boolean if a field has been set.
-func (o *Member) HasRestartservices() bool {
-	if o != nil && !IsNil(o.Restartservices) {
-		return true
-	}
-
-	return false
-}
-
-// SetRestartservices gets a reference to the given map[string]interface{} and assigns it to the Restartservices field.
-func (o *Member) SetRestartservices(v map[string]interface{}) {
-	o.Restartservices = v
 }
 
 // GetRouterId returns the RouterId field value if set, zero value otherwise.
@@ -3132,20 +2901,11 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BgpAs) {
 		toSerialize["bgp_as"] = o.BgpAs
 	}
-	if !IsNil(o.CaptureTrafficControl) {
-		toSerialize["capture_traffic_control"] = o.CaptureTrafficControl
-	}
-	if !IsNil(o.CaptureTrafficStatus) {
-		toSerialize["capture_traffic_status"] = o.CaptureTrafficStatus
-	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.ConfigAddrType) {
 		toSerialize["config_addr_type"] = o.ConfigAddrType
-	}
-	if !IsNil(o.CreateToken) {
-		toSerialize["create_token"] = o.CreateToken
 	}
 	if !IsNil(o.CspAccessKey) {
 		toSerialize["csp_access_key"] = o.CspAccessKey
@@ -3174,8 +2934,8 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableRoApiAccess) {
 		toSerialize["enable_ro_api_access"] = o.EnableRoApiAccess
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.ExternalSyslogBackupServers) {
 		toSerialize["external_syslog_backup_servers"] = o.ExternalSyslogBackupServers
@@ -3216,9 +2976,6 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MasterCandidate) {
 		toSerialize["master_candidate"] = o.MasterCandidate
 	}
-	if !IsNil(o.MemberAdminOperation) {
-		toSerialize["member_admin_operation"] = o.MemberAdminOperation
-	}
 	if !IsNil(o.MemberServiceCommunication) {
 		toSerialize["member_service_communication"] = o.MemberServiceCommunication
 	}
@@ -3255,17 +3012,8 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PreserveIfOwnsDelegation) {
 		toSerialize["preserve_if_owns_delegation"] = o.PreserveIfOwnsDelegation
 	}
-	if !IsNil(o.ReadToken) {
-		toSerialize["read_token"] = o.ReadToken
-	}
 	if !IsNil(o.RemoteConsoleAccessEnable) {
 		toSerialize["remote_console_access_enable"] = o.RemoteConsoleAccessEnable
-	}
-	if !IsNil(o.Requestrestartservicestatus) {
-		toSerialize["requestrestartservicestatus"] = o.Requestrestartservicestatus
-	}
-	if !IsNil(o.Restartservices) {
-		toSerialize["restartservices"] = o.Restartservices
 	}
 	if !IsNil(o.RouterId) {
 		toSerialize["router_id"] = o.RouterId

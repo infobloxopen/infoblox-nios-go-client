@@ -73,9 +73,9 @@ type Networkcontainer struct {
 	// Determines if DHCP threshold warnings are send through SNMP.
 	EnableSnmpWarnings *bool `json:"enable_snmp_warnings,omitempty"`
 	// The endpoints that provides data for the DHCP Network Container object.
-	EndpointSources []map[string]interface{} `json:"endpoint_sources,omitempty"`
+	EndpointSources []string `json:"endpoint_sources,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	Extattrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// This field contains the federated realms associated to this network container.
 	FederatedRealms []NetworkcontainerFederatedRealms `json:"federated_realms,omitempty"`
 	// The percentage of DHCP network container usage threshold above which network container usage is not expected and may warrant your attention. When the high watermark is reached, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100.
@@ -97,7 +97,7 @@ type Networkcontainer struct {
 	// Last RIR registration update status.
 	LastRirRegistrationUpdateStatus *string `json:"last_rir_registration_update_status,omitempty"`
 	// An integer that specifies the period of time (in seconds) that frees and backs up leases remained in the database before they are automatically deleted. To disable lease scavenging, set the parameter to -1. The minimum positive value must be greater than 86400 seconds (1 day).
-	LeaseScavengeTime *int32 `json:"lease_scavenge_time,omitempty"`
+	LeaseScavengeTime *int64 `json:"lease_scavenge_time,omitempty"`
 	// This field contains the logic filters to be applied on the this network container. This list corresponds to the match rules that are written to the dhcpd configuration file.
 	LogicFilterRules []NetworkcontainerLogicFilterRules `json:"logic_filter_rules,omitempty"`
 	// The percentage of DHCP network container usage below which the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100.
@@ -109,13 +109,12 @@ type Networkcontainer struct {
 	// This field is assumed to be True unless filled by any conforming objects, such as Network, IPv6 Network, Network Container, IPv6 Network Container, and Network View. This value is set to False if mgm_private is set to True in the parent object.
 	MgmPrivateOverridable *bool                         `json:"mgm_private_overridable,omitempty"`
 	MsAdUserData          *NetworkcontainerMsAdUserData `json:"ms_ad_user_data,omitempty"`
-	// The network address in IPv4 Address/CIDR format. For regular expression searches, only the IPv4 Address portion is supported. Searches for the CIDR portion is always an exact match. For example, both network containers 10.0.0.0/8 and 20.1.0.0/16 are matched by expression '.0' and only 20.1.0.0/16 is matched by '.0/16'.
-	Network *string `json:"network,omitempty"`
+	Network               *NetworkcontainerNetwork      `json:"network,omitempty"`
+	FuncCall              *FuncCall                     `json:"func_call,omitempty"`
 	// The network container to which this network belongs, if any.
 	NetworkContainer *string `json:"network_container,omitempty"`
 	// The name of the network view in which this network resides.
-	NetworkView          *string                `json:"network_view,omitempty"`
-	NextAvailableNetwork map[string]interface{} `json:"next_available_network,omitempty"`
+	NetworkView *string `json:"network_view,omitempty"`
 	// The name in FQDN and/or IPv4 Address of the next server that the host needs to boot.
 	Nextserver *string `json:"nextserver,omitempty"`
 	// An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object.
@@ -126,8 +125,7 @@ type Networkcontainer struct {
 	// If the field is set to True, the leases are kept in the Recycle Bin until one week after expiration. Otherwise, the leases are permanently deleted.
 	RecycleLeases *bool `json:"recycle_leases,omitempty"`
 	// Remove subnets delete option. Determines whether all child objects should be removed alongside with the network container or child objects should be assigned to another parental container. By default child objects are deleted with the network container.
-	RemoveSubnets *bool                  `json:"remove_subnets,omitempty"`
-	Resize        map[string]interface{} `json:"resize,omitempty"`
+	RemoveSubnets *bool `json:"remove_subnets,omitempty"`
 	// Restarts the member service.
 	RestartIfNeeded *bool `json:"restart_if_needed,omitempty"`
 	// The registry (RIR) that allocated the network container address space.
@@ -1127,9 +1125,9 @@ func (o *Networkcontainer) SetEnableSnmpWarnings(v bool) {
 }
 
 // GetEndpointSources returns the EndpointSources field value if set, zero value otherwise.
-func (o *Networkcontainer) GetEndpointSources() []map[string]interface{} {
+func (o *Networkcontainer) GetEndpointSources() []string {
 	if o == nil || IsNil(o.EndpointSources) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.EndpointSources
@@ -1137,7 +1135,7 @@ func (o *Networkcontainer) GetEndpointSources() []map[string]interface{} {
 
 // GetEndpointSourcesOk returns a tuple with the EndpointSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Networkcontainer) GetEndpointSourcesOk() ([]map[string]interface{}, bool) {
+func (o *Networkcontainer) GetEndpointSourcesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EndpointSources) {
 		return nil, false
 	}
@@ -1153,41 +1151,41 @@ func (o *Networkcontainer) HasEndpointSources() bool {
 	return false
 }
 
-// SetEndpointSources gets a reference to the given []map[string]interface{} and assigns it to the EndpointSources field.
-func (o *Networkcontainer) SetEndpointSources(v []map[string]interface{}) {
+// SetEndpointSources gets a reference to the given []string and assigns it to the EndpointSources field.
+func (o *Networkcontainer) SetEndpointSources(v []string) {
 	o.EndpointSources = v
 }
 
-// GetExtattrs returns the Extattrs field value if set, zero value otherwise.
-func (o *Networkcontainer) GetExtattrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.Extattrs) {
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Networkcontainer) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
 	}
-	return *o.Extattrs
+	return *o.ExtAttrs
 }
 
-// GetExtattrsOk returns a tuple with the Extattrs field value if set, nil otherwise
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Networkcontainer) GetExtattrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.Extattrs) {
+func (o *Networkcontainer) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
-	return o.Extattrs, true
+	return o.ExtAttrs, true
 }
 
-// HasExtattrs returns a boolean if a field has been set.
-func (o *Networkcontainer) HasExtattrs() bool {
-	if o != nil && !IsNil(o.Extattrs) {
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Networkcontainer) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
 
 	return false
 }
 
-// SetExtattrs gets a reference to the given map[string]ExtAttrs and assigns it to the Extattrs field.
-func (o *Networkcontainer) SetExtattrs(v map[string]ExtAttrs) {
-	o.Extattrs = &v
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Networkcontainer) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetFederatedRealms returns the FederatedRealms field value if set, zero value otherwise.
@@ -1543,9 +1541,9 @@ func (o *Networkcontainer) SetLastRirRegistrationUpdateStatus(v string) {
 }
 
 // GetLeaseScavengeTime returns the LeaseScavengeTime field value if set, zero value otherwise.
-func (o *Networkcontainer) GetLeaseScavengeTime() int32 {
+func (o *Networkcontainer) GetLeaseScavengeTime() int64 {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LeaseScavengeTime
@@ -1553,7 +1551,7 @@ func (o *Networkcontainer) GetLeaseScavengeTime() int32 {
 
 // GetLeaseScavengeTimeOk returns a tuple with the LeaseScavengeTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Networkcontainer) GetLeaseScavengeTimeOk() (*int32, bool) {
+func (o *Networkcontainer) GetLeaseScavengeTimeOk() (*int64, bool) {
 	if o == nil || IsNil(o.LeaseScavengeTime) {
 		return nil, false
 	}
@@ -1569,8 +1567,8 @@ func (o *Networkcontainer) HasLeaseScavengeTime() bool {
 	return false
 }
 
-// SetLeaseScavengeTime gets a reference to the given int32 and assigns it to the LeaseScavengeTime field.
-func (o *Networkcontainer) SetLeaseScavengeTime(v int32) {
+// SetLeaseScavengeTime gets a reference to the given int64 and assigns it to the LeaseScavengeTime field.
+func (o *Networkcontainer) SetLeaseScavengeTime(v int64) {
 	o.LeaseScavengeTime = &v
 }
 
@@ -1767,9 +1765,9 @@ func (o *Networkcontainer) SetMsAdUserData(v NetworkcontainerMsAdUserData) {
 }
 
 // GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *Networkcontainer) GetNetwork() string {
+func (o *Networkcontainer) GetNetwork() NetworkcontainerNetwork {
 	if o == nil || IsNil(o.Network) {
-		var ret string
+		var ret NetworkcontainerNetwork
 		return ret
 	}
 	return *o.Network
@@ -1777,7 +1775,7 @@ func (o *Networkcontainer) GetNetwork() string {
 
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Networkcontainer) GetNetworkOk() (*string, bool) {
+func (o *Networkcontainer) GetNetworkOk() (*NetworkcontainerNetwork, bool) {
 	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
@@ -1793,9 +1791,41 @@ func (o *Networkcontainer) HasNetwork() bool {
 	return false
 }
 
-// SetNetwork gets a reference to the given string and assigns it to the Network field.
-func (o *Networkcontainer) SetNetwork(v string) {
+// SetNetwork gets a reference to the given NetworkcontainerNetwork and assigns it to the Network field.
+func (o *Networkcontainer) SetNetwork(v NetworkcontainerNetwork) {
 	o.Network = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *Networkcontainer) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Networkcontainer) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *Networkcontainer) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *Networkcontainer) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetNetworkContainer returns the NetworkContainer field value if set, zero value otherwise.
@@ -1860,38 +1890,6 @@ func (o *Networkcontainer) HasNetworkView() bool {
 // SetNetworkView gets a reference to the given string and assigns it to the NetworkView field.
 func (o *Networkcontainer) SetNetworkView(v string) {
 	o.NetworkView = &v
-}
-
-// GetNextAvailableNetwork returns the NextAvailableNetwork field value if set, zero value otherwise.
-func (o *Networkcontainer) GetNextAvailableNetwork() map[string]interface{} {
-	if o == nil || IsNil(o.NextAvailableNetwork) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NextAvailableNetwork
-}
-
-// GetNextAvailableNetworkOk returns a tuple with the NextAvailableNetwork field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Networkcontainer) GetNextAvailableNetworkOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NextAvailableNetwork) {
-		return map[string]interface{}{}, false
-	}
-	return o.NextAvailableNetwork, true
-}
-
-// HasNextAvailableNetwork returns a boolean if a field has been set.
-func (o *Networkcontainer) HasNextAvailableNetwork() bool {
-	if o != nil && !IsNil(o.NextAvailableNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetNextAvailableNetwork gets a reference to the given map[string]interface{} and assigns it to the NextAvailableNetwork field.
-func (o *Networkcontainer) SetNextAvailableNetwork(v map[string]interface{}) {
-	o.NextAvailableNetwork = v
 }
 
 // GetNextserver returns the Nextserver field value if set, zero value otherwise.
@@ -2084,38 +2082,6 @@ func (o *Networkcontainer) HasRemoveSubnets() bool {
 // SetRemoveSubnets gets a reference to the given bool and assigns it to the RemoveSubnets field.
 func (o *Networkcontainer) SetRemoveSubnets(v bool) {
 	o.RemoveSubnets = &v
-}
-
-// GetResize returns the Resize field value if set, zero value otherwise.
-func (o *Networkcontainer) GetResize() map[string]interface{} {
-	if o == nil || IsNil(o.Resize) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Resize
-}
-
-// GetResizeOk returns a tuple with the Resize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Networkcontainer) GetResizeOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Resize) {
-		return map[string]interface{}{}, false
-	}
-	return o.Resize, true
-}
-
-// HasResize returns a boolean if a field has been set.
-func (o *Networkcontainer) HasResize() bool {
-	if o != nil && !IsNil(o.Resize) {
-		return true
-	}
-
-	return false
-}
-
-// SetResize gets a reference to the given map[string]interface{} and assigns it to the Resize field.
-func (o *Networkcontainer) SetResize(v map[string]interface{}) {
-	o.Resize = v
 }
 
 // GetRestartIfNeeded returns the RestartIfNeeded field value if set, zero value otherwise.
@@ -3559,8 +3525,8 @@ func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndpointSources) {
 		toSerialize["endpoint_sources"] = o.EndpointSources
 	}
-	if !IsNil(o.Extattrs) {
-		toSerialize["extattrs"] = o.Extattrs
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.FederatedRealms) {
 		toSerialize["federated_realms"] = o.FederatedRealms
@@ -3619,14 +3585,14 @@ func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
+	}
 	if !IsNil(o.NetworkContainer) {
 		toSerialize["network_container"] = o.NetworkContainer
 	}
 	if !IsNil(o.NetworkView) {
 		toSerialize["network_view"] = o.NetworkView
-	}
-	if !IsNil(o.NextAvailableNetwork) {
-		toSerialize["next_available_network"] = o.NextAvailableNetwork
 	}
 	if !IsNil(o.Nextserver) {
 		toSerialize["nextserver"] = o.Nextserver
@@ -3645,9 +3611,6 @@ func (o Networkcontainer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RemoveSubnets) {
 		toSerialize["remove_subnets"] = o.RemoveSubnets
-	}
-	if !IsNil(o.Resize) {
-		toSerialize["resize"] = o.Resize
 	}
 	if !IsNil(o.RestartIfNeeded) {
 		toSerialize["restart_if_needed"] = o.RestartIfNeeded

@@ -23,150 +23,386 @@ import (
 
 type FixedaddresstemplateAPI interface {
 	/*
-		Get Retrieve fixedaddresstemplate objects
-
-		Returns a list of fixedaddresstemplate objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FixedaddresstemplateAPIGetRequest
-	*/
-	Get(ctx context.Context) FixedaddresstemplateAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListFixedaddresstemplateResponse
-	GetExecute(r FixedaddresstemplateAPIGetRequest) (*ListFixedaddresstemplateResponse, *http.Response, error)
-	/*
-		Post Create a fixedaddresstemplate object
+		Create Create a fixedaddresstemplate object
 
 		Creates a new fixedaddresstemplate object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return FixedaddresstemplateAPIPostRequest
+		@return FixedaddresstemplateAPICreateRequest
 	*/
-	Post(ctx context.Context) FixedaddresstemplateAPIPostRequest
+	Create(ctx context.Context) FixedaddresstemplateAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateFixedaddresstemplateResponse
-	PostExecute(r FixedaddresstemplateAPIPostRequest) (*CreateFixedaddresstemplateResponse, *http.Response, error)
+	CreateExecute(r FixedaddresstemplateAPICreateRequest) (*CreateFixedaddresstemplateResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a fixedaddresstemplate object
+		Delete Delete a fixedaddresstemplate object
 
 		Deletes a specific fixedaddresstemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the fixedaddresstemplate object
-		@return FixedaddresstemplateAPIReferenceDeleteRequest
+		@return FixedaddresstemplateAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) FixedaddresstemplateAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) FixedaddresstemplateAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r FixedaddresstemplateAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r FixedaddresstemplateAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific fixedaddresstemplate object
+		List Retrieve fixedaddresstemplate objects
+
+		Returns a list of fixedaddresstemplate objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return FixedaddresstemplateAPIListRequest
+	*/
+	List(ctx context.Context) FixedaddresstemplateAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListFixedaddresstemplateResponse
+	ListExecute(r FixedaddresstemplateAPIListRequest) (*ListFixedaddresstemplateResponse, *http.Response, error)
+	/*
+		Read Get a specific fixedaddresstemplate object
 
 		Returns a specific fixedaddresstemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the fixedaddresstemplate object
-		@return FixedaddresstemplateAPIReferenceGetRequest
+		@return FixedaddresstemplateAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) FixedaddresstemplateAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) FixedaddresstemplateAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetFixedaddresstemplateResponse
-	ReferenceGetExecute(r FixedaddresstemplateAPIReferenceGetRequest) (*GetFixedaddresstemplateResponse, *http.Response, error)
+	ReadExecute(r FixedaddresstemplateAPIReadRequest) (*GetFixedaddresstemplateResponse, *http.Response, error)
 	/*
-		ReferencePut Update a fixedaddresstemplate object
+		Update Update a fixedaddresstemplate object
 
 		Updates a specific fixedaddresstemplate object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the fixedaddresstemplate object
-		@return FixedaddresstemplateAPIReferencePutRequest
+		@return FixedaddresstemplateAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) FixedaddresstemplateAPIReferencePutRequest
+	Update(ctx context.Context, reference string) FixedaddresstemplateAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateFixedaddresstemplateResponse
-	ReferencePutExecute(r FixedaddresstemplateAPIReferencePutRequest) (*UpdateFixedaddresstemplateResponse, *http.Response, error)
+	UpdateExecute(r FixedaddresstemplateAPIUpdateRequest) (*UpdateFixedaddresstemplateResponse, *http.Response, error)
 }
 
 // FixedaddresstemplateAPIService FixedaddresstemplateAPI service
 type FixedaddresstemplateAPIService internal.Service
 
-type FixedaddresstemplateAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     FixedaddresstemplateAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type FixedaddresstemplateAPICreateRequest struct {
+	ctx                  context.Context
+	ApiService           FixedaddresstemplateAPI
+	fixedaddresstemplate *Fixedaddresstemplate
+	returnFields         *string
+	returnFieldsPlus     *string
+	returnAsObject       *int32
+}
+
+// Object data to create
+func (r FixedaddresstemplateAPICreateRequest) Fixedaddresstemplate(fixedaddresstemplate Fixedaddresstemplate) FixedaddresstemplateAPICreateRequest {
+	r.fixedaddresstemplate = &fixedaddresstemplate
+	return r
 }
 
 // Enter the field names followed by comma
-func (r FixedaddresstemplateAPIGetRequest) ReturnFields(returnFields string) FixedaddresstemplateAPIGetRequest {
+func (r FixedaddresstemplateAPICreateRequest) ReturnFields(returnFields string) FixedaddresstemplateAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FixedaddresstemplateAPIGetRequest) ReturnFields2(returnFields2 string) FixedaddresstemplateAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r FixedaddresstemplateAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddresstemplateAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r FixedaddresstemplateAPICreateRequest) ReturnAsObject(returnAsObject int32) FixedaddresstemplateAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r FixedaddresstemplateAPICreateRequest) Execute() (*CreateFixedaddresstemplateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a fixedaddresstemplate object
+
+Creates a new fixedaddresstemplate object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return FixedaddresstemplateAPICreateRequest
+*/
+func (a *FixedaddresstemplateAPIService) Create(ctx context.Context) FixedaddresstemplateAPICreateRequest {
+	return FixedaddresstemplateAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateFixedaddresstemplateResponse
+func (a *FixedaddresstemplateAPIService) CreateExecute(r FixedaddresstemplateAPICreateRequest) (*CreateFixedaddresstemplateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateFixedaddresstemplateResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/fixedaddresstemplate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.fixedaddresstemplate == nil {
+		return localVarReturnValue, nil, internal.ReportError("fixedaddresstemplate is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.fixedaddresstemplate != nil {
+		if r.fixedaddresstemplate.ExtAttrs == nil {
+			r.fixedaddresstemplate.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.fixedaddresstemplate.ExtAttrs)[k]; !ok {
+				(*r.fixedaddresstemplate.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.fixedaddresstemplate
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type FixedaddresstemplateAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService FixedaddresstemplateAPI
+	reference  string
+}
+
+func (r FixedaddresstemplateAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a fixedaddresstemplate object
+
+Deletes a specific fixedaddresstemplate object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the fixedaddresstemplate object
+	@return FixedaddresstemplateAPIDeleteRequest
+*/
+func (a *FixedaddresstemplateAPIService) Delete(ctx context.Context, reference string) FixedaddresstemplateAPIDeleteRequest {
+	return FixedaddresstemplateAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *FixedaddresstemplateAPIService) DeleteExecute(r FixedaddresstemplateAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/fixedaddresstemplate/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type FixedaddresstemplateAPIListRequest struct {
+	ctx              context.Context
+	ApiService       FixedaddresstemplateAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r FixedaddresstemplateAPIListRequest) ReturnFields(returnFields string) FixedaddresstemplateAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r FixedaddresstemplateAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddresstemplateAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r FixedaddresstemplateAPIGetRequest) MaxResults(maxResults int32) FixedaddresstemplateAPIGetRequest {
+func (r FixedaddresstemplateAPIListRequest) MaxResults(maxResults int32) FixedaddresstemplateAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FixedaddresstemplateAPIGetRequest) ReturnAsObject(returnAsObject int32) FixedaddresstemplateAPIGetRequest {
+func (r FixedaddresstemplateAPIListRequest) ReturnAsObject(returnAsObject int32) FixedaddresstemplateAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r FixedaddresstemplateAPIGetRequest) Paging(paging int32) FixedaddresstemplateAPIGetRequest {
+func (r FixedaddresstemplateAPIListRequest) Paging(paging int32) FixedaddresstemplateAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r FixedaddresstemplateAPIGetRequest) PageId(pageId string) FixedaddresstemplateAPIGetRequest {
+func (r FixedaddresstemplateAPIListRequest) PageId(pageId string) FixedaddresstemplateAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r FixedaddresstemplateAPIGetRequest) Filters(filters map[string]interface{}) FixedaddresstemplateAPIGetRequest {
+func (r FixedaddresstemplateAPIListRequest) Filters(filters map[string]interface{}) FixedaddresstemplateAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r FixedaddresstemplateAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) FixedaddresstemplateAPIGetRequest {
+func (r FixedaddresstemplateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) FixedaddresstemplateAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r FixedaddresstemplateAPIGetRequest) Execute() (*ListFixedaddresstemplateResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r FixedaddresstemplateAPIListRequest) Execute() (*ListFixedaddresstemplateResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve fixedaddresstemplate objects
+List Retrieve fixedaddresstemplate objects
 
 Returns a list of fixedaddresstemplate objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FixedaddresstemplateAPIGetRequest
+	@return FixedaddresstemplateAPIListRequest
 */
-func (a *FixedaddresstemplateAPIService) Get(ctx context.Context) FixedaddresstemplateAPIGetRequest {
-	return FixedaddresstemplateAPIGetRequest{
+func (a *FixedaddresstemplateAPIService) List(ctx context.Context) FixedaddresstemplateAPIListRequest {
+	return FixedaddresstemplateAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *FixedaddresstemplateAPIService) Get(ctx context.Context) Fixedaddresste
 // Execute executes the request
 //
 //	@return ListFixedaddresstemplateResponse
-func (a *FixedaddresstemplateAPIService) GetExecute(r FixedaddresstemplateAPIGetRequest) (*ListFixedaddresstemplateResponse, *http.Response, error) {
+func (a *FixedaddresstemplateAPIService) ListExecute(r FixedaddresstemplateAPIListRequest) (*ListFixedaddresstemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *FixedaddresstemplateAPIService) GetExecute(r FixedaddresstemplateAPIGet
 		localVarReturnValue *ListFixedaddresstemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *FixedaddresstemplateAPIService) GetExecute(r FixedaddresstemplateAPIGet
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *FixedaddresstemplateAPIService) GetExecute(r FixedaddresstemplateAPIGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FixedaddresstemplateAPIPostRequest struct {
-	ctx                  context.Context
-	ApiService           FixedaddresstemplateAPI
-	fixedaddresstemplate *Fixedaddresstemplate
-	returnFields         *string
-	returnFields2        *string
-	returnAsObject       *int32
-}
-
-// Object data to create
-func (r FixedaddresstemplateAPIPostRequest) Fixedaddresstemplate(fixedaddresstemplate Fixedaddresstemplate) FixedaddresstemplateAPIPostRequest {
-	r.fixedaddresstemplate = &fixedaddresstemplate
-	return r
+type FixedaddresstemplateAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       FixedaddresstemplateAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r FixedaddresstemplateAPIPostRequest) ReturnFields(returnFields string) FixedaddresstemplateAPIPostRequest {
+func (r FixedaddresstemplateAPIReadRequest) ReturnFields(returnFields string) FixedaddresstemplateAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FixedaddresstemplateAPIPostRequest) ReturnFields2(returnFields2 string) FixedaddresstemplateAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r FixedaddresstemplateAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddresstemplateAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FixedaddresstemplateAPIPostRequest) ReturnAsObject(returnAsObject int32) FixedaddresstemplateAPIPostRequest {
+func (r FixedaddresstemplateAPIReadRequest) ReturnAsObject(returnAsObject int32) FixedaddresstemplateAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FixedaddresstemplateAPIPostRequest) Execute() (*CreateFixedaddresstemplateResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r FixedaddresstemplateAPIReadRequest) Execute() (*GetFixedaddresstemplateResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a fixedaddresstemplate object
-
-Creates a new fixedaddresstemplate object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return FixedaddresstemplateAPIPostRequest
-*/
-func (a *FixedaddresstemplateAPIService) Post(ctx context.Context) FixedaddresstemplateAPIPostRequest {
-	return FixedaddresstemplateAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateFixedaddresstemplateResponse
-func (a *FixedaddresstemplateAPIService) PostExecute(r FixedaddresstemplateAPIPostRequest) (*CreateFixedaddresstemplateResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateFixedaddresstemplateResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/fixedaddresstemplate"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.fixedaddresstemplate == nil {
-		return localVarReturnValue, nil, internal.ReportError("fixedaddresstemplate is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.fixedaddresstemplate != nil {
-		if r.fixedaddresstemplate.Extattrs == nil {
-			r.fixedaddresstemplate.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.fixedaddresstemplate.Extattrs)[k]; !ok {
-				(*r.fixedaddresstemplate.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.fixedaddresstemplate
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type FixedaddresstemplateAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService FixedaddresstemplateAPI
-	reference  string
-}
-
-func (r FixedaddresstemplateAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a fixedaddresstemplate object
-
-Deletes a specific fixedaddresstemplate object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the fixedaddresstemplate object
-	@return FixedaddresstemplateAPIReferenceDeleteRequest
-*/
-func (a *FixedaddresstemplateAPIService) ReferenceDelete(ctx context.Context, reference string) FixedaddresstemplateAPIReferenceDeleteRequest {
-	return FixedaddresstemplateAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *FixedaddresstemplateAPIService) ReferenceDeleteExecute(r FixedaddresstemplateAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/fixedaddresstemplate/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type FixedaddresstemplateAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     FixedaddresstemplateAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r FixedaddresstemplateAPIReferenceGetRequest) ReturnFields(returnFields string) FixedaddresstemplateAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FixedaddresstemplateAPIReferenceGetRequest) ReturnFields2(returnFields2 string) FixedaddresstemplateAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r FixedaddresstemplateAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) FixedaddresstemplateAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r FixedaddresstemplateAPIReferenceGetRequest) Execute() (*GetFixedaddresstemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific fixedaddresstemplate object
+Read Get a specific fixedaddresstemplate object
 
 Returns a specific fixedaddresstemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the fixedaddresstemplate object
-	@return FixedaddresstemplateAPIReferenceGetRequest
+	@return FixedaddresstemplateAPIReadRequest
 */
-func (a *FixedaddresstemplateAPIService) ReferenceGet(ctx context.Context, reference string) FixedaddresstemplateAPIReferenceGetRequest {
-	return FixedaddresstemplateAPIReferenceGetRequest{
+func (a *FixedaddresstemplateAPIService) Read(ctx context.Context, reference string) FixedaddresstemplateAPIReadRequest {
+	return FixedaddresstemplateAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *FixedaddresstemplateAPIService) ReferenceGet(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return GetFixedaddresstemplateResponse
-func (a *FixedaddresstemplateAPIService) ReferenceGetExecute(r FixedaddresstemplateAPIReferenceGetRequest) (*GetFixedaddresstemplateResponse, *http.Response, error) {
+func (a *FixedaddresstemplateAPIService) ReadExecute(r FixedaddresstemplateAPIReadRequest) (*GetFixedaddresstemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *FixedaddresstemplateAPIService) ReferenceGetExecute(r Fixedaddresstempl
 		localVarReturnValue *GetFixedaddresstemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *FixedaddresstemplateAPIService) ReferenceGetExecute(r Fixedaddresstempl
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *FixedaddresstemplateAPIService) ReferenceGetExecute(r Fixedaddresstempl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type FixedaddresstemplateAPIReferencePutRequest struct {
+type FixedaddresstemplateAPIUpdateRequest struct {
 	ctx                  context.Context
 	ApiService           FixedaddresstemplateAPI
 	reference            string
 	fixedaddresstemplate *Fixedaddresstemplate
 	returnFields         *string
-	returnFields2        *string
+	returnFieldsPlus     *string
 	returnAsObject       *int32
 }
 
 // Object data to update
-func (r FixedaddresstemplateAPIReferencePutRequest) Fixedaddresstemplate(fixedaddresstemplate Fixedaddresstemplate) FixedaddresstemplateAPIReferencePutRequest {
+func (r FixedaddresstemplateAPIUpdateRequest) Fixedaddresstemplate(fixedaddresstemplate Fixedaddresstemplate) FixedaddresstemplateAPIUpdateRequest {
 	r.fixedaddresstemplate = &fixedaddresstemplate
 	return r
 }
 
 // Enter the field names followed by comma
-func (r FixedaddresstemplateAPIReferencePutRequest) ReturnFields(returnFields string) FixedaddresstemplateAPIReferencePutRequest {
+func (r FixedaddresstemplateAPIUpdateRequest) ReturnFields(returnFields string) FixedaddresstemplateAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r FixedaddresstemplateAPIReferencePutRequest) ReturnFields2(returnFields2 string) FixedaddresstemplateAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r FixedaddresstemplateAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddresstemplateAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r FixedaddresstemplateAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) FixedaddresstemplateAPIReferencePutRequest {
+func (r FixedaddresstemplateAPIUpdateRequest) ReturnAsObject(returnAsObject int32) FixedaddresstemplateAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r FixedaddresstemplateAPIReferencePutRequest) Execute() (*UpdateFixedaddresstemplateResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r FixedaddresstemplateAPIUpdateRequest) Execute() (*UpdateFixedaddresstemplateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a fixedaddresstemplate object
+Update Update a fixedaddresstemplate object
 
 Updates a specific fixedaddresstemplate object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the fixedaddresstemplate object
-	@return FixedaddresstemplateAPIReferencePutRequest
+	@return FixedaddresstemplateAPIUpdateRequest
 */
-func (a *FixedaddresstemplateAPIService) ReferencePut(ctx context.Context, reference string) FixedaddresstemplateAPIReferencePutRequest {
-	return FixedaddresstemplateAPIReferencePutRequest{
+func (a *FixedaddresstemplateAPIService) Update(ctx context.Context, reference string) FixedaddresstemplateAPIUpdateRequest {
+	return FixedaddresstemplateAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *FixedaddresstemplateAPIService) ReferencePut(ctx context.Context, refer
 // Execute executes the request
 //
 //	@return UpdateFixedaddresstemplateResponse
-func (a *FixedaddresstemplateAPIService) ReferencePutExecute(r FixedaddresstemplateAPIReferencePutRequest) (*UpdateFixedaddresstemplateResponse, *http.Response, error) {
+func (a *FixedaddresstemplateAPIService) UpdateExecute(r FixedaddresstemplateAPIUpdateRequest) (*UpdateFixedaddresstemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *FixedaddresstemplateAPIService) ReferencePutExecute(r Fixedaddresstempl
 		localVarReturnValue *UpdateFixedaddresstemplateResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddresstemplateAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *FixedaddresstemplateAPIService) ReferencePutExecute(r Fixedaddresstempl
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *FixedaddresstemplateAPIService) ReferencePutExecute(r Fixedaddresstempl
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.fixedaddresstemplate != nil {
-		if r.fixedaddresstemplate.Extattrs == nil {
-			r.fixedaddresstemplate.Extattrs = &map[string]ExtAttrs{}
+		if r.fixedaddresstemplate.ExtAttrs == nil {
+			r.fixedaddresstemplate.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.fixedaddresstemplate.Extattrs)[k]; !ok {
-				(*r.fixedaddresstemplate.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.fixedaddresstemplate.ExtAttrs)[k]; !ok {
+				(*r.fixedaddresstemplate.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

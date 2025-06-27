@@ -23,150 +23,386 @@ import (
 
 type ZoneRpAPI interface {
 	/*
-		Get Retrieve zone_rp objects
-
-		Returns a list of zone_rp objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneRpAPIGetRequest
-	*/
-	Get(ctx context.Context) ZoneRpAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListZoneRpResponse
-	GetExecute(r ZoneRpAPIGetRequest) (*ListZoneRpResponse, *http.Response, error)
-	/*
-		Post Create a zone_rp object
+		Create Create a zone_rp object
 
 		Creates a new zone_rp object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ZoneRpAPIPostRequest
+		@return ZoneRpAPICreateRequest
 	*/
-	Post(ctx context.Context) ZoneRpAPIPostRequest
+	Create(ctx context.Context) ZoneRpAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateZoneRpResponse
-	PostExecute(r ZoneRpAPIPostRequest) (*CreateZoneRpResponse, *http.Response, error)
+	CreateExecute(r ZoneRpAPICreateRequest) (*CreateZoneRpResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a zone_rp object
+		Delete Delete a zone_rp object
 
 		Deletes a specific zone_rp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_rp object
-		@return ZoneRpAPIReferenceDeleteRequest
+		@return ZoneRpAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) ZoneRpAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) ZoneRpAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r ZoneRpAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r ZoneRpAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific zone_rp object
+		List Retrieve zone_rp objects
+
+		Returns a list of zone_rp objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ZoneRpAPIListRequest
+	*/
+	List(ctx context.Context) ZoneRpAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListZoneRpResponse
+	ListExecute(r ZoneRpAPIListRequest) (*ListZoneRpResponse, *http.Response, error)
+	/*
+		Read Get a specific zone_rp object
 
 		Returns a specific zone_rp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_rp object
-		@return ZoneRpAPIReferenceGetRequest
+		@return ZoneRpAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) ZoneRpAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) ZoneRpAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetZoneRpResponse
-	ReferenceGetExecute(r ZoneRpAPIReferenceGetRequest) (*GetZoneRpResponse, *http.Response, error)
+	ReadExecute(r ZoneRpAPIReadRequest) (*GetZoneRpResponse, *http.Response, error)
 	/*
-		ReferencePut Update a zone_rp object
+		Update Update a zone_rp object
 
 		Updates a specific zone_rp object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the zone_rp object
-		@return ZoneRpAPIReferencePutRequest
+		@return ZoneRpAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) ZoneRpAPIReferencePutRequest
+	Update(ctx context.Context, reference string) ZoneRpAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateZoneRpResponse
-	ReferencePutExecute(r ZoneRpAPIReferencePutRequest) (*UpdateZoneRpResponse, *http.Response, error)
+	UpdateExecute(r ZoneRpAPIUpdateRequest) (*UpdateZoneRpResponse, *http.Response, error)
 }
 
 // ZoneRpAPIService ZoneRpAPI service
 type ZoneRpAPIService internal.Service
 
-type ZoneRpAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     ZoneRpAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type ZoneRpAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       ZoneRpAPI
+	zoneRp           *ZoneRp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r ZoneRpAPICreateRequest) ZoneRp(zoneRp ZoneRp) ZoneRpAPICreateRequest {
+	r.zoneRp = &zoneRp
+	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneRpAPIGetRequest) ReturnFields(returnFields string) ZoneRpAPIGetRequest {
+func (r ZoneRpAPICreateRequest) ReturnFields(returnFields string) ZoneRpAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneRpAPIGetRequest) ReturnFields2(returnFields2 string) ZoneRpAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneRpAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneRpAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r ZoneRpAPICreateRequest) ReturnAsObject(returnAsObject int32) ZoneRpAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r ZoneRpAPICreateRequest) Execute() (*CreateZoneRpResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a zone_rp object
+
+Creates a new zone_rp object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ZoneRpAPICreateRequest
+*/
+func (a *ZoneRpAPIService) Create(ctx context.Context) ZoneRpAPICreateRequest {
+	return ZoneRpAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateZoneRpResponse
+func (a *ZoneRpAPIService) CreateExecute(r ZoneRpAPICreateRequest) (*CreateZoneRpResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateZoneRpResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/zone_rp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.zoneRp == nil {
+		return localVarReturnValue, nil, internal.ReportError("zoneRp is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneRp != nil {
+		if r.zoneRp.ExtAttrs == nil {
+			r.zoneRp.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.zoneRp.ExtAttrs)[k]; !ok {
+				(*r.zoneRp.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.zoneRp
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ZoneRpAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService ZoneRpAPI
+	reference  string
+}
+
+func (r ZoneRpAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a zone_rp object
+
+Deletes a specific zone_rp object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the zone_rp object
+	@return ZoneRpAPIDeleteRequest
+*/
+func (a *ZoneRpAPIService) Delete(ctx context.Context, reference string) ZoneRpAPIDeleteRequest {
+	return ZoneRpAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *ZoneRpAPIService) DeleteExecute(r ZoneRpAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/zone_rp/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ZoneRpAPIListRequest struct {
+	ctx              context.Context
+	ApiService       ZoneRpAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r ZoneRpAPIListRequest) ReturnFields(returnFields string) ZoneRpAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r ZoneRpAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneRpAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r ZoneRpAPIGetRequest) MaxResults(maxResults int32) ZoneRpAPIGetRequest {
+func (r ZoneRpAPIListRequest) MaxResults(maxResults int32) ZoneRpAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneRpAPIGetRequest) ReturnAsObject(returnAsObject int32) ZoneRpAPIGetRequest {
+func (r ZoneRpAPIListRequest) ReturnAsObject(returnAsObject int32) ZoneRpAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r ZoneRpAPIGetRequest) Paging(paging int32) ZoneRpAPIGetRequest {
+func (r ZoneRpAPIListRequest) Paging(paging int32) ZoneRpAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r ZoneRpAPIGetRequest) PageId(pageId string) ZoneRpAPIGetRequest {
+func (r ZoneRpAPIListRequest) PageId(pageId string) ZoneRpAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r ZoneRpAPIGetRequest) Filters(filters map[string]interface{}) ZoneRpAPIGetRequest {
+func (r ZoneRpAPIListRequest) Filters(filters map[string]interface{}) ZoneRpAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r ZoneRpAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneRpAPIGetRequest {
+func (r ZoneRpAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneRpAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r ZoneRpAPIGetRequest) Execute() (*ListZoneRpResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r ZoneRpAPIListRequest) Execute() (*ListZoneRpResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve zone_rp objects
+List Retrieve zone_rp objects
 
 Returns a list of zone_rp objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneRpAPIGetRequest
+	@return ZoneRpAPIListRequest
 */
-func (a *ZoneRpAPIService) Get(ctx context.Context) ZoneRpAPIGetRequest {
-	return ZoneRpAPIGetRequest{
+func (a *ZoneRpAPIService) List(ctx context.Context) ZoneRpAPIListRequest {
+	return ZoneRpAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *ZoneRpAPIService) Get(ctx context.Context) ZoneRpAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListZoneRpResponse
-func (a *ZoneRpAPIService) GetExecute(r ZoneRpAPIGetRequest) (*ListZoneRpResponse, *http.Response, error) {
+func (a *ZoneRpAPIService) ListExecute(r ZoneRpAPIListRequest) (*ListZoneRpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *ZoneRpAPIService) GetExecute(r ZoneRpAPIGetRequest) (*ListZoneRpRespons
 		localVarReturnValue *ListZoneRpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *ZoneRpAPIService) GetExecute(r ZoneRpAPIGetRequest) (*ListZoneRpRespons
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *ZoneRpAPIService) GetExecute(r ZoneRpAPIGetRequest) (*ListZoneRpRespons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneRpAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     ZoneRpAPI
-	zoneRp         *ZoneRp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r ZoneRpAPIPostRequest) ZoneRp(zoneRp ZoneRp) ZoneRpAPIPostRequest {
-	r.zoneRp = &zoneRp
-	return r
+type ZoneRpAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       ZoneRpAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r ZoneRpAPIPostRequest) ReturnFields(returnFields string) ZoneRpAPIPostRequest {
+func (r ZoneRpAPIReadRequest) ReturnFields(returnFields string) ZoneRpAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneRpAPIPostRequest) ReturnFields2(returnFields2 string) ZoneRpAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneRpAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneRpAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneRpAPIPostRequest) ReturnAsObject(returnAsObject int32) ZoneRpAPIPostRequest {
+func (r ZoneRpAPIReadRequest) ReturnAsObject(returnAsObject int32) ZoneRpAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneRpAPIPostRequest) Execute() (*CreateZoneRpResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r ZoneRpAPIReadRequest) Execute() (*GetZoneRpResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a zone_rp object
-
-Creates a new zone_rp object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ZoneRpAPIPostRequest
-*/
-func (a *ZoneRpAPIService) Post(ctx context.Context) ZoneRpAPIPostRequest {
-	return ZoneRpAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateZoneRpResponse
-func (a *ZoneRpAPIService) PostExecute(r ZoneRpAPIPostRequest) (*CreateZoneRpResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateZoneRpResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/zone_rp"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.zoneRp == nil {
-		return localVarReturnValue, nil, internal.ReportError("zoneRp is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneRp != nil {
-		if r.zoneRp.Extattrs == nil {
-			r.zoneRp.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.zoneRp.Extattrs)[k]; !ok {
-				(*r.zoneRp.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.zoneRp
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ZoneRpAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService ZoneRpAPI
-	reference  string
-}
-
-func (r ZoneRpAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a zone_rp object
-
-Deletes a specific zone_rp object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the zone_rp object
-	@return ZoneRpAPIReferenceDeleteRequest
-*/
-func (a *ZoneRpAPIService) ReferenceDelete(ctx context.Context, reference string) ZoneRpAPIReferenceDeleteRequest {
-	return ZoneRpAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *ZoneRpAPIService) ReferenceDeleteExecute(r ZoneRpAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/zone_rp/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ZoneRpAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     ZoneRpAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r ZoneRpAPIReferenceGetRequest) ReturnFields(returnFields string) ZoneRpAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneRpAPIReferenceGetRequest) ReturnFields2(returnFields2 string) ZoneRpAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r ZoneRpAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) ZoneRpAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r ZoneRpAPIReferenceGetRequest) Execute() (*GetZoneRpResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific zone_rp object
+Read Get a specific zone_rp object
 
 Returns a specific zone_rp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_rp object
-	@return ZoneRpAPIReferenceGetRequest
+	@return ZoneRpAPIReadRequest
 */
-func (a *ZoneRpAPIService) ReferenceGet(ctx context.Context, reference string) ZoneRpAPIReferenceGetRequest {
-	return ZoneRpAPIReferenceGetRequest{
+func (a *ZoneRpAPIService) Read(ctx context.Context, reference string) ZoneRpAPIReadRequest {
+	return ZoneRpAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *ZoneRpAPIService) ReferenceGet(ctx context.Context, reference string) Z
 // Execute executes the request
 //
 //	@return GetZoneRpResponse
-func (a *ZoneRpAPIService) ReferenceGetExecute(r ZoneRpAPIReferenceGetRequest) (*GetZoneRpResponse, *http.Response, error) {
+func (a *ZoneRpAPIService) ReadExecute(r ZoneRpAPIReadRequest) (*GetZoneRpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *ZoneRpAPIService) ReferenceGetExecute(r ZoneRpAPIReferenceGetRequest) (
 		localVarReturnValue *GetZoneRpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *ZoneRpAPIService) ReferenceGetExecute(r ZoneRpAPIReferenceGetRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *ZoneRpAPIService) ReferenceGetExecute(r ZoneRpAPIReferenceGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ZoneRpAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     ZoneRpAPI
-	reference      string
-	zoneRp         *ZoneRp
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type ZoneRpAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       ZoneRpAPI
+	reference        string
+	zoneRp           *ZoneRp
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r ZoneRpAPIReferencePutRequest) ZoneRp(zoneRp ZoneRp) ZoneRpAPIReferencePutRequest {
+func (r ZoneRpAPIUpdateRequest) ZoneRp(zoneRp ZoneRp) ZoneRpAPIUpdateRequest {
 	r.zoneRp = &zoneRp
 	return r
 }
 
 // Enter the field names followed by comma
-func (r ZoneRpAPIReferencePutRequest) ReturnFields(returnFields string) ZoneRpAPIReferencePutRequest {
+func (r ZoneRpAPIUpdateRequest) ReturnFields(returnFields string) ZoneRpAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r ZoneRpAPIReferencePutRequest) ReturnFields2(returnFields2 string) ZoneRpAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r ZoneRpAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) ZoneRpAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r ZoneRpAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) ZoneRpAPIReferencePutRequest {
+func (r ZoneRpAPIUpdateRequest) ReturnAsObject(returnAsObject int32) ZoneRpAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r ZoneRpAPIReferencePutRequest) Execute() (*UpdateZoneRpResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r ZoneRpAPIUpdateRequest) Execute() (*UpdateZoneRpResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a zone_rp object
+Update Update a zone_rp object
 
 Updates a specific zone_rp object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the zone_rp object
-	@return ZoneRpAPIReferencePutRequest
+	@return ZoneRpAPIUpdateRequest
 */
-func (a *ZoneRpAPIService) ReferencePut(ctx context.Context, reference string) ZoneRpAPIReferencePutRequest {
-	return ZoneRpAPIReferencePutRequest{
+func (a *ZoneRpAPIService) Update(ctx context.Context, reference string) ZoneRpAPIUpdateRequest {
+	return ZoneRpAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *ZoneRpAPIService) ReferencePut(ctx context.Context, reference string) Z
 // Execute executes the request
 //
 //	@return UpdateZoneRpResponse
-func (a *ZoneRpAPIService) ReferencePutExecute(r ZoneRpAPIReferencePutRequest) (*UpdateZoneRpResponse, *http.Response, error) {
+func (a *ZoneRpAPIService) UpdateExecute(r ZoneRpAPIUpdateRequest) (*UpdateZoneRpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *ZoneRpAPIService) ReferencePutExecute(r ZoneRpAPIReferencePutRequest) (
 		localVarReturnValue *UpdateZoneRpResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "ZoneRpAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *ZoneRpAPIService) ReferencePutExecute(r ZoneRpAPIReferencePutRequest) (
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *ZoneRpAPIService) ReferencePutExecute(r ZoneRpAPIReferencePutRequest) (
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.zoneRp != nil {
-		if r.zoneRp.Extattrs == nil {
-			r.zoneRp.Extattrs = &map[string]ExtAttrs{}
+		if r.zoneRp.ExtAttrs == nil {
+			r.zoneRp.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.zoneRp.Extattrs)[k]; !ok {
-				(*r.zoneRp.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.zoneRp.ExtAttrs)[k]; !ok {
+				(*r.zoneRp.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

@@ -1,17 +1,17 @@
-# IpamstatisticsAPI
+# IpamStatisticsAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](IpamstatisticsAPI.md#Get) | **Get** /ipam:statistics | Retrieve ipam:statistics objects
-[**ReferenceGet**](IpamstatisticsAPI.md#ReferenceGet) | **Get** /ipam:statistics/{reference} | Get a specific ipam:statistics object
+[**List**](IpamStatisticsAPI.md#List) | **Get** /ipam:statistics | Retrieve ipam:statistics objects
+[**Read**](IpamStatisticsAPI.md#Read) | **Get** /ipam:statistics/{reference} | Get a specific ipam:statistics object
 
 
 
-## Get
+## List
 
-> ListIpamStatisticsResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListIpamStatisticsResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve ipam:statistics objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpamstatisticsAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.IpamStatisticsAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamstatisticsAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamStatisticsAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListIpamStatisticsResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpamstatisticsAPI.Get`: %v\n", resp)
+	// response from `List`: ListIpamStatisticsResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpamStatisticsAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `IpamstatisticsAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `IpamStatisticsAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetIpamStatisticsResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetIpamStatisticsResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific ipam:statistics object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the ipam:statistics object
 
 	apiClient := ipam.NewAPIClient()
-	resp, r, err := apiClient.IpamstatisticsAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.IpamStatisticsAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IpamstatisticsAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IpamStatisticsAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetIpamStatisticsResponse
-	fmt.Fprintf(os.Stdout, "Response from `IpamstatisticsAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetIpamStatisticsResponse
+	fmt.Fprintf(os.Stdout, "Response from `IpamStatisticsAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `IpamstatisticsAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `IpamStatisticsAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -113,8 +113,7 @@ type Vdiscoverytask struct {
 	// If set true, all keystone connection will use \"/identity\" endpoint and port value will be ignored.
 	UseIdentity *bool `json:"use_identity,omitempty"`
 	// Username used for connecting to the cloud management platform.
-	Username          *string                `json:"username,omitempty"`
-	VdiscoveryControl map[string]interface{} `json:"vdiscovery_control,omitempty"`
+	Username *string `json:"username,omitempty"`
 }
 
 // NewVdiscoverytask instantiates a new Vdiscoverytask object
@@ -1670,38 +1669,6 @@ func (o *Vdiscoverytask) SetUsername(v string) {
 	o.Username = &v
 }
 
-// GetVdiscoveryControl returns the VdiscoveryControl field value if set, zero value otherwise.
-func (o *Vdiscoverytask) GetVdiscoveryControl() map[string]interface{} {
-	if o == nil || IsNil(o.VdiscoveryControl) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.VdiscoveryControl
-}
-
-// GetVdiscoveryControlOk returns a tuple with the VdiscoveryControl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Vdiscoverytask) GetVdiscoveryControlOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.VdiscoveryControl) {
-		return map[string]interface{}{}, false
-	}
-	return o.VdiscoveryControl, true
-}
-
-// HasVdiscoveryControl returns a boolean if a field has been set.
-func (o *Vdiscoverytask) HasVdiscoveryControl() bool {
-	if o != nil && !IsNil(o.VdiscoveryControl) {
-		return true
-	}
-
-	return false
-}
-
-// SetVdiscoveryControl gets a reference to the given map[string]interface{} and assigns it to the VdiscoveryControl field.
-func (o *Vdiscoverytask) SetVdiscoveryControl(v map[string]interface{}) {
-	o.VdiscoveryControl = v
-}
-
 func (o Vdiscoverytask) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1855,9 +1822,6 @@ func (o Vdiscoverytask) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
-	}
-	if !IsNil(o.VdiscoveryControl) {
-		toSerialize["vdiscovery_control"] = o.VdiscoveryControl
 	}
 	return toSerialize, nil
 }

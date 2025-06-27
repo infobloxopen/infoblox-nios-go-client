@@ -1,0 +1,3718 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Infoblox
+    url: https://www.infoblox.com
+  description: OpenAPI specification for Infoblox NIOS WAPI MICROSOFTSERVER objects
+  license:
+    name: Infoblox License
+    url: https://www.infoblox.com
+  termsOfService: https://www.infoblox.com
+  title: Infoblox MICROSOFTSERVER API
+  version: 2.13.6
+servers:
+- description: NIOS WAPI server
+  url: /wapi/v2.13.6
+tags:
+- description: Operations for msserver objects
+  name: Msserver
+- description: Operations for msserver:adsites:domain objects
+  name: MsserverAdsitesDomain
+- description: Operations for msserver:adsites:site objects
+  name: MsserverAdsitesSite
+- description: Operations for msserver:dhcp objects
+  name: MsserverDhcp
+- description: Operations for msserver:dns objects
+  name: MsserverDns
+- description: Operations for mssuperscope objects
+  name: Mssuperscope
+paths:
+  /msserver:
+    get:
+      description: Returns a list of msserver objects matching the search criteria
+      operationId: MsserverList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMsserverResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve msserver objects
+      tags:
+      - Msserver
+    post:
+      description: Creates a new msserver object
+      operationId: MsserverCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Msserver'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMsserverResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a msserver object
+      tags:
+      - Msserver
+      x-tf-resource: microsoftserver_msserver
+      x-tf-datasource: microsoftserver_msserver
+      x-sdk-default-ext-attrs: true
+  /msserver/{reference}:
+    delete:
+      description: Deletes a specific msserver object by reference
+      operationId: MsserverDelete
+      parameters:
+      - description: Reference of the msserver object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a msserver object
+      tags:
+      - Msserver
+    get:
+      description: Returns a specific msserver object by reference
+      operationId: MsserverRead
+      parameters:
+      - description: Reference of the msserver object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMsserverResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific msserver object
+      tags:
+      - Msserver
+    put:
+      description: Updates a specific msserver object by reference
+      operationId: MsserverUpdate
+      parameters:
+      - description: Reference of the msserver object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Msserver'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateMsserverResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a msserver object
+      tags:
+      - Msserver
+      x-sdk-default-ext-attrs: true
+  /msserver:adsites:domain:
+    get:
+      description: Returns a list of msserver:adsites:domain objects matching the
+        search criteria
+      operationId: MsserverAdsitesDomainList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMsserverAdsitesDomainResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve msserver:adsites:domain objects
+      tags:
+      - MsserverAdsitesDomain
+  /msserver:adsites:domain/{reference}:
+    get:
+      description: Returns a specific msserver:adsites:domain object by reference
+      operationId: MsserverAdsitesDomainRead
+      parameters:
+      - description: Reference of the msserver:adsites:domain object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMsserverAdsitesDomainResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific msserver:adsites:domain object
+      tags:
+      - MsserverAdsitesDomain
+  /msserver:adsites:site:
+    get:
+      description: Returns a list of msserver:adsites:site objects matching the search
+        criteria
+      operationId: MsserverAdsitesSiteList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMsserverAdsitesSiteResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve msserver:adsites:site objects
+      tags:
+      - MsserverAdsitesSite
+    post:
+      description: Creates a new msserver:adsites:site object
+      operationId: MsserverAdsitesSiteCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsserverAdsitesSite'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMsserverAdsitesSiteResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a msserver:adsites:site object
+      tags:
+      - MsserverAdsitesSite
+      x-tf-resource: microsoftserver_msserver_adsites_site
+      x-tf-datasource: microsoftserver_msserver_adsites_site
+  /msserver:adsites:site/{reference}:
+    delete:
+      description: Deletes a specific msserver:adsites:site object by reference
+      operationId: MsserverAdsitesSiteDelete
+      parameters:
+      - description: Reference of the msserver:adsites:site object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a msserver:adsites:site object
+      tags:
+      - MsserverAdsitesSite
+    get:
+      description: Returns a specific msserver:adsites:site object by reference
+      operationId: MsserverAdsitesSiteRead
+      parameters:
+      - description: Reference of the msserver:adsites:site object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMsserverAdsitesSiteResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific msserver:adsites:site object
+      tags:
+      - MsserverAdsitesSite
+    put:
+      description: Updates a specific msserver:adsites:site object by reference
+      operationId: MsserverAdsitesSiteUpdate
+      parameters:
+      - description: Reference of the msserver:adsites:site object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsserverAdsitesSite'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateMsserverAdsitesSiteResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a msserver:adsites:site object
+      tags:
+      - MsserverAdsitesSite
+  /msserver:dhcp:
+    get:
+      description: Returns a list of msserver:dhcp objects matching the search criteria
+      operationId: MsserverDhcpList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMsserverDhcpResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve msserver:dhcp objects
+      tags:
+      - MsserverDhcp
+    post:
+      description: Creates a new msserver:dhcp object
+      operationId: MsserverDhcpCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsserverDhcp'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMsserverDhcpResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a msserver:dhcp object
+      tags:
+      - MsserverDhcp
+      x-tf-resource: microsoftserver_msserver_dhcp
+      x-tf-datasource: microsoftserver_msserver_dhcp
+  /msserver:dhcp/{reference}:
+    delete:
+      description: Deletes a specific msserver:dhcp object by reference
+      operationId: MsserverDhcpDelete
+      parameters:
+      - description: Reference of the msserver:dhcp object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a msserver:dhcp object
+      tags:
+      - MsserverDhcp
+    get:
+      description: Returns a specific msserver:dhcp object by reference
+      operationId: MsserverDhcpRead
+      parameters:
+      - description: Reference of the msserver:dhcp object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMsserverDhcpResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific msserver:dhcp object
+      tags:
+      - MsserverDhcp
+    put:
+      description: Updates a specific msserver:dhcp object by reference
+      operationId: MsserverDhcpUpdate
+      parameters:
+      - description: Reference of the msserver:dhcp object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsserverDhcp'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateMsserverDhcpResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a msserver:dhcp object
+      tags:
+      - MsserverDhcp
+  /msserver:dns:
+    get:
+      description: Returns a list of msserver:dns objects matching the search criteria
+      operationId: MsserverDnsList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMsserverDnsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve msserver:dns objects
+      tags:
+      - MsserverDns
+    post:
+      description: Creates a new msserver:dns object
+      operationId: MsserverDnsCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsserverDns'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMsserverDnsResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a msserver:dns object
+      tags:
+      - MsserverDns
+      x-tf-resource: microsoftserver_msserver_dns
+      x-tf-datasource: microsoftserver_msserver_dns
+  /msserver:dns/{reference}:
+    delete:
+      description: Deletes a specific msserver:dns object by reference
+      operationId: MsserverDnsDelete
+      parameters:
+      - description: Reference of the msserver:dns object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a msserver:dns object
+      tags:
+      - MsserverDns
+    get:
+      description: Returns a specific msserver:dns object by reference
+      operationId: MsserverDnsRead
+      parameters:
+      - description: Reference of the msserver:dns object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMsserverDnsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific msserver:dns object
+      tags:
+      - MsserverDns
+    put:
+      description: Updates a specific msserver:dns object by reference
+      operationId: MsserverDnsUpdate
+      parameters:
+      - description: Reference of the msserver:dns object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MsserverDns'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateMsserverDnsResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a msserver:dns object
+      tags:
+      - MsserverDns
+  /mssuperscope:
+    get:
+      description: Returns a list of mssuperscope objects matching the search criteria
+      operationId: MssuperscopeList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMssuperscopeResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve mssuperscope objects
+      tags:
+      - Mssuperscope
+    post:
+      description: Creates a new mssuperscope object
+      operationId: MssuperscopeCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mssuperscope'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMssuperscopeResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a mssuperscope object
+      tags:
+      - Mssuperscope
+      x-tf-resource: microsoftserver_mssuperscope
+      x-tf-datasource: microsoftserver_mssuperscope
+      x-sdk-default-ext-attrs: true
+  /mssuperscope/{reference}:
+    delete:
+      description: Deletes a specific mssuperscope object by reference
+      operationId: MssuperscopeDelete
+      parameters:
+      - description: Reference of the mssuperscope object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a mssuperscope object
+      tags:
+      - Mssuperscope
+    get:
+      description: Returns a specific mssuperscope object by reference
+      operationId: MssuperscopeRead
+      parameters:
+      - description: Reference of the mssuperscope object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMssuperscopeResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific mssuperscope object
+      tags:
+      - Mssuperscope
+    put:
+      description: Updates a specific mssuperscope object by reference
+      operationId: MssuperscopeUpdate
+      parameters:
+      - description: Reference of the mssuperscope object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mssuperscope'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateMssuperscopeResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a mssuperscope object
+      tags:
+      - Mssuperscope
+      x-sdk-default-ext-attrs: true
+components:
+  parameters:
+    ReturnFields:
+      description: Enter the field names followed by comma
+      explode: true
+      in: query
+      name: _return_fields
+      required: false
+      schema:
+        type: string
+      style: form
+    ReturnFieldsPlus:
+      description: "Enter the field names followed by comma, this returns the required\
+        \ fields along with the default fields"
+      explode: true
+      in: query
+      name: _return_fields+
+      required: false
+      schema:
+        type: string
+      style: form
+    MaxResults:
+      description: Enter the number of results to be fetched
+      explode: true
+      in: query
+      name: _max_results
+      required: false
+      schema:
+        format: int32
+        minimum: 1
+        type: integer
+      style: form
+    ReturnAsObject:
+      description: Select 1 if result is required as an object
+      explode: true
+      in: query
+      name: _return_as_object
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Paging:
+      description: Control paging of results
+      explode: true
+      in: query
+      name: _paging
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    PageId:
+      description: Page id for retrieving next page of results
+      explode: true
+      in: query
+      name: _page_id
+      required: false
+      schema:
+        type: string
+      style: form
+    ProxySearch:
+      description: Search Grid members for data
+      explode: true
+      in: query
+      name: _proxy_search
+      required: false
+      schema:
+        type: string
+      style: form
+    Schema:
+      description: Return schema for this object type
+      explode: true
+      in: query
+      name: _schema
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaVersion:
+      description: Schema version to use
+      explode: true
+      in: query
+      name: _schema_version
+      required: false
+      schema:
+        enum:
+        - 1
+        - 2
+        type: integer
+      style: form
+    GetDoc:
+      description: Return documentation with schema
+      explode: true
+      in: query
+      name: _get_doc
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    SchemaSearchable:
+      description: Return searchable fields with schema
+      explode: true
+      in: query
+      name: _schema_searchable
+      required: false
+      schema:
+        enum:
+        - 0
+        - 1
+        type: integer
+      style: form
+    Inheritance:
+      description: "If this option is set to True, fields which support inheritance,\
+        \ will display data properly."
+      explode: true
+      in: query
+      name: _inheritance
+      required: false
+      schema:
+        type: boolean
+      style: form
+    filters:
+      explode: false
+      in: query
+      name: filters
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    ExtAttrFilters:
+      explode: false
+      in: query
+      name: extattrfilter
+      required: false
+      schema:
+        additionalProperties: true
+        type: object
+      style: form
+    Method:
+      description: Enter the method type for the request
+      explode: true
+      in: query
+      name: _method
+      required: false
+      schema:
+        type: string
+      style: form
+    Body:
+      explode: true
+      in: query
+      name: body
+      required: false
+      schema:
+        type: object
+      style: form
+  schemas:
+    ExtAttrs:
+      description: Extensible attributes associated with the object.
+      example:
+        value: ""
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    Msserver:
+      additionalProperties: false
+      example:
+        root_ad_domain: Example root_ad_domain
+        network_view: Example network_view
+        server_name: Example server_name
+        grid_member: Example grid_member
+        ms_rpc_timeout_in_seconds: 1
+        last_seen: 1
+        dhcp_server:
+          use_synchronization_min_delay: false
+          synchronization_min_delay: 1
+          status_last_updated: 1
+          next_sync_control: Example next_sync_control
+          login_name: Example login_name
+          use_login: false
+          login_password: Example login_password
+          managed: false
+          enable_monitoring: false
+          use_enable_invalid_mac: false
+          enable_invalid_mac: false
+          supports_failover: false
+          status: Example status
+          use_enable_monitoring: false
+        ms_max_connection: 1
+        synchronization_status: Example synchronization_status
+        ad_sites:
+          ldap_timeout: 1
+          use_synchronization_min_delay: false
+          synchronization_min_delay: 1
+          use_ldap_timeout: false
+          supports_ipv6: false
+          last_sync_status: Example last_sync_status
+          last_sync_detail: Example last_sync_detail
+          ldap_auth_port: 1
+          login_name: Example login_name
+          use_login: false
+          login_password: Example login_password
+          read_only: false
+          managed: false
+          last_sync_ts: 1
+          use_default_ip_site_link: false
+          ldap_encryption: Example ldap_encryption
+          default_ip_site_link: Example default_ip_site_link
+        login_password: Example login_password
+        read_only: false
+        disabled: false
+        use_ms_max_connection: false
+        address: Example address
+        extattrs:
+          key:
+            value: ""
+        ad_domain: Example ad_domain
+        connection_status: Example connection_status
+        synchronization_min_delay: 1
+        connection_status_detail: Example connection_status_detail
+        dns_server:
+          supports_ipv6_reverse: false
+          supports_rr_dname: false
+          use_enable_dns_reports_sync: false
+          login_password: Example login_password
+          managed: false
+          enable_monitoring: false
+          use_enable_monitoring: false
+          address: Example address
+          supports_rr_naptr: false
+          use_synchronization_min_delay: false
+          synchronization_min_delay: 1
+          supports_ipv6: false
+          last_sync_status: Example last_sync_status
+          status_last_updated: 1
+          last_sync_detail: Example last_sync_detail
+          supports_active_directory: false
+          status_detail: Example status_detail
+          next_sync_control: Example next_sync_control
+          login_name: Example login_name
+          use_login: false
+          last_sync_ts: 1
+          forwarders: Example forwarders
+          supports_dnssec: false
+          enable_dns_reports_sync: false
+          status: Example status
+        log_level: Example log_level
+        dns_view: Example dns_view
+        use_log_destination: false
+        version: Example version
+        synchronization_status_detail: Example synchronization_status_detail
+        login_name: Example login_name
+        ad_user:
+          synchronization_interval: 1
+          use_enable_ad_user_sync: false
+          use_enable_user_sync: false
+          use_synchronization_min_delay: false
+          last_sync_time: 1
+          last_sync_status: Example last_sync_status
+          last_sync_detail: Example last_sync_detail
+          login_name: Example login_name
+          login_password: Example login_password
+          last_success_sync_time: 1
+          use_login: false
+          enable_user_sync: false
+          use_synchronization_interval: false
+        log_destination: Example log_destination
+        _ref: _ref
+        comment: Example comment
+        use_ms_rpc_timeout_in_seconds: false
+        managing_member: Example managing_member
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        ad_domain:
+          description: The Active Directory domain to which this server belongs (if
+            applicable).
+          example: Example ad_domain
+          readOnly: true
+          type: string
+        ad_sites:
+          $ref: '#/components/schemas/MsserverAdSites'
+        ad_user:
+          $ref: '#/components/schemas/MsserverAdUser'
+        address:
+          description: The address or FQDN of the server.
+          example: Example address
+          type: string
+        comment:
+          description: User comments for this Microsoft Server
+          example: Example comment
+          type: string
+        connection_status:
+          description: Result of the last RPC connection attempt made
+          example: Example connection_status
+          readOnly: true
+          type: string
+        connection_status_detail:
+          description: Detail of the last connection attempt made
+          example: Example connection_status_detail
+          readOnly: true
+          type: string
+        dhcp_server:
+          $ref: '#/components/schemas/MsserverDhcpServer'
+        disabled:
+          description: Allow/forbids usage of this Microsoft Server
+          example: false
+          type: boolean
+        dns_server:
+          $ref: '#/components/schemas/MsserverDnsServer'
+        dns_view:
+          description: Reference to the DNS view
+          example: Example dns_view
+          type: string
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        grid_member:
+          description: eference to the assigned grid member
+          example: Example grid_member
+          type: string
+        last_seen:
+          description: Timestamp of the last message received
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        log_destination:
+          description: Directs logging of sync messages either to syslog or mslog
+          enum:
+          - SYSLOG
+          - MSLOG
+          example: Example log_destination
+          type: string
+        log_level:
+          description: Log level for this Microsoft Server
+          enum:
+          - MINIMUM
+          - NORMAL
+          - ADVANCED
+          - FULL
+          example: Example log_level
+          type: string
+        login_name:
+          description: "Microsoft Server login name, with optional domainname"
+          example: Example login_name
+          type: string
+        login_password:
+          description: Microsoft Server login password
+          example: Example login_password
+          type: string
+          writeOnly: true
+        managing_member:
+          description: Hostname of grid member managing this Microsoft Server
+          example: Example managing_member
+          readOnly: true
+          type: string
+        ms_max_connection:
+          description: Maximum number of connections to MS server
+          example: 1
+          format: int64
+          type: integer
+        ms_rpc_timeout_in_seconds:
+          description: Timeout in seconds of RPC connections for this MS Server
+          example: 1
+          format: int64
+          type: integer
+        network_view:
+          description: Reference to the network view
+          example: Example network_view
+          type: string
+        read_only:
+          description: Enable read-only management for this Microsoft Server
+          example: false
+          type: boolean
+        root_ad_domain:
+          description: The root Active Directory domain to which this server belongs
+            (if applicable).
+          example: Example root_ad_domain
+          readOnly: true
+          type: string
+        server_name:
+          description: Gives the server name as reported by itself
+          example: Example server_name
+          readOnly: true
+          type: string
+        synchronization_min_delay:
+          description: Minimum number of minutes between two synchronizations
+          example: 1
+          format: int64
+          type: integer
+        synchronization_status:
+          description: Synchronization status summary
+          enum:
+          - OK
+          - WARNING
+          - ERROR
+          example: Example synchronization_status
+          readOnly: true
+          type: string
+        synchronization_status_detail:
+          description: Detail status if synchronization_status is ERROR
+          example: Example synchronization_status_detail
+          readOnly: true
+          type: string
+        use_log_destination:
+          description: Override log_destination inherited from grid level
+          example: false
+          type: boolean
+        use_ms_max_connection:
+          description: Override grid ms_max_connection setting
+          example: false
+          type: boolean
+        use_ms_rpc_timeout_in_seconds:
+          description: Flag to override cluster RPC timeout
+          example: false
+          type: boolean
+        version:
+          description: Version of the Microsoft Server
+          example: Example version
+          readOnly: true
+          type: string
+      type: object
+    MsserverAdSites:
+      example:
+        ldap_timeout: 1
+        use_synchronization_min_delay: false
+        synchronization_min_delay: 1
+        use_ldap_timeout: false
+        supports_ipv6: false
+        last_sync_status: Example last_sync_status
+        last_sync_detail: Example last_sync_detail
+        ldap_auth_port: 1
+        login_name: Example login_name
+        use_login: false
+        login_password: Example login_password
+        read_only: false
+        managed: false
+        last_sync_ts: 1
+        use_default_ip_site_link: false
+        ldap_encryption: Example ldap_encryption
+        default_ip_site_link: Example default_ip_site_link
+      properties:
+        use_default_ip_site_link:
+          description: Flag to override MS Server default IP site link
+          example: false
+          type: boolean
+        default_ip_site_link:
+          description: Default IP site link for sites created from NIOS
+          example: Example default_ip_site_link
+          type: string
+        use_login:
+          description: Flag to override login name and password from the MS Server
+          example: false
+          type: boolean
+        login_name:
+          description: "Microsoft Server login name, with optional"
+          example: Example login_name
+          type: string
+        login_password:
+          description: Microsoft Server login password.
+          example: Example login_password
+          type: string
+          writeOnly: true
+        use_synchronization_min_delay:
+          description: Flag to override synchronization interval from the MS Server
+          example: false
+          type: boolean
+        synchronization_min_delay:
+          description: Minimum number of minutes between two synchronizations
+          example: 1
+          format: int64
+          type: integer
+        use_ldap_timeout:
+          description: Flag to override cluster LDAP timeoutMS Server
+          example: false
+          type: boolean
+        ldap_timeout:
+          description: Timeout in seconds for LDAP connections for this MS Server
+          example: 1
+          format: int64
+          type: integer
+        ldap_auth_port:
+          description: TCP port for LDAP connections for this
+          example: 1
+          format: int64
+          type: integer
+        ldap_encryption:
+          description: Encryption for LDAP connections for this MS Server
+          enum:
+          - NONE
+          - SSL
+          example: Example ldap_encryption
+          type: string
+        managed:
+          description: Controls whether the Sites of this MS Server are to be synchronized
+            by the assigned managing member or not
+          example: false
+          type: boolean
+        read_only:
+          description: Enable/disable read-only synchronization of Sites for this
+            Active Directory domain
+          example: false
+          type: boolean
+        last_sync_ts:
+          description: Timestamp of the last synchronization attempt
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        last_sync_status:
+          description: Status of the last synchronization attempt
+          enum:
+          - MS_SYNC_OK
+          - MS_SYNC_WARNING
+          - MS_SYNC_ERROR
+          example: Example last_sync_status
+          readOnly: true
+          type: string
+        last_sync_detail:
+          description: The detailed status of the last synchronization attempt.
+          example: Example last_sync_detail
+          readOnly: true
+          type: string
+        supports_ipv6:
+          description: Flag indicating if the server supports IPv6
+          example: false
+          readOnly: true
+          type: boolean
+      type: object
+    MsserverAdUser:
+      example:
+        synchronization_interval: 1
+        use_enable_ad_user_sync: false
+        use_enable_user_sync: false
+        use_synchronization_min_delay: false
+        last_sync_time: 1
+        last_sync_status: Example last_sync_status
+        last_sync_detail: Example last_sync_detail
+        login_name: Example login_name
+        login_password: Example login_password
+        last_success_sync_time: 1
+        use_login: false
+        enable_user_sync: false
+        use_synchronization_interval: false
+      properties:
+        login_name:
+          description: The login name of the Microsoft Server.
+          example: Example login_name
+          type: string
+        login_password:
+          description: The login password of the DHCP Microsoft Server.
+          example: Example login_password
+          type: string
+          writeOnly: true
+        enable_user_sync:
+          description: Determines whether the Active Directory user synchronization
+            is enabled or not.
+          example: false
+          type: boolean
+        synchronization_interval:
+          description: The minimum number of minutes between two synchronizations.
+          example: 1
+          format: int64
+          type: integer
+        last_sync_time:
+          description: Timestamp of the last synchronization attempt.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        last_sync_status:
+          description: The status of the last synchronization attempt.
+          example: Example last_sync_status
+          readOnly: true
+          type: string
+        last_sync_detail:
+          description: The detailed status of the last synchronization attempt.
+          example: Example last_sync_detail
+          readOnly: true
+          type: string
+        last_success_sync_time:
+          description: Timestamp of the last successful synchronization attempt.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        use_login:
+          description: Flag to override login name and password from MS server
+          example: false
+          type: boolean
+        use_enable_ad_user_sync:
+          description: Flag to override AD User sync from grid level
+          example: false
+          type: boolean
+        use_synchronization_min_delay:
+          description: Flag to override synchronization interval from the MS Server
+          example: false
+          type: boolean
+        use_enable_user_sync:
+          description: "Use flag for: enable_user_sync"
+          example: false
+          type: boolean
+        use_synchronization_interval:
+          description: "Use flag for: synchronization_interval"
+          example: false
+          type: boolean
+      type: object
+    MsserverDhcpServer:
+      example:
+        use_synchronization_min_delay: false
+        synchronization_min_delay: 1
+        status_last_updated: 1
+        next_sync_control: Example next_sync_control
+        login_name: Example login_name
+        use_login: false
+        login_password: Example login_password
+        managed: false
+        enable_monitoring: false
+        use_enable_invalid_mac: false
+        enable_invalid_mac: false
+        supports_failover: false
+        status: Example status
+        use_enable_monitoring: false
+      properties:
+        use_login:
+          description: Flag to override login name and password from the MS Server
+          example: false
+          type: boolean
+        login_name:
+          description: Microsoft Server login name
+          example: Example login_name
+          type: string
+        login_password:
+          description: Microsoft Server login password
+          example: Example login_password
+          type: string
+          writeOnly: true
+        managed:
+          description: flag indicating if the DNS service is managed
+          example: false
+          type: boolean
+        next_sync_control:
+          description: Defines what control to apply on the DNS server
+          enum:
+          - NONE
+          - START
+          - STOP
+          example: Example next_sync_control
+          type: string
+        status:
+          description: Status of the Microsoft DNS Service
+          enum:
+          - UNKNOWN
+          - OFFLINE
+          example: Example status
+          readOnly: true
+          type: string
+        status_last_updated:
+          description: Timestamp of the last update
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        use_enable_monitoring:
+          description: Override enable monitoring inherited from grid level
+          example: false
+          type: boolean
+        enable_monitoring:
+          description: Flag indicating if the DNS service is monitored and controlled
+          example: false
+          type: boolean
+        use_enable_invalid_mac:
+          description: Override setting for Enable Invalid Mac Address
+          example: false
+          type: boolean
+        enable_invalid_mac:
+          description: Enable Invalid Mac Address
+          example: false
+          type: boolean
+        supports_failover:
+          description: Flag indicating if the DHCP supports Failover
+          example: false
+          readOnly: true
+          type: boolean
+        use_synchronization_min_delay:
+          description: Flag to override synchronization interval from the MS Server
+          example: false
+          type: boolean
+        synchronization_min_delay:
+          description: Minimum number of minutes between two synchronizations
+          example: 1
+          format: int64
+          type: integer
+      type: object
+    MsserverDnsServer:
+      example:
+        supports_ipv6_reverse: false
+        supports_rr_dname: false
+        use_enable_dns_reports_sync: false
+        login_password: Example login_password
+        managed: false
+        enable_monitoring: false
+        use_enable_monitoring: false
+        address: Example address
+        supports_rr_naptr: false
+        use_synchronization_min_delay: false
+        synchronization_min_delay: 1
+        supports_ipv6: false
+        last_sync_status: Example last_sync_status
+        status_last_updated: 1
+        last_sync_detail: Example last_sync_detail
+        supports_active_directory: false
+        status_detail: Example status_detail
+        next_sync_control: Example next_sync_control
+        login_name: Example login_name
+        use_login: false
+        last_sync_ts: 1
+        forwarders: Example forwarders
+        supports_dnssec: false
+        enable_dns_reports_sync: false
+        status: Example status
+      properties:
+        use_login:
+          description: Flag to override login name and password from the MS Server
+          example: false
+          type: boolean
+        login_name:
+          description: Microsoft Server login name
+          example: Example login_name
+          type: string
+        login_password:
+          description: Microsoft Server login password
+          example: Example login_password
+          type: string
+          writeOnly: true
+        managed:
+          description: flag indicating if the DNS service is managed
+          example: false
+          type: boolean
+        next_sync_control:
+          description: Defines what control to apply on the DNS server
+          enum:
+          - NONE
+          - START
+          - STOP
+          example: Example next_sync_control
+          type: string
+        status:
+          description: Status of the Microsoft DNS Service
+          enum:
+          - UNKNOWN
+          - OFFLINE
+          example: Example status
+          readOnly: true
+          type: string
+        status_detail:
+          description: Detailed status of the DNS status
+          example: Example status_detail
+          readOnly: true
+          type: string
+        status_last_updated:
+          description: Timestamp of the last update
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        last_sync_ts:
+          description: Timestamp of the last synchronization attempt
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        last_sync_status:
+          description: Status of the last synchronization attempt
+          enum:
+          - MS_SYNC_OK
+          - MS_SYNC_WARNING
+          - MS_SYNC_ERROR
+          example: Example last_sync_status
+          readOnly: true
+          type: string
+        last_sync_detail:
+          description: Detailled status of the last synchronization attempt
+          example: Example last_sync_detail
+          readOnly: true
+          type: string
+        forwarders:
+          description: Ordered list of IP addresses to forward queries to
+          example: Example forwarders
+          readOnly: true
+          type: string
+        supports_ipv6:
+          description: Flag indicating if the server supports IPv6
+          example: false
+          readOnly: true
+          type: boolean
+        supports_ipv6_reverse:
+          description: Flag indicating if the server supports reverse IPv6 zones
+          example: false
+          readOnly: true
+          type: boolean
+        supports_rr_dname:
+          description: Flag indicating if the server supports DNAME records
+          example: false
+          readOnly: true
+          type: boolean
+        supports_dnssec:
+          description: Flag indicating if the server supports
+          example: false
+          readOnly: true
+          type: boolean
+        supports_active_directory:
+          description: Flag indicating if the server supports AD integrated zones
+          example: false
+          readOnly: true
+          type: boolean
+        address:
+          description: MS Server ip address
+          example: Example address
+          readOnly: true
+          type: string
+        supports_rr_naptr:
+          description: Flag indicating if the server supports NAPTR records
+          example: false
+          readOnly: true
+          type: boolean
+        use_enable_monitoring:
+          description: Override enable monitoring inherited from grid level
+          example: false
+          type: boolean
+        enable_monitoring:
+          description: Flag indicating if the DNS service is monitored and controlled
+          example: false
+          type: boolean
+        use_synchronization_min_delay:
+          description: Flag to override synchronization interval from the MS Server
+          example: false
+          type: boolean
+        synchronization_min_delay:
+          description: Minimum number of minutes between two synchronizations
+          example: 1
+          format: int64
+          type: integer
+        use_enable_dns_reports_sync:
+          description: Override enable reports data inherited from grid level
+          example: false
+          type: boolean
+        enable_dns_reports_sync:
+          description: Enable or Disable MS DNS data for reports from this MS Server
+          example: false
+          type: boolean
+      type: object
+    ListMsserverResponse:
+      oneOf:
+      - description: The response format to retrieve __Msserver__ objects.
+        items:
+          $ref: '#/components/schemas/Msserver'
+        title: ListMsserverResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListMsserverResponseObject'
+    CreateMsserverResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateMsserverResponseAsObject'
+      - description: The response format to create __Msserver__.
+        title: CreateMsserverResponse
+        type: string
+    GetMsserverResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Msserver'
+      - $ref: '#/components/schemas/GetMsserverResponseObjectAsResult'
+    UpdateMsserverResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateMsserverResponseAsObject'
+      - description: The response format to update __Msserver__ .
+        title: UpdateMsserverResponse
+        type: string
+    MsserverAdsitesDomain:
+      additionalProperties: false
+      example:
+        network_view: Example network_view
+        read_only: false
+        _ref: _ref
+        name: Example name
+        ms_sync_master_name: Example ms_sync_master_name
+        ea_definition: Example ea_definition
+        netbios: Example netbios
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        ea_definition:
+          description: The name of the Extensible Attribute Definition object that
+            is linked to the Active Directory Sites Domain.
+          example: Example ea_definition
+          readOnly: true
+          type: string
+        ms_sync_master_name:
+          description: "The IP address or FQDN of the managing master for the MS server,\
+            \ if applicable."
+          example: Example ms_sync_master_name
+          readOnly: true
+          type: string
+        name:
+          description: The name of the Active Directory Domain properties object.
+          example: Example name
+          readOnly: true
+          type: string
+        netbios:
+          description: The NetBIOS name of the Active Directory Domain properties
+            object.
+          example: Example netbios
+          readOnly: true
+          type: string
+        network_view:
+          description: The name of the network view in which the Active Directory
+            Domain resides.
+          example: Example network_view
+          readOnly: true
+          type: string
+        read_only:
+          description: Determines whether the Active Directory Domain properties object
+            is a read-only object.
+          example: false
+          readOnly: true
+          type: boolean
+      type: object
+    ListMsserverAdsitesDomainResponse:
+      oneOf:
+      - description: The response format to retrieve __MsserverAdsitesDomain__ objects.
+        items:
+          $ref: '#/components/schemas/MsserverAdsitesDomain'
+        title: ListMsserverAdsitesDomainResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListMsserverAdsitesDomainResponseObject'
+    GetMsserverAdsitesDomainResponse:
+      oneOf:
+      - $ref: '#/components/schemas/MsserverAdsitesDomain'
+      - $ref: '#/components/schemas/GetMsserverAdsitesDomainResponseObjectAsResult'
+    UpdateMsserverAdsitesDomainResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateMsserverAdsitesDomainResponseAsObject'
+      - description: The response format to update __MsserverAdsitesDomain__ .
+        title: UpdateMsserverAdsitesDomainResponse
+        type: string
+    MsserverAdsitesSite:
+      additionalProperties: false
+      example:
+        domain: Example domain
+        _ref: _ref
+        name: Example name
+        networks:
+        - network
+        - network
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        domain:
+          description: The reference to the Active Directory Domain to which the site
+            belongs.
+          example: Example domain
+          type: string
+        name:
+          description: The name of the site properties object for the Active Directory
+            Sites.
+          example: Example name
+          type: string
+        networks:
+          description: The list of networks to which the device interfaces belong.
+          enum:
+          - network
+          items:
+            enum:
+            - network
+            type: string
+          type: array
+      type: object
+    ListMsserverAdsitesSiteResponse:
+      oneOf:
+      - description: The response format to retrieve __MsserverAdsitesSite__ objects.
+        items:
+          $ref: '#/components/schemas/MsserverAdsitesSite'
+        title: ListMsserverAdsitesSiteResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListMsserverAdsitesSiteResponseObject'
+    CreateMsserverAdsitesSiteResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateMsserverAdsitesSiteResponseAsObject'
+      - description: The response format to create __MsserverAdsitesSite__.
+        title: CreateMsserverAdsitesSiteResponse
+        type: string
+    GetMsserverAdsitesSiteResponse:
+      oneOf:
+      - $ref: '#/components/schemas/MsserverAdsitesSite'
+      - $ref: '#/components/schemas/GetMsserverAdsitesSiteResponseObjectAsResult'
+    UpdateMsserverAdsitesSiteResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateMsserverAdsitesSiteResponseAsObject'
+      - description: The response format to update __MsserverAdsitesSite__ .
+        title: UpdateMsserverAdsitesSiteResponse
+        type: string
+    MsserverDhcp:
+      additionalProperties: false
+      example:
+        network_view: Example network_view
+        server_name: Example server_name
+        synchronization_interval: 1
+        address: Example address
+        static_hosts: 1
+        total_hosts: 1
+        dhcp_utilization_status: Example dhcp_utilization_status
+        status_last_updated: 1
+        status_detail: Example status_detail
+        next_sync_control: Example next_sync_control
+        login_name: Example login_name
+        login_password: Example login_password
+        use_login: false
+        read_only: false
+        last_sync_ts: 1
+        _ref: _ref
+        comment: Example comment
+        dynamic_hosts: 1
+        supports_failover: false
+        dhcp_utilization: 1
+        status: Example status
+        use_synchronization_interval: false
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        address:
+          description: The address or FQDN of the DHCP Microsoft Server.
+          example: Example address
+          readOnly: true
+          type: string
+        comment:
+          description: Comment from Microsoft Server
+          example: Example comment
+          readOnly: true
+          type: string
+        dhcp_utilization:
+          description: The percentage of the total DHCP utilization of DHCP objects
+            belonging to the DHCP Microsoft Server multiplied by 1000. This is the
+            percentage of the total number of available IP addresses from all the
+            DHCP objects belonging to the DHCP Microsoft Server versus the total number
+            of all IP addresses in all of the DHCP objects on the DHCP Microsoft Server.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        dhcp_utilization_status:
+          description: A string describing the utilization level of DHCP objects that
+            belong to the DHCP Microsoft Server.
+          enum:
+          - FULL
+          - HIGH
+          - LOW
+          - NORMAL
+          example: Example dhcp_utilization_status
+          readOnly: true
+          type: string
+        dynamic_hosts:
+          description: The total number of DHCP leases issued for the DHCP objects
+            on the DHCP Microsoft Server.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        last_sync_ts:
+          description: Timestamp of the last synchronization attempt
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        login_name:
+          description: The login name of the DHCP Microsoft Server.
+          example: Example login_name
+          type: string
+        login_password:
+          description: The login password of the DHCP Microsoft Server.
+          example: Example login_password
+          type: string
+          writeOnly: true
+        network_view:
+          description: Network view to update
+          example: Example network_view
+          readOnly: true
+          type: string
+        next_sync_control:
+          description: Defines what control to apply on the DHCP server
+          enum:
+          - NONE
+          - START
+          - STOP
+          example: Example next_sync_control
+          type: string
+        read_only:
+          description: Whether Microsoft server is read only
+          example: false
+          readOnly: true
+          type: boolean
+        server_name:
+          description: Microsoft server address
+          example: Example server_name
+          readOnly: true
+          type: string
+        static_hosts:
+          description: The number of static DHCP addresses configured in DHCP objects
+            that belong to the DHCP Microsoft Server.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        status:
+          description: Status of the Microsoft DHCP Service
+          enum:
+          - FAILED
+          - WARNING
+          - WORKING
+          - INACTIVE
+          - UNKNOWN
+          - OFFLINE
+          example: Example status
+          type: string
+        status_detail:
+          description: Detailed status of the DHCP status
+          example: Example status_detail
+          readOnly: true
+          type: string
+        status_last_updated:
+          description: Timestamp of the last update
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        supports_failover:
+          description: Flag indicating if the DHCP supports Failover
+          example: false
+          readOnly: true
+          type: boolean
+        synchronization_interval:
+          description: The minimum number of minutes between two synchronizations.
+          example: 1
+          format: int64
+          type: integer
+        total_hosts:
+          description: The total number of DHCP addresses configured in DHCP objects
+            that belong to the DHCP Microsoft Server.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        use_login:
+          description: "Use flag for: login_name , login_password"
+          example: false
+          type: boolean
+        use_synchronization_interval:
+          description: "Use flag for: synchronization_interval"
+          example: false
+          type: boolean
+      type: object
+    ListMsserverDhcpResponse:
+      oneOf:
+      - description: The response format to retrieve __MsserverDhcp__ objects.
+        items:
+          $ref: '#/components/schemas/MsserverDhcp'
+        title: ListMsserverDhcpResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListMsserverDhcpResponseObject'
+    CreateMsserverDhcpResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateMsserverDhcpResponseAsObject'
+      - description: The response format to create __MsserverDhcp__.
+        title: CreateMsserverDhcpResponse
+        type: string
+    GetMsserverDhcpResponse:
+      oneOf:
+      - $ref: '#/components/schemas/MsserverDhcp'
+      - $ref: '#/components/schemas/GetMsserverDhcpResponseObjectAsResult'
+    UpdateMsserverDhcpResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateMsserverDhcpResponseAsObject'
+      - description: The response format to update __MsserverDhcp__ .
+        title: UpdateMsserverDhcpResponse
+        type: string
+    MsserverDns:
+      additionalProperties: false
+      example:
+        synchronization_interval: 1
+        use_enable_dns_reports_sync: false
+        address: Example address
+        login_name: Example login_name
+        login_password: Example login_password
+        use_login: false
+        _ref: _ref
+        enable_dns_reports_sync: false
+        use_synchronization_interval: false
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        address:
+          description: The address or FQDN of the DNS Microsoft Server.
+          example: Example address
+          readOnly: true
+          type: string
+        enable_dns_reports_sync:
+          description: Determines if synchronization of DNS reporting data from the
+            Microsoft server is enabled or not.
+          example: false
+          type: boolean
+        login_name:
+          description: The login name of the DNS Microsoft Server.
+          example: Example login_name
+          type: string
+        login_password:
+          description: The login password of the DNS Microsoft Server.
+          example: Example login_password
+          type: string
+          writeOnly: true
+        synchronization_interval:
+          description: The minimum number of minutes between two synchronizations.
+          example: 1
+          format: int64
+          type: integer
+        use_enable_dns_reports_sync:
+          description: "Use flag for: enable_dns_reports_sync"
+          example: false
+          type: boolean
+        use_login:
+          description: "Use flag for: login_name , login_password"
+          example: false
+          type: boolean
+        use_synchronization_interval:
+          description: "Use flag for: synchronization_interval"
+          example: false
+          type: boolean
+      type: object
+    ListMsserverDnsResponse:
+      oneOf:
+      - description: The response format to retrieve __MsserverDns__ objects.
+        items:
+          $ref: '#/components/schemas/MsserverDns'
+        title: ListMsserverDnsResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListMsserverDnsResponseObject'
+    CreateMsserverDnsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateMsserverDnsResponseAsObject'
+      - description: The response format to create __MsserverDns__.
+        title: CreateMsserverDnsResponse
+        type: string
+    GetMsserverDnsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/MsserverDns'
+      - $ref: '#/components/schemas/GetMsserverDnsResponseObjectAsResult'
+    UpdateMsserverDnsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateMsserverDnsResponseAsObject'
+      - description: The response format to update __MsserverDns__ .
+        title: UpdateMsserverDnsResponse
+        type: string
+    Mssuperscope:
+      additionalProperties: false
+      example:
+        high_water_mark_reset: 1
+        network_view: Example network_view
+        extattrs:
+          key:
+            value: ""
+        ranges:
+        - range
+        - range
+        static_hosts: 1
+        total_hosts: 1
+        dhcp_utilization_status: Example dhcp_utilization_status
+        high_water_mark: 1
+        low_water_mark_reset: 1
+        disable: false
+        _ref: _ref
+        low_water_mark: 1
+        name: Example name
+        comment: Example comment
+        dynamic_hosts: 1
+        dhcp_utilization: 1
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        comment:
+          description: The superscope descriptive comment.
+          example: Example comment
+          type: string
+        dhcp_utilization:
+          description: The percentage of the total DHCP usage of the ranges in the
+            superscope.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        dhcp_utilization_status:
+          description: Utilization level of the DHCP range objects that belong to
+            the superscope.
+          enum:
+          - FULL
+          - HIGH
+          - LOW
+          - NORMAL
+          example: Example dhcp_utilization_status
+          readOnly: true
+          type: string
+        disable:
+          description: Determines whether the superscope is disabled.
+          example: false
+          type: boolean
+        dynamic_hosts:
+          description: The total number of DHCP leases issued for the DHCP range objects
+            that belong to the superscope.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        high_water_mark:
+          description: The percentage value for DHCP range usage after which an alarm
+            will be active.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        high_water_mark_reset:
+          description: The percentage value for DHCP range usage after which an alarm
+            will be reset.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        low_water_mark:
+          description: The percentage value for DHCP range usage below which an alarm
+            will be active.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        low_water_mark_reset:
+          description: The percentage value for DHCP range usage below which an alarm
+            will be reset.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        name:
+          description: The name of the Microsoft DHCP superscope.
+          example: Example name
+          type: string
+        network_view:
+          description: The name of the network view in which the superscope resides.
+          example: Example network_view
+          type: string
+        ranges:
+          description: The list of DHCP ranges that are associated with the superscope.
+          enum:
+          - range
+          items:
+            enum:
+            - range
+            type: string
+          type: array
+        static_hosts:
+          description: The number of static DHCP addresses configured in DHCP range
+            objects that belong to the superscope.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        total_hosts:
+          description: The total number of DHCP addresses configured in DHCP range
+            objects that belong to the superscope.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    ListMssuperscopeResponse:
+      oneOf:
+      - description: The response format to retrieve __Mssuperscope__ objects.
+        items:
+          $ref: '#/components/schemas/Mssuperscope'
+        title: ListMssuperscopeResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListMssuperscopeResponseObject'
+    CreateMssuperscopeResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateMssuperscopeResponseAsObject'
+      - description: The response format to create __Mssuperscope__.
+        title: CreateMssuperscopeResponse
+        type: string
+    GetMssuperscopeResponse:
+      oneOf:
+      - $ref: '#/components/schemas/Mssuperscope'
+      - $ref: '#/components/schemas/GetMssuperscopeResponseObjectAsResult'
+    UpdateMssuperscopeResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateMssuperscopeResponseAsObject'
+      - description: The response format to update __Mssuperscope__ .
+        title: UpdateMssuperscopeResponse
+        type: string
+    ListMsserverResponseObject:
+      description: The response format to retrieve __Msserver__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Msserver'
+          type: array
+      title: ListMsserverResponseObject
+      type: object
+    CreateMsserverResponseAsObject:
+      description: The response format to create __Msserver__ in object format.
+      example:
+        result:
+          root_ad_domain: Example root_ad_domain
+          network_view: Example network_view
+          server_name: Example server_name
+          grid_member: Example grid_member
+          ms_rpc_timeout_in_seconds: 1
+          last_seen: 1
+          dhcp_server:
+            use_synchronization_min_delay: false
+            synchronization_min_delay: 1
+            status_last_updated: 1
+            next_sync_control: Example next_sync_control
+            login_name: Example login_name
+            use_login: false
+            login_password: Example login_password
+            managed: false
+            enable_monitoring: false
+            use_enable_invalid_mac: false
+            enable_invalid_mac: false
+            supports_failover: false
+            status: Example status
+            use_enable_monitoring: false
+          ms_max_connection: 1
+          synchronization_status: Example synchronization_status
+          ad_sites:
+            ldap_timeout: 1
+            use_synchronization_min_delay: false
+            synchronization_min_delay: 1
+            use_ldap_timeout: false
+            supports_ipv6: false
+            last_sync_status: Example last_sync_status
+            last_sync_detail: Example last_sync_detail
+            ldap_auth_port: 1
+            login_name: Example login_name
+            use_login: false
+            login_password: Example login_password
+            read_only: false
+            managed: false
+            last_sync_ts: 1
+            use_default_ip_site_link: false
+            ldap_encryption: Example ldap_encryption
+            default_ip_site_link: Example default_ip_site_link
+          login_password: Example login_password
+          read_only: false
+          disabled: false
+          use_ms_max_connection: false
+          address: Example address
+          extattrs:
+            key:
+              value: ""
+          ad_domain: Example ad_domain
+          connection_status: Example connection_status
+          synchronization_min_delay: 1
+          connection_status_detail: Example connection_status_detail
+          dns_server:
+            supports_ipv6_reverse: false
+            supports_rr_dname: false
+            use_enable_dns_reports_sync: false
+            login_password: Example login_password
+            managed: false
+            enable_monitoring: false
+            use_enable_monitoring: false
+            address: Example address
+            supports_rr_naptr: false
+            use_synchronization_min_delay: false
+            synchronization_min_delay: 1
+            supports_ipv6: false
+            last_sync_status: Example last_sync_status
+            status_last_updated: 1
+            last_sync_detail: Example last_sync_detail
+            supports_active_directory: false
+            status_detail: Example status_detail
+            next_sync_control: Example next_sync_control
+            login_name: Example login_name
+            use_login: false
+            last_sync_ts: 1
+            forwarders: Example forwarders
+            supports_dnssec: false
+            enable_dns_reports_sync: false
+            status: Example status
+          log_level: Example log_level
+          dns_view: Example dns_view
+          use_log_destination: false
+          version: Example version
+          synchronization_status_detail: Example synchronization_status_detail
+          login_name: Example login_name
+          ad_user:
+            synchronization_interval: 1
+            use_enable_ad_user_sync: false
+            use_enable_user_sync: false
+            use_synchronization_min_delay: false
+            last_sync_time: 1
+            last_sync_status: Example last_sync_status
+            last_sync_detail: Example last_sync_detail
+            login_name: Example login_name
+            login_password: Example login_password
+            last_success_sync_time: 1
+            use_login: false
+            enable_user_sync: false
+            use_synchronization_interval: false
+          log_destination: Example log_destination
+          _ref: _ref
+          comment: Example comment
+          use_ms_rpc_timeout_in_seconds: false
+          managing_member: Example managing_member
+      properties:
+        result:
+          $ref: '#/components/schemas/Msserver'
+      title: CreateMsserverResponseAsObject
+      type: object
+    GetMsserverResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Msserver__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Msserver'
+      title: GetMsserverResponseObjectAsResult
+      type: object
+    UpdateMsserverResponseAsObject:
+      description: The response format to update __Msserver__ in object format.
+      example:
+        result:
+          root_ad_domain: Example root_ad_domain
+          network_view: Example network_view
+          server_name: Example server_name
+          grid_member: Example grid_member
+          ms_rpc_timeout_in_seconds: 1
+          last_seen: 1
+          dhcp_server:
+            use_synchronization_min_delay: false
+            synchronization_min_delay: 1
+            status_last_updated: 1
+            next_sync_control: Example next_sync_control
+            login_name: Example login_name
+            use_login: false
+            login_password: Example login_password
+            managed: false
+            enable_monitoring: false
+            use_enable_invalid_mac: false
+            enable_invalid_mac: false
+            supports_failover: false
+            status: Example status
+            use_enable_monitoring: false
+          ms_max_connection: 1
+          synchronization_status: Example synchronization_status
+          ad_sites:
+            ldap_timeout: 1
+            use_synchronization_min_delay: false
+            synchronization_min_delay: 1
+            use_ldap_timeout: false
+            supports_ipv6: false
+            last_sync_status: Example last_sync_status
+            last_sync_detail: Example last_sync_detail
+            ldap_auth_port: 1
+            login_name: Example login_name
+            use_login: false
+            login_password: Example login_password
+            read_only: false
+            managed: false
+            last_sync_ts: 1
+            use_default_ip_site_link: false
+            ldap_encryption: Example ldap_encryption
+            default_ip_site_link: Example default_ip_site_link
+          login_password: Example login_password
+          read_only: false
+          disabled: false
+          use_ms_max_connection: false
+          address: Example address
+          extattrs:
+            key:
+              value: ""
+          ad_domain: Example ad_domain
+          connection_status: Example connection_status
+          synchronization_min_delay: 1
+          connection_status_detail: Example connection_status_detail
+          dns_server:
+            supports_ipv6_reverse: false
+            supports_rr_dname: false
+            use_enable_dns_reports_sync: false
+            login_password: Example login_password
+            managed: false
+            enable_monitoring: false
+            use_enable_monitoring: false
+            address: Example address
+            supports_rr_naptr: false
+            use_synchronization_min_delay: false
+            synchronization_min_delay: 1
+            supports_ipv6: false
+            last_sync_status: Example last_sync_status
+            status_last_updated: 1
+            last_sync_detail: Example last_sync_detail
+            supports_active_directory: false
+            status_detail: Example status_detail
+            next_sync_control: Example next_sync_control
+            login_name: Example login_name
+            use_login: false
+            last_sync_ts: 1
+            forwarders: Example forwarders
+            supports_dnssec: false
+            enable_dns_reports_sync: false
+            status: Example status
+          log_level: Example log_level
+          dns_view: Example dns_view
+          use_log_destination: false
+          version: Example version
+          synchronization_status_detail: Example synchronization_status_detail
+          login_name: Example login_name
+          ad_user:
+            synchronization_interval: 1
+            use_enable_ad_user_sync: false
+            use_enable_user_sync: false
+            use_synchronization_min_delay: false
+            last_sync_time: 1
+            last_sync_status: Example last_sync_status
+            last_sync_detail: Example last_sync_detail
+            login_name: Example login_name
+            login_password: Example login_password
+            last_success_sync_time: 1
+            use_login: false
+            enable_user_sync: false
+            use_synchronization_interval: false
+          log_destination: Example log_destination
+          _ref: _ref
+          comment: Example comment
+          use_ms_rpc_timeout_in_seconds: false
+          managing_member: Example managing_member
+      properties:
+        result:
+          $ref: '#/components/schemas/Msserver'
+      title: UpdateMsserverResponseAsObject
+      type: object
+    ListMsserverAdsitesDomainResponseObject:
+      description: The response format to retrieve __MsserverAdsitesDomain__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/MsserverAdsitesDomain'
+          type: array
+      title: ListMsserverAdsitesDomainResponseObject
+      type: object
+    GetMsserverAdsitesDomainResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __MsserverAdsitesDomain__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverAdsitesDomain'
+      title: GetMsserverAdsitesDomainResponseObjectAsResult
+      type: object
+    UpdateMsserverAdsitesDomainResponseAsObject:
+      description: The response format to update __MsserverAdsitesDomain__ in object
+        format.
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverAdsitesDomain'
+      title: UpdateMsserverAdsitesDomainResponseAsObject
+      type: object
+    ListMsserverAdsitesSiteResponseObject:
+      description: The response format to retrieve __MsserverAdsitesSite__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/MsserverAdsitesSite'
+          type: array
+      title: ListMsserverAdsitesSiteResponseObject
+      type: object
+    CreateMsserverAdsitesSiteResponseAsObject:
+      description: The response format to create __MsserverAdsitesSite__ in object
+        format.
+      example:
+        result:
+          domain: Example domain
+          _ref: _ref
+          name: Example name
+          networks:
+          - network
+          - network
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverAdsitesSite'
+      title: CreateMsserverAdsitesSiteResponseAsObject
+      type: object
+    GetMsserverAdsitesSiteResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __MsserverAdsitesSite__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverAdsitesSite'
+      title: GetMsserverAdsitesSiteResponseObjectAsResult
+      type: object
+    UpdateMsserverAdsitesSiteResponseAsObject:
+      description: The response format to update __MsserverAdsitesSite__ in object
+        format.
+      example:
+        result:
+          domain: Example domain
+          _ref: _ref
+          name: Example name
+          networks:
+          - network
+          - network
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverAdsitesSite'
+      title: UpdateMsserverAdsitesSiteResponseAsObject
+      type: object
+    ListMsserverDhcpResponseObject:
+      description: The response format to retrieve __MsserverDhcp__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/MsserverDhcp'
+          type: array
+      title: ListMsserverDhcpResponseObject
+      type: object
+    CreateMsserverDhcpResponseAsObject:
+      description: The response format to create __MsserverDhcp__ in object format.
+      example:
+        result:
+          network_view: Example network_view
+          server_name: Example server_name
+          synchronization_interval: 1
+          address: Example address
+          static_hosts: 1
+          total_hosts: 1
+          dhcp_utilization_status: Example dhcp_utilization_status
+          status_last_updated: 1
+          status_detail: Example status_detail
+          next_sync_control: Example next_sync_control
+          login_name: Example login_name
+          login_password: Example login_password
+          use_login: false
+          read_only: false
+          last_sync_ts: 1
+          _ref: _ref
+          comment: Example comment
+          dynamic_hosts: 1
+          supports_failover: false
+          dhcp_utilization: 1
+          status: Example status
+          use_synchronization_interval: false
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverDhcp'
+      title: CreateMsserverDhcpResponseAsObject
+      type: object
+    GetMsserverDhcpResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __MsserverDhcp__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverDhcp'
+      title: GetMsserverDhcpResponseObjectAsResult
+      type: object
+    UpdateMsserverDhcpResponseAsObject:
+      description: The response format to update __MsserverDhcp__ in object format.
+      example:
+        result:
+          network_view: Example network_view
+          server_name: Example server_name
+          synchronization_interval: 1
+          address: Example address
+          static_hosts: 1
+          total_hosts: 1
+          dhcp_utilization_status: Example dhcp_utilization_status
+          status_last_updated: 1
+          status_detail: Example status_detail
+          next_sync_control: Example next_sync_control
+          login_name: Example login_name
+          login_password: Example login_password
+          use_login: false
+          read_only: false
+          last_sync_ts: 1
+          _ref: _ref
+          comment: Example comment
+          dynamic_hosts: 1
+          supports_failover: false
+          dhcp_utilization: 1
+          status: Example status
+          use_synchronization_interval: false
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverDhcp'
+      title: UpdateMsserverDhcpResponseAsObject
+      type: object
+    ListMsserverDnsResponseObject:
+      description: The response format to retrieve __MsserverDns__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/MsserverDns'
+          type: array
+      title: ListMsserverDnsResponseObject
+      type: object
+    CreateMsserverDnsResponseAsObject:
+      description: The response format to create __MsserverDns__ in object format.
+      example:
+        result:
+          synchronization_interval: 1
+          use_enable_dns_reports_sync: false
+          address: Example address
+          login_name: Example login_name
+          login_password: Example login_password
+          use_login: false
+          _ref: _ref
+          enable_dns_reports_sync: false
+          use_synchronization_interval: false
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverDns'
+      title: CreateMsserverDnsResponseAsObject
+      type: object
+    GetMsserverDnsResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __MsserverDns__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverDns'
+      title: GetMsserverDnsResponseObjectAsResult
+      type: object
+    UpdateMsserverDnsResponseAsObject:
+      description: The response format to update __MsserverDns__ in object format.
+      example:
+        result:
+          synchronization_interval: 1
+          use_enable_dns_reports_sync: false
+          address: Example address
+          login_name: Example login_name
+          login_password: Example login_password
+          use_login: false
+          _ref: _ref
+          enable_dns_reports_sync: false
+          use_synchronization_interval: false
+      properties:
+        result:
+          $ref: '#/components/schemas/MsserverDns'
+      title: UpdateMsserverDnsResponseAsObject
+      type: object
+    ListMssuperscopeResponseObject:
+      description: The response format to retrieve __Mssuperscope__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/Mssuperscope'
+          type: array
+      title: ListMssuperscopeResponseObject
+      type: object
+    CreateMssuperscopeResponseAsObject:
+      description: The response format to create __Mssuperscope__ in object format.
+      example:
+        result:
+          high_water_mark_reset: 1
+          network_view: Example network_view
+          extattrs:
+            key:
+              value: ""
+          ranges:
+          - range
+          - range
+          static_hosts: 1
+          total_hosts: 1
+          dhcp_utilization_status: Example dhcp_utilization_status
+          high_water_mark: 1
+          low_water_mark_reset: 1
+          disable: false
+          _ref: _ref
+          low_water_mark: 1
+          name: Example name
+          comment: Example comment
+          dynamic_hosts: 1
+          dhcp_utilization: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/Mssuperscope'
+      title: CreateMssuperscopeResponseAsObject
+      type: object
+    GetMssuperscopeResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __Mssuperscope__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/Mssuperscope'
+      title: GetMssuperscopeResponseObjectAsResult
+      type: object
+    UpdateMssuperscopeResponseAsObject:
+      description: The response format to update __Mssuperscope__ in object format.
+      example:
+        result:
+          high_water_mark_reset: 1
+          network_view: Example network_view
+          extattrs:
+            key:
+              value: ""
+          ranges:
+          - range
+          - range
+          static_hosts: 1
+          total_hosts: 1
+          dhcp_utilization_status: Example dhcp_utilization_status
+          high_water_mark: 1
+          low_water_mark_reset: 1
+          disable: false
+          _ref: _ref
+          low_water_mark: 1
+          name: Example name
+          comment: Example comment
+          dynamic_hosts: 1
+          dhcp_utilization: 1
+      properties:
+        result:
+          $ref: '#/components/schemas/Mssuperscope'
+      title: UpdateMssuperscopeResponseAsObject
+      type: object
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http

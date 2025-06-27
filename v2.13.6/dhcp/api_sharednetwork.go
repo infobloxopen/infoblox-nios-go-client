@@ -23,150 +23,386 @@ import (
 
 type SharednetworkAPI interface {
 	/*
-		Get Retrieve sharednetwork objects
-
-		Returns a list of sharednetwork objects matching the search criteria
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SharednetworkAPIGetRequest
-	*/
-	Get(ctx context.Context) SharednetworkAPIGetRequest
-
-	// GetExecute executes the request
-	//  @return ListSharednetworkResponse
-	GetExecute(r SharednetworkAPIGetRequest) (*ListSharednetworkResponse, *http.Response, error)
-	/*
-		Post Create a sharednetwork object
+		Create Create a sharednetwork object
 
 		Creates a new sharednetwork object
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return SharednetworkAPIPostRequest
+		@return SharednetworkAPICreateRequest
 	*/
-	Post(ctx context.Context) SharednetworkAPIPostRequest
+	Create(ctx context.Context) SharednetworkAPICreateRequest
 
-	// PostExecute executes the request
+	// CreateExecute executes the request
 	//  @return CreateSharednetworkResponse
-	PostExecute(r SharednetworkAPIPostRequest) (*CreateSharednetworkResponse, *http.Response, error)
+	CreateExecute(r SharednetworkAPICreateRequest) (*CreateSharednetworkResponse, *http.Response, error)
 	/*
-		ReferenceDelete Delete a sharednetwork object
+		Delete Delete a sharednetwork object
 
 		Deletes a specific sharednetwork object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the sharednetwork object
-		@return SharednetworkAPIReferenceDeleteRequest
+		@return SharednetworkAPIDeleteRequest
 	*/
-	ReferenceDelete(ctx context.Context, reference string) SharednetworkAPIReferenceDeleteRequest
+	Delete(ctx context.Context, reference string) SharednetworkAPIDeleteRequest
 
-	// ReferenceDeleteExecute executes the request
-	ReferenceDeleteExecute(r SharednetworkAPIReferenceDeleteRequest) (*http.Response, error)
+	// DeleteExecute executes the request
+	DeleteExecute(r SharednetworkAPIDeleteRequest) (*http.Response, error)
 	/*
-		ReferenceGet Get a specific sharednetwork object
+		List Retrieve sharednetwork objects
+
+		Returns a list of sharednetwork objects matching the search criteria
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return SharednetworkAPIListRequest
+	*/
+	List(ctx context.Context) SharednetworkAPIListRequest
+
+	// ListExecute executes the request
+	//  @return ListSharednetworkResponse
+	ListExecute(r SharednetworkAPIListRequest) (*ListSharednetworkResponse, *http.Response, error)
+	/*
+		Read Get a specific sharednetwork object
 
 		Returns a specific sharednetwork object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the sharednetwork object
-		@return SharednetworkAPIReferenceGetRequest
+		@return SharednetworkAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) SharednetworkAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) SharednetworkAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetSharednetworkResponse
-	ReferenceGetExecute(r SharednetworkAPIReferenceGetRequest) (*GetSharednetworkResponse, *http.Response, error)
+	ReadExecute(r SharednetworkAPIReadRequest) (*GetSharednetworkResponse, *http.Response, error)
 	/*
-		ReferencePut Update a sharednetwork object
+		Update Update a sharednetwork object
 
 		Updates a specific sharednetwork object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the sharednetwork object
-		@return SharednetworkAPIReferencePutRequest
+		@return SharednetworkAPIUpdateRequest
 	*/
-	ReferencePut(ctx context.Context, reference string) SharednetworkAPIReferencePutRequest
+	Update(ctx context.Context, reference string) SharednetworkAPIUpdateRequest
 
-	// ReferencePutExecute executes the request
+	// UpdateExecute executes the request
 	//  @return UpdateSharednetworkResponse
-	ReferencePutExecute(r SharednetworkAPIReferencePutRequest) (*UpdateSharednetworkResponse, *http.Response, error)
+	UpdateExecute(r SharednetworkAPIUpdateRequest) (*UpdateSharednetworkResponse, *http.Response, error)
 }
 
 // SharednetworkAPIService SharednetworkAPI service
 type SharednetworkAPIService internal.Service
 
-type SharednetworkAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     SharednetworkAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type SharednetworkAPICreateRequest struct {
+	ctx              context.Context
+	ApiService       SharednetworkAPI
+	sharednetwork    *Sharednetwork
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
+}
+
+// Object data to create
+func (r SharednetworkAPICreateRequest) Sharednetwork(sharednetwork Sharednetwork) SharednetworkAPICreateRequest {
+	r.sharednetwork = &sharednetwork
+	return r
 }
 
 // Enter the field names followed by comma
-func (r SharednetworkAPIGetRequest) ReturnFields(returnFields string) SharednetworkAPIGetRequest {
+func (r SharednetworkAPICreateRequest) ReturnFields(returnFields string) SharednetworkAPICreateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharednetworkAPIGetRequest) ReturnFields2(returnFields2 string) SharednetworkAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r SharednetworkAPICreateRequest) ReturnFieldsPlus(returnFieldsPlus string) SharednetworkAPICreateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r SharednetworkAPICreateRequest) ReturnAsObject(returnAsObject int32) SharednetworkAPICreateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+func (r SharednetworkAPICreateRequest) Execute() (*CreateSharednetworkResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
+}
+
+/*
+Create Create a sharednetwork object
+
+Creates a new sharednetwork object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SharednetworkAPICreateRequest
+*/
+func (a *SharednetworkAPIService) Create(ctx context.Context) SharednetworkAPICreateRequest {
+	return SharednetworkAPICreateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CreateSharednetworkResponse
+func (a *SharednetworkAPIService) CreateExecute(r SharednetworkAPICreateRequest) (*CreateSharednetworkResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *CreateSharednetworkResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.Create")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/sharednetwork"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.sharednetwork == nil {
+		return localVarReturnValue, nil, internal.ReportError("sharednetwork is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.sharednetwork != nil {
+		if r.sharednetwork.ExtAttrs == nil {
+			r.sharednetwork.ExtAttrs = &map[string]ExtAttrs{}
+		}
+		for k, v := range a.Client.Cfg.DefaultExtAttrs {
+			if _, ok := (*r.sharednetwork.ExtAttrs)[k]; !ok {
+				(*r.sharednetwork.ExtAttrs)[k] = ExtAttrs{
+					Value: v.Value,
+				}
+			}
+		}
+	}
+	// body params
+	localVarPostBody = r.sharednetwork
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SharednetworkAPIDeleteRequest struct {
+	ctx        context.Context
+	ApiService SharednetworkAPI
+	reference  string
+}
+
+func (r SharednetworkAPIDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
+}
+
+/*
+Delete Delete a sharednetwork object
+
+Deletes a specific sharednetwork object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param reference Reference of the sharednetwork object
+	@return SharednetworkAPIDeleteRequest
+*/
+func (a *SharednetworkAPIService) Delete(ctx context.Context, reference string) SharednetworkAPIDeleteRequest {
+	return SharednetworkAPIDeleteRequest{
+		ApiService: a,
+		ctx:        ctx,
+		reference:  reference,
+	}
+}
+
+// Execute executes the request
+func (a *SharednetworkAPIService) DeleteExecute(r SharednetworkAPIDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []internal.FormFile
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.Delete")
+	if err != nil {
+		return nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/sharednetwork/{reference}"
+	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type SharednetworkAPIListRequest struct {
+	ctx              context.Context
+	ApiService       SharednetworkAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
+}
+
+// Enter the field names followed by comma
+func (r SharednetworkAPIListRequest) ReturnFields(returnFields string) SharednetworkAPIListRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r SharednetworkAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) SharednetworkAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r SharednetworkAPIGetRequest) MaxResults(maxResults int32) SharednetworkAPIGetRequest {
+func (r SharednetworkAPIListRequest) MaxResults(maxResults int32) SharednetworkAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SharednetworkAPIGetRequest) ReturnAsObject(returnAsObject int32) SharednetworkAPIGetRequest {
+func (r SharednetworkAPIListRequest) ReturnAsObject(returnAsObject int32) SharednetworkAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r SharednetworkAPIGetRequest) Paging(paging int32) SharednetworkAPIGetRequest {
+func (r SharednetworkAPIListRequest) Paging(paging int32) SharednetworkAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r SharednetworkAPIGetRequest) PageId(pageId string) SharednetworkAPIGetRequest {
+func (r SharednetworkAPIListRequest) PageId(pageId string) SharednetworkAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r SharednetworkAPIGetRequest) Filters(filters map[string]interface{}) SharednetworkAPIGetRequest {
+func (r SharednetworkAPIListRequest) Filters(filters map[string]interface{}) SharednetworkAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r SharednetworkAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) SharednetworkAPIGetRequest {
+func (r SharednetworkAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SharednetworkAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r SharednetworkAPIGetRequest) Execute() (*ListSharednetworkResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r SharednetworkAPIListRequest) Execute() (*ListSharednetworkResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve sharednetwork objects
+List Retrieve sharednetwork objects
 
 Returns a list of sharednetwork objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SharednetworkAPIGetRequest
+	@return SharednetworkAPIListRequest
 */
-func (a *SharednetworkAPIService) Get(ctx context.Context) SharednetworkAPIGetRequest {
-	return SharednetworkAPIGetRequest{
+func (a *SharednetworkAPIService) List(ctx context.Context) SharednetworkAPIListRequest {
+	return SharednetworkAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -175,7 +411,7 @@ func (a *SharednetworkAPIService) Get(ctx context.Context) SharednetworkAPIGetRe
 // Execute executes the request
 //
 //	@return ListSharednetworkResponse
-func (a *SharednetworkAPIService) GetExecute(r SharednetworkAPIGetRequest) (*ListSharednetworkResponse, *http.Response, error) {
+func (a *SharednetworkAPIService) ListExecute(r SharednetworkAPIListRequest) (*ListSharednetworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,7 +419,7 @@ func (a *SharednetworkAPIService) GetExecute(r SharednetworkAPIGetRequest) (*Lis
 		localVarReturnValue *ListSharednetworkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -197,8 +433,8 @@ func (a *SharednetworkAPIService) GetExecute(r SharednetworkAPIGetRequest) (*Lis
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -265,284 +501,48 @@ func (a *SharednetworkAPIService) GetExecute(r SharednetworkAPIGetRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SharednetworkAPIPostRequest struct {
-	ctx            context.Context
-	ApiService     SharednetworkAPI
-	sharednetwork  *Sharednetwork
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to create
-func (r SharednetworkAPIPostRequest) Sharednetwork(sharednetwork Sharednetwork) SharednetworkAPIPostRequest {
-	r.sharednetwork = &sharednetwork
-	return r
+type SharednetworkAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       SharednetworkAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r SharednetworkAPIPostRequest) ReturnFields(returnFields string) SharednetworkAPIPostRequest {
+func (r SharednetworkAPIReadRequest) ReturnFields(returnFields string) SharednetworkAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharednetworkAPIPostRequest) ReturnFields2(returnFields2 string) SharednetworkAPIPostRequest {
-	r.returnFields2 = &returnFields2
+func (r SharednetworkAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) SharednetworkAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SharednetworkAPIPostRequest) ReturnAsObject(returnAsObject int32) SharednetworkAPIPostRequest {
+func (r SharednetworkAPIReadRequest) ReturnAsObject(returnAsObject int32) SharednetworkAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SharednetworkAPIPostRequest) Execute() (*CreateSharednetworkResponse, *http.Response, error) {
-	return r.ApiService.PostExecute(r)
+func (r SharednetworkAPIReadRequest) Execute() (*GetSharednetworkResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-Post Create a sharednetwork object
-
-Creates a new sharednetwork object
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return SharednetworkAPIPostRequest
-*/
-func (a *SharednetworkAPIService) Post(ctx context.Context) SharednetworkAPIPostRequest {
-	return SharednetworkAPIPostRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return CreateSharednetworkResponse
-func (a *SharednetworkAPIService) PostExecute(r SharednetworkAPIPostRequest) (*CreateSharednetworkResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *CreateSharednetworkResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.Post")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/sharednetwork"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.sharednetwork == nil {
-		return localVarReturnValue, nil, internal.ReportError("sharednetwork is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.sharednetwork != nil {
-		if r.sharednetwork.Extattrs == nil {
-			r.sharednetwork.Extattrs = &map[string]ExtAttrs{}
-		}
-		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.sharednetwork.Extattrs)[k]; !ok {
-				(*r.sharednetwork.Extattrs)[k] = ExtAttrs{
-					Value: v.Value,
-				}
-			}
-		}
-	}
-	// body params
-	localVarPostBody = r.sharednetwork
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type SharednetworkAPIReferenceDeleteRequest struct {
-	ctx        context.Context
-	ApiService SharednetworkAPI
-	reference  string
-}
-
-func (r SharednetworkAPIReferenceDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ReferenceDeleteExecute(r)
-}
-
-/*
-ReferenceDelete Delete a sharednetwork object
-
-Deletes a specific sharednetwork object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the sharednetwork object
-	@return SharednetworkAPIReferenceDeleteRequest
-*/
-func (a *SharednetworkAPIService) ReferenceDelete(ctx context.Context, reference string) SharednetworkAPIReferenceDeleteRequest {
-	return SharednetworkAPIReferenceDeleteRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-func (a *SharednetworkAPIService) ReferenceDeleteExecute(r SharednetworkAPIReferenceDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []internal.FormFile
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.ReferenceDelete")
-	if err != nil {
-		return nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/sharednetwork/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type SharednetworkAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     SharednetworkAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Enter the field names followed by comma
-func (r SharednetworkAPIReferenceGetRequest) ReturnFields(returnFields string) SharednetworkAPIReferenceGetRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharednetworkAPIReferenceGetRequest) ReturnFields2(returnFields2 string) SharednetworkAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r SharednetworkAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) SharednetworkAPIReferenceGetRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r SharednetworkAPIReferenceGetRequest) Execute() (*GetSharednetworkResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
-}
-
-/*
-ReferenceGet Get a specific sharednetwork object
+Read Get a specific sharednetwork object
 
 Returns a specific sharednetwork object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the sharednetwork object
-	@return SharednetworkAPIReferenceGetRequest
+	@return SharednetworkAPIReadRequest
 */
-func (a *SharednetworkAPIService) ReferenceGet(ctx context.Context, reference string) SharednetworkAPIReferenceGetRequest {
-	return SharednetworkAPIReferenceGetRequest{
+func (a *SharednetworkAPIService) Read(ctx context.Context, reference string) SharednetworkAPIReadRequest {
+	return SharednetworkAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -552,7 +552,7 @@ func (a *SharednetworkAPIService) ReferenceGet(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return GetSharednetworkResponse
-func (a *SharednetworkAPIService) ReferenceGetExecute(r SharednetworkAPIReferenceGetRequest) (*GetSharednetworkResponse, *http.Response, error) {
+func (a *SharednetworkAPIService) ReadExecute(r SharednetworkAPIReadRequest) (*GetSharednetworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -560,7 +560,7 @@ func (a *SharednetworkAPIService) ReferenceGetExecute(r SharednetworkAPIReferenc
 		localVarReturnValue *GetSharednetworkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -575,8 +575,8 @@ func (a *SharednetworkAPIService) ReferenceGetExecute(r SharednetworkAPIReferenc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -628,55 +628,55 @@ func (a *SharednetworkAPIService) ReferenceGetExecute(r SharednetworkAPIReferenc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type SharednetworkAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     SharednetworkAPI
-	reference      string
-	sharednetwork  *Sharednetwork
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type SharednetworkAPIUpdateRequest struct {
+	ctx              context.Context
+	ApiService       SharednetworkAPI
+	reference        string
+	sharednetwork    *Sharednetwork
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Object data to update
-func (r SharednetworkAPIReferencePutRequest) Sharednetwork(sharednetwork Sharednetwork) SharednetworkAPIReferencePutRequest {
+func (r SharednetworkAPIUpdateRequest) Sharednetwork(sharednetwork Sharednetwork) SharednetworkAPIUpdateRequest {
 	r.sharednetwork = &sharednetwork
 	return r
 }
 
 // Enter the field names followed by comma
-func (r SharednetworkAPIReferencePutRequest) ReturnFields(returnFields string) SharednetworkAPIReferencePutRequest {
+func (r SharednetworkAPIUpdateRequest) ReturnFields(returnFields string) SharednetworkAPIUpdateRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r SharednetworkAPIReferencePutRequest) ReturnFields2(returnFields2 string) SharednetworkAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
+func (r SharednetworkAPIUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) SharednetworkAPIUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r SharednetworkAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) SharednetworkAPIReferencePutRequest {
+func (r SharednetworkAPIUpdateRequest) ReturnAsObject(returnAsObject int32) SharednetworkAPIUpdateRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r SharednetworkAPIReferencePutRequest) Execute() (*UpdateSharednetworkResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
+func (r SharednetworkAPIUpdateRequest) Execute() (*UpdateSharednetworkResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ReferencePut Update a sharednetwork object
+Update Update a sharednetwork object
 
 Updates a specific sharednetwork object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the sharednetwork object
-	@return SharednetworkAPIReferencePutRequest
+	@return SharednetworkAPIUpdateRequest
 */
-func (a *SharednetworkAPIService) ReferencePut(ctx context.Context, reference string) SharednetworkAPIReferencePutRequest {
-	return SharednetworkAPIReferencePutRequest{
+func (a *SharednetworkAPIService) Update(ctx context.Context, reference string) SharednetworkAPIUpdateRequest {
+	return SharednetworkAPIUpdateRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -686,7 +686,7 @@ func (a *SharednetworkAPIService) ReferencePut(ctx context.Context, reference st
 // Execute executes the request
 //
 //	@return UpdateSharednetworkResponse
-func (a *SharednetworkAPIService) ReferencePutExecute(r SharednetworkAPIReferencePutRequest) (*UpdateSharednetworkResponse, *http.Response, error) {
+func (a *SharednetworkAPIService) UpdateExecute(r SharednetworkAPIUpdateRequest) (*UpdateSharednetworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -694,7 +694,7 @@ func (a *SharednetworkAPIService) ReferencePutExecute(r SharednetworkAPIReferenc
 		localVarReturnValue *UpdateSharednetworkResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.ReferencePut")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "SharednetworkAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -712,8 +712,8 @@ func (a *SharednetworkAPIService) ReferencePutExecute(r SharednetworkAPIReferenc
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -736,12 +736,12 @@ func (a *SharednetworkAPIService) ReferencePutExecute(r SharednetworkAPIReferenc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if len(a.Client.Cfg.DefaultExtAttrs) > 0 && r.sharednetwork != nil {
-		if r.sharednetwork.Extattrs == nil {
-			r.sharednetwork.Extattrs = &map[string]ExtAttrs{}
+		if r.sharednetwork.ExtAttrs == nil {
+			r.sharednetwork.ExtAttrs = &map[string]ExtAttrs{}
 		}
 		for k, v := range a.Client.Cfg.DefaultExtAttrs {
-			if _, ok := (*r.sharednetwork.Extattrs)[k]; !ok {
-				(*r.sharednetwork.Extattrs)[k] = ExtAttrs{
+			if _, ok := (*r.sharednetwork.ExtAttrs)[k]; !ok {
+				(*r.sharednetwork.ExtAttrs)[k] = ExtAttrs{
 					Value: v.Value,
 				}
 			}

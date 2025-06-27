@@ -23,10 +23,10 @@ type APIClient struct {
 	*internal.APIClient
 
 	// API Services
+	DhcpStatisticsAPI DhcpStatisticsAPI
 	DhcpfailoverAPI DhcpfailoverAPI
 	DhcpoptiondefinitionAPI DhcpoptiondefinitionAPI
 	DhcpoptionspaceAPI DhcpoptionspaceAPI
-	DhcpstatisticsAPI DhcpstatisticsAPI
 	FilterfingerprintAPI FilterfingerprintAPI
 	FiltermacAPI FiltermacAPI
 	FilternacAPI FilternacAPI
@@ -35,7 +35,6 @@ type APIClient struct {
 	FingerprintAPI FingerprintAPI
 	FixedaddressAPI FixedaddressAPI
 	FixedaddresstemplateAPI FixedaddresstemplateAPI
-	GriddhcppropertiesAPI GriddhcppropertiesAPI
 	Ipv6dhcpoptiondefinitionAPI Ipv6dhcpoptiondefinitionAPI
 	Ipv6dhcpoptionspaceAPI Ipv6dhcpoptionspaceAPI
 	Ipv6filteroptionAPI Ipv6filteroptionAPI
@@ -46,9 +45,6 @@ type APIClient struct {
 	Ipv6sharednetworkAPI Ipv6sharednetworkAPI
 	LeaseAPI LeaseAPI
 	MacfilteraddressAPI MacfilteraddressAPI
-	MemberdhcppropertiesAPI MemberdhcppropertiesAPI
-	MsserverdhcpAPI MsserverdhcpAPI
-	MssuperscopeAPI MssuperscopeAPI
 	OrderedrangesAPI OrderedrangesAPI
 	RangeAPI RangeAPI
 	RangetemplateAPI RangetemplateAPI
@@ -60,7 +56,8 @@ type APIClient struct {
 // The client can be configured with a variadic option. The following options are available:
 // - WithClientName(string) sets the name of the client using the SDK.
 // - WithNIOSHostUrl(string) sets the URL for NIOS Portal.
-// - WithNIOSAuth(string) sets the NIOSAuth for accessing the NIOS Portal.
+// - WithNIOSUsername(string) sets the Username for the NIOS Portal.
+// - WithNIOSPassword(string) sets the Password for the NIOS Portal.
 // - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
 // - WithDefaultExtAttrs(map[string]struct{ Value string }) sets the tags the client can set by default for objects that has tags support.
 // - WithDebug() sets the debug mode.
@@ -74,10 +71,10 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	c.APIClient = internal.NewAPIClient(serviceBasePath, cfg)
 
 	// API Services
+	c.DhcpStatisticsAPI = (*DhcpStatisticsAPIService)(&c.Common)
 	c.DhcpfailoverAPI = (*DhcpfailoverAPIService)(&c.Common)
 	c.DhcpoptiondefinitionAPI = (*DhcpoptiondefinitionAPIService)(&c.Common)
 	c.DhcpoptionspaceAPI = (*DhcpoptionspaceAPIService)(&c.Common)
-	c.DhcpstatisticsAPI = (*DhcpstatisticsAPIService)(&c.Common)
 	c.FilterfingerprintAPI = (*FilterfingerprintAPIService)(&c.Common)
 	c.FiltermacAPI = (*FiltermacAPIService)(&c.Common)
 	c.FilternacAPI = (*FilternacAPIService)(&c.Common)
@@ -86,7 +83,6 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	c.FingerprintAPI = (*FingerprintAPIService)(&c.Common)
 	c.FixedaddressAPI = (*FixedaddressAPIService)(&c.Common)
 	c.FixedaddresstemplateAPI = (*FixedaddresstemplateAPIService)(&c.Common)
-	c.GriddhcppropertiesAPI = (*GriddhcppropertiesAPIService)(&c.Common)
 	c.Ipv6dhcpoptiondefinitionAPI = (*Ipv6dhcpoptiondefinitionAPIService)(&c.Common)
 	c.Ipv6dhcpoptionspaceAPI = (*Ipv6dhcpoptionspaceAPIService)(&c.Common)
 	c.Ipv6filteroptionAPI = (*Ipv6filteroptionAPIService)(&c.Common)
@@ -97,9 +93,6 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	c.Ipv6sharednetworkAPI = (*Ipv6sharednetworkAPIService)(&c.Common)
 	c.LeaseAPI = (*LeaseAPIService)(&c.Common)
 	c.MacfilteraddressAPI = (*MacfilteraddressAPIService)(&c.Common)
-	c.MemberdhcppropertiesAPI = (*MemberdhcppropertiesAPIService)(&c.Common)
-	c.MsserverdhcpAPI = (*MsserverdhcpAPIService)(&c.Common)
-	c.MssuperscopeAPI = (*MssuperscopeAPIService)(&c.Common)
 	c.OrderedrangesAPI = (*OrderedrangesAPIService)(&c.Common)
 	c.RangeAPI = (*RangeAPIService)(&c.Common)
 	c.RangetemplateAPI = (*RangetemplateAPIService)(&c.Common)

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ApplyAsClass** | Pointer to **bool** | Determines if apply as class is enabled or not. If this flag is set to \&quot;true\&quot; the filter is treated as global DHCP class, e.g it is written to DHCPv6 configuration file even if it is not present in any DHCP range. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment of a DHCP IPv6 filter option object. | [optional] 
 **Expression** | Pointer to **string** | The conditional expression of a DHCP IPv6 filter option object. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **LeaseTime** | Pointer to **int64** | Determines the lease time of a DHCP IPv6 filter option object. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP IPv6 option filter object. | [optional] 
 **OptionList** | Pointer to [**[]Ipv6filteroptionOptionList**](Ipv6filteroptionOptionList.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
@@ -133,30 +133,30 @@ SetExpression sets Expression field to given value.
 
 HasExpression returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Ipv6filteroption) GetExtattrs() map[string]ExtAttrs`
+`func (o *Ipv6filteroption) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Ipv6filteroption) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Ipv6filteroption) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Ipv6filteroption) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Ipv6filteroption) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Ipv6filteroption) HasExtattrs() bool`
+`func (o *Ipv6filteroption) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLeaseTime
 

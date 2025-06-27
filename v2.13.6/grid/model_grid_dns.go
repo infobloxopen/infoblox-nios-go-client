@@ -56,7 +56,7 @@ type GridDns struct {
 	// The DNS Ruleset object names assigned at the Grid level for blacklist redirection.
 	BlacklistRulesets []string `json:"blacklist_rulesets,omitempty"`
 	// The list of bulk host name templates. There are four Infoblox predefined bulk host name templates. Template Name Template Format \"Four Octets\" -$1-$2-$3-$4 \"Three Octets\" -$2-$3-$4 \"Two Octets\" -$3-$4 \"One Octet\" -$4
-	BulkHostNameTemplates []map[string]interface{} `json:"bulk_host_name_templates,omitempty"`
+	BulkHostNameTemplates []string `json:"bulk_host_name_templates,omitempty"`
 	// Determines if the capture of DNS queries for all domains is enabled or disabled.
 	CaptureDnsQueriesOnAllDomains *bool `json:"capture_dns_queries_on_all_domains,omitempty"`
 	// Determines whether the application of BIND check-names for zone transfers and DDNS updates are enabled.
@@ -220,7 +220,7 @@ type GridDns struct {
 	// Flag for taking EA values from IPAM Ranges into consideration for the DTC topology EA database.
 	GenEadbFromRanges *bool `json:"gen_eadb_from_ranges,omitempty"`
 	// The list of GSS-TSIG keys for a Grid DNS object.
-	GssTsigKeys []map[string]interface{} `json:"gss_tsig_keys,omitempty"`
+	GssTsigKeys []string `json:"gss_tsig_keys,omitempty"`
 	// Determines last queried ACL for the specified IPv4 or IPv6 addresses and networks in scavenging settings.
 	LastQueriedAcl    []GridDnsLastQueriedAcl   `json:"last_queried_acl,omitempty"`
 	LoggingCategories *GridDnsLoggingCategories `json:"logging_categories,omitempty"`
@@ -259,7 +259,7 @@ type GridDns struct {
 	// Determines if the host RRset order on secondaries is preserved or not.
 	PreserveHostRrsetOrderOnSecondaries *bool `json:"preserve_host_rrset_order_on_secondaries,omitempty"`
 	// The list of record name policies.
-	ProtocolRecordNamePolicies []map[string]interface{} `json:"protocol_record_name_policies,omitempty"`
+	ProtocolRecordNamePolicies []string `json:"protocol_record_name_policies,omitempty"`
 	// The list of domain names that trigger DNS query rewrite.
 	QueryRewriteDomainNames []string `json:"query_rewrite_domain_names,omitempty"`
 	// The domain name prefix for DNS query rewrite.
@@ -288,7 +288,6 @@ type GridDns struct {
 	RpzDropIpRuleMinPrefixLengthIpv6 *int64 `json:"rpz_drop_ip_rule_min_prefix_length_ipv6,omitempty"`
 	// Determines if recursive RPZ lookups are enabled.
 	RpzQnameWaitRecurse *bool                      `json:"rpz_qname_wait_recurse,omitempty"`
-	RunScavenging       map[string]interface{}     `json:"run_scavenging,omitempty"`
 	ScavengingSettings  *GridDnsScavengingSettings `json:"scavenging_settings,omitempty"`
 	// The number of maximum concurrent SOA queries per second. Valid values are unsigned integer between 20 and 1000, inclusive.
 	SerialQueryRate *int64 `json:"serial_query_rate,omitempty"`
@@ -940,9 +939,9 @@ func (o *GridDns) SetBlacklistRulesets(v []string) {
 }
 
 // GetBulkHostNameTemplates returns the BulkHostNameTemplates field value if set, zero value otherwise.
-func (o *GridDns) GetBulkHostNameTemplates() []map[string]interface{} {
+func (o *GridDns) GetBulkHostNameTemplates() []string {
 	if o == nil || IsNil(o.BulkHostNameTemplates) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.BulkHostNameTemplates
@@ -950,7 +949,7 @@ func (o *GridDns) GetBulkHostNameTemplates() []map[string]interface{} {
 
 // GetBulkHostNameTemplatesOk returns a tuple with the BulkHostNameTemplates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridDns) GetBulkHostNameTemplatesOk() ([]map[string]interface{}, bool) {
+func (o *GridDns) GetBulkHostNameTemplatesOk() ([]string, bool) {
 	if o == nil || IsNil(o.BulkHostNameTemplates) {
 		return nil, false
 	}
@@ -966,8 +965,8 @@ func (o *GridDns) HasBulkHostNameTemplates() bool {
 	return false
 }
 
-// SetBulkHostNameTemplates gets a reference to the given []map[string]interface{} and assigns it to the BulkHostNameTemplates field.
-func (o *GridDns) SetBulkHostNameTemplates(v []map[string]interface{}) {
+// SetBulkHostNameTemplates gets a reference to the given []string and assigns it to the BulkHostNameTemplates field.
+func (o *GridDns) SetBulkHostNameTemplates(v []string) {
 	o.BulkHostNameTemplates = v
 }
 
@@ -3628,9 +3627,9 @@ func (o *GridDns) SetGenEadbFromRanges(v bool) {
 }
 
 // GetGssTsigKeys returns the GssTsigKeys field value if set, zero value otherwise.
-func (o *GridDns) GetGssTsigKeys() []map[string]interface{} {
+func (o *GridDns) GetGssTsigKeys() []string {
 	if o == nil || IsNil(o.GssTsigKeys) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.GssTsigKeys
@@ -3638,7 +3637,7 @@ func (o *GridDns) GetGssTsigKeys() []map[string]interface{} {
 
 // GetGssTsigKeysOk returns a tuple with the GssTsigKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridDns) GetGssTsigKeysOk() ([]map[string]interface{}, bool) {
+func (o *GridDns) GetGssTsigKeysOk() ([]string, bool) {
 	if o == nil || IsNil(o.GssTsigKeys) {
 		return nil, false
 	}
@@ -3654,8 +3653,8 @@ func (o *GridDns) HasGssTsigKeys() bool {
 	return false
 }
 
-// SetGssTsigKeys gets a reference to the given []map[string]interface{} and assigns it to the GssTsigKeys field.
-func (o *GridDns) SetGssTsigKeys(v []map[string]interface{}) {
+// SetGssTsigKeys gets a reference to the given []string and assigns it to the GssTsigKeys field.
+func (o *GridDns) SetGssTsigKeys(v []string) {
 	o.GssTsigKeys = v
 }
 
@@ -4268,9 +4267,9 @@ func (o *GridDns) SetPreserveHostRrsetOrderOnSecondaries(v bool) {
 }
 
 // GetProtocolRecordNamePolicies returns the ProtocolRecordNamePolicies field value if set, zero value otherwise.
-func (o *GridDns) GetProtocolRecordNamePolicies() []map[string]interface{} {
+func (o *GridDns) GetProtocolRecordNamePolicies() []string {
 	if o == nil || IsNil(o.ProtocolRecordNamePolicies) {
-		var ret []map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.ProtocolRecordNamePolicies
@@ -4278,7 +4277,7 @@ func (o *GridDns) GetProtocolRecordNamePolicies() []map[string]interface{} {
 
 // GetProtocolRecordNamePoliciesOk returns a tuple with the ProtocolRecordNamePolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridDns) GetProtocolRecordNamePoliciesOk() ([]map[string]interface{}, bool) {
+func (o *GridDns) GetProtocolRecordNamePoliciesOk() ([]string, bool) {
 	if o == nil || IsNil(o.ProtocolRecordNamePolicies) {
 		return nil, false
 	}
@@ -4294,8 +4293,8 @@ func (o *GridDns) HasProtocolRecordNamePolicies() bool {
 	return false
 }
 
-// SetProtocolRecordNamePolicies gets a reference to the given []map[string]interface{} and assigns it to the ProtocolRecordNamePolicies field.
-func (o *GridDns) SetProtocolRecordNamePolicies(v []map[string]interface{}) {
+// SetProtocolRecordNamePolicies gets a reference to the given []string and assigns it to the ProtocolRecordNamePolicies field.
+func (o *GridDns) SetProtocolRecordNamePolicies(v []string) {
 	o.ProtocolRecordNamePolicies = v
 }
 
@@ -4777,38 +4776,6 @@ func (o *GridDns) HasRpzQnameWaitRecurse() bool {
 // SetRpzQnameWaitRecurse gets a reference to the given bool and assigns it to the RpzQnameWaitRecurse field.
 func (o *GridDns) SetRpzQnameWaitRecurse(v bool) {
 	o.RpzQnameWaitRecurse = &v
-}
-
-// GetRunScavenging returns the RunScavenging field value if set, zero value otherwise.
-func (o *GridDns) GetRunScavenging() map[string]interface{} {
-	if o == nil || IsNil(o.RunScavenging) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.RunScavenging
-}
-
-// GetRunScavengingOk returns a tuple with the RunScavenging field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridDns) GetRunScavengingOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.RunScavenging) {
-		return map[string]interface{}{}, false
-	}
-	return o.RunScavenging, true
-}
-
-// HasRunScavenging returns a boolean if a field has been set.
-func (o *GridDns) HasRunScavenging() bool {
-	if o != nil && !IsNil(o.RunScavenging) {
-		return true
-	}
-
-	return false
-}
-
-// SetRunScavenging gets a reference to the given map[string]interface{} and assigns it to the RunScavenging field.
-func (o *GridDns) SetRunScavenging(v map[string]interface{}) {
-	o.RunScavenging = v
 }
 
 // GetScavengingSettings returns the ScavengingSettings field value if set, zero value otherwise.
@@ -5621,9 +5588,6 @@ func (o GridDns) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RpzQnameWaitRecurse) {
 		toSerialize["rpz_qname_wait_recurse"] = o.RpzQnameWaitRecurse
-	}
-	if !IsNil(o.RunScavenging) {
-		toSerialize["run_scavenging"] = o.RunScavenging
 	}
 	if !IsNil(o.ScavengingSettings) {
 		toSerialize["scavenging_settings"] = o.ScavengingSettings

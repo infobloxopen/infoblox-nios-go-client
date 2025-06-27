@@ -24,34 +24,35 @@ type APIClient struct {
 
 	// API Services
 	DtcAPI DtcAPI
-	DtcallrecordsAPI DtcallrecordsAPI
-	DtccertificateAPI DtccertificateAPI
-	DtclbdnAPI DtclbdnAPI
-	DtcmonitorAPI DtcmonitorAPI
-	DtcmonitorhttpAPI DtcmonitorhttpAPI
-	DtcmonitoricmpAPI DtcmonitoricmpAPI
-	DtcmonitorpdpAPI DtcmonitorpdpAPI
-	DtcmonitorsipAPI DtcmonitorsipAPI
-	DtcmonitorsnmpAPI DtcmonitorsnmpAPI
-	DtcmonitortcpAPI DtcmonitortcpAPI
-	DtcobjectAPI DtcobjectAPI
-	DtcpoolAPI DtcpoolAPI
-	DtcrecordaAPI DtcrecordaAPI
-	DtcrecordaaaaAPI DtcrecordaaaaAPI
-	DtcrecordcnameAPI DtcrecordcnameAPI
-	DtcrecordnaptrAPI DtcrecordnaptrAPI
-	DtcrecordsrvAPI DtcrecordsrvAPI
-	DtcserverAPI DtcserverAPI
-	DtctopologyAPI DtctopologyAPI
-	DtctopologylabelAPI DtctopologylabelAPI
-	DtctopologyruleAPI DtctopologyruleAPI
+	DtcAllrecordsAPI DtcAllrecordsAPI
+	DtcCertificateAPI DtcCertificateAPI
+	DtcLbdnAPI DtcLbdnAPI
+	DtcMonitorAPI DtcMonitorAPI
+	DtcMonitorHttpAPI DtcMonitorHttpAPI
+	DtcMonitorIcmpAPI DtcMonitorIcmpAPI
+	DtcMonitorPdpAPI DtcMonitorPdpAPI
+	DtcMonitorSipAPI DtcMonitorSipAPI
+	DtcMonitorSnmpAPI DtcMonitorSnmpAPI
+	DtcMonitorTcpAPI DtcMonitorTcpAPI
+	DtcObjectAPI DtcObjectAPI
+	DtcPoolAPI DtcPoolAPI
+	DtcRecordAAPI DtcRecordAAPI
+	DtcRecordAaaaAPI DtcRecordAaaaAPI
+	DtcRecordCnameAPI DtcRecordCnameAPI
+	DtcRecordNaptrAPI DtcRecordNaptrAPI
+	DtcRecordSrvAPI DtcRecordSrvAPI
+	DtcServerAPI DtcServerAPI
+	DtcTopologyAPI DtcTopologyAPI
+	DtcTopologyLabelAPI DtcTopologyLabelAPI
+	DtcTopologyRuleAPI DtcTopologyRuleAPI
 }
 
 // NewAPIClient creates a new API client.
 // The client can be configured with a variadic option. The following options are available:
 // - WithClientName(string) sets the name of the client using the SDK.
 // - WithNIOSHostUrl(string) sets the URL for NIOS Portal.
-// - WithNIOSAuth(string) sets the NIOSAuth for accessing the NIOS Portal.
+// - WithNIOSUsername(string) sets the Username for the NIOS Portal.
+// - WithNIOSPassword(string) sets the Password for the NIOS Portal.
 // - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
 // - WithDefaultExtAttrs(map[string]struct{ Value string }) sets the tags the client can set by default for objects that has tags support.
 // - WithDebug() sets the debug mode.
@@ -66,27 +67,27 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 
 	// API Services
 	c.DtcAPI = (*DtcAPIService)(&c.Common)
-	c.DtcallrecordsAPI = (*DtcallrecordsAPIService)(&c.Common)
-	c.DtccertificateAPI = (*DtccertificateAPIService)(&c.Common)
-	c.DtclbdnAPI = (*DtclbdnAPIService)(&c.Common)
-	c.DtcmonitorAPI = (*DtcmonitorAPIService)(&c.Common)
-	c.DtcmonitorhttpAPI = (*DtcmonitorhttpAPIService)(&c.Common)
-	c.DtcmonitoricmpAPI = (*DtcmonitoricmpAPIService)(&c.Common)
-	c.DtcmonitorpdpAPI = (*DtcmonitorpdpAPIService)(&c.Common)
-	c.DtcmonitorsipAPI = (*DtcmonitorsipAPIService)(&c.Common)
-	c.DtcmonitorsnmpAPI = (*DtcmonitorsnmpAPIService)(&c.Common)
-	c.DtcmonitortcpAPI = (*DtcmonitortcpAPIService)(&c.Common)
-	c.DtcobjectAPI = (*DtcobjectAPIService)(&c.Common)
-	c.DtcpoolAPI = (*DtcpoolAPIService)(&c.Common)
-	c.DtcrecordaAPI = (*DtcrecordaAPIService)(&c.Common)
-	c.DtcrecordaaaaAPI = (*DtcrecordaaaaAPIService)(&c.Common)
-	c.DtcrecordcnameAPI = (*DtcrecordcnameAPIService)(&c.Common)
-	c.DtcrecordnaptrAPI = (*DtcrecordnaptrAPIService)(&c.Common)
-	c.DtcrecordsrvAPI = (*DtcrecordsrvAPIService)(&c.Common)
-	c.DtcserverAPI = (*DtcserverAPIService)(&c.Common)
-	c.DtctopologyAPI = (*DtctopologyAPIService)(&c.Common)
-	c.DtctopologylabelAPI = (*DtctopologylabelAPIService)(&c.Common)
-	c.DtctopologyruleAPI = (*DtctopologyruleAPIService)(&c.Common)
+	c.DtcAllrecordsAPI = (*DtcAllrecordsAPIService)(&c.Common)
+	c.DtcCertificateAPI = (*DtcCertificateAPIService)(&c.Common)
+	c.DtcLbdnAPI = (*DtcLbdnAPIService)(&c.Common)
+	c.DtcMonitorAPI = (*DtcMonitorAPIService)(&c.Common)
+	c.DtcMonitorHttpAPI = (*DtcMonitorHttpAPIService)(&c.Common)
+	c.DtcMonitorIcmpAPI = (*DtcMonitorIcmpAPIService)(&c.Common)
+	c.DtcMonitorPdpAPI = (*DtcMonitorPdpAPIService)(&c.Common)
+	c.DtcMonitorSipAPI = (*DtcMonitorSipAPIService)(&c.Common)
+	c.DtcMonitorSnmpAPI = (*DtcMonitorSnmpAPIService)(&c.Common)
+	c.DtcMonitorTcpAPI = (*DtcMonitorTcpAPIService)(&c.Common)
+	c.DtcObjectAPI = (*DtcObjectAPIService)(&c.Common)
+	c.DtcPoolAPI = (*DtcPoolAPIService)(&c.Common)
+	c.DtcRecordAAPI = (*DtcRecordAAPIService)(&c.Common)
+	c.DtcRecordAaaaAPI = (*DtcRecordAaaaAPIService)(&c.Common)
+	c.DtcRecordCnameAPI = (*DtcRecordCnameAPIService)(&c.Common)
+	c.DtcRecordNaptrAPI = (*DtcRecordNaptrAPIService)(&c.Common)
+	c.DtcRecordSrvAPI = (*DtcRecordSrvAPIService)(&c.Common)
+	c.DtcServerAPI = (*DtcServerAPIService)(&c.Common)
+	c.DtcTopologyAPI = (*DtcTopologyAPIService)(&c.Common)
+	c.DtcTopologyLabelAPI = (*DtcTopologyLabelAPIService)(&c.Common)
+	c.DtcTopologyRuleAPI = (*DtcTopologyRuleAPIService)(&c.Common)
 
 	return c
 }

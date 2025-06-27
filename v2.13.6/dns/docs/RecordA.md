@@ -15,9 +15,10 @@ Name | Type | Description | Notes
 **Disable** | Pointer to **bool** | Determines if the record is disabled or not. False means that the record is enabled. | [optional] 
 **DiscoveredData** | Pointer to [**RecordADiscoveredData**](RecordADiscoveredData.md) |  | [optional] 
 **DnsName** | Pointer to **string** | The name for an A record in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ForbidReclamation** | Pointer to **bool** | Determines if the reclamation is allowed for the record or not. | [optional] 
-**Ipv4addr** | Pointer to **string** | The IPv4 Address of the record. | [optional] 
+**Ipv4addr** | Pointer to [**RecordAIpv4addr**](RecordAIpv4addr.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**RecordAMsAdUserData**](RecordAMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | Name for A record in FQDN format. This value can be in unicode format. | [optional] 
@@ -323,30 +324,30 @@ SetDnsName sets DnsName field to given value.
 
 HasDnsName returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *RecordA) GetExtattrs() map[string]ExtAttrs`
+`func (o *RecordA) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *RecordA) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *RecordA) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *RecordA) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *RecordA) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *RecordA) HasExtattrs() bool`
+`func (o *RecordA) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetForbidReclamation
 
@@ -375,20 +376,20 @@ HasForbidReclamation returns a boolean if a field has been set.
 
 ### GetIpv4addr
 
-`func (o *RecordA) GetIpv4addr() string`
+`func (o *RecordA) GetIpv4addr() RecordAIpv4addr`
 
 GetIpv4addr returns the Ipv4addr field if non-nil, zero value otherwise.
 
 ### GetIpv4addrOk
 
-`func (o *RecordA) GetIpv4addrOk() (*string, bool)`
+`func (o *RecordA) GetIpv4addrOk() (*RecordAIpv4addr, bool)`
 
 GetIpv4addrOk returns a tuple with the Ipv4addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv4addr
 
-`func (o *RecordA) SetIpv4addr(v string)`
+`func (o *RecordA) SetIpv4addr(v RecordAIpv4addr)`
 
 SetIpv4addr sets Ipv4addr field to given value.
 
@@ -397,6 +398,31 @@ SetIpv4addr sets Ipv4addr field to given value.
 `func (o *RecordA) HasIpv4addr() bool`
 
 HasIpv4addr returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *RecordA) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *RecordA) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *RecordA) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *RecordA) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetLastQueried
 

@@ -1,17 +1,17 @@
-# DtccertificateAPI
+# DtcCertificateAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtccertificateAPI.md#Get) | **Get** /dtc:certificate | Retrieve dtc:certificate objects
-[**ReferenceGet**](DtccertificateAPI.md#ReferenceGet) | **Get** /dtc:certificate/{reference} | Get a specific dtc:certificate object
+[**List**](DtcCertificateAPI.md#List) | **Get** /dtc:certificate | Retrieve dtc:certificate objects
+[**Read**](DtcCertificateAPI.md#Read) | **Get** /dtc:certificate/{reference} | Get a specific dtc:certificate object
 
 
 
-## Get
+## List
 
-> ListDtcCertificateResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcCertificateResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:certificate objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtccertificateAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcCertificateAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtccertificateAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcCertificateAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcCertificateResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtccertificateAPI.Get`: %v\n", resp)
+	// response from `List`: ListDtcCertificateResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcCertificateAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtccertificateAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcCertificateAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetDtcCertificateResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcCertificateResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:certificate object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:certificate object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtccertificateAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcCertificateAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtccertificateAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcCertificateAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcCertificateResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtccertificateAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDtcCertificateResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcCertificateAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtccertificateAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcCertificateAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

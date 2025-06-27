@@ -7,16 +7,12 @@ Name | Type | Description | Notes
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **AdvancedPollingSettings** | Pointer to [**DiscoveryGridpropertiesAdvancedPollingSettings**](DiscoveryGridpropertiesAdvancedPollingSettings.md) |  | [optional] 
 **AdvancedSdnPollingSettings** | Pointer to [**DiscoveryGridpropertiesAdvancedSdnPollingSettings**](DiscoveryGridpropertiesAdvancedSdnPollingSettings.md) |  | [optional] 
-**AdvisorRunNow** | Pointer to **map[string]interface{}** |  | [optional] 
 **AdvisorSettings** | Pointer to [**DiscoveryGridpropertiesAdvisorSettings**](DiscoveryGridpropertiesAdvisorSettings.md) |  | [optional] 
-**AdvisorTestConnection** | Pointer to **map[string]interface{}** |  | [optional] 
 **AutoConversionSettings** | Pointer to [**[]DiscoveryGridpropertiesAutoConversionSettings**](DiscoveryGridpropertiesAutoConversionSettings.md) | Automatic conversion settings. | [optional] 
 **BasicPollingSettings** | Pointer to [**DiscoveryGridpropertiesBasicPollingSettings**](DiscoveryGridpropertiesBasicPollingSettings.md) |  | [optional] 
 **BasicSdnPollingSettings** | Pointer to [**DiscoveryGridpropertiesBasicSdnPollingSettings**](DiscoveryGridpropertiesBasicSdnPollingSettings.md) |  | [optional] 
 **CliCredentials** | Pointer to [**[]DiscoveryGridpropertiesCliCredentials**](DiscoveryGridpropertiesCliCredentials.md) | Discovery CLI credentials. | [optional] 
 **DeviceHints** | Pointer to [**[]DiscoveryGridpropertiesDeviceHints**](DiscoveryGridpropertiesDeviceHints.md) | Device Hints. | [optional] 
-**Diagnostic** | Pointer to **map[string]interface{}** |  | [optional] 
-**DiagnosticStatus** | Pointer to **map[string]interface{}** |  | [optional] 
 **DiscoveryBlackoutSetting** | Pointer to [**DiscoveryGridpropertiesDiscoveryBlackoutSetting**](DiscoveryGridpropertiesDiscoveryBlackoutSetting.md) |  | [optional] 
 **DnsLookupOption** | Pointer to **string** | The type of the devices the DNS processor operates on. | [optional] 
 **DnsLookupThrottle** | Pointer to **int64** | The percentage of available capacity the DNS processor operates at. Valid values are unsigned integer between 1 and 100, inclusive. | [optional] 
@@ -129,31 +125,6 @@ SetAdvancedSdnPollingSettings sets AdvancedSdnPollingSettings field to given val
 
 HasAdvancedSdnPollingSettings returns a boolean if a field has been set.
 
-### GetAdvisorRunNow
-
-`func (o *DiscoveryGridproperties) GetAdvisorRunNow() map[string]interface{}`
-
-GetAdvisorRunNow returns the AdvisorRunNow field if non-nil, zero value otherwise.
-
-### GetAdvisorRunNowOk
-
-`func (o *DiscoveryGridproperties) GetAdvisorRunNowOk() (*map[string]interface{}, bool)`
-
-GetAdvisorRunNowOk returns a tuple with the AdvisorRunNow field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdvisorRunNow
-
-`func (o *DiscoveryGridproperties) SetAdvisorRunNow(v map[string]interface{})`
-
-SetAdvisorRunNow sets AdvisorRunNow field to given value.
-
-### HasAdvisorRunNow
-
-`func (o *DiscoveryGridproperties) HasAdvisorRunNow() bool`
-
-HasAdvisorRunNow returns a boolean if a field has been set.
-
 ### GetAdvisorSettings
 
 `func (o *DiscoveryGridproperties) GetAdvisorSettings() DiscoveryGridpropertiesAdvisorSettings`
@@ -178,31 +149,6 @@ SetAdvisorSettings sets AdvisorSettings field to given value.
 `func (o *DiscoveryGridproperties) HasAdvisorSettings() bool`
 
 HasAdvisorSettings returns a boolean if a field has been set.
-
-### GetAdvisorTestConnection
-
-`func (o *DiscoveryGridproperties) GetAdvisorTestConnection() map[string]interface{}`
-
-GetAdvisorTestConnection returns the AdvisorTestConnection field if non-nil, zero value otherwise.
-
-### GetAdvisorTestConnectionOk
-
-`func (o *DiscoveryGridproperties) GetAdvisorTestConnectionOk() (*map[string]interface{}, bool)`
-
-GetAdvisorTestConnectionOk returns a tuple with the AdvisorTestConnection field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdvisorTestConnection
-
-`func (o *DiscoveryGridproperties) SetAdvisorTestConnection(v map[string]interface{})`
-
-SetAdvisorTestConnection sets AdvisorTestConnection field to given value.
-
-### HasAdvisorTestConnection
-
-`func (o *DiscoveryGridproperties) HasAdvisorTestConnection() bool`
-
-HasAdvisorTestConnection returns a boolean if a field has been set.
 
 ### GetAutoConversionSettings
 
@@ -328,56 +274,6 @@ SetDeviceHints sets DeviceHints field to given value.
 `func (o *DiscoveryGridproperties) HasDeviceHints() bool`
 
 HasDeviceHints returns a boolean if a field has been set.
-
-### GetDiagnostic
-
-`func (o *DiscoveryGridproperties) GetDiagnostic() map[string]interface{}`
-
-GetDiagnostic returns the Diagnostic field if non-nil, zero value otherwise.
-
-### GetDiagnosticOk
-
-`func (o *DiscoveryGridproperties) GetDiagnosticOk() (*map[string]interface{}, bool)`
-
-GetDiagnosticOk returns a tuple with the Diagnostic field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDiagnostic
-
-`func (o *DiscoveryGridproperties) SetDiagnostic(v map[string]interface{})`
-
-SetDiagnostic sets Diagnostic field to given value.
-
-### HasDiagnostic
-
-`func (o *DiscoveryGridproperties) HasDiagnostic() bool`
-
-HasDiagnostic returns a boolean if a field has been set.
-
-### GetDiagnosticStatus
-
-`func (o *DiscoveryGridproperties) GetDiagnosticStatus() map[string]interface{}`
-
-GetDiagnosticStatus returns the DiagnosticStatus field if non-nil, zero value otherwise.
-
-### GetDiagnosticStatusOk
-
-`func (o *DiscoveryGridproperties) GetDiagnosticStatusOk() (*map[string]interface{}, bool)`
-
-GetDiagnosticStatusOk returns a tuple with the DiagnosticStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDiagnosticStatus
-
-`func (o *DiscoveryGridproperties) SetDiagnosticStatus(v map[string]interface{})`
-
-SetDiagnosticStatus sets DiagnosticStatus field to given value.
-
-### HasDiagnosticStatus
-
-`func (o *DiscoveryGridproperties) HasDiagnosticStatus() bool`
-
-HasDiagnosticStatus returns a boolean if a field has been set.
 
 ### GetDiscoveryBlackoutSetting
 

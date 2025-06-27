@@ -4,17 +4,153 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](SharednetworkAPI.md#Get) | **Get** /sharednetwork | Retrieve sharednetwork objects
-[**Post**](SharednetworkAPI.md#Post) | **Post** /sharednetwork | Create a sharednetwork object
-[**ReferenceDelete**](SharednetworkAPI.md#ReferenceDelete) | **Delete** /sharednetwork/{reference} | Delete a sharednetwork object
-[**ReferenceGet**](SharednetworkAPI.md#ReferenceGet) | **Get** /sharednetwork/{reference} | Get a specific sharednetwork object
-[**ReferencePut**](SharednetworkAPI.md#ReferencePut) | **Put** /sharednetwork/{reference} | Update a sharednetwork object
+[**Create**](SharednetworkAPI.md#Create) | **Post** /sharednetwork | Create a sharednetwork object
+[**Delete**](SharednetworkAPI.md#Delete) | **Delete** /sharednetwork/{reference} | Delete a sharednetwork object
+[**List**](SharednetworkAPI.md#List) | **Get** /sharednetwork | Retrieve sharednetwork objects
+[**Read**](SharednetworkAPI.md#Read) | **Get** /sharednetwork/{reference} | Get a specific sharednetwork object
+[**Update**](SharednetworkAPI.md#Update) | **Put** /sharednetwork/{reference} | Update a sharednetwork object
 
 
 
-## Get
+## Create
 
-> ListSharednetworkResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateSharednetworkResponse Create(ctx).Sharednetwork(sharednetwork).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a sharednetwork object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+)
+
+func main() {
+	sharednetwork := *dhcp.NewSharednetwork() // Sharednetwork | Object data to create
+
+	apiClient := dhcp.NewAPIClient()
+	resp, r, err := apiClient.SharednetworkAPI.Create(context.Background()).Sharednetwork(sharednetwork).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateSharednetworkResponse
+	fmt.Fprintf(os.Stdout, "Response from `SharednetworkAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SharednetworkAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**sharednetwork** | [**Sharednetwork**](Sharednetwork.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateSharednetworkResponse**](CreateSharednetworkResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a sharednetwork object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the sharednetwork object
+
+	apiClient := dhcp.NewAPIClient()
+	r, err := apiClient.SharednetworkAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the sharednetwork object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `SharednetworkAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListSharednetworkResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve sharednetwork objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.SharednetworkAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.SharednetworkAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListSharednetworkResponse
-	fmt.Fprintf(os.Stdout, "Response from `SharednetworkAPI.Get`: %v\n", resp)
+	// response from `List`: ListSharednetworkResponse
+	fmt.Fprintf(os.Stdout, "Response from `SharednetworkAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SharednetworkAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SharednetworkAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateSharednetworkResponse Post(ctx).Sharednetwork(sharednetwork).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a sharednetwork object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-)
-
-func main() {
-	sharednetwork := *dhcp.NewSharednetwork() // Sharednetwork | Object data to create
-
-	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.SharednetworkAPI.Post(context.Background()).Sharednetwork(sharednetwork).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateSharednetworkResponse
-	fmt.Fprintf(os.Stdout, "Response from `SharednetworkAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SharednetworkAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**sharednetwork** | [**Sharednetwork**](Sharednetwork.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateSharednetworkResponse**](CreateSharednetworkResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a sharednetwork object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the sharednetwork object
-
-	apiClient := dhcp.NewAPIClient()
-	r, err := apiClient.SharednetworkAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the sharednetwork object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `SharednetworkAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetSharednetworkResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetSharednetworkResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific sharednetwork object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the sharednetwork object
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.SharednetworkAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.SharednetworkAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetSharednetworkResponse
-	fmt.Fprintf(os.Stdout, "Response from `SharednetworkAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetSharednetworkResponse
+	fmt.Fprintf(os.Stdout, "Response from `SharednetworkAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SharednetworkAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SharednetworkAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateSharednetworkResponse ReferencePut(ctx, reference).Sharednetwork(sharednetwork).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateSharednetworkResponse Update(ctx, reference).Sharednetwork(sharednetwork).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a sharednetwork object
 
@@ -318,13 +318,13 @@ func main() {
 	sharednetwork := *dhcp.NewSharednetwork() // Sharednetwork | Object data to update
 
 	apiClient := dhcp.NewAPIClient()
-	resp, r, err := apiClient.SharednetworkAPI.ReferencePut(context.Background(), reference).Sharednetwork(sharednetwork).Execute()
+	resp, r, err := apiClient.SharednetworkAPI.Update(context.Background(), reference).Sharednetwork(sharednetwork).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SharednetworkAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateSharednetworkResponse
-	fmt.Fprintf(os.Stdout, "Response from `SharednetworkAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateSharednetworkResponse
+	fmt.Fprintf(os.Stdout, "Response from `SharednetworkAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `SharednetworkAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `SharednetworkAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **sharednetwork** | [**Sharednetwork**](Sharednetwork.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

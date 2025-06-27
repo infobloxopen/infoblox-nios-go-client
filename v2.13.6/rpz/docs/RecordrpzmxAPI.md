@@ -1,20 +1,156 @@
-# RecordrpzmxAPI
+# RecordRpzMxAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecordrpzmxAPI.md#Get) | **Get** /record:rpz:mx | Retrieve record:rpz:mx objects
-[**Post**](RecordrpzmxAPI.md#Post) | **Post** /record:rpz:mx | Create a record:rpz:mx object
-[**ReferenceDelete**](RecordrpzmxAPI.md#ReferenceDelete) | **Delete** /record:rpz:mx/{reference} | Delete a record:rpz:mx object
-[**ReferenceGet**](RecordrpzmxAPI.md#ReferenceGet) | **Get** /record:rpz:mx/{reference} | Get a specific record:rpz:mx object
-[**ReferencePut**](RecordrpzmxAPI.md#ReferencePut) | **Put** /record:rpz:mx/{reference} | Update a record:rpz:mx object
+[**Create**](RecordRpzMxAPI.md#Create) | **Post** /record:rpz:mx | Create a record:rpz:mx object
+[**Delete**](RecordRpzMxAPI.md#Delete) | **Delete** /record:rpz:mx/{reference} | Delete a record:rpz:mx object
+[**List**](RecordRpzMxAPI.md#List) | **Get** /record:rpz:mx | Retrieve record:rpz:mx objects
+[**Read**](RecordRpzMxAPI.md#Read) | **Get** /record:rpz:mx/{reference} | Get a specific record:rpz:mx object
+[**Update**](RecordRpzMxAPI.md#Update) | **Put** /record:rpz:mx/{reference} | Update a record:rpz:mx object
 
 
 
-## Get
+## Create
 
-> ListRecordRpzMxResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateRecordRpzMxResponse Create(ctx).RecordRpzMx(recordRpzMx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a record:rpz:mx object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
+)
+
+func main() {
+	recordRpzMx := *rpz.NewRecordRpzMx() // RecordRpzMx | Object data to create
+
+	apiClient := rpz.NewAPIClient()
+	resp, r, err := apiClient.RecordRpzMxAPI.Create(context.Background()).RecordRpzMx(recordRpzMx).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzMxAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateRecordRpzMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzMxAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordRpzMxAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**recordRpzMx** | [**RecordRpzMx**](RecordRpzMx.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateRecordRpzMxResponse**](CreateRecordRpzMxResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a record:rpz:mx object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the record:rpz:mx object
+
+	apiClient := rpz.NewAPIClient()
+	r, err := apiClient.RecordRpzMxAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzMxAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the record:rpz:mx object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `RecordRpzMxAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListRecordRpzMxResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:rpz:mx objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzmxAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordRpzMxAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzmxAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzMxAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordRpzMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzmxAPI.Get`: %v\n", resp)
+	// response from `List`: ListRecordRpzMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzMxAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzmxAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzMxAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateRecordRpzMxResponse Post(ctx).RecordRpzMx(recordRpzMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a record:rpz:mx object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
-)
-
-func main() {
-	recordRpzMx := *rpz.NewRecordRpzMx() // RecordRpzMx | Object data to create
-
-	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzmxAPI.Post(context.Background()).RecordRpzMx(recordRpzMx).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzmxAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateRecordRpzMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzmxAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordrpzmxAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**recordRpzMx** | [**RecordRpzMx**](RecordRpzMx.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateRecordRpzMxResponse**](CreateRecordRpzMxResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a record:rpz:mx object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/rpz"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the record:rpz:mx object
-
-	apiClient := rpz.NewAPIClient()
-	r, err := apiClient.RecordrpzmxAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzmxAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the record:rpz:mx object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `RecordrpzmxAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetRecordRpzMxResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordRpzMxResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:rpz:mx object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:rpz:mx object
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzmxAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordRpzMxAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzmxAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzMxAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordRpzMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzmxAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordRpzMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzMxAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzmxAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzMxAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateRecordRpzMxResponse ReferencePut(ctx, reference).RecordRpzMx(recordRpzMx).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateRecordRpzMxResponse Update(ctx, reference).RecordRpzMx(recordRpzMx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a record:rpz:mx object
 
@@ -318,13 +318,13 @@ func main() {
 	recordRpzMx := *rpz.NewRecordRpzMx() // RecordRpzMx | Object data to update
 
 	apiClient := rpz.NewAPIClient()
-	resp, r, err := apiClient.RecordrpzmxAPI.ReferencePut(context.Background(), reference).RecordRpzMx(recordRpzMx).Execute()
+	resp, r, err := apiClient.RecordRpzMxAPI.Update(context.Background(), reference).RecordRpzMx(recordRpzMx).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecordrpzmxAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordRpzMxAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateRecordRpzMxResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecordrpzmxAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateRecordRpzMxResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordRpzMxAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecordrpzmxAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordRpzMxAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **recordRpzMx** | [**RecordRpzMx**](RecordRpzMx.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

@@ -23,124 +23,110 @@ import (
 
 type DtcAPI interface {
 	/*
-		Get Retrieve dtc objects
+		List Retrieve dtc objects
 
 		Returns a list of dtc objects matching the search criteria
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return DtcAPIGetRequest
+		@return DtcAPIListRequest
 	*/
-	Get(ctx context.Context) DtcAPIGetRequest
+	List(ctx context.Context) DtcAPIListRequest
 
-	// GetExecute executes the request
+	// ListExecute executes the request
 	//  @return ListDtcResponse
-	GetExecute(r DtcAPIGetRequest) (*ListDtcResponse, *http.Response, error)
+	ListExecute(r DtcAPIListRequest) (*ListDtcResponse, *http.Response, error)
 	/*
-		ReferenceGet Get a specific dtc object
+		Read Get a specific dtc object
 
 		Returns a specific dtc object by reference
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param reference Reference of the dtc object
-		@return DtcAPIReferenceGetRequest
+		@return DtcAPIReadRequest
 	*/
-	ReferenceGet(ctx context.Context, reference string) DtcAPIReferenceGetRequest
+	Read(ctx context.Context, reference string) DtcAPIReadRequest
 
-	// ReferenceGetExecute executes the request
+	// ReadExecute executes the request
 	//  @return GetDtcResponse
-	ReferenceGetExecute(r DtcAPIReferenceGetRequest) (*GetDtcResponse, *http.Response, error)
-	/*
-		ReferencePut Update a dtc object
-
-		Updates a specific dtc object by reference
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param reference Reference of the dtc object
-		@return DtcAPIReferencePutRequest
-	*/
-	ReferencePut(ctx context.Context, reference string) DtcAPIReferencePutRequest
-
-	// ReferencePutExecute executes the request
-	//  @return UpdateDtcResponse
-	ReferencePutExecute(r DtcAPIReferencePutRequest) (*UpdateDtcResponse, *http.Response, error)
+	ReadExecute(r DtcAPIReadRequest) (*GetDtcResponse, *http.Response, error)
 }
 
 // DtcAPIService DtcAPI service
 type DtcAPIService internal.Service
 
-type DtcAPIGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcAPI
-	returnFields   *string
-	returnFields2  *string
-	maxResults     *int32
-	returnAsObject *int32
-	paging         *int32
-	pageId         *string
-	filters        *map[string]interface{}
-	extattrfilter  *map[string]interface{}
+type DtcAPIListRequest struct {
+	ctx              context.Context
+	ApiService       DtcAPI
+	returnFields     *string
+	returnFieldsPlus *string
+	maxResults       *int32
+	returnAsObject   *int32
+	paging           *int32
+	pageId           *string
+	filters          *map[string]interface{}
+	extattrfilter    *map[string]interface{}
 }
 
 // Enter the field names followed by comma
-func (r DtcAPIGetRequest) ReturnFields(returnFields string) DtcAPIGetRequest {
+func (r DtcAPIListRequest) ReturnFields(returnFields string) DtcAPIListRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcAPIGetRequest) ReturnFields2(returnFields2 string) DtcAPIGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcAPIListRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcAPIListRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Enter the number of results to be fetched
-func (r DtcAPIGetRequest) MaxResults(maxResults int32) DtcAPIGetRequest {
+func (r DtcAPIListRequest) MaxResults(maxResults int32) DtcAPIListRequest {
 	r.maxResults = &maxResults
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcAPIGetRequest) ReturnAsObject(returnAsObject int32) DtcAPIGetRequest {
+func (r DtcAPIListRequest) ReturnAsObject(returnAsObject int32) DtcAPIListRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
 // Control paging of results
-func (r DtcAPIGetRequest) Paging(paging int32) DtcAPIGetRequest {
+func (r DtcAPIListRequest) Paging(paging int32) DtcAPIListRequest {
 	r.paging = &paging
 	return r
 }
 
 // Page id for retrieving next page of results
-func (r DtcAPIGetRequest) PageId(pageId string) DtcAPIGetRequest {
+func (r DtcAPIListRequest) PageId(pageId string) DtcAPIListRequest {
 	r.pageId = &pageId
 	return r
 }
 
-func (r DtcAPIGetRequest) Filters(filters map[string]interface{}) DtcAPIGetRequest {
+func (r DtcAPIListRequest) Filters(filters map[string]interface{}) DtcAPIListRequest {
 	r.filters = &filters
 	return r
 }
 
-func (r DtcAPIGetRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcAPIGetRequest {
+func (r DtcAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcAPIListRequest {
 	r.extattrfilter = &extattrfilter
 	return r
 }
 
-func (r DtcAPIGetRequest) Execute() (*ListDtcResponse, *http.Response, error) {
-	return r.ApiService.GetExecute(r)
+func (r DtcAPIListRequest) Execute() (*ListDtcResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-Get Retrieve dtc objects
+List Retrieve dtc objects
 
 Returns a list of dtc objects matching the search criteria
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return DtcAPIGetRequest
+	@return DtcAPIListRequest
 */
-func (a *DtcAPIService) Get(ctx context.Context) DtcAPIGetRequest {
-	return DtcAPIGetRequest{
+func (a *DtcAPIService) List(ctx context.Context) DtcAPIListRequest {
+	return DtcAPIListRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -149,7 +135,7 @@ func (a *DtcAPIService) Get(ctx context.Context) DtcAPIGetRequest {
 // Execute executes the request
 //
 //	@return ListDtcResponse
-func (a *DtcAPIService) GetExecute(r DtcAPIGetRequest) (*ListDtcResponse, *http.Response, error) {
+func (a *DtcAPIService) ListExecute(r DtcAPIListRequest) (*ListDtcResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -157,7 +143,7 @@ func (a *DtcAPIService) GetExecute(r DtcAPIGetRequest) (*ListDtcResponse, *http.
 		localVarReturnValue *ListDtcResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAPIService.Get")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -171,8 +157,8 @@ func (a *DtcAPIService) GetExecute(r DtcAPIGetRequest) (*ListDtcResponse, *http.
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.maxResults != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
@@ -239,48 +225,48 @@ func (a *DtcAPIService) GetExecute(r DtcAPIGetRequest) (*ListDtcResponse, *http.
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DtcAPIReferenceGetRequest struct {
-	ctx            context.Context
-	ApiService     DtcAPI
-	reference      string
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
+type DtcAPIReadRequest struct {
+	ctx              context.Context
+	ApiService       DtcAPI
+	reference        string
+	returnFields     *string
+	returnFieldsPlus *string
+	returnAsObject   *int32
 }
 
 // Enter the field names followed by comma
-func (r DtcAPIReferenceGetRequest) ReturnFields(returnFields string) DtcAPIReferenceGetRequest {
+func (r DtcAPIReadRequest) ReturnFields(returnFields string) DtcAPIReadRequest {
 	r.returnFields = &returnFields
 	return r
 }
 
 // Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcAPIReferenceGetRequest) ReturnFields2(returnFields2 string) DtcAPIReferenceGetRequest {
-	r.returnFields2 = &returnFields2
+func (r DtcAPIReadRequest) ReturnFieldsPlus(returnFieldsPlus string) DtcAPIReadRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
 	return r
 }
 
 // Select 1 if result is required as an object
-func (r DtcAPIReferenceGetRequest) ReturnAsObject(returnAsObject int32) DtcAPIReferenceGetRequest {
+func (r DtcAPIReadRequest) ReturnAsObject(returnAsObject int32) DtcAPIReadRequest {
 	r.returnAsObject = &returnAsObject
 	return r
 }
 
-func (r DtcAPIReferenceGetRequest) Execute() (*GetDtcResponse, *http.Response, error) {
-	return r.ApiService.ReferenceGetExecute(r)
+func (r DtcAPIReadRequest) Execute() (*GetDtcResponse, *http.Response, error) {
+	return r.ApiService.ReadExecute(r)
 }
 
 /*
-ReferenceGet Get a specific dtc object
+Read Get a specific dtc object
 
 Returns a specific dtc object by reference
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param reference Reference of the dtc object
-	@return DtcAPIReferenceGetRequest
+	@return DtcAPIReadRequest
 */
-func (a *DtcAPIService) ReferenceGet(ctx context.Context, reference string) DtcAPIReferenceGetRequest {
-	return DtcAPIReferenceGetRequest{
+func (a *DtcAPIService) Read(ctx context.Context, reference string) DtcAPIReadRequest {
+	return DtcAPIReadRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reference:  reference,
@@ -290,7 +276,7 @@ func (a *DtcAPIService) ReferenceGet(ctx context.Context, reference string) DtcA
 // Execute executes the request
 //
 //	@return GetDtcResponse
-func (a *DtcAPIService) ReferenceGetExecute(r DtcAPIReferenceGetRequest) (*GetDtcResponse, *http.Response, error) {
+func (a *DtcAPIService) ReadExecute(r DtcAPIReadRequest) (*GetDtcResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,7 +284,7 @@ func (a *DtcAPIService) ReferenceGetExecute(r DtcAPIReferenceGetRequest) (*GetDt
 		localVarReturnValue *GetDtcResponse
 	)
 
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAPIService.ReferenceGet")
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAPIService.Read")
 	if err != nil {
 		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
 	}
@@ -313,8 +299,8 @@ func (a *DtcAPIService) ReferenceGetExecute(r DtcAPIReferenceGetRequest) (*GetDt
 	if r.returnFields != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
 	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
 	}
 	if r.returnAsObject != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
@@ -336,145 +322,6 @@ func (a *DtcAPIService) ReferenceGetExecute(r DtcAPIReferenceGetRequest) (*GetDt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.Client.CallAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type DtcAPIReferencePutRequest struct {
-	ctx            context.Context
-	ApiService     DtcAPI
-	reference      string
-	dtc            *Dtc
-	returnFields   *string
-	returnFields2  *string
-	returnAsObject *int32
-}
-
-// Object data to update
-func (r DtcAPIReferencePutRequest) Dtc(dtc Dtc) DtcAPIReferencePutRequest {
-	r.dtc = &dtc
-	return r
-}
-
-// Enter the field names followed by comma
-func (r DtcAPIReferencePutRequest) ReturnFields(returnFields string) DtcAPIReferencePutRequest {
-	r.returnFields = &returnFields
-	return r
-}
-
-// Enter the field names followed by comma, this returns the required fields along with the default fields
-func (r DtcAPIReferencePutRequest) ReturnFields2(returnFields2 string) DtcAPIReferencePutRequest {
-	r.returnFields2 = &returnFields2
-	return r
-}
-
-// Select 1 if result is required as an object
-func (r DtcAPIReferencePutRequest) ReturnAsObject(returnAsObject int32) DtcAPIReferencePutRequest {
-	r.returnAsObject = &returnAsObject
-	return r
-}
-
-func (r DtcAPIReferencePutRequest) Execute() (*UpdateDtcResponse, *http.Response, error) {
-	return r.ApiService.ReferencePutExecute(r)
-}
-
-/*
-ReferencePut Update a dtc object
-
-Updates a specific dtc object by reference
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param reference Reference of the dtc object
-	@return DtcAPIReferencePutRequest
-*/
-func (a *DtcAPIService) ReferencePut(ctx context.Context, reference string) DtcAPIReferencePutRequest {
-	return DtcAPIReferencePutRequest{
-		ApiService: a,
-		ctx:        ctx,
-		reference:  reference,
-	}
-}
-
-// Execute executes the request
-//
-//	@return UpdateDtcResponse
-func (a *DtcAPIService) ReferencePutExecute(r DtcAPIReferencePutRequest) (*UpdateDtcResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []internal.FormFile
-		localVarReturnValue *UpdateDtcResponse
-	)
-
-	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "DtcAPIService.ReferencePut")
-	if err != nil {
-		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
-	}
-
-	localVarPath := localBasePath + "/dtc/{reference}"
-	localVarPath = strings.Replace(localVarPath, "{"+"reference"+"}", url.PathEscape(internal.ParameterValueToString(r.reference, "reference")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.dtc == nil {
-		return localVarReturnValue, nil, internal.ReportError("dtc is required and must be specified")
-	}
-
-	if r.returnFields != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
-	}
-	if r.returnFields2 != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFields2, "form", "")
-	}
-	if r.returnAsObject != nil {
-		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.dtc
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

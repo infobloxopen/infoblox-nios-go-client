@@ -11,13 +11,12 @@ Name | Type | Description | Notes
 **DisableNsGeneration** | Pointer to **bool** | Determines whether a auto-generation of NS records in parent zone is disabled or not. When this is set to False, the auto-generation is enabled. | [optional] 
 **DisplayDomain** | Pointer to **string** | The displayed name of the DNS zone. | [optional] [readonly] 
 **DnsFqdn** | Pointer to **string** | The name of this DNS zone in punycode format. For a reverse zone, this is in \&quot;address/cidr\&quot; format. For other zones, this is in FQDN format in punycode format. | [optional] [readonly] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalNsGroup** | Pointer to **string** | A forward stub server name server group. | [optional] 
 **ForwardTo** | Pointer to [**[]ZoneForwardForwardTo**](ZoneForwardForwardTo.md) | The information for the remote name servers to which you want the Infoblox appliance to forward queries for a specified domain name. | [optional] 
 **ForwardersOnly** | Pointer to **bool** | Determines if the appliance sends queries to forwarders only, and not to other internal or Internet root servers. | [optional] 
 **ForwardingServers** | Pointer to [**[]ZoneForwardForwardingServers**](ZoneForwardForwardingServers.md) | The information for the Grid members to which you want the Infoblox appliance to forward queries for a specified domain name. | [optional] 
 **Fqdn** | Pointer to **string** | The name of this DNS zone. For a reverse zone, this is in \&quot;address/cidr\&quot; format. For other zones, this is in FQDN format. This value can be in unicode format. Note that for a reverse zone, the corresponding zone_format value should be set. | [optional] 
-**LockUnlockZone** | Pointer to **map[string]interface{}** |  | [optional] 
 **Locked** | Pointer to **bool** | If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked. | [optional] 
 **LockedBy** | Pointer to **string** | The name of a superuser or the administrator who locked this zone. | [optional] [readonly] 
 **MaskPrefix** | Pointer to **string** | IPv4 Netmask or IPv6 prefix for this zone. | [optional] [readonly] 
@@ -227,30 +226,30 @@ SetDnsFqdn sets DnsFqdn field to given value.
 
 HasDnsFqdn returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *ZoneForward) GetExtattrs() map[string]ExtAttrs`
+`func (o *ZoneForward) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *ZoneForward) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *ZoneForward) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *ZoneForward) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *ZoneForward) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *ZoneForward) HasExtattrs() bool`
+`func (o *ZoneForward) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetExternalNsGroup
 
@@ -376,31 +375,6 @@ SetFqdn sets Fqdn field to given value.
 `func (o *ZoneForward) HasFqdn() bool`
 
 HasFqdn returns a boolean if a field has been set.
-
-### GetLockUnlockZone
-
-`func (o *ZoneForward) GetLockUnlockZone() map[string]interface{}`
-
-GetLockUnlockZone returns the LockUnlockZone field if non-nil, zero value otherwise.
-
-### GetLockUnlockZoneOk
-
-`func (o *ZoneForward) GetLockUnlockZoneOk() (*map[string]interface{}, bool)`
-
-GetLockUnlockZoneOk returns a tuple with the LockUnlockZone field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLockUnlockZone
-
-`func (o *ZoneForward) SetLockUnlockZone(v map[string]interface{})`
-
-SetLockUnlockZone sets LockUnlockZone field to given value.
-
-### HasLockUnlockZone
-
-`func (o *ZoneForward) HasLockUnlockZone() bool`
-
-HasLockUnlockZone returns a boolean if a field has been set.
 
 ### GetLocked
 

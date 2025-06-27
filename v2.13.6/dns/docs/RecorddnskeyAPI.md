@@ -1,17 +1,17 @@
-# RecorddnskeyAPI
+# RecordDnskeyAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](RecorddnskeyAPI.md#Get) | **Get** /record:dnskey | Retrieve record:dnskey objects
-[**ReferenceGet**](RecorddnskeyAPI.md#ReferenceGet) | **Get** /record:dnskey/{reference} | Get a specific record:dnskey object
+[**List**](RecordDnskeyAPI.md#List) | **Get** /record:dnskey | Retrieve record:dnskey objects
+[**Read**](RecordDnskeyAPI.md#Read) | **Get** /record:dnskey/{reference} | Get a specific record:dnskey object
 
 
 
-## Get
+## List
 
-> ListRecordDnskeyResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListRecordDnskeyResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve record:dnskey objects
 
@@ -33,13 +33,13 @@ import (
 func main() {
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecorddnskeyAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.RecordDnskeyAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddnskeyAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDnskeyAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListRecordDnskeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecorddnskeyAPI.Get`: %v\n", resp)
+	// response from `List`: ListRecordDnskeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordDnskeyAPI.List`: %v\n", resp)
 }
 ```
 
@@ -49,13 +49,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddnskeyAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDnskeyAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferenceGet
+## Read
 
-> GetRecordDnskeyResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetRecordDnskeyResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific record:dnskey object
 
@@ -106,13 +106,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the record:dnskey object
 
 	apiClient := dns.NewAPIClient()
-	resp, r, err := apiClient.RecorddnskeyAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.RecordDnskeyAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RecorddnskeyAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RecordDnskeyAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetRecordDnskeyResponse
-	fmt.Fprintf(os.Stdout, "Response from `RecorddnskeyAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetRecordDnskeyResponse
+	fmt.Fprintf(os.Stdout, "Response from `RecordDnskeyAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -126,13 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `RecorddnskeyAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `RecordDnskeyAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type

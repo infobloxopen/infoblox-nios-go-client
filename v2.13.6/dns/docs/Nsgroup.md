@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **Comment** | Pointer to **string** | Comment for the name server group; maximum 256 characters. | [optional] 
-**Extattrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalPrimaries** | Pointer to [**[]NsgroupExternalPrimaries**](NsgroupExternalPrimaries.md) | The list of external primary servers. | [optional] 
 **ExternalSecondaries** | Pointer to [**[]NsgroupExternalSecondaries**](NsgroupExternalSecondaries.md) | The list of external secondary servers. | [optional] 
 **GridPrimary** | Pointer to [**[]NsgroupGridPrimary**](NsgroupGridPrimary.md) | The grid primary servers for this group. | [optional] 
@@ -85,30 +85,30 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetExtattrs
+### GetExtAttrs
 
-`func (o *Nsgroup) GetExtattrs() map[string]ExtAttrs`
+`func (o *Nsgroup) GetExtAttrs() map[string]ExtAttrs`
 
-GetExtattrs returns the Extattrs field if non-nil, zero value otherwise.
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
-### GetExtattrsOk
+### GetExtAttrsOk
 
-`func (o *Nsgroup) GetExtattrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *Nsgroup) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
-GetExtattrsOk returns a tuple with the Extattrs field if it's non-nil, zero value otherwise
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtattrs
+### SetExtAttrs
 
-`func (o *Nsgroup) SetExtattrs(v map[string]ExtAttrs)`
+`func (o *Nsgroup) SetExtAttrs(v map[string]ExtAttrs)`
 
-SetExtattrs sets Extattrs field to given value.
+SetExtAttrs sets ExtAttrs field to given value.
 
-### HasExtattrs
+### HasExtAttrs
 
-`func (o *Nsgroup) HasExtattrs() bool`
+`func (o *Nsgroup) HasExtAttrs() bool`
 
-HasExtattrs returns a boolean if a field has been set.
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetExternalPrimaries
 

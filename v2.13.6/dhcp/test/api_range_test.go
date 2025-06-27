@@ -23,11 +23,11 @@ func TestRangeAPIService(t *testing.T) {
 
 	apiClient := dhcp.NewAPIClient()
 
-	t.Run("Test RangeAPIService Get", func(t *testing.T) {
+	t.Run("Test RangeAPIService Create", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RangeAPI.Get(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RangeAPI.Create(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -35,11 +35,24 @@ func TestRangeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RangeAPIService Post", func(t *testing.T) {
+	t.Run("Test RangeAPIService Delete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RangeAPI.Post(context.Background()).Execute()
+		var reference string
+
+		httpRes, err := apiClient.RangeAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RangeAPIService List", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.RangeAPI.List(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +60,13 @@ func TestRangeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RangeAPIService ReferenceDelete", func(t *testing.T) {
+	t.Run("Test RangeAPIService Read", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		httpRes, err := apiClient.RangeAPI.ReferenceDelete(context.Background(), reference).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RangeAPIService ReferenceGet", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var reference string
-
-		resp, httpRes, err := apiClient.RangeAPI.ReferenceGet(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RangeAPI.Read(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func TestRangeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RangeAPIService ReferencePut", func(t *testing.T) {
+	t.Run("Test RangeAPIService Update", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var reference string
 
-		resp, httpRes, err := apiClient.RangeAPI.ReferencePut(context.Background(), reference).Execute()
+		resp, httpRes, err := apiClient.RangeAPI.Update(context.Background(), reference).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

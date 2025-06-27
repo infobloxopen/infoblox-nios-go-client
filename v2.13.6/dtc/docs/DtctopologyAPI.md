@@ -1,20 +1,156 @@
-# DtctopologyAPI
+# DtcTopologyAPI
 
 All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](DtctopologyAPI.md#Get) | **Get** /dtc:topology | Retrieve dtc:topology objects
-[**Post**](DtctopologyAPI.md#Post) | **Post** /dtc:topology | Create a dtc:topology object
-[**ReferenceDelete**](DtctopologyAPI.md#ReferenceDelete) | **Delete** /dtc:topology/{reference} | Delete a dtc:topology object
-[**ReferenceGet**](DtctopologyAPI.md#ReferenceGet) | **Get** /dtc:topology/{reference} | Get a specific dtc:topology object
-[**ReferencePut**](DtctopologyAPI.md#ReferencePut) | **Put** /dtc:topology/{reference} | Update a dtc:topology object
+[**Create**](DtcTopologyAPI.md#Create) | **Post** /dtc:topology | Create a dtc:topology object
+[**Delete**](DtcTopologyAPI.md#Delete) | **Delete** /dtc:topology/{reference} | Delete a dtc:topology object
+[**List**](DtcTopologyAPI.md#List) | **Get** /dtc:topology | Retrieve dtc:topology objects
+[**Read**](DtcTopologyAPI.md#Read) | **Get** /dtc:topology/{reference} | Get a specific dtc:topology object
+[**Update**](DtcTopologyAPI.md#Update) | **Put** /dtc:topology/{reference} | Update a dtc:topology object
 
 
 
-## Get
+## Create
 
-> ListDtcTopologyResponse Get(ctx).ReturnFields(returnFields).ReturnFields2(returnFields2).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> CreateDtcTopologyResponse Create(ctx).DtcTopology(dtcTopology).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a dtc:topology object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
+)
+
+func main() {
+	dtcTopology := *dtc.NewDtcTopology() // DtcTopology | Object data to create
+
+	apiClient := dtc.NewAPIClient()
+	resp, r, err := apiClient.DtcTopologyAPI.Create(context.Background()).DtcTopology(dtcTopology).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateDtcTopologyResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DtcTopologyAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**dtcTopology** | [**DtcTopology**](DtcTopology.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateDtcTopologyResponse**](CreateDtcTopologyResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Delete
+
+> Delete(ctx, reference).Execute()
+
+Delete a dtc:topology object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the dtc:topology object
+
+	apiClient := dtc.NewAPIClient()
+	r, err := apiClient.DtcTopologyAPI.Delete(context.Background(), reference).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyAPI.Delete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the dtc:topology object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DtcTopologyAPIDeleteRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## List
+
+> ListDtcTopologyResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
 
 Retrieve dtc:topology objects
 
@@ -36,13 +172,13 @@ import (
 func main() {
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologyAPI.Get(context.Background()).Execute()
+	resp, r, err := apiClient.DtcTopologyAPI.List(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologyAPI.Get``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyAPI.List``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Get`: ListDtcTopologyResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologyAPI.Get`: %v\n", resp)
+	// response from `List`: ListDtcTopologyResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyAPI.List`: %v\n", resp)
 }
 ```
 
@@ -52,13 +188,13 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtctopologyAPIGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyAPIListRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **maxResults** | **int32** | Enter the number of results to be fetched | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **paging** | **int32** | Control paging of results | 
@@ -84,145 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## Post
+## Read
 
-> CreateDtcTopologyResponse Post(ctx).DtcTopology(dtcTopology).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
-
-Create a dtc:topology object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
-)
-
-func main() {
-	dtcTopology := *dtc.NewDtcTopology() // DtcTopology | Object data to create
-
-	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologyAPI.Post(context.Background()).DtcTopology(dtcTopology).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologyAPI.Post``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `Post`: CreateDtcTopologyResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologyAPI.Post`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DtctopologyAPIPostRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**dtcTopology** | [**DtcTopology**](DtcTopology.md) | Object data to create | 
-**returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
-**returnAsObject** | **int32** | Select 1 if result is required as an object | 
-
-### Return type
-
-[**CreateDtcTopologyResponse**](CreateDtcTopologyResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceDelete
-
-> ReferenceDelete(ctx, reference).Execute()
-
-Delete a dtc:topology object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dtc"
-)
-
-func main() {
-	reference := "reference_example" // string | Reference of the dtc:topology object
-
-	apiClient := dtc.NewAPIClient()
-	r, err := apiClient.DtctopologyAPI.ReferenceDelete(context.Background(), reference).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologyAPI.ReferenceDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**reference** | **string** | Reference of the dtc:topology object | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a `DtctopologyAPIReferenceDeleteRequest` struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ReferenceGet
-
-> GetDtcTopologyResponse ReferenceGet(ctx, reference).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> GetDtcTopologyResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Get a specific dtc:topology object
 
@@ -245,13 +245,13 @@ func main() {
 	reference := "reference_example" // string | Reference of the dtc:topology object
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologyAPI.ReferenceGet(context.Background(), reference).Execute()
+	resp, r, err := apiClient.DtcTopologyAPI.Read(context.Background(), reference).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologyAPI.ReferenceGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyAPI.Read``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferenceGet`: GetDtcTopologyResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologyAPI.ReferenceGet`: %v\n", resp)
+	// response from `Read`: GetDtcTopologyResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyAPI.Read`: %v\n", resp)
 }
 ```
 
@@ -265,13 +265,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtctopologyAPIReferenceGetRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyAPIReadRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
@@ -292,9 +292,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReferencePut
+## Update
 
-> UpdateDtcTopologyResponse ReferencePut(ctx, reference).DtcTopology(dtcTopology).ReturnFields(returnFields).ReturnFields2(returnFields2).ReturnAsObject(returnAsObject).Execute()
+> UpdateDtcTopologyResponse Update(ctx, reference).DtcTopology(dtcTopology).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
 
 Update a dtc:topology object
 
@@ -318,13 +318,13 @@ func main() {
 	dtcTopology := *dtc.NewDtcTopology() // DtcTopology | Object data to update
 
 	apiClient := dtc.NewAPIClient()
-	resp, r, err := apiClient.DtctopologyAPI.ReferencePut(context.Background(), reference).DtcTopology(dtcTopology).Execute()
+	resp, r, err := apiClient.DtcTopologyAPI.Update(context.Background(), reference).DtcTopology(dtcTopology).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DtctopologyAPI.ReferencePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyAPI.Update``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ReferencePut`: UpdateDtcTopologyResponse
-	fmt.Fprintf(os.Stdout, "Response from `DtctopologyAPI.ReferencePut`: %v\n", resp)
+	// response from `Update`: UpdateDtcTopologyResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyAPI.Update`: %v\n", resp)
 }
 ```
 
@@ -338,14 +338,14 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a `DtctopologyAPIReferencePutRequest` struct via the builder pattern
+Other parameters are passed through a pointer to a `DtcTopologyAPIUpdateRequest` struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **dtcTopology** | [**DtcTopology**](DtcTopology.md) | Object data to update | 
 **returnFields** | **string** | Enter the field names followed by comma | 
-**returnFields2** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 
 ### Return type
