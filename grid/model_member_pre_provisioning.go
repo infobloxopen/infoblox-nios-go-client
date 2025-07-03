@@ -19,7 +19,8 @@ var _ MappedNullable = &MemberPreProvisioning{}
 
 // MemberPreProvisioning struct for MemberPreProvisioning
 type MemberPreProvisioning struct {
-	HardwareInfo *MemberpreprovisioningHardwareInfo `json:"hardware_info,omitempty"`
+	// An array of structures that describe the hardware being pre-provisioned.
+	HardwareInfo []MemberpreprovisioningHardwareInfo `json:"hardware_info,omitempty"`
 	// An array of license types the pre-provisioned member should have in order to join the Grid, or the licenses that must be allocated to the member when it joins the Grid using the token-based authentication.
 	Licenses             []string `json:"licenses,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,17 +46,17 @@ func NewMemberPreProvisioningWithDefaults() *MemberPreProvisioning {
 }
 
 // GetHardwareInfo returns the HardwareInfo field value if set, zero value otherwise.
-func (o *MemberPreProvisioning) GetHardwareInfo() MemberpreprovisioningHardwareInfo {
+func (o *MemberPreProvisioning) GetHardwareInfo() []MemberpreprovisioningHardwareInfo {
 	if o == nil || IsNil(o.HardwareInfo) {
-		var ret MemberpreprovisioningHardwareInfo
+		var ret []MemberpreprovisioningHardwareInfo
 		return ret
 	}
-	return *o.HardwareInfo
+	return o.HardwareInfo
 }
 
 // GetHardwareInfoOk returns a tuple with the HardwareInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberPreProvisioning) GetHardwareInfoOk() (*MemberpreprovisioningHardwareInfo, bool) {
+func (o *MemberPreProvisioning) GetHardwareInfoOk() ([]MemberpreprovisioningHardwareInfo, bool) {
 	if o == nil || IsNil(o.HardwareInfo) {
 		return nil, false
 	}
@@ -71,9 +72,9 @@ func (o *MemberPreProvisioning) HasHardwareInfo() bool {
 	return false
 }
 
-// SetHardwareInfo gets a reference to the given MemberpreprovisioningHardwareInfo and assigns it to the HardwareInfo field.
-func (o *MemberPreProvisioning) SetHardwareInfo(v MemberpreprovisioningHardwareInfo) {
-	o.HardwareInfo = &v
+// SetHardwareInfo gets a reference to the given []MemberpreprovisioningHardwareInfo and assigns it to the HardwareInfo field.
+func (o *MemberPreProvisioning) SetHardwareInfo(v []MemberpreprovisioningHardwareInfo) {
+	o.HardwareInfo = v
 }
 
 // GetLicenses returns the Licenses field value if set, zero value otherwise.

@@ -26,8 +26,9 @@ type MemberSnmpSetting struct {
 	// If set to True, SNMP queries are enabled.
 	QueriesEnable *bool `json:"queries_enable,omitempty"`
 	// If set to True, SNMPv3 queries are enabled.
-	Snmpv3QueriesEnable *bool                                `json:"snmpv3_queries_enable,omitempty"`
-	Snmpv3QueriesUsers  *MembersnmpsettingSnmpv3QueriesUsers `json:"snmpv3_queries_users,omitempty"`
+	Snmpv3QueriesEnable *bool `json:"snmpv3_queries_enable,omitempty"`
+	// A list of SNMPv3 queries users.
+	Snmpv3QueriesUsers []MembersnmpsettingSnmpv3QueriesUsers `json:"snmpv3_queries_users,omitempty"`
 	// If set to True, SNMPv3 traps are enabled.
 	Snmpv3TrapsEnable *bool `json:"snmpv3_traps_enable,omitempty"`
 	// The name of the contact person for the appliance. Second value is applicable only for HA pair. Otherwise second value is ignored.
@@ -37,8 +38,9 @@ type MemberSnmpSetting struct {
 	// The physical location of the appliance. Second value is applicable only for HA pair. Otherwise second value is ignored.
 	Syslocation []string `json:"syslocation,omitempty"`
 	// The FQDN (Fully Qualified Domain Name) of the appliance. Second value is applicable only for HA pair. Otherwise second value is ignored.
-	Sysname       []string                        `json:"sysname,omitempty"`
-	TrapReceivers *MembersnmpsettingTrapReceivers `json:"trap_receivers,omitempty"`
+	Sysname []string `json:"sysname,omitempty"`
+	// A list of trap receivers.
+	TrapReceivers []MembersnmpsettingTrapReceivers `json:"trap_receivers,omitempty"`
 	// A string the NIOS appliance sends to the management system together with its traps. Note that this community string must match exactly what you enter in the management system.
 	TrapsCommunityString *string `json:"traps_community_string,omitempty"`
 	// If set to True, SNMP traps are enabled.
@@ -194,17 +196,17 @@ func (o *MemberSnmpSetting) SetSnmpv3QueriesEnable(v bool) {
 }
 
 // GetSnmpv3QueriesUsers returns the Snmpv3QueriesUsers field value if set, zero value otherwise.
-func (o *MemberSnmpSetting) GetSnmpv3QueriesUsers() MembersnmpsettingSnmpv3QueriesUsers {
+func (o *MemberSnmpSetting) GetSnmpv3QueriesUsers() []MembersnmpsettingSnmpv3QueriesUsers {
 	if o == nil || IsNil(o.Snmpv3QueriesUsers) {
-		var ret MembersnmpsettingSnmpv3QueriesUsers
+		var ret []MembersnmpsettingSnmpv3QueriesUsers
 		return ret
 	}
-	return *o.Snmpv3QueriesUsers
+	return o.Snmpv3QueriesUsers
 }
 
 // GetSnmpv3QueriesUsersOk returns a tuple with the Snmpv3QueriesUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberSnmpSetting) GetSnmpv3QueriesUsersOk() (*MembersnmpsettingSnmpv3QueriesUsers, bool) {
+func (o *MemberSnmpSetting) GetSnmpv3QueriesUsersOk() ([]MembersnmpsettingSnmpv3QueriesUsers, bool) {
 	if o == nil || IsNil(o.Snmpv3QueriesUsers) {
 		return nil, false
 	}
@@ -220,9 +222,9 @@ func (o *MemberSnmpSetting) HasSnmpv3QueriesUsers() bool {
 	return false
 }
 
-// SetSnmpv3QueriesUsers gets a reference to the given MembersnmpsettingSnmpv3QueriesUsers and assigns it to the Snmpv3QueriesUsers field.
-func (o *MemberSnmpSetting) SetSnmpv3QueriesUsers(v MembersnmpsettingSnmpv3QueriesUsers) {
-	o.Snmpv3QueriesUsers = &v
+// SetSnmpv3QueriesUsers gets a reference to the given []MembersnmpsettingSnmpv3QueriesUsers and assigns it to the Snmpv3QueriesUsers field.
+func (o *MemberSnmpSetting) SetSnmpv3QueriesUsers(v []MembersnmpsettingSnmpv3QueriesUsers) {
+	o.Snmpv3QueriesUsers = v
 }
 
 // GetSnmpv3TrapsEnable returns the Snmpv3TrapsEnable field value if set, zero value otherwise.
@@ -386,17 +388,17 @@ func (o *MemberSnmpSetting) SetSysname(v []string) {
 }
 
 // GetTrapReceivers returns the TrapReceivers field value if set, zero value otherwise.
-func (o *MemberSnmpSetting) GetTrapReceivers() MembersnmpsettingTrapReceivers {
+func (o *MemberSnmpSetting) GetTrapReceivers() []MembersnmpsettingTrapReceivers {
 	if o == nil || IsNil(o.TrapReceivers) {
-		var ret MembersnmpsettingTrapReceivers
+		var ret []MembersnmpsettingTrapReceivers
 		return ret
 	}
-	return *o.TrapReceivers
+	return o.TrapReceivers
 }
 
 // GetTrapReceiversOk returns a tuple with the TrapReceivers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberSnmpSetting) GetTrapReceiversOk() (*MembersnmpsettingTrapReceivers, bool) {
+func (o *MemberSnmpSetting) GetTrapReceiversOk() ([]MembersnmpsettingTrapReceivers, bool) {
 	if o == nil || IsNil(o.TrapReceivers) {
 		return nil, false
 	}
@@ -412,9 +414,9 @@ func (o *MemberSnmpSetting) HasTrapReceivers() bool {
 	return false
 }
 
-// SetTrapReceivers gets a reference to the given MembersnmpsettingTrapReceivers and assigns it to the TrapReceivers field.
-func (o *MemberSnmpSetting) SetTrapReceivers(v MembersnmpsettingTrapReceivers) {
-	o.TrapReceivers = &v
+// SetTrapReceivers gets a reference to the given []MembersnmpsettingTrapReceivers and assigns it to the TrapReceivers field.
+func (o *MemberSnmpSetting) SetTrapReceivers(v []MembersnmpsettingTrapReceivers) {
+	o.TrapReceivers = v
 }
 
 // GetTrapsCommunityString returns the TrapsCommunityString field value if set, zero value otherwise.

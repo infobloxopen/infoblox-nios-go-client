@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **EnableZoneLastQueried** | Pointer to **bool** | This flag indicates if the last queried monitoring for affected zones is enabled or not. | [optional] 
 **ReclaimAssociatedRecords** | Pointer to **bool** | This flag indicates if the associated resource record scavenging is enabled or not. | [optional] 
 **ScavengingSchedule** | Pointer to [**GriddnsscavengingsettingsScavengingSchedule**](GriddnsscavengingsettingsScavengingSchedule.md) |  | [optional] 
-**ExpressionList** | Pointer to [**GriddnsscavengingsettingsExpressionList**](GriddnsscavengingsettingsExpressionList.md) |  | [optional] 
-**EaExpressionList** | Pointer to [**GriddnsscavengingsettingsEaExpressionList**](GriddnsscavengingsettingsEaExpressionList.md) |  | [optional] 
+**ExpressionList** | Pointer to [**[]GriddnsscavengingsettingsExpressionList**](GriddnsscavengingsettingsExpressionList.md) | The expression list. The particular record is treated as reclaimable if expression condition evaluates to &#39;true&#39; for given record if scavenging hasn&#39;t been manually disabled on a given resource record. | [optional] 
+**EaExpressionList** | Pointer to [**[]GriddnsscavengingsettingsEaExpressionList**](GriddnsscavengingsettingsEaExpressionList.md) | The extensible attributes expression list. The particular record is treated as reclaimable if extensible attributes expression condition evaluates to &#39;true&#39; for given record if scavenging hasn&#39;t been manually disabled on a given resource record. | [optional] 
 
 ## Methods
 
@@ -210,20 +210,20 @@ HasScavengingSchedule returns a boolean if a field has been set.
 
 ### GetExpressionList
 
-`func (o *GridDnsScavengingSettings) GetExpressionList() GriddnsscavengingsettingsExpressionList`
+`func (o *GridDnsScavengingSettings) GetExpressionList() []GriddnsscavengingsettingsExpressionList`
 
 GetExpressionList returns the ExpressionList field if non-nil, zero value otherwise.
 
 ### GetExpressionListOk
 
-`func (o *GridDnsScavengingSettings) GetExpressionListOk() (*GriddnsscavengingsettingsExpressionList, bool)`
+`func (o *GridDnsScavengingSettings) GetExpressionListOk() (*[]GriddnsscavengingsettingsExpressionList, bool)`
 
 GetExpressionListOk returns a tuple with the ExpressionList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpressionList
 
-`func (o *GridDnsScavengingSettings) SetExpressionList(v GriddnsscavengingsettingsExpressionList)`
+`func (o *GridDnsScavengingSettings) SetExpressionList(v []GriddnsscavengingsettingsExpressionList)`
 
 SetExpressionList sets ExpressionList field to given value.
 
@@ -235,20 +235,20 @@ HasExpressionList returns a boolean if a field has been set.
 
 ### GetEaExpressionList
 
-`func (o *GridDnsScavengingSettings) GetEaExpressionList() GriddnsscavengingsettingsEaExpressionList`
+`func (o *GridDnsScavengingSettings) GetEaExpressionList() []GriddnsscavengingsettingsEaExpressionList`
 
 GetEaExpressionList returns the EaExpressionList field if non-nil, zero value otherwise.
 
 ### GetEaExpressionListOk
 
-`func (o *GridDnsScavengingSettings) GetEaExpressionListOk() (*GriddnsscavengingsettingsEaExpressionList, bool)`
+`func (o *GridDnsScavengingSettings) GetEaExpressionListOk() (*[]GriddnsscavengingsettingsEaExpressionList, bool)`
 
 GetEaExpressionListOk returns a tuple with the EaExpressionList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEaExpressionList
 
-`func (o *GridDnsScavengingSettings) SetEaExpressionList(v GriddnsscavengingsettingsEaExpressionList)`
+`func (o *GridDnsScavengingSettings) SetEaExpressionList(v []GriddnsscavengingsettingsEaExpressionList)`
 
 SetEaExpressionList sets EaExpressionList field to given value.
 

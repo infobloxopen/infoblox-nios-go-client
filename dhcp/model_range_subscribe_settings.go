@@ -20,8 +20,9 @@ var _ MappedNullable = &RangeSubscribeSettings{}
 // RangeSubscribeSettings struct for RangeSubscribeSettings
 type RangeSubscribeSettings struct {
 	// The list of Cisco ISE attributes allowed for subscription.
-	EnabledAttributes    []string                                  `json:"enabled_attributes,omitempty"`
-	MappedEaAttributes   *RangesubscribesettingsMappedEaAttributes `json:"mapped_ea_attributes,omitempty"`
+	EnabledAttributes []string `json:"enabled_attributes,omitempty"`
+	// The list of NIOS extensible attributes to Cisco ISE attributes mappings.
+	MappedEaAttributes   []RangesubscribesettingsMappedEaAttributes `json:"mapped_ea_attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +78,17 @@ func (o *RangeSubscribeSettings) SetEnabledAttributes(v []string) {
 }
 
 // GetMappedEaAttributes returns the MappedEaAttributes field value if set, zero value otherwise.
-func (o *RangeSubscribeSettings) GetMappedEaAttributes() RangesubscribesettingsMappedEaAttributes {
+func (o *RangeSubscribeSettings) GetMappedEaAttributes() []RangesubscribesettingsMappedEaAttributes {
 	if o == nil || IsNil(o.MappedEaAttributes) {
-		var ret RangesubscribesettingsMappedEaAttributes
+		var ret []RangesubscribesettingsMappedEaAttributes
 		return ret
 	}
-	return *o.MappedEaAttributes
+	return o.MappedEaAttributes
 }
 
 // GetMappedEaAttributesOk returns a tuple with the MappedEaAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RangeSubscribeSettings) GetMappedEaAttributesOk() (*RangesubscribesettingsMappedEaAttributes, bool) {
+func (o *RangeSubscribeSettings) GetMappedEaAttributesOk() ([]RangesubscribesettingsMappedEaAttributes, bool) {
 	if o == nil || IsNil(o.MappedEaAttributes) {
 		return nil, false
 	}
@@ -103,9 +104,9 @@ func (o *RangeSubscribeSettings) HasMappedEaAttributes() bool {
 	return false
 }
 
-// SetMappedEaAttributes gets a reference to the given RangesubscribesettingsMappedEaAttributes and assigns it to the MappedEaAttributes field.
-func (o *RangeSubscribeSettings) SetMappedEaAttributes(v RangesubscribesettingsMappedEaAttributes) {
-	o.MappedEaAttributes = &v
+// SetMappedEaAttributes gets a reference to the given []RangesubscribesettingsMappedEaAttributes and assigns it to the MappedEaAttributes field.
+func (o *RangeSubscribeSettings) SetMappedEaAttributes(v []RangesubscribesettingsMappedEaAttributes) {
+	o.MappedEaAttributes = v
 }
 
 func (o RangeSubscribeSettings) MarshalJSON() ([]byte, error) {

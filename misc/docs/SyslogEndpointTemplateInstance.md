@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Template** | Pointer to **string** | The name of the REST API template parameter. | [optional] 
-**Parameters** | Pointer to [**SyslogendpointtemplateinstanceParameters**](SyslogendpointtemplateinstanceParameters.md) |  | [optional] 
+**Parameters** | Pointer to [**[]SyslogendpointtemplateinstanceParameters**](SyslogendpointtemplateinstanceParameters.md) | The notification REST template parameters. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasTemplate returns a boolean if a field has been set.
 
 ### GetParameters
 
-`func (o *SyslogEndpointTemplateInstance) GetParameters() SyslogendpointtemplateinstanceParameters`
+`func (o *SyslogEndpointTemplateInstance) GetParameters() []SyslogendpointtemplateinstanceParameters`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *SyslogEndpointTemplateInstance) GetParametersOk() (*SyslogendpointtemplateinstanceParameters, bool)`
+`func (o *SyslogEndpointTemplateInstance) GetParametersOk() (*[]SyslogendpointtemplateinstanceParameters, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *SyslogEndpointTemplateInstance) SetParameters(v SyslogendpointtemplateinstanceParameters)`
+`func (o *SyslogEndpointTemplateInstance) SetParameters(v []SyslogendpointtemplateinstanceParameters)`
 
 SetParameters sets Parameters field to given value.
 

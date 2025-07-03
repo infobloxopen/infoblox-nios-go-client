@@ -22,8 +22,9 @@ type ThreatprotectionRuletemplateDefaultConfig struct {
 	// The rule action.
 	Action *string `json:"action,omitempty"`
 	// The rule log severity.
-	LogSeverity          *string                                          `json:"log_severity,omitempty"`
-	Params               *ThreatprotectionruletemplatedefaultconfigParams `json:"params,omitempty"`
+	LogSeverity *string `json:"log_severity,omitempty"`
+	// The threat protection rule parameters.
+	Params               []ThreatprotectionruletemplatedefaultconfigParams `json:"params,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,17 +112,17 @@ func (o *ThreatprotectionRuletemplateDefaultConfig) SetLogSeverity(v string) {
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
-func (o *ThreatprotectionRuletemplateDefaultConfig) GetParams() ThreatprotectionruletemplatedefaultconfigParams {
+func (o *ThreatprotectionRuletemplateDefaultConfig) GetParams() []ThreatprotectionruletemplatedefaultconfigParams {
 	if o == nil || IsNil(o.Params) {
-		var ret ThreatprotectionruletemplatedefaultconfigParams
+		var ret []ThreatprotectionruletemplatedefaultconfigParams
 		return ret
 	}
-	return *o.Params
+	return o.Params
 }
 
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThreatprotectionRuletemplateDefaultConfig) GetParamsOk() (*ThreatprotectionruletemplatedefaultconfigParams, bool) {
+func (o *ThreatprotectionRuletemplateDefaultConfig) GetParamsOk() ([]ThreatprotectionruletemplatedefaultconfigParams, bool) {
 	if o == nil || IsNil(o.Params) {
 		return nil, false
 	}
@@ -137,9 +138,9 @@ func (o *ThreatprotectionRuletemplateDefaultConfig) HasParams() bool {
 	return false
 }
 
-// SetParams gets a reference to the given ThreatprotectionruletemplatedefaultconfigParams and assigns it to the Params field.
-func (o *ThreatprotectionRuletemplateDefaultConfig) SetParams(v ThreatprotectionruletemplatedefaultconfigParams) {
-	o.Params = &v
+// SetParams gets a reference to the given []ThreatprotectionruletemplatedefaultconfigParams and assigns it to the Params field.
+func (o *ThreatprotectionRuletemplateDefaultConfig) SetParams(v []ThreatprotectionruletemplatedefaultconfigParams) {
+	o.Params = v
 }
 
 func (o ThreatprotectionRuletemplateDefaultConfig) MarshalJSON() ([]byte, error) {

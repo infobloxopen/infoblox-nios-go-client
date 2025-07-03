@@ -401,8 +401,8 @@ paths:
       summary: Create a rir:organization object
       tags:
       - RirOrganization
-      x-tf-resource: rir_rir_organization
-      x-tf-datasource: rir_rir_organization
+      x-tf-resource: rir_organization
+      x-tf-datasource: rir_organization
       x-sdk-default-ext-attrs: true
   /rir:organization/{reference}:
     delete:

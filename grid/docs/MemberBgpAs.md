@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **As** | Pointer to **int64** | The number of this autonomous system. | [optional] 
 **Keepalive** | Pointer to **int64** | The AS keepalive timer (in seconds). The valid value is from 1 to 21845. | [optional] 
 **Holddown** | Pointer to **int64** | The AS holddown timer (in seconds). The valid value is from 3 to 65535. | [optional] 
-**Neighbors** | Pointer to [**MemberbgpasNeighbors**](MemberbgpasNeighbors.md) |  | [optional] 
+**Neighbors** | Pointer to [**[]MemberbgpasNeighbors**](MemberbgpasNeighbors.md) | The BGP neighbors for this AS. | [optional] 
 **LinkDetect** | Pointer to **bool** | Determines if link detection on the interface is enabled or not. | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasHolddown returns a boolean if a field has been set.
 
 ### GetNeighbors
 
-`func (o *MemberBgpAs) GetNeighbors() MemberbgpasNeighbors`
+`func (o *MemberBgpAs) GetNeighbors() []MemberbgpasNeighbors`
 
 GetNeighbors returns the Neighbors field if non-nil, zero value otherwise.
 
 ### GetNeighborsOk
 
-`func (o *MemberBgpAs) GetNeighborsOk() (*MemberbgpasNeighbors, bool)`
+`func (o *MemberBgpAs) GetNeighborsOk() (*[]MemberbgpasNeighbors, bool)`
 
 GetNeighborsOk returns a tuple with the Neighbors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNeighbors
 
-`func (o *MemberBgpAs) SetNeighbors(v MemberbgpasNeighbors)`
+`func (o *MemberBgpAs) SetNeighbors(v []MemberbgpasNeighbors)`
 
 SetNeighbors sets Neighbors field to given value.
 

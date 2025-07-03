@@ -28,8 +28,9 @@ type MemberSyslogProxySetting struct {
 	// If set to True, the appliance can receive messages from other devices via UDP.
 	UdpEnable *bool `json:"udp_enable,omitempty"`
 	// The UDP port the appliance must listen on.
-	UdpPort              *int64                              `json:"udp_port,omitempty"`
-	ClientAcls           *MembersyslogproxysettingClientAcls `json:"client_acls,omitempty"`
+	UdpPort *int64 `json:"udp_port,omitempty"`
+	// This list controls the IP addresses and networks that are allowed to access the syslog proxy.
+	ClientAcls           []MembersyslogproxysettingClientAcls `json:"client_acls,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -213,17 +214,17 @@ func (o *MemberSyslogProxySetting) SetUdpPort(v int64) {
 }
 
 // GetClientAcls returns the ClientAcls field value if set, zero value otherwise.
-func (o *MemberSyslogProxySetting) GetClientAcls() MembersyslogproxysettingClientAcls {
+func (o *MemberSyslogProxySetting) GetClientAcls() []MembersyslogproxysettingClientAcls {
 	if o == nil || IsNil(o.ClientAcls) {
-		var ret MembersyslogproxysettingClientAcls
+		var ret []MembersyslogproxysettingClientAcls
 		return ret
 	}
-	return *o.ClientAcls
+	return o.ClientAcls
 }
 
 // GetClientAclsOk returns a tuple with the ClientAcls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberSyslogProxySetting) GetClientAclsOk() (*MembersyslogproxysettingClientAcls, bool) {
+func (o *MemberSyslogProxySetting) GetClientAclsOk() ([]MembersyslogproxysettingClientAcls, bool) {
 	if o == nil || IsNil(o.ClientAcls) {
 		return nil, false
 	}
@@ -239,9 +240,9 @@ func (o *MemberSyslogProxySetting) HasClientAcls() bool {
 	return false
 }
 
-// SetClientAcls gets a reference to the given MembersyslogproxysettingClientAcls and assigns it to the ClientAcls field.
-func (o *MemberSyslogProxySetting) SetClientAcls(v MembersyslogproxysettingClientAcls) {
-	o.ClientAcls = &v
+// SetClientAcls gets a reference to the given []MembersyslogproxysettingClientAcls and assigns it to the ClientAcls field.
+func (o *MemberSyslogProxySetting) SetClientAcls(v []MembersyslogproxysettingClientAcls) {
+	o.ClientAcls = v
 }
 
 func (o MemberSyslogProxySetting) MarshalJSON() ([]byte, error) {

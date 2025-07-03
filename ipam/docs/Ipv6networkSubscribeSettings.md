@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnabledAttributes** | Pointer to **[]string** | The list of Cisco ISE attributes allowed for subscription. | [optional] 
-**MappedEaAttributes** | Pointer to [**Ipv6networksubscribesettingsMappedEaAttributes**](Ipv6networksubscribesettingsMappedEaAttributes.md) |  | [optional] 
+**MappedEaAttributes** | Pointer to [**[]Ipv6networksubscribesettingsMappedEaAttributes**](Ipv6networksubscribesettingsMappedEaAttributes.md) | The list of NIOS extensible attributes to Cisco ISE attributes mappings. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasEnabledAttributes returns a boolean if a field has been set.
 
 ### GetMappedEaAttributes
 
-`func (o *Ipv6networkSubscribeSettings) GetMappedEaAttributes() Ipv6networksubscribesettingsMappedEaAttributes`
+`func (o *Ipv6networkSubscribeSettings) GetMappedEaAttributes() []Ipv6networksubscribesettingsMappedEaAttributes`
 
 GetMappedEaAttributes returns the MappedEaAttributes field if non-nil, zero value otherwise.
 
 ### GetMappedEaAttributesOk
 
-`func (o *Ipv6networkSubscribeSettings) GetMappedEaAttributesOk() (*Ipv6networksubscribesettingsMappedEaAttributes, bool)`
+`func (o *Ipv6networkSubscribeSettings) GetMappedEaAttributesOk() (*[]Ipv6networksubscribesettingsMappedEaAttributes, bool)`
 
 GetMappedEaAttributesOk returns a tuple with the MappedEaAttributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMappedEaAttributes
 
-`func (o *Ipv6networkSubscribeSettings) SetMappedEaAttributes(v Ipv6networksubscribesettingsMappedEaAttributes)`
+`func (o *Ipv6networkSubscribeSettings) SetMappedEaAttributes(v []Ipv6networksubscribesettingsMappedEaAttributes)`
 
 SetMappedEaAttributes sets MappedEaAttributes field to given value.
 

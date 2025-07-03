@@ -177,8 +177,8 @@ paths:
       summary: Create a notification:rest:endpoint object
       tags:
       - NotificationRestEndpoint
-      x-tf-resource: notification_notification_rest_endpoint
-      x-tf-datasource: notification_notification_rest_endpoint
+      x-tf-resource: notification_rest_endpoint
+      x-tf-datasource: notification_rest_endpoint
       x-sdk-default-ext-attrs: true
   /notification:rest:endpoint/{reference}:
     delete:
@@ -748,8 +748,8 @@ paths:
       summary: Create a notification:rule object
       tags:
       - NotificationRule
-      x-tf-resource: notification_notification_rule
-      x-tf-datasource: notification_notification_rule
+      x-tf-resource: notification_rule
+      x-tf-datasource: notification_rule
   /notification:rule/{reference}:
     delete:
       description: Deletes a specific notification:rule object by reference
@@ -1112,7 +1112,11 @@ components:
         template_instance:
           template: Example template
           parameters:
-            name: Example name
+          - name: Example name
+            syntax: Example syntax
+            default_value: Example default_value
+            value: Example value
+          - name: Example name
             syntax: Example syntax
             default_value: Example default_value
             value: Example value
@@ -1237,7 +1241,11 @@ components:
       example:
         template: Example template
         parameters:
-          name: Example name
+        - name: Example name
+          syntax: Example syntax
+          default_value: Example default_value
+          value: Example value
+        - name: Example name
           syntax: Example syntax
           default_value: Example default_value
           value: Example value
@@ -1247,7 +1255,10 @@ components:
           example: Example template
           type: string
         parameters:
-          $ref: '#/components/schemas/NotificationrestendpointtemplateinstanceParameters'
+          description: The notification REST template parameters.
+          items:
+            $ref: '#/components/schemas/NotificationrestendpointtemplateinstanceParameters'
+          type: array
       type: object
     NotificationrestendpointtemplateinstanceParameters:
       example:
@@ -1513,7 +1524,11 @@ components:
         template_instance:
           template: Example template
           parameters:
-            name: Example name
+          - name: Example name
+            syntax: Example syntax
+            default_value: Example default_value
+            value: Example value
+          - name: Example name
             syntax: Example syntax
             default_value: Example default_value
             value: Example value
@@ -1880,7 +1895,11 @@ components:
       example:
         template: Example template
         parameters:
-          name: Example name
+        - name: Example name
+          syntax: Example syntax
+          default_value: Example default_value
+          value: Example value
+        - name: Example name
           syntax: Example syntax
           default_value: Example default_value
           value: Example value
@@ -1890,7 +1909,10 @@ components:
           example: Example template
           type: string
         parameters:
-          $ref: '#/components/schemas/NotificationruletemplateinstanceParameters'
+          description: The notification REST template parameters.
+          items:
+            $ref: '#/components/schemas/NotificationruletemplateinstanceParameters'
+          type: array
       type: object
     NotificationruletemplateinstanceParameters:
       example:
@@ -1984,7 +2006,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value
@@ -2033,7 +2059,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value
@@ -2156,7 +2186,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value
@@ -2229,7 +2263,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value

@@ -358,8 +358,8 @@ paths:
       summary: Create a discovery:credentialgroup object
       tags:
       - DiscoveryCredentialgroup
-      x-tf-resource: discovery_discovery_credentialgroup
-      x-tf-datasource: discovery_discovery_credentialgroup
+      x-tf-resource: discovery_credentialgroup
+      x-tf-datasource: discovery_credentialgroup
   /discovery:credentialgroup/{reference}:
     delete:
       description: Deletes a specific discovery:credentialgroup object by reference

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Stealth** | Pointer to **bool** | This flag governs whether the specified Grid member is in stealth mode or not. If set to True, the member is in stealth mode. This flag is ignored if the struct is specified as part of a stub zone. | [optional] 
 **GridReplicate** | Pointer to **bool** | The flag represents DNS zone transfers if set to False, and ID Grid Replication if set to True. This flag is ignored if the struct is specified as part of a stub zone or if it is set as grid_member in an authoritative zone. | [optional] 
 **Lead** | Pointer to **bool** | This flag controls whether the Grid lead secondary server performs zone transfers to non lead secondaries. This flag is ignored if the struct is specified as grid_member in an authoritative zone. | [optional] 
-**PreferredPrimaries** | Pointer to [**NsgroupgridprimaryPreferredPrimaries**](NsgroupgridprimaryPreferredPrimaries.md) |  | [optional] 
+**PreferredPrimaries** | Pointer to [**[]NsgroupgridprimaryPreferredPrimaries**](NsgroupgridprimaryPreferredPrimaries.md) | The primary preference list with Grid member names and\\or External Server extserver structs for this member. | [optional] 
 **EnablePreferredPrimaries** | Pointer to **bool** | This flag represents whether the preferred_primaries field values of this member are used. | [optional] 
 
 ## Methods
@@ -132,20 +132,20 @@ HasLead returns a boolean if a field has been set.
 
 ### GetPreferredPrimaries
 
-`func (o *NsgroupGridPrimary) GetPreferredPrimaries() NsgroupgridprimaryPreferredPrimaries`
+`func (o *NsgroupGridPrimary) GetPreferredPrimaries() []NsgroupgridprimaryPreferredPrimaries`
 
 GetPreferredPrimaries returns the PreferredPrimaries field if non-nil, zero value otherwise.
 
 ### GetPreferredPrimariesOk
 
-`func (o *NsgroupGridPrimary) GetPreferredPrimariesOk() (*NsgroupgridprimaryPreferredPrimaries, bool)`
+`func (o *NsgroupGridPrimary) GetPreferredPrimariesOk() (*[]NsgroupgridprimaryPreferredPrimaries, bool)`
 
 GetPreferredPrimariesOk returns a tuple with the PreferredPrimaries field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreferredPrimaries
 
-`func (o *NsgroupGridPrimary) SetPreferredPrimaries(v NsgroupgridprimaryPreferredPrimaries)`
+`func (o *NsgroupGridPrimary) SetPreferredPrimaries(v []NsgroupgridprimaryPreferredPrimaries)`
 
 SetPreferredPrimaries sets PreferredPrimaries field to given value.
 

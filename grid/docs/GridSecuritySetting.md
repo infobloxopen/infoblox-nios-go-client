@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuditLogRollingEnable** | Pointer to **bool** | If set to True, rolling of audit logs is enabled. | [optional] 
-**AdminAccessItems** | Pointer to [**GridsecuritysettingAdminAccessItems**](GridsecuritysettingAdminAccessItems.md) |  | [optional] 
+**AdminAccessItems** | Pointer to [**[]GridsecuritysettingAdminAccessItems**](GridsecuritysettingAdminAccessItems.md) | A list of access control settings used for security access. | [optional] 
 **HttpRedirectEnable** | Pointer to **bool** | If set to True, HTTP connections are redirected to HTTPS. | [optional] 
 **LoginBannerEnable** | Pointer to **bool** | If set to True, the login banner is enabled. | [optional] 
 **LoginBannerText** | Pointer to **string** | The login banner text. | [optional] 
@@ -65,20 +65,20 @@ HasAuditLogRollingEnable returns a boolean if a field has been set.
 
 ### GetAdminAccessItems
 
-`func (o *GridSecuritySetting) GetAdminAccessItems() GridsecuritysettingAdminAccessItems`
+`func (o *GridSecuritySetting) GetAdminAccessItems() []GridsecuritysettingAdminAccessItems`
 
 GetAdminAccessItems returns the AdminAccessItems field if non-nil, zero value otherwise.
 
 ### GetAdminAccessItemsOk
 
-`func (o *GridSecuritySetting) GetAdminAccessItemsOk() (*GridsecuritysettingAdminAccessItems, bool)`
+`func (o *GridSecuritySetting) GetAdminAccessItemsOk() (*[]GridsecuritysettingAdminAccessItems, bool)`
 
 GetAdminAccessItemsOk returns a tuple with the AdminAccessItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdminAccessItems
 
-`func (o *GridSecuritySetting) SetAdminAccessItems(v GridsecuritysettingAdminAccessItems)`
+`func (o *GridSecuritySetting) SetAdminAccessItems(v []GridsecuritysettingAdminAccessItems)`
 
 SetAdminAccessItems sets AdminAccessItems field to given value.
 

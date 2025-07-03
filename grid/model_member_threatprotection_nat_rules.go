@@ -30,8 +30,9 @@ type MemberThreatprotectionNatRules struct {
 	// The start address for the range of the threat protection NAT mapping rule.
 	StartAddress *string `json:"start_address,omitempty"`
 	// The end address for the range of the threat protection NAT mapping rule.
-	EndAddress           *string                                 `json:"end_address,omitempty"`
-	NatPorts             *MemberthreatprotectionnatrulesNatPorts `json:"nat_ports,omitempty"`
+	EndAddress *string `json:"end_address,omitempty"`
+	// The NAT port configuration for the threat protection NAT mapping rule.
+	NatPorts             []MemberthreatprotectionnatrulesNatPorts `json:"nat_ports,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -247,17 +248,17 @@ func (o *MemberThreatprotectionNatRules) SetEndAddress(v string) {
 }
 
 // GetNatPorts returns the NatPorts field value if set, zero value otherwise.
-func (o *MemberThreatprotectionNatRules) GetNatPorts() MemberthreatprotectionnatrulesNatPorts {
+func (o *MemberThreatprotectionNatRules) GetNatPorts() []MemberthreatprotectionnatrulesNatPorts {
 	if o == nil || IsNil(o.NatPorts) {
-		var ret MemberthreatprotectionnatrulesNatPorts
+		var ret []MemberthreatprotectionnatrulesNatPorts
 		return ret
 	}
-	return *o.NatPorts
+	return o.NatPorts
 }
 
 // GetNatPortsOk returns a tuple with the NatPorts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberThreatprotectionNatRules) GetNatPortsOk() (*MemberthreatprotectionnatrulesNatPorts, bool) {
+func (o *MemberThreatprotectionNatRules) GetNatPortsOk() ([]MemberthreatprotectionnatrulesNatPorts, bool) {
 	if o == nil || IsNil(o.NatPorts) {
 		return nil, false
 	}
@@ -273,9 +274,9 @@ func (o *MemberThreatprotectionNatRules) HasNatPorts() bool {
 	return false
 }
 
-// SetNatPorts gets a reference to the given MemberthreatprotectionnatrulesNatPorts and assigns it to the NatPorts field.
-func (o *MemberThreatprotectionNatRules) SetNatPorts(v MemberthreatprotectionnatrulesNatPorts) {
-	o.NatPorts = &v
+// SetNatPorts gets a reference to the given []MemberthreatprotectionnatrulesNatPorts and assigns it to the NatPorts field.
+func (o *MemberThreatprotectionNatRules) SetNatPorts(v []MemberthreatprotectionnatrulesNatPorts) {
+	o.NatPorts = v
 }
 
 func (o MemberThreatprotectionNatRules) MarshalJSON() ([]byte, error) {

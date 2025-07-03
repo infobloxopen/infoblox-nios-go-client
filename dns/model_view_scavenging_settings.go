@@ -32,9 +32,11 @@ type ViewScavengingSettings struct {
 	// This flag indicates if the associated resource record scavenging is enabled or not.
 	ReclaimAssociatedRecords *bool                                     `json:"reclaim_associated_records,omitempty"`
 	ScavengingSchedule       *ViewscavengingsettingsScavengingSchedule `json:"scavenging_schedule,omitempty"`
-	ExpressionList           *ViewscavengingsettingsExpressionList     `json:"expression_list,omitempty"`
-	EaExpressionList         *ViewscavengingsettingsEaExpressionList   `json:"ea_expression_list,omitempty"`
-	AdditionalProperties     map[string]interface{}
+	// The expression list. The particular record is treated as reclaimable if expression condition evaluates to 'true' for given record if scavenging hasn't been manually disabled on a given resource record.
+	ExpressionList []ViewscavengingsettingsExpressionList `json:"expression_list,omitempty"`
+	// The extensible attributes expression list. The particular record is treated as reclaimable if extensible attributes expression condition evaluates to 'true' for given record if scavenging hasn't been manually disabled on a given resource record.
+	EaExpressionList     []ViewscavengingsettingsEaExpressionList `json:"ea_expression_list,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ViewScavengingSettings ViewScavengingSettings
@@ -281,17 +283,17 @@ func (o *ViewScavengingSettings) SetScavengingSchedule(v ViewscavengingsettingsS
 }
 
 // GetExpressionList returns the ExpressionList field value if set, zero value otherwise.
-func (o *ViewScavengingSettings) GetExpressionList() ViewscavengingsettingsExpressionList {
+func (o *ViewScavengingSettings) GetExpressionList() []ViewscavengingsettingsExpressionList {
 	if o == nil || IsNil(o.ExpressionList) {
-		var ret ViewscavengingsettingsExpressionList
+		var ret []ViewscavengingsettingsExpressionList
 		return ret
 	}
-	return *o.ExpressionList
+	return o.ExpressionList
 }
 
 // GetExpressionListOk returns a tuple with the ExpressionList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ViewScavengingSettings) GetExpressionListOk() (*ViewscavengingsettingsExpressionList, bool) {
+func (o *ViewScavengingSettings) GetExpressionListOk() ([]ViewscavengingsettingsExpressionList, bool) {
 	if o == nil || IsNil(o.ExpressionList) {
 		return nil, false
 	}
@@ -307,23 +309,23 @@ func (o *ViewScavengingSettings) HasExpressionList() bool {
 	return false
 }
 
-// SetExpressionList gets a reference to the given ViewscavengingsettingsExpressionList and assigns it to the ExpressionList field.
-func (o *ViewScavengingSettings) SetExpressionList(v ViewscavengingsettingsExpressionList) {
-	o.ExpressionList = &v
+// SetExpressionList gets a reference to the given []ViewscavengingsettingsExpressionList and assigns it to the ExpressionList field.
+func (o *ViewScavengingSettings) SetExpressionList(v []ViewscavengingsettingsExpressionList) {
+	o.ExpressionList = v
 }
 
 // GetEaExpressionList returns the EaExpressionList field value if set, zero value otherwise.
-func (o *ViewScavengingSettings) GetEaExpressionList() ViewscavengingsettingsEaExpressionList {
+func (o *ViewScavengingSettings) GetEaExpressionList() []ViewscavengingsettingsEaExpressionList {
 	if o == nil || IsNil(o.EaExpressionList) {
-		var ret ViewscavengingsettingsEaExpressionList
+		var ret []ViewscavengingsettingsEaExpressionList
 		return ret
 	}
-	return *o.EaExpressionList
+	return o.EaExpressionList
 }
 
 // GetEaExpressionListOk returns a tuple with the EaExpressionList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ViewScavengingSettings) GetEaExpressionListOk() (*ViewscavengingsettingsEaExpressionList, bool) {
+func (o *ViewScavengingSettings) GetEaExpressionListOk() ([]ViewscavengingsettingsEaExpressionList, bool) {
 	if o == nil || IsNil(o.EaExpressionList) {
 		return nil, false
 	}
@@ -339,9 +341,9 @@ func (o *ViewScavengingSettings) HasEaExpressionList() bool {
 	return false
 }
 
-// SetEaExpressionList gets a reference to the given ViewscavengingsettingsEaExpressionList and assigns it to the EaExpressionList field.
-func (o *ViewScavengingSettings) SetEaExpressionList(v ViewscavengingsettingsEaExpressionList) {
-	o.EaExpressionList = &v
+// SetEaExpressionList gets a reference to the given []ViewscavengingsettingsEaExpressionList and assigns it to the EaExpressionList field.
+func (o *ViewScavengingSettings) SetEaExpressionList(v []ViewscavengingsettingsEaExpressionList) {
+	o.EaExpressionList = v
 }
 
 func (o ViewScavengingSettings) MarshalJSON() ([]byte, error) {

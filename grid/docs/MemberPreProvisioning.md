@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HardwareInfo** | Pointer to [**MemberpreprovisioningHardwareInfo**](MemberpreprovisioningHardwareInfo.md) |  | [optional] 
+**HardwareInfo** | Pointer to [**[]MemberpreprovisioningHardwareInfo**](MemberpreprovisioningHardwareInfo.md) | An array of structures that describe the hardware being pre-provisioned. | [optional] 
 **Licenses** | Pointer to **[]string** | An array of license types the pre-provisioned member should have in order to join the Grid, or the licenses that must be allocated to the member when it joins the Grid using the token-based authentication. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetHardwareInfo
 
-`func (o *MemberPreProvisioning) GetHardwareInfo() MemberpreprovisioningHardwareInfo`
+`func (o *MemberPreProvisioning) GetHardwareInfo() []MemberpreprovisioningHardwareInfo`
 
 GetHardwareInfo returns the HardwareInfo field if non-nil, zero value otherwise.
 
 ### GetHardwareInfoOk
 
-`func (o *MemberPreProvisioning) GetHardwareInfoOk() (*MemberpreprovisioningHardwareInfo, bool)`
+`func (o *MemberPreProvisioning) GetHardwareInfoOk() (*[]MemberpreprovisioningHardwareInfo, bool)`
 
 GetHardwareInfoOk returns a tuple with the HardwareInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHardwareInfo
 
-`func (o *MemberPreProvisioning) SetHardwareInfo(v MemberpreprovisioningHardwareInfo)`
+`func (o *MemberPreProvisioning) SetHardwareInfo(v []MemberpreprovisioningHardwareInfo)`
 
 SetHardwareInfo sets HardwareInfo field to given value.
 

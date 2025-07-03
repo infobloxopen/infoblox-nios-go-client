@@ -20,8 +20,9 @@ var _ MappedNullable = &PxgridEndpointSubscribeSettings{}
 // PxgridEndpointSubscribeSettings struct for PxgridEndpointSubscribeSettings
 type PxgridEndpointSubscribeSettings struct {
 	// The list of Cisco ISE attributes allowed for subscription.
-	EnabledAttributes    []string                                           `json:"enabled_attributes,omitempty"`
-	MappedEaAttributes   *PxgridendpointsubscribesettingsMappedEaAttributes `json:"mapped_ea_attributes,omitempty"`
+	EnabledAttributes []string `json:"enabled_attributes,omitempty"`
+	// The list of NIOS extensible attributes to Cisco ISE attributes mappings.
+	MappedEaAttributes   []PxgridendpointsubscribesettingsMappedEaAttributes `json:"mapped_ea_attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +78,17 @@ func (o *PxgridEndpointSubscribeSettings) SetEnabledAttributes(v []string) {
 }
 
 // GetMappedEaAttributes returns the MappedEaAttributes field value if set, zero value otherwise.
-func (o *PxgridEndpointSubscribeSettings) GetMappedEaAttributes() PxgridendpointsubscribesettingsMappedEaAttributes {
+func (o *PxgridEndpointSubscribeSettings) GetMappedEaAttributes() []PxgridendpointsubscribesettingsMappedEaAttributes {
 	if o == nil || IsNil(o.MappedEaAttributes) {
-		var ret PxgridendpointsubscribesettingsMappedEaAttributes
+		var ret []PxgridendpointsubscribesettingsMappedEaAttributes
 		return ret
 	}
-	return *o.MappedEaAttributes
+	return o.MappedEaAttributes
 }
 
 // GetMappedEaAttributesOk returns a tuple with the MappedEaAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PxgridEndpointSubscribeSettings) GetMappedEaAttributesOk() (*PxgridendpointsubscribesettingsMappedEaAttributes, bool) {
+func (o *PxgridEndpointSubscribeSettings) GetMappedEaAttributesOk() ([]PxgridendpointsubscribesettingsMappedEaAttributes, bool) {
 	if o == nil || IsNil(o.MappedEaAttributes) {
 		return nil, false
 	}
@@ -103,9 +104,9 @@ func (o *PxgridEndpointSubscribeSettings) HasMappedEaAttributes() bool {
 	return false
 }
 
-// SetMappedEaAttributes gets a reference to the given PxgridendpointsubscribesettingsMappedEaAttributes and assigns it to the MappedEaAttributes field.
-func (o *PxgridEndpointSubscribeSettings) SetMappedEaAttributes(v PxgridendpointsubscribesettingsMappedEaAttributes) {
-	o.MappedEaAttributes = &v
+// SetMappedEaAttributes gets a reference to the given []PxgridendpointsubscribesettingsMappedEaAttributes and assigns it to the MappedEaAttributes field.
+func (o *PxgridEndpointSubscribeSettings) SetMappedEaAttributes(v []PxgridendpointsubscribesettingsMappedEaAttributes) {
+	o.MappedEaAttributes = v
 }
 
 func (o PxgridEndpointSubscribeSettings) MarshalJSON() ([]byte, error) {

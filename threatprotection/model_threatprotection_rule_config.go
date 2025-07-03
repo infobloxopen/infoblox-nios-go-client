@@ -22,8 +22,9 @@ type ThreatprotectionRuleConfig struct {
 	// The rule action.
 	Action *string `json:"action,omitempty"`
 	// The rule log severity.
-	LogSeverity          *string                           `json:"log_severity,omitempty"`
-	Params               *ThreatprotectionruleconfigParams `json:"params,omitempty"`
+	LogSeverity *string `json:"log_severity,omitempty"`
+	// The threat protection rule parameters.
+	Params               []ThreatprotectionruleconfigParams `json:"params,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,17 +112,17 @@ func (o *ThreatprotectionRuleConfig) SetLogSeverity(v string) {
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
-func (o *ThreatprotectionRuleConfig) GetParams() ThreatprotectionruleconfigParams {
+func (o *ThreatprotectionRuleConfig) GetParams() []ThreatprotectionruleconfigParams {
 	if o == nil || IsNil(o.Params) {
-		var ret ThreatprotectionruleconfigParams
+		var ret []ThreatprotectionruleconfigParams
 		return ret
 	}
-	return *o.Params
+	return o.Params
 }
 
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThreatprotectionRuleConfig) GetParamsOk() (*ThreatprotectionruleconfigParams, bool) {
+func (o *ThreatprotectionRuleConfig) GetParamsOk() ([]ThreatprotectionruleconfigParams, bool) {
 	if o == nil || IsNil(o.Params) {
 		return nil, false
 	}
@@ -137,9 +138,9 @@ func (o *ThreatprotectionRuleConfig) HasParams() bool {
 	return false
 }
 
-// SetParams gets a reference to the given ThreatprotectionruleconfigParams and assigns it to the Params field.
-func (o *ThreatprotectionRuleConfig) SetParams(v ThreatprotectionruleconfigParams) {
-	o.Params = &v
+// SetParams gets a reference to the given []ThreatprotectionruleconfigParams and assigns it to the Params field.
+func (o *ThreatprotectionRuleConfig) SetParams(v []ThreatprotectionruleconfigParams) {
+	o.Params = v
 }
 
 func (o ThreatprotectionRuleConfig) MarshalJSON() ([]byte, error) {

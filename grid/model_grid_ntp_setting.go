@@ -20,10 +20,12 @@ var _ MappedNullable = &GridNtpSetting{}
 // GridNtpSetting struct for GridNtpSetting
 type GridNtpSetting struct {
 	// Determines whether NTP is enabled on the Grid.
-	EnableNtp  *bool                     `json:"enable_ntp,omitempty"`
-	NtpServers *GridntpsettingNtpServers `json:"ntp_servers,omitempty"`
-	NtpKeys    *GridntpsettingNtpKeys    `json:"ntp_keys,omitempty"`
-	NtpAcl     *GridntpsettingNtpAcl     `json:"ntp_acl,omitempty"`
+	EnableNtp *bool `json:"enable_ntp,omitempty"`
+	// The list of NTP servers configured on a Grid.
+	NtpServers []GridntpsettingNtpServers `json:"ntp_servers,omitempty"`
+	// The list of NTP authentication keys used to authenticate NTP clients.
+	NtpKeys []GridntpsettingNtpKeys `json:"ntp_keys,omitempty"`
+	NtpAcl  *GridntpsettingNtpAcl   `json:"ntp_acl,omitempty"`
 	// Determines whether the Kiss-o'-Death packets are enabled.
 	NtpKod *bool `json:"ntp_kod,omitempty"`
 	// Grid level GM local NTP stratum.
@@ -87,17 +89,17 @@ func (o *GridNtpSetting) SetEnableNtp(v bool) {
 }
 
 // GetNtpServers returns the NtpServers field value if set, zero value otherwise.
-func (o *GridNtpSetting) GetNtpServers() GridntpsettingNtpServers {
+func (o *GridNtpSetting) GetNtpServers() []GridntpsettingNtpServers {
 	if o == nil || IsNil(o.NtpServers) {
-		var ret GridntpsettingNtpServers
+		var ret []GridntpsettingNtpServers
 		return ret
 	}
-	return *o.NtpServers
+	return o.NtpServers
 }
 
 // GetNtpServersOk returns a tuple with the NtpServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridNtpSetting) GetNtpServersOk() (*GridntpsettingNtpServers, bool) {
+func (o *GridNtpSetting) GetNtpServersOk() ([]GridntpsettingNtpServers, bool) {
 	if o == nil || IsNil(o.NtpServers) {
 		return nil, false
 	}
@@ -113,23 +115,23 @@ func (o *GridNtpSetting) HasNtpServers() bool {
 	return false
 }
 
-// SetNtpServers gets a reference to the given GridntpsettingNtpServers and assigns it to the NtpServers field.
-func (o *GridNtpSetting) SetNtpServers(v GridntpsettingNtpServers) {
-	o.NtpServers = &v
+// SetNtpServers gets a reference to the given []GridntpsettingNtpServers and assigns it to the NtpServers field.
+func (o *GridNtpSetting) SetNtpServers(v []GridntpsettingNtpServers) {
+	o.NtpServers = v
 }
 
 // GetNtpKeys returns the NtpKeys field value if set, zero value otherwise.
-func (o *GridNtpSetting) GetNtpKeys() GridntpsettingNtpKeys {
+func (o *GridNtpSetting) GetNtpKeys() []GridntpsettingNtpKeys {
 	if o == nil || IsNil(o.NtpKeys) {
-		var ret GridntpsettingNtpKeys
+		var ret []GridntpsettingNtpKeys
 		return ret
 	}
-	return *o.NtpKeys
+	return o.NtpKeys
 }
 
 // GetNtpKeysOk returns a tuple with the NtpKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridNtpSetting) GetNtpKeysOk() (*GridntpsettingNtpKeys, bool) {
+func (o *GridNtpSetting) GetNtpKeysOk() ([]GridntpsettingNtpKeys, bool) {
 	if o == nil || IsNil(o.NtpKeys) {
 		return nil, false
 	}
@@ -145,9 +147,9 @@ func (o *GridNtpSetting) HasNtpKeys() bool {
 	return false
 }
 
-// SetNtpKeys gets a reference to the given GridntpsettingNtpKeys and assigns it to the NtpKeys field.
-func (o *GridNtpSetting) SetNtpKeys(v GridntpsettingNtpKeys) {
-	o.NtpKeys = &v
+// SetNtpKeys gets a reference to the given []GridntpsettingNtpKeys and assigns it to the NtpKeys field.
+func (o *GridNtpSetting) SetNtpKeys(v []GridntpsettingNtpKeys) {
+	o.NtpKeys = v
 }
 
 // GetNtpAcl returns the NtpAcl field value if set, zero value otherwise.

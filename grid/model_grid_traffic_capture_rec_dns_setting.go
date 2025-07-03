@@ -26,9 +26,10 @@ type GridTrafficCaptureRecDnsSetting struct {
 	// Recursive DNS latency above which traffic capture will be stopped.
 	RecDnsLatencyReset *int64 `json:"rec_dns_latency_reset,omitempty"`
 	// The local IP DNS service is listen on ( for recursive DNS latency trigger).
-	RecDnsLatencyListenOnSource *string                                             `json:"rec_dns_latency_listen_on_source,omitempty"`
-	KpiMonitoredDomains         *GridtrafficcapturerecdnssettingKpiMonitoredDomains `json:"kpi_monitored_domains,omitempty"`
-	AdditionalProperties        map[string]interface{}
+	RecDnsLatencyListenOnSource *string `json:"rec_dns_latency_listen_on_source,omitempty"`
+	// List of domains monitored by 'Recursive DNS Latency Threshold' trigger.
+	KpiMonitoredDomains  []GridtrafficcapturerecdnssettingKpiMonitoredDomains `json:"kpi_monitored_domains,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GridTrafficCaptureRecDnsSetting GridTrafficCaptureRecDnsSetting
@@ -179,17 +180,17 @@ func (o *GridTrafficCaptureRecDnsSetting) SetRecDnsLatencyListenOnSource(v strin
 }
 
 // GetKpiMonitoredDomains returns the KpiMonitoredDomains field value if set, zero value otherwise.
-func (o *GridTrafficCaptureRecDnsSetting) GetKpiMonitoredDomains() GridtrafficcapturerecdnssettingKpiMonitoredDomains {
+func (o *GridTrafficCaptureRecDnsSetting) GetKpiMonitoredDomains() []GridtrafficcapturerecdnssettingKpiMonitoredDomains {
 	if o == nil || IsNil(o.KpiMonitoredDomains) {
-		var ret GridtrafficcapturerecdnssettingKpiMonitoredDomains
+		var ret []GridtrafficcapturerecdnssettingKpiMonitoredDomains
 		return ret
 	}
-	return *o.KpiMonitoredDomains
+	return o.KpiMonitoredDomains
 }
 
 // GetKpiMonitoredDomainsOk returns a tuple with the KpiMonitoredDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridTrafficCaptureRecDnsSetting) GetKpiMonitoredDomainsOk() (*GridtrafficcapturerecdnssettingKpiMonitoredDomains, bool) {
+func (o *GridTrafficCaptureRecDnsSetting) GetKpiMonitoredDomainsOk() ([]GridtrafficcapturerecdnssettingKpiMonitoredDomains, bool) {
 	if o == nil || IsNil(o.KpiMonitoredDomains) {
 		return nil, false
 	}
@@ -205,9 +206,9 @@ func (o *GridTrafficCaptureRecDnsSetting) HasKpiMonitoredDomains() bool {
 	return false
 }
 
-// SetKpiMonitoredDomains gets a reference to the given GridtrafficcapturerecdnssettingKpiMonitoredDomains and assigns it to the KpiMonitoredDomains field.
-func (o *GridTrafficCaptureRecDnsSetting) SetKpiMonitoredDomains(v GridtrafficcapturerecdnssettingKpiMonitoredDomains) {
-	o.KpiMonitoredDomains = &v
+// SetKpiMonitoredDomains gets a reference to the given []GridtrafficcapturerecdnssettingKpiMonitoredDomains and assigns it to the KpiMonitoredDomains field.
+func (o *GridTrafficCaptureRecDnsSetting) SetKpiMonitoredDomains(v []GridtrafficcapturerecdnssettingKpiMonitoredDomains) {
+	o.KpiMonitoredDomains = v
 }
 
 func (o GridTrafficCaptureRecDnsSetting) MarshalJSON() ([]byte, error) {

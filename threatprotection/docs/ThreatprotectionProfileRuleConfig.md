@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to **string** | The rule action. | [optional] 
 **LogSeverity** | Pointer to **string** | The rule log severity. | [optional] 
-**Params** | Pointer to [**ThreatprotectionprofileruleconfigParams**](ThreatprotectionprofileruleconfigParams.md) |  | [optional] 
+**Params** | Pointer to [**[]ThreatprotectionprofileruleconfigParams**](ThreatprotectionprofileruleconfigParams.md) | The threat protection rule parameters. | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasLogSeverity returns a boolean if a field has been set.
 
 ### GetParams
 
-`func (o *ThreatprotectionProfileRuleConfig) GetParams() ThreatprotectionprofileruleconfigParams`
+`func (o *ThreatprotectionProfileRuleConfig) GetParams() []ThreatprotectionprofileruleconfigParams`
 
 GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *ThreatprotectionProfileRuleConfig) GetParamsOk() (*ThreatprotectionprofileruleconfigParams, bool)`
+`func (o *ThreatprotectionProfileRuleConfig) GetParamsOk() (*[]ThreatprotectionprofileruleconfigParams, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParams
 
-`func (o *ThreatprotectionProfileRuleConfig) SetParams(v ThreatprotectionprofileruleconfigParams)`
+`func (o *ThreatprotectionProfileRuleConfig) SetParams(v []ThreatprotectionprofileruleconfigParams)`
 
 SetParams sets Params field to given value.
 

@@ -32,9 +32,11 @@ type ZoneAuthScavengingSettings struct {
 	// This flag indicates if the associated resource record scavenging is enabled or not.
 	ReclaimAssociatedRecords *bool                                         `json:"reclaim_associated_records,omitempty"`
 	ScavengingSchedule       *ZoneauthscavengingsettingsScavengingSchedule `json:"scavenging_schedule,omitempty"`
-	ExpressionList           *ZoneauthscavengingsettingsExpressionList     `json:"expression_list,omitempty"`
-	EaExpressionList         *ZoneauthscavengingsettingsEaExpressionList   `json:"ea_expression_list,omitempty"`
-	AdditionalProperties     map[string]interface{}
+	// The expression list. The particular record is treated as reclaimable if expression condition evaluates to 'true' for given record if scavenging hasn't been manually disabled on a given resource record.
+	ExpressionList []ZoneauthscavengingsettingsExpressionList `json:"expression_list,omitempty"`
+	// The extensible attributes expression list. The particular record is treated as reclaimable if extensible attributes expression condition evaluates to 'true' for given record if scavenging hasn't been manually disabled on a given resource record.
+	EaExpressionList     []ZoneauthscavengingsettingsEaExpressionList `json:"ea_expression_list,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ZoneAuthScavengingSettings ZoneAuthScavengingSettings
@@ -281,17 +283,17 @@ func (o *ZoneAuthScavengingSettings) SetScavengingSchedule(v Zoneauthscavengings
 }
 
 // GetExpressionList returns the ExpressionList field value if set, zero value otherwise.
-func (o *ZoneAuthScavengingSettings) GetExpressionList() ZoneauthscavengingsettingsExpressionList {
+func (o *ZoneAuthScavengingSettings) GetExpressionList() []ZoneauthscavengingsettingsExpressionList {
 	if o == nil || IsNil(o.ExpressionList) {
-		var ret ZoneauthscavengingsettingsExpressionList
+		var ret []ZoneauthscavengingsettingsExpressionList
 		return ret
 	}
-	return *o.ExpressionList
+	return o.ExpressionList
 }
 
 // GetExpressionListOk returns a tuple with the ExpressionList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneAuthScavengingSettings) GetExpressionListOk() (*ZoneauthscavengingsettingsExpressionList, bool) {
+func (o *ZoneAuthScavengingSettings) GetExpressionListOk() ([]ZoneauthscavengingsettingsExpressionList, bool) {
 	if o == nil || IsNil(o.ExpressionList) {
 		return nil, false
 	}
@@ -307,23 +309,23 @@ func (o *ZoneAuthScavengingSettings) HasExpressionList() bool {
 	return false
 }
 
-// SetExpressionList gets a reference to the given ZoneauthscavengingsettingsExpressionList and assigns it to the ExpressionList field.
-func (o *ZoneAuthScavengingSettings) SetExpressionList(v ZoneauthscavengingsettingsExpressionList) {
-	o.ExpressionList = &v
+// SetExpressionList gets a reference to the given []ZoneauthscavengingsettingsExpressionList and assigns it to the ExpressionList field.
+func (o *ZoneAuthScavengingSettings) SetExpressionList(v []ZoneauthscavengingsettingsExpressionList) {
+	o.ExpressionList = v
 }
 
 // GetEaExpressionList returns the EaExpressionList field value if set, zero value otherwise.
-func (o *ZoneAuthScavengingSettings) GetEaExpressionList() ZoneauthscavengingsettingsEaExpressionList {
+func (o *ZoneAuthScavengingSettings) GetEaExpressionList() []ZoneauthscavengingsettingsEaExpressionList {
 	if o == nil || IsNil(o.EaExpressionList) {
-		var ret ZoneauthscavengingsettingsEaExpressionList
+		var ret []ZoneauthscavengingsettingsEaExpressionList
 		return ret
 	}
-	return *o.EaExpressionList
+	return o.EaExpressionList
 }
 
 // GetEaExpressionListOk returns a tuple with the EaExpressionList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneAuthScavengingSettings) GetEaExpressionListOk() (*ZoneauthscavengingsettingsEaExpressionList, bool) {
+func (o *ZoneAuthScavengingSettings) GetEaExpressionListOk() ([]ZoneauthscavengingsettingsEaExpressionList, bool) {
 	if o == nil || IsNil(o.EaExpressionList) {
 		return nil, false
 	}
@@ -339,9 +341,9 @@ func (o *ZoneAuthScavengingSettings) HasEaExpressionList() bool {
 	return false
 }
 
-// SetEaExpressionList gets a reference to the given ZoneauthscavengingsettingsEaExpressionList and assigns it to the EaExpressionList field.
-func (o *ZoneAuthScavengingSettings) SetEaExpressionList(v ZoneauthscavengingsettingsEaExpressionList) {
-	o.EaExpressionList = &v
+// SetEaExpressionList gets a reference to the given []ZoneauthscavengingsettingsEaExpressionList and assigns it to the EaExpressionList field.
+func (o *ZoneAuthScavengingSettings) SetEaExpressionList(v []ZoneauthscavengingsettingsEaExpressionList) {
+	o.EaExpressionList = v
 }
 
 func (o ZoneAuthScavengingSettings) MarshalJSON() ([]byte, error) {

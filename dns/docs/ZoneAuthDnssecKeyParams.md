@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnableKskAutoRollover** | Pointer to **bool** | If set to True, automatic rollovers for the signing key is enabled. | [optional] 
 **KskAlgorithm** | Pointer to **string** | Key Signing Key algorithm. Deprecated. | [optional] 
-**KskAlgorithms** | Pointer to [**ZoneauthdnsseckeyparamsKskAlgorithms**](ZoneauthdnsseckeyparamsKskAlgorithms.md) |  | [optional] 
+**KskAlgorithms** | Pointer to [**[]ZoneauthdnsseckeyparamsKskAlgorithms**](ZoneauthdnsseckeyparamsKskAlgorithms.md) | A list of Key Signing Key Algorithms. | [optional] 
 **KskRollover** | Pointer to **int64** | Key Signing Key rollover interval, in seconds. | [optional] 
 **KskSize** | Pointer to **int64** | Key Signing Key size, in bits. Deprecated. | [optional] 
 **NextSecureType** | Pointer to **string** | NSEC (next secure) types. | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Nsec3Iterations** | Pointer to **int64** | The number of iterations used for hashing NSEC3. | [optional] 
 **SignatureExpiration** | Pointer to **int64** | Signature expiration time, in seconds. | [optional] 
 **ZskAlgorithm** | Pointer to **string** | Zone Signing Key algorithm. Deprecated. | [optional] 
-**ZskAlgorithms** | Pointer to [**ZoneauthdnsseckeyparamsZskAlgorithms**](ZoneauthdnsseckeyparamsZskAlgorithms.md) |  | [optional] 
+**ZskAlgorithms** | Pointer to [**[]ZoneauthdnsseckeyparamsZskAlgorithms**](ZoneauthdnsseckeyparamsZskAlgorithms.md) | A list of Zone Signing Key Algorithms. | [optional] 
 **ZskRollover** | Pointer to **int64** | Zone Signing Key rollover interval, in seconds. | [optional] 
 **ZskRolloverMechanism** | Pointer to **string** | Zone Signing Key rollover mechanism. | [optional] 
 **ZskSize** | Pointer to **int64** | Zone Signing Key size, in bits. Deprecated. | [optional] 
@@ -94,20 +94,20 @@ HasKskAlgorithm returns a boolean if a field has been set.
 
 ### GetKskAlgorithms
 
-`func (o *ZoneAuthDnssecKeyParams) GetKskAlgorithms() ZoneauthdnsseckeyparamsKskAlgorithms`
+`func (o *ZoneAuthDnssecKeyParams) GetKskAlgorithms() []ZoneauthdnsseckeyparamsKskAlgorithms`
 
 GetKskAlgorithms returns the KskAlgorithms field if non-nil, zero value otherwise.
 
 ### GetKskAlgorithmsOk
 
-`func (o *ZoneAuthDnssecKeyParams) GetKskAlgorithmsOk() (*ZoneauthdnsseckeyparamsKskAlgorithms, bool)`
+`func (o *ZoneAuthDnssecKeyParams) GetKskAlgorithmsOk() (*[]ZoneauthdnsseckeyparamsKskAlgorithms, bool)`
 
 GetKskAlgorithmsOk returns a tuple with the KskAlgorithms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKskAlgorithms
 
-`func (o *ZoneAuthDnssecKeyParams) SetKskAlgorithms(v ZoneauthdnsseckeyparamsKskAlgorithms)`
+`func (o *ZoneAuthDnssecKeyParams) SetKskAlgorithms(v []ZoneauthdnsseckeyparamsKskAlgorithms)`
 
 SetKskAlgorithms sets KskAlgorithms field to given value.
 
@@ -394,20 +394,20 @@ HasZskAlgorithm returns a boolean if a field has been set.
 
 ### GetZskAlgorithms
 
-`func (o *ZoneAuthDnssecKeyParams) GetZskAlgorithms() ZoneauthdnsseckeyparamsZskAlgorithms`
+`func (o *ZoneAuthDnssecKeyParams) GetZskAlgorithms() []ZoneauthdnsseckeyparamsZskAlgorithms`
 
 GetZskAlgorithms returns the ZskAlgorithms field if non-nil, zero value otherwise.
 
 ### GetZskAlgorithmsOk
 
-`func (o *ZoneAuthDnssecKeyParams) GetZskAlgorithmsOk() (*ZoneauthdnsseckeyparamsZskAlgorithms, bool)`
+`func (o *ZoneAuthDnssecKeyParams) GetZskAlgorithmsOk() (*[]ZoneauthdnsseckeyparamsZskAlgorithms, bool)`
 
 GetZskAlgorithmsOk returns a tuple with the ZskAlgorithms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetZskAlgorithms
 
-`func (o *ZoneAuthDnssecKeyParams) SetZskAlgorithms(v ZoneauthdnsseckeyparamsZskAlgorithms)`
+`func (o *ZoneAuthDnssecKeyParams) SetZskAlgorithms(v []ZoneauthdnsseckeyparamsZskAlgorithms)`
 
 SetZskAlgorithms sets ZskAlgorithms field to given value.
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **RecDnsLatencyThreshold** | Pointer to **int64** | Recursive DNS latency below which traffic capture will be triggered. | [optional] 
 **RecDnsLatencyReset** | Pointer to **int64** | Recursive DNS latency above which traffic capture will be stopped. | [optional] 
 **RecDnsLatencyListenOnSource** | Pointer to **string** | The local IP DNS service is listen on ( for recursive DNS latency trigger). | [optional] 
-**KpiMonitoredDomains** | Pointer to [**GridtrafficcapturerecdnssettingKpiMonitoredDomains**](GridtrafficcapturerecdnssettingKpiMonitoredDomains.md) |  | [optional] 
+**KpiMonitoredDomains** | Pointer to [**[]GridtrafficcapturerecdnssettingKpiMonitoredDomains**](GridtrafficcapturerecdnssettingKpiMonitoredDomains.md) | List of domains monitored by &#39;Recursive DNS Latency Threshold&#39; trigger. | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasRecDnsLatencyListenOnSource returns a boolean if a field has been set.
 
 ### GetKpiMonitoredDomains
 
-`func (o *GridTrafficCaptureRecDnsSetting) GetKpiMonitoredDomains() GridtrafficcapturerecdnssettingKpiMonitoredDomains`
+`func (o *GridTrafficCaptureRecDnsSetting) GetKpiMonitoredDomains() []GridtrafficcapturerecdnssettingKpiMonitoredDomains`
 
 GetKpiMonitoredDomains returns the KpiMonitoredDomains field if non-nil, zero value otherwise.
 
 ### GetKpiMonitoredDomainsOk
 
-`func (o *GridTrafficCaptureRecDnsSetting) GetKpiMonitoredDomainsOk() (*GridtrafficcapturerecdnssettingKpiMonitoredDomains, bool)`
+`func (o *GridTrafficCaptureRecDnsSetting) GetKpiMonitoredDomainsOk() (*[]GridtrafficcapturerecdnssettingKpiMonitoredDomains, bool)`
 
 GetKpiMonitoredDomainsOk returns a tuple with the KpiMonitoredDomains field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKpiMonitoredDomains
 
-`func (o *GridTrafficCaptureRecDnsSetting) SetKpiMonitoredDomains(v GridtrafficcapturerecdnssettingKpiMonitoredDomains)`
+`func (o *GridTrafficCaptureRecDnsSetting) SetKpiMonitoredDomains(v []GridtrafficcapturerecdnssettingKpiMonitoredDomains)`
 
 SetKpiMonitoredDomains sets KpiMonitoredDomains field to given value.
 

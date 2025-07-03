@@ -20,8 +20,9 @@ var _ MappedNullable = &DxlEndpointTemplateInstance{}
 // DxlEndpointTemplateInstance struct for DxlEndpointTemplateInstance
 type DxlEndpointTemplateInstance struct {
 	// The name of the REST API template parameter.
-	Template             *string                                `json:"template,omitempty"`
-	Parameters           *DxlendpointtemplateinstanceParameters `json:"parameters,omitempty"`
+	Template *string `json:"template,omitempty"`
+	// The notification REST template parameters.
+	Parameters           []DxlendpointtemplateinstanceParameters `json:"parameters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +78,17 @@ func (o *DxlEndpointTemplateInstance) SetTemplate(v string) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *DxlEndpointTemplateInstance) GetParameters() DxlendpointtemplateinstanceParameters {
+func (o *DxlEndpointTemplateInstance) GetParameters() []DxlendpointtemplateinstanceParameters {
 	if o == nil || IsNil(o.Parameters) {
-		var ret DxlendpointtemplateinstanceParameters
+		var ret []DxlendpointtemplateinstanceParameters
 		return ret
 	}
-	return *o.Parameters
+	return o.Parameters
 }
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DxlEndpointTemplateInstance) GetParametersOk() (*DxlendpointtemplateinstanceParameters, bool) {
+func (o *DxlEndpointTemplateInstance) GetParametersOk() ([]DxlendpointtemplateinstanceParameters, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
@@ -103,9 +104,9 @@ func (o *DxlEndpointTemplateInstance) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given DxlendpointtemplateinstanceParameters and assigns it to the Parameters field.
-func (o *DxlEndpointTemplateInstance) SetParameters(v DxlendpointtemplateinstanceParameters) {
-	o.Parameters = &v
+// SetParameters gets a reference to the given []DxlendpointtemplateinstanceParameters and assigns it to the Parameters field.
+func (o *DxlEndpointTemplateInstance) SetParameters(v []DxlendpointtemplateinstanceParameters) {
+	o.Parameters = v
 }
 
 func (o DxlEndpointTemplateInstance) MarshalJSON() ([]byte, error) {

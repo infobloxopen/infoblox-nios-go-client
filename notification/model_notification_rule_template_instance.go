@@ -20,8 +20,9 @@ var _ MappedNullable = &NotificationRuleTemplateInstance{}
 // NotificationRuleTemplateInstance struct for NotificationRuleTemplateInstance
 type NotificationRuleTemplateInstance struct {
 	// The name of the REST API template parameter.
-	Template             *string                                     `json:"template,omitempty"`
-	Parameters           *NotificationruletemplateinstanceParameters `json:"parameters,omitempty"`
+	Template *string `json:"template,omitempty"`
+	// The notification REST template parameters.
+	Parameters           []NotificationruletemplateinstanceParameters `json:"parameters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +78,17 @@ func (o *NotificationRuleTemplateInstance) SetTemplate(v string) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *NotificationRuleTemplateInstance) GetParameters() NotificationruletemplateinstanceParameters {
+func (o *NotificationRuleTemplateInstance) GetParameters() []NotificationruletemplateinstanceParameters {
 	if o == nil || IsNil(o.Parameters) {
-		var ret NotificationruletemplateinstanceParameters
+		var ret []NotificationruletemplateinstanceParameters
 		return ret
 	}
-	return *o.Parameters
+	return o.Parameters
 }
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationRuleTemplateInstance) GetParametersOk() (*NotificationruletemplateinstanceParameters, bool) {
+func (o *NotificationRuleTemplateInstance) GetParametersOk() ([]NotificationruletemplateinstanceParameters, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
@@ -103,9 +104,9 @@ func (o *NotificationRuleTemplateInstance) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given NotificationruletemplateinstanceParameters and assigns it to the Parameters field.
-func (o *NotificationRuleTemplateInstance) SetParameters(v NotificationruletemplateinstanceParameters) {
-	o.Parameters = &v
+// SetParameters gets a reference to the given []NotificationruletemplateinstanceParameters and assigns it to the Parameters field.
+func (o *NotificationRuleTemplateInstance) SetParameters(v []NotificationruletemplateinstanceParameters) {
+	o.Parameters = v
 }
 
 func (o NotificationRuleTemplateInstance) MarshalJSON() ([]byte, error) {

@@ -20,8 +20,9 @@ var _ MappedNullable = &GridntpsettingNtpAcl{}
 // GridntpsettingNtpAcl struct for GridntpsettingNtpAcl
 type GridntpsettingNtpAcl struct {
 	// The NTP access control list type.
-	AclType *string                     `json:"acl_type,omitempty"`
-	AcList  *GridntpsettingntpaclAcList `json:"ac_list,omitempty"`
+	AclType *string `json:"acl_type,omitempty"`
+	// The list of NTP access control items.
+	AcList []GridntpsettingntpaclAcList `json:"ac_list,omitempty"`
 	// The NTP access named ACL.
 	NamedAcl *string `json:"named_acl,omitempty"`
 	// The type of service with access control for the assigned named ACL.
@@ -81,17 +82,17 @@ func (o *GridntpsettingNtpAcl) SetAclType(v string) {
 }
 
 // GetAcList returns the AcList field value if set, zero value otherwise.
-func (o *GridntpsettingNtpAcl) GetAcList() GridntpsettingntpaclAcList {
+func (o *GridntpsettingNtpAcl) GetAcList() []GridntpsettingntpaclAcList {
 	if o == nil || IsNil(o.AcList) {
-		var ret GridntpsettingntpaclAcList
+		var ret []GridntpsettingntpaclAcList
 		return ret
 	}
-	return *o.AcList
+	return o.AcList
 }
 
 // GetAcListOk returns a tuple with the AcList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridntpsettingNtpAcl) GetAcListOk() (*GridntpsettingntpaclAcList, bool) {
+func (o *GridntpsettingNtpAcl) GetAcListOk() ([]GridntpsettingntpaclAcList, bool) {
 	if o == nil || IsNil(o.AcList) {
 		return nil, false
 	}
@@ -107,9 +108,9 @@ func (o *GridntpsettingNtpAcl) HasAcList() bool {
 	return false
 }
 
-// SetAcList gets a reference to the given GridntpsettingntpaclAcList and assigns it to the AcList field.
-func (o *GridntpsettingNtpAcl) SetAcList(v GridntpsettingntpaclAcList) {
-	o.AcList = &v
+// SetAcList gets a reference to the given []GridntpsettingntpaclAcList and assigns it to the AcList field.
+func (o *GridntpsettingNtpAcl) SetAcList(v []GridntpsettingntpaclAcList) {
+	o.AcList = v
 }
 
 // GetNamedAcl returns the NamedAcl field value if set, zero value otherwise.

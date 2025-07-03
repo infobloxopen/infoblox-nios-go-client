@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnableNtp** | Pointer to **bool** | Determines whether the NTP service is enabled on the member. | [optional] 
-**NtpServers** | Pointer to [**MemberntpsettingNtpServers**](MemberntpsettingNtpServers.md) |  | [optional] 
-**NtpKeys** | Pointer to [**MemberntpsettingNtpKeys**](MemberntpsettingNtpKeys.md) |  | [optional] 
+**NtpServers** | Pointer to [**[]MemberntpsettingNtpServers**](MemberntpsettingNtpServers.md) | The list of NTP servers configured on a member. | [optional] 
+**NtpKeys** | Pointer to [**[]MemberntpsettingNtpKeys**](MemberntpsettingNtpKeys.md) | The list of NTP authentication keys used to authenticate NTP clients. | [optional] 
 **NtpAcl** | Pointer to [**MemberntpsettingNtpAcl**](MemberntpsettingNtpAcl.md) |  | [optional] 
 **NtpKod** | Pointer to **bool** | Determines whether the Kiss-o&#39;-Death packets are enabled or disabled. | [optional] 
 **EnableExternalNtpServers** | Pointer to **bool** | Determines whether the use of the external NTP servers is enabled for the member. | [optional] 
@@ -65,20 +65,20 @@ HasEnableNtp returns a boolean if a field has been set.
 
 ### GetNtpServers
 
-`func (o *MemberNtpSetting) GetNtpServers() MemberntpsettingNtpServers`
+`func (o *MemberNtpSetting) GetNtpServers() []MemberntpsettingNtpServers`
 
 GetNtpServers returns the NtpServers field if non-nil, zero value otherwise.
 
 ### GetNtpServersOk
 
-`func (o *MemberNtpSetting) GetNtpServersOk() (*MemberntpsettingNtpServers, bool)`
+`func (o *MemberNtpSetting) GetNtpServersOk() (*[]MemberntpsettingNtpServers, bool)`
 
 GetNtpServersOk returns a tuple with the NtpServers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNtpServers
 
-`func (o *MemberNtpSetting) SetNtpServers(v MemberntpsettingNtpServers)`
+`func (o *MemberNtpSetting) SetNtpServers(v []MemberntpsettingNtpServers)`
 
 SetNtpServers sets NtpServers field to given value.
 
@@ -90,20 +90,20 @@ HasNtpServers returns a boolean if a field has been set.
 
 ### GetNtpKeys
 
-`func (o *MemberNtpSetting) GetNtpKeys() MemberntpsettingNtpKeys`
+`func (o *MemberNtpSetting) GetNtpKeys() []MemberntpsettingNtpKeys`
 
 GetNtpKeys returns the NtpKeys field if non-nil, zero value otherwise.
 
 ### GetNtpKeysOk
 
-`func (o *MemberNtpSetting) GetNtpKeysOk() (*MemberntpsettingNtpKeys, bool)`
+`func (o *MemberNtpSetting) GetNtpKeysOk() (*[]MemberntpsettingNtpKeys, bool)`
 
 GetNtpKeysOk returns a tuple with the NtpKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNtpKeys
 
-`func (o *MemberNtpSetting) SetNtpKeys(v MemberntpsettingNtpKeys)`
+`func (o *MemberNtpSetting) SetNtpKeys(v []MemberntpsettingNtpKeys)`
 
 SetNtpKeys sets NtpKeys field to given value.
 

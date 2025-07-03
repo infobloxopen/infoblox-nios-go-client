@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AptOverride** | Pointer to **string** | The override setting for APT alerts. | [optional] 
-**FireeyeAlertMapping** | Pointer to [**ZonerpfireeyerulemappingFireeyeAlertMapping**](ZonerpfireeyerulemappingFireeyeAlertMapping.md) |  | [optional] 
+**FireeyeAlertMapping** | Pointer to [**[]ZonerpfireeyerulemappingFireeyeAlertMapping**](ZonerpfireeyerulemappingFireeyeAlertMapping.md) | The FireEye alert mapping. | [optional] 
 **SubstitutedDomainName** | Pointer to **string** | The domain name to be substituted, this is applicable only when apt_override is set to \&quot;SUBSTITUTE\&quot;. | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasAptOverride returns a boolean if a field has been set.
 
 ### GetFireeyeAlertMapping
 
-`func (o *ZoneRpFireeyeRuleMapping) GetFireeyeAlertMapping() ZonerpfireeyerulemappingFireeyeAlertMapping`
+`func (o *ZoneRpFireeyeRuleMapping) GetFireeyeAlertMapping() []ZonerpfireeyerulemappingFireeyeAlertMapping`
 
 GetFireeyeAlertMapping returns the FireeyeAlertMapping field if non-nil, zero value otherwise.
 
 ### GetFireeyeAlertMappingOk
 
-`func (o *ZoneRpFireeyeRuleMapping) GetFireeyeAlertMappingOk() (*ZonerpfireeyerulemappingFireeyeAlertMapping, bool)`
+`func (o *ZoneRpFireeyeRuleMapping) GetFireeyeAlertMappingOk() (*[]ZonerpfireeyerulemappingFireeyeAlertMapping, bool)`
 
 GetFireeyeAlertMappingOk returns a tuple with the FireeyeAlertMapping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFireeyeAlertMapping
 
-`func (o *ZoneRpFireeyeRuleMapping) SetFireeyeAlertMapping(v ZonerpfireeyerulemappingFireeyeAlertMapping)`
+`func (o *ZoneRpFireeyeRuleMapping) SetFireeyeAlertMapping(v []ZonerpfireeyerulemappingFireeyeAlertMapping)`
 
 SetFireeyeAlertMapping sets FireeyeAlertMapping field to given value.
 

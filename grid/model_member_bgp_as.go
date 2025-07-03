@@ -24,8 +24,9 @@ type MemberBgpAs struct {
 	// The AS keepalive timer (in seconds). The valid value is from 1 to 21845.
 	Keepalive *int64 `json:"keepalive,omitempty"`
 	// The AS holddown timer (in seconds). The valid value is from 3 to 65535.
-	Holddown  *int64                `json:"holddown,omitempty"`
-	Neighbors *MemberbgpasNeighbors `json:"neighbors,omitempty"`
+	Holddown *int64 `json:"holddown,omitempty"`
+	// The BGP neighbors for this AS.
+	Neighbors []MemberbgpasNeighbors `json:"neighbors,omitempty"`
 	// Determines if link detection on the interface is enabled or not.
 	LinkDetect           *bool `json:"link_detect,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -147,17 +148,17 @@ func (o *MemberBgpAs) SetHolddown(v int64) {
 }
 
 // GetNeighbors returns the Neighbors field value if set, zero value otherwise.
-func (o *MemberBgpAs) GetNeighbors() MemberbgpasNeighbors {
+func (o *MemberBgpAs) GetNeighbors() []MemberbgpasNeighbors {
 	if o == nil || IsNil(o.Neighbors) {
-		var ret MemberbgpasNeighbors
+		var ret []MemberbgpasNeighbors
 		return ret
 	}
-	return *o.Neighbors
+	return o.Neighbors
 }
 
 // GetNeighborsOk returns a tuple with the Neighbors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberBgpAs) GetNeighborsOk() (*MemberbgpasNeighbors, bool) {
+func (o *MemberBgpAs) GetNeighborsOk() ([]MemberbgpasNeighbors, bool) {
 	if o == nil || IsNil(o.Neighbors) {
 		return nil, false
 	}
@@ -173,9 +174,9 @@ func (o *MemberBgpAs) HasNeighbors() bool {
 	return false
 }
 
-// SetNeighbors gets a reference to the given MemberbgpasNeighbors and assigns it to the Neighbors field.
-func (o *MemberBgpAs) SetNeighbors(v MemberbgpasNeighbors) {
-	o.Neighbors = &v
+// SetNeighbors gets a reference to the given []MemberbgpasNeighbors and assigns it to the Neighbors field.
+func (o *MemberBgpAs) SetNeighbors(v []MemberbgpasNeighbors) {
+	o.Neighbors = v
 }
 
 // GetLinkDetect returns the LinkDetect field value if set, zero value otherwise.

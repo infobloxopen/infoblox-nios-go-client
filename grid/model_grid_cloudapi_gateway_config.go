@@ -22,8 +22,9 @@ type GridCloudapiGatewayConfig struct {
 	// Enable Gateway Service.
 	EnableProxyService *bool `json:"enable_proxy_service,omitempty"`
 	// Gateway port
-	Port                 *int64                                    `json:"port,omitempty"`
-	EndpointMapping      *GridcloudapigatewayconfigEndpointMapping `json:"endpoint_mapping,omitempty"`
+	Port *int64 `json:"port,omitempty"`
+	// List of Gateway FQDN to AWS Endpoint Mapping.
+	EndpointMapping      []GridcloudapigatewayconfigEndpointMapping `json:"endpoint_mapping,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,17 +112,17 @@ func (o *GridCloudapiGatewayConfig) SetPort(v int64) {
 }
 
 // GetEndpointMapping returns the EndpointMapping field value if set, zero value otherwise.
-func (o *GridCloudapiGatewayConfig) GetEndpointMapping() GridcloudapigatewayconfigEndpointMapping {
+func (o *GridCloudapiGatewayConfig) GetEndpointMapping() []GridcloudapigatewayconfigEndpointMapping {
 	if o == nil || IsNil(o.EndpointMapping) {
-		var ret GridcloudapigatewayconfigEndpointMapping
+		var ret []GridcloudapigatewayconfigEndpointMapping
 		return ret
 	}
-	return *o.EndpointMapping
+	return o.EndpointMapping
 }
 
 // GetEndpointMappingOk returns a tuple with the EndpointMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridCloudapiGatewayConfig) GetEndpointMappingOk() (*GridcloudapigatewayconfigEndpointMapping, bool) {
+func (o *GridCloudapiGatewayConfig) GetEndpointMappingOk() ([]GridcloudapigatewayconfigEndpointMapping, bool) {
 	if o == nil || IsNil(o.EndpointMapping) {
 		return nil, false
 	}
@@ -137,9 +138,9 @@ func (o *GridCloudapiGatewayConfig) HasEndpointMapping() bool {
 	return false
 }
 
-// SetEndpointMapping gets a reference to the given GridcloudapigatewayconfigEndpointMapping and assigns it to the EndpointMapping field.
-func (o *GridCloudapiGatewayConfig) SetEndpointMapping(v GridcloudapigatewayconfigEndpointMapping) {
-	o.EndpointMapping = &v
+// SetEndpointMapping gets a reference to the given []GridcloudapigatewayconfigEndpointMapping and assigns it to the EndpointMapping field.
+func (o *GridCloudapiGatewayConfig) SetEndpointMapping(v []GridcloudapigatewayconfigEndpointMapping) {
+	o.EndpointMapping = v
 }
 
 func (o GridCloudapiGatewayConfig) MarshalJSON() ([]byte, error) {

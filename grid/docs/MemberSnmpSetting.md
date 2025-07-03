@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **QueriesCommunityString** | Pointer to **string** | The community string for SNMP queries. | [optional] 
 **QueriesEnable** | Pointer to **bool** | If set to True, SNMP queries are enabled. | [optional] 
 **Snmpv3QueriesEnable** | Pointer to **bool** | If set to True, SNMPv3 queries are enabled. | [optional] 
-**Snmpv3QueriesUsers** | Pointer to [**MembersnmpsettingSnmpv3QueriesUsers**](MembersnmpsettingSnmpv3QueriesUsers.md) |  | [optional] 
+**Snmpv3QueriesUsers** | Pointer to [**[]MembersnmpsettingSnmpv3QueriesUsers**](MembersnmpsettingSnmpv3QueriesUsers.md) | A list of SNMPv3 queries users. | [optional] 
 **Snmpv3TrapsEnable** | Pointer to **bool** | If set to True, SNMPv3 traps are enabled. | [optional] 
 **Syscontact** | Pointer to **[]string** | The name of the contact person for the appliance. Second value is applicable only for HA pair. Otherwise second value is ignored. | [optional] 
 **Sysdescr** | Pointer to **[]string** | Useful information about the appliance. Second value is applicable only for HA pair. Otherwise second value is ignored. | [optional] 
 **Syslocation** | Pointer to **[]string** | The physical location of the appliance. Second value is applicable only for HA pair. Otherwise second value is ignored. | [optional] 
 **Sysname** | Pointer to **[]string** | The FQDN (Fully Qualified Domain Name) of the appliance. Second value is applicable only for HA pair. Otherwise second value is ignored. | [optional] 
-**TrapReceivers** | Pointer to [**MembersnmpsettingTrapReceivers**](MembersnmpsettingTrapReceivers.md) |  | [optional] 
+**TrapReceivers** | Pointer to [**[]MembersnmpsettingTrapReceivers**](MembersnmpsettingTrapReceivers.md) | A list of trap receivers. | [optional] 
 **TrapsCommunityString** | Pointer to **string** | A string the NIOS appliance sends to the management system together with its traps. Note that this community string must match exactly what you enter in the management system. | [optional] 
 **TrapsEnable** | Pointer to **bool** | If set to True, SNMP traps are enabled. | [optional] 
 
@@ -139,20 +139,20 @@ HasSnmpv3QueriesEnable returns a boolean if a field has been set.
 
 ### GetSnmpv3QueriesUsers
 
-`func (o *MemberSnmpSetting) GetSnmpv3QueriesUsers() MembersnmpsettingSnmpv3QueriesUsers`
+`func (o *MemberSnmpSetting) GetSnmpv3QueriesUsers() []MembersnmpsettingSnmpv3QueriesUsers`
 
 GetSnmpv3QueriesUsers returns the Snmpv3QueriesUsers field if non-nil, zero value otherwise.
 
 ### GetSnmpv3QueriesUsersOk
 
-`func (o *MemberSnmpSetting) GetSnmpv3QueriesUsersOk() (*MembersnmpsettingSnmpv3QueriesUsers, bool)`
+`func (o *MemberSnmpSetting) GetSnmpv3QueriesUsersOk() (*[]MembersnmpsettingSnmpv3QueriesUsers, bool)`
 
 GetSnmpv3QueriesUsersOk returns a tuple with the Snmpv3QueriesUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSnmpv3QueriesUsers
 
-`func (o *MemberSnmpSetting) SetSnmpv3QueriesUsers(v MembersnmpsettingSnmpv3QueriesUsers)`
+`func (o *MemberSnmpSetting) SetSnmpv3QueriesUsers(v []MembersnmpsettingSnmpv3QueriesUsers)`
 
 SetSnmpv3QueriesUsers sets Snmpv3QueriesUsers field to given value.
 
@@ -289,20 +289,20 @@ HasSysname returns a boolean if a field has been set.
 
 ### GetTrapReceivers
 
-`func (o *MemberSnmpSetting) GetTrapReceivers() MembersnmpsettingTrapReceivers`
+`func (o *MemberSnmpSetting) GetTrapReceivers() []MembersnmpsettingTrapReceivers`
 
 GetTrapReceivers returns the TrapReceivers field if non-nil, zero value otherwise.
 
 ### GetTrapReceiversOk
 
-`func (o *MemberSnmpSetting) GetTrapReceiversOk() (*MembersnmpsettingTrapReceivers, bool)`
+`func (o *MemberSnmpSetting) GetTrapReceiversOk() (*[]MembersnmpsettingTrapReceivers, bool)`
 
 GetTrapReceiversOk returns a tuple with the TrapReceivers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrapReceivers
 
-`func (o *MemberSnmpSetting) SetTrapReceivers(v MembersnmpsettingTrapReceivers)`
+`func (o *MemberSnmpSetting) SetTrapReceivers(v []MembersnmpsettingTrapReceivers)`
 
 SetTrapReceivers sets TrapReceivers field to given value.
 

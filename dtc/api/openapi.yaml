@@ -373,8 +373,8 @@ paths:
       summary: Create a dtc:server object
       tags:
       - DtcServer
-      x-tf-resource: dtc_dtc_server
-      x-tf-datasource: dtc_dtc_server
+      x-tf-resource: dtc_server
+      x-tf-datasource: dtc_server
       x-sdk-default-ext-attrs: true
   /dtc:server/{reference}:
     delete:
@@ -688,8 +688,8 @@ paths:
       summary: Create a dtc:pool object
       tags:
       - DtcPool
-      x-tf-resource: dtc_dtc_pool
-      x-tf-datasource: dtc_dtc_pool
+      x-tf-resource: dtc_pool
+      x-tf-datasource: dtc_pool
       x-sdk-default-ext-attrs: true
   /dtc:pool/{reference}:
     delete:
@@ -1003,8 +1003,8 @@ paths:
       summary: Create a dtc:topology object
       tags:
       - DtcTopology
-      x-tf-resource: dtc_dtc_topology
-      x-tf-datasource: dtc_dtc_topology
+      x-tf-resource: dtc_topology
+      x-tf-datasource: dtc_topology
       x-sdk-default-ext-attrs: true
   /dtc:topology/{reference}:
     delete:
@@ -1318,8 +1318,8 @@ paths:
       summary: Create a dtc:lbdn object
       tags:
       - DtcLbdn
-      x-tf-resource: dtc_dtc_lbdn
-      x-tf-datasource: dtc_dtc_lbdn
+      x-tf-resource: dtc_lbdn
+      x-tf-datasource: dtc_lbdn
       x-sdk-default-ext-attrs: true
   /dtc:lbdn/{reference}:
     delete:
@@ -1861,8 +1861,8 @@ paths:
       summary: Create a dtc:monitor:http object
       tags:
       - DtcMonitorHttp
-      x-tf-resource: dtc_dtc_monitor_http
-      x-tf-datasource: dtc_dtc_monitor_http
+      x-tf-resource: dtc_monitor_http
+      x-tf-datasource: dtc_monitor_http
       x-sdk-default-ext-attrs: true
   /dtc:monitor:http/{reference}:
     delete:
@@ -2177,8 +2177,8 @@ paths:
       summary: Create a dtc:monitor:icmp object
       tags:
       - DtcMonitorIcmp
-      x-tf-resource: dtc_dtc_monitor_icmp
-      x-tf-datasource: dtc_dtc_monitor_icmp
+      x-tf-resource: dtc_monitor_icmp
+      x-tf-datasource: dtc_monitor_icmp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:icmp/{reference}:
     delete:
@@ -2492,8 +2492,8 @@ paths:
       summary: Create a dtc:monitor:pdp object
       tags:
       - DtcMonitorPdp
-      x-tf-resource: dtc_dtc_monitor_pdp
-      x-tf-datasource: dtc_dtc_monitor_pdp
+      x-tf-resource: dtc_monitor_pdp
+      x-tf-datasource: dtc_monitor_pdp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:pdp/{reference}:
     delete:
@@ -2807,8 +2807,8 @@ paths:
       summary: Create a dtc:monitor:sip object
       tags:
       - DtcMonitorSip
-      x-tf-resource: dtc_dtc_monitor_sip
-      x-tf-datasource: dtc_dtc_monitor_sip
+      x-tf-resource: dtc_monitor_sip
+      x-tf-datasource: dtc_monitor_sip
       x-sdk-default-ext-attrs: true
   /dtc:monitor:sip/{reference}:
     delete:
@@ -3123,8 +3123,8 @@ paths:
       summary: Create a dtc:monitor:snmp object
       tags:
       - DtcMonitorSnmp
-      x-tf-resource: dtc_dtc_monitor_snmp
-      x-tf-datasource: dtc_dtc_monitor_snmp
+      x-tf-resource: dtc_monitor_snmp
+      x-tf-datasource: dtc_monitor_snmp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:snmp/{reference}:
     delete:
@@ -3438,8 +3438,8 @@ paths:
       summary: Create a dtc:monitor:tcp object
       tags:
       - DtcMonitorTcp
-      x-tf-resource: dtc_dtc_monitor_tcp
-      x-tf-datasource: dtc_dtc_monitor_tcp
+      x-tf-resource: dtc_monitor_tcp
+      x-tf-datasource: dtc_monitor_tcp
       x-sdk-default-ext-attrs: true
   /dtc:monitor:tcp/{reference}:
     delete:
@@ -3753,8 +3753,8 @@ paths:
       summary: Create a dtc:record:a object
       tags:
       - DtcRecordA
-      x-tf-resource: dtc_dtc_record_a
-      x-tf-datasource: dtc_dtc_record_a
+      x-tf-resource: dtc_record_a
+      x-tf-datasource: dtc_record_a
   /dtc:record:a/{reference}:
     delete:
       description: Deletes a specific dtc:record:a object by reference
@@ -4066,8 +4066,8 @@ paths:
       summary: Create a dtc:record:aaaa object
       tags:
       - DtcRecordAaaa
-      x-tf-resource: dtc_dtc_record_aaaa
-      x-tf-datasource: dtc_dtc_record_aaaa
+      x-tf-resource: dtc_record_aaaa
+      x-tf-datasource: dtc_record_aaaa
   /dtc:record:aaaa/{reference}:
     delete:
       description: Deletes a specific dtc:record:aaaa object by reference
@@ -4380,8 +4380,8 @@ paths:
       summary: Create a dtc:record:cname object
       tags:
       - DtcRecordCname
-      x-tf-resource: dtc_dtc_record_cname
-      x-tf-datasource: dtc_dtc_record_cname
+      x-tf-resource: dtc_record_cname
+      x-tf-datasource: dtc_record_cname
   /dtc:record:cname/{reference}:
     delete:
       description: Deletes a specific dtc:record:cname object by reference
@@ -4694,8 +4694,8 @@ paths:
       summary: Create a dtc:record:naptr object
       tags:
       - DtcRecordNaptr
-      x-tf-resource: dtc_dtc_record_naptr
-      x-tf-datasource: dtc_dtc_record_naptr
+      x-tf-resource: dtc_record_naptr
+      x-tf-datasource: dtc_record_naptr
   /dtc:record:naptr/{reference}:
     delete:
       description: Deletes a specific dtc:record:naptr object by reference
@@ -5007,8 +5007,8 @@ paths:
       summary: Create a dtc:record:srv object
       tags:
       - DtcRecordSrv
-      x-tf-resource: dtc_dtc_record_srv
-      x-tf-datasource: dtc_dtc_record_srv
+      x-tf-resource: dtc_record_srv
+      x-tf-datasource: dtc_record_srv
   /dtc:record:srv/{reference}:
     delete:
       description: Deletes a specific dtc:record:srv object by reference

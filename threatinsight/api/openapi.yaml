@@ -179,8 +179,8 @@ paths:
       summary: Create a threatinsight:allowlist object
       tags:
       - ThreatinsightAllowlist
-      x-tf-resource: threatinsight_threatinsight_allowlist
-      x-tf-datasource: threatinsight_threatinsight_allowlist
+      x-tf-resource: threatinsight_allowlist
+      x-tf-datasource: threatinsight_allowlist
   /threatinsight:allowlist/{reference}:
     delete:
       description: Deletes a specific threatinsight:allowlist object by reference

@@ -1941,8 +1941,8 @@ paths:
       summary: Create a grid:servicerestart:group object
       tags:
       - GridServicerestartGroup
-      x-tf-resource: grid_grid_servicerestart_group
-      x-tf-datasource: grid_grid_servicerestart_group
+      x-tf-resource: grid_servicerestart_group
+      x-tf-datasource: grid_servicerestart_group
       x-sdk-default-ext-attrs: true
   /grid:servicerestart:group/{reference}:
     delete:
@@ -4802,8 +4802,8 @@ paths:
       summary: Create a grid:servicerestart:group:order object
       tags:
       - GridServicerestartGroupOrder
-      x-tf-resource: grid_grid_servicerestart_group_order
-      x-tf-datasource: grid_grid_servicerestart_group_order
+      x-tf-resource: grid_servicerestart_group_order
+      x-tf-datasource: grid_servicerestart_group_order
   /grid:servicerestart:group:order/{reference}:
     get:
       description: Returns a specific grid:servicerestart:group:order object by reference
@@ -10210,7 +10210,11 @@ components:
           enable_ntp: false
           ntp_acl:
             ac_list:
-              address_ac:
+            - address_ac:
+                address: Example address
+                permission: Example permission
+              service: Example service
+            - address_ac:
                 address: Example address
                 permission: Example permission
               service: Example service
@@ -10218,11 +10222,20 @@ components:
             acl_type: Example acl_type
             named_acl: Example named_acl
           ntp_keys:
-            number: 1
+          - number: 1
+            string: Example string
+            type: Example type
+          - number: 1
             string: Example string
             type: Example type
           ntp_servers:
-            enable_authentication: false
+          - enable_authentication: false
+            address: Example address
+            ntp_key_number: 1
+            burst: false
+            preferred: false
+            iburst: false
+          - enable_authentication: false
             address: Example address
             ntp_key_number: 1
             burst: false
@@ -10397,7 +10410,9 @@ components:
           rec_dns_latency_trigger_enable: false
           rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
           kpi_monitored_domains:
-            domain_name: Example domain_name
+          - domain_name: Example domain_name
+            record_type: Example record_type
+          - domain_name: Example domain_name
             record_type: Example record_type
           rec_dns_latency_reset: 1
           rec_dns_latency_threshold: 1
@@ -10461,7 +10476,13 @@ components:
           support_access_info: Example support_access_info
           disable_concurrent_login: false
           admin_access_items:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -10509,7 +10530,9 @@ components:
           - syscontact
           snmpv3_queries_enable: false
           snmpv3_queries_users:
-            comment: Example comment
+          - comment: Example comment
+            user: Example user
+          - comment: Example comment
             user: Example user
           sysdescr:
           - sysdescr
@@ -10524,7 +10547,10 @@ components:
           - sysname
           - sysname
           trap_receivers:
-            address: Example address
+          - address: Example address
+            comment: Example comment
+            user: Example user
+          - address: Example address
             comment: Example comment
             user: Example user
           traps_enable: false
@@ -11324,7 +11350,11 @@ components:
         enable_ntp: false
         ntp_acl:
           ac_list:
-            address_ac:
+          - address_ac:
+              address: Example address
+              permission: Example permission
+            service: Example service
+          - address_ac:
               address: Example address
               permission: Example permission
             service: Example service
@@ -11332,11 +11362,20 @@ components:
           acl_type: Example acl_type
           named_acl: Example named_acl
         ntp_keys:
-          number: 1
+        - number: 1
+          string: Example string
+          type: Example type
+        - number: 1
           string: Example string
           type: Example type
         ntp_servers:
-          enable_authentication: false
+        - enable_authentication: false
+          address: Example address
+          ntp_key_number: 1
+          burst: false
+          preferred: false
+          iburst: false
+        - enable_authentication: false
           address: Example address
           ntp_key_number: 1
           burst: false
@@ -11351,9 +11390,16 @@ components:
           example: false
           type: boolean
         ntp_servers:
-          $ref: '#/components/schemas/GridntpsettingNtpServers'
+          description: The list of NTP servers configured on a Grid.
+          items:
+            $ref: '#/components/schemas/GridntpsettingNtpServers'
+          type: array
         ntp_keys:
-          $ref: '#/components/schemas/GridntpsettingNtpKeys'
+          description: The list of NTP authentication keys used to authenticate NTP
+            clients.
+          items:
+            $ref: '#/components/schemas/GridntpsettingNtpKeys'
+          type: array
         ntp_acl:
           $ref: '#/components/schemas/GridntpsettingNtpAcl'
         ntp_kod:
@@ -11445,7 +11491,11 @@ components:
     GridntpsettingNtpAcl:
       example:
         ac_list:
-          address_ac:
+        - address_ac:
+            address: Example address
+            permission: Example permission
+          service: Example service
+        - address_ac:
             address: Example address
             permission: Example permission
           service: Example service
@@ -11462,7 +11512,10 @@ components:
           example: Example acl_type
           type: string
         ac_list:
-          $ref: '#/components/schemas/GridntpsettingntpaclAcList'
+          description: The list of NTP access control items.
+          items:
+            $ref: '#/components/schemas/GridntpsettingntpaclAcList'
+          type: array
         named_acl:
           description: The NTP access named ACL.
           example: Example named_acl
@@ -11886,7 +11939,13 @@ components:
         support_access_info: Example support_access_info
         disable_concurrent_login: false
         admin_access_items:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          permission: Example permission
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -11911,7 +11970,10 @@ components:
           example: false
           type: boolean
         admin_access_items:
-          $ref: '#/components/schemas/GridsecuritysettingAdminAccessItems'
+          description: A list of access control settings used for security access.
+          items:
+            $ref: '#/components/schemas/GridsecuritysettingAdminAccessItems'
+          type: array
         http_redirect_enable:
           description: "If set to True, HTTP connections are redirected to HTTPS."
           example: false
@@ -12050,7 +12112,9 @@ components:
         - syscontact
         snmpv3_queries_enable: false
         snmpv3_queries_users:
-          comment: Example comment
+        - comment: Example comment
+          user: Example user
+        - comment: Example comment
           user: Example user
         sysdescr:
         - sysdescr
@@ -12065,7 +12129,10 @@ components:
         - sysname
         - sysname
         trap_receivers:
-          address: Example address
+        - address: Example address
+          comment: Example comment
+          user: Example user
+        - address: Example address
           comment: Example comment
           user: Example user
         traps_enable: false
@@ -12092,7 +12159,10 @@ components:
           example: false
           type: boolean
         snmpv3_queries_users:
-          $ref: '#/components/schemas/GridsnmpsettingSnmpv3QueriesUsers'
+          description: A list of SNMPv3 queries users.
+          items:
+            $ref: '#/components/schemas/GridsnmpsettingSnmpv3QueriesUsers'
+          type: array
         snmpv3_traps_enable:
           description: "If set to True, SNMPv3 traps are enabled."
           example: false
@@ -12130,7 +12200,10 @@ components:
             type: string
           type: array
         trap_receivers:
-          $ref: '#/components/schemas/GridsnmpsettingTrapReceivers'
+          description: A list of trap receivers.
+          items:
+            $ref: '#/components/schemas/GridsnmpsettingTrapReceivers'
+          type: array
         traps_community_string:
           description: A string the NIOS appliance sends to the management system
             together with its traps. Note that this community string must match exactly
@@ -12459,7 +12532,9 @@ components:
         rec_dns_latency_trigger_enable: false
         rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
         kpi_monitored_domains:
-          domain_name: Example domain_name
+        - domain_name: Example domain_name
+          record_type: Example record_type
+        - domain_name: Example domain_name
           record_type: Example record_type
         rec_dns_latency_reset: 1
         rec_dns_latency_threshold: 1
@@ -12492,7 +12567,11 @@ components:
           example: Example rec_dns_latency_listen_on_source
           type: string
         kpi_monitored_domains:
-          $ref: '#/components/schemas/GridtrafficcapturerecdnssettingKpiMonitoredDomains'
+          description: List of domains monitored by 'Recursive DNS Latency Threshold'
+            trigger.
+          items:
+            $ref: '#/components/schemas/GridtrafficcapturerecdnssettingKpiMonitoredDomains'
+          type: array
       type: object
     GridtrafficcapturerecdnssettingKpiMonitoredDomains:
       example:
@@ -12679,7 +12758,9 @@ components:
           port: 1
           enable_proxy_service: false
           endpoint_mapping:
-            endpoint_fqdn: Example endpoint_fqdn
+          - endpoint_fqdn: Example endpoint_fqdn
+            gateway_fqdn: Example gateway_fqdn
+          - endpoint_fqdn: Example endpoint_fqdn
             gateway_fqdn: Example gateway_fqdn
         _ref: _ref
         enable_recycle_bin: false
@@ -12740,7 +12821,9 @@ components:
         port: 1
         enable_proxy_service: false
         endpoint_mapping:
-          endpoint_fqdn: Example endpoint_fqdn
+        - endpoint_fqdn: Example endpoint_fqdn
+          gateway_fqdn: Example gateway_fqdn
+        - endpoint_fqdn: Example endpoint_fqdn
           gateway_fqdn: Example gateway_fqdn
       properties:
         enable_proxy_service:
@@ -12753,7 +12836,10 @@ components:
           format: int64
           type: integer
         endpoint_mapping:
-          $ref: '#/components/schemas/GridcloudapigatewayconfigEndpointMapping'
+          description: List of Gateway FQDN to AWS Endpoint Mapping.
+          items:
+            $ref: '#/components/schemas/GridcloudapigatewayconfigEndpointMapping'
+          type: array
       type: object
     GridcloudapigatewayconfigEndpointMapping:
       example:
@@ -13756,7 +13842,9 @@ components:
           port: 1
           enable_proxy_service: false
           endpoint_mapping:
-            endpoint_fqdn: Example endpoint_fqdn
+          - endpoint_fqdn: Example endpoint_fqdn
+            gateway_fqdn: Example gateway_fqdn
+          - endpoint_fqdn: Example endpoint_fqdn
             gateway_fqdn: Example gateway_fqdn
         _ref: _ref
         member:
@@ -13841,7 +13929,9 @@ components:
         port: 1
         enable_proxy_service: false
         endpoint_mapping:
-          endpoint_fqdn: Example endpoint_fqdn
+        - endpoint_fqdn: Example endpoint_fqdn
+          gateway_fqdn: Example gateway_fqdn
+        - endpoint_fqdn: Example endpoint_fqdn
           gateway_fqdn: Example gateway_fqdn
       properties:
         enable_proxy_service:
@@ -13854,7 +13944,10 @@ components:
           format: int64
           type: integer
         endpoint_mapping:
-          $ref: '#/components/schemas/GridmembercloudapigatewayconfigEndpointMapping'
+          description: List of Gateway FQDN to AWS Endpoint Mapping.
+          items:
+            $ref: '#/components/schemas/GridmembercloudapigatewayconfigEndpointMapping'
+          type: array
       type: object
     GridmembercloudapigatewayconfigEndpointMapping:
       example:
@@ -15613,13 +15706,23 @@ components:
             frequency: Example frequency
           enable_rr_last_queried: false
           expression_list:
-            op2: Example op2
+          - op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
+          - op2: Example op2
             op: Example op
             op1: Example op1
             op1_type: Example op1_type
             op2_type: Example op2_type
           ea_expression_list:
-            op2: Example op2
+          - op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
+          - op2: Example op2
             op: Example op
             op1: Example op1
             op1_type: Example op1_type
@@ -15873,7 +15976,9 @@ components:
           nsec3_iterations: 1
           signature_expiration: 1
           zsk_algorithms:
-            size: 1
+          - size: 1
+            algorithm: Example algorithm
+          - size: 1
             algorithm: Example algorithm
           zsk_algorithm: Example zsk_algorithm
           ksk_snmp_notification_enabled: false
@@ -15884,7 +15989,9 @@ components:
           nsec3_salt_min_length: 1
           ksk_rollover: 1
           ksk_algorithms:
-            size: 1
+          - size: 1
+            algorithm: Example algorithm
+          - size: 1
             algorithm: Example algorithm
           zsk_rollover_mechanism: Example zsk_rollover_mechanism
           ksk_rollover_notification_config: Example ksk_rollover_notification_config
@@ -17365,7 +17472,9 @@ components:
         nsec3_iterations: 1
         signature_expiration: 1
         zsk_algorithms:
-          size: 1
+        - size: 1
+          algorithm: Example algorithm
+        - size: 1
           algorithm: Example algorithm
         zsk_algorithm: Example zsk_algorithm
         ksk_snmp_notification_enabled: false
@@ -17376,7 +17485,9 @@ components:
         nsec3_salt_min_length: 1
         ksk_rollover: 1
         ksk_algorithms:
-          size: 1
+        - size: 1
+          algorithm: Example algorithm
+        - size: 1
           algorithm: Example algorithm
         zsk_rollover_mechanism: Example zsk_rollover_mechanism
         ksk_rollover_notification_config: Example ksk_rollover_notification_config
@@ -17402,7 +17513,10 @@ components:
           example: Example ksk_algorithm
           type: string
         ksk_algorithms:
-          $ref: '#/components/schemas/GriddnsdnsseckeyparamsKskAlgorithms'
+          description: A list of Key Signing Key Algorithms.
+          items:
+            $ref: '#/components/schemas/GriddnsdnsseckeyparamsKskAlgorithms'
+          type: array
         ksk_rollover:
           description: "Key Signing Key rollover interval, in seconds."
           example: 1
@@ -17468,7 +17582,10 @@ components:
           example: Example zsk_algorithm
           type: string
         zsk_algorithms:
-          $ref: '#/components/schemas/GriddnsdnsseckeyparamsZskAlgorithms'
+          description: A list of Zone Signing Key Algorithms.
+          items:
+            $ref: '#/components/schemas/GriddnsdnsseckeyparamsZskAlgorithms'
+          type: array
         zsk_rollover:
           description: "Zone Signing Key rollover interval, in seconds."
           example: 1
@@ -18083,13 +18200,23 @@ components:
           frequency: Example frequency
         enable_rr_last_queried: false
         expression_list:
-          op2: Example op2
+        - op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
+        - op2: Example op2
           op: Example op
           op1: Example op1
           op1_type: Example op1_type
           op2_type: Example op2_type
         ea_expression_list:
-          op2: Example op2
+        - op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
+        - op2: Example op2
           op: Example op
           op1: Example op1
           op1_type: Example op1_type
@@ -18131,9 +18258,20 @@ components:
         scavenging_schedule:
           $ref: '#/components/schemas/GriddnsscavengingsettingsScavengingSchedule'
         expression_list:
-          $ref: '#/components/schemas/GriddnsscavengingsettingsExpressionList'
+          description: The expression list. The particular record is treated as reclaimable
+            if expression condition evaluates to 'true' for given record if scavenging
+            hasn't been manually disabled on a given resource record.
+          items:
+            $ref: '#/components/schemas/GriddnsscavengingsettingsExpressionList'
+          type: array
         ea_expression_list:
-          $ref: '#/components/schemas/GriddnsscavengingsettingsEaExpressionList'
+          description: The extensible attributes expression list. The particular record
+            is treated as reclaimable if extensible attributes expression condition
+            evaluates to 'true' for given record if scavenging hasn't been manually
+            disabled on a given resource record.
+          items:
+            $ref: '#/components/schemas/GriddnsscavengingsettingsEaExpressionList'
+          type: array
       type: object
     GriddnsscavengingsettingsScavengingSchedule:
       example:
@@ -18493,7 +18631,10 @@ components:
         - rule_type: Example rule_type
           address: Example address
           nat_ports:
-            start_port: 1
+          - start_port: 1
+            end_port: 1
+            block_size: 1
+          - start_port: 1
             end_port: 1
             block_size: 1
           start_address: Example start_address
@@ -18503,7 +18644,10 @@ components:
         - rule_type: Example rule_type
           address: Example address
           nat_ports:
-            start_port: 1
+          - start_port: 1
+            end_port: 1
+            block_size: 1
+          - start_port: 1
             end_port: 1
             block_size: 1
           start_address: Example start_address
@@ -18594,7 +18738,10 @@ components:
         rule_type: Example rule_type
         address: Example address
         nat_ports:
-          start_port: 1
+        - start_port: 1
+          end_port: 1
+          block_size: 1
+        - start_port: 1
           end_port: 1
           block_size: 1
         start_address: Example start_address
@@ -18634,7 +18781,11 @@ components:
           example: Example end_address
           type: string
         nat_ports:
-          $ref: '#/components/schemas/GridthreatprotectionnatrulesNatPorts'
+          description: The NAT port configuration for the threat protection NAT mapping
+            rule.
+          items:
+            $ref: '#/components/schemas/GridthreatprotectionnatrulesNatPorts'
+          type: array
       type: object
     GridthreatprotectionnatrulesNatPorts:
       example:
@@ -20085,7 +20236,11 @@ components:
         ntp_setting:
           ntp_acl:
             ac_list:
-              address_ac:
+            - address_ac:
+                address: Example address
+                permission: Example permission
+              service: Example service
+            - address_ac:
                 address: Example address
                 permission: Example permission
               service: Example service
@@ -20094,7 +20249,13 @@ components:
             named_acl: Example named_acl
           use_ntp_keys: false
           ntp_servers:
-            enable_authentication: false
+          - enable_authentication: false
+            address: Example address
+            ntp_key_number: 1
+            burst: false
+            preferred: false
+            iburst: false
+          - enable_authentication: false
             address: Example address
             ntp_key_number: 1
             burst: false
@@ -20108,7 +20269,10 @@ components:
           use_ntp_servers: false
           use_ntp_acl: false
           ntp_keys:
-            number: 1
+          - number: 1
+            string: Example string
+            type: Example type
+          - number: 1
             string: Example string
             type: Example type
           enable_external_ntp_servers: false
@@ -20133,7 +20297,13 @@ components:
         syslog_proxy_setting:
           tcp_port: 1
           client_acls:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -20255,7 +20425,18 @@ components:
           link_detect: false
           keepalive: 1
           neighbors:
-            bgp_neighbor_pass: Example bgp_neighbor_pass
+          - bgp_neighbor_pass: Example bgp_neighbor_pass
+            authentication_mode: Example authentication_mode
+            multihop_ttl: 1
+            remote_as: 1
+            multihop: false
+            neighbor_ip: Example neighbor_ip
+            bfd_template: Example bfd_template
+            enable_bfd: false
+            comment: Example comment
+            interface: Example interface
+            enable_bfd_dnscheck: false
+          - bgp_neighbor_pass: Example bgp_neighbor_pass
             authentication_mode: Example authentication_mode
             multihop_ttl: 1
             remote_as: 1
@@ -20271,7 +20452,18 @@ components:
           link_detect: false
           keepalive: 1
           neighbors:
-            bgp_neighbor_pass: Example bgp_neighbor_pass
+          - bgp_neighbor_pass: Example bgp_neighbor_pass
+            authentication_mode: Example authentication_mode
+            multihop_ttl: 1
+            remote_as: 1
+            multihop: false
+            neighbor_ip: Example neighbor_ip
+            bfd_template: Example bfd_template
+            enable_bfd: false
+            comment: Example comment
+            interface: Example interface
+            enable_bfd_dnscheck: false
+          - bgp_neighbor_pass: Example bgp_neighbor_pass
             authentication_mode: Example authentication_mode
             multihop_ttl: 1
             remote_as: 1
@@ -20290,7 +20482,9 @@ components:
           rec_dns_latency_trigger_enable: false
           rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
           kpi_monitored_domains:
-            domain_name: Example domain_name
+          - domain_name: Example domain_name
+            record_type: Example record_type
+          - domain_name: Example domain_name
             record_type: Example record_type
           rec_dns_latency_reset: 1
           rec_dns_latency_listen_on_ip: Example rec_dns_latency_listen_on_ip
@@ -20353,7 +20547,8 @@ components:
           - licenses
           - licenses
           hardware_info:
-            hwtype: Example hwtype
+          - hwtype: Example hwtype
+          - hwtype: Example hwtype
         dns_resolver_setting:
           resolvers:
           - resolvers
@@ -20486,7 +20681,10 @@ components:
           hwmodel: Example hwmodel
           hypervisor: Example hypervisor
           service_status:
-            service: Example service
+          - service: Example service
+            description: Example description
+            status: Example status
+          - service: Example service
             description: Example description
             status: Example status
           hwid: Example hwid
@@ -20540,7 +20738,10 @@ components:
           hwmodel: Example hwmodel
           hypervisor: Example hypervisor
           service_status:
-            service: Example service
+          - service: Example service
+            description: Example description
+            status: Example status
+          - service: Example service
             description: Example description
             status: Example status
           hwid: Example hwid
@@ -20582,7 +20783,9 @@ components:
           - syscontact
           snmpv3_queries_enable: false
           snmpv3_queries_users:
-            comment: Example comment
+          - comment: Example comment
+            user: Example user
+          - comment: Example comment
             user: Example user
           sysdescr:
           - sysdescr
@@ -20597,7 +20800,10 @@ components:
           - sysname
           - sysname
           trap_receivers:
-            address: Example address
+          - address: Example address
+            comment: Example comment
+            user: Example user
+          - address: Example address
             comment: Example comment
             user: Example user
           traps_enable: false
@@ -21302,7 +21508,18 @@ components:
         link_detect: false
         keepalive: 1
         neighbors:
-          bgp_neighbor_pass: Example bgp_neighbor_pass
+        - bgp_neighbor_pass: Example bgp_neighbor_pass
+          authentication_mode: Example authentication_mode
+          multihop_ttl: 1
+          remote_as: 1
+          multihop: false
+          neighbor_ip: Example neighbor_ip
+          bfd_template: Example bfd_template
+          enable_bfd: false
+          comment: Example comment
+          interface: Example interface
+          enable_bfd_dnscheck: false
+        - bgp_neighbor_pass: Example bgp_neighbor_pass
           authentication_mode: Example authentication_mode
           multihop_ttl: 1
           remote_as: 1
@@ -21333,7 +21550,10 @@ components:
           format: int64
           type: integer
         neighbors:
-          $ref: '#/components/schemas/MemberbgpasNeighbors'
+          description: The BGP neighbors for this AS.
+          items:
+            $ref: '#/components/schemas/MemberbgpasNeighbors'
+          type: array
         link_detect:
           description: Determines if link detection on the interface is enabled or
             not.
@@ -21998,7 +22218,10 @@ components:
         hwmodel: Example hwmodel
         hypervisor: Example hypervisor
         service_status:
-          service: Example service
+        - service: Example service
+          description: Example description
+          status: Example status
+        - service: Example service
           description: Example description
           status: Example status
         hwid: Example hwid
@@ -22006,7 +22229,10 @@ components:
         nat_external_ip: Example nat_external_ip
       properties:
         service_status:
-          $ref: '#/components/schemas/MembernodeinfoServiceStatus'
+          description: The service status list of the Grid Member.
+          items:
+            $ref: '#/components/schemas/MembernodeinfoServiceStatus'
+          type: array
         physical_oid:
           description: The OID of the physical node.
           example: Example physical_oid
@@ -22414,7 +22640,11 @@ components:
       example:
         ntp_acl:
           ac_list:
-            address_ac:
+          - address_ac:
+              address: Example address
+              permission: Example permission
+            service: Example service
+          - address_ac:
               address: Example address
               permission: Example permission
             service: Example service
@@ -22423,7 +22653,13 @@ components:
           named_acl: Example named_acl
         use_ntp_keys: false
         ntp_servers:
-          enable_authentication: false
+        - enable_authentication: false
+          address: Example address
+          ntp_key_number: 1
+          burst: false
+          preferred: false
+          iburst: false
+        - enable_authentication: false
           address: Example address
           ntp_key_number: 1
           burst: false
@@ -22437,7 +22673,10 @@ components:
         use_ntp_servers: false
         use_ntp_acl: false
         ntp_keys:
-          number: 1
+        - number: 1
+          string: Example string
+          type: Example type
+        - number: 1
           string: Example string
           type: Example type
         enable_external_ntp_servers: false
@@ -22449,9 +22688,16 @@ components:
           example: false
           type: boolean
         ntp_servers:
-          $ref: '#/components/schemas/MemberntpsettingNtpServers'
+          description: The list of NTP servers configured on a member.
+          items:
+            $ref: '#/components/schemas/MemberntpsettingNtpServers'
+          type: array
         ntp_keys:
-          $ref: '#/components/schemas/MemberntpsettingNtpKeys'
+          description: The list of NTP authentication keys used to authenticate NTP
+            clients.
+          items:
+            $ref: '#/components/schemas/MemberntpsettingNtpKeys'
+          type: array
         ntp_acl:
           $ref: '#/components/schemas/MemberntpsettingNtpAcl'
         ntp_kod:
@@ -22567,7 +22813,11 @@ components:
     MemberntpsettingNtpAcl:
       example:
         ac_list:
-          address_ac:
+        - address_ac:
+            address: Example address
+            permission: Example permission
+          service: Example service
+        - address_ac:
             address: Example address
             permission: Example permission
           service: Example service
@@ -22584,7 +22834,10 @@ components:
           example: Example acl_type
           type: string
         ac_list:
-          $ref: '#/components/schemas/MemberntpsettingntpaclAcList'
+          description: The list of NTP access control items.
+          items:
+            $ref: '#/components/schemas/MemberntpsettingntpaclAcList'
+          type: array
         named_acl:
           description: The NTP access named ACL.
           example: Example named_acl
@@ -22759,10 +23012,14 @@ components:
         - licenses
         - licenses
         hardware_info:
-          hwtype: Example hwtype
+        - hwtype: Example hwtype
+        - hwtype: Example hwtype
       properties:
         hardware_info:
-          $ref: '#/components/schemas/MemberpreprovisioningHardwareInfo'
+          description: An array of structures that describe the hardware being pre-provisioned.
+          items:
+            $ref: '#/components/schemas/MemberpreprovisioningHardwareInfo'
+          type: array
         licenses:
           description: "An array of license types the pre-provisioned member should\
             \ have in order to join the Grid, or the licenses that must be allocated\
@@ -22884,7 +23141,9 @@ components:
         - syscontact
         snmpv3_queries_enable: false
         snmpv3_queries_users:
-          comment: Example comment
+        - comment: Example comment
+          user: Example user
+        - comment: Example comment
           user: Example user
         sysdescr:
         - sysdescr
@@ -22899,7 +23158,10 @@ components:
         - sysname
         - sysname
         trap_receivers:
-          address: Example address
+        - address: Example address
+          comment: Example comment
+          user: Example user
+        - address: Example address
           comment: Example comment
           user: Example user
         traps_enable: false
@@ -22926,7 +23188,10 @@ components:
           example: false
           type: boolean
         snmpv3_queries_users:
-          $ref: '#/components/schemas/MembersnmpsettingSnmpv3QueriesUsers'
+          description: A list of SNMPv3 queries users.
+          items:
+            $ref: '#/components/schemas/MembersnmpsettingSnmpv3QueriesUsers'
+          type: array
         snmpv3_traps_enable:
           description: "If set to True, SNMPv3 traps are enabled."
           example: false
@@ -22964,7 +23229,10 @@ components:
             type: string
           type: array
         trap_receivers:
-          $ref: '#/components/schemas/MembersnmpsettingTrapReceivers'
+          description: A list of trap receivers.
+          items:
+            $ref: '#/components/schemas/MembersnmpsettingTrapReceivers'
+          type: array
         traps_community_string:
           description: A string the NIOS appliance sends to the management system
             together with its traps. Note that this community string must match exactly
@@ -23068,7 +23336,13 @@ components:
       example:
         tcp_port: 1
         client_acls:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          permission: Example permission
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -23106,7 +23380,11 @@ components:
           format: int64
           type: integer
         client_acls:
-          $ref: '#/components/schemas/MembersyslogproxysettingClientAcls'
+          description: This list controls the IP addresses and networks that are allowed
+            to access the syslog proxy.
+          items:
+            $ref: '#/components/schemas/MembersyslogproxysettingClientAcls'
+          type: array
       type: object
     MembersyslogproxysettingClientAcls:
       example:
@@ -23441,7 +23719,9 @@ components:
         rec_dns_latency_trigger_enable: false
         rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
         kpi_monitored_domains:
-          domain_name: Example domain_name
+        - domain_name: Example domain_name
+          record_type: Example record_type
+        - domain_name: Example domain_name
           record_type: Example record_type
         rec_dns_latency_reset: 1
         rec_dns_latency_listen_on_ip: Example rec_dns_latency_listen_on_ip
@@ -23481,7 +23761,11 @@ components:
           example: Example rec_dns_latency_listen_on_ip
           type: string
         kpi_monitored_domains:
-          $ref: '#/components/schemas/MembertrafficcapturerecdnssettingKpiMonitoredDomains'
+          description: List of domains monitored by 'Recursive DNS Latency Threshold'
+            trigger.
+          items:
+            $ref: '#/components/schemas/MembertrafficcapturerecdnssettingKpiMonitoredDomains'
+          type: array
       type: object
     MembertrafficcapturerecdnssettingKpiMonitoredDomains:
       example:
@@ -27898,7 +28182,10 @@ components:
         - rule_type: Example rule_type
           address: Example address
           nat_ports:
-            start_port: 1
+          - start_port: 1
+            end_port: 1
+            block_size: 1
+          - start_port: 1
             end_port: 1
             block_size: 1
           start_address: Example start_address
@@ -27908,7 +28195,10 @@ components:
         - rule_type: Example rule_type
           address: Example address
           nat_ports:
-            start_port: 1
+          - start_port: 1
+            end_port: 1
+            block_size: 1
+          - start_port: 1
             end_port: 1
             block_size: 1
           start_address: Example start_address
@@ -28021,7 +28311,10 @@ components:
         rule_type: Example rule_type
         address: Example address
         nat_ports:
-          start_port: 1
+        - start_port: 1
+          end_port: 1
+          block_size: 1
+        - start_port: 1
           end_port: 1
           block_size: 1
         start_address: Example start_address
@@ -28061,7 +28354,11 @@ components:
           example: Example end_address
           type: string
         nat_ports:
-          $ref: '#/components/schemas/MemberthreatprotectionnatrulesNatPorts'
+          description: The NAT port configuration for the threat protection NAT mapping
+            rule.
+          items:
+            $ref: '#/components/schemas/MemberthreatprotectionnatrulesNatPorts'
+          type: array
       type: object
     MemberthreatprotectionnatrulesNatPorts:
       example:
@@ -29546,7 +29843,11 @@ components:
             enable_ntp: false
             ntp_acl:
               ac_list:
-                address_ac:
+              - address_ac:
+                  address: Example address
+                  permission: Example permission
+                service: Example service
+              - address_ac:
                   address: Example address
                   permission: Example permission
                 service: Example service
@@ -29554,11 +29855,20 @@ components:
               acl_type: Example acl_type
               named_acl: Example named_acl
             ntp_keys:
-              number: 1
+            - number: 1
+              string: Example string
+              type: Example type
+            - number: 1
               string: Example string
               type: Example type
             ntp_servers:
-              enable_authentication: false
+            - enable_authentication: false
+              address: Example address
+              ntp_key_number: 1
+              burst: false
+              preferred: false
+              iburst: false
+            - enable_authentication: false
               address: Example address
               ntp_key_number: 1
               burst: false
@@ -29733,7 +30043,9 @@ components:
             rec_dns_latency_trigger_enable: false
             rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
             kpi_monitored_domains:
-              domain_name: Example domain_name
+            - domain_name: Example domain_name
+              record_type: Example record_type
+            - domain_name: Example domain_name
               record_type: Example record_type
             rec_dns_latency_reset: 1
             rec_dns_latency_threshold: 1
@@ -29797,7 +30109,13 @@ components:
             support_access_info: Example support_access_info
             disable_concurrent_login: false
             admin_access_items:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              permission: Example permission
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               permission: Example permission
@@ -29845,7 +30163,9 @@ components:
             - syscontact
             snmpv3_queries_enable: false
             snmpv3_queries_users:
-              comment: Example comment
+            - comment: Example comment
+              user: Example user
+            - comment: Example comment
               user: Example user
             sysdescr:
             - sysdescr
@@ -29860,7 +30180,10 @@ components:
             - sysname
             - sysname
             trap_receivers:
-              address: Example address
+            - address: Example address
+              comment: Example comment
+              user: Example user
+            - address: Example address
               comment: Example comment
               user: Example user
             traps_enable: false
@@ -29903,7 +30226,9 @@ components:
             port: 1
             enable_proxy_service: false
             endpoint_mapping:
-              endpoint_fqdn: Example endpoint_fqdn
+            - endpoint_fqdn: Example endpoint_fqdn
+              gateway_fqdn: Example gateway_fqdn
+            - endpoint_fqdn: Example endpoint_fqdn
               gateway_fqdn: Example gateway_fqdn
           _ref: _ref
           enable_recycle_bin: false
@@ -30112,7 +30437,9 @@ components:
             port: 1
             enable_proxy_service: false
             endpoint_mapping:
-              endpoint_fqdn: Example endpoint_fqdn
+            - endpoint_fqdn: Example endpoint_fqdn
+              gateway_fqdn: Example gateway_fqdn
+            - endpoint_fqdn: Example endpoint_fqdn
               gateway_fqdn: Example gateway_fqdn
           _ref: _ref
           member:
@@ -30616,13 +30943,23 @@ components:
               frequency: Example frequency
             enable_rr_last_queried: false
             expression_list:
-              op2: Example op2
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
               op: Example op
               op1: Example op1
               op1_type: Example op1_type
               op2_type: Example op2_type
             ea_expression_list:
-              op2: Example op2
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
               op: Example op
               op1: Example op1
               op1_type: Example op1_type
@@ -30876,7 +31213,9 @@ components:
             nsec3_iterations: 1
             signature_expiration: 1
             zsk_algorithms:
-              size: 1
+            - size: 1
+              algorithm: Example algorithm
+            - size: 1
               algorithm: Example algorithm
             zsk_algorithm: Example zsk_algorithm
             ksk_snmp_notification_enabled: false
@@ -30887,7 +31226,9 @@ components:
             nsec3_salt_min_length: 1
             ksk_rollover: 1
             ksk_algorithms:
-              size: 1
+            - size: 1
+              algorithm: Example algorithm
+            - size: 1
               algorithm: Example algorithm
             zsk_rollover_mechanism: Example zsk_rollover_mechanism
             ksk_rollover_notification_config: Example ksk_rollover_notification_config
@@ -31095,7 +31436,10 @@ components:
           - rule_type: Example rule_type
             address: Example address
             nat_ports:
-              start_port: 1
+            - start_port: 1
+              end_port: 1
+              block_size: 1
+            - start_port: 1
               end_port: 1
               block_size: 1
             start_address: Example start_address
@@ -31105,7 +31449,10 @@ components:
           - rule_type: Example rule_type
             address: Example address
             nat_ports:
-              start_port: 1
+            - start_port: 1
+              end_port: 1
+              block_size: 1
+            - start_port: 1
               end_port: 1
               block_size: 1
             start_address: Example start_address
@@ -31536,7 +31883,11 @@ components:
           ntp_setting:
             ntp_acl:
               ac_list:
-                address_ac:
+              - address_ac:
+                  address: Example address
+                  permission: Example permission
+                service: Example service
+              - address_ac:
                   address: Example address
                   permission: Example permission
                 service: Example service
@@ -31545,7 +31896,13 @@ components:
               named_acl: Example named_acl
             use_ntp_keys: false
             ntp_servers:
-              enable_authentication: false
+            - enable_authentication: false
+              address: Example address
+              ntp_key_number: 1
+              burst: false
+              preferred: false
+              iburst: false
+            - enable_authentication: false
               address: Example address
               ntp_key_number: 1
               burst: false
@@ -31559,7 +31916,10 @@ components:
             use_ntp_servers: false
             use_ntp_acl: false
             ntp_keys:
-              number: 1
+            - number: 1
+              string: Example string
+              type: Example type
+            - number: 1
               string: Example string
               type: Example type
             enable_external_ntp_servers: false
@@ -31584,7 +31944,13 @@ components:
           syslog_proxy_setting:
             tcp_port: 1
             client_acls:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              permission: Example permission
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               permission: Example permission
@@ -31706,7 +32072,18 @@ components:
             link_detect: false
             keepalive: 1
             neighbors:
-              bgp_neighbor_pass: Example bgp_neighbor_pass
+            - bgp_neighbor_pass: Example bgp_neighbor_pass
+              authentication_mode: Example authentication_mode
+              multihop_ttl: 1
+              remote_as: 1
+              multihop: false
+              neighbor_ip: Example neighbor_ip
+              bfd_template: Example bfd_template
+              enable_bfd: false
+              comment: Example comment
+              interface: Example interface
+              enable_bfd_dnscheck: false
+            - bgp_neighbor_pass: Example bgp_neighbor_pass
               authentication_mode: Example authentication_mode
               multihop_ttl: 1
               remote_as: 1
@@ -31722,7 +32099,18 @@ components:
             link_detect: false
             keepalive: 1
             neighbors:
-              bgp_neighbor_pass: Example bgp_neighbor_pass
+            - bgp_neighbor_pass: Example bgp_neighbor_pass
+              authentication_mode: Example authentication_mode
+              multihop_ttl: 1
+              remote_as: 1
+              multihop: false
+              neighbor_ip: Example neighbor_ip
+              bfd_template: Example bfd_template
+              enable_bfd: false
+              comment: Example comment
+              interface: Example interface
+              enable_bfd_dnscheck: false
+            - bgp_neighbor_pass: Example bgp_neighbor_pass
               authentication_mode: Example authentication_mode
               multihop_ttl: 1
               remote_as: 1
@@ -31741,7 +32129,9 @@ components:
             rec_dns_latency_trigger_enable: false
             rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
             kpi_monitored_domains:
-              domain_name: Example domain_name
+            - domain_name: Example domain_name
+              record_type: Example record_type
+            - domain_name: Example domain_name
               record_type: Example record_type
             rec_dns_latency_reset: 1
             rec_dns_latency_listen_on_ip: Example rec_dns_latency_listen_on_ip
@@ -31804,7 +32194,8 @@ components:
             - licenses
             - licenses
             hardware_info:
-              hwtype: Example hwtype
+            - hwtype: Example hwtype
+            - hwtype: Example hwtype
           dns_resolver_setting:
             resolvers:
             - resolvers
@@ -31937,7 +32328,10 @@ components:
             hwmodel: Example hwmodel
             hypervisor: Example hypervisor
             service_status:
-              service: Example service
+            - service: Example service
+              description: Example description
+              status: Example status
+            - service: Example service
               description: Example description
               status: Example status
             hwid: Example hwid
@@ -31991,7 +32385,10 @@ components:
             hwmodel: Example hwmodel
             hypervisor: Example hypervisor
             service_status:
-              service: Example service
+            - service: Example service
+              description: Example description
+              status: Example status
+            - service: Example service
               description: Example description
               status: Example status
             hwid: Example hwid
@@ -32033,7 +32430,9 @@ components:
             - syscontact
             snmpv3_queries_enable: false
             snmpv3_queries_users:
-              comment: Example comment
+            - comment: Example comment
+              user: Example user
+            - comment: Example comment
               user: Example user
             sysdescr:
             - sysdescr
@@ -32048,7 +32447,10 @@ components:
             - sysname
             - sysname
             trap_receivers:
-              address: Example address
+            - address: Example address
+              comment: Example comment
+              user: Example user
+            - address: Example address
               comment: Example comment
               user: Example user
             traps_enable: false
@@ -32152,7 +32554,11 @@ components:
           ntp_setting:
             ntp_acl:
               ac_list:
-                address_ac:
+              - address_ac:
+                  address: Example address
+                  permission: Example permission
+                service: Example service
+              - address_ac:
                   address: Example address
                   permission: Example permission
                 service: Example service
@@ -32161,7 +32567,13 @@ components:
               named_acl: Example named_acl
             use_ntp_keys: false
             ntp_servers:
-              enable_authentication: false
+            - enable_authentication: false
+              address: Example address
+              ntp_key_number: 1
+              burst: false
+              preferred: false
+              iburst: false
+            - enable_authentication: false
               address: Example address
               ntp_key_number: 1
               burst: false
@@ -32175,7 +32587,10 @@ components:
             use_ntp_servers: false
             use_ntp_acl: false
             ntp_keys:
-              number: 1
+            - number: 1
+              string: Example string
+              type: Example type
+            - number: 1
               string: Example string
               type: Example type
             enable_external_ntp_servers: false
@@ -32200,7 +32615,13 @@ components:
           syslog_proxy_setting:
             tcp_port: 1
             client_acls:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              permission: Example permission
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               permission: Example permission
@@ -32322,7 +32743,18 @@ components:
             link_detect: false
             keepalive: 1
             neighbors:
-              bgp_neighbor_pass: Example bgp_neighbor_pass
+            - bgp_neighbor_pass: Example bgp_neighbor_pass
+              authentication_mode: Example authentication_mode
+              multihop_ttl: 1
+              remote_as: 1
+              multihop: false
+              neighbor_ip: Example neighbor_ip
+              bfd_template: Example bfd_template
+              enable_bfd: false
+              comment: Example comment
+              interface: Example interface
+              enable_bfd_dnscheck: false
+            - bgp_neighbor_pass: Example bgp_neighbor_pass
               authentication_mode: Example authentication_mode
               multihop_ttl: 1
               remote_as: 1
@@ -32338,7 +32770,18 @@ components:
             link_detect: false
             keepalive: 1
             neighbors:
-              bgp_neighbor_pass: Example bgp_neighbor_pass
+            - bgp_neighbor_pass: Example bgp_neighbor_pass
+              authentication_mode: Example authentication_mode
+              multihop_ttl: 1
+              remote_as: 1
+              multihop: false
+              neighbor_ip: Example neighbor_ip
+              bfd_template: Example bfd_template
+              enable_bfd: false
+              comment: Example comment
+              interface: Example interface
+              enable_bfd_dnscheck: false
+            - bgp_neighbor_pass: Example bgp_neighbor_pass
               authentication_mode: Example authentication_mode
               multihop_ttl: 1
               remote_as: 1
@@ -32357,7 +32800,9 @@ components:
             rec_dns_latency_trigger_enable: false
             rec_dns_latency_listen_on_source: Example rec_dns_latency_listen_on_source
             kpi_monitored_domains:
-              domain_name: Example domain_name
+            - domain_name: Example domain_name
+              record_type: Example record_type
+            - domain_name: Example domain_name
               record_type: Example record_type
             rec_dns_latency_reset: 1
             rec_dns_latency_listen_on_ip: Example rec_dns_latency_listen_on_ip
@@ -32420,7 +32865,8 @@ components:
             - licenses
             - licenses
             hardware_info:
-              hwtype: Example hwtype
+            - hwtype: Example hwtype
+            - hwtype: Example hwtype
           dns_resolver_setting:
             resolvers:
             - resolvers
@@ -32553,7 +32999,10 @@ components:
             hwmodel: Example hwmodel
             hypervisor: Example hypervisor
             service_status:
-              service: Example service
+            - service: Example service
+              description: Example description
+              status: Example status
+            - service: Example service
               description: Example description
               status: Example status
             hwid: Example hwid
@@ -32607,7 +33056,10 @@ components:
             hwmodel: Example hwmodel
             hypervisor: Example hypervisor
             service_status:
-              service: Example service
+            - service: Example service
+              description: Example description
+              status: Example status
+            - service: Example service
               description: Example description
               status: Example status
             hwid: Example hwid
@@ -32649,7 +33101,9 @@ components:
             - syscontact
             snmpv3_queries_enable: false
             snmpv3_queries_users:
-              comment: Example comment
+            - comment: Example comment
+              user: Example user
+            - comment: Example comment
               user: Example user
             sysdescr:
             - sysdescr
@@ -32664,7 +33118,10 @@ components:
             - sysname
             - sysname
             trap_receivers:
-              address: Example address
+            - address: Example address
+              comment: Example comment
+              user: Example user
+            - address: Example address
               comment: Example comment
               user: Example user
             traps_enable: false
@@ -33563,7 +34020,10 @@ components:
           - rule_type: Example rule_type
             address: Example address
             nat_ports:
-              start_port: 1
+            - start_port: 1
+              end_port: 1
+              block_size: 1
+            - start_port: 1
               end_port: 1
               block_size: 1
             start_address: Example start_address
@@ -33573,7 +34033,10 @@ components:
           - rule_type: Example rule_type
             address: Example address
             nat_ports:
-              start_port: 1
+            - start_port: 1
+              end_port: 1
+              block_size: 1
+            - start_port: 1
               end_port: 1
               block_size: 1
             start_address: Example start_address

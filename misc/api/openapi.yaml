@@ -5338,7 +5338,11 @@ components:
         template_instance:
           template: Example template
           parameters:
-            name: Example name
+          - name: Example name
+            syntax: Example syntax
+            default_value: Example default_value
+            value: Example value
+          - name: Example name
             syntax: Example syntax
             default_value: Example default_value
             value: Example value
@@ -5485,7 +5489,11 @@ components:
       example:
         template: Example template
         parameters:
-          name: Example name
+        - name: Example name
+          syntax: Example syntax
+          default_value: Example default_value
+          value: Example value
+        - name: Example name
           syntax: Example syntax
           default_value: Example default_value
           value: Example value
@@ -5495,7 +5503,10 @@ components:
           example: Example template
           type: string
         parameters:
-          $ref: '#/components/schemas/DxlendpointtemplateinstanceParameters'
+          description: The notification REST template parameters.
+          items:
+            $ref: '#/components/schemas/DxlendpointtemplateinstanceParameters'
+          type: array
       type: object
     DxlendpointtemplateinstanceParameters:
       example:
@@ -5843,7 +5854,9 @@ components:
             value: ""
         subscribe_settings:
           mapped_ea_attributes:
-            mapped_ea: Example mapped_ea
+          - mapped_ea: Example mapped_ea
+            name: Example name
+          - mapped_ea: Example mapped_ea
             name: Example name
           enabled_attributes:
           - enabled_attributes
@@ -5870,7 +5883,11 @@ components:
         template_instance:
           template: Example template
           parameters:
-            name: Example name
+          - name: Example name
+            syntax: Example syntax
+            default_value: Example default_value
+            value: Example value
+          - name: Example name
             syntax: Example syntax
             default_value: Example default_value
             value: Example value
@@ -6005,7 +6022,9 @@ components:
     PxgridEndpointSubscribeSettings:
       example:
         mapped_ea_attributes:
-          mapped_ea: Example mapped_ea
+        - mapped_ea: Example mapped_ea
+          name: Example name
+        - mapped_ea: Example mapped_ea
           name: Example name
         enabled_attributes:
         - enabled_attributes
@@ -6025,7 +6044,11 @@ components:
             type: string
           type: array
         mapped_ea_attributes:
-          $ref: '#/components/schemas/PxgridendpointsubscribesettingsMappedEaAttributes'
+          description: The list of NIOS extensible attributes to Cisco ISE attributes
+            mappings.
+          items:
+            $ref: '#/components/schemas/PxgridendpointsubscribesettingsMappedEaAttributes'
+          type: array
       type: object
     PxgridendpointsubscribesettingsMappedEaAttributes:
       example:
@@ -6057,7 +6080,11 @@ components:
       example:
         template: Example template
         parameters:
-          name: Example name
+        - name: Example name
+          syntax: Example syntax
+          default_value: Example default_value
+          value: Example value
+        - name: Example name
           syntax: Example syntax
           default_value: Example default_value
           value: Example value
@@ -6067,7 +6094,10 @@ components:
           example: Example template
           type: string
         parameters:
-          $ref: '#/components/schemas/PxgridendpointtemplateinstanceParameters'
+          description: The notification REST template parameters.
+          items:
+            $ref: '#/components/schemas/PxgridendpointtemplateinstanceParameters'
+          type: array
       type: object
     PxgridendpointtemplateinstanceParameters:
       example:
@@ -6631,7 +6661,11 @@ components:
         template_instance:
           template: Example template
           parameters:
-            name: Example name
+          - name: Example name
+            syntax: Example syntax
+            default_value: Example default_value
+            value: Example value
+          - name: Example name
             syntax: Example syntax
             default_value: Example default_value
             value: Example value
@@ -6788,7 +6822,11 @@ components:
       example:
         template: Example template
         parameters:
-          name: Example name
+        - name: Example name
+          syntax: Example syntax
+          default_value: Example default_value
+          value: Example value
+        - name: Example name
           syntax: Example syntax
           default_value: Example default_value
           value: Example value
@@ -6798,7 +6836,10 @@ components:
           example: Example template
           type: string
         parameters:
-          $ref: '#/components/schemas/SyslogendpointtemplateinstanceParameters'
+          description: The notification REST template parameters.
+          items:
+            $ref: '#/components/schemas/SyslogendpointtemplateinstanceParameters'
+          type: array
       type: object
     SyslogendpointtemplateinstanceParameters:
       example:
@@ -7348,7 +7389,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value
@@ -7405,7 +7450,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value
@@ -7544,7 +7593,9 @@ components:
               value: ""
           subscribe_settings:
             mapped_ea_attributes:
-              mapped_ea: Example mapped_ea
+            - mapped_ea: Example mapped_ea
+              name: Example name
+            - mapped_ea: Example mapped_ea
               name: Example name
             enabled_attributes:
             - enabled_attributes
@@ -7571,7 +7622,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value
@@ -7601,7 +7656,9 @@ components:
               value: ""
           subscribe_settings:
             mapped_ea_attributes:
-              mapped_ea: Example mapped_ea
+            - mapped_ea: Example mapped_ea
+              name: Example name
+            - mapped_ea: Example mapped_ea
               name: Example name
             enabled_attributes:
             - enabled_attributes
@@ -7628,7 +7685,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value
@@ -7855,7 +7916,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value
@@ -7912,7 +7977,11 @@ components:
           template_instance:
             template: Example template
             parameters:
-              name: Example name
+            - name: Example name
+              syntax: Example syntax
+              default_value: Example default_value
+              value: Example value
+            - name: Example name
               syntax: Example syntax
               default_value: Example default_value
               value: Example value

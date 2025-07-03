@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of this Grid member in FQDN format. | [optional] 
 **ForwardersOnly** | Pointer to **bool** | Determines if the appliance sends queries to forwarders only, and not to other internal or Internet root servers. | [optional] 
-**ForwardTo** | Pointer to [**ZoneforwardforwardingserversForwardTo**](ZoneforwardforwardingserversForwardTo.md) |  | [optional] 
+**ForwardTo** | Pointer to [**[]ZoneforwardforwardingserversForwardTo**](ZoneforwardforwardingserversForwardTo.md) | The information for the remote name server to which you want the Infoblox appliance to forward queries for a specified domain name. | [optional] 
 **UseOverrideForwarders** | Pointer to **bool** | Use flag for: forward_to | [optional] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasForwardersOnly returns a boolean if a field has been set.
 
 ### GetForwardTo
 
-`func (o *ZoneForwardForwardingServers) GetForwardTo() ZoneforwardforwardingserversForwardTo`
+`func (o *ZoneForwardForwardingServers) GetForwardTo() []ZoneforwardforwardingserversForwardTo`
 
 GetForwardTo returns the ForwardTo field if non-nil, zero value otherwise.
 
 ### GetForwardToOk
 
-`func (o *ZoneForwardForwardingServers) GetForwardToOk() (*ZoneforwardforwardingserversForwardTo, bool)`
+`func (o *ZoneForwardForwardingServers) GetForwardToOk() (*[]ZoneforwardforwardingserversForwardTo, bool)`
 
 GetForwardToOk returns a tuple with the ForwardTo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwardTo
 
-`func (o *ZoneForwardForwardingServers) SetForwardTo(v ZoneforwardforwardingserversForwardTo)`
+`func (o *ZoneForwardForwardingServers) SetForwardTo(v []ZoneforwardforwardingserversForwardTo)`
 
 SetForwardTo sets ForwardTo field to given value.
 

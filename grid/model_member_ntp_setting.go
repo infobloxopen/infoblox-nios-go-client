@@ -20,10 +20,12 @@ var _ MappedNullable = &MemberNtpSetting{}
 // MemberNtpSetting struct for MemberNtpSetting
 type MemberNtpSetting struct {
 	// Determines whether the NTP service is enabled on the member.
-	EnableNtp  *bool                       `json:"enable_ntp,omitempty"`
-	NtpServers *MemberntpsettingNtpServers `json:"ntp_servers,omitempty"`
-	NtpKeys    *MemberntpsettingNtpKeys    `json:"ntp_keys,omitempty"`
-	NtpAcl     *MemberntpsettingNtpAcl     `json:"ntp_acl,omitempty"`
+	EnableNtp *bool `json:"enable_ntp,omitempty"`
+	// The list of NTP servers configured on a member.
+	NtpServers []MemberntpsettingNtpServers `json:"ntp_servers,omitempty"`
+	// The list of NTP authentication keys used to authenticate NTP clients.
+	NtpKeys []MemberntpsettingNtpKeys `json:"ntp_keys,omitempty"`
+	NtpAcl  *MemberntpsettingNtpAcl   `json:"ntp_acl,omitempty"`
 	// Determines whether the Kiss-o'-Death packets are enabled or disabled.
 	NtpKod *bool `json:"ntp_kod,omitempty"`
 	// Determines whether the use of the external NTP servers is enabled for the member.
@@ -99,17 +101,17 @@ func (o *MemberNtpSetting) SetEnableNtp(v bool) {
 }
 
 // GetNtpServers returns the NtpServers field value if set, zero value otherwise.
-func (o *MemberNtpSetting) GetNtpServers() MemberntpsettingNtpServers {
+func (o *MemberNtpSetting) GetNtpServers() []MemberntpsettingNtpServers {
 	if o == nil || IsNil(o.NtpServers) {
-		var ret MemberntpsettingNtpServers
+		var ret []MemberntpsettingNtpServers
 		return ret
 	}
-	return *o.NtpServers
+	return o.NtpServers
 }
 
 // GetNtpServersOk returns a tuple with the NtpServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberNtpSetting) GetNtpServersOk() (*MemberntpsettingNtpServers, bool) {
+func (o *MemberNtpSetting) GetNtpServersOk() ([]MemberntpsettingNtpServers, bool) {
 	if o == nil || IsNil(o.NtpServers) {
 		return nil, false
 	}
@@ -125,23 +127,23 @@ func (o *MemberNtpSetting) HasNtpServers() bool {
 	return false
 }
 
-// SetNtpServers gets a reference to the given MemberntpsettingNtpServers and assigns it to the NtpServers field.
-func (o *MemberNtpSetting) SetNtpServers(v MemberntpsettingNtpServers) {
-	o.NtpServers = &v
+// SetNtpServers gets a reference to the given []MemberntpsettingNtpServers and assigns it to the NtpServers field.
+func (o *MemberNtpSetting) SetNtpServers(v []MemberntpsettingNtpServers) {
+	o.NtpServers = v
 }
 
 // GetNtpKeys returns the NtpKeys field value if set, zero value otherwise.
-func (o *MemberNtpSetting) GetNtpKeys() MemberntpsettingNtpKeys {
+func (o *MemberNtpSetting) GetNtpKeys() []MemberntpsettingNtpKeys {
 	if o == nil || IsNil(o.NtpKeys) {
-		var ret MemberntpsettingNtpKeys
+		var ret []MemberntpsettingNtpKeys
 		return ret
 	}
-	return *o.NtpKeys
+	return o.NtpKeys
 }
 
 // GetNtpKeysOk returns a tuple with the NtpKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberNtpSetting) GetNtpKeysOk() (*MemberntpsettingNtpKeys, bool) {
+func (o *MemberNtpSetting) GetNtpKeysOk() ([]MemberntpsettingNtpKeys, bool) {
 	if o == nil || IsNil(o.NtpKeys) {
 		return nil, false
 	}
@@ -157,9 +159,9 @@ func (o *MemberNtpSetting) HasNtpKeys() bool {
 	return false
 }
 
-// SetNtpKeys gets a reference to the given MemberntpsettingNtpKeys and assigns it to the NtpKeys field.
-func (o *MemberNtpSetting) SetNtpKeys(v MemberntpsettingNtpKeys) {
-	o.NtpKeys = &v
+// SetNtpKeys gets a reference to the given []MemberntpsettingNtpKeys and assigns it to the NtpKeys field.
+func (o *MemberNtpSetting) SetNtpKeys(v []MemberntpsettingNtpKeys) {
+	o.NtpKeys = v
 }
 
 // GetNtpAcl returns the NtpAcl field value if set, zero value otherwise.

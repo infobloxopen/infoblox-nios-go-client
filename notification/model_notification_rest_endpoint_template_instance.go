@@ -20,8 +20,9 @@ var _ MappedNullable = &NotificationRestEndpointTemplateInstance{}
 // NotificationRestEndpointTemplateInstance struct for NotificationRestEndpointTemplateInstance
 type NotificationRestEndpointTemplateInstance struct {
 	// The name of the REST API template parameter.
-	Template             *string                                             `json:"template,omitempty"`
-	Parameters           *NotificationrestendpointtemplateinstanceParameters `json:"parameters,omitempty"`
+	Template *string `json:"template,omitempty"`
+	// The notification REST template parameters.
+	Parameters           []NotificationrestendpointtemplateinstanceParameters `json:"parameters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +78,17 @@ func (o *NotificationRestEndpointTemplateInstance) SetTemplate(v string) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *NotificationRestEndpointTemplateInstance) GetParameters() NotificationrestendpointtemplateinstanceParameters {
+func (o *NotificationRestEndpointTemplateInstance) GetParameters() []NotificationrestendpointtemplateinstanceParameters {
 	if o == nil || IsNil(o.Parameters) {
-		var ret NotificationrestendpointtemplateinstanceParameters
+		var ret []NotificationrestendpointtemplateinstanceParameters
 		return ret
 	}
-	return *o.Parameters
+	return o.Parameters
 }
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationRestEndpointTemplateInstance) GetParametersOk() (*NotificationrestendpointtemplateinstanceParameters, bool) {
+func (o *NotificationRestEndpointTemplateInstance) GetParametersOk() ([]NotificationrestendpointtemplateinstanceParameters, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
@@ -103,9 +104,9 @@ func (o *NotificationRestEndpointTemplateInstance) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given NotificationrestendpointtemplateinstanceParameters and assigns it to the Parameters field.
-func (o *NotificationRestEndpointTemplateInstance) SetParameters(v NotificationrestendpointtemplateinstanceParameters) {
-	o.Parameters = &v
+// SetParameters gets a reference to the given []NotificationrestendpointtemplateinstanceParameters and assigns it to the Parameters field.
+func (o *NotificationRestEndpointTemplateInstance) SetParameters(v []NotificationrestendpointtemplateinstanceParameters) {
+	o.Parameters = v
 }
 
 func (o NotificationRestEndpointTemplateInstance) MarshalJSON() ([]byte, error) {

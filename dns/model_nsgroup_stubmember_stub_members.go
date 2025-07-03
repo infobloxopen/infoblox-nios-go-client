@@ -26,8 +26,9 @@ type NsgroupStubmemberStubMembers struct {
 	// The flag represents DNS zone transfers if set to False, and ID Grid Replication if set to True. This flag is ignored if the struct is specified as part of a stub zone or if it is set as grid_member in an authoritative zone.
 	GridReplicate *bool `json:"grid_replicate,omitempty"`
 	// This flag controls whether the Grid lead secondary server performs zone transfers to non lead secondaries. This flag is ignored if the struct is specified as grid_member in an authoritative zone.
-	Lead               *bool                                           `json:"lead,omitempty"`
-	PreferredPrimaries *NsgroupstubmemberstubmembersPreferredPrimaries `json:"preferred_primaries,omitempty"`
+	Lead *bool `json:"lead,omitempty"`
+	// The primary preference list with Grid member names and\\or External Server extserver structs for this member.
+	PreferredPrimaries []NsgroupstubmemberstubmembersPreferredPrimaries `json:"preferred_primaries,omitempty"`
 	// This flag represents whether the preferred_primaries field values of this member are used.
 	EnablePreferredPrimaries *bool `json:"enable_preferred_primaries,omitempty"`
 	AdditionalProperties     map[string]interface{}
@@ -181,17 +182,17 @@ func (o *NsgroupStubmemberStubMembers) SetLead(v bool) {
 }
 
 // GetPreferredPrimaries returns the PreferredPrimaries field value if set, zero value otherwise.
-func (o *NsgroupStubmemberStubMembers) GetPreferredPrimaries() NsgroupstubmemberstubmembersPreferredPrimaries {
+func (o *NsgroupStubmemberStubMembers) GetPreferredPrimaries() []NsgroupstubmemberstubmembersPreferredPrimaries {
 	if o == nil || IsNil(o.PreferredPrimaries) {
-		var ret NsgroupstubmemberstubmembersPreferredPrimaries
+		var ret []NsgroupstubmemberstubmembersPreferredPrimaries
 		return ret
 	}
-	return *o.PreferredPrimaries
+	return o.PreferredPrimaries
 }
 
 // GetPreferredPrimariesOk returns a tuple with the PreferredPrimaries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NsgroupStubmemberStubMembers) GetPreferredPrimariesOk() (*NsgroupstubmemberstubmembersPreferredPrimaries, bool) {
+func (o *NsgroupStubmemberStubMembers) GetPreferredPrimariesOk() ([]NsgroupstubmemberstubmembersPreferredPrimaries, bool) {
 	if o == nil || IsNil(o.PreferredPrimaries) {
 		return nil, false
 	}
@@ -207,9 +208,9 @@ func (o *NsgroupStubmemberStubMembers) HasPreferredPrimaries() bool {
 	return false
 }
 
-// SetPreferredPrimaries gets a reference to the given NsgroupstubmemberstubmembersPreferredPrimaries and assigns it to the PreferredPrimaries field.
-func (o *NsgroupStubmemberStubMembers) SetPreferredPrimaries(v NsgroupstubmemberstubmembersPreferredPrimaries) {
-	o.PreferredPrimaries = &v
+// SetPreferredPrimaries gets a reference to the given []NsgroupstubmemberstubmembersPreferredPrimaries and assigns it to the PreferredPrimaries field.
+func (o *NsgroupStubmemberStubMembers) SetPreferredPrimaries(v []NsgroupstubmemberstubmembersPreferredPrimaries) {
+	o.PreferredPrimaries = v
 }
 
 // GetEnablePreferredPrimaries returns the EnablePreferredPrimaries field value if set, zero value otherwise.

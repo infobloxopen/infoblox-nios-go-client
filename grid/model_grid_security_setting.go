@@ -20,8 +20,9 @@ var _ MappedNullable = &GridSecuritySetting{}
 // GridSecuritySetting struct for GridSecuritySetting
 type GridSecuritySetting struct {
 	// If set to True, rolling of audit logs is enabled.
-	AuditLogRollingEnable *bool                                `json:"audit_log_rolling_enable,omitempty"`
-	AdminAccessItems      *GridsecuritysettingAdminAccessItems `json:"admin_access_items,omitempty"`
+	AuditLogRollingEnable *bool `json:"audit_log_rolling_enable,omitempty"`
+	// A list of access control settings used for security access.
+	AdminAccessItems []GridsecuritysettingAdminAccessItems `json:"admin_access_items,omitempty"`
 	// If set to True, HTTP connections are redirected to HTTPS.
 	HttpRedirectEnable *bool `json:"http_redirect_enable,omitempty"`
 	// If set to True, the login banner is enabled.
@@ -100,17 +101,17 @@ func (o *GridSecuritySetting) SetAuditLogRollingEnable(v bool) {
 }
 
 // GetAdminAccessItems returns the AdminAccessItems field value if set, zero value otherwise.
-func (o *GridSecuritySetting) GetAdminAccessItems() GridsecuritysettingAdminAccessItems {
+func (o *GridSecuritySetting) GetAdminAccessItems() []GridsecuritysettingAdminAccessItems {
 	if o == nil || IsNil(o.AdminAccessItems) {
-		var ret GridsecuritysettingAdminAccessItems
+		var ret []GridsecuritysettingAdminAccessItems
 		return ret
 	}
-	return *o.AdminAccessItems
+	return o.AdminAccessItems
 }
 
 // GetAdminAccessItemsOk returns a tuple with the AdminAccessItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridSecuritySetting) GetAdminAccessItemsOk() (*GridsecuritysettingAdminAccessItems, bool) {
+func (o *GridSecuritySetting) GetAdminAccessItemsOk() ([]GridsecuritysettingAdminAccessItems, bool) {
 	if o == nil || IsNil(o.AdminAccessItems) {
 		return nil, false
 	}
@@ -126,9 +127,9 @@ func (o *GridSecuritySetting) HasAdminAccessItems() bool {
 	return false
 }
 
-// SetAdminAccessItems gets a reference to the given GridsecuritysettingAdminAccessItems and assigns it to the AdminAccessItems field.
-func (o *GridSecuritySetting) SetAdminAccessItems(v GridsecuritysettingAdminAccessItems) {
-	o.AdminAccessItems = &v
+// SetAdminAccessItems gets a reference to the given []GridsecuritysettingAdminAccessItems and assigns it to the AdminAccessItems field.
+func (o *GridSecuritySetting) SetAdminAccessItems(v []GridsecuritysettingAdminAccessItems) {
+	o.AdminAccessItems = v
 }
 
 // GetHttpRedirectEnable returns the HttpRedirectEnable field value if set, zero value otherwise.

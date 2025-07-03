@@ -30,8 +30,9 @@ type GridThreatprotectionNatRules struct {
 	// The start address for the range of the threat protection NAT mapping rule.
 	StartAddress *string `json:"start_address,omitempty"`
 	// The end address for the range of the threat protection NAT mapping rule.
-	EndAddress           *string                               `json:"end_address,omitempty"`
-	NatPorts             *GridthreatprotectionnatrulesNatPorts `json:"nat_ports,omitempty"`
+	EndAddress *string `json:"end_address,omitempty"`
+	// The NAT port configuration for the threat protection NAT mapping rule.
+	NatPorts             []GridthreatprotectionnatrulesNatPorts `json:"nat_ports,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -247,17 +248,17 @@ func (o *GridThreatprotectionNatRules) SetEndAddress(v string) {
 }
 
 // GetNatPorts returns the NatPorts field value if set, zero value otherwise.
-func (o *GridThreatprotectionNatRules) GetNatPorts() GridthreatprotectionnatrulesNatPorts {
+func (o *GridThreatprotectionNatRules) GetNatPorts() []GridthreatprotectionnatrulesNatPorts {
 	if o == nil || IsNil(o.NatPorts) {
-		var ret GridthreatprotectionnatrulesNatPorts
+		var ret []GridthreatprotectionnatrulesNatPorts
 		return ret
 	}
-	return *o.NatPorts
+	return o.NatPorts
 }
 
 // GetNatPortsOk returns a tuple with the NatPorts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridThreatprotectionNatRules) GetNatPortsOk() (*GridthreatprotectionnatrulesNatPorts, bool) {
+func (o *GridThreatprotectionNatRules) GetNatPortsOk() ([]GridthreatprotectionnatrulesNatPorts, bool) {
 	if o == nil || IsNil(o.NatPorts) {
 		return nil, false
 	}
@@ -273,9 +274,9 @@ func (o *GridThreatprotectionNatRules) HasNatPorts() bool {
 	return false
 }
 
-// SetNatPorts gets a reference to the given GridthreatprotectionnatrulesNatPorts and assigns it to the NatPorts field.
-func (o *GridThreatprotectionNatRules) SetNatPorts(v GridthreatprotectionnatrulesNatPorts) {
-	o.NatPorts = &v
+// SetNatPorts gets a reference to the given []GridthreatprotectionnatrulesNatPorts and assigns it to the NatPorts field.
+func (o *GridThreatprotectionNatRules) SetNatPorts(v []GridthreatprotectionnatrulesNatPorts) {
+	o.NatPorts = v
 }
 
 func (o GridThreatprotectionNatRules) MarshalJSON() ([]byte, error) {
