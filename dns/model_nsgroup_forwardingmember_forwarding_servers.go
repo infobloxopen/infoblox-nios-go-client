@@ -22,8 +22,9 @@ type NsgroupForwardingmemberForwardingServers struct {
 	// The name of this Grid member in FQDN format.
 	Name *string `json:"name,omitempty"`
 	// Determines if the appliance sends queries to forwarders only, and not to other internal or Internet root servers.
-	ForwardersOnly *bool                                              `json:"forwarders_only,omitempty"`
-	ForwardTo      *NsgroupforwardingmemberforwardingserversForwardTo `json:"forward_to,omitempty"`
+	ForwardersOnly *bool `json:"forwarders_only,omitempty"`
+	// The information for the remote name server to which you want the Infoblox appliance to forward queries for a specified domain name.
+	ForwardTo []NsgroupforwardingmemberforwardingserversForwardTo `json:"forward_to,omitempty"`
 	// Use flag for: forward_to
 	UseOverrideForwarders *bool `json:"use_override_forwarders,omitempty"`
 	AdditionalProperties  map[string]interface{}
@@ -113,17 +114,17 @@ func (o *NsgroupForwardingmemberForwardingServers) SetForwardersOnly(v bool) {
 }
 
 // GetForwardTo returns the ForwardTo field value if set, zero value otherwise.
-func (o *NsgroupForwardingmemberForwardingServers) GetForwardTo() NsgroupforwardingmemberforwardingserversForwardTo {
+func (o *NsgroupForwardingmemberForwardingServers) GetForwardTo() []NsgroupforwardingmemberforwardingserversForwardTo {
 	if o == nil || IsNil(o.ForwardTo) {
-		var ret NsgroupforwardingmemberforwardingserversForwardTo
+		var ret []NsgroupforwardingmemberforwardingserversForwardTo
 		return ret
 	}
-	return *o.ForwardTo
+	return o.ForwardTo
 }
 
 // GetForwardToOk returns a tuple with the ForwardTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NsgroupForwardingmemberForwardingServers) GetForwardToOk() (*NsgroupforwardingmemberforwardingserversForwardTo, bool) {
+func (o *NsgroupForwardingmemberForwardingServers) GetForwardToOk() ([]NsgroupforwardingmemberforwardingserversForwardTo, bool) {
 	if o == nil || IsNil(o.ForwardTo) {
 		return nil, false
 	}
@@ -139,9 +140,9 @@ func (o *NsgroupForwardingmemberForwardingServers) HasForwardTo() bool {
 	return false
 }
 
-// SetForwardTo gets a reference to the given NsgroupforwardingmemberforwardingserversForwardTo and assigns it to the ForwardTo field.
-func (o *NsgroupForwardingmemberForwardingServers) SetForwardTo(v NsgroupforwardingmemberforwardingserversForwardTo) {
-	o.ForwardTo = &v
+// SetForwardTo gets a reference to the given []NsgroupforwardingmemberforwardingserversForwardTo and assigns it to the ForwardTo field.
+func (o *NsgroupForwardingmemberForwardingServers) SetForwardTo(v []NsgroupforwardingmemberforwardingserversForwardTo) {
+	o.ForwardTo = v
 }
 
 // GetUseOverrideForwarders returns the UseOverrideForwarders field value if set, zero value otherwise.

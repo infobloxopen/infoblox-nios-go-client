@@ -19,7 +19,8 @@ var _ MappedNullable = &MemberNodeInfo{}
 
 // MemberNodeInfo struct for MemberNodeInfo
 type MemberNodeInfo struct {
-	ServiceStatus *MembernodeinfoServiceStatus `json:"service_status,omitempty"`
+	// The service status list of the Grid Member.
+	ServiceStatus []MembernodeinfoServiceStatus `json:"service_status,omitempty"`
 	// The OID of the physical node.
 	PhysicalOid *string `json:"physical_oid,omitempty"`
 	// Status about the node of an HA pair.
@@ -66,17 +67,17 @@ func NewMemberNodeInfoWithDefaults() *MemberNodeInfo {
 }
 
 // GetServiceStatus returns the ServiceStatus field value if set, zero value otherwise.
-func (o *MemberNodeInfo) GetServiceStatus() MembernodeinfoServiceStatus {
+func (o *MemberNodeInfo) GetServiceStatus() []MembernodeinfoServiceStatus {
 	if o == nil || IsNil(o.ServiceStatus) {
-		var ret MembernodeinfoServiceStatus
+		var ret []MembernodeinfoServiceStatus
 		return ret
 	}
-	return *o.ServiceStatus
+	return o.ServiceStatus
 }
 
 // GetServiceStatusOk returns a tuple with the ServiceStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberNodeInfo) GetServiceStatusOk() (*MembernodeinfoServiceStatus, bool) {
+func (o *MemberNodeInfo) GetServiceStatusOk() ([]MembernodeinfoServiceStatus, bool) {
 	if o == nil || IsNil(o.ServiceStatus) {
 		return nil, false
 	}
@@ -92,9 +93,9 @@ func (o *MemberNodeInfo) HasServiceStatus() bool {
 	return false
 }
 
-// SetServiceStatus gets a reference to the given MembernodeinfoServiceStatus and assigns it to the ServiceStatus field.
-func (o *MemberNodeInfo) SetServiceStatus(v MembernodeinfoServiceStatus) {
-	o.ServiceStatus = &v
+// SetServiceStatus gets a reference to the given []MembernodeinfoServiceStatus and assigns it to the ServiceStatus field.
+func (o *MemberNodeInfo) SetServiceStatus(v []MembernodeinfoServiceStatus) {
+	o.ServiceStatus = v
 }
 
 // GetPhysicalOid returns the PhysicalOid field value if set, zero value otherwise.

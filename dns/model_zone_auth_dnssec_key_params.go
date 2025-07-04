@@ -22,8 +22,9 @@ type ZoneAuthDnssecKeyParams struct {
 	// If set to True, automatic rollovers for the signing key is enabled.
 	EnableKskAutoRollover *bool `json:"enable_ksk_auto_rollover,omitempty"`
 	// Key Signing Key algorithm. Deprecated.
-	KskAlgorithm  *string                               `json:"ksk_algorithm,omitempty"`
-	KskAlgorithms *ZoneauthdnsseckeyparamsKskAlgorithms `json:"ksk_algorithms,omitempty"`
+	KskAlgorithm *string `json:"ksk_algorithm,omitempty"`
+	// A list of Key Signing Key Algorithms.
+	KskAlgorithms []ZoneauthdnsseckeyparamsKskAlgorithms `json:"ksk_algorithms,omitempty"`
 	// Key Signing Key rollover interval, in seconds.
 	KskRollover *int64 `json:"ksk_rollover,omitempty"`
 	// Key Signing Key size, in bits. Deprecated.
@@ -45,8 +46,9 @@ type ZoneAuthDnssecKeyParams struct {
 	// Signature expiration time, in seconds.
 	SignatureExpiration *int64 `json:"signature_expiration,omitempty"`
 	// Zone Signing Key algorithm. Deprecated.
-	ZskAlgorithm  *string                               `json:"zsk_algorithm,omitempty"`
-	ZskAlgorithms *ZoneauthdnsseckeyparamsZskAlgorithms `json:"zsk_algorithms,omitempty"`
+	ZskAlgorithm *string `json:"zsk_algorithm,omitempty"`
+	// A list of Zone Signing Key Algorithms.
+	ZskAlgorithms []ZoneauthdnsseckeyparamsZskAlgorithms `json:"zsk_algorithms,omitempty"`
 	// Zone Signing Key rollover interval, in seconds.
 	ZskRollover *int64 `json:"zsk_rollover,omitempty"`
 	// Zone Signing Key rollover mechanism.
@@ -140,17 +142,17 @@ func (o *ZoneAuthDnssecKeyParams) SetKskAlgorithm(v string) {
 }
 
 // GetKskAlgorithms returns the KskAlgorithms field value if set, zero value otherwise.
-func (o *ZoneAuthDnssecKeyParams) GetKskAlgorithms() ZoneauthdnsseckeyparamsKskAlgorithms {
+func (o *ZoneAuthDnssecKeyParams) GetKskAlgorithms() []ZoneauthdnsseckeyparamsKskAlgorithms {
 	if o == nil || IsNil(o.KskAlgorithms) {
-		var ret ZoneauthdnsseckeyparamsKskAlgorithms
+		var ret []ZoneauthdnsseckeyparamsKskAlgorithms
 		return ret
 	}
-	return *o.KskAlgorithms
+	return o.KskAlgorithms
 }
 
 // GetKskAlgorithmsOk returns a tuple with the KskAlgorithms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneAuthDnssecKeyParams) GetKskAlgorithmsOk() (*ZoneauthdnsseckeyparamsKskAlgorithms, bool) {
+func (o *ZoneAuthDnssecKeyParams) GetKskAlgorithmsOk() ([]ZoneauthdnsseckeyparamsKskAlgorithms, bool) {
 	if o == nil || IsNil(o.KskAlgorithms) {
 		return nil, false
 	}
@@ -166,9 +168,9 @@ func (o *ZoneAuthDnssecKeyParams) HasKskAlgorithms() bool {
 	return false
 }
 
-// SetKskAlgorithms gets a reference to the given ZoneauthdnsseckeyparamsKskAlgorithms and assigns it to the KskAlgorithms field.
-func (o *ZoneAuthDnssecKeyParams) SetKskAlgorithms(v ZoneauthdnsseckeyparamsKskAlgorithms) {
-	o.KskAlgorithms = &v
+// SetKskAlgorithms gets a reference to the given []ZoneauthdnsseckeyparamsKskAlgorithms and assigns it to the KskAlgorithms field.
+func (o *ZoneAuthDnssecKeyParams) SetKskAlgorithms(v []ZoneauthdnsseckeyparamsKskAlgorithms) {
+	o.KskAlgorithms = v
 }
 
 // GetKskRollover returns the KskRollover field value if set, zero value otherwise.
@@ -524,17 +526,17 @@ func (o *ZoneAuthDnssecKeyParams) SetZskAlgorithm(v string) {
 }
 
 // GetZskAlgorithms returns the ZskAlgorithms field value if set, zero value otherwise.
-func (o *ZoneAuthDnssecKeyParams) GetZskAlgorithms() ZoneauthdnsseckeyparamsZskAlgorithms {
+func (o *ZoneAuthDnssecKeyParams) GetZskAlgorithms() []ZoneauthdnsseckeyparamsZskAlgorithms {
 	if o == nil || IsNil(o.ZskAlgorithms) {
-		var ret ZoneauthdnsseckeyparamsZskAlgorithms
+		var ret []ZoneauthdnsseckeyparamsZskAlgorithms
 		return ret
 	}
-	return *o.ZskAlgorithms
+	return o.ZskAlgorithms
 }
 
 // GetZskAlgorithmsOk returns a tuple with the ZskAlgorithms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneAuthDnssecKeyParams) GetZskAlgorithmsOk() (*ZoneauthdnsseckeyparamsZskAlgorithms, bool) {
+func (o *ZoneAuthDnssecKeyParams) GetZskAlgorithmsOk() ([]ZoneauthdnsseckeyparamsZskAlgorithms, bool) {
 	if o == nil || IsNil(o.ZskAlgorithms) {
 		return nil, false
 	}
@@ -550,9 +552,9 @@ func (o *ZoneAuthDnssecKeyParams) HasZskAlgorithms() bool {
 	return false
 }
 
-// SetZskAlgorithms gets a reference to the given ZoneauthdnsseckeyparamsZskAlgorithms and assigns it to the ZskAlgorithms field.
-func (o *ZoneAuthDnssecKeyParams) SetZskAlgorithms(v ZoneauthdnsseckeyparamsZskAlgorithms) {
-	o.ZskAlgorithms = &v
+// SetZskAlgorithms gets a reference to the given []ZoneauthdnsseckeyparamsZskAlgorithms and assigns it to the ZskAlgorithms field.
+func (o *ZoneAuthDnssecKeyParams) SetZskAlgorithms(v []ZoneauthdnsseckeyparamsZskAlgorithms) {
+	o.ZskAlgorithms = v
 }
 
 // GetZskRollover returns the ZskRollover field value if set, zero value otherwise.

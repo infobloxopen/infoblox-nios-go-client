@@ -25405,13 +25405,23 @@ components:
             frequency: Example frequency
           enable_rr_last_queried: false
           expression_list:
-            op2: Example op2
+          - op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
+          - op2: Example op2
             op: Example op
             op1: Example op1
             op1_type: Example op1_type
             op2_type: Example op2_type
           ea_expression_list:
-            op2: Example op2
+          - op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
+          - op2: Example op2
             op: Example op
             op1: Example op1
             op1_type: Example op1_type
@@ -25608,7 +25618,9 @@ components:
           nsec3_iterations: 1
           signature_expiration: 1
           zsk_algorithms:
-            size: 1
+          - size: 1
+            algorithm: Example algorithm
+          - size: 1
             algorithm: Example algorithm
           zsk_algorithm: Example zsk_algorithm
           ksk_snmp_notification_enabled: false
@@ -25619,7 +25631,9 @@ components:
           nsec3_salt_min_length: 1
           ksk_rollover: 1
           ksk_algorithms:
-            size: 1
+          - size: 1
+            algorithm: Example algorithm
+          - size: 1
             algorithm: Example algorithm
           zsk_rollover_mechanism: Example zsk_rollover_mechanism
           ksk_rollover_notification_config: Example ksk_rollover_notification_config
@@ -25689,7 +25703,15 @@ components:
           use_tsig_key_name: false
         grid_primary:
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -25703,7 +25725,15 @@ components:
           stealth: false
           lead: false
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -25725,7 +25755,15 @@ components:
         comment: Example comment
         grid_secondaries:
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -25739,7 +25777,15 @@ components:
           stealth: false
           lead: false
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -26781,7 +26827,9 @@ components:
         nsec3_iterations: 1
         signature_expiration: 1
         zsk_algorithms:
-          size: 1
+        - size: 1
+          algorithm: Example algorithm
+        - size: 1
           algorithm: Example algorithm
         zsk_algorithm: Example zsk_algorithm
         ksk_snmp_notification_enabled: false
@@ -26792,7 +26840,9 @@ components:
         nsec3_salt_min_length: 1
         ksk_rollover: 1
         ksk_algorithms:
-          size: 1
+        - size: 1
+          algorithm: Example algorithm
+        - size: 1
           algorithm: Example algorithm
         zsk_rollover_mechanism: Example zsk_rollover_mechanism
         ksk_rollover_notification_config: Example ksk_rollover_notification_config
@@ -26818,7 +26868,10 @@ components:
           example: Example ksk_algorithm
           type: string
         ksk_algorithms:
-          $ref: '#/components/schemas/ZoneauthdnsseckeyparamsKskAlgorithms'
+          description: A list of Key Signing Key Algorithms.
+          items:
+            $ref: '#/components/schemas/ZoneauthdnsseckeyparamsKskAlgorithms'
+          type: array
         ksk_rollover:
           description: "Key Signing Key rollover interval, in seconds."
           example: 1
@@ -26884,7 +26937,10 @@ components:
           example: Example zsk_algorithm
           type: string
         zsk_algorithms:
-          $ref: '#/components/schemas/ZoneauthdnsseckeyparamsZskAlgorithms'
+          description: A list of Zone Signing Key Algorithms.
+          items:
+            $ref: '#/components/schemas/ZoneauthdnsseckeyparamsZskAlgorithms'
+          type: array
         zsk_rollover:
           description: "Zone Signing Key rollover interval, in seconds."
           example: 1
@@ -27106,7 +27162,15 @@ components:
     ZoneAuthGridPrimary:
       example:
         preferred_primaries:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -27144,7 +27208,11 @@ components:
           example: false
           type: boolean
         preferred_primaries:
-          $ref: '#/components/schemas/ZoneauthgridprimaryPreferredPrimaries'
+          description: The primary preference list with Grid member names and\or External
+            Server extserver structs for this member.
+          items:
+            $ref: '#/components/schemas/ZoneauthgridprimaryPreferredPrimaries'
+          type: array
         enable_preferred_primaries:
           description: This flag represents whether the preferred_primaries field
             values of this member are used.
@@ -27204,7 +27272,15 @@ components:
     ZoneAuthGridSecondaries:
       example:
         preferred_primaries:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -27242,7 +27318,11 @@ components:
           example: false
           type: boolean
         preferred_primaries:
-          $ref: '#/components/schemas/ZoneauthgridsecondariesPreferredPrimaries'
+          description: The primary preference list with Grid member names and\or External
+            Server extserver structs for this member.
+          items:
+            $ref: '#/components/schemas/ZoneauthgridsecondariesPreferredPrimaries'
+          type: array
         enable_preferred_primaries:
           description: This flag represents whether the preferred_primaries field
             values of this member are used.
@@ -27501,13 +27581,23 @@ components:
           frequency: Example frequency
         enable_rr_last_queried: false
         expression_list:
-          op2: Example op2
+        - op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
+        - op2: Example op2
           op: Example op
           op1: Example op1
           op1_type: Example op1_type
           op2_type: Example op2_type
         ea_expression_list:
-          op2: Example op2
+        - op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
+        - op2: Example op2
           op: Example op
           op1: Example op1
           op1_type: Example op1_type
@@ -27549,9 +27639,20 @@ components:
         scavenging_schedule:
           $ref: '#/components/schemas/ZoneauthscavengingsettingsScavengingSchedule'
         expression_list:
-          $ref: '#/components/schemas/ZoneauthscavengingsettingsExpressionList'
+          description: The expression list. The particular record is treated as reclaimable
+            if expression condition evaluates to 'true' for given record if scavenging
+            hasn't been manually disabled on a given resource record.
+          items:
+            $ref: '#/components/schemas/ZoneauthscavengingsettingsExpressionList'
+          type: array
         ea_expression_list:
-          $ref: '#/components/schemas/ZoneauthscavengingsettingsEaExpressionList'
+          description: The extensible attributes expression list. The particular record
+            is treated as reclaimable if extensible attributes expression condition
+            evaluates to 'true' for given record if scavenging hasn't been manually
+            disabled on a given resource record.
+          items:
+            $ref: '#/components/schemas/ZoneauthscavengingsettingsEaExpressionList'
+          type: array
       type: object
     ZoneauthscavengingsettingsScavengingSchedule:
       example:
@@ -28170,7 +28271,15 @@ components:
         disable: false
         forwarding_servers:
         - forward_to:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -28182,7 +28291,15 @@ components:
           forwarders_only: false
           use_override_forwarders: false
         - forward_to:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -28429,7 +28546,15 @@ components:
     ZoneForwardForwardingServers:
       example:
         forward_to:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -28451,7 +28576,11 @@ components:
           example: false
           type: boolean
         forward_to:
-          $ref: '#/components/schemas/ZoneforwardforwardingserversForwardTo'
+          description: The information for the remote name server to which you want
+            the Infoblox appliance to forward queries for a specified domain name.
+          items:
+            $ref: '#/components/schemas/ZoneforwardforwardingserversForwardTo'
+          type: array
         use_override_forwarders:
           description: "Use flag for: forward_to"
           example: false
@@ -28539,7 +28668,15 @@ components:
         prefix: Example prefix
         stub_members:
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -28553,7 +28690,15 @@ components:
           stealth: false
           lead: false
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -28925,7 +29070,15 @@ components:
     ZoneStubStubMembers:
       example:
         preferred_primaries:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -28963,7 +29116,11 @@ components:
           example: false
           type: boolean
         preferred_primaries:
-          $ref: '#/components/schemas/ZonestubstubmembersPreferredPrimaries'
+          description: The primary preference list with Grid member names and\or External
+            Server extserver structs for this member.
+          items:
+            $ref: '#/components/schemas/ZonestubstubmembersPreferredPrimaries'
+          type: array
         enable_preferred_primaries:
           description: This flag represents whether the preferred_primaries field
             values of this member are used.
@@ -29163,7 +29320,10 @@ components:
           substituted_domain_name: Example substituted_domain_name
           apt_override: Example apt_override
           fireeye_alert_mapping:
-            rpz_rule: Example rpz_rule
+          - rpz_rule: Example rpz_rule
+            lifetime: 1
+            alert_type: Example alert_type
+          - rpz_rule: Example rpz_rule
             lifetime: 1
             alert_type: Example alert_type
         use_grid_zone_timer: false
@@ -29175,7 +29335,15 @@ components:
         soa_refresh: 1
         grid_primary:
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -29189,7 +29357,15 @@ components:
           stealth: false
           lead: false
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -29218,7 +29394,15 @@ components:
         comment: Example comment
         grid_secondaries:
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -29232,7 +29416,15 @@ components:
           stealth: false
           lead: false
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -29657,7 +29849,10 @@ components:
         substituted_domain_name: Example substituted_domain_name
         apt_override: Example apt_override
         fireeye_alert_mapping:
-          rpz_rule: Example rpz_rule
+        - rpz_rule: Example rpz_rule
+          lifetime: 1
+          alert_type: Example alert_type
+        - rpz_rule: Example rpz_rule
           lifetime: 1
           alert_type: Example alert_type
       properties:
@@ -29672,7 +29867,10 @@ components:
           example: Example apt_override
           type: string
         fireeye_alert_mapping:
-          $ref: '#/components/schemas/ZonerpfireeyerulemappingFireeyeAlertMapping'
+          description: The FireEye alert mapping.
+          items:
+            $ref: '#/components/schemas/ZonerpfireeyerulemappingFireeyeAlertMapping'
+          type: array
         substituted_domain_name:
           description: "The domain name to be substituted, this is applicable only\
             \ when apt_override is set to \"SUBSTITUTE\"."
@@ -29716,7 +29914,15 @@ components:
     ZoneRpGridPrimary:
       example:
         preferred_primaries:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -29754,7 +29960,11 @@ components:
           example: false
           type: boolean
         preferred_primaries:
-          $ref: '#/components/schemas/ZonerpgridprimaryPreferredPrimaries'
+          description: The primary preference list with Grid member names and\or External
+            Server extserver structs for this member.
+          items:
+            $ref: '#/components/schemas/ZonerpgridprimaryPreferredPrimaries'
+          type: array
         enable_preferred_primaries:
           description: This flag represents whether the preferred_primaries field
             values of this member are used.
@@ -29814,7 +30024,15 @@ components:
     ZoneRpGridSecondaries:
       example:
         preferred_primaries:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -29852,7 +30070,11 @@ components:
           example: false
           type: boolean
         preferred_primaries:
-          $ref: '#/components/schemas/ZonerpgridsecondariesPreferredPrimaries'
+          description: The primary preference list with Grid member names and\or External
+            Server extserver structs for this member.
+          items:
+            $ref: '#/components/schemas/ZonerpgridsecondariesPreferredPrimaries'
+          type: array
         enable_preferred_primaries:
           description: This flag represents whether the preferred_primaries field
             values of this member are used.
@@ -31370,13 +31592,23 @@ components:
             frequency: Example frequency
           enable_rr_last_queried: false
           expression_list:
-            op2: Example op2
+          - op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
+          - op2: Example op2
             op: Example op
             op1: Example op1
             op1_type: Example op1_type
             op2_type: Example op2_type
           ea_expression_list:
-            op2: Example op2
+          - op2: Example op2
+            op: Example op
+            op1: Example op1
+            op1_type: Example op1_type
+            op2_type: Example op2_type
+          - op2: Example op2
             op: Example op
             op1: Example op1
             op1_type: Example op1_type
@@ -32351,13 +32583,23 @@ components:
           frequency: Example frequency
         enable_rr_last_queried: false
         expression_list:
-          op2: Example op2
+        - op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
+        - op2: Example op2
           op: Example op
           op1: Example op1
           op1_type: Example op1_type
           op2_type: Example op2_type
         ea_expression_list:
-          op2: Example op2
+        - op2: Example op2
+          op: Example op
+          op1: Example op1
+          op1_type: Example op1_type
+          op2_type: Example op2_type
+        - op2: Example op2
           op: Example op
           op1: Example op1
           op1_type: Example op1_type
@@ -32399,9 +32641,20 @@ components:
         scavenging_schedule:
           $ref: '#/components/schemas/ViewscavengingsettingsScavengingSchedule'
         expression_list:
-          $ref: '#/components/schemas/ViewscavengingsettingsExpressionList'
+          description: The expression list. The particular record is treated as reclaimable
+            if expression condition evaluates to 'true' for given record if scavenging
+            hasn't been manually disabled on a given resource record.
+          items:
+            $ref: '#/components/schemas/ViewscavengingsettingsExpressionList'
+          type: array
         ea_expression_list:
-          $ref: '#/components/schemas/ViewscavengingsettingsEaExpressionList'
+          description: The extensible attributes expression list. The particular record
+            is treated as reclaimable if extensible attributes expression condition
+            evaluates to 'true' for given record if scavenging hasn't been manually
+            disabled on a given resource record.
+          items:
+            $ref: '#/components/schemas/ViewscavengingsettingsEaExpressionList'
+          type: array
       type: object
     ViewscavengingsettingsScavengingSchedule:
       example:
@@ -32650,7 +32903,15 @@ components:
       example:
         grid_primary:
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -32664,7 +32925,15 @@ components:
           stealth: false
           lead: false
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -32722,7 +32991,15 @@ components:
         comment: Example comment
         grid_secondaries:
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -32736,7 +33013,15 @@ components:
           stealth: false
           lead: false
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -32915,7 +33200,15 @@ components:
     NsgroupGridPrimary:
       example:
         preferred_primaries:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -32953,7 +33246,11 @@ components:
           example: false
           type: boolean
         preferred_primaries:
-          $ref: '#/components/schemas/NsgroupgridprimaryPreferredPrimaries'
+          description: The primary preference list with Grid member names and\or External
+            Server extserver structs for this member.
+          items:
+            $ref: '#/components/schemas/NsgroupgridprimaryPreferredPrimaries'
+          type: array
         enable_preferred_primaries:
           description: This flag represents whether the preferred_primaries field
             values of this member are used.
@@ -33013,7 +33310,15 @@ components:
     NsgroupGridSecondaries:
       example:
         preferred_primaries:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -33051,7 +33356,11 @@ components:
           example: false
           type: boolean
         preferred_primaries:
-          $ref: '#/components/schemas/NsgroupgridsecondariesPreferredPrimaries'
+          description: The primary preference list with Grid member names and\or External
+            Server extserver structs for this member.
+          items:
+            $ref: '#/components/schemas/NsgroupgridsecondariesPreferredPrimaries'
+          type: array
         enable_preferred_primaries:
           description: This flag represents whether the preferred_primaries field
             values of this member are used.
@@ -33266,7 +33575,15 @@ components:
             value: ""
         forwarding_servers:
         - forward_to:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -33278,7 +33595,15 @@ components:
           forwarders_only: false
           use_override_forwarders: false
         - forward_to:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -33322,7 +33647,15 @@ components:
     NsgroupForwardingmemberForwardingServers:
       example:
         forward_to:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -33344,7 +33677,11 @@ components:
           example: false
           type: boolean
         forward_to:
-          $ref: '#/components/schemas/NsgroupforwardingmemberforwardingserversForwardTo'
+          description: The information for the remote name server to which you want
+            the Infoblox appliance to forward queries for a specified domain name.
+          items:
+            $ref: '#/components/schemas/NsgroupforwardingmemberforwardingserversForwardTo'
+          type: array
         use_override_forwarders:
           description: "Use flag for: forward_to"
           example: false
@@ -33560,7 +33897,15 @@ components:
             value: ""
         stub_members:
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -33574,7 +33919,15 @@ components:
           stealth: false
           lead: false
         - preferred_primaries:
-            address: Example address
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             name: Example name
@@ -33622,7 +33975,15 @@ components:
     NsgroupStubmemberStubMembers:
       example:
         preferred_primaries:
-          address: Example address
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           name: Example name
@@ -33660,7 +34021,11 @@ components:
           example: false
           type: boolean
         preferred_primaries:
-          $ref: '#/components/schemas/NsgroupstubmemberstubmembersPreferredPrimaries'
+          description: The primary preference list with Grid member names and\or External
+            Server extserver structs for this member.
+          items:
+            $ref: '#/components/schemas/NsgroupstubmemberstubmembersPreferredPrimaries'
+          type: array
         enable_preferred_primaries:
           description: This flag represents whether the preferred_primaries field
             values of this member are used.
@@ -36874,13 +37239,23 @@ components:
               frequency: Example frequency
             enable_rr_last_queried: false
             expression_list:
-              op2: Example op2
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
               op: Example op
               op1: Example op1
               op1_type: Example op1_type
               op2_type: Example op2_type
             ea_expression_list:
-              op2: Example op2
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
               op: Example op
               op1: Example op1
               op1_type: Example op1_type
@@ -37077,7 +37452,9 @@ components:
             nsec3_iterations: 1
             signature_expiration: 1
             zsk_algorithms:
-              size: 1
+            - size: 1
+              algorithm: Example algorithm
+            - size: 1
               algorithm: Example algorithm
             zsk_algorithm: Example zsk_algorithm
             ksk_snmp_notification_enabled: false
@@ -37088,7 +37465,9 @@ components:
             nsec3_salt_min_length: 1
             ksk_rollover: 1
             ksk_algorithms:
-              size: 1
+            - size: 1
+              algorithm: Example algorithm
+            - size: 1
               algorithm: Example algorithm
             zsk_rollover_mechanism: Example zsk_rollover_mechanism
             ksk_rollover_notification_config: Example ksk_rollover_notification_config
@@ -37158,7 +37537,15 @@ components:
             use_tsig_key_name: false
           grid_primary:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37172,7 +37559,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37194,7 +37589,15 @@ components:
           comment: Example comment
           grid_secondaries:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37208,7 +37611,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37295,13 +37706,23 @@ components:
               frequency: Example frequency
             enable_rr_last_queried: false
             expression_list:
-              op2: Example op2
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
               op: Example op
               op1: Example op1
               op1_type: Example op1_type
               op2_type: Example op2_type
             ea_expression_list:
-              op2: Example op2
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
               op: Example op
               op1: Example op1
               op1_type: Example op1_type
@@ -37498,7 +37919,9 @@ components:
             nsec3_iterations: 1
             signature_expiration: 1
             zsk_algorithms:
-              size: 1
+            - size: 1
+              algorithm: Example algorithm
+            - size: 1
               algorithm: Example algorithm
             zsk_algorithm: Example zsk_algorithm
             ksk_snmp_notification_enabled: false
@@ -37509,7 +37932,9 @@ components:
             nsec3_salt_min_length: 1
             ksk_rollover: 1
             ksk_algorithms:
-              size: 1
+            - size: 1
+              algorithm: Example algorithm
+            - size: 1
               algorithm: Example algorithm
             zsk_rollover_mechanism: Example zsk_rollover_mechanism
             ksk_rollover_notification_config: Example ksk_rollover_notification_config
@@ -37579,7 +38004,15 @@ components:
             use_tsig_key_name: false
           grid_primary:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37593,7 +38026,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37615,7 +38056,15 @@ components:
           comment: Example comment
           grid_secondaries:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37629,7 +38078,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37827,7 +38284,15 @@ components:
           disable: false
           forwarding_servers:
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37839,7 +38304,15 @@ components:
             forwarders_only: false
             use_override_forwarders: false
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37913,7 +38386,15 @@ components:
           disable: false
           forwarding_servers:
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37925,7 +38406,15 @@ components:
             forwarders_only: false
             use_override_forwarders: false
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37961,7 +38450,15 @@ components:
           prefix: Example prefix
           stub_members:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -37975,7 +38472,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38070,7 +38575,15 @@ components:
           prefix: Example prefix
           stub_members:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38084,7 +38597,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38252,7 +38773,10 @@ components:
             substituted_domain_name: Example substituted_domain_name
             apt_override: Example apt_override
             fireeye_alert_mapping:
-              rpz_rule: Example rpz_rule
+            - rpz_rule: Example rpz_rule
+              lifetime: 1
+              alert_type: Example alert_type
+            - rpz_rule: Example rpz_rule
               lifetime: 1
               alert_type: Example alert_type
           use_grid_zone_timer: false
@@ -38264,7 +38788,15 @@ components:
           soa_refresh: 1
           grid_primary:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38278,7 +38810,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38307,7 +38847,15 @@ components:
           comment: Example comment
           grid_secondaries:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38321,7 +38869,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38429,7 +38985,10 @@ components:
             substituted_domain_name: Example substituted_domain_name
             apt_override: Example apt_override
             fireeye_alert_mapping:
-              rpz_rule: Example rpz_rule
+            - rpz_rule: Example rpz_rule
+              lifetime: 1
+              alert_type: Example alert_type
+            - rpz_rule: Example rpz_rule
               lifetime: 1
               alert_type: Example alert_type
           use_grid_zone_timer: false
@@ -38441,7 +39000,15 @@ components:
           soa_refresh: 1
           grid_primary:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38455,7 +39022,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38484,7 +39059,15 @@ components:
           comment: Example comment
           grid_secondaries:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -38498,7 +39081,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39377,13 +39968,23 @@ components:
               frequency: Example frequency
             enable_rr_last_queried: false
             expression_list:
-              op2: Example op2
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
               op: Example op
               op1: Example op1
               op1_type: Example op1_type
               op2_type: Example op2_type
             ea_expression_list:
-              op2: Example op2
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
               op: Example op
               op1: Example op1
               op1_type: Example op1_type
@@ -39544,7 +40145,15 @@ components:
         result:
           grid_primary:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39558,7 +40167,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39616,7 +40233,15 @@ components:
           comment: Example comment
           grid_secondaries:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39630,7 +40255,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39662,7 +40295,15 @@ components:
         result:
           grid_primary:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39676,7 +40317,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39734,7 +40383,15 @@ components:
           comment: Example comment
           grid_secondaries:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39748,7 +40405,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39866,7 +40531,15 @@ components:
               value: ""
           forwarding_servers:
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39878,7 +40551,15 @@ components:
             forwarders_only: false
             use_override_forwarders: false
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39915,7 +40596,15 @@ components:
               value: ""
           forwarding_servers:
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -39927,7 +40616,15 @@ components:
             forwarders_only: false
             use_override_forwarders: false
           - forward_to:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -40047,7 +40744,15 @@ components:
               value: ""
           stub_members:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -40061,7 +40766,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -40099,7 +40812,15 @@ components:
               value: ""
           stub_members:
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name
@@ -40113,7 +40834,15 @@ components:
             stealth: false
             lead: false
           - preferred_primaries:
-              address: Example address
+            - address: Example address
+              tsig_key_alg: Example tsig_key_alg
+              tsig_key: Example tsig_key
+              name: Example name
+              stealth: false
+              tsig_key_name: Example tsig_key_name
+              use_tsig_key_name: false
+              shared_with_ms_parent_delegation: false
+            - address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               name: Example name

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnableProxyService** | Pointer to **bool** | Enable Gateway Service. | [optional] 
 **Port** | Pointer to **int64** | Gateway port | [optional] 
-**EndpointMapping** | Pointer to [**GridcloudapigatewayconfigEndpointMapping**](GridcloudapigatewayconfigEndpointMapping.md) |  | [optional] 
+**EndpointMapping** | Pointer to [**[]GridcloudapigatewayconfigEndpointMapping**](GridcloudapigatewayconfigEndpointMapping.md) | List of Gateway FQDN to AWS Endpoint Mapping. | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasPort returns a boolean if a field has been set.
 
 ### GetEndpointMapping
 
-`func (o *GridCloudapiGatewayConfig) GetEndpointMapping() GridcloudapigatewayconfigEndpointMapping`
+`func (o *GridCloudapiGatewayConfig) GetEndpointMapping() []GridcloudapigatewayconfigEndpointMapping`
 
 GetEndpointMapping returns the EndpointMapping field if non-nil, zero value otherwise.
 
 ### GetEndpointMappingOk
 
-`func (o *GridCloudapiGatewayConfig) GetEndpointMappingOk() (*GridcloudapigatewayconfigEndpointMapping, bool)`
+`func (o *GridCloudapiGatewayConfig) GetEndpointMappingOk() (*[]GridcloudapigatewayconfigEndpointMapping, bool)`
 
 GetEndpointMappingOk returns a tuple with the EndpointMapping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndpointMapping
 
-`func (o *GridCloudapiGatewayConfig) SetEndpointMapping(v GridcloudapigatewayconfigEndpointMapping)`
+`func (o *GridCloudapiGatewayConfig) SetEndpointMapping(v []GridcloudapigatewayconfigEndpointMapping)`
 
 SetEndpointMapping sets EndpointMapping field to given value.
 

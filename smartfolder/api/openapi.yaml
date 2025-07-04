@@ -337,8 +337,8 @@ paths:
       summary: Create a smartfolder:global object
       tags:
       - SmartfolderGlobal
-      x-tf-resource: smartfolder_smartfolder_global
-      x-tf-datasource: smartfolder_smartfolder_global
+      x-tf-resource: smartfolder_global
+      x-tf-datasource: smartfolder_global
   /smartfolder:global/{reference}:
     delete:
       description: Deletes a specific smartfolder:global object by reference
@@ -651,8 +651,8 @@ paths:
       summary: Create a smartfolder:personal object
       tags:
       - SmartfolderPersonal
-      x-tf-resource: smartfolder_smartfolder_personal
-      x-tf-datasource: smartfolder_smartfolder_personal
+      x-tf-resource: smartfolder_personal
+      x-tf-datasource: smartfolder_personal
   /smartfolder:personal/{reference}:
     delete:
       description: Deletes a specific smartfolder:personal object by reference

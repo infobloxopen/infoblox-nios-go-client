@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AclType** | Pointer to **string** | The NTP access control list type. | [optional] 
-**AcList** | Pointer to [**MemberntpsettingntpaclAcList**](MemberntpsettingntpaclAcList.md) |  | [optional] 
+**AcList** | Pointer to [**[]MemberntpsettingntpaclAcList**](MemberntpsettingntpaclAcList.md) | The list of NTP access control items. | [optional] 
 **NamedAcl** | Pointer to **string** | The NTP access named ACL. | [optional] 
 **Service** | Pointer to **string** | The type of service with access control for the assigned named ACL. | [optional] 
 
@@ -55,20 +55,20 @@ HasAclType returns a boolean if a field has been set.
 
 ### GetAcList
 
-`func (o *MemberntpsettingNtpAcl) GetAcList() MemberntpsettingntpaclAcList`
+`func (o *MemberntpsettingNtpAcl) GetAcList() []MemberntpsettingntpaclAcList`
 
 GetAcList returns the AcList field if non-nil, zero value otherwise.
 
 ### GetAcListOk
 
-`func (o *MemberntpsettingNtpAcl) GetAcListOk() (*MemberntpsettingntpaclAcList, bool)`
+`func (o *MemberntpsettingNtpAcl) GetAcListOk() (*[]MemberntpsettingntpaclAcList, bool)`
 
 GetAcListOk returns a tuple with the AcList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAcList
 
-`func (o *MemberntpsettingNtpAcl) SetAcList(v MemberntpsettingntpaclAcList)`
+`func (o *MemberntpsettingNtpAcl) SetAcList(v []MemberntpsettingntpaclAcList)`
 
 SetAcList sets AcList field to given value.
 

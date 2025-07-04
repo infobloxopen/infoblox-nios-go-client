@@ -32,9 +32,11 @@ type GridDnsScavengingSettings struct {
 	// This flag indicates if the associated resource record scavenging is enabled or not.
 	ReclaimAssociatedRecords *bool                                        `json:"reclaim_associated_records,omitempty"`
 	ScavengingSchedule       *GriddnsscavengingsettingsScavengingSchedule `json:"scavenging_schedule,omitempty"`
-	ExpressionList           *GriddnsscavengingsettingsExpressionList     `json:"expression_list,omitempty"`
-	EaExpressionList         *GriddnsscavengingsettingsEaExpressionList   `json:"ea_expression_list,omitempty"`
-	AdditionalProperties     map[string]interface{}
+	// The expression list. The particular record is treated as reclaimable if expression condition evaluates to 'true' for given record if scavenging hasn't been manually disabled on a given resource record.
+	ExpressionList []GriddnsscavengingsettingsExpressionList `json:"expression_list,omitempty"`
+	// The extensible attributes expression list. The particular record is treated as reclaimable if extensible attributes expression condition evaluates to 'true' for given record if scavenging hasn't been manually disabled on a given resource record.
+	EaExpressionList     []GriddnsscavengingsettingsEaExpressionList `json:"ea_expression_list,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GridDnsScavengingSettings GridDnsScavengingSettings
@@ -281,17 +283,17 @@ func (o *GridDnsScavengingSettings) SetScavengingSchedule(v Griddnsscavengingset
 }
 
 // GetExpressionList returns the ExpressionList field value if set, zero value otherwise.
-func (o *GridDnsScavengingSettings) GetExpressionList() GriddnsscavengingsettingsExpressionList {
+func (o *GridDnsScavengingSettings) GetExpressionList() []GriddnsscavengingsettingsExpressionList {
 	if o == nil || IsNil(o.ExpressionList) {
-		var ret GriddnsscavengingsettingsExpressionList
+		var ret []GriddnsscavengingsettingsExpressionList
 		return ret
 	}
-	return *o.ExpressionList
+	return o.ExpressionList
 }
 
 // GetExpressionListOk returns a tuple with the ExpressionList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridDnsScavengingSettings) GetExpressionListOk() (*GriddnsscavengingsettingsExpressionList, bool) {
+func (o *GridDnsScavengingSettings) GetExpressionListOk() ([]GriddnsscavengingsettingsExpressionList, bool) {
 	if o == nil || IsNil(o.ExpressionList) {
 		return nil, false
 	}
@@ -307,23 +309,23 @@ func (o *GridDnsScavengingSettings) HasExpressionList() bool {
 	return false
 }
 
-// SetExpressionList gets a reference to the given GriddnsscavengingsettingsExpressionList and assigns it to the ExpressionList field.
-func (o *GridDnsScavengingSettings) SetExpressionList(v GriddnsscavengingsettingsExpressionList) {
-	o.ExpressionList = &v
+// SetExpressionList gets a reference to the given []GriddnsscavengingsettingsExpressionList and assigns it to the ExpressionList field.
+func (o *GridDnsScavengingSettings) SetExpressionList(v []GriddnsscavengingsettingsExpressionList) {
+	o.ExpressionList = v
 }
 
 // GetEaExpressionList returns the EaExpressionList field value if set, zero value otherwise.
-func (o *GridDnsScavengingSettings) GetEaExpressionList() GriddnsscavengingsettingsEaExpressionList {
+func (o *GridDnsScavengingSettings) GetEaExpressionList() []GriddnsscavengingsettingsEaExpressionList {
 	if o == nil || IsNil(o.EaExpressionList) {
-		var ret GriddnsscavengingsettingsEaExpressionList
+		var ret []GriddnsscavengingsettingsEaExpressionList
 		return ret
 	}
-	return *o.EaExpressionList
+	return o.EaExpressionList
 }
 
 // GetEaExpressionListOk returns a tuple with the EaExpressionList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridDnsScavengingSettings) GetEaExpressionListOk() (*GriddnsscavengingsettingsEaExpressionList, bool) {
+func (o *GridDnsScavengingSettings) GetEaExpressionListOk() ([]GriddnsscavengingsettingsEaExpressionList, bool) {
 	if o == nil || IsNil(o.EaExpressionList) {
 		return nil, false
 	}
@@ -339,9 +341,9 @@ func (o *GridDnsScavengingSettings) HasEaExpressionList() bool {
 	return false
 }
 
-// SetEaExpressionList gets a reference to the given GriddnsscavengingsettingsEaExpressionList and assigns it to the EaExpressionList field.
-func (o *GridDnsScavengingSettings) SetEaExpressionList(v GriddnsscavengingsettingsEaExpressionList) {
-	o.EaExpressionList = &v
+// SetEaExpressionList gets a reference to the given []GriddnsscavengingsettingsEaExpressionList and assigns it to the EaExpressionList field.
+func (o *GridDnsScavengingSettings) SetEaExpressionList(v []GriddnsscavengingsettingsEaExpressionList) {
+	o.EaExpressionList = v
 }
 
 func (o GridDnsScavengingSettings) MarshalJSON() ([]byte, error) {

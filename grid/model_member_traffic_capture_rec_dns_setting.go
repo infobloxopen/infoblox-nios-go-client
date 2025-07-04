@@ -28,9 +28,10 @@ type MemberTrafficCaptureRecDnsSetting struct {
 	// The local IP DNS service is listen on ( for recursive DNS latency trigger).
 	RecDnsLatencyListenOnSource *string `json:"rec_dns_latency_listen_on_source,omitempty"`
 	// The DNS listen-on IP address used if rec_dns_latency_listen_on_source is IP.
-	RecDnsLatencyListenOnIp *string                                               `json:"rec_dns_latency_listen_on_ip,omitempty"`
-	KpiMonitoredDomains     *MembertrafficcapturerecdnssettingKpiMonitoredDomains `json:"kpi_monitored_domains,omitempty"`
-	AdditionalProperties    map[string]interface{}
+	RecDnsLatencyListenOnIp *string `json:"rec_dns_latency_listen_on_ip,omitempty"`
+	// List of domains monitored by 'Recursive DNS Latency Threshold' trigger.
+	KpiMonitoredDomains  []MembertrafficcapturerecdnssettingKpiMonitoredDomains `json:"kpi_monitored_domains,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _MemberTrafficCaptureRecDnsSetting MemberTrafficCaptureRecDnsSetting
@@ -213,17 +214,17 @@ func (o *MemberTrafficCaptureRecDnsSetting) SetRecDnsLatencyListenOnIp(v string)
 }
 
 // GetKpiMonitoredDomains returns the KpiMonitoredDomains field value if set, zero value otherwise.
-func (o *MemberTrafficCaptureRecDnsSetting) GetKpiMonitoredDomains() MembertrafficcapturerecdnssettingKpiMonitoredDomains {
+func (o *MemberTrafficCaptureRecDnsSetting) GetKpiMonitoredDomains() []MembertrafficcapturerecdnssettingKpiMonitoredDomains {
 	if o == nil || IsNil(o.KpiMonitoredDomains) {
-		var ret MembertrafficcapturerecdnssettingKpiMonitoredDomains
+		var ret []MembertrafficcapturerecdnssettingKpiMonitoredDomains
 		return ret
 	}
-	return *o.KpiMonitoredDomains
+	return o.KpiMonitoredDomains
 }
 
 // GetKpiMonitoredDomainsOk returns a tuple with the KpiMonitoredDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberTrafficCaptureRecDnsSetting) GetKpiMonitoredDomainsOk() (*MembertrafficcapturerecdnssettingKpiMonitoredDomains, bool) {
+func (o *MemberTrafficCaptureRecDnsSetting) GetKpiMonitoredDomainsOk() ([]MembertrafficcapturerecdnssettingKpiMonitoredDomains, bool) {
 	if o == nil || IsNil(o.KpiMonitoredDomains) {
 		return nil, false
 	}
@@ -239,9 +240,9 @@ func (o *MemberTrafficCaptureRecDnsSetting) HasKpiMonitoredDomains() bool {
 	return false
 }
 
-// SetKpiMonitoredDomains gets a reference to the given MembertrafficcapturerecdnssettingKpiMonitoredDomains and assigns it to the KpiMonitoredDomains field.
-func (o *MemberTrafficCaptureRecDnsSetting) SetKpiMonitoredDomains(v MembertrafficcapturerecdnssettingKpiMonitoredDomains) {
-	o.KpiMonitoredDomains = &v
+// SetKpiMonitoredDomains gets a reference to the given []MembertrafficcapturerecdnssettingKpiMonitoredDomains and assigns it to the KpiMonitoredDomains field.
+func (o *MemberTrafficCaptureRecDnsSetting) SetKpiMonitoredDomains(v []MembertrafficcapturerecdnssettingKpiMonitoredDomains) {
+	o.KpiMonitoredDomains = v
 }
 
 func (o MemberTrafficCaptureRecDnsSetting) MarshalJSON() ([]byte, error) {

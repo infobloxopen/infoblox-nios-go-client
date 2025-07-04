@@ -20,8 +20,9 @@ var _ MappedNullable = &Ipv6rangeSubscribeSettings{}
 // Ipv6rangeSubscribeSettings struct for Ipv6rangeSubscribeSettings
 type Ipv6rangeSubscribeSettings struct {
 	// The list of Cisco ISE attributes allowed for subscription.
-	EnabledAttributes    []string                                      `json:"enabled_attributes,omitempty"`
-	MappedEaAttributes   *Ipv6rangesubscribesettingsMappedEaAttributes `json:"mapped_ea_attributes,omitempty"`
+	EnabledAttributes []string `json:"enabled_attributes,omitempty"`
+	// The list of NIOS extensible attributes to Cisco ISE attributes mappings.
+	MappedEaAttributes   []Ipv6rangesubscribesettingsMappedEaAttributes `json:"mapped_ea_attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +78,17 @@ func (o *Ipv6rangeSubscribeSettings) SetEnabledAttributes(v []string) {
 }
 
 // GetMappedEaAttributes returns the MappedEaAttributes field value if set, zero value otherwise.
-func (o *Ipv6rangeSubscribeSettings) GetMappedEaAttributes() Ipv6rangesubscribesettingsMappedEaAttributes {
+func (o *Ipv6rangeSubscribeSettings) GetMappedEaAttributes() []Ipv6rangesubscribesettingsMappedEaAttributes {
 	if o == nil || IsNil(o.MappedEaAttributes) {
-		var ret Ipv6rangesubscribesettingsMappedEaAttributes
+		var ret []Ipv6rangesubscribesettingsMappedEaAttributes
 		return ret
 	}
-	return *o.MappedEaAttributes
+	return o.MappedEaAttributes
 }
 
 // GetMappedEaAttributesOk returns a tuple with the MappedEaAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6rangeSubscribeSettings) GetMappedEaAttributesOk() (*Ipv6rangesubscribesettingsMappedEaAttributes, bool) {
+func (o *Ipv6rangeSubscribeSettings) GetMappedEaAttributesOk() ([]Ipv6rangesubscribesettingsMappedEaAttributes, bool) {
 	if o == nil || IsNil(o.MappedEaAttributes) {
 		return nil, false
 	}
@@ -103,9 +104,9 @@ func (o *Ipv6rangeSubscribeSettings) HasMappedEaAttributes() bool {
 	return false
 }
 
-// SetMappedEaAttributes gets a reference to the given Ipv6rangesubscribesettingsMappedEaAttributes and assigns it to the MappedEaAttributes field.
-func (o *Ipv6rangeSubscribeSettings) SetMappedEaAttributes(v Ipv6rangesubscribesettingsMappedEaAttributes) {
-	o.MappedEaAttributes = &v
+// SetMappedEaAttributes gets a reference to the given []Ipv6rangesubscribesettingsMappedEaAttributes and assigns it to the MappedEaAttributes field.
+func (o *Ipv6rangeSubscribeSettings) SetMappedEaAttributes(v []Ipv6rangesubscribesettingsMappedEaAttributes) {
+	o.MappedEaAttributes = v
 }
 
 func (o Ipv6rangeSubscribeSettings) MarshalJSON() ([]byte, error) {

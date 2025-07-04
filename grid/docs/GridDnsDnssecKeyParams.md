@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnableKskAutoRollover** | Pointer to **bool** | If set to True, automatic rollovers for the signing key is enabled. | [optional] 
 **KskAlgorithm** | Pointer to **string** | Key Signing Key algorithm. Deprecated. | [optional] 
-**KskAlgorithms** | Pointer to [**GriddnsdnsseckeyparamsKskAlgorithms**](GriddnsdnsseckeyparamsKskAlgorithms.md) |  | [optional] 
+**KskAlgorithms** | Pointer to [**[]GriddnsdnsseckeyparamsKskAlgorithms**](GriddnsdnsseckeyparamsKskAlgorithms.md) | A list of Key Signing Key Algorithms. | [optional] 
 **KskRollover** | Pointer to **int64** | Key Signing Key rollover interval, in seconds. | [optional] 
 **KskSize** | Pointer to **int64** | Key Signing Key size, in bits. Deprecated. | [optional] 
 **NextSecureType** | Pointer to **string** | NSEC (next secure) types. | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Nsec3Iterations** | Pointer to **int64** | The number of iterations used for hashing NSEC3. | [optional] 
 **SignatureExpiration** | Pointer to **int64** | Signature expiration time, in seconds. | [optional] 
 **ZskAlgorithm** | Pointer to **string** | Zone Signing Key algorithm. Deprecated. | [optional] 
-**ZskAlgorithms** | Pointer to [**GriddnsdnsseckeyparamsZskAlgorithms**](GriddnsdnsseckeyparamsZskAlgorithms.md) |  | [optional] 
+**ZskAlgorithms** | Pointer to [**[]GriddnsdnsseckeyparamsZskAlgorithms**](GriddnsdnsseckeyparamsZskAlgorithms.md) | A list of Zone Signing Key Algorithms. | [optional] 
 **ZskRollover** | Pointer to **int64** | Zone Signing Key rollover interval, in seconds. | [optional] 
 **ZskRolloverMechanism** | Pointer to **string** | Zone Signing Key rollover mechanism. | [optional] 
 **ZskSize** | Pointer to **int64** | Zone Signing Key size, in bits. Deprecated. | [optional] 
@@ -94,20 +94,20 @@ HasKskAlgorithm returns a boolean if a field has been set.
 
 ### GetKskAlgorithms
 
-`func (o *GridDnsDnssecKeyParams) GetKskAlgorithms() GriddnsdnsseckeyparamsKskAlgorithms`
+`func (o *GridDnsDnssecKeyParams) GetKskAlgorithms() []GriddnsdnsseckeyparamsKskAlgorithms`
 
 GetKskAlgorithms returns the KskAlgorithms field if non-nil, zero value otherwise.
 
 ### GetKskAlgorithmsOk
 
-`func (o *GridDnsDnssecKeyParams) GetKskAlgorithmsOk() (*GriddnsdnsseckeyparamsKskAlgorithms, bool)`
+`func (o *GridDnsDnssecKeyParams) GetKskAlgorithmsOk() (*[]GriddnsdnsseckeyparamsKskAlgorithms, bool)`
 
 GetKskAlgorithmsOk returns a tuple with the KskAlgorithms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKskAlgorithms
 
-`func (o *GridDnsDnssecKeyParams) SetKskAlgorithms(v GriddnsdnsseckeyparamsKskAlgorithms)`
+`func (o *GridDnsDnssecKeyParams) SetKskAlgorithms(v []GriddnsdnsseckeyparamsKskAlgorithms)`
 
 SetKskAlgorithms sets KskAlgorithms field to given value.
 
@@ -394,20 +394,20 @@ HasZskAlgorithm returns a boolean if a field has been set.
 
 ### GetZskAlgorithms
 
-`func (o *GridDnsDnssecKeyParams) GetZskAlgorithms() GriddnsdnsseckeyparamsZskAlgorithms`
+`func (o *GridDnsDnssecKeyParams) GetZskAlgorithms() []GriddnsdnsseckeyparamsZskAlgorithms`
 
 GetZskAlgorithms returns the ZskAlgorithms field if non-nil, zero value otherwise.
 
 ### GetZskAlgorithmsOk
 
-`func (o *GridDnsDnssecKeyParams) GetZskAlgorithmsOk() (*GriddnsdnsseckeyparamsZskAlgorithms, bool)`
+`func (o *GridDnsDnssecKeyParams) GetZskAlgorithmsOk() (*[]GriddnsdnsseckeyparamsZskAlgorithms, bool)`
 
 GetZskAlgorithmsOk returns a tuple with the ZskAlgorithms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetZskAlgorithms
 
-`func (o *GridDnsDnssecKeyParams) SetZskAlgorithms(v GriddnsdnsseckeyparamsZskAlgorithms)`
+`func (o *GridDnsDnssecKeyParams) SetZskAlgorithms(v []GriddnsdnsseckeyparamsZskAlgorithms)`
 
 SetZskAlgorithms sets ZskAlgorithms field to given value.
 

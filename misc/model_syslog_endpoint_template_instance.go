@@ -20,8 +20,9 @@ var _ MappedNullable = &SyslogEndpointTemplateInstance{}
 // SyslogEndpointTemplateInstance struct for SyslogEndpointTemplateInstance
 type SyslogEndpointTemplateInstance struct {
 	// The name of the REST API template parameter.
-	Template             *string                                   `json:"template,omitempty"`
-	Parameters           *SyslogendpointtemplateinstanceParameters `json:"parameters,omitempty"`
+	Template *string `json:"template,omitempty"`
+	// The notification REST template parameters.
+	Parameters           []SyslogendpointtemplateinstanceParameters `json:"parameters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +78,17 @@ func (o *SyslogEndpointTemplateInstance) SetTemplate(v string) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *SyslogEndpointTemplateInstance) GetParameters() SyslogendpointtemplateinstanceParameters {
+func (o *SyslogEndpointTemplateInstance) GetParameters() []SyslogendpointtemplateinstanceParameters {
 	if o == nil || IsNil(o.Parameters) {
-		var ret SyslogendpointtemplateinstanceParameters
+		var ret []SyslogendpointtemplateinstanceParameters
 		return ret
 	}
-	return *o.Parameters
+	return o.Parameters
 }
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SyslogEndpointTemplateInstance) GetParametersOk() (*SyslogendpointtemplateinstanceParameters, bool) {
+func (o *SyslogEndpointTemplateInstance) GetParametersOk() ([]SyslogendpointtemplateinstanceParameters, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
@@ -103,9 +104,9 @@ func (o *SyslogEndpointTemplateInstance) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given SyslogendpointtemplateinstanceParameters and assigns it to the Parameters field.
-func (o *SyslogEndpointTemplateInstance) SetParameters(v SyslogendpointtemplateinstanceParameters) {
-	o.Parameters = &v
+// SetParameters gets a reference to the given []SyslogendpointtemplateinstanceParameters and assigns it to the Parameters field.
+func (o *SyslogEndpointTemplateInstance) SetParameters(v []SyslogendpointtemplateinstanceParameters) {
+	o.Parameters = v
 }
 
 func (o SyslogEndpointTemplateInstance) MarshalJSON() ([]byte, error) {

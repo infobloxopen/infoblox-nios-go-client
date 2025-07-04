@@ -22,8 +22,9 @@ type ThreatprotectionProfileRuleConfig struct {
 	// The rule action.
 	Action *string `json:"action,omitempty"`
 	// The rule log severity.
-	LogSeverity          *string                                  `json:"log_severity,omitempty"`
-	Params               *ThreatprotectionprofileruleconfigParams `json:"params,omitempty"`
+	LogSeverity *string `json:"log_severity,omitempty"`
+	// The threat protection rule parameters.
+	Params               []ThreatprotectionprofileruleconfigParams `json:"params,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,17 +112,17 @@ func (o *ThreatprotectionProfileRuleConfig) SetLogSeverity(v string) {
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
-func (o *ThreatprotectionProfileRuleConfig) GetParams() ThreatprotectionprofileruleconfigParams {
+func (o *ThreatprotectionProfileRuleConfig) GetParams() []ThreatprotectionprofileruleconfigParams {
 	if o == nil || IsNil(o.Params) {
-		var ret ThreatprotectionprofileruleconfigParams
+		var ret []ThreatprotectionprofileruleconfigParams
 		return ret
 	}
-	return *o.Params
+	return o.Params
 }
 
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThreatprotectionProfileRuleConfig) GetParamsOk() (*ThreatprotectionprofileruleconfigParams, bool) {
+func (o *ThreatprotectionProfileRuleConfig) GetParamsOk() ([]ThreatprotectionprofileruleconfigParams, bool) {
 	if o == nil || IsNil(o.Params) {
 		return nil, false
 	}
@@ -137,9 +138,9 @@ func (o *ThreatprotectionProfileRuleConfig) HasParams() bool {
 	return false
 }
 
-// SetParams gets a reference to the given ThreatprotectionprofileruleconfigParams and assigns it to the Params field.
-func (o *ThreatprotectionProfileRuleConfig) SetParams(v ThreatprotectionprofileruleconfigParams) {
-	o.Params = &v
+// SetParams gets a reference to the given []ThreatprotectionprofileruleconfigParams and assigns it to the Params field.
+func (o *ThreatprotectionProfileRuleConfig) SetParams(v []ThreatprotectionprofileruleconfigParams) {
+	o.Params = v
 }
 
 func (o ThreatprotectionProfileRuleConfig) MarshalJSON() ([]byte, error) {

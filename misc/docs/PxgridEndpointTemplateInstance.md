@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Template** | Pointer to **string** | The name of the REST API template parameter. | [optional] 
-**Parameters** | Pointer to [**PxgridendpointtemplateinstanceParameters**](PxgridendpointtemplateinstanceParameters.md) |  | [optional] 
+**Parameters** | Pointer to [**[]PxgridendpointtemplateinstanceParameters**](PxgridendpointtemplateinstanceParameters.md) | The notification REST template parameters. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasTemplate returns a boolean if a field has been set.
 
 ### GetParameters
 
-`func (o *PxgridEndpointTemplateInstance) GetParameters() PxgridendpointtemplateinstanceParameters`
+`func (o *PxgridEndpointTemplateInstance) GetParameters() []PxgridendpointtemplateinstanceParameters`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *PxgridEndpointTemplateInstance) GetParametersOk() (*PxgridendpointtemplateinstanceParameters, bool)`
+`func (o *PxgridEndpointTemplateInstance) GetParametersOk() (*[]PxgridendpointtemplateinstanceParameters, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *PxgridEndpointTemplateInstance) SetParameters(v PxgridendpointtemplateinstanceParameters)`
+`func (o *PxgridEndpointTemplateInstance) SetParameters(v []PxgridendpointtemplateinstanceParameters)`
 
 SetParameters sets Parameters field to given value.
 

@@ -22,8 +22,9 @@ type ThreatprotectionGridRuleConfig struct {
 	// The rule action.
 	Action *string `json:"action,omitempty"`
 	// The rule log severity.
-	LogSeverity          *string                               `json:"log_severity,omitempty"`
-	Params               *ThreatprotectiongridruleconfigParams `json:"params,omitempty"`
+	LogSeverity *string `json:"log_severity,omitempty"`
+	// The threat protection rule parameters.
+	Params               []ThreatprotectiongridruleconfigParams `json:"params,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,17 +112,17 @@ func (o *ThreatprotectionGridRuleConfig) SetLogSeverity(v string) {
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
-func (o *ThreatprotectionGridRuleConfig) GetParams() ThreatprotectiongridruleconfigParams {
+func (o *ThreatprotectionGridRuleConfig) GetParams() []ThreatprotectiongridruleconfigParams {
 	if o == nil || IsNil(o.Params) {
-		var ret ThreatprotectiongridruleconfigParams
+		var ret []ThreatprotectiongridruleconfigParams
 		return ret
 	}
-	return *o.Params
+	return o.Params
 }
 
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThreatprotectionGridRuleConfig) GetParamsOk() (*ThreatprotectiongridruleconfigParams, bool) {
+func (o *ThreatprotectionGridRuleConfig) GetParamsOk() ([]ThreatprotectiongridruleconfigParams, bool) {
 	if o == nil || IsNil(o.Params) {
 		return nil, false
 	}
@@ -137,9 +138,9 @@ func (o *ThreatprotectionGridRuleConfig) HasParams() bool {
 	return false
 }
 
-// SetParams gets a reference to the given ThreatprotectiongridruleconfigParams and assigns it to the Params field.
-func (o *ThreatprotectionGridRuleConfig) SetParams(v ThreatprotectiongridruleconfigParams) {
-	o.Params = &v
+// SetParams gets a reference to the given []ThreatprotectiongridruleconfigParams and assigns it to the Params field.
+func (o *ThreatprotectionGridRuleConfig) SetParams(v []ThreatprotectiongridruleconfigParams) {
+	o.Params = v
 }
 
 func (o ThreatprotectionGridRuleConfig) MarshalJSON() ([]byte, error) {

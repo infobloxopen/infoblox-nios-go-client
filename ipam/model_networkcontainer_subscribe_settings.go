@@ -20,8 +20,9 @@ var _ MappedNullable = &NetworkcontainerSubscribeSettings{}
 // NetworkcontainerSubscribeSettings struct for NetworkcontainerSubscribeSettings
 type NetworkcontainerSubscribeSettings struct {
 	// The list of Cisco ISE attributes allowed for subscription.
-	EnabledAttributes    []string                                             `json:"enabled_attributes,omitempty"`
-	MappedEaAttributes   *NetworkcontainersubscribesettingsMappedEaAttributes `json:"mapped_ea_attributes,omitempty"`
+	EnabledAttributes []string `json:"enabled_attributes,omitempty"`
+	// The list of NIOS extensible attributes to Cisco ISE attributes mappings.
+	MappedEaAttributes   []NetworkcontainersubscribesettingsMappedEaAttributes `json:"mapped_ea_attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,17 +78,17 @@ func (o *NetworkcontainerSubscribeSettings) SetEnabledAttributes(v []string) {
 }
 
 // GetMappedEaAttributes returns the MappedEaAttributes field value if set, zero value otherwise.
-func (o *NetworkcontainerSubscribeSettings) GetMappedEaAttributes() NetworkcontainersubscribesettingsMappedEaAttributes {
+func (o *NetworkcontainerSubscribeSettings) GetMappedEaAttributes() []NetworkcontainersubscribesettingsMappedEaAttributes {
 	if o == nil || IsNil(o.MappedEaAttributes) {
-		var ret NetworkcontainersubscribesettingsMappedEaAttributes
+		var ret []NetworkcontainersubscribesettingsMappedEaAttributes
 		return ret
 	}
-	return *o.MappedEaAttributes
+	return o.MappedEaAttributes
 }
 
 // GetMappedEaAttributesOk returns a tuple with the MappedEaAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkcontainerSubscribeSettings) GetMappedEaAttributesOk() (*NetworkcontainersubscribesettingsMappedEaAttributes, bool) {
+func (o *NetworkcontainerSubscribeSettings) GetMappedEaAttributesOk() ([]NetworkcontainersubscribesettingsMappedEaAttributes, bool) {
 	if o == nil || IsNil(o.MappedEaAttributes) {
 		return nil, false
 	}
@@ -103,9 +104,9 @@ func (o *NetworkcontainerSubscribeSettings) HasMappedEaAttributes() bool {
 	return false
 }
 
-// SetMappedEaAttributes gets a reference to the given NetworkcontainersubscribesettingsMappedEaAttributes and assigns it to the MappedEaAttributes field.
-func (o *NetworkcontainerSubscribeSettings) SetMappedEaAttributes(v NetworkcontainersubscribesettingsMappedEaAttributes) {
-	o.MappedEaAttributes = &v
+// SetMappedEaAttributes gets a reference to the given []NetworkcontainersubscribesettingsMappedEaAttributes and assigns it to the MappedEaAttributes field.
+func (o *NetworkcontainerSubscribeSettings) SetMappedEaAttributes(v []NetworkcontainersubscribesettingsMappedEaAttributes) {
+	o.MappedEaAttributes = v
 }
 
 func (o NetworkcontainerSubscribeSettings) MarshalJSON() ([]byte, error) {

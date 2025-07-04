@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Template** | Pointer to **string** | The name of the REST API template parameter. | [optional] 
-**Parameters** | Pointer to [**DxlendpointtemplateinstanceParameters**](DxlendpointtemplateinstanceParameters.md) |  | [optional] 
+**Parameters** | Pointer to [**[]DxlendpointtemplateinstanceParameters**](DxlendpointtemplateinstanceParameters.md) | The notification REST template parameters. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasTemplate returns a boolean if a field has been set.
 
 ### GetParameters
 
-`func (o *DxlEndpointTemplateInstance) GetParameters() DxlendpointtemplateinstanceParameters`
+`func (o *DxlEndpointTemplateInstance) GetParameters() []DxlendpointtemplateinstanceParameters`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *DxlEndpointTemplateInstance) GetParametersOk() (*DxlendpointtemplateinstanceParameters, bool)`
+`func (o *DxlEndpointTemplateInstance) GetParametersOk() (*[]DxlendpointtemplateinstanceParameters, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *DxlEndpointTemplateInstance) SetParameters(v DxlendpointtemplateinstanceParameters)`
+`func (o *DxlEndpointTemplateInstance) SetParameters(v []DxlendpointtemplateinstanceParameters)`
 
 SetParameters sets Parameters field to given value.
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **RecDnsLatencyReset** | Pointer to **int64** | Recursive DNS latency above which traffic capture will be stopped. | [optional] 
 **RecDnsLatencyListenOnSource** | Pointer to **string** | The local IP DNS service is listen on ( for recursive DNS latency trigger). | [optional] 
 **RecDnsLatencyListenOnIp** | Pointer to **string** | The DNS listen-on IP address used if rec_dns_latency_listen_on_source is IP. | [optional] 
-**KpiMonitoredDomains** | Pointer to [**MembertrafficcapturerecdnssettingKpiMonitoredDomains**](MembertrafficcapturerecdnssettingKpiMonitoredDomains.md) |  | [optional] 
+**KpiMonitoredDomains** | Pointer to [**[]MembertrafficcapturerecdnssettingKpiMonitoredDomains**](MembertrafficcapturerecdnssettingKpiMonitoredDomains.md) | List of domains monitored by &#39;Recursive DNS Latency Threshold&#39; trigger. | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasRecDnsLatencyListenOnIp returns a boolean if a field has been set.
 
 ### GetKpiMonitoredDomains
 
-`func (o *MemberTrafficCaptureRecDnsSetting) GetKpiMonitoredDomains() MembertrafficcapturerecdnssettingKpiMonitoredDomains`
+`func (o *MemberTrafficCaptureRecDnsSetting) GetKpiMonitoredDomains() []MembertrafficcapturerecdnssettingKpiMonitoredDomains`
 
 GetKpiMonitoredDomains returns the KpiMonitoredDomains field if non-nil, zero value otherwise.
 
 ### GetKpiMonitoredDomainsOk
 
-`func (o *MemberTrafficCaptureRecDnsSetting) GetKpiMonitoredDomainsOk() (*MembertrafficcapturerecdnssettingKpiMonitoredDomains, bool)`
+`func (o *MemberTrafficCaptureRecDnsSetting) GetKpiMonitoredDomainsOk() (*[]MembertrafficcapturerecdnssettingKpiMonitoredDomains, bool)`
 
 GetKpiMonitoredDomainsOk returns a tuple with the KpiMonitoredDomains field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKpiMonitoredDomains
 
-`func (o *MemberTrafficCaptureRecDnsSetting) SetKpiMonitoredDomains(v MembertrafficcapturerecdnssettingKpiMonitoredDomains)`
+`func (o *MemberTrafficCaptureRecDnsSetting) SetKpiMonitoredDomains(v []MembertrafficcapturerecdnssettingKpiMonitoredDomains)`
 
 SetKpiMonitoredDomains sets KpiMonitoredDomains field to given value.
 

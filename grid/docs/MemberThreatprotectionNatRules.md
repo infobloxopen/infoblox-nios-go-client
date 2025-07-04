@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Cidr** | Pointer to **int64** | The network CIDR for the threat protection NAT mapping rule. | [optional] 
 **StartAddress** | Pointer to **string** | The start address for the range of the threat protection NAT mapping rule. | [optional] 
 **EndAddress** | Pointer to **string** | The end address for the range of the threat protection NAT mapping rule. | [optional] 
-**NatPorts** | Pointer to [**MemberthreatprotectionnatrulesNatPorts**](MemberthreatprotectionnatrulesNatPorts.md) |  | [optional] 
+**NatPorts** | Pointer to [**[]MemberthreatprotectionnatrulesNatPorts**](MemberthreatprotectionnatrulesNatPorts.md) | The NAT port configuration for the threat protection NAT mapping rule. | [optional] 
 
 ## Methods
 
@@ -183,20 +183,20 @@ HasEndAddress returns a boolean if a field has been set.
 
 ### GetNatPorts
 
-`func (o *MemberThreatprotectionNatRules) GetNatPorts() MemberthreatprotectionnatrulesNatPorts`
+`func (o *MemberThreatprotectionNatRules) GetNatPorts() []MemberthreatprotectionnatrulesNatPorts`
 
 GetNatPorts returns the NatPorts field if non-nil, zero value otherwise.
 
 ### GetNatPortsOk
 
-`func (o *MemberThreatprotectionNatRules) GetNatPortsOk() (*MemberthreatprotectionnatrulesNatPorts, bool)`
+`func (o *MemberThreatprotectionNatRules) GetNatPortsOk() (*[]MemberthreatprotectionnatrulesNatPorts, bool)`
 
 GetNatPortsOk returns a tuple with the NatPorts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNatPorts
 
-`func (o *MemberThreatprotectionNatRules) SetNatPorts(v MemberthreatprotectionnatrulesNatPorts)`
+`func (o *MemberThreatprotectionNatRules) SetNatPorts(v []MemberthreatprotectionnatrulesNatPorts)`
 
 SetNatPorts sets NatPorts field to given value.
 

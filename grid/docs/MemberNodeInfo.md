@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ServiceStatus** | Pointer to [**MembernodeinfoServiceStatus**](MembernodeinfoServiceStatus.md) |  | [optional] 
+**ServiceStatus** | Pointer to [**[]MembernodeinfoServiceStatus**](MembernodeinfoServiceStatus.md) | The service status list of the Grid Member. | [optional] 
 **PhysicalOid** | Pointer to **string** | The OID of the physical node. | [optional] [readonly] 
 **HaStatus** | Pointer to **string** | Status about the node of an HA pair. | [optional] [readonly] 
 **Hwid** | Pointer to **string** | Hardware ID. | [optional] [readonly] 
@@ -41,20 +41,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetServiceStatus
 
-`func (o *MemberNodeInfo) GetServiceStatus() MembernodeinfoServiceStatus`
+`func (o *MemberNodeInfo) GetServiceStatus() []MembernodeinfoServiceStatus`
 
 GetServiceStatus returns the ServiceStatus field if non-nil, zero value otherwise.
 
 ### GetServiceStatusOk
 
-`func (o *MemberNodeInfo) GetServiceStatusOk() (*MembernodeinfoServiceStatus, bool)`
+`func (o *MemberNodeInfo) GetServiceStatusOk() (*[]MembernodeinfoServiceStatus, bool)`
 
 GetServiceStatusOk returns a tuple with the ServiceStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceStatus
 
-`func (o *MemberNodeInfo) SetServiceStatus(v MembernodeinfoServiceStatus)`
+`func (o *MemberNodeInfo) SetServiceStatus(v []MembernodeinfoServiceStatus)`
 
 SetServiceStatus sets ServiceStatus field to given value.
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **TcpPort** | Pointer to **int64** | The TCP port the appliance must listen on. | [optional] 
 **UdpEnable** | Pointer to **bool** | If set to True, the appliance can receive messages from other devices via UDP. | [optional] 
 **UdpPort** | Pointer to **int64** | The UDP port the appliance must listen on. | [optional] 
-**ClientAcls** | Pointer to [**MembersyslogproxysettingClientAcls**](MembersyslogproxysettingClientAcls.md) |  | [optional] 
+**ClientAcls** | Pointer to [**[]MembersyslogproxysettingClientAcls**](MembersyslogproxysettingClientAcls.md) | This list controls the IP addresses and networks that are allowed to access the syslog proxy. | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasUdpPort returns a boolean if a field has been set.
 
 ### GetClientAcls
 
-`func (o *MemberSyslogProxySetting) GetClientAcls() MembersyslogproxysettingClientAcls`
+`func (o *MemberSyslogProxySetting) GetClientAcls() []MembersyslogproxysettingClientAcls`
 
 GetClientAcls returns the ClientAcls field if non-nil, zero value otherwise.
 
 ### GetClientAclsOk
 
-`func (o *MemberSyslogProxySetting) GetClientAclsOk() (*MembersyslogproxysettingClientAcls, bool)`
+`func (o *MemberSyslogProxySetting) GetClientAclsOk() (*[]MembersyslogproxysettingClientAcls, bool)`
 
 GetClientAclsOk returns a tuple with the ClientAcls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientAcls
 
-`func (o *MemberSyslogProxySetting) SetClientAcls(v MembersyslogproxysettingClientAcls)`
+`func (o *MemberSyslogProxySetting) SetClientAcls(v []MembersyslogproxysettingClientAcls)`
 
 SetClientAcls sets ClientAcls field to given value.
 

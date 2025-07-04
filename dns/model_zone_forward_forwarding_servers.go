@@ -22,8 +22,9 @@ type ZoneForwardForwardingServers struct {
 	// The name of this Grid member in FQDN format.
 	Name *string `json:"name,omitempty"`
 	// Determines if the appliance sends queries to forwarders only, and not to other internal or Internet root servers.
-	ForwardersOnly *bool                                  `json:"forwarders_only,omitempty"`
-	ForwardTo      *ZoneforwardforwardingserversForwardTo `json:"forward_to,omitempty"`
+	ForwardersOnly *bool `json:"forwarders_only,omitempty"`
+	// The information for the remote name server to which you want the Infoblox appliance to forward queries for a specified domain name.
+	ForwardTo []ZoneforwardforwardingserversForwardTo `json:"forward_to,omitempty"`
 	// Use flag for: forward_to
 	UseOverrideForwarders *bool `json:"use_override_forwarders,omitempty"`
 	AdditionalProperties  map[string]interface{}
@@ -113,17 +114,17 @@ func (o *ZoneForwardForwardingServers) SetForwardersOnly(v bool) {
 }
 
 // GetForwardTo returns the ForwardTo field value if set, zero value otherwise.
-func (o *ZoneForwardForwardingServers) GetForwardTo() ZoneforwardforwardingserversForwardTo {
+func (o *ZoneForwardForwardingServers) GetForwardTo() []ZoneforwardforwardingserversForwardTo {
 	if o == nil || IsNil(o.ForwardTo) {
-		var ret ZoneforwardforwardingserversForwardTo
+		var ret []ZoneforwardforwardingserversForwardTo
 		return ret
 	}
-	return *o.ForwardTo
+	return o.ForwardTo
 }
 
 // GetForwardToOk returns a tuple with the ForwardTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneForwardForwardingServers) GetForwardToOk() (*ZoneforwardforwardingserversForwardTo, bool) {
+func (o *ZoneForwardForwardingServers) GetForwardToOk() ([]ZoneforwardforwardingserversForwardTo, bool) {
 	if o == nil || IsNil(o.ForwardTo) {
 		return nil, false
 	}
@@ -139,9 +140,9 @@ func (o *ZoneForwardForwardingServers) HasForwardTo() bool {
 	return false
 }
 
-// SetForwardTo gets a reference to the given ZoneforwardforwardingserversForwardTo and assigns it to the ForwardTo field.
-func (o *ZoneForwardForwardingServers) SetForwardTo(v ZoneforwardforwardingserversForwardTo) {
-	o.ForwardTo = &v
+// SetForwardTo gets a reference to the given []ZoneforwardforwardingserversForwardTo and assigns it to the ForwardTo field.
+func (o *ZoneForwardForwardingServers) SetForwardTo(v []ZoneforwardforwardingserversForwardTo) {
+	o.ForwardTo = v
 }
 
 // GetUseOverrideForwarders returns the UseOverrideForwarders field value if set, zero value otherwise.

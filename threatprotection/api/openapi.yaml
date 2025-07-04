@@ -187,8 +187,8 @@ paths:
       summary: Create a threatprotection:grid:rule object
       tags:
       - ThreatprotectionGridRule
-      x-tf-resource: threatprotection_threatprotection_grid_rule
-      x-tf-datasource: threatprotection_threatprotection_grid_rule
+      x-tf-resource: threatprotection_grid_rule
+      x-tf-datasource: threatprotection_grid_rule
   /threatprotection:grid:rule/{reference}:
     delete:
       description: Deletes a specific threatprotection:grid:rule object by reference
@@ -501,8 +501,8 @@ paths:
       summary: Create a threatprotection:profile object
       tags:
       - ThreatprotectionProfile
-      x-tf-resource: threatprotection_threatprotection_profile
-      x-tf-datasource: threatprotection_threatprotection_profile
+      x-tf-resource: threatprotection_profile
+      x-tf-datasource: threatprotection_profile
       x-sdk-default-ext-attrs: true
   /threatprotection:profile/{reference}:
     delete:
@@ -2049,7 +2049,17 @@ components:
           log_severity: Example log_severity
           action: Example action
           params:
-            min: 1
+          - min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
+          - min: 1
             max: 1
             read_only: false
             enum_values:
@@ -2134,7 +2144,17 @@ components:
         log_severity: Example log_severity
         action: Example action
         params:
-          min: 1
+        - min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
+        - min: 1
           max: 1
           read_only: false
           enum_values:
@@ -2163,7 +2183,10 @@ components:
           example: Example log_severity
           type: string
         params:
-          $ref: '#/components/schemas/ThreatprotectiongridruleconfigParams'
+          description: The threat protection rule parameters.
+          items:
+            $ref: '#/components/schemas/ThreatprotectiongridruleconfigParams'
+          type: array
       type: object
     ThreatprotectiongridruleconfigParams:
       example:
@@ -2367,7 +2390,17 @@ components:
           log_severity: Example log_severity
           action: Example action
           params:
-            min: 1
+          - min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
+          - min: 1
             max: 1
             read_only: false
             enum_values:
@@ -2419,7 +2452,17 @@ components:
         log_severity: Example log_severity
         action: Example action
         params:
-          min: 1
+        - min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
+        - min: 1
           max: 1
           read_only: false
           enum_values:
@@ -2448,7 +2491,10 @@ components:
           example: Example log_severity
           type: string
         params:
-          $ref: '#/components/schemas/ThreatprotectionprofileruleconfigParams'
+          description: The threat protection rule parameters.
+          items:
+            $ref: '#/components/schemas/ThreatprotectionprofileruleconfigParams'
+          type: array
       type: object
     ThreatprotectionprofileruleconfigParams:
       example:
@@ -2539,7 +2585,17 @@ components:
           log_severity: Example log_severity
           action: Example action
           params:
-            min: 1
+          - min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
+          - min: 1
             max: 1
             read_only: false
             enum_values:
@@ -2591,7 +2647,17 @@ components:
         log_severity: Example log_severity
         action: Example action
         params:
-          min: 1
+        - min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
+        - min: 1
           max: 1
           read_only: false
           enum_values:
@@ -2620,7 +2686,10 @@ components:
           example: Example log_severity
           type: string
         params:
-          $ref: '#/components/schemas/ThreatprotectionruleconfigParams'
+          description: The threat protection rule parameters.
+          items:
+            $ref: '#/components/schemas/ThreatprotectionruleconfigParams'
+          type: array
       type: object
     ThreatprotectionruleconfigParams:
       example:
@@ -2834,7 +2903,17 @@ components:
           log_severity: Example log_severity
           action: Example action
           params:
-            min: 1
+          - min: 1
+            max: 1
+            read_only: false
+            enum_values:
+            - enum_values
+            - enum_values
+            name: Example name
+            description: Example description
+            syntax: Example syntax
+            value: Example value
+          - min: 1
             max: 1
             read_only: false
             enum_values:
@@ -2894,7 +2973,17 @@ components:
         log_severity: Example log_severity
         action: Example action
         params:
-          min: 1
+        - min: 1
+          max: 1
+          read_only: false
+          enum_values:
+          - enum_values
+          - enum_values
+          name: Example name
+          description: Example description
+          syntax: Example syntax
+          value: Example value
+        - min: 1
           max: 1
           read_only: false
           enum_values:
@@ -2923,7 +3012,10 @@ components:
           example: Example log_severity
           type: string
         params:
-          $ref: '#/components/schemas/ThreatprotectionruletemplatedefaultconfigParams'
+          description: The threat protection rule parameters.
+          items:
+            $ref: '#/components/schemas/ThreatprotectionruletemplatedefaultconfigParams'
+          type: array
       type: object
     ThreatprotectionruletemplatedefaultconfigParams:
       example:
@@ -3133,7 +3225,17 @@ components:
             log_severity: Example log_severity
             action: Example action
             params:
-              min: 1
+            - min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
+            - min: 1
               max: 1
               read_only: false
               enum_values:
@@ -3179,7 +3281,17 @@ components:
             log_severity: Example log_severity
             action: Example action
             params:
-              min: 1
+            - min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
+            - min: 1
               max: 1
               read_only: false
               enum_values:
@@ -3298,7 +3410,17 @@ components:
             log_severity: Example log_severity
             action: Example action
             params:
-              min: 1
+            - min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
+            - min: 1
               max: 1
               read_only: false
               enum_values:
@@ -3346,7 +3468,17 @@ components:
             log_severity: Example log_severity
             action: Example action
             params:
-              min: 1
+            - min: 1
+              max: 1
+              read_only: false
+              enum_values:
+              - enum_values
+              - enum_values
+              name: Example name
+              description: Example description
+              syntax: Example syntax
+              value: Example value
+            - min: 1
               max: 1
               read_only: false
               enum_values:

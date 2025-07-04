@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **EnableZoneLastQueried** | Pointer to **bool** | This flag indicates if the last queried monitoring for affected zones is enabled or not. | [optional] 
 **ReclaimAssociatedRecords** | Pointer to **bool** | This flag indicates if the associated resource record scavenging is enabled or not. | [optional] 
 **ScavengingSchedule** | Pointer to [**ZoneauthscavengingsettingsScavengingSchedule**](ZoneauthscavengingsettingsScavengingSchedule.md) |  | [optional] 
-**ExpressionList** | Pointer to [**ZoneauthscavengingsettingsExpressionList**](ZoneauthscavengingsettingsExpressionList.md) |  | [optional] 
-**EaExpressionList** | Pointer to [**ZoneauthscavengingsettingsEaExpressionList**](ZoneauthscavengingsettingsEaExpressionList.md) |  | [optional] 
+**ExpressionList** | Pointer to [**[]ZoneauthscavengingsettingsExpressionList**](ZoneauthscavengingsettingsExpressionList.md) | The expression list. The particular record is treated as reclaimable if expression condition evaluates to &#39;true&#39; for given record if scavenging hasn&#39;t been manually disabled on a given resource record. | [optional] 
+**EaExpressionList** | Pointer to [**[]ZoneauthscavengingsettingsEaExpressionList**](ZoneauthscavengingsettingsEaExpressionList.md) | The extensible attributes expression list. The particular record is treated as reclaimable if extensible attributes expression condition evaluates to &#39;true&#39; for given record if scavenging hasn&#39;t been manually disabled on a given resource record. | [optional] 
 
 ## Methods
 
@@ -210,20 +210,20 @@ HasScavengingSchedule returns a boolean if a field has been set.
 
 ### GetExpressionList
 
-`func (o *ZoneAuthScavengingSettings) GetExpressionList() ZoneauthscavengingsettingsExpressionList`
+`func (o *ZoneAuthScavengingSettings) GetExpressionList() []ZoneauthscavengingsettingsExpressionList`
 
 GetExpressionList returns the ExpressionList field if non-nil, zero value otherwise.
 
 ### GetExpressionListOk
 
-`func (o *ZoneAuthScavengingSettings) GetExpressionListOk() (*ZoneauthscavengingsettingsExpressionList, bool)`
+`func (o *ZoneAuthScavengingSettings) GetExpressionListOk() (*[]ZoneauthscavengingsettingsExpressionList, bool)`
 
 GetExpressionListOk returns a tuple with the ExpressionList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpressionList
 
-`func (o *ZoneAuthScavengingSettings) SetExpressionList(v ZoneauthscavengingsettingsExpressionList)`
+`func (o *ZoneAuthScavengingSettings) SetExpressionList(v []ZoneauthscavengingsettingsExpressionList)`
 
 SetExpressionList sets ExpressionList field to given value.
 
@@ -235,20 +235,20 @@ HasExpressionList returns a boolean if a field has been set.
 
 ### GetEaExpressionList
 
-`func (o *ZoneAuthScavengingSettings) GetEaExpressionList() ZoneauthscavengingsettingsEaExpressionList`
+`func (o *ZoneAuthScavengingSettings) GetEaExpressionList() []ZoneauthscavengingsettingsEaExpressionList`
 
 GetEaExpressionList returns the EaExpressionList field if non-nil, zero value otherwise.
 
 ### GetEaExpressionListOk
 
-`func (o *ZoneAuthScavengingSettings) GetEaExpressionListOk() (*ZoneauthscavengingsettingsEaExpressionList, bool)`
+`func (o *ZoneAuthScavengingSettings) GetEaExpressionListOk() (*[]ZoneauthscavengingsettingsEaExpressionList, bool)`
 
 GetEaExpressionListOk returns a tuple with the EaExpressionList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEaExpressionList
 
-`func (o *ZoneAuthScavengingSettings) SetEaExpressionList(v ZoneauthscavengingsettingsEaExpressionList)`
+`func (o *ZoneAuthScavengingSettings) SetEaExpressionList(v []ZoneauthscavengingsettingsEaExpressionList)`
 
 SetEaExpressionList sets EaExpressionList field to given value.
 

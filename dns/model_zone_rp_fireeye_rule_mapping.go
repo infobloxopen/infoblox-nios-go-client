@@ -20,8 +20,9 @@ var _ MappedNullable = &ZoneRpFireeyeRuleMapping{}
 // ZoneRpFireeyeRuleMapping struct for ZoneRpFireeyeRuleMapping
 type ZoneRpFireeyeRuleMapping struct {
 	// The override setting for APT alerts.
-	AptOverride         *string                                      `json:"apt_override,omitempty"`
-	FireeyeAlertMapping *ZonerpfireeyerulemappingFireeyeAlertMapping `json:"fireeye_alert_mapping,omitempty"`
+	AptOverride *string `json:"apt_override,omitempty"`
+	// The FireEye alert mapping.
+	FireeyeAlertMapping []ZonerpfireeyerulemappingFireeyeAlertMapping `json:"fireeye_alert_mapping,omitempty"`
 	// The domain name to be substituted, this is applicable only when apt_override is set to \"SUBSTITUTE\".
 	SubstitutedDomainName *string `json:"substituted_domain_name,omitempty"`
 	AdditionalProperties  map[string]interface{}
@@ -79,17 +80,17 @@ func (o *ZoneRpFireeyeRuleMapping) SetAptOverride(v string) {
 }
 
 // GetFireeyeAlertMapping returns the FireeyeAlertMapping field value if set, zero value otherwise.
-func (o *ZoneRpFireeyeRuleMapping) GetFireeyeAlertMapping() ZonerpfireeyerulemappingFireeyeAlertMapping {
+func (o *ZoneRpFireeyeRuleMapping) GetFireeyeAlertMapping() []ZonerpfireeyerulemappingFireeyeAlertMapping {
 	if o == nil || IsNil(o.FireeyeAlertMapping) {
-		var ret ZonerpfireeyerulemappingFireeyeAlertMapping
+		var ret []ZonerpfireeyerulemappingFireeyeAlertMapping
 		return ret
 	}
-	return *o.FireeyeAlertMapping
+	return o.FireeyeAlertMapping
 }
 
 // GetFireeyeAlertMappingOk returns a tuple with the FireeyeAlertMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ZoneRpFireeyeRuleMapping) GetFireeyeAlertMappingOk() (*ZonerpfireeyerulemappingFireeyeAlertMapping, bool) {
+func (o *ZoneRpFireeyeRuleMapping) GetFireeyeAlertMappingOk() ([]ZonerpfireeyerulemappingFireeyeAlertMapping, bool) {
 	if o == nil || IsNil(o.FireeyeAlertMapping) {
 		return nil, false
 	}
@@ -105,9 +106,9 @@ func (o *ZoneRpFireeyeRuleMapping) HasFireeyeAlertMapping() bool {
 	return false
 }
 
-// SetFireeyeAlertMapping gets a reference to the given ZonerpfireeyerulemappingFireeyeAlertMapping and assigns it to the FireeyeAlertMapping field.
-func (o *ZoneRpFireeyeRuleMapping) SetFireeyeAlertMapping(v ZonerpfireeyerulemappingFireeyeAlertMapping) {
-	o.FireeyeAlertMapping = &v
+// SetFireeyeAlertMapping gets a reference to the given []ZonerpfireeyerulemappingFireeyeAlertMapping and assigns it to the FireeyeAlertMapping field.
+func (o *ZoneRpFireeyeRuleMapping) SetFireeyeAlertMapping(v []ZonerpfireeyerulemappingFireeyeAlertMapping) {
+	o.FireeyeAlertMapping = v
 }
 
 // GetSubstitutedDomainName returns the SubstitutedDomainName field value if set, zero value otherwise.

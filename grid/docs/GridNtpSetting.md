@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EnableNtp** | Pointer to **bool** | Determines whether NTP is enabled on the Grid. | [optional] 
-**NtpServers** | Pointer to [**GridntpsettingNtpServers**](GridntpsettingNtpServers.md) |  | [optional] 
-**NtpKeys** | Pointer to [**GridntpsettingNtpKeys**](GridntpsettingNtpKeys.md) |  | [optional] 
+**NtpServers** | Pointer to [**[]GridntpsettingNtpServers**](GridntpsettingNtpServers.md) | The list of NTP servers configured on a Grid. | [optional] 
+**NtpKeys** | Pointer to [**[]GridntpsettingNtpKeys**](GridntpsettingNtpKeys.md) | The list of NTP authentication keys used to authenticate NTP clients. | [optional] 
 **NtpAcl** | Pointer to [**GridntpsettingNtpAcl**](GridntpsettingNtpAcl.md) |  | [optional] 
 **NtpKod** | Pointer to **bool** | Determines whether the Kiss-o&#39;-Death packets are enabled. | [optional] 
 **GmLocalNtpStratum** | Pointer to **int64** | Grid level GM local NTP stratum. | [optional] 
@@ -59,20 +59,20 @@ HasEnableNtp returns a boolean if a field has been set.
 
 ### GetNtpServers
 
-`func (o *GridNtpSetting) GetNtpServers() GridntpsettingNtpServers`
+`func (o *GridNtpSetting) GetNtpServers() []GridntpsettingNtpServers`
 
 GetNtpServers returns the NtpServers field if non-nil, zero value otherwise.
 
 ### GetNtpServersOk
 
-`func (o *GridNtpSetting) GetNtpServersOk() (*GridntpsettingNtpServers, bool)`
+`func (o *GridNtpSetting) GetNtpServersOk() (*[]GridntpsettingNtpServers, bool)`
 
 GetNtpServersOk returns a tuple with the NtpServers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNtpServers
 
-`func (o *GridNtpSetting) SetNtpServers(v GridntpsettingNtpServers)`
+`func (o *GridNtpSetting) SetNtpServers(v []GridntpsettingNtpServers)`
 
 SetNtpServers sets NtpServers field to given value.
 
@@ -84,20 +84,20 @@ HasNtpServers returns a boolean if a field has been set.
 
 ### GetNtpKeys
 
-`func (o *GridNtpSetting) GetNtpKeys() GridntpsettingNtpKeys`
+`func (o *GridNtpSetting) GetNtpKeys() []GridntpsettingNtpKeys`
 
 GetNtpKeys returns the NtpKeys field if non-nil, zero value otherwise.
 
 ### GetNtpKeysOk
 
-`func (o *GridNtpSetting) GetNtpKeysOk() (*GridntpsettingNtpKeys, bool)`
+`func (o *GridNtpSetting) GetNtpKeysOk() (*[]GridntpsettingNtpKeys, bool)`
 
 GetNtpKeysOk returns a tuple with the NtpKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNtpKeys
 
-`func (o *GridNtpSetting) SetNtpKeys(v GridntpsettingNtpKeys)`
+`func (o *GridNtpSetting) SetNtpKeys(v []GridntpsettingNtpKeys)`
 
 SetNtpKeys sets NtpKeys field to given value.
 

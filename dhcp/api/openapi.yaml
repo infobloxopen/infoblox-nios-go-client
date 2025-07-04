@@ -13371,7 +13371,9 @@ components:
         discovery_member: Example discovery_member
         subscribe_settings:
           mapped_ea_attributes:
-            mapped_ea: Example mapped_ea
+          - mapped_ea: Example mapped_ea
+            name: Example name
+          - mapped_ea: Example mapped_ea
             name: Example name
           enabled_attributes:
           - enabled_attributes
@@ -14315,7 +14317,9 @@ components:
     Ipv6rangeSubscribeSettings:
       example:
         mapped_ea_attributes:
-          mapped_ea: Example mapped_ea
+        - mapped_ea: Example mapped_ea
+          name: Example name
+        - mapped_ea: Example mapped_ea
           name: Example name
         enabled_attributes:
         - enabled_attributes
@@ -14335,7 +14339,11 @@ components:
             type: string
           type: array
         mapped_ea_attributes:
-          $ref: '#/components/schemas/Ipv6rangesubscribesettingsMappedEaAttributes'
+          description: The list of NIOS extensible attributes to Cisco ISE attributes
+            mappings.
+          items:
+            $ref: '#/components/schemas/Ipv6rangesubscribesettingsMappedEaAttributes'
+          type: array
       type: object
     Ipv6rangesubscribesettingsMappedEaAttributes:
       example:
@@ -16399,7 +16407,9 @@ components:
           permission: Example permission
         subscribe_settings:
           mapped_ea_attributes:
-            mapped_ea: Example mapped_ea
+          - mapped_ea: Example mapped_ea
+            name: Example name
+          - mapped_ea: Example mapped_ea
             name: Example name
           enabled_attributes:
           - enabled_attributes
@@ -17812,7 +17822,9 @@ components:
     RangeSubscribeSettings:
       example:
         mapped_ea_attributes:
-          mapped_ea: Example mapped_ea
+        - mapped_ea: Example mapped_ea
+          name: Example name
+        - mapped_ea: Example mapped_ea
           name: Example name
         enabled_attributes:
         - enabled_attributes
@@ -17832,7 +17844,11 @@ components:
             type: string
           type: array
         mapped_ea_attributes:
-          $ref: '#/components/schemas/RangesubscribesettingsMappedEaAttributes'
+          description: The list of NIOS extensible attributes to Cisco ISE attributes
+            mappings.
+          items:
+            $ref: '#/components/schemas/RangesubscribesettingsMappedEaAttributes'
+          type: array
       type: object
     RangesubscribesettingsMappedEaAttributes:
       example:
@@ -21659,7 +21675,9 @@ components:
           discovery_member: Example discovery_member
           subscribe_settings:
             mapped_ea_attributes:
-              mapped_ea: Example mapped_ea
+            - mapped_ea: Example mapped_ea
+              name: Example name
+            - mapped_ea: Example mapped_ea
               name: Example name
             enabled_attributes:
             - enabled_attributes
@@ -21814,7 +21832,9 @@ components:
           discovery_member: Example discovery_member
           subscribe_settings:
             mapped_ea_attributes:
-              mapped_ea: Example mapped_ea
+            - mapped_ea: Example mapped_ea
+              name: Example name
+            - mapped_ea: Example mapped_ea
               name: Example name
             enabled_attributes:
             - enabled_attributes
@@ -22485,7 +22505,9 @@ components:
             permission: Example permission
           subscribe_settings:
             mapped_ea_attributes:
-              mapped_ea: Example mapped_ea
+            - mapped_ea: Example mapped_ea
+              name: Example name
+            - mapped_ea: Example mapped_ea
               name: Example name
             enabled_attributes:
             - enabled_attributes
@@ -22744,7 +22766,9 @@ components:
             permission: Example permission
           subscribe_settings:
             mapped_ea_attributes:
-              mapped_ea: Example mapped_ea
+            - mapped_ea: Example mapped_ea
+              name: Example name
+            - mapped_ea: Example mapped_ea
               name: Example name
             enabled_attributes:
             - enabled_attributes
