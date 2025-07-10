@@ -261,6 +261,8 @@ Class | Method | HTTP request | Description
  - [Ipv6networkLogicFilterRules](docs/Ipv6networkLogicFilterRules.md)
  - [Ipv6networkMembers](docs/Ipv6networkMembers.md)
  - [Ipv6networkMsAdUserData](docs/Ipv6networkMsAdUserData.md)
+ - [Ipv6networkNetwork](docs/Ipv6networkNetwork.md)
+ - [Ipv6networkNetworkOneOf](docs/Ipv6networkNetworkOneOf.md)
  - [Ipv6networkOptions](docs/Ipv6networkOptions.md)
  - [Ipv6networkPortControlBlackoutSetting](docs/Ipv6networkPortControlBlackoutSetting.md)
  - [Ipv6networkSubscribeSettings](docs/Ipv6networkSubscribeSettings.md)
