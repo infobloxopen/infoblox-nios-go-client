@@ -276,6 +276,8 @@ Class | Method | HTTP request | Description
  - [Ipv6networkcontainerFederatedRealms](docs/Ipv6networkcontainerFederatedRealms.md)
  - [Ipv6networkcontainerLogicFilterRules](docs/Ipv6networkcontainerLogicFilterRules.md)
  - [Ipv6networkcontainerMsAdUserData](docs/Ipv6networkcontainerMsAdUserData.md)
+ - [Ipv6networkcontainerNetwork](docs/Ipv6networkcontainerNetwork.md)
+ - [Ipv6networkcontainerNetworkOneOf](docs/Ipv6networkcontainerNetworkOneOf.md)
  - [Ipv6networkcontainerOptions](docs/Ipv6networkcontainerOptions.md)
  - [Ipv6networkcontainerPortControlBlackoutSetting](docs/Ipv6networkcontainerPortControlBlackoutSetting.md)
  - [Ipv6networkcontainerSubscribeSettings](docs/Ipv6networkcontainerSubscribeSettings.md)
