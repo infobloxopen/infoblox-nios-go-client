@@ -2007,6 +2007,9 @@ paths:
       x-tf-resource: ipam_ipv6network
       x-tf-datasource: ipam_ipv6network
       x-sdk-default-ext-attrs: true
+      x-sdk-post-function-call:
+      - Network
+      x-tf-function-call: true
   /ipv6network/{reference}:
     delete:
       description: Deletes a specific ipv6network object by reference
@@ -2164,6 +2167,9 @@ paths:
       tags:
       - Ipv6network
       x-sdk-default-ext-attrs: true
+      x-sdk-put-function-call:
+      - Network
+      x-tf-function-call: true
   /ipv6networkcontainer:
     get:
       description: Returns a list of ipv6networkcontainer objects matching the search
@@ -2323,6 +2329,9 @@ paths:
       x-tf-resource: ipam_ipv6networkcontainer
       x-tf-datasource: ipam_ipv6networkcontainer
       x-sdk-default-ext-attrs: true
+      x-sdk-post-function-call:
+      - Network
+      x-tf-function-call: true
   /ipv6networkcontainer/{reference}:
     delete:
       description: Deletes a specific ipv6networkcontainer object by reference
@@ -2491,6 +2500,9 @@ paths:
       tags:
       - Ipv6networkcontainer
       x-sdk-default-ext-attrs: true
+      x-sdk-put-function-call:
+      - Network
+      x-tf-function-call: true
   /ipv6networktemplate:
     get:
       description: Returns a list of ipv6networktemplate objects matching the search
@@ -12193,6 +12205,14 @@ components:
         discovery_engine_type: Example discovery_engine_type
         use_enable_ifmap_publishing: false
         enable_ifmap_publishing: false
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          _object_ref: _object_ref
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         use_valid_lifetime: false
         delete_reason: Example delete_reason
         domain_name_servers:
@@ -12328,7 +12348,7 @@ components:
           port_scanning: false
           auto_arp_refresh_before_switch_port_polling: false
         enable_ddns: false
-        network: Example network
+        network: Ipv6network_network
         recycle_leases: false
         use_logic_filter_rules: false
         use_subscribe_settings: false
@@ -12628,13 +12648,9 @@ components:
         ms_ad_user_data:
           $ref: '#/components/schemas/Ipv6networkMsAdUserData'
         network:
-          description: "The network address in IPv6 Address/CIDR format. For regular\
-            \ expression searches, only the IPv6 Address portion is supported. Searches\
-            \ for the CIDR portion is always an exact match. For example, both network\
-            \ containers 16::0/28 and 26::0/24 are matched by expression '.6' and\
-            \ only 26::0/24 is matched by '.6/24'."
-          example: Example network
-          type: string
+          $ref: '#/components/schemas/Ipv6network_network'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         network_container:
           description: "The network container to which this network belongs, if any."
           example: Example network_container
@@ -13613,6 +13629,14 @@ components:
           - enabled_attributes
           - enabled_attributes
         discovery_engine_type: Example discovery_engine_type
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          _object_ref: _object_ref
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         use_valid_lifetime: false
         delete_reason: Example delete_reason
         domain_name_servers:
@@ -13729,7 +13753,7 @@ components:
           port_scanning: false
           auto_arp_refresh_before_switch_port_polling: false
         enable_ddns: false
-        network: Example network
+        network: Ipv6networkcontainer_network
         use_logic_filter_rules: false
         use_subscribe_settings: false
         discover_now_status: Example discover_now_status
@@ -13954,13 +13978,9 @@ components:
         ms_ad_user_data:
           $ref: '#/components/schemas/Ipv6networkcontainerMsAdUserData'
         network:
-          description: "The network address in IPv6 Address/CIDR format. For regular\
-            \ expression searches, only the IPv6 Address portion is supported. Searches\
-            \ for the CIDR portion is always an exact match. For example, both network\
-            \ containers 16::0/28 and 26::0/24 are matched by expression '.6' and\
-            \ only 26::0/24 is matched by '.6/24'."
-          example: Example network
-          type: string
+          $ref: '#/components/schemas/Ipv6networkcontainer_network'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         network_container:
           description: "The network container to which this network belongs, if any."
           example: Example network_container
@@ -18496,6 +18516,42 @@ components:
           $ref: '#/components/schemas/Networkview'
       title: UpdateNetworkviewResponseAsObject
       type: object
+    Ipv6network_network_oneOf:
+      description: "ipv6network: The network address in IPv6 Address/CIDR format.\
+        \ For regular expression searches, only the IPv6 Address portion is supported.\
+        \ Searches for the CIDR portion is always an exact match. For example, both\
+        \ network containers 16::0/28 and 26::0/24 are matched by expression '.6'\
+        \ and only 26::0/24 is matched by '.6/24'."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+        _object_ref:
+          description: A WAPI object reference on which the function calls. Either
+            _object or _object_ref must be set.
+          type: string
+      type: object
+    Ipv6network_network:
+      description: "The network address in IPv6 Address/CIDR format. For regular expression\
+        \ searches, only the IPv6 Address portion is supported. Searches for the CIDR\
+        \ portion is always an exact match. For example, both network containers 16::0/28\
+        \ and 26::0/24 are matched by expression '.6' and only 26::0/24 is matched\
+        \ by '.6/24'."
+      oneOf:
+      - description: "ipv6network: The network address in IPv6 Address/CIDR format.\
+          \ For regular expression searches, only the IPv6 Address portion is supported.\
+          \ Searches for the CIDR portion is always an exact match. For example, both\
+          \ network containers 16::0/28 and 26::0/24 are matched by expression '.6'\
+          \ and only 26::0/24 is matched by '.6/24'."
+        type: string
+      - $ref: '#/components/schemas/Ipv6network_network_oneOf'
     ListIpv6networkResponseObject:
       description: The response format to retrieve __Ipv6network__ objects.
       properties:
@@ -18521,6 +18577,14 @@ components:
           discovery_engine_type: Example discovery_engine_type
           use_enable_ifmap_publishing: false
           enable_ifmap_publishing: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           use_valid_lifetime: false
           delete_reason: Example delete_reason
           domain_name_servers:
@@ -18656,7 +18720,7 @@ components:
             port_scanning: false
             auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
-          network: Example network
+          network: Ipv6network_network
           recycle_leases: false
           use_logic_filter_rules: false
           use_subscribe_settings: false
@@ -18744,6 +18808,14 @@ components:
           discovery_engine_type: Example discovery_engine_type
           use_enable_ifmap_publishing: false
           enable_ifmap_publishing: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           use_valid_lifetime: false
           delete_reason: Example delete_reason
           domain_name_servers:
@@ -18879,7 +18951,7 @@ components:
             port_scanning: false
             auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
-          network: Example network
+          network: Ipv6network_network
           recycle_leases: false
           use_logic_filter_rules: false
           use_subscribe_settings: false
@@ -18943,6 +19015,42 @@ components:
           $ref: '#/components/schemas/Ipv6network'
       title: UpdateIpv6networkResponseAsObject
       type: object
+    Ipv6networkcontainer_network_oneOf:
+      description: "ipv6networkcontainer: The network address in IPv6 Address/CIDR\
+        \ format. For regular expression searches, only the IPv6 Address portion is\
+        \ supported. Searches for the CIDR portion is always an exact match. For example,\
+        \ both network containers 16::0/28 and 26::0/24 are matched by expression\
+        \ '.6' and only 26::0/24 is matched by '.6/24'."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+        _object_ref:
+          description: A WAPI object reference on which the function calls. Either
+            _object or _object_ref must be set.
+          type: string
+      type: object
+    Ipv6networkcontainer_network:
+      description: "The network address in IPv6 Address/CIDR format. For regular expression\
+        \ searches, only the IPv6 Address portion is supported. Searches for the CIDR\
+        \ portion is always an exact match. For example, both network containers 16::0/28\
+        \ and 26::0/24 are matched by expression '.6' and only 26::0/24 is matched\
+        \ by '.6/24'."
+      oneOf:
+      - description: "ipv6networkcontainer: The network address in IPv6 Address/CIDR\
+          \ format. For regular expression searches, only the IPv6 Address portion\
+          \ is supported. Searches for the CIDR portion is always an exact match.\
+          \ For example, both network containers 16::0/28 and 26::0/24 are matched\
+          \ by expression '.6' and only 26::0/24 is matched by '.6/24'."
+        type: string
+      - $ref: '#/components/schemas/Ipv6networkcontainer_network_oneOf'
     ListIpv6networkcontainerResponseObject:
       description: The response format to retrieve __Ipv6networkcontainer__ objects.
       properties:
@@ -18967,6 +19075,14 @@ components:
             - enabled_attributes
             - enabled_attributes
           discovery_engine_type: Example discovery_engine_type
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           use_valid_lifetime: false
           delete_reason: Example delete_reason
           domain_name_servers:
@@ -19083,7 +19199,7 @@ components:
             port_scanning: false
             auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
-          network: Example network
+          network: Ipv6networkcontainer_network
           use_logic_filter_rules: false
           use_subscribe_settings: false
           discover_now_status: Example discover_now_status
@@ -19162,6 +19278,14 @@ components:
             - enabled_attributes
             - enabled_attributes
           discovery_engine_type: Example discovery_engine_type
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           use_valid_lifetime: false
           delete_reason: Example delete_reason
           domain_name_servers:
@@ -19278,7 +19402,7 @@ components:
             port_scanning: false
             auto_arp_refresh_before_switch_port_polling: false
           enable_ddns: false
-          network: Example network
+          network: Ipv6networkcontainer_network
           use_logic_filter_rules: false
           use_subscribe_settings: false
           discover_now_status: Example discover_now_status

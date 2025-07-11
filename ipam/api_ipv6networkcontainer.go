@@ -209,6 +209,33 @@ func (a *Ipv6networkcontainerAPIService) CreateExecute(r Ipv6networkcontainerAPI
 			}
 		}
 	}
+	if r.ipv6networkcontainer.FuncCall != nil {
+		bodyForFuncCall := r.ipv6networkcontainer
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Network" {
+			if bodyForFuncCall.Network.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Network cannot be provided when function call is used")
+			} else {
+
+				var l Ipv6networkcontainerNetwork
+				var m Ipv6networkcontainerNetworkOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.Ipv6networkcontainerNetworkOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Network = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.ipv6networkcontainer = bodyForFuncCall
+	}
 	// body params
 	localVarPostBody = r.ipv6networkcontainer
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -756,6 +783,12 @@ func (a *Ipv6networkcontainerAPIService) UpdateExecute(r Ipv6networkcontainerAPI
 				}
 			}
 		}
+	}
+	if r.ipv6networkcontainer.FuncCall != nil {
+		bodyForFuncCall := r.ipv6networkcontainer
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Network = nil
+		r.ipv6networkcontainer = bodyForFuncCall
 	}
 	// body params
 	localVarPostBody = r.ipv6networkcontainer
