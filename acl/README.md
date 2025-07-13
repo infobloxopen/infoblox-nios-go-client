@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import acl "github.com/Infoblox-CTO/infoblox-nios-go-client/acl"
+import acl "github.com/infobloxopen/infoblox-nios-go-client/acl"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

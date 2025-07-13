@@ -27,7 +27,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 )
 
 func main() {
@@ -99,7 +99,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 )
 
 func main() {

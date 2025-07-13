@@ -1,4 +1,4 @@
-module github.com/Infoblox-CTO/infoblox-nios-go-client
+module github.com/infobloxopen/infoblox-nios-go-client
 
 go 1.24.4
 

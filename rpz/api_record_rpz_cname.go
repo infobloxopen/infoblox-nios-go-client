@@ -18,7 +18,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
+	"github.com/infobloxopen/infoblox-nios-go-client/internal"
 )
 
 type RecordRpzCnameAPI interface {

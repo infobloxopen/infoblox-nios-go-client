@@ -95,8 +95,8 @@ type Ipv6network struct {
 	// This field is assumed to be True unless filled by any conforming objects, such as Network, IPv6 Network, Network Container, IPv6 Network Container, and Network View. This value is set to False if mgm_private is set to True in the parent object.
 	MgmPrivateOverridable *bool                    `json:"mgm_private_overridable,omitempty"`
 	MsAdUserData          *Ipv6networkMsAdUserData `json:"ms_ad_user_data,omitempty"`
-	// The network address in IPv6 Address/CIDR format. For regular expression searches, only the IPv6 Address portion is supported. Searches for the CIDR portion is always an exact match. For example, both network containers 16::0/28 and 26::0/24 are matched by expression '.6' and only 26::0/24 is matched by '.6/24'.
-	Network *string `json:"network,omitempty"`
+	Network               *Ipv6networkNetwork      `json:"network,omitempty"`
+	FuncCall              *FuncCall                `json:"func_call,omitempty"`
 	// The network container to which this network belongs, if any.
 	NetworkContainer *string `json:"network_container,omitempty"`
 	// The name of the network view in which this network resides.
@@ -1477,9 +1477,9 @@ func (o *Ipv6network) SetMsAdUserData(v Ipv6networkMsAdUserData) {
 }
 
 // GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *Ipv6network) GetNetwork() string {
+func (o *Ipv6network) GetNetwork() Ipv6networkNetwork {
 	if o == nil || IsNil(o.Network) {
-		var ret string
+		var ret Ipv6networkNetwork
 		return ret
 	}
 	return *o.Network
@@ -1487,7 +1487,7 @@ func (o *Ipv6network) GetNetwork() string {
 
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6network) GetNetworkOk() (*string, bool) {
+func (o *Ipv6network) GetNetworkOk() (*Ipv6networkNetwork, bool) {
 	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
@@ -1503,9 +1503,41 @@ func (o *Ipv6network) HasNetwork() bool {
 	return false
 }
 
-// SetNetwork gets a reference to the given string and assigns it to the Network field.
-func (o *Ipv6network) SetNetwork(v string) {
+// SetNetwork gets a reference to the given Ipv6networkNetwork and assigns it to the Network field.
+func (o *Ipv6network) SetNetwork(v Ipv6networkNetwork) {
 	o.Network = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *Ipv6network) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Ipv6network) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *Ipv6network) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *Ipv6network) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetNetworkContainer returns the NetworkContainer field value if set, zero value otherwise.
@@ -2952,6 +2984,9 @@ func (o Ipv6network) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
+	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
 	}
 	if !IsNil(o.NetworkContainer) {
 		toSerialize["network_container"] = o.NetworkContainer

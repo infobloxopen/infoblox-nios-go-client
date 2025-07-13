@@ -16,7 +16,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dns"
+	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 )
 
 func TestRecordAAPIService(t *testing.T) {

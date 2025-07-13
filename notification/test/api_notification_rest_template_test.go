@@ -16,7 +16,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/notification"
+	"github.com/infobloxopen/infoblox-nios-go-client/notification"
 )
 
 func TestNotificationRestTemplateAPIService(t *testing.T) {

@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import notification "github.com/Infoblox-CTO/infoblox-nios-go-client/notification"
+import notification "github.com/infobloxopen/infoblox-nios-go-client/notification"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

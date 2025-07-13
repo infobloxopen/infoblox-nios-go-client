@@ -3,7 +3,7 @@ package option
 import (
 	"net/http"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
+	"github.com/infobloxopen/infoblox-nios-go-client/internal"
 )
 
 // ClientOption is a function that applies configuration options to the API Client.

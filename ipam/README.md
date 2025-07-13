@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import ipam "github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+import ipam "github.com/infobloxopen/infoblox-nios-go-client/ipam"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -261,6 +261,8 @@ Class | Method | HTTP request | Description
  - [Ipv6networkLogicFilterRules](docs/Ipv6networkLogicFilterRules.md)
  - [Ipv6networkMembers](docs/Ipv6networkMembers.md)
  - [Ipv6networkMsAdUserData](docs/Ipv6networkMsAdUserData.md)
+ - [Ipv6networkNetwork](docs/Ipv6networkNetwork.md)
+ - [Ipv6networkNetworkOneOf](docs/Ipv6networkNetworkOneOf.md)
  - [Ipv6networkOptions](docs/Ipv6networkOptions.md)
  - [Ipv6networkPortControlBlackoutSetting](docs/Ipv6networkPortControlBlackoutSetting.md)
  - [Ipv6networkSubscribeSettings](docs/Ipv6networkSubscribeSettings.md)
@@ -274,6 +276,8 @@ Class | Method | HTTP request | Description
  - [Ipv6networkcontainerFederatedRealms](docs/Ipv6networkcontainerFederatedRealms.md)
  - [Ipv6networkcontainerLogicFilterRules](docs/Ipv6networkcontainerLogicFilterRules.md)
  - [Ipv6networkcontainerMsAdUserData](docs/Ipv6networkcontainerMsAdUserData.md)
+ - [Ipv6networkcontainerNetwork](docs/Ipv6networkcontainerNetwork.md)
+ - [Ipv6networkcontainerNetworkOneOf](docs/Ipv6networkcontainerNetworkOneOf.md)
  - [Ipv6networkcontainerOptions](docs/Ipv6networkcontainerOptions.md)
  - [Ipv6networkcontainerPortControlBlackoutSetting](docs/Ipv6networkcontainerPortControlBlackoutSetting.md)
  - [Ipv6networkcontainerSubscribeSettings](docs/Ipv6networkcontainerSubscribeSettings.md)
