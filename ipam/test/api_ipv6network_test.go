@@ -16,7 +16,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/ipam"
+	"github.com/infobloxopen/infoblox-nios-go-client/ipam"
 )
 
 func TestIpv6networkAPIService(t *testing.T) {

@@ -18,7 +18,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
+	"github.com/infobloxopen/infoblox-nios-go-client/internal"
 )
 
 type Ipv6networkAPI interface {
@@ -208,6 +208,33 @@ func (a *Ipv6networkAPIService) CreateExecute(r Ipv6networkAPICreateRequest) (*C
 				}
 			}
 		}
+	}
+	if r.ipv6network.FuncCall != nil {
+		bodyForFuncCall := r.ipv6network
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Network" {
+			if bodyForFuncCall.Network.String != nil {
+				return localVarReturnValue, nil, internal.ReportError("Network cannot be provided when function call is used")
+			} else {
+
+				var l Ipv6networkNetwork
+				var m Ipv6networkNetworkOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.Ipv6networkNetworkOneOf = &m
+				l.String = nil
+				bodyForFuncCall.Network = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.ipv6network = bodyForFuncCall
 	}
 	// body params
 	localVarPostBody = r.ipv6network
@@ -746,6 +773,12 @@ func (a *Ipv6networkAPIService) UpdateExecute(r Ipv6networkAPIUpdateRequest) (*U
 				}
 			}
 		}
+	}
+	if r.ipv6network.FuncCall != nil {
+		bodyForFuncCall := r.ipv6network
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Network = nil
+		r.ipv6network = bodyForFuncCall
 	}
 	// body params
 	localVarPostBody = r.ipv6network

@@ -39,4 +39,6 @@ model_update_rir_organization_response.go
 model_update_rir_organization_response_as_object.go
 model_update_rir_response.go
 model_update_rir_response_as_object.go
+test/api_rir_organization_test.go
+test/api_rir_test.go
 utils.go

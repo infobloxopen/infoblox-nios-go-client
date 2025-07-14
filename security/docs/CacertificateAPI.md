@@ -28,7 +28,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+	"github.com/infobloxopen/infoblox-nios-go-client/security"
 )
 
 func main() {
@@ -95,7 +95,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+	"github.com/infobloxopen/infoblox-nios-go-client/security"
 )
 
 func main() {
@@ -167,7 +167,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/security"
+	"github.com/infobloxopen/infoblox-nios-go-client/security"
 )
 
 func main() {

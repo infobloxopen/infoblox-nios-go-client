@@ -27,7 +27,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/smartfolder"
+	"github.com/infobloxopen/infoblox-nios-go-client/smartfolder"
 )
 
 func main() {
@@ -99,7 +99,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/smartfolder"
+	"github.com/infobloxopen/infoblox-nios-go-client/smartfolder"
 )
 
 func main() {

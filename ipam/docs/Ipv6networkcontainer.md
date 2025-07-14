@@ -32,7 +32,8 @@ Name | Type | Description | Notes
 **MgmPrivate** | Pointer to **bool** | This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized. | [optional] 
 **MgmPrivateOverridable** | Pointer to **bool** | This field is assumed to be True unless filled by any conforming objects, such as Network, IPv6 Network, Network Container, IPv6 Network Container, and Network View. This value is set to False if mgm_private is set to True in the parent object. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**Ipv6networkcontainerMsAdUserData**](Ipv6networkcontainerMsAdUserData.md) |  | [optional] 
-**Network** | Pointer to **string** | The network address in IPv6 Address/CIDR format. For regular expression searches, only the IPv6 Address portion is supported. Searches for the CIDR portion is always an exact match. For example, both network containers 16::0/28 and 26::0/24 are matched by expression &#39;.6&#39; and only 26::0/24 is matched by &#39;.6/24&#39;. | [optional] 
+**Network** | Pointer to [**Ipv6networkcontainerNetwork**](Ipv6networkcontainerNetwork.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **NetworkContainer** | Pointer to **string** | The network container to which this network belongs, if any. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this network resides. | [optional] 
 **Options** | Pointer to [**[]Ipv6networkcontainerOptions**](Ipv6networkcontainerOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
@@ -791,20 +792,20 @@ HasMsAdUserData returns a boolean if a field has been set.
 
 ### GetNetwork
 
-`func (o *Ipv6networkcontainer) GetNetwork() string`
+`func (o *Ipv6networkcontainer) GetNetwork() Ipv6networkcontainerNetwork`
 
 GetNetwork returns the Network field if non-nil, zero value otherwise.
 
 ### GetNetworkOk
 
-`func (o *Ipv6networkcontainer) GetNetworkOk() (*string, bool)`
+`func (o *Ipv6networkcontainer) GetNetworkOk() (*Ipv6networkcontainerNetwork, bool)`
 
 GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetwork
 
-`func (o *Ipv6networkcontainer) SetNetwork(v string)`
+`func (o *Ipv6networkcontainer) SetNetwork(v Ipv6networkcontainerNetwork)`
 
 SetNetwork sets Network field to given value.
 
@@ -813,6 +814,31 @@ SetNetwork sets Network field to given value.
 `func (o *Ipv6networkcontainer) HasNetwork() bool`
 
 HasNetwork returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *Ipv6networkcontainer) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *Ipv6networkcontainer) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *Ipv6networkcontainer) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *Ipv6networkcontainer) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetNetworkContainer
 

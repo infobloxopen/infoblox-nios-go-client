@@ -35,4 +35,6 @@ model_update_federatedrealms_response.go
 model_update_federatedrealms_response_as_object.go
 model_update_fedipamop_response.go
 model_update_fedipamop_response_as_object.go
+test/api_federatedrealms_test.go
+test/api_fedipamop_test.go
 utils.go
