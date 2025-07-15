@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
+	"github.com/infobloxopen/infoblox-nios-go-client/internal"
 )
 
 func TestWithNIOSAuthUrl(t *testing.T) {

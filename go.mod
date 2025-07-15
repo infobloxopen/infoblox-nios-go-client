@@ -1,8 +1,6 @@
-module github.com/Infoblox-CTO/infoblox-nios-go-client
+module github.com/infobloxopen/infoblox-nios-go-client
 
-go 1.23.0
-
-toolchain go1.23.4
+go 1.23.4
 
 require (
 	github.com/stretchr/testify v1.10.0

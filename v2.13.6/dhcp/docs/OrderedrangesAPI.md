@@ -28,7 +28,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+	"github.com/infobloxopen/infoblox-nios-go-client/dhcp"
 )
 
 func main() {
@@ -100,7 +100,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+	"github.com/infobloxopen/infoblox-nios-go-client/dhcp"
 )
 
 func main() {
@@ -172,7 +172,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/dhcp"
+	"github.com/infobloxopen/infoblox-nios-go-client/dhcp"
 )
 
 func main() {

@@ -11,8 +11,8 @@ API version: 2.13.6
 package grid
 
 import (
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/internal"
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/option"
+	"github.com/infobloxopen/infoblox-nios-go-client/internal"
+	"github.com/infobloxopen/infoblox-nios-go-client/option"
 )
 
 const serviceBasePath = "/wapi/v2.13.6"

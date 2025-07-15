@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import grid "github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+import grid "github.com/infobloxopen/infoblox-nios-go-client/grid"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

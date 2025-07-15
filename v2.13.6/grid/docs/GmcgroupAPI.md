@@ -30,7 +30,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 )
 
 func main() {
@@ -99,7 +99,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 )
 
 func main() {
@@ -166,7 +166,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 )
 
 func main() {
@@ -238,7 +238,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 )
 
 func main() {
@@ -310,7 +310,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/grid"
+	"github.com/infobloxopen/infoblox-nios-go-client/grid"
 )
 
 func main() {

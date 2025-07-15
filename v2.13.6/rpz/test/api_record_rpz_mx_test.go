@@ -16,7 +16,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/Infoblox-CTO/infoblox-nios-go-client/v2.13.6/rpz"
+	"github.com/infobloxopen/infoblox-nios-go-client/v2.13.6/rpz"
 )
 
 func TestRecordRpzMxAPIService(t *testing.T) {
