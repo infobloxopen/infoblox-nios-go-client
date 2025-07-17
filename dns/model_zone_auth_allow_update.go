@@ -21,6 +21,8 @@ var _ MappedNullable = &ZoneAuthAllowUpdate{}
 type ZoneAuthAllowUpdate struct {
 	// The address this rule applies to or \"Any\".
 	Address *string `json:"address,omitempty"`
+	// The struct type of the object.
+	Struct *string `json:"_struct,omitempty"`
 	// The permission to use for this address.
 	Permission *string `json:"permission,omitempty"`
 	// A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT.
@@ -83,6 +85,38 @@ func (o *ZoneAuthAllowUpdate) HasAddress() bool {
 // SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *ZoneAuthAllowUpdate) SetAddress(v string) {
 	o.Address = &v
+}
+
+// GetStruct returns the Struct field value if set, zero value otherwise.
+func (o *ZoneAuthAllowUpdate) GetStruct() string {
+	if o == nil || IsNil(o.Struct) {
+		var ret string
+		return ret
+	}
+	return *o.Struct
+}
+
+// GetStructOk returns a tuple with the Struct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ZoneAuthAllowUpdate) GetStructOk() (*string, bool) {
+	if o == nil || IsNil(o.Struct) {
+		return nil, false
+	}
+	return o.Struct, true
+}
+
+// HasStruct returns a boolean if a field has been set.
+func (o *ZoneAuthAllowUpdate) HasStruct() bool {
+	if o != nil && !IsNil(o.Struct) {
+		return true
+	}
+
+	return false
+}
+
+// SetStruct gets a reference to the given string and assigns it to the Struct field.
+func (o *ZoneAuthAllowUpdate) SetStruct(v string) {
+	o.Struct = &v
 }
 
 // GetPermission returns the Permission field value if set, zero value otherwise.
@@ -258,6 +292,9 @@ func (o ZoneAuthAllowUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
+	if !IsNil(o.Struct) {
+		toSerialize["_struct"] = o.Struct
+	}
 	if !IsNil(o.Permission) {
 		toSerialize["permission"] = o.Permission
 	}
@@ -296,6 +333,7 @@ func (o *ZoneAuthAllowUpdate) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "address")
+		delete(additionalProperties, "_struct")
 		delete(additionalProperties, "permission")
 		delete(additionalProperties, "tsig_key")
 		delete(additionalProperties, "tsig_key_alg")

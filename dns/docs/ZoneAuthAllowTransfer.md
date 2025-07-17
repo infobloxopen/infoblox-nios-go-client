@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | The address this rule applies to or \&quot;Any\&quot;. | [optional] 
+**Struct** | Pointer to **string** | The struct type of the object. | [optional] 
 **Permission** | Pointer to **string** | The permission to use for this address. | [optional] 
 **TsigKey** | Pointer to **string** | A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT. | [optional] 
 **TsigKeyAlg** | Pointer to **string** | The TSIG key algorithm. | [optional] 
@@ -54,6 +55,31 @@ SetAddress sets Address field to given value.
 `func (o *ZoneAuthAllowTransfer) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetStruct
+
+`func (o *ZoneAuthAllowTransfer) GetStruct() string`
+
+GetStruct returns the Struct field if non-nil, zero value otherwise.
+
+### GetStructOk
+
+`func (o *ZoneAuthAllowTransfer) GetStructOk() (*string, bool)`
+
+GetStructOk returns a tuple with the Struct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStruct
+
+`func (o *ZoneAuthAllowTransfer) SetStruct(v string)`
+
+SetStruct sets Struct field to given value.
+
+### HasStruct
+
+`func (o *ZoneAuthAllowTransfer) HasStruct() bool`
+
+HasStruct returns a boolean if a field has been set.
 
 ### GetPermission
 

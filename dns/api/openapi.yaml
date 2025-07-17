@@ -25490,13 +25490,15 @@ components:
         ms_ad_integrated: false
         use_dnssec_key_params: false
         allow_transfer:
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -25667,13 +25669,15 @@ components:
         create_underscore_zones: false
         soa_refresh: 1
         allow_query:
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -25689,13 +25693,15 @@ components:
         - network
         - network
         allow_update:
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -26545,6 +26551,7 @@ components:
       type: object
     ZoneAuthAllowQuery:
       example:
+        _struct: _struct
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
@@ -26555,6 +26562,9 @@ components:
         address:
           description: The address this rule applies to or "Any".
           example: Example address
+          type: string
+        _struct:
+          description: The struct type of the object.
           type: string
         permission:
           description: The permission to use for this address.
@@ -26587,6 +26597,7 @@ components:
       type: object
     ZoneAuthAllowTransfer:
       example:
+        _struct: _struct
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
@@ -26597,6 +26608,9 @@ components:
         address:
           description: The address this rule applies to or "Any".
           example: Example address
+          type: string
+        _struct:
+          description: The struct type of the object.
           type: string
         permission:
           description: The permission to use for this address.
@@ -26629,6 +26643,7 @@ components:
       type: object
     ZoneAuthAllowUpdate:
       example:
+        _struct: _struct
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
@@ -26639,6 +26654,9 @@ components:
         address:
           description: The address this rule applies to or "Any".
           example: Example address
+          type: string
+        _struct:
+          description: The struct type of the object.
           type: string
         permission:
           description: The permission to use for this address.
@@ -37324,13 +37342,15 @@ components:
           ms_ad_integrated: false
           use_dnssec_key_params: false
           allow_transfer:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -37501,13 +37521,15 @@ components:
           create_underscore_zones: false
           soa_refresh: 1
           allow_query:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -37523,13 +37545,15 @@ components:
           - network
           - network
           allow_update:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -37791,13 +37815,15 @@ components:
           ms_ad_integrated: false
           use_dnssec_key_params: false
           allow_transfer:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -37968,13 +37994,15 @@ components:
           create_underscore_zones: false
           soa_refresh: 1
           allow_query:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -37990,13 +38018,15 @@ components:
           - network
           - network
           allow_update:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
