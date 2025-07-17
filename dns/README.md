@@ -263,6 +263,8 @@ Class | Method | HTTP request | Description
 *SharedrecordgroupAPI* | [**List**](docs/SharedrecordgroupAPI.md#list) | **Get** /sharedrecordgroup | Retrieve sharedrecordgroup objects
 *SharedrecordgroupAPI* | [**Read**](docs/SharedrecordgroupAPI.md#read) | **Get** /sharedrecordgroup/{reference} | Get a specific sharedrecordgroup object
 *SharedrecordgroupAPI* | [**Update**](docs/SharedrecordgroupAPI.md#update) | **Put** /sharedrecordgroup/{reference} | Update a sharedrecordgroup object
+*ViewAPI* | [**Create**](docs/ViewAPI.md#create) | **Post** /view | Create a view object
+*ViewAPI* | [**Delete**](docs/ViewAPI.md#delete) | **Delete** /view/{reference} | Delete a view object
 *ViewAPI* | [**List**](docs/ViewAPI.md#list) | **Get** /view | Retrieve view objects
 *ViewAPI* | [**Read**](docs/ViewAPI.md#read) | **Get** /view/{reference} | Get a specific view object
 *ViewAPI* | [**Update**](docs/ViewAPI.md#update) | **Put** /view/{reference} | Update a view object
@@ -361,6 +363,8 @@ Class | Method | HTTP request | Description
  - [CreateSharedrecordTxtResponseAsObject](docs/CreateSharedrecordTxtResponseAsObject.md)
  - [CreateSharedrecordgroupResponse](docs/CreateSharedrecordgroupResponse.md)
  - [CreateSharedrecordgroupResponseAsObject](docs/CreateSharedrecordgroupResponseAsObject.md)
+ - [CreateViewResponse](docs/CreateViewResponse.md)
+ - [CreateViewResponseAsObject](docs/CreateViewResponseAsObject.md)
  - [CreateZoneAuthResponse](docs/CreateZoneAuthResponse.md)
  - [CreateZoneAuthResponseAsObject](docs/CreateZoneAuthResponseAsObject.md)
  - [CreateZoneDelegatedResponse](docs/CreateZoneDelegatedResponse.md)

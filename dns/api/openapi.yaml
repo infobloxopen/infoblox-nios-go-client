@@ -12356,7 +12356,95 @@ paths:
       summary: Retrieve view objects
       tags:
       - View
+    post:
+      description: Creates a new view object
+      operationId: ViewCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/View'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateViewResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a view object
+      tags:
+      - View
+      x-tf-resource: dns_view
+      x-tf-datasource: dns_view
+      x-sdk-default-ext-attrs: true
   /view/{reference}:
+    delete:
+      description: Deletes a specific view object by reference
+      operationId: ViewDelete
+      parameters:
+      - description: Reference of the view object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a view object
+      tags:
+      - View
     get:
       description: Returns a specific view object by reference
       operationId: ViewRead
@@ -32888,6 +32976,12 @@ components:
         title: ListViewResponseArray
         type: array
       - $ref: '#/components/schemas/ListViewResponseObject'
+    CreateViewResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateViewResponseAsObject'
+      - description: The response format to create __View__.
+        title: CreateViewResponse
+        type: string
     GetViewResponse:
       oneOf:
       - $ref: '#/components/schemas/View'
@@ -39880,6 +39974,247 @@ components:
             $ref: '#/components/schemas/View'
           type: array
       title: ListViewResponseObject
+      type: object
+    CreateViewResponseAsObject:
+      description: The response format to create __View__ in object format.
+      example:
+        result:
+          max_cache_ttl: 1
+          ddns_restrict_patterns: false
+          nxdomain_redirect_ttl: 1
+          dnssec_enabled: false
+          enable_match_recursive_only: false
+          enable_blacklist: false
+          rpz_qname_wait_recurse: false
+          blacklist_log_query: false
+          forward_only: false
+          use_recursion: false
+          nxdomain_log_query: false
+          dnssec_trusted_keys:
+          - fqdn: Example fqdn
+            secure_entry_point: false
+            key: Example key
+            dnssec_must_be_secure: false
+            algorithm: Example algorithm
+          - fqdn: Example fqdn
+            secure_entry_point: false
+            key: Example key
+            dnssec_must_be_secure: false
+            algorithm: Example algorithm
+          fixed_rrset_order_fqdns:
+          - fqdn: Example fqdn
+            record_type: Example record_type
+          - fqdn: Example fqdn
+            record_type: Example record_type
+          use_sortlist: false
+          use_max_udp_size: false
+          response_rate_limiting:
+            log_only: false
+            slip: 1
+            responses_per_second: 1
+            window: 1
+            enable_rrl: false
+          ddns_restrict_patterns_list:
+          - ddns_restrict_patterns_list
+          - ddns_restrict_patterns_list
+          use_ddns_patterns_restriction: false
+          filter_aaaa_list:
+          - address: Example address
+            permission: Example permission
+          - address: Example address
+            permission: Example permission
+          use_filter_aaaa: false
+          recursion: false
+          ddns_principal_group: Example ddns_principal_group
+          dnssec_negative_trust_anchors:
+          - dnssec_negative_trust_anchors
+          - dnssec_negative_trust_anchors
+          last_queried_acl:
+          - address: Example address
+            permission: Example permission
+          - address: Example address
+            permission: Example permission
+          scavenging_settings:
+            enable_scavenging: false
+            enable_recurrent_scavenging: false
+            scavenging_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            enable_rr_last_queried: false
+            expression_list:
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            ea_expression_list:
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            - op2: Example op2
+              op: Example op
+              op1: Example op1
+              op1_type: Example op1_type
+              op2_type: Example op2_type
+            reclaim_associated_records: false
+            enable_auto_reclamation: false
+            enable_zone_last_queried: false
+          use_ddns_restrict_static: false
+          blacklist_redirect_ttl: 1
+          notify_delay: 1
+          sortlist:
+          - match_list:
+            - match_list
+            - match_list
+            address: Example address
+          - match_list:
+            - match_list
+            - match_list
+            address: Example address
+          rpz_drop_ip_rule_enabled: false
+          ddns_restrict_protected: false
+          is_default: false
+          use_ddns_force_creation_timestamp_update: false
+          use_rpz_drop_ip_rule: false
+          use_max_ncache_ttl: false
+          dnssec_validation_enabled: false
+          ddns_principal_tracking: false
+          ddns_restrict_secure: false
+          forwarders:
+          - forwarders
+          - forwarders
+          name: Example name
+          nxdomain_redirect: false
+          nxdomain_redirect_addresses_v6:
+          - nxdomain_redirect_addresses_v6
+          - nxdomain_redirect_addresses_v6
+          use_rpz_qname_wait_recurse: false
+          use_dnssec: false
+          max_udp_size: 1
+          use_ddns_restrict_protected: false
+          use_scavenging_settings: false
+          use_max_cache_ttl: false
+          network_view: Example network_view
+          blacklist_action: Example blacklist_action
+          match_clients:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          cloud_info:
+            delegated_member:
+              name: Example name
+              ipv4addr: Example ipv4addr
+              ipv6addr: Example ipv6addr
+            delegated_scope: Example delegated_scope
+            owned_by_adaptor: false
+            usage: Example usage
+            authority_type: Example authority_type
+            mgmt_platform: Example mgmt_platform
+            tenant: Example tenant
+            delegated_root: Example delegated_root
+          root_name_server_type: Example root_name_server_type
+          filter_aaaa: Example filter_aaaa
+          use_ddns_principal_security: false
+          ddns_force_creation_timestamp_update: false
+          use_forwarders: false
+          edns_udp_size: 1
+          enable_fixed_rrset_order_fqdns: false
+          blacklist_rulesets:
+          - blacklist_rulesets
+          - blacklist_rulesets
+          extattrs:
+            key:
+              value: ""
+          dnssec_expired_signatures_enabled: false
+          use_response_rate_limiting: false
+          use_fixed_rrset_order_fqdns: false
+          dns64_enabled: false
+          dns64_groups:
+          - dns64_groups
+          - dns64_groups
+          use_edns_udp_size: false
+          max_ncache_ttl: 1
+          blacklist_redirect_addresses:
+          - blacklist_redirect_addresses
+          - blacklist_redirect_addresses
+          rpz_drop_ip_rule_min_prefix_length_ipv4: 1
+          disable: false
+          custom_root_name_servers:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          match_destinations:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            permission: Example permission
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+          _ref: _ref
+          use_root_name_server: false
+          nxdomain_redirect_addresses:
+          - nxdomain_redirect_addresses
+          - nxdomain_redirect_addresses
+          nxdomain_rulesets:
+          - nxdomain_rulesets
+          - nxdomain_rulesets
+          comment: Example comment
+          use_blacklist: false
+          use_dns64: false
+          rpz_drop_ip_rule_min_prefix_length_ipv6: 1
+          ddns_restrict_static: false
+          use_nxdomain_redirect: false
+      properties:
+        result:
+          $ref: '#/components/schemas/View'
+      title: CreateViewResponseAsObject
       type: object
     GetViewResponseObjectAsResult:
       additionalProperties: false
