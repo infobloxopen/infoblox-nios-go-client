@@ -62,6 +62,19 @@ type FixedaddressAPI interface {
 	//  @return ListFixedaddressResponse
 	ListExecute(r FixedaddressAPIListRequest) (*ListFixedaddressResponse, *http.Response, error)
 	/*
+		MsServerUpdate Update a fixedaddress object
+
+		Updates a specific fixedaddress object by reference
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return FixedaddressAPIMsServerUpdateRequest
+	*/
+	MsServerUpdate(ctx context.Context) FixedaddressAPIMsServerUpdateRequest
+
+	// MsServerUpdateExecute executes the request
+	//  @return ListFixedaddressResponse
+	MsServerUpdateExecute(r FixedaddressAPIMsServerUpdateRequest) (*ListFixedaddressResponse, *http.Response, error)
+	/*
 		Read Get a specific fixedaddress object
 
 		Returns a specific fixedaddress object by reference
@@ -498,6 +511,151 @@ func (a *FixedaddressAPIService) ListExecute(r FixedaddressAPIListRequest) (*Lis
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.Client.CallAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(localVarHTTPResponse.Status, localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := internal.NewGenericOpenAPIErrorWithBody(err.Error(), localVarBody)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type FixedaddressAPIMsServerUpdateRequest struct {
+	ctx                context.Context
+	ApiService         FixedaddressAPI
+	fixedAddressStruct *FixedAddressStruct
+	returnFields       *string
+	returnFieldsPlus   *string
+	returnAsObject     *int32
+	method             *string
+}
+
+// Update Call for Search by Microsoft Server
+func (r FixedaddressAPIMsServerUpdateRequest) FixedAddressStruct(fixedAddressStruct FixedAddressStruct) FixedaddressAPIMsServerUpdateRequest {
+	r.fixedAddressStruct = &fixedAddressStruct
+	return r
+}
+
+// Enter the field names followed by comma
+func (r FixedaddressAPIMsServerUpdateRequest) ReturnFields(returnFields string) FixedaddressAPIMsServerUpdateRequest {
+	r.returnFields = &returnFields
+	return r
+}
+
+// Enter the field names followed by comma, this returns the required fields along with the default fields
+func (r FixedaddressAPIMsServerUpdateRequest) ReturnFieldsPlus(returnFieldsPlus string) FixedaddressAPIMsServerUpdateRequest {
+	r.returnFieldsPlus = &returnFieldsPlus
+	return r
+}
+
+// Select 1 if result is required as an object
+func (r FixedaddressAPIMsServerUpdateRequest) ReturnAsObject(returnAsObject int32) FixedaddressAPIMsServerUpdateRequest {
+	r.returnAsObject = &returnAsObject
+	return r
+}
+
+// Enter the method type for the request
+func (r FixedaddressAPIMsServerUpdateRequest) Method(method string) FixedaddressAPIMsServerUpdateRequest {
+	r.method = &method
+	return r
+}
+
+func (r FixedaddressAPIMsServerUpdateRequest) Execute() (*ListFixedaddressResponse, *http.Response, error) {
+	return r.ApiService.MsServerUpdateExecute(r)
+}
+
+/*
+MsServerUpdate Update a fixedaddress object
+
+Updates a specific fixedaddress object by reference
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return FixedaddressAPIMsServerUpdateRequest
+*/
+func (a *FixedaddressAPIService) MsServerUpdate(ctx context.Context) FixedaddressAPIMsServerUpdateRequest {
+	return FixedaddressAPIMsServerUpdateRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ListFixedaddressResponse
+func (a *FixedaddressAPIService) MsServerUpdateExecute(r FixedaddressAPIMsServerUpdateRequest) (*ListFixedaddressResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []internal.FormFile
+		localVarReturnValue *ListFixedaddressResponse
+	)
+
+	localBasePath, err := a.Client.Cfg.ServerURLWithContext(r.ctx, "FixedaddressAPIService.MsServerUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, internal.NewGenericOpenAPIError(err.Error())
+	}
+
+	localVarPath := localBasePath + "/fixedaddress"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.fixedAddressStruct == nil {
+		return localVarReturnValue, nil, internal.ReportError("fixedAddressStruct is required and must be specified")
+	}
+
+	if r.returnFields != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields", r.returnFields, "form", "")
+	}
+	if r.returnFieldsPlus != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_fields+", r.returnFieldsPlus, "form", "")
+	}
+	if r.returnAsObject != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_return_as_object", r.returnAsObject, "form", "")
+	}
+	if r.method != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_method", r.method, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := internal.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := internal.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.fixedAddressStruct
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
