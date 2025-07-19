@@ -549,6 +549,9 @@ type FixedaddressAPIMsServerUpdateRequest struct {
 	returnFieldsPlus   *string
 	returnAsObject     *int32
 	method             *string
+	paging             *int32
+	pageId             *string
+	maxResults         *int32
 }
 
 // Update Call for Search by Microsoft Server
@@ -578,6 +581,24 @@ func (r FixedaddressAPIMsServerUpdateRequest) ReturnAsObject(returnAsObject int3
 // Enter the method type for the request
 func (r FixedaddressAPIMsServerUpdateRequest) Method(method string) FixedaddressAPIMsServerUpdateRequest {
 	r.method = &method
+	return r
+}
+
+// Control paging of results
+func (r FixedaddressAPIMsServerUpdateRequest) Paging(paging int32) FixedaddressAPIMsServerUpdateRequest {
+	r.paging = &paging
+	return r
+}
+
+// Page id for retrieving next page of results
+func (r FixedaddressAPIMsServerUpdateRequest) PageId(pageId string) FixedaddressAPIMsServerUpdateRequest {
+	r.pageId = &pageId
+	return r
+}
+
+// Enter the number of results to be fetched
+func (r FixedaddressAPIMsServerUpdateRequest) MaxResults(maxResults int32) FixedaddressAPIMsServerUpdateRequest {
+	r.maxResults = &maxResults
 	return r
 }
 
@@ -636,6 +657,15 @@ func (a *FixedaddressAPIService) MsServerUpdateExecute(r FixedaddressAPIMsServer
 	}
 	if r.method != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_method", r.method, "form", "")
+	}
+	if r.paging != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_paging", r.paging, "form", "")
+	}
+	if r.pageId != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_page_id", r.pageId, "form", "")
+	}
+	if r.maxResults != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_max_results", r.maxResults, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

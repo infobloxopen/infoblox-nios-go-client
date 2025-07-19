@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## MsServerUpdate
 
-> ListFixedaddressResponse MsServerUpdate(ctx).FixedAddressStruct(fixedAddressStruct).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Method(method).Execute()
+> ListFixedaddressResponse MsServerUpdate(ctx).FixedAddressStruct(fixedAddressStruct).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Method(method).Paging(paging).PageId(pageId).MaxResults(maxResults).Execute()
 
 Update a fixedaddress object
 
@@ -272,6 +272,9 @@ Name | Type | Description  | Notes
 **returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
 **method** | **string** | Enter the method type for the request | 
+**paging** | **int32** | Control paging of results | 
+**pageId** | **string** | Page id for retrieving next page of results | 
+**maxResults** | **int32** | Enter the number of results to be fetched | 
 
 ### Return type
 

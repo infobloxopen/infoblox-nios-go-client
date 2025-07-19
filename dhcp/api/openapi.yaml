@@ -3263,6 +3263,35 @@ paths:
         schema:
           type: string
         style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
       requestBody:
         content:
           application/json:
