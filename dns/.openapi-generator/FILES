@@ -117,6 +117,8 @@ docs/CreateSharedrecordTxtResponse.md
 docs/CreateSharedrecordTxtResponseAsObject.md
 docs/CreateSharedrecordgroupResponse.md
 docs/CreateSharedrecordgroupResponseAsObject.md
+docs/CreateViewResponse.md
+docs/CreateViewResponseAsObject.md
 docs/CreateZoneAuthResponse.md
 docs/CreateZoneAuthResponseAsObject.md
 docs/CreateZoneDelegatedResponse.md
@@ -743,6 +745,8 @@ model_create_sharedrecord_txt_response.go
 model_create_sharedrecord_txt_response_as_object.go
 model_create_sharedrecordgroup_response.go
 model_create_sharedrecordgroup_response_as_object.go
+model_create_view_response.go
+model_create_view_response_as_object.go
 model_create_zone_auth_response.go
 model_create_zone_auth_response_as_object.go
 model_create_zone_delegated_response.go

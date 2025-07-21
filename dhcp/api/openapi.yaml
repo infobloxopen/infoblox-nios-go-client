@@ -3223,6 +3223,102 @@ paths:
       x-sdk-post-function-call:
       - Ipv4addr
       x-tf-function-call: true
+    put:
+      description: Updates a specific fixedaddress object by reference
+      operationId: FixedaddressMsServerUpdate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Enter the method type for the request
+        explode: true
+        in: query
+        name: _method
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FixedAddressStruct'
+        description: Update Call for Search by Microsoft Server
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFixedaddressResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a fixedaddress object
+      tags:
+      - Fixedaddress
   /fixedaddress/{reference}:
     delete:
       description: Deletes a specific fixedaddress object by reference
@@ -8392,6 +8488,17 @@ components:
           description: The value of the extensible attribute.
       required:
       - value
+      type: object
+    FixedAddressStruct:
+      example:
+        ms_server:
+          _struct: Example ms_server
+          ipv4addr: ipv4addr
+      properties:
+        ms_server:
+          $ref: '#/components/schemas/FixedAddressStruct_ms_server'
+      required:
+      - ms_server
       type: object
     DhcpStatistics:
       additionalProperties: false
@@ -19627,6 +19734,20 @@ components:
       - description: The response format to update __Orderedranges__ .
         title: UpdateOrderedrangesResponse
         type: string
+    FixedAddressStruct_ms_server:
+      description: Microsoft Server Fields to search fixed address
+      example:
+        _struct: Example ms_server
+        ipv4addr: ipv4addr
+      properties:
+        _struct:
+          description: Struct Field for MS Server
+          example: Example ms_server
+          type: string
+        ipv4addr:
+          description: The IPv4 address to perform the search with
+          type: string
+      type: object
     ListDhcpStatisticsResponseObject:
       description: The response format to retrieve __DhcpStatistics__ objects.
       properties:
