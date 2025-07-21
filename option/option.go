@@ -40,6 +40,16 @@ func WithNIOSPassword(NIOSPassword string) ClientOption {
 	}
 }
 
+// WithNIOSWapiVersion returns a ClientOption that sets the NIOSPassword for Infoblox NIOS Portal.
+// Can also be configured using the `NIOS_PASSWORD` environment variable.
+func WithNIOSWapiVersion(NIOSWAPIVersion string) ClientOption {
+	return func(configuration *internal.Configuration) {
+		if NIOSWAPIVersion != "" {
+			configuration.NIOSWAPIVersion = NIOSWAPIVersion
+		}
+	}
+}
+
 // WithHTTPClient returns a ClientOption that sets the HTTPClient to use for the SDK.
 // Optional. The default HTTPClient will be used if not provided.
 func WithHTTPClient(httpClient *http.Client) ClientOption {

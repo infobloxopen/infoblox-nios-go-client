@@ -61,6 +61,7 @@ type Configuration struct {
 	NIOSHostURL      string            `json:"niosHostURL,omitempty"`
 	NIOSUsername     string            `json:"niosUsername,omitempty"`
 	NIOSPassword     string            `json:"niosPassword,omitempty"`
+	NIOSWAPIVersion  string            `json:"wapiVersion,omitempty"`
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent        string            `json:"userAgent,omitempty"`
 	Debug            bool              `json:"debug,omitempty"`
@@ -84,6 +85,7 @@ func NewConfiguration() *Configuration {
 		NIOSHostURL:      lookupEnv(envNiosHostURL, ""),
 		NIOSUsername:     lookupEnv(envNiosUsername, ""),
 		NIOSPassword:     lookupEnv(envNiosPassword, ""),
+		NIOSWAPIVersion:  lookupWAPIVersion("v2.13.6"),
 		DefaultHeader:    make(map[string]string),
 		Debug:            lookupEnvBool(envIBLogLevel, true),
 		UserAgent:        fmt.Sprintf("nios-%s/%s", sdkIdentifier, version),
@@ -240,4 +242,17 @@ func readFile(filepath string) []byte {
 		return nil
 	}
 	return data
+}
+
+func lookupWAPIVersion(defaultVersion string) string {
+	wapiVersion := lookupEnv(envWapiVersion, defaultVersion)
+	validWapiVersions := []string{"v2.13.1", "v2.13.4", "v2.13.5", "v2.13.6"}
+	// Check if the provided WAPI version is valid , if not return v2.13.6
+	for _, validVersion := range validWapiVersions {
+		if wapiVersion == validVersion {
+			return wapiVersion
+		}
+	}
+	log.Printf("Invalid WAPI version '%s' provided, defaulting to 'v2.13.6'", wapiVersion)
+	return wapiVersion
 }

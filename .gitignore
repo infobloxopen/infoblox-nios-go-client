@@ -28,3 +28,6 @@ _testmain.go
 
 # Go test coverage profile
 cover.out
+
+.openapi-generator/
+.openapi-generator-ignore
