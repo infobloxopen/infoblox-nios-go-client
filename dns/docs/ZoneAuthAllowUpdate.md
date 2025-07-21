@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Struct** | Pointer to **string** | The struct type of the object. The value must be one of &#39;addressac&#39; and &#39;tsigac&#39;. | [optional] 
 **Address** | Pointer to **string** | The address this rule applies to or \&quot;Any\&quot;. | [optional] 
-**Struct** | Pointer to **string** | The struct type of the object. | [optional] 
 **Permission** | Pointer to **string** | The permission to use for this address. | [optional] 
 **TsigKey** | Pointer to **string** | A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT. | [optional] 
 **TsigKeyAlg** | Pointer to **string** | The TSIG key algorithm. | [optional] 
@@ -31,31 +31,6 @@ NewZoneAuthAllowUpdateWithDefaults instantiates a new ZoneAuthAllowUpdate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAddress
-
-`func (o *ZoneAuthAllowUpdate) GetAddress() string`
-
-GetAddress returns the Address field if non-nil, zero value otherwise.
-
-### GetAddressOk
-
-`func (o *ZoneAuthAllowUpdate) GetAddressOk() (*string, bool)`
-
-GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAddress
-
-`func (o *ZoneAuthAllowUpdate) SetAddress(v string)`
-
-SetAddress sets Address field to given value.
-
-### HasAddress
-
-`func (o *ZoneAuthAllowUpdate) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
-
 ### GetStruct
 
 `func (o *ZoneAuthAllowUpdate) GetStruct() string`
@@ -80,6 +55,31 @@ SetStruct sets Struct field to given value.
 `func (o *ZoneAuthAllowUpdate) HasStruct() bool`
 
 HasStruct returns a boolean if a field has been set.
+
+### GetAddress
+
+`func (o *ZoneAuthAllowUpdate) GetAddress() string`
+
+GetAddress returns the Address field if non-nil, zero value otherwise.
+
+### GetAddressOk
+
+`func (o *ZoneAuthAllowUpdate) GetAddressOk() (*string, bool)`
+
+GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddress
+
+`func (o *ZoneAuthAllowUpdate) SetAddress(v string)`
+
+SetAddress sets Address field to given value.
+
+### HasAddress
+
+`func (o *ZoneAuthAllowUpdate) HasAddress() bool`
+
+HasAddress returns a boolean if a field has been set.
 
 ### GetPermission
 

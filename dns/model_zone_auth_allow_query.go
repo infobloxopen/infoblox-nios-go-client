@@ -19,10 +19,10 @@ var _ MappedNullable = &ZoneAuthAllowQuery{}
 
 // ZoneAuthAllowQuery struct for ZoneAuthAllowQuery
 type ZoneAuthAllowQuery struct {
+	// The struct type of the object. The value must be one of 'addressac' and 'tsigac'.
+	Struct *string `json:"_struct,omitempty"`
 	// The address this rule applies to or \"Any\".
 	Address *string `json:"address,omitempty"`
-	// The struct type of the object.
-	Struct *string `json:"_struct,omitempty"`
 	// The permission to use for this address.
 	Permission *string `json:"permission,omitempty"`
 	// A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT.
@@ -55,38 +55,6 @@ func NewZoneAuthAllowQueryWithDefaults() *ZoneAuthAllowQuery {
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
-func (o *ZoneAuthAllowQuery) GetAddress() string {
-	if o == nil || IsNil(o.Address) {
-		var ret string
-		return ret
-	}
-	return *o.Address
-}
-
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ZoneAuthAllowQuery) GetAddressOk() (*string, bool) {
-	if o == nil || IsNil(o.Address) {
-		return nil, false
-	}
-	return o.Address, true
-}
-
-// HasAddress returns a boolean if a field has been set.
-func (o *ZoneAuthAllowQuery) HasAddress() bool {
-	if o != nil && !IsNil(o.Address) {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given string and assigns it to the Address field.
-func (o *ZoneAuthAllowQuery) SetAddress(v string) {
-	o.Address = &v
-}
-
 // GetStruct returns the Struct field value if set, zero value otherwise.
 func (o *ZoneAuthAllowQuery) GetStruct() string {
 	if o == nil || IsNil(o.Struct) {
@@ -117,6 +85,38 @@ func (o *ZoneAuthAllowQuery) HasStruct() bool {
 // SetStruct gets a reference to the given string and assigns it to the Struct field.
 func (o *ZoneAuthAllowQuery) SetStruct(v string) {
 	o.Struct = &v
+}
+
+// GetAddress returns the Address field value if set, zero value otherwise.
+func (o *ZoneAuthAllowQuery) GetAddress() string {
+	if o == nil || IsNil(o.Address) {
+		var ret string
+		return ret
+	}
+	return *o.Address
+}
+
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ZoneAuthAllowQuery) GetAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.Address) {
+		return nil, false
+	}
+	return o.Address, true
+}
+
+// HasAddress returns a boolean if a field has been set.
+func (o *ZoneAuthAllowQuery) HasAddress() bool {
+	if o != nil && !IsNil(o.Address) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given string and assigns it to the Address field.
+func (o *ZoneAuthAllowQuery) SetAddress(v string) {
+	o.Address = &v
 }
 
 // GetPermission returns the Permission field value if set, zero value otherwise.
@@ -289,11 +289,11 @@ func (o ZoneAuthAllowQuery) MarshalJSON() ([]byte, error) {
 
 func (o ZoneAuthAllowQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
-		toSerialize["address"] = o.Address
-	}
 	if !IsNil(o.Struct) {
 		toSerialize["_struct"] = o.Struct
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
 	}
 	if !IsNil(o.Permission) {
 		toSerialize["permission"] = o.Permission
@@ -332,8 +332,8 @@ func (o *ZoneAuthAllowQuery) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "address")
 		delete(additionalProperties, "_struct")
+		delete(additionalProperties, "address")
 		delete(additionalProperties, "permission")
 		delete(additionalProperties, "tsig_key")
 		delete(additionalProperties, "tsig_key_alg")
