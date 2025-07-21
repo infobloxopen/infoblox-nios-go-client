@@ -36,6 +36,7 @@ const (
 	envNiosHostURL  = "NIOS_HOST_URL"
 	envNiosUsername = "NIOS_USERNAME"
 	envNiosPassword = "NIOS_PASSWORD"
+	envWapiVersion  = "NIOS_WAPI_VERSION"
 
 	envIBLogLevel = "IB_LOG_LEVEL"
 

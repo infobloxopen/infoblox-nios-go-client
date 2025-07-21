@@ -11,11 +11,13 @@ API version: 2.13.6
 package ipam
 
 import (
+    "fmt"
+
 	"github.com/infobloxopen/infoblox-nios-go-client/internal"
 	"github.com/infobloxopen/infoblox-nios-go-client/option"
 )
 
-const serviceBasePath = "/wapi/v2.13.6"
+var serviceBasePath = "/wapi/v2.13.6"
 
 // APIClient manages communication with the Infoblox IPAM API 2.13.6
 // In most cases there should be only one, shared, APIClient.
@@ -53,12 +55,15 @@ type APIClient struct {
 // - WithNIOSPassword(string) sets the Password for the NIOS Portal.
 // - WithHTTPClient(*http.Client) sets the HTTPClient to use for the SDK.
 // - WithDefaultExtAttrs(map[string]struct{ Value string }) sets the tags the client can set by default for objects that has tags support.
+// - WithNIOSWAPIVersion(string) sets the NIOS API version to use.
 // - WithDebug() sets the debug mode.
 func NewAPIClient(options ...option.ClientOption) *APIClient {
 	cfg := internal.NewConfiguration()
 	for _, o := range options {
 		o(cfg)
 	}
+
+	serviceBasePath = fmt.Sprintf("/wapi/%s", cfg.NIOSWAPIVersion)
 
 	c := &APIClient{}
 	c.APIClient = internal.NewAPIClient(serviceBasePath, cfg)

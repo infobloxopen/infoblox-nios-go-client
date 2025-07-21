@@ -33,6 +33,14 @@ func TestWithNIOSPassword(t *testing.T) {
 	assert.Equal(t, password, config.NIOSPassword)
 }
 
+func TestWithNIOSWAPIVersion(t *testing.T) {
+	config := &internal.Configuration{}
+	wapiVersion := "v2.13.6"
+	opt := WithNIOSWapiVersion(wapiVersion)
+	opt(config)
+	assert.Equal(t, wapiVersion, config.NIOSWAPIVersion)
+}
+
 func TestWithHTTPClient(t *testing.T) {
 	config := &internal.Configuration{}
 	client := &http.Client{}
