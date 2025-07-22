@@ -390,6 +390,7 @@ Class | Method | HTTP request | Description
  - [NetworkviewAssociatedMembers](docs/NetworkviewAssociatedMembers.md)
  - [NetworkviewCloudInfo](docs/NetworkviewCloudInfo.md)
  - [NetworkviewDdnsZonePrimaries](docs/NetworkviewDdnsZonePrimaries.md)
+ - [NetworkviewDdnsZonePrimariesDnsGridZone](docs/NetworkviewDdnsZonePrimariesDnsGridZone.md)
  - [NetworkviewFederatedRealms](docs/NetworkviewFederatedRealms.md)
  - [NetworkviewMsAdUserData](docs/NetworkviewMsAdUserData.md)
  - [NetworkviewRemoteForwardZones](docs/NetworkviewRemoteForwardZones.md)

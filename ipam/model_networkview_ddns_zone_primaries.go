@@ -20,9 +20,8 @@ var _ MappedNullable = &NetworkviewDdnsZonePrimaries{}
 // NetworkviewDdnsZonePrimaries struct for NetworkviewDdnsZonePrimaries
 type NetworkviewDdnsZonePrimaries struct {
 	// Indicate matching type.
-	ZoneMatch *string `json:"zone_match,omitempty"`
-	// The ref of a DNS zone.
-	DnsGridZone *string `json:"dns_grid_zone,omitempty"`
+	ZoneMatch   *string                                  `json:"zone_match,omitempty"`
+	DnsGridZone *NetworkviewDdnsZonePrimariesDnsGridZone `json:"dns_grid_zone,omitempty"`
 	// The name of a Grid member.
 	DnsGridPrimary *string `json:"dns_grid_primary,omitempty"`
 	// The name of external zone in FQDN format.
@@ -84,9 +83,9 @@ func (o *NetworkviewDdnsZonePrimaries) SetZoneMatch(v string) {
 }
 
 // GetDnsGridZone returns the DnsGridZone field value if set, zero value otherwise.
-func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZone() string {
+func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZone() NetworkviewDdnsZonePrimariesDnsGridZone {
 	if o == nil || IsNil(o.DnsGridZone) {
-		var ret string
+		var ret NetworkviewDdnsZonePrimariesDnsGridZone
 		return ret
 	}
 	return *o.DnsGridZone
@@ -94,7 +93,7 @@ func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZone() string {
 
 // GetDnsGridZoneOk returns a tuple with the DnsGridZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZoneOk() (*string, bool) {
+func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZoneOk() (*NetworkviewDdnsZonePrimariesDnsGridZone, bool) {
 	if o == nil || IsNil(o.DnsGridZone) {
 		return nil, false
 	}
@@ -110,8 +109,8 @@ func (o *NetworkviewDdnsZonePrimaries) HasDnsGridZone() bool {
 	return false
 }
 
-// SetDnsGridZone gets a reference to the given string and assigns it to the DnsGridZone field.
-func (o *NetworkviewDdnsZonePrimaries) SetDnsGridZone(v string) {
+// SetDnsGridZone gets a reference to the given NetworkviewDdnsZonePrimariesDnsGridZone and assigns it to the DnsGridZone field.
+func (o *NetworkviewDdnsZonePrimaries) SetDnsGridZone(v NetworkviewDdnsZonePrimariesDnsGridZone) {
 	o.DnsGridZone = &v
 }
 
