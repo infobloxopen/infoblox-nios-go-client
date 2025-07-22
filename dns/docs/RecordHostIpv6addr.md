@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **DomainNameServers** | Pointer to **[]string** | The IPv6 addresses of DNS recursive name servers to which the DHCP client can send name resolution requests. The DHCP server includes this information in the DNS Recursive Name Server option in Advertise, Rebind, Information-Request, and Reply messages. | [optional] 
 **Duid** | Pointer to **string** | DHCPv6 Unique Identifier (DUID) of the address object. | [optional] 
 **Host** | Pointer to **string** | The host to which the IPv6 host address belongs, in FQDN format. It is only present when the host address object is not returned as part of a host. | [optional] [readonly] 
-**Ipv6addr** | Pointer to **string** | The IPv6 Address prefix of the DHCP IPv6 Host Address object. | [optional] 
+**Ipv6addr** | Pointer to [**RecordHostIpv6addrIpv6addr**](RecordHostIpv6addrIpv6addr.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **Ipv6prefix** | Pointer to **string** | The IPv6 Address prefix of the DHCP IPv6 Host Address object. | [optional] 
 **Ipv6prefixBits** | Pointer to **int64** | Prefix bits of the DHCP IPv6 Host Address object. | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
@@ -281,20 +282,20 @@ HasHost returns a boolean if a field has been set.
 
 ### GetIpv6addr
 
-`func (o *RecordHostIpv6addr) GetIpv6addr() string`
+`func (o *RecordHostIpv6addr) GetIpv6addr() RecordHostIpv6addrIpv6addr`
 
 GetIpv6addr returns the Ipv6addr field if non-nil, zero value otherwise.
 
 ### GetIpv6addrOk
 
-`func (o *RecordHostIpv6addr) GetIpv6addrOk() (*string, bool)`
+`func (o *RecordHostIpv6addr) GetIpv6addrOk() (*RecordHostIpv6addrIpv6addr, bool)`
 
 GetIpv6addrOk returns a tuple with the Ipv6addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv6addr
 
-`func (o *RecordHostIpv6addr) SetIpv6addr(v string)`
+`func (o *RecordHostIpv6addr) SetIpv6addr(v RecordHostIpv6addrIpv6addr)`
 
 SetIpv6addr sets Ipv6addr field to given value.
 
@@ -303,6 +304,31 @@ SetIpv6addr sets Ipv6addr field to given value.
 `func (o *RecordHostIpv6addr) HasIpv6addr() bool`
 
 HasIpv6addr returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *RecordHostIpv6addr) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *RecordHostIpv6addr) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *RecordHostIpv6addr) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *RecordHostIpv6addr) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetIpv6prefix
 

@@ -6273,6 +6273,9 @@ paths:
       summary: Update a record:host_ipv4addr object
       tags:
       - RecordHostIpv4addr
+      x-sdk-put-function-call:
+      - Ipv4addr
+      x-tf-function-call: true
   /record:host_ipv6addr:
     get:
       description: Returns a list of record:host_ipv6addr objects matching the search
@@ -6500,6 +6503,9 @@ paths:
       summary: Update a record:host_ipv6addr object
       tags:
       - RecordHostIpv6addr
+      x-sdk-put-function-call:
+      - Ipv6addr
+      x-tf-function-call: true
   /zone_auth:
     get:
       description: Returns a list of zone_auth objects matching the search criteria
@@ -20029,6 +20035,13 @@ components:
           is_invalid_mac: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           mac: Example mac
           network: Example network
           use_logic_filter_rules: false
@@ -20150,7 +20163,7 @@ components:
           enable_pxe_lease_time: false
           use_bootfile: false
           bootfile: Example bootfile
-          ipv4addr: Example ipv4addr
+          ipv4addr: RecordHostIpv4addr_ipv4addr
           use_nextserver: false
           ms_ad_user_data:
             active_users_count: 1
@@ -20172,6 +20185,13 @@ components:
           is_invalid_mac: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           mac: Example mac
           network: Example network
           use_logic_filter_rules: false
@@ -20293,7 +20313,7 @@ components:
           enable_pxe_lease_time: false
           use_bootfile: false
           bootfile: Example bootfile
-          ipv4addr: Example ipv4addr
+          ipv4addr: RecordHostIpv4addr_ipv4addr
           use_nextserver: false
           ms_ad_user_data:
             active_users_count: 1
@@ -20339,9 +20359,16 @@ components:
           duid: Example duid
           match_client: Example match_client
           ipv6prefix: Example ipv6prefix
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           mac: Example mac
           use_valid_lifetime: false
-          ipv6addr: Example ipv6addr
+          ipv6addr: RecordHostIpv6addr_ipv6addr
           network: Example network
           domain_name_servers:
           - domain_name_servers
@@ -20482,9 +20509,16 @@ components:
           duid: Example duid
           match_client: Example match_client
           ipv6prefix: Example ipv6prefix
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           mac: Example mac
           use_valid_lifetime: false
-          ipv6addr: Example ipv6addr
+          ipv6addr: RecordHostIpv6addr_ipv6addr
           network: Example network
           domain_name_servers:
           - domain_name_servers
@@ -23882,6 +23916,13 @@ components:
         is_invalid_mac: false
         nextserver: Example nextserver
         use_pxe_lease_time: false
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         mac: Example mac
         network: Example network
         use_logic_filter_rules: false
@@ -24003,7 +24044,7 @@ components:
         enable_pxe_lease_time: false
         use_bootfile: false
         bootfile: Example bootfile
-        ipv4addr: Example ipv4addr
+        ipv4addr: RecordHostIpv4addr_ipv4addr
         use_nextserver: false
         ms_ad_user_data:
           active_users_count: 1
@@ -24080,9 +24121,9 @@ components:
           example: false
           type: boolean
         ipv4addr:
-          description: The IPv4 Address of the host.
-          example: Example ipv4addr
-          type: string
+          $ref: '#/components/schemas/RecordHostIpv4addr_ipv4addr'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         is_invalid_mac:
           description: This flag reflects whether the MAC address for this host address
             is invalid.
@@ -24944,9 +24985,16 @@ components:
         duid: Example duid
         match_client: Example match_client
         ipv6prefix: Example ipv6prefix
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         mac: Example mac
         use_valid_lifetime: false
-        ipv6addr: Example ipv6addr
+        ipv6addr: RecordHostIpv6addr_ipv6addr
         network: Example network
         domain_name_servers:
         - domain_name_servers
@@ -25140,9 +25188,9 @@ components:
           readOnly: true
           type: string
         ipv6addr:
-          description: The IPv6 Address prefix of the DHCP IPv6 Host Address object.
-          example: Example ipv6addr
-          type: string
+          $ref: '#/components/schemas/RecordHostIpv6addr_ipv6addr'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         ipv6prefix:
           description: The IPv6 Address prefix of the DHCP IPv6 Host Address object.
           example: Example ipv6prefix
@@ -36693,6 +36741,13 @@ components:
             is_invalid_mac: false
             nextserver: Example nextserver
             use_pxe_lease_time: false
+            func_call:
+              _result_field: _result_field
+              _object_function: _object_function
+              _object_parameters: "{}"
+              attribute_name: attribute_name
+              _object: _object
+              _parameters: "{}"
             mac: Example mac
             network: Example network
             use_logic_filter_rules: false
@@ -36814,7 +36869,7 @@ components:
             enable_pxe_lease_time: false
             use_bootfile: false
             bootfile: Example bootfile
-            ipv4addr: Example ipv4addr
+            ipv4addr: RecordHostIpv4addr_ipv4addr
             use_nextserver: false
             ms_ad_user_data:
               active_users_count: 1
@@ -36836,6 +36891,13 @@ components:
             is_invalid_mac: false
             nextserver: Example nextserver
             use_pxe_lease_time: false
+            func_call:
+              _result_field: _result_field
+              _object_function: _object_function
+              _object_parameters: "{}"
+              attribute_name: attribute_name
+              _object: _object
+              _parameters: "{}"
             mac: Example mac
             network: Example network
             use_logic_filter_rules: false
@@ -36957,7 +37019,7 @@ components:
             enable_pxe_lease_time: false
             use_bootfile: false
             bootfile: Example bootfile
-            ipv4addr: Example ipv4addr
+            ipv4addr: RecordHostIpv4addr_ipv4addr
             use_nextserver: false
             ms_ad_user_data:
               active_users_count: 1
@@ -37003,9 +37065,16 @@ components:
             duid: Example duid
             match_client: Example match_client
             ipv6prefix: Example ipv6prefix
+            func_call:
+              _result_field: _result_field
+              _object_function: _object_function
+              _object_parameters: "{}"
+              attribute_name: attribute_name
+              _object: _object
+              _parameters: "{}"
             mac: Example mac
             use_valid_lifetime: false
-            ipv6addr: Example ipv6addr
+            ipv6addr: RecordHostIpv6addr_ipv6addr
             network: Example network
             domain_name_servers:
             - domain_name_servers
@@ -37146,9 +37215,16 @@ components:
             duid: Example duid
             match_client: Example match_client
             ipv6prefix: Example ipv6prefix
+            func_call:
+              _result_field: _result_field
+              _object_function: _object_function
+              _object_parameters: "{}"
+              attribute_name: attribute_name
+              _object: _object
+              _parameters: "{}"
             mac: Example mac
             use_valid_lifetime: false
-            ipv6addr: Example ipv6addr
+            ipv6addr: RecordHostIpv6addr_ipv6addr
             network: Example network
             domain_name_servers:
             - domain_name_servers
@@ -37359,6 +37435,13 @@ components:
             is_invalid_mac: false
             nextserver: Example nextserver
             use_pxe_lease_time: false
+            func_call:
+              _result_field: _result_field
+              _object_function: _object_function
+              _object_parameters: "{}"
+              attribute_name: attribute_name
+              _object: _object
+              _parameters: "{}"
             mac: Example mac
             network: Example network
             use_logic_filter_rules: false
@@ -37480,7 +37563,7 @@ components:
             enable_pxe_lease_time: false
             use_bootfile: false
             bootfile: Example bootfile
-            ipv4addr: Example ipv4addr
+            ipv4addr: RecordHostIpv4addr_ipv4addr
             use_nextserver: false
             ms_ad_user_data:
               active_users_count: 1
@@ -37502,6 +37585,13 @@ components:
             is_invalid_mac: false
             nextserver: Example nextserver
             use_pxe_lease_time: false
+            func_call:
+              _result_field: _result_field
+              _object_function: _object_function
+              _object_parameters: "{}"
+              attribute_name: attribute_name
+              _object: _object
+              _parameters: "{}"
             mac: Example mac
             network: Example network
             use_logic_filter_rules: false
@@ -37623,7 +37713,7 @@ components:
             enable_pxe_lease_time: false
             use_bootfile: false
             bootfile: Example bootfile
-            ipv4addr: Example ipv4addr
+            ipv4addr: RecordHostIpv4addr_ipv4addr
             use_nextserver: false
             ms_ad_user_data:
               active_users_count: 1
@@ -37669,9 +37759,16 @@ components:
             duid: Example duid
             match_client: Example match_client
             ipv6prefix: Example ipv6prefix
+            func_call:
+              _result_field: _result_field
+              _object_function: _object_function
+              _object_parameters: "{}"
+              attribute_name: attribute_name
+              _object: _object
+              _parameters: "{}"
             mac: Example mac
             use_valid_lifetime: false
-            ipv6addr: Example ipv6addr
+            ipv6addr: RecordHostIpv6addr_ipv6addr
             network: Example network
             domain_name_servers:
             - domain_name_servers
@@ -37812,9 +37909,16 @@ components:
             duid: Example duid
             match_client: Example match_client
             ipv6prefix: Example ipv6prefix
+            func_call:
+              _result_field: _result_field
+              _object_function: _object_function
+              _object_parameters: "{}"
+              attribute_name: attribute_name
+              _object: _object
+              _parameters: "{}"
             mac: Example mac
             use_valid_lifetime: false
-            ipv6addr: Example ipv6addr
+            ipv6addr: RecordHostIpv6addr_ipv6addr
             network: Example network
             domain_name_servers:
             - domain_name_servers
@@ -38647,6 +38751,26 @@ components:
           $ref: '#/components/schemas/RecordUnknown'
       title: UpdateRecordUnknownResponseAsObject
       type: object
+    RecordHostIpv4addr_ipv4addr_oneOf:
+      description: "record:host_ipv4addr: The IPv4 Address of the host."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+      type: object
+    RecordHostIpv4addr_ipv4addr:
+      description: The IPv4 Address of the host.
+      oneOf:
+      - description: "record:host_ipv4addr: The IPv4 Address of the host."
+        type: string
+      - $ref: '#/components/schemas/RecordHostIpv4addr_ipv4addr_oneOf'
     ListRecordHostIpv4addrResponseObject:
       description: The response format to retrieve __RecordHostIpv4addr__ objects.
       properties:
@@ -38675,6 +38799,13 @@ components:
           is_invalid_mac: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           mac: Example mac
           network: Example network
           use_logic_filter_rules: false
@@ -38796,7 +38927,7 @@ components:
           enable_pxe_lease_time: false
           use_bootfile: false
           bootfile: Example bootfile
-          ipv4addr: Example ipv4addr
+          ipv4addr: RecordHostIpv4addr_ipv4addr
           use_nextserver: false
           ms_ad_user_data:
             active_users_count: 1
@@ -38817,6 +38948,28 @@ components:
           $ref: '#/components/schemas/RecordHostIpv4addr'
       title: UpdateRecordHostIpv4addrResponseAsObject
       type: object
+    RecordHostIpv6addr_ipv6addr_oneOf:
+      description: "record:host_ipv6addr: The IPv6 Address prefix of the DHCP IPv6\
+        \ Host Address object."
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+      type: object
+    RecordHostIpv6addr_ipv6addr:
+      description: The IPv6 Address prefix of the DHCP IPv6 Host Address object.
+      oneOf:
+      - description: "record:host_ipv6addr: The IPv6 Address prefix of the DHCP IPv6\
+          \ Host Address object."
+        type: string
+      - $ref: '#/components/schemas/RecordHostIpv6addr_ipv6addr_oneOf'
     ListRecordHostIpv6addrResponseObject:
       description: The response format to retrieve __RecordHostIpv6addr__ objects.
       properties:
@@ -38843,9 +38996,16 @@ components:
           duid: Example duid
           match_client: Example match_client
           ipv6prefix: Example ipv6prefix
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           mac: Example mac
           use_valid_lifetime: false
-          ipv6addr: Example ipv6addr
+          ipv6addr: RecordHostIpv6addr_ipv6addr
           network: Example network
           domain_name_servers:
           - domain_name_servers

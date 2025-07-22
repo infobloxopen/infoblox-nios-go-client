@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. You can specify the duration of time it takes a host to connect to a boot server, such as a TFTP server, and download the file it needs to boot. For example, set a longer lease time if the client downloads an OS (operating system) or configuration file, or set a shorter lease time if the client downloads only configuration changes. Enter the lease time for the preboot execution environment for hosts to boot remotely from a server. | [optional] 
 **Host** | Pointer to **string** | The host to which the host address belongs, in FQDN format. It is only present when the host address object is not returned as part of a host. | [optional] [readonly] 
 **IgnoreClientRequestedOptions** | Pointer to **bool** | If this field is set to false, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
-**Ipv4addr** | Pointer to **string** | The IPv4 Address of the host. | [optional] 
+**Ipv4addr** | Pointer to [**RecordHostIpv4addrIpv4addr**](RecordHostIpv4addrIpv4addr.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **IsInvalidMac** | Pointer to **bool** | This flag reflects whether the MAC address for this host address is invalid. | [optional] [readonly] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **LogicFilterRules** | Pointer to [**[]RecordHostIpv4addrLogicFilterRules**](RecordHostIpv4addrLogicFilterRules.md) | This field contains the logic filters to be applied on the this host address. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
@@ -309,20 +310,20 @@ HasIgnoreClientRequestedOptions returns a boolean if a field has been set.
 
 ### GetIpv4addr
 
-`func (o *GetRecordHostIpv4addrResponse) GetIpv4addr() string`
+`func (o *GetRecordHostIpv4addrResponse) GetIpv4addr() RecordHostIpv4addrIpv4addr`
 
 GetIpv4addr returns the Ipv4addr field if non-nil, zero value otherwise.
 
 ### GetIpv4addrOk
 
-`func (o *GetRecordHostIpv4addrResponse) GetIpv4addrOk() (*string, bool)`
+`func (o *GetRecordHostIpv4addrResponse) GetIpv4addrOk() (*RecordHostIpv4addrIpv4addr, bool)`
 
 GetIpv4addrOk returns a tuple with the Ipv4addr field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIpv4addr
 
-`func (o *GetRecordHostIpv4addrResponse) SetIpv4addr(v string)`
+`func (o *GetRecordHostIpv4addrResponse) SetIpv4addr(v RecordHostIpv4addrIpv4addr)`
 
 SetIpv4addr sets Ipv4addr field to given value.
 
@@ -331,6 +332,31 @@ SetIpv4addr sets Ipv4addr field to given value.
 `func (o *GetRecordHostIpv4addrResponse) HasIpv4addr() bool`
 
 HasIpv4addr returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *GetRecordHostIpv4addrResponse) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *GetRecordHostIpv4addrResponse) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *GetRecordHostIpv4addrResponse) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *GetRecordHostIpv4addrResponse) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetIsInvalidMac
 
