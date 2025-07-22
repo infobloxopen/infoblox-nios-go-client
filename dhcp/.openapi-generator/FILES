@@ -336,6 +336,7 @@ docs/Sharednetwork.md
 docs/SharednetworkAPI.md
 docs/SharednetworkLogicFilterRules.md
 docs/SharednetworkMsAdUserData.md
+docs/SharednetworkNetworks.md
 docs/SharednetworkOptions.md
 docs/UpdateDhcpStatisticsResponse.md
 docs/UpdateDhcpStatisticsResponseAsObject.md
@@ -672,6 +673,7 @@ model_roaminghost_options.go
 model_sharednetwork.go
 model_sharednetwork_logic_filter_rules.go
 model_sharednetwork_ms_ad_user_data.go
+model_sharednetwork_networks.go
 model_sharednetwork_options.go
 model_update_dhcp_statistics_response.go
 model_update_dhcp_statistics_response_as_object.go

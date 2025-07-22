@@ -72,8 +72,8 @@ type Sharednetwork struct {
 	Name *string `json:"name,omitempty"`
 	// The name of the network view in which this shared network resides.
 	NetworkView *string `json:"network_view,omitempty"`
-	// A list of networks belonging to the shared network Each individual list item must be specified as an object containing a '_ref' parameter to a network reference, for example:: [{ \"_ref\": \"network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\", }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \"_ref\": { 'network': '10.0.0.0/8', } }] note that in this case the search must match exactly one network for the assignment to be successful.
-	Networks []string `json:"networks,omitempty"`
+	// A list of networks belonging to the shared network. Each individual list item must be specified as an object containing a '_ref' parameter to a network reference, for example:: [{ \"_ref\": \"network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\" }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \"_ref\": { 'network': '10.0.0.0/8' } }] note that in this case the search must match exactly one network for the assignment to be successful.
+	Networks []SharednetworkNetworks `json:"networks,omitempty"`
 	// The name in FQDN and/or IPv4 Address of the next server that the host needs to boot.
 	Nextserver *string `json:"nextserver,omitempty"`
 	// An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object.
@@ -1006,9 +1006,9 @@ func (o *Sharednetwork) SetNetworkView(v string) {
 }
 
 // GetNetworks returns the Networks field value if set, zero value otherwise.
-func (o *Sharednetwork) GetNetworks() []string {
+func (o *Sharednetwork) GetNetworks() []SharednetworkNetworks {
 	if o == nil || IsNil(o.Networks) {
-		var ret []string
+		var ret []SharednetworkNetworks
 		return ret
 	}
 	return o.Networks
@@ -1016,7 +1016,7 @@ func (o *Sharednetwork) GetNetworks() []string {
 
 // GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sharednetwork) GetNetworksOk() ([]string, bool) {
+func (o *Sharednetwork) GetNetworksOk() ([]SharednetworkNetworks, bool) {
 	if o == nil || IsNil(o.Networks) {
 		return nil, false
 	}
@@ -1032,8 +1032,8 @@ func (o *Sharednetwork) HasNetworks() bool {
 	return false
 }
 
-// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
-func (o *Sharednetwork) SetNetworks(v []string) {
+// SetNetworks gets a reference to the given []SharednetworkNetworks and assigns it to the Networks field.
+func (o *Sharednetwork) SetNetworks(v []SharednetworkNetworks) {
 	o.Networks = v
 }
 
