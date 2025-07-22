@@ -57,9 +57,9 @@ type RecordHost struct {
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// This is a list of IPv4 Addresses for the host.
-	Ipv4addrs []string `json:"ipv4addrs,omitempty"`
+	Ipv4addrs []RecordHostIpv4addr `json:"ipv4addrs,omitempty"`
 	// This is a list of IPv6 Addresses for the host.
-	Ipv6addrs []string `json:"ipv6addrs,omitempty"`
+	Ipv6addrs []RecordHostIpv6addr `json:"ipv6addrs,omitempty"`
 	// The time of the last DNS query in Epoch seconds format.
 	LastQueried  *int64                  `json:"last_queried,omitempty"`
 	MsAdUserData *RecordHostMsAdUserData `json:"ms_ad_user_data,omitempty"`
@@ -717,9 +717,9 @@ func (o *RecordHost) SetExtAttrs(v map[string]ExtAttrs) {
 }
 
 // GetIpv4addrs returns the Ipv4addrs field value if set, zero value otherwise.
-func (o *RecordHost) GetIpv4addrs() []string {
+func (o *RecordHost) GetIpv4addrs() []RecordHostIpv4addr {
 	if o == nil || IsNil(o.Ipv4addrs) {
-		var ret []string
+		var ret []RecordHostIpv4addr
 		return ret
 	}
 	return o.Ipv4addrs
@@ -727,7 +727,7 @@ func (o *RecordHost) GetIpv4addrs() []string {
 
 // GetIpv4addrsOk returns a tuple with the Ipv4addrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecordHost) GetIpv4addrsOk() ([]string, bool) {
+func (o *RecordHost) GetIpv4addrsOk() ([]RecordHostIpv4addr, bool) {
 	if o == nil || IsNil(o.Ipv4addrs) {
 		return nil, false
 	}
@@ -743,15 +743,15 @@ func (o *RecordHost) HasIpv4addrs() bool {
 	return false
 }
 
-// SetIpv4addrs gets a reference to the given []string and assigns it to the Ipv4addrs field.
-func (o *RecordHost) SetIpv4addrs(v []string) {
+// SetIpv4addrs gets a reference to the given []RecordHostIpv4addr and assigns it to the Ipv4addrs field.
+func (o *RecordHost) SetIpv4addrs(v []RecordHostIpv4addr) {
 	o.Ipv4addrs = v
 }
 
 // GetIpv6addrs returns the Ipv6addrs field value if set, zero value otherwise.
-func (o *RecordHost) GetIpv6addrs() []string {
+func (o *RecordHost) GetIpv6addrs() []RecordHostIpv6addr {
 	if o == nil || IsNil(o.Ipv6addrs) {
-		var ret []string
+		var ret []RecordHostIpv6addr
 		return ret
 	}
 	return o.Ipv6addrs
@@ -759,7 +759,7 @@ func (o *RecordHost) GetIpv6addrs() []string {
 
 // GetIpv6addrsOk returns a tuple with the Ipv6addrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecordHost) GetIpv6addrsOk() ([]string, bool) {
+func (o *RecordHost) GetIpv6addrsOk() ([]RecordHostIpv6addr, bool) {
 	if o == nil || IsNil(o.Ipv6addrs) {
 		return nil, false
 	}
@@ -775,8 +775,8 @@ func (o *RecordHost) HasIpv6addrs() bool {
 	return false
 }
 
-// SetIpv6addrs gets a reference to the given []string and assigns it to the Ipv6addrs field.
-func (o *RecordHost) SetIpv6addrs(v []string) {
+// SetIpv6addrs gets a reference to the given []RecordHostIpv6addr and assigns it to the Ipv6addrs field.
+func (o *RecordHost) SetIpv6addrs(v []RecordHostIpv6addr) {
 	o.Ipv6addrs = v
 }
 

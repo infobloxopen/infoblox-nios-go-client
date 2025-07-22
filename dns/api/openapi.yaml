@@ -20023,8 +20023,292 @@ components:
         device_location: Example device_location
         ddns_protected: false
         ipv4addrs:
-        - record:host_ipv4addr
-        - record:host_ipv4addr
+        - network_view: Example network_view
+          match_client: Example match_client
+          use_bootserver: false
+          is_invalid_mac: false
+          nextserver: Example nextserver
+          use_pxe_lease_time: false
+          mac: Example mac
+          network: Example network
+          use_logic_filter_rules: false
+          discover_now_status: Example discover_now_status
+          host: Example host
+          options:
+          - vendor_class: Example vendor_class
+            use_option: false
+            num: 1
+            name: Example name
+            value: Example value
+          - vendor_class: Example vendor_class
+            use_option: false
+            num: 1
+            name: Example name
+            value: Example value
+          pxe_lease_time: 1
+          last_queried: 1
+          use_ignore_client_requested_options: false
+          configure_for_dhcp: false
+          use_deny_bootp: false
+          discovered_data:
+            vport_name: Example vport_name
+            netbios_name: Example netbios_name
+            v_adapter: Example v_adapter
+            port_speed: Example port_speed
+            cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+            port_vlan_number: Example port_vlan_number
+            device_contact: Example device_contact
+            vmhost_name: Example vmhost_name
+            vport_speed: Example vport_speed
+            device_type: Example device_type
+            vswitch_tep_port_group: Example vswitch_tep_port_group
+            vswitch_segment_type: Example vswitch_segment_type
+            vmhost_mac_address: Example vmhost_mac_address
+            first_discovered: 1
+            vmhost_nic_names: Example vmhost_nic_names
+            vswitch_segment_id: Example vswitch_segment_id
+            endpoint_groups: Example endpoint_groups
+            port_vlan_name: Example port_vlan_name
+            v_host: Example v_host
+            vswitch_id: Example vswitch_id
+            network_component_description: Example network_component_description
+            vmhost_ip_address: Example vmhost_ip_address
+            mgmt_ip_address: Example mgmt_ip_address
+            vport_mac_address: Example vport_mac_address
+            tenant: Example tenant
+            port_duplex: Example port_duplex
+            ap_ip_address: Example ap_ip_address
+            device_port_type: Example device_port_type
+            vswitch_available_ports_count: 1
+            network_component_type: Example network_component_type
+            vport_link_status: Example vport_link_status
+            v_cluster: Example v_cluster
+            vswitch_segment_name: Example vswitch_segment_name
+            vswitch_tep_ip: Example vswitch_tep_ip
+            v_switch: Example v_switch
+            v_entity_name: Example v_entity_name
+            iprg_state: Example iprg_state
+            iprg_type: Example iprg_type
+            network_component_vendor: Example network_component_vendor
+            vrf_rd: Example vrf_rd
+            vport_mode: Example vport_mode
+            cmp_type: Example cmp_type
+            bgp_as: 1
+            v_datacenter: Example v_datacenter
+            bridge_domain: Example bridge_domain
+            network_component_ip: Example network_component_ip
+            vswitch_ipv6_enabled: false
+            task_name: Example task_name
+            ap_ssid: Example ap_ssid
+            port_vlan_description: Example port_vlan_description
+            duid: Example duid
+            cisco_ise_session_state: Example cisco_ise_session_state
+            device_model: Example device_model
+            network_component_port_description: Example network_component_port_description
+            port_type: Example port_type
+            vmi_tenant_id: Example vmi_tenant_id
+            vswitch_tep_vlan: Example vswitch_tep_vlan
+            iprg_no: 1
+            vswitch_name: Example vswitch_name
+            device_port_name: Example device_port_name
+            last_discovered: 1
+            network_component_location: Example network_component_location
+            vrf_name: Example vrf_name
+            discovered_name: Example discovered_name
+            cisco_ise_security_group: Example cisco_ise_security_group
+            ap_name: Example ap_name
+            vmi_is_public_address: false
+            port_status: Example port_status
+            cisco_ise_ssid: Example cisco_ise_ssid
+            mac_address: Example mac_address
+            network_component_contact: Example network_component_contact
+            open_ports: Example open_ports
+            vrf_description: Example vrf_description
+            discoverer: Example discoverer
+            network_component_port_number: Example network_component_port_number
+            network_component_port_name: Example network_component_port_name
+            vmi_private_address: Example vmi_private_address
+            network_component_model: Example network_component_model
+            vswitch_type: Example vswitch_type
+            vswitch_segment_port_group: Example vswitch_segment_port_group
+            vmhost_subnet_cidr: 1
+            os: Example os
+            vport_conf_speed: Example vport_conf_speed
+            vmi_id: Example vmi_id
+            vswitch_tep_multicast: Example vswitch_tep_multicast
+            device_location: Example device_location
+            vmi_ip_type: Example vmi_ip_type
+            vlan_port_group: Example vlan_port_group
+            vport_conf_mode: Example vport_conf_mode
+            vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+            network_component_name: Example network_component_name
+            vswitch_tep_type: Example vswitch_tep_type
+            vmi_name: Example vmi_name
+            port_link_status: Example port_link_status
+            device_vendor: Example device_vendor
+            v_entity_type: Example v_entity_type
+          enable_pxe_lease_time: false
+          use_bootfile: false
+          bootfile: Example bootfile
+          ipv4addr: Example ipv4addr
+          use_nextserver: false
+          ms_ad_user_data:
+            active_users_count: 1
+          deny_bootp: false
+          use_for_ea_inheritance: false
+          bootserver: Example bootserver
+          _ref: _ref
+          reserved_interface: Example reserved_interface
+          ignore_client_requested_options: false
+          logic_filter_rules:
+          - filter: Example filter
+            type: Example type
+          - filter: Example filter
+            type: Example type
+          use_options: false
+        - network_view: Example network_view
+          match_client: Example match_client
+          use_bootserver: false
+          is_invalid_mac: false
+          nextserver: Example nextserver
+          use_pxe_lease_time: false
+          mac: Example mac
+          network: Example network
+          use_logic_filter_rules: false
+          discover_now_status: Example discover_now_status
+          host: Example host
+          options:
+          - vendor_class: Example vendor_class
+            use_option: false
+            num: 1
+            name: Example name
+            value: Example value
+          - vendor_class: Example vendor_class
+            use_option: false
+            num: 1
+            name: Example name
+            value: Example value
+          pxe_lease_time: 1
+          last_queried: 1
+          use_ignore_client_requested_options: false
+          configure_for_dhcp: false
+          use_deny_bootp: false
+          discovered_data:
+            vport_name: Example vport_name
+            netbios_name: Example netbios_name
+            v_adapter: Example v_adapter
+            port_speed: Example port_speed
+            cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+            port_vlan_number: Example port_vlan_number
+            device_contact: Example device_contact
+            vmhost_name: Example vmhost_name
+            vport_speed: Example vport_speed
+            device_type: Example device_type
+            vswitch_tep_port_group: Example vswitch_tep_port_group
+            vswitch_segment_type: Example vswitch_segment_type
+            vmhost_mac_address: Example vmhost_mac_address
+            first_discovered: 1
+            vmhost_nic_names: Example vmhost_nic_names
+            vswitch_segment_id: Example vswitch_segment_id
+            endpoint_groups: Example endpoint_groups
+            port_vlan_name: Example port_vlan_name
+            v_host: Example v_host
+            vswitch_id: Example vswitch_id
+            network_component_description: Example network_component_description
+            vmhost_ip_address: Example vmhost_ip_address
+            mgmt_ip_address: Example mgmt_ip_address
+            vport_mac_address: Example vport_mac_address
+            tenant: Example tenant
+            port_duplex: Example port_duplex
+            ap_ip_address: Example ap_ip_address
+            device_port_type: Example device_port_type
+            vswitch_available_ports_count: 1
+            network_component_type: Example network_component_type
+            vport_link_status: Example vport_link_status
+            v_cluster: Example v_cluster
+            vswitch_segment_name: Example vswitch_segment_name
+            vswitch_tep_ip: Example vswitch_tep_ip
+            v_switch: Example v_switch
+            v_entity_name: Example v_entity_name
+            iprg_state: Example iprg_state
+            iprg_type: Example iprg_type
+            network_component_vendor: Example network_component_vendor
+            vrf_rd: Example vrf_rd
+            vport_mode: Example vport_mode
+            cmp_type: Example cmp_type
+            bgp_as: 1
+            v_datacenter: Example v_datacenter
+            bridge_domain: Example bridge_domain
+            network_component_ip: Example network_component_ip
+            vswitch_ipv6_enabled: false
+            task_name: Example task_name
+            ap_ssid: Example ap_ssid
+            port_vlan_description: Example port_vlan_description
+            duid: Example duid
+            cisco_ise_session_state: Example cisco_ise_session_state
+            device_model: Example device_model
+            network_component_port_description: Example network_component_port_description
+            port_type: Example port_type
+            vmi_tenant_id: Example vmi_tenant_id
+            vswitch_tep_vlan: Example vswitch_tep_vlan
+            iprg_no: 1
+            vswitch_name: Example vswitch_name
+            device_port_name: Example device_port_name
+            last_discovered: 1
+            network_component_location: Example network_component_location
+            vrf_name: Example vrf_name
+            discovered_name: Example discovered_name
+            cisco_ise_security_group: Example cisco_ise_security_group
+            ap_name: Example ap_name
+            vmi_is_public_address: false
+            port_status: Example port_status
+            cisco_ise_ssid: Example cisco_ise_ssid
+            mac_address: Example mac_address
+            network_component_contact: Example network_component_contact
+            open_ports: Example open_ports
+            vrf_description: Example vrf_description
+            discoverer: Example discoverer
+            network_component_port_number: Example network_component_port_number
+            network_component_port_name: Example network_component_port_name
+            vmi_private_address: Example vmi_private_address
+            network_component_model: Example network_component_model
+            vswitch_type: Example vswitch_type
+            vswitch_segment_port_group: Example vswitch_segment_port_group
+            vmhost_subnet_cidr: 1
+            os: Example os
+            vport_conf_speed: Example vport_conf_speed
+            vmi_id: Example vmi_id
+            vswitch_tep_multicast: Example vswitch_tep_multicast
+            device_location: Example device_location
+            vmi_ip_type: Example vmi_ip_type
+            vlan_port_group: Example vlan_port_group
+            vport_conf_mode: Example vport_conf_mode
+            vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+            network_component_name: Example network_component_name
+            vswitch_tep_type: Example vswitch_tep_type
+            vmi_name: Example vmi_name
+            port_link_status: Example port_link_status
+            device_vendor: Example device_vendor
+            v_entity_type: Example v_entity_type
+          enable_pxe_lease_time: false
+          use_bootfile: false
+          bootfile: Example bootfile
+          ipv4addr: Example ipv4addr
+          use_nextserver: false
+          ms_ad_user_data:
+            active_users_count: 1
+          deny_bootp: false
+          use_for_ea_inheritance: false
+          bootserver: Example bootserver
+          _ref: _ref
+          reserved_interface: Example reserved_interface
+          ignore_client_requested_options: false
+          logic_filter_rules:
+          - filter: Example filter
+            type: Example type
+          - filter: Example filter
+            type: Example type
+          use_options: false
         ttl: 1
         dns_name: Example dns_name
         enable_immediate_discovery: false
@@ -20051,8 +20335,292 @@ components:
         comment: Example comment
         device_vendor: Example device_vendor
         ipv6addrs:
-        - record:host_ipv6addr
-        - record:host_ipv6addr
+        - network_view: Example network_view
+          duid: Example duid
+          match_client: Example match_client
+          ipv6prefix: Example ipv6prefix
+          mac: Example mac
+          use_valid_lifetime: false
+          ipv6addr: Example ipv6addr
+          network: Example network
+          domain_name_servers:
+          - domain_name_servers
+          - domain_name_servers
+          use_logic_filter_rules: false
+          domain_name: Example domain_name
+          use_domain_name: false
+          discover_now_status: Example discover_now_status
+          host: Example host
+          options:
+          - vendor_class: Example vendor_class
+            use_option: false
+            num: 1
+            name: Example name
+            value: Example value
+          - vendor_class: Example vendor_class
+            use_option: false
+            num: 1
+            name: Example name
+            value: Example value
+          valid_lifetime: 1
+          last_queried: 1
+          configure_for_dhcp: false
+          use_preferred_lifetime: false
+          address_type: Example address_type
+          discovered_data:
+            vport_name: Example vport_name
+            netbios_name: Example netbios_name
+            v_adapter: Example v_adapter
+            port_speed: Example port_speed
+            cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+            port_vlan_number: Example port_vlan_number
+            device_contact: Example device_contact
+            vmhost_name: Example vmhost_name
+            vport_speed: Example vport_speed
+            device_type: Example device_type
+            vswitch_tep_port_group: Example vswitch_tep_port_group
+            vswitch_segment_type: Example vswitch_segment_type
+            vmhost_mac_address: Example vmhost_mac_address
+            first_discovered: 1
+            vmhost_nic_names: Example vmhost_nic_names
+            vswitch_segment_id: Example vswitch_segment_id
+            endpoint_groups: Example endpoint_groups
+            port_vlan_name: Example port_vlan_name
+            v_host: Example v_host
+            vswitch_id: Example vswitch_id
+            network_component_description: Example network_component_description
+            vmhost_ip_address: Example vmhost_ip_address
+            mgmt_ip_address: Example mgmt_ip_address
+            vport_mac_address: Example vport_mac_address
+            tenant: Example tenant
+            port_duplex: Example port_duplex
+            ap_ip_address: Example ap_ip_address
+            device_port_type: Example device_port_type
+            vswitch_available_ports_count: 1
+            network_component_type: Example network_component_type
+            vport_link_status: Example vport_link_status
+            v_cluster: Example v_cluster
+            vswitch_segment_name: Example vswitch_segment_name
+            vswitch_tep_ip: Example vswitch_tep_ip
+            v_switch: Example v_switch
+            v_entity_name: Example v_entity_name
+            iprg_state: Example iprg_state
+            iprg_type: Example iprg_type
+            network_component_vendor: Example network_component_vendor
+            vrf_rd: Example vrf_rd
+            vport_mode: Example vport_mode
+            cmp_type: Example cmp_type
+            bgp_as: 1
+            v_datacenter: Example v_datacenter
+            bridge_domain: Example bridge_domain
+            network_component_ip: Example network_component_ip
+            vswitch_ipv6_enabled: false
+            task_name: Example task_name
+            ap_ssid: Example ap_ssid
+            port_vlan_description: Example port_vlan_description
+            duid: Example duid
+            cisco_ise_session_state: Example cisco_ise_session_state
+            device_model: Example device_model
+            network_component_port_description: Example network_component_port_description
+            port_type: Example port_type
+            vmi_tenant_id: Example vmi_tenant_id
+            vswitch_tep_vlan: Example vswitch_tep_vlan
+            iprg_no: 1
+            vswitch_name: Example vswitch_name
+            device_port_name: Example device_port_name
+            last_discovered: 1
+            network_component_location: Example network_component_location
+            vrf_name: Example vrf_name
+            discovered_name: Example discovered_name
+            cisco_ise_security_group: Example cisco_ise_security_group
+            ap_name: Example ap_name
+            vmi_is_public_address: false
+            port_status: Example port_status
+            cisco_ise_ssid: Example cisco_ise_ssid
+            mac_address: Example mac_address
+            network_component_contact: Example network_component_contact
+            open_ports: Example open_ports
+            vrf_description: Example vrf_description
+            discoverer: Example discoverer
+            network_component_port_number: Example network_component_port_number
+            network_component_port_name: Example network_component_port_name
+            vmi_private_address: Example vmi_private_address
+            network_component_model: Example network_component_model
+            vswitch_type: Example vswitch_type
+            vswitch_segment_port_group: Example vswitch_segment_port_group
+            vmhost_subnet_cidr: 1
+            os: Example os
+            vport_conf_speed: Example vport_conf_speed
+            vmi_id: Example vmi_id
+            vswitch_tep_multicast: Example vswitch_tep_multicast
+            device_location: Example device_location
+            vmi_ip_type: Example vmi_ip_type
+            vlan_port_group: Example vlan_port_group
+            vport_conf_mode: Example vport_conf_mode
+            vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+            network_component_name: Example network_component_name
+            vswitch_tep_type: Example vswitch_tep_type
+            vmi_name: Example vmi_name
+            port_link_status: Example port_link_status
+            device_vendor: Example device_vendor
+            v_entity_type: Example v_entity_type
+          preferred_lifetime: 1
+          ms_ad_user_data:
+            active_users_count: 1
+          use_domain_name_servers: false
+          use_for_ea_inheritance: false
+          ipv6prefix_bits: 1
+          _ref: _ref
+          reserved_interface: Example reserved_interface
+          logic_filter_rules:
+          - filter: Example filter
+            type: Example type
+          - filter: Example filter
+            type: Example type
+          use_options: false
+        - network_view: Example network_view
+          duid: Example duid
+          match_client: Example match_client
+          ipv6prefix: Example ipv6prefix
+          mac: Example mac
+          use_valid_lifetime: false
+          ipv6addr: Example ipv6addr
+          network: Example network
+          domain_name_servers:
+          - domain_name_servers
+          - domain_name_servers
+          use_logic_filter_rules: false
+          domain_name: Example domain_name
+          use_domain_name: false
+          discover_now_status: Example discover_now_status
+          host: Example host
+          options:
+          - vendor_class: Example vendor_class
+            use_option: false
+            num: 1
+            name: Example name
+            value: Example value
+          - vendor_class: Example vendor_class
+            use_option: false
+            num: 1
+            name: Example name
+            value: Example value
+          valid_lifetime: 1
+          last_queried: 1
+          configure_for_dhcp: false
+          use_preferred_lifetime: false
+          address_type: Example address_type
+          discovered_data:
+            vport_name: Example vport_name
+            netbios_name: Example netbios_name
+            v_adapter: Example v_adapter
+            port_speed: Example port_speed
+            cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+            port_vlan_number: Example port_vlan_number
+            device_contact: Example device_contact
+            vmhost_name: Example vmhost_name
+            vport_speed: Example vport_speed
+            device_type: Example device_type
+            vswitch_tep_port_group: Example vswitch_tep_port_group
+            vswitch_segment_type: Example vswitch_segment_type
+            vmhost_mac_address: Example vmhost_mac_address
+            first_discovered: 1
+            vmhost_nic_names: Example vmhost_nic_names
+            vswitch_segment_id: Example vswitch_segment_id
+            endpoint_groups: Example endpoint_groups
+            port_vlan_name: Example port_vlan_name
+            v_host: Example v_host
+            vswitch_id: Example vswitch_id
+            network_component_description: Example network_component_description
+            vmhost_ip_address: Example vmhost_ip_address
+            mgmt_ip_address: Example mgmt_ip_address
+            vport_mac_address: Example vport_mac_address
+            tenant: Example tenant
+            port_duplex: Example port_duplex
+            ap_ip_address: Example ap_ip_address
+            device_port_type: Example device_port_type
+            vswitch_available_ports_count: 1
+            network_component_type: Example network_component_type
+            vport_link_status: Example vport_link_status
+            v_cluster: Example v_cluster
+            vswitch_segment_name: Example vswitch_segment_name
+            vswitch_tep_ip: Example vswitch_tep_ip
+            v_switch: Example v_switch
+            v_entity_name: Example v_entity_name
+            iprg_state: Example iprg_state
+            iprg_type: Example iprg_type
+            network_component_vendor: Example network_component_vendor
+            vrf_rd: Example vrf_rd
+            vport_mode: Example vport_mode
+            cmp_type: Example cmp_type
+            bgp_as: 1
+            v_datacenter: Example v_datacenter
+            bridge_domain: Example bridge_domain
+            network_component_ip: Example network_component_ip
+            vswitch_ipv6_enabled: false
+            task_name: Example task_name
+            ap_ssid: Example ap_ssid
+            port_vlan_description: Example port_vlan_description
+            duid: Example duid
+            cisco_ise_session_state: Example cisco_ise_session_state
+            device_model: Example device_model
+            network_component_port_description: Example network_component_port_description
+            port_type: Example port_type
+            vmi_tenant_id: Example vmi_tenant_id
+            vswitch_tep_vlan: Example vswitch_tep_vlan
+            iprg_no: 1
+            vswitch_name: Example vswitch_name
+            device_port_name: Example device_port_name
+            last_discovered: 1
+            network_component_location: Example network_component_location
+            vrf_name: Example vrf_name
+            discovered_name: Example discovered_name
+            cisco_ise_security_group: Example cisco_ise_security_group
+            ap_name: Example ap_name
+            vmi_is_public_address: false
+            port_status: Example port_status
+            cisco_ise_ssid: Example cisco_ise_ssid
+            mac_address: Example mac_address
+            network_component_contact: Example network_component_contact
+            open_ports: Example open_ports
+            vrf_description: Example vrf_description
+            discoverer: Example discoverer
+            network_component_port_number: Example network_component_port_number
+            network_component_port_name: Example network_component_port_name
+            vmi_private_address: Example vmi_private_address
+            network_component_model: Example network_component_model
+            vswitch_type: Example vswitch_type
+            vswitch_segment_port_group: Example vswitch_segment_port_group
+            vmhost_subnet_cidr: 1
+            os: Example os
+            vport_conf_speed: Example vport_conf_speed
+            vmi_id: Example vmi_id
+            vswitch_tep_multicast: Example vswitch_tep_multicast
+            device_location: Example device_location
+            vmi_ip_type: Example vmi_ip_type
+            vlan_port_group: Example vlan_port_group
+            vport_conf_mode: Example vport_conf_mode
+            vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+            network_component_name: Example network_component_name
+            vswitch_tep_type: Example vswitch_tep_type
+            vmi_name: Example vmi_name
+            port_link_status: Example port_link_status
+            device_vendor: Example device_vendor
+            v_entity_type: Example v_entity_type
+          preferred_lifetime: 1
+          ms_ad_user_data:
+            active_users_count: 1
+          use_domain_name_servers: false
+          use_for_ea_inheritance: false
+          ipv6prefix_bits: 1
+          _ref: _ref
+          reserved_interface: Example reserved_interface
+          logic_filter_rules:
+          - filter: Example filter
+            type: Example type
+          - filter: Example filter
+            type: Example type
+          use_options: false
         disable_discovery: false
         use_cli_credentials: false
       properties:
@@ -20154,21 +20722,13 @@ components:
           type: object
         ipv4addrs:
           description: This is a list of IPv4 Addresses for the host.
-          enum:
-          - record:host_ipv4addr
           items:
-            enum:
-            - record:host_ipv4addr
-            type: string
+            $ref: '#/components/schemas/RecordHostIpv4addr'
           type: array
         ipv6addrs:
           description: This is a list of IPv6 Addresses for the host.
-          enum:
-          - record:host_ipv6addr
           items:
-            enum:
-            - record:host_ipv6addr
-            type: string
+            $ref: '#/components/schemas/RecordHostIpv6addr'
           type: array
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
@@ -36127,8 +36687,292 @@ components:
           device_location: Example device_location
           ddns_protected: false
           ipv4addrs:
-          - record:host_ipv4addr
-          - record:host_ipv4addr
+          - network_view: Example network_view
+            match_client: Example match_client
+            use_bootserver: false
+            is_invalid_mac: false
+            nextserver: Example nextserver
+            use_pxe_lease_time: false
+            mac: Example mac
+            network: Example network
+            use_logic_filter_rules: false
+            discover_now_status: Example discover_now_status
+            host: Example host
+            options:
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            pxe_lease_time: 1
+            last_queried: 1
+            use_ignore_client_requested_options: false
+            configure_for_dhcp: false
+            use_deny_bootp: false
+            discovered_data:
+              vport_name: Example vport_name
+              netbios_name: Example netbios_name
+              v_adapter: Example v_adapter
+              port_speed: Example port_speed
+              cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+              port_vlan_number: Example port_vlan_number
+              device_contact: Example device_contact
+              vmhost_name: Example vmhost_name
+              vport_speed: Example vport_speed
+              device_type: Example device_type
+              vswitch_tep_port_group: Example vswitch_tep_port_group
+              vswitch_segment_type: Example vswitch_segment_type
+              vmhost_mac_address: Example vmhost_mac_address
+              first_discovered: 1
+              vmhost_nic_names: Example vmhost_nic_names
+              vswitch_segment_id: Example vswitch_segment_id
+              endpoint_groups: Example endpoint_groups
+              port_vlan_name: Example port_vlan_name
+              v_host: Example v_host
+              vswitch_id: Example vswitch_id
+              network_component_description: Example network_component_description
+              vmhost_ip_address: Example vmhost_ip_address
+              mgmt_ip_address: Example mgmt_ip_address
+              vport_mac_address: Example vport_mac_address
+              tenant: Example tenant
+              port_duplex: Example port_duplex
+              ap_ip_address: Example ap_ip_address
+              device_port_type: Example device_port_type
+              vswitch_available_ports_count: 1
+              network_component_type: Example network_component_type
+              vport_link_status: Example vport_link_status
+              v_cluster: Example v_cluster
+              vswitch_segment_name: Example vswitch_segment_name
+              vswitch_tep_ip: Example vswitch_tep_ip
+              v_switch: Example v_switch
+              v_entity_name: Example v_entity_name
+              iprg_state: Example iprg_state
+              iprg_type: Example iprg_type
+              network_component_vendor: Example network_component_vendor
+              vrf_rd: Example vrf_rd
+              vport_mode: Example vport_mode
+              cmp_type: Example cmp_type
+              bgp_as: 1
+              v_datacenter: Example v_datacenter
+              bridge_domain: Example bridge_domain
+              network_component_ip: Example network_component_ip
+              vswitch_ipv6_enabled: false
+              task_name: Example task_name
+              ap_ssid: Example ap_ssid
+              port_vlan_description: Example port_vlan_description
+              duid: Example duid
+              cisco_ise_session_state: Example cisco_ise_session_state
+              device_model: Example device_model
+              network_component_port_description: Example network_component_port_description
+              port_type: Example port_type
+              vmi_tenant_id: Example vmi_tenant_id
+              vswitch_tep_vlan: Example vswitch_tep_vlan
+              iprg_no: 1
+              vswitch_name: Example vswitch_name
+              device_port_name: Example device_port_name
+              last_discovered: 1
+              network_component_location: Example network_component_location
+              vrf_name: Example vrf_name
+              discovered_name: Example discovered_name
+              cisco_ise_security_group: Example cisco_ise_security_group
+              ap_name: Example ap_name
+              vmi_is_public_address: false
+              port_status: Example port_status
+              cisco_ise_ssid: Example cisco_ise_ssid
+              mac_address: Example mac_address
+              network_component_contact: Example network_component_contact
+              open_ports: Example open_ports
+              vrf_description: Example vrf_description
+              discoverer: Example discoverer
+              network_component_port_number: Example network_component_port_number
+              network_component_port_name: Example network_component_port_name
+              vmi_private_address: Example vmi_private_address
+              network_component_model: Example network_component_model
+              vswitch_type: Example vswitch_type
+              vswitch_segment_port_group: Example vswitch_segment_port_group
+              vmhost_subnet_cidr: 1
+              os: Example os
+              vport_conf_speed: Example vport_conf_speed
+              vmi_id: Example vmi_id
+              vswitch_tep_multicast: Example vswitch_tep_multicast
+              device_location: Example device_location
+              vmi_ip_type: Example vmi_ip_type
+              vlan_port_group: Example vlan_port_group
+              vport_conf_mode: Example vport_conf_mode
+              vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+              network_component_name: Example network_component_name
+              vswitch_tep_type: Example vswitch_tep_type
+              vmi_name: Example vmi_name
+              port_link_status: Example port_link_status
+              device_vendor: Example device_vendor
+              v_entity_type: Example v_entity_type
+            enable_pxe_lease_time: false
+            use_bootfile: false
+            bootfile: Example bootfile
+            ipv4addr: Example ipv4addr
+            use_nextserver: false
+            ms_ad_user_data:
+              active_users_count: 1
+            deny_bootp: false
+            use_for_ea_inheritance: false
+            bootserver: Example bootserver
+            _ref: _ref
+            reserved_interface: Example reserved_interface
+            ignore_client_requested_options: false
+            logic_filter_rules:
+            - filter: Example filter
+              type: Example type
+            - filter: Example filter
+              type: Example type
+            use_options: false
+          - network_view: Example network_view
+            match_client: Example match_client
+            use_bootserver: false
+            is_invalid_mac: false
+            nextserver: Example nextserver
+            use_pxe_lease_time: false
+            mac: Example mac
+            network: Example network
+            use_logic_filter_rules: false
+            discover_now_status: Example discover_now_status
+            host: Example host
+            options:
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            pxe_lease_time: 1
+            last_queried: 1
+            use_ignore_client_requested_options: false
+            configure_for_dhcp: false
+            use_deny_bootp: false
+            discovered_data:
+              vport_name: Example vport_name
+              netbios_name: Example netbios_name
+              v_adapter: Example v_adapter
+              port_speed: Example port_speed
+              cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+              port_vlan_number: Example port_vlan_number
+              device_contact: Example device_contact
+              vmhost_name: Example vmhost_name
+              vport_speed: Example vport_speed
+              device_type: Example device_type
+              vswitch_tep_port_group: Example vswitch_tep_port_group
+              vswitch_segment_type: Example vswitch_segment_type
+              vmhost_mac_address: Example vmhost_mac_address
+              first_discovered: 1
+              vmhost_nic_names: Example vmhost_nic_names
+              vswitch_segment_id: Example vswitch_segment_id
+              endpoint_groups: Example endpoint_groups
+              port_vlan_name: Example port_vlan_name
+              v_host: Example v_host
+              vswitch_id: Example vswitch_id
+              network_component_description: Example network_component_description
+              vmhost_ip_address: Example vmhost_ip_address
+              mgmt_ip_address: Example mgmt_ip_address
+              vport_mac_address: Example vport_mac_address
+              tenant: Example tenant
+              port_duplex: Example port_duplex
+              ap_ip_address: Example ap_ip_address
+              device_port_type: Example device_port_type
+              vswitch_available_ports_count: 1
+              network_component_type: Example network_component_type
+              vport_link_status: Example vport_link_status
+              v_cluster: Example v_cluster
+              vswitch_segment_name: Example vswitch_segment_name
+              vswitch_tep_ip: Example vswitch_tep_ip
+              v_switch: Example v_switch
+              v_entity_name: Example v_entity_name
+              iprg_state: Example iprg_state
+              iprg_type: Example iprg_type
+              network_component_vendor: Example network_component_vendor
+              vrf_rd: Example vrf_rd
+              vport_mode: Example vport_mode
+              cmp_type: Example cmp_type
+              bgp_as: 1
+              v_datacenter: Example v_datacenter
+              bridge_domain: Example bridge_domain
+              network_component_ip: Example network_component_ip
+              vswitch_ipv6_enabled: false
+              task_name: Example task_name
+              ap_ssid: Example ap_ssid
+              port_vlan_description: Example port_vlan_description
+              duid: Example duid
+              cisco_ise_session_state: Example cisco_ise_session_state
+              device_model: Example device_model
+              network_component_port_description: Example network_component_port_description
+              port_type: Example port_type
+              vmi_tenant_id: Example vmi_tenant_id
+              vswitch_tep_vlan: Example vswitch_tep_vlan
+              iprg_no: 1
+              vswitch_name: Example vswitch_name
+              device_port_name: Example device_port_name
+              last_discovered: 1
+              network_component_location: Example network_component_location
+              vrf_name: Example vrf_name
+              discovered_name: Example discovered_name
+              cisco_ise_security_group: Example cisco_ise_security_group
+              ap_name: Example ap_name
+              vmi_is_public_address: false
+              port_status: Example port_status
+              cisco_ise_ssid: Example cisco_ise_ssid
+              mac_address: Example mac_address
+              network_component_contact: Example network_component_contact
+              open_ports: Example open_ports
+              vrf_description: Example vrf_description
+              discoverer: Example discoverer
+              network_component_port_number: Example network_component_port_number
+              network_component_port_name: Example network_component_port_name
+              vmi_private_address: Example vmi_private_address
+              network_component_model: Example network_component_model
+              vswitch_type: Example vswitch_type
+              vswitch_segment_port_group: Example vswitch_segment_port_group
+              vmhost_subnet_cidr: 1
+              os: Example os
+              vport_conf_speed: Example vport_conf_speed
+              vmi_id: Example vmi_id
+              vswitch_tep_multicast: Example vswitch_tep_multicast
+              device_location: Example device_location
+              vmi_ip_type: Example vmi_ip_type
+              vlan_port_group: Example vlan_port_group
+              vport_conf_mode: Example vport_conf_mode
+              vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+              network_component_name: Example network_component_name
+              vswitch_tep_type: Example vswitch_tep_type
+              vmi_name: Example vmi_name
+              port_link_status: Example port_link_status
+              device_vendor: Example device_vendor
+              v_entity_type: Example v_entity_type
+            enable_pxe_lease_time: false
+            use_bootfile: false
+            bootfile: Example bootfile
+            ipv4addr: Example ipv4addr
+            use_nextserver: false
+            ms_ad_user_data:
+              active_users_count: 1
+            deny_bootp: false
+            use_for_ea_inheritance: false
+            bootserver: Example bootserver
+            _ref: _ref
+            reserved_interface: Example reserved_interface
+            ignore_client_requested_options: false
+            logic_filter_rules:
+            - filter: Example filter
+              type: Example type
+            - filter: Example filter
+              type: Example type
+            use_options: false
           ttl: 1
           dns_name: Example dns_name
           enable_immediate_discovery: false
@@ -36155,8 +36999,292 @@ components:
           comment: Example comment
           device_vendor: Example device_vendor
           ipv6addrs:
-          - record:host_ipv6addr
-          - record:host_ipv6addr
+          - network_view: Example network_view
+            duid: Example duid
+            match_client: Example match_client
+            ipv6prefix: Example ipv6prefix
+            mac: Example mac
+            use_valid_lifetime: false
+            ipv6addr: Example ipv6addr
+            network: Example network
+            domain_name_servers:
+            - domain_name_servers
+            - domain_name_servers
+            use_logic_filter_rules: false
+            domain_name: Example domain_name
+            use_domain_name: false
+            discover_now_status: Example discover_now_status
+            host: Example host
+            options:
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            valid_lifetime: 1
+            last_queried: 1
+            configure_for_dhcp: false
+            use_preferred_lifetime: false
+            address_type: Example address_type
+            discovered_data:
+              vport_name: Example vport_name
+              netbios_name: Example netbios_name
+              v_adapter: Example v_adapter
+              port_speed: Example port_speed
+              cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+              port_vlan_number: Example port_vlan_number
+              device_contact: Example device_contact
+              vmhost_name: Example vmhost_name
+              vport_speed: Example vport_speed
+              device_type: Example device_type
+              vswitch_tep_port_group: Example vswitch_tep_port_group
+              vswitch_segment_type: Example vswitch_segment_type
+              vmhost_mac_address: Example vmhost_mac_address
+              first_discovered: 1
+              vmhost_nic_names: Example vmhost_nic_names
+              vswitch_segment_id: Example vswitch_segment_id
+              endpoint_groups: Example endpoint_groups
+              port_vlan_name: Example port_vlan_name
+              v_host: Example v_host
+              vswitch_id: Example vswitch_id
+              network_component_description: Example network_component_description
+              vmhost_ip_address: Example vmhost_ip_address
+              mgmt_ip_address: Example mgmt_ip_address
+              vport_mac_address: Example vport_mac_address
+              tenant: Example tenant
+              port_duplex: Example port_duplex
+              ap_ip_address: Example ap_ip_address
+              device_port_type: Example device_port_type
+              vswitch_available_ports_count: 1
+              network_component_type: Example network_component_type
+              vport_link_status: Example vport_link_status
+              v_cluster: Example v_cluster
+              vswitch_segment_name: Example vswitch_segment_name
+              vswitch_tep_ip: Example vswitch_tep_ip
+              v_switch: Example v_switch
+              v_entity_name: Example v_entity_name
+              iprg_state: Example iprg_state
+              iprg_type: Example iprg_type
+              network_component_vendor: Example network_component_vendor
+              vrf_rd: Example vrf_rd
+              vport_mode: Example vport_mode
+              cmp_type: Example cmp_type
+              bgp_as: 1
+              v_datacenter: Example v_datacenter
+              bridge_domain: Example bridge_domain
+              network_component_ip: Example network_component_ip
+              vswitch_ipv6_enabled: false
+              task_name: Example task_name
+              ap_ssid: Example ap_ssid
+              port_vlan_description: Example port_vlan_description
+              duid: Example duid
+              cisco_ise_session_state: Example cisco_ise_session_state
+              device_model: Example device_model
+              network_component_port_description: Example network_component_port_description
+              port_type: Example port_type
+              vmi_tenant_id: Example vmi_tenant_id
+              vswitch_tep_vlan: Example vswitch_tep_vlan
+              iprg_no: 1
+              vswitch_name: Example vswitch_name
+              device_port_name: Example device_port_name
+              last_discovered: 1
+              network_component_location: Example network_component_location
+              vrf_name: Example vrf_name
+              discovered_name: Example discovered_name
+              cisco_ise_security_group: Example cisco_ise_security_group
+              ap_name: Example ap_name
+              vmi_is_public_address: false
+              port_status: Example port_status
+              cisco_ise_ssid: Example cisco_ise_ssid
+              mac_address: Example mac_address
+              network_component_contact: Example network_component_contact
+              open_ports: Example open_ports
+              vrf_description: Example vrf_description
+              discoverer: Example discoverer
+              network_component_port_number: Example network_component_port_number
+              network_component_port_name: Example network_component_port_name
+              vmi_private_address: Example vmi_private_address
+              network_component_model: Example network_component_model
+              vswitch_type: Example vswitch_type
+              vswitch_segment_port_group: Example vswitch_segment_port_group
+              vmhost_subnet_cidr: 1
+              os: Example os
+              vport_conf_speed: Example vport_conf_speed
+              vmi_id: Example vmi_id
+              vswitch_tep_multicast: Example vswitch_tep_multicast
+              device_location: Example device_location
+              vmi_ip_type: Example vmi_ip_type
+              vlan_port_group: Example vlan_port_group
+              vport_conf_mode: Example vport_conf_mode
+              vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+              network_component_name: Example network_component_name
+              vswitch_tep_type: Example vswitch_tep_type
+              vmi_name: Example vmi_name
+              port_link_status: Example port_link_status
+              device_vendor: Example device_vendor
+              v_entity_type: Example v_entity_type
+            preferred_lifetime: 1
+            ms_ad_user_data:
+              active_users_count: 1
+            use_domain_name_servers: false
+            use_for_ea_inheritance: false
+            ipv6prefix_bits: 1
+            _ref: _ref
+            reserved_interface: Example reserved_interface
+            logic_filter_rules:
+            - filter: Example filter
+              type: Example type
+            - filter: Example filter
+              type: Example type
+            use_options: false
+          - network_view: Example network_view
+            duid: Example duid
+            match_client: Example match_client
+            ipv6prefix: Example ipv6prefix
+            mac: Example mac
+            use_valid_lifetime: false
+            ipv6addr: Example ipv6addr
+            network: Example network
+            domain_name_servers:
+            - domain_name_servers
+            - domain_name_servers
+            use_logic_filter_rules: false
+            domain_name: Example domain_name
+            use_domain_name: false
+            discover_now_status: Example discover_now_status
+            host: Example host
+            options:
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            valid_lifetime: 1
+            last_queried: 1
+            configure_for_dhcp: false
+            use_preferred_lifetime: false
+            address_type: Example address_type
+            discovered_data:
+              vport_name: Example vport_name
+              netbios_name: Example netbios_name
+              v_adapter: Example v_adapter
+              port_speed: Example port_speed
+              cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+              port_vlan_number: Example port_vlan_number
+              device_contact: Example device_contact
+              vmhost_name: Example vmhost_name
+              vport_speed: Example vport_speed
+              device_type: Example device_type
+              vswitch_tep_port_group: Example vswitch_tep_port_group
+              vswitch_segment_type: Example vswitch_segment_type
+              vmhost_mac_address: Example vmhost_mac_address
+              first_discovered: 1
+              vmhost_nic_names: Example vmhost_nic_names
+              vswitch_segment_id: Example vswitch_segment_id
+              endpoint_groups: Example endpoint_groups
+              port_vlan_name: Example port_vlan_name
+              v_host: Example v_host
+              vswitch_id: Example vswitch_id
+              network_component_description: Example network_component_description
+              vmhost_ip_address: Example vmhost_ip_address
+              mgmt_ip_address: Example mgmt_ip_address
+              vport_mac_address: Example vport_mac_address
+              tenant: Example tenant
+              port_duplex: Example port_duplex
+              ap_ip_address: Example ap_ip_address
+              device_port_type: Example device_port_type
+              vswitch_available_ports_count: 1
+              network_component_type: Example network_component_type
+              vport_link_status: Example vport_link_status
+              v_cluster: Example v_cluster
+              vswitch_segment_name: Example vswitch_segment_name
+              vswitch_tep_ip: Example vswitch_tep_ip
+              v_switch: Example v_switch
+              v_entity_name: Example v_entity_name
+              iprg_state: Example iprg_state
+              iprg_type: Example iprg_type
+              network_component_vendor: Example network_component_vendor
+              vrf_rd: Example vrf_rd
+              vport_mode: Example vport_mode
+              cmp_type: Example cmp_type
+              bgp_as: 1
+              v_datacenter: Example v_datacenter
+              bridge_domain: Example bridge_domain
+              network_component_ip: Example network_component_ip
+              vswitch_ipv6_enabled: false
+              task_name: Example task_name
+              ap_ssid: Example ap_ssid
+              port_vlan_description: Example port_vlan_description
+              duid: Example duid
+              cisco_ise_session_state: Example cisco_ise_session_state
+              device_model: Example device_model
+              network_component_port_description: Example network_component_port_description
+              port_type: Example port_type
+              vmi_tenant_id: Example vmi_tenant_id
+              vswitch_tep_vlan: Example vswitch_tep_vlan
+              iprg_no: 1
+              vswitch_name: Example vswitch_name
+              device_port_name: Example device_port_name
+              last_discovered: 1
+              network_component_location: Example network_component_location
+              vrf_name: Example vrf_name
+              discovered_name: Example discovered_name
+              cisco_ise_security_group: Example cisco_ise_security_group
+              ap_name: Example ap_name
+              vmi_is_public_address: false
+              port_status: Example port_status
+              cisco_ise_ssid: Example cisco_ise_ssid
+              mac_address: Example mac_address
+              network_component_contact: Example network_component_contact
+              open_ports: Example open_ports
+              vrf_description: Example vrf_description
+              discoverer: Example discoverer
+              network_component_port_number: Example network_component_port_number
+              network_component_port_name: Example network_component_port_name
+              vmi_private_address: Example vmi_private_address
+              network_component_model: Example network_component_model
+              vswitch_type: Example vswitch_type
+              vswitch_segment_port_group: Example vswitch_segment_port_group
+              vmhost_subnet_cidr: 1
+              os: Example os
+              vport_conf_speed: Example vport_conf_speed
+              vmi_id: Example vmi_id
+              vswitch_tep_multicast: Example vswitch_tep_multicast
+              device_location: Example device_location
+              vmi_ip_type: Example vmi_ip_type
+              vlan_port_group: Example vlan_port_group
+              vport_conf_mode: Example vport_conf_mode
+              vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+              network_component_name: Example network_component_name
+              vswitch_tep_type: Example vswitch_tep_type
+              vmi_name: Example vmi_name
+              port_link_status: Example port_link_status
+              device_vendor: Example device_vendor
+              v_entity_type: Example v_entity_type
+            preferred_lifetime: 1
+            ms_ad_user_data:
+              active_users_count: 1
+            use_domain_name_servers: false
+            use_for_ea_inheritance: false
+            ipv6prefix_bits: 1
+            _ref: _ref
+            reserved_interface: Example reserved_interface
+            logic_filter_rules:
+            - filter: Example filter
+              type: Example type
+            - filter: Example filter
+              type: Example type
+            use_options: false
           disable_discovery: false
           use_cli_credentials: false
       properties:
@@ -36225,8 +37353,292 @@ components:
           device_location: Example device_location
           ddns_protected: false
           ipv4addrs:
-          - record:host_ipv4addr
-          - record:host_ipv4addr
+          - network_view: Example network_view
+            match_client: Example match_client
+            use_bootserver: false
+            is_invalid_mac: false
+            nextserver: Example nextserver
+            use_pxe_lease_time: false
+            mac: Example mac
+            network: Example network
+            use_logic_filter_rules: false
+            discover_now_status: Example discover_now_status
+            host: Example host
+            options:
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            pxe_lease_time: 1
+            last_queried: 1
+            use_ignore_client_requested_options: false
+            configure_for_dhcp: false
+            use_deny_bootp: false
+            discovered_data:
+              vport_name: Example vport_name
+              netbios_name: Example netbios_name
+              v_adapter: Example v_adapter
+              port_speed: Example port_speed
+              cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+              port_vlan_number: Example port_vlan_number
+              device_contact: Example device_contact
+              vmhost_name: Example vmhost_name
+              vport_speed: Example vport_speed
+              device_type: Example device_type
+              vswitch_tep_port_group: Example vswitch_tep_port_group
+              vswitch_segment_type: Example vswitch_segment_type
+              vmhost_mac_address: Example vmhost_mac_address
+              first_discovered: 1
+              vmhost_nic_names: Example vmhost_nic_names
+              vswitch_segment_id: Example vswitch_segment_id
+              endpoint_groups: Example endpoint_groups
+              port_vlan_name: Example port_vlan_name
+              v_host: Example v_host
+              vswitch_id: Example vswitch_id
+              network_component_description: Example network_component_description
+              vmhost_ip_address: Example vmhost_ip_address
+              mgmt_ip_address: Example mgmt_ip_address
+              vport_mac_address: Example vport_mac_address
+              tenant: Example tenant
+              port_duplex: Example port_duplex
+              ap_ip_address: Example ap_ip_address
+              device_port_type: Example device_port_type
+              vswitch_available_ports_count: 1
+              network_component_type: Example network_component_type
+              vport_link_status: Example vport_link_status
+              v_cluster: Example v_cluster
+              vswitch_segment_name: Example vswitch_segment_name
+              vswitch_tep_ip: Example vswitch_tep_ip
+              v_switch: Example v_switch
+              v_entity_name: Example v_entity_name
+              iprg_state: Example iprg_state
+              iprg_type: Example iprg_type
+              network_component_vendor: Example network_component_vendor
+              vrf_rd: Example vrf_rd
+              vport_mode: Example vport_mode
+              cmp_type: Example cmp_type
+              bgp_as: 1
+              v_datacenter: Example v_datacenter
+              bridge_domain: Example bridge_domain
+              network_component_ip: Example network_component_ip
+              vswitch_ipv6_enabled: false
+              task_name: Example task_name
+              ap_ssid: Example ap_ssid
+              port_vlan_description: Example port_vlan_description
+              duid: Example duid
+              cisco_ise_session_state: Example cisco_ise_session_state
+              device_model: Example device_model
+              network_component_port_description: Example network_component_port_description
+              port_type: Example port_type
+              vmi_tenant_id: Example vmi_tenant_id
+              vswitch_tep_vlan: Example vswitch_tep_vlan
+              iprg_no: 1
+              vswitch_name: Example vswitch_name
+              device_port_name: Example device_port_name
+              last_discovered: 1
+              network_component_location: Example network_component_location
+              vrf_name: Example vrf_name
+              discovered_name: Example discovered_name
+              cisco_ise_security_group: Example cisco_ise_security_group
+              ap_name: Example ap_name
+              vmi_is_public_address: false
+              port_status: Example port_status
+              cisco_ise_ssid: Example cisco_ise_ssid
+              mac_address: Example mac_address
+              network_component_contact: Example network_component_contact
+              open_ports: Example open_ports
+              vrf_description: Example vrf_description
+              discoverer: Example discoverer
+              network_component_port_number: Example network_component_port_number
+              network_component_port_name: Example network_component_port_name
+              vmi_private_address: Example vmi_private_address
+              network_component_model: Example network_component_model
+              vswitch_type: Example vswitch_type
+              vswitch_segment_port_group: Example vswitch_segment_port_group
+              vmhost_subnet_cidr: 1
+              os: Example os
+              vport_conf_speed: Example vport_conf_speed
+              vmi_id: Example vmi_id
+              vswitch_tep_multicast: Example vswitch_tep_multicast
+              device_location: Example device_location
+              vmi_ip_type: Example vmi_ip_type
+              vlan_port_group: Example vlan_port_group
+              vport_conf_mode: Example vport_conf_mode
+              vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+              network_component_name: Example network_component_name
+              vswitch_tep_type: Example vswitch_tep_type
+              vmi_name: Example vmi_name
+              port_link_status: Example port_link_status
+              device_vendor: Example device_vendor
+              v_entity_type: Example v_entity_type
+            enable_pxe_lease_time: false
+            use_bootfile: false
+            bootfile: Example bootfile
+            ipv4addr: Example ipv4addr
+            use_nextserver: false
+            ms_ad_user_data:
+              active_users_count: 1
+            deny_bootp: false
+            use_for_ea_inheritance: false
+            bootserver: Example bootserver
+            _ref: _ref
+            reserved_interface: Example reserved_interface
+            ignore_client_requested_options: false
+            logic_filter_rules:
+            - filter: Example filter
+              type: Example type
+            - filter: Example filter
+              type: Example type
+            use_options: false
+          - network_view: Example network_view
+            match_client: Example match_client
+            use_bootserver: false
+            is_invalid_mac: false
+            nextserver: Example nextserver
+            use_pxe_lease_time: false
+            mac: Example mac
+            network: Example network
+            use_logic_filter_rules: false
+            discover_now_status: Example discover_now_status
+            host: Example host
+            options:
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            pxe_lease_time: 1
+            last_queried: 1
+            use_ignore_client_requested_options: false
+            configure_for_dhcp: false
+            use_deny_bootp: false
+            discovered_data:
+              vport_name: Example vport_name
+              netbios_name: Example netbios_name
+              v_adapter: Example v_adapter
+              port_speed: Example port_speed
+              cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+              port_vlan_number: Example port_vlan_number
+              device_contact: Example device_contact
+              vmhost_name: Example vmhost_name
+              vport_speed: Example vport_speed
+              device_type: Example device_type
+              vswitch_tep_port_group: Example vswitch_tep_port_group
+              vswitch_segment_type: Example vswitch_segment_type
+              vmhost_mac_address: Example vmhost_mac_address
+              first_discovered: 1
+              vmhost_nic_names: Example vmhost_nic_names
+              vswitch_segment_id: Example vswitch_segment_id
+              endpoint_groups: Example endpoint_groups
+              port_vlan_name: Example port_vlan_name
+              v_host: Example v_host
+              vswitch_id: Example vswitch_id
+              network_component_description: Example network_component_description
+              vmhost_ip_address: Example vmhost_ip_address
+              mgmt_ip_address: Example mgmt_ip_address
+              vport_mac_address: Example vport_mac_address
+              tenant: Example tenant
+              port_duplex: Example port_duplex
+              ap_ip_address: Example ap_ip_address
+              device_port_type: Example device_port_type
+              vswitch_available_ports_count: 1
+              network_component_type: Example network_component_type
+              vport_link_status: Example vport_link_status
+              v_cluster: Example v_cluster
+              vswitch_segment_name: Example vswitch_segment_name
+              vswitch_tep_ip: Example vswitch_tep_ip
+              v_switch: Example v_switch
+              v_entity_name: Example v_entity_name
+              iprg_state: Example iprg_state
+              iprg_type: Example iprg_type
+              network_component_vendor: Example network_component_vendor
+              vrf_rd: Example vrf_rd
+              vport_mode: Example vport_mode
+              cmp_type: Example cmp_type
+              bgp_as: 1
+              v_datacenter: Example v_datacenter
+              bridge_domain: Example bridge_domain
+              network_component_ip: Example network_component_ip
+              vswitch_ipv6_enabled: false
+              task_name: Example task_name
+              ap_ssid: Example ap_ssid
+              port_vlan_description: Example port_vlan_description
+              duid: Example duid
+              cisco_ise_session_state: Example cisco_ise_session_state
+              device_model: Example device_model
+              network_component_port_description: Example network_component_port_description
+              port_type: Example port_type
+              vmi_tenant_id: Example vmi_tenant_id
+              vswitch_tep_vlan: Example vswitch_tep_vlan
+              iprg_no: 1
+              vswitch_name: Example vswitch_name
+              device_port_name: Example device_port_name
+              last_discovered: 1
+              network_component_location: Example network_component_location
+              vrf_name: Example vrf_name
+              discovered_name: Example discovered_name
+              cisco_ise_security_group: Example cisco_ise_security_group
+              ap_name: Example ap_name
+              vmi_is_public_address: false
+              port_status: Example port_status
+              cisco_ise_ssid: Example cisco_ise_ssid
+              mac_address: Example mac_address
+              network_component_contact: Example network_component_contact
+              open_ports: Example open_ports
+              vrf_description: Example vrf_description
+              discoverer: Example discoverer
+              network_component_port_number: Example network_component_port_number
+              network_component_port_name: Example network_component_port_name
+              vmi_private_address: Example vmi_private_address
+              network_component_model: Example network_component_model
+              vswitch_type: Example vswitch_type
+              vswitch_segment_port_group: Example vswitch_segment_port_group
+              vmhost_subnet_cidr: 1
+              os: Example os
+              vport_conf_speed: Example vport_conf_speed
+              vmi_id: Example vmi_id
+              vswitch_tep_multicast: Example vswitch_tep_multicast
+              device_location: Example device_location
+              vmi_ip_type: Example vmi_ip_type
+              vlan_port_group: Example vlan_port_group
+              vport_conf_mode: Example vport_conf_mode
+              vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+              network_component_name: Example network_component_name
+              vswitch_tep_type: Example vswitch_tep_type
+              vmi_name: Example vmi_name
+              port_link_status: Example port_link_status
+              device_vendor: Example device_vendor
+              v_entity_type: Example v_entity_type
+            enable_pxe_lease_time: false
+            use_bootfile: false
+            bootfile: Example bootfile
+            ipv4addr: Example ipv4addr
+            use_nextserver: false
+            ms_ad_user_data:
+              active_users_count: 1
+            deny_bootp: false
+            use_for_ea_inheritance: false
+            bootserver: Example bootserver
+            _ref: _ref
+            reserved_interface: Example reserved_interface
+            ignore_client_requested_options: false
+            logic_filter_rules:
+            - filter: Example filter
+              type: Example type
+            - filter: Example filter
+              type: Example type
+            use_options: false
           ttl: 1
           dns_name: Example dns_name
           enable_immediate_discovery: false
@@ -36253,8 +37665,292 @@ components:
           comment: Example comment
           device_vendor: Example device_vendor
           ipv6addrs:
-          - record:host_ipv6addr
-          - record:host_ipv6addr
+          - network_view: Example network_view
+            duid: Example duid
+            match_client: Example match_client
+            ipv6prefix: Example ipv6prefix
+            mac: Example mac
+            use_valid_lifetime: false
+            ipv6addr: Example ipv6addr
+            network: Example network
+            domain_name_servers:
+            - domain_name_servers
+            - domain_name_servers
+            use_logic_filter_rules: false
+            domain_name: Example domain_name
+            use_domain_name: false
+            discover_now_status: Example discover_now_status
+            host: Example host
+            options:
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            valid_lifetime: 1
+            last_queried: 1
+            configure_for_dhcp: false
+            use_preferred_lifetime: false
+            address_type: Example address_type
+            discovered_data:
+              vport_name: Example vport_name
+              netbios_name: Example netbios_name
+              v_adapter: Example v_adapter
+              port_speed: Example port_speed
+              cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+              port_vlan_number: Example port_vlan_number
+              device_contact: Example device_contact
+              vmhost_name: Example vmhost_name
+              vport_speed: Example vport_speed
+              device_type: Example device_type
+              vswitch_tep_port_group: Example vswitch_tep_port_group
+              vswitch_segment_type: Example vswitch_segment_type
+              vmhost_mac_address: Example vmhost_mac_address
+              first_discovered: 1
+              vmhost_nic_names: Example vmhost_nic_names
+              vswitch_segment_id: Example vswitch_segment_id
+              endpoint_groups: Example endpoint_groups
+              port_vlan_name: Example port_vlan_name
+              v_host: Example v_host
+              vswitch_id: Example vswitch_id
+              network_component_description: Example network_component_description
+              vmhost_ip_address: Example vmhost_ip_address
+              mgmt_ip_address: Example mgmt_ip_address
+              vport_mac_address: Example vport_mac_address
+              tenant: Example tenant
+              port_duplex: Example port_duplex
+              ap_ip_address: Example ap_ip_address
+              device_port_type: Example device_port_type
+              vswitch_available_ports_count: 1
+              network_component_type: Example network_component_type
+              vport_link_status: Example vport_link_status
+              v_cluster: Example v_cluster
+              vswitch_segment_name: Example vswitch_segment_name
+              vswitch_tep_ip: Example vswitch_tep_ip
+              v_switch: Example v_switch
+              v_entity_name: Example v_entity_name
+              iprg_state: Example iprg_state
+              iprg_type: Example iprg_type
+              network_component_vendor: Example network_component_vendor
+              vrf_rd: Example vrf_rd
+              vport_mode: Example vport_mode
+              cmp_type: Example cmp_type
+              bgp_as: 1
+              v_datacenter: Example v_datacenter
+              bridge_domain: Example bridge_domain
+              network_component_ip: Example network_component_ip
+              vswitch_ipv6_enabled: false
+              task_name: Example task_name
+              ap_ssid: Example ap_ssid
+              port_vlan_description: Example port_vlan_description
+              duid: Example duid
+              cisco_ise_session_state: Example cisco_ise_session_state
+              device_model: Example device_model
+              network_component_port_description: Example network_component_port_description
+              port_type: Example port_type
+              vmi_tenant_id: Example vmi_tenant_id
+              vswitch_tep_vlan: Example vswitch_tep_vlan
+              iprg_no: 1
+              vswitch_name: Example vswitch_name
+              device_port_name: Example device_port_name
+              last_discovered: 1
+              network_component_location: Example network_component_location
+              vrf_name: Example vrf_name
+              discovered_name: Example discovered_name
+              cisco_ise_security_group: Example cisco_ise_security_group
+              ap_name: Example ap_name
+              vmi_is_public_address: false
+              port_status: Example port_status
+              cisco_ise_ssid: Example cisco_ise_ssid
+              mac_address: Example mac_address
+              network_component_contact: Example network_component_contact
+              open_ports: Example open_ports
+              vrf_description: Example vrf_description
+              discoverer: Example discoverer
+              network_component_port_number: Example network_component_port_number
+              network_component_port_name: Example network_component_port_name
+              vmi_private_address: Example vmi_private_address
+              network_component_model: Example network_component_model
+              vswitch_type: Example vswitch_type
+              vswitch_segment_port_group: Example vswitch_segment_port_group
+              vmhost_subnet_cidr: 1
+              os: Example os
+              vport_conf_speed: Example vport_conf_speed
+              vmi_id: Example vmi_id
+              vswitch_tep_multicast: Example vswitch_tep_multicast
+              device_location: Example device_location
+              vmi_ip_type: Example vmi_ip_type
+              vlan_port_group: Example vlan_port_group
+              vport_conf_mode: Example vport_conf_mode
+              vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+              network_component_name: Example network_component_name
+              vswitch_tep_type: Example vswitch_tep_type
+              vmi_name: Example vmi_name
+              port_link_status: Example port_link_status
+              device_vendor: Example device_vendor
+              v_entity_type: Example v_entity_type
+            preferred_lifetime: 1
+            ms_ad_user_data:
+              active_users_count: 1
+            use_domain_name_servers: false
+            use_for_ea_inheritance: false
+            ipv6prefix_bits: 1
+            _ref: _ref
+            reserved_interface: Example reserved_interface
+            logic_filter_rules:
+            - filter: Example filter
+              type: Example type
+            - filter: Example filter
+              type: Example type
+            use_options: false
+          - network_view: Example network_view
+            duid: Example duid
+            match_client: Example match_client
+            ipv6prefix: Example ipv6prefix
+            mac: Example mac
+            use_valid_lifetime: false
+            ipv6addr: Example ipv6addr
+            network: Example network
+            domain_name_servers:
+            - domain_name_servers
+            - domain_name_servers
+            use_logic_filter_rules: false
+            domain_name: Example domain_name
+            use_domain_name: false
+            discover_now_status: Example discover_now_status
+            host: Example host
+            options:
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            - vendor_class: Example vendor_class
+              use_option: false
+              num: 1
+              name: Example name
+              value: Example value
+            valid_lifetime: 1
+            last_queried: 1
+            configure_for_dhcp: false
+            use_preferred_lifetime: false
+            address_type: Example address_type
+            discovered_data:
+              vport_name: Example vport_name
+              netbios_name: Example netbios_name
+              v_adapter: Example v_adapter
+              port_speed: Example port_speed
+              cisco_ise_endpoint_profile: Example cisco_ise_endpoint_profile
+              port_vlan_number: Example port_vlan_number
+              device_contact: Example device_contact
+              vmhost_name: Example vmhost_name
+              vport_speed: Example vport_speed
+              device_type: Example device_type
+              vswitch_tep_port_group: Example vswitch_tep_port_group
+              vswitch_segment_type: Example vswitch_segment_type
+              vmhost_mac_address: Example vmhost_mac_address
+              first_discovered: 1
+              vmhost_nic_names: Example vmhost_nic_names
+              vswitch_segment_id: Example vswitch_segment_id
+              endpoint_groups: Example endpoint_groups
+              port_vlan_name: Example port_vlan_name
+              v_host: Example v_host
+              vswitch_id: Example vswitch_id
+              network_component_description: Example network_component_description
+              vmhost_ip_address: Example vmhost_ip_address
+              mgmt_ip_address: Example mgmt_ip_address
+              vport_mac_address: Example vport_mac_address
+              tenant: Example tenant
+              port_duplex: Example port_duplex
+              ap_ip_address: Example ap_ip_address
+              device_port_type: Example device_port_type
+              vswitch_available_ports_count: 1
+              network_component_type: Example network_component_type
+              vport_link_status: Example vport_link_status
+              v_cluster: Example v_cluster
+              vswitch_segment_name: Example vswitch_segment_name
+              vswitch_tep_ip: Example vswitch_tep_ip
+              v_switch: Example v_switch
+              v_entity_name: Example v_entity_name
+              iprg_state: Example iprg_state
+              iprg_type: Example iprg_type
+              network_component_vendor: Example network_component_vendor
+              vrf_rd: Example vrf_rd
+              vport_mode: Example vport_mode
+              cmp_type: Example cmp_type
+              bgp_as: 1
+              v_datacenter: Example v_datacenter
+              bridge_domain: Example bridge_domain
+              network_component_ip: Example network_component_ip
+              vswitch_ipv6_enabled: false
+              task_name: Example task_name
+              ap_ssid: Example ap_ssid
+              port_vlan_description: Example port_vlan_description
+              duid: Example duid
+              cisco_ise_session_state: Example cisco_ise_session_state
+              device_model: Example device_model
+              network_component_port_description: Example network_component_port_description
+              port_type: Example port_type
+              vmi_tenant_id: Example vmi_tenant_id
+              vswitch_tep_vlan: Example vswitch_tep_vlan
+              iprg_no: 1
+              vswitch_name: Example vswitch_name
+              device_port_name: Example device_port_name
+              last_discovered: 1
+              network_component_location: Example network_component_location
+              vrf_name: Example vrf_name
+              discovered_name: Example discovered_name
+              cisco_ise_security_group: Example cisco_ise_security_group
+              ap_name: Example ap_name
+              vmi_is_public_address: false
+              port_status: Example port_status
+              cisco_ise_ssid: Example cisco_ise_ssid
+              mac_address: Example mac_address
+              network_component_contact: Example network_component_contact
+              open_ports: Example open_ports
+              vrf_description: Example vrf_description
+              discoverer: Example discoverer
+              network_component_port_number: Example network_component_port_number
+              network_component_port_name: Example network_component_port_name
+              vmi_private_address: Example vmi_private_address
+              network_component_model: Example network_component_model
+              vswitch_type: Example vswitch_type
+              vswitch_segment_port_group: Example vswitch_segment_port_group
+              vmhost_subnet_cidr: 1
+              os: Example os
+              vport_conf_speed: Example vport_conf_speed
+              vmi_id: Example vmi_id
+              vswitch_tep_multicast: Example vswitch_tep_multicast
+              device_location: Example device_location
+              vmi_ip_type: Example vmi_ip_type
+              vlan_port_group: Example vlan_port_group
+              vport_conf_mode: Example vport_conf_mode
+              vswitch_tep_dhcp_server: Example vswitch_tep_dhcp_server
+              network_component_name: Example network_component_name
+              vswitch_tep_type: Example vswitch_tep_type
+              vmi_name: Example vmi_name
+              port_link_status: Example port_link_status
+              device_vendor: Example device_vendor
+              v_entity_type: Example v_entity_type
+            preferred_lifetime: 1
+            ms_ad_user_data:
+              active_users_count: 1
+            use_domain_name_servers: false
+            use_for_ea_inheritance: false
+            ipv6prefix_bits: 1
+            _ref: _ref
+            reserved_interface: Example reserved_interface
+            logic_filter_rules:
+            - filter: Example filter
+              type: Example type
+            - filter: Example filter
+              type: Example type
+            use_options: false
           disable_discovery: false
           use_cli_credentials: false
       properties:
