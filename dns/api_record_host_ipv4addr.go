@@ -473,6 +473,12 @@ func (a *RecordHostIpv4addrAPIService) UpdateExecute(r RecordHostIpv4addrAPIUpda
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.recordHostIpv4addr.FuncCall != nil {
+		bodyForFuncCall := r.recordHostIpv4addr
+		bodyForFuncCall.FuncCall = nil
+		bodyForFuncCall.Ipv4addr = nil
+		r.recordHostIpv4addr = bodyForFuncCall
+	}
 	// body params
 	localVarPostBody = r.recordHostIpv4addr
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

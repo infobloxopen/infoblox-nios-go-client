@@ -37,9 +37,9 @@ type RecordHostIpv4addr struct {
 	// The host to which the host address belongs, in FQDN format. It is only present when the host address object is not returned as part of a host.
 	Host *string `json:"host,omitempty"`
 	// If this field is set to false, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested.
-	IgnoreClientRequestedOptions *bool `json:"ignore_client_requested_options,omitempty"`
-	// The IPv4 Address of the host.
-	Ipv4addr *string `json:"ipv4addr,omitempty"`
+	IgnoreClientRequestedOptions *bool                       `json:"ignore_client_requested_options,omitempty"`
+	Ipv4addr                     *RecordHostIpv4addrIpv4addr `json:"ipv4addr,omitempty"`
+	FuncCall                     *FuncCall                   `json:"func_call,omitempty"`
 	// This flag reflects whether the MAC address for this host address is invalid.
 	IsInvalidMac *bool `json:"is_invalid_mac,omitempty"`
 	// The time of the last DNS query in Epoch seconds format.
@@ -421,9 +421,9 @@ func (o *RecordHostIpv4addr) SetIgnoreClientRequestedOptions(v bool) {
 }
 
 // GetIpv4addr returns the Ipv4addr field value if set, zero value otherwise.
-func (o *RecordHostIpv4addr) GetIpv4addr() string {
+func (o *RecordHostIpv4addr) GetIpv4addr() RecordHostIpv4addrIpv4addr {
 	if o == nil || IsNil(o.Ipv4addr) {
-		var ret string
+		var ret RecordHostIpv4addrIpv4addr
 		return ret
 	}
 	return *o.Ipv4addr
@@ -431,7 +431,7 @@ func (o *RecordHostIpv4addr) GetIpv4addr() string {
 
 // GetIpv4addrOk returns a tuple with the Ipv4addr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecordHostIpv4addr) GetIpv4addrOk() (*string, bool) {
+func (o *RecordHostIpv4addr) GetIpv4addrOk() (*RecordHostIpv4addrIpv4addr, bool) {
 	if o == nil || IsNil(o.Ipv4addr) {
 		return nil, false
 	}
@@ -447,9 +447,41 @@ func (o *RecordHostIpv4addr) HasIpv4addr() bool {
 	return false
 }
 
-// SetIpv4addr gets a reference to the given string and assigns it to the Ipv4addr field.
-func (o *RecordHostIpv4addr) SetIpv4addr(v string) {
+// SetIpv4addr gets a reference to the given RecordHostIpv4addrIpv4addr and assigns it to the Ipv4addr field.
+func (o *RecordHostIpv4addr) SetIpv4addr(v RecordHostIpv4addrIpv4addr) {
 	o.Ipv4addr = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *RecordHostIpv4addr) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordHostIpv4addr) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *RecordHostIpv4addr) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *RecordHostIpv4addr) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetIsInvalidMac returns the IsInvalidMac field value if set, zero value otherwise.
@@ -1166,6 +1198,9 @@ func (o RecordHostIpv4addr) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ipv4addr) {
 		toSerialize["ipv4addr"] = o.Ipv4addr
+	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
 	}
 	if !IsNil(o.IsInvalidMac) {
 		toSerialize["is_invalid_mac"] = o.IsInvalidMac
