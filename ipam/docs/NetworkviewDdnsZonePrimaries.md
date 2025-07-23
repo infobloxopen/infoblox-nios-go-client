@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ZoneMatch** | Pointer to **string** | Indicate matching type. | [optional] 
-**DnsGridZone** | Pointer to **string** | The ref of a DNS zone. | [optional] 
+**DnsGridZone** | Pointer to [**NetworkviewDdnsZonePrimariesDnsGridZone**](NetworkviewDdnsZonePrimariesDnsGridZone.md) |  | [optional] 
 **DnsGridPrimary** | Pointer to **string** | The name of a Grid member. | [optional] 
 **DnsExtZone** | Pointer to **string** | The name of external zone in FQDN format. | [optional] 
 **DnsExtPrimary** | Pointer to **string** | The IP address of the External server. Valid when zone_match is \&quot;EXTERNAL\&quot; or \&quot;ANY_EXTERNAL\&quot;. | [optional] 
@@ -56,20 +56,20 @@ HasZoneMatch returns a boolean if a field has been set.
 
 ### GetDnsGridZone
 
-`func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZone() string`
+`func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZone() NetworkviewDdnsZonePrimariesDnsGridZone`
 
 GetDnsGridZone returns the DnsGridZone field if non-nil, zero value otherwise.
 
 ### GetDnsGridZoneOk
 
-`func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZoneOk() (*string, bool)`
+`func (o *NetworkviewDdnsZonePrimaries) GetDnsGridZoneOk() (*NetworkviewDdnsZonePrimariesDnsGridZone, bool)`
 
 GetDnsGridZoneOk returns a tuple with the DnsGridZone field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDnsGridZone
 
-`func (o *NetworkviewDdnsZonePrimaries) SetDnsGridZone(v string)`
+`func (o *NetworkviewDdnsZonePrimaries) SetDnsGridZone(v NetworkviewDdnsZonePrimariesDnsGridZone)`
 
 SetDnsGridZone sets DnsGridZone field to given value.
 
