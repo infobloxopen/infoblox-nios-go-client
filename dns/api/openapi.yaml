@@ -32378,13 +32378,15 @@ components:
         network_view: Example network_view
         blacklist_action: Example blacklist_action
         match_clients:
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -32447,13 +32449,15 @@ components:
           use_tsig_key_name: false
           shared_with_ms_parent_delegation: false
         match_destinations:
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -33169,6 +33173,7 @@ components:
       type: object
     ViewMatchClients:
       example:
+        _struct: _struct
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
@@ -33176,6 +33181,10 @@ components:
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'addressac'
+            and 'tsigac'.
+          type: string
         address:
           description: The address this rule applies to or "Any".
           example: Example address
@@ -33211,6 +33220,7 @@ components:
       type: object
     ViewMatchDestinations:
       example:
+        _struct: _struct
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
@@ -33218,6 +33228,10 @@ components:
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'addressac'
+            and 'tsigac'.
+          type: string
         address:
           description: The address this rule applies to or "Any".
           example: Example address
@@ -42016,13 +42030,15 @@ components:
           network_view: Example network_view
           blacklist_action: Example blacklist_action
           match_clients:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -42085,13 +42101,15 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           match_destinations:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -42265,13 +42283,15 @@ components:
           network_view: Example network_view
           blacklist_action: Example blacklist_action
           match_clients:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -42334,13 +42354,15 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           match_destinations:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
