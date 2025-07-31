@@ -1,6 +1,12 @@
 # Infoblox NIOS Go Client
 
 A Go client library for interacting with Infoblox NIOS via its WAPI (Web API). This library enables Go applications to automate DNS, DHCP, IPAM, and other network management tasks using Infoblox appliances.
+The library is generated using the [OpenAPI Generator](https://openapi-generator.tech) project.
+
+## Requirements
+
+- Go (latest stable version recommended i.e. 1.24.4; minimum 1.18)
+- Infoblox NIOS version 9.0.6 or higher
 
 ## Features
 
@@ -23,29 +29,91 @@ The client uses HTTP Basic Authentication by default. Ensure your credentials ar
 
 ### Environment Variables
 
-You can configure the client using environment variables for convenience:
+You can configure the authentication for the client using environment variables for convenience:
 
 | Variable Name         | Description                                 | Example                                |
 |---------------------- |---------------------------------------------|----------------------------------------|
-| NIOS_HOST_URL         | The full URL of your NIOS Grid Manager                  | `https://gridmaster.example.com"` |
-| NIOS_USERNAME         | The username to access the NIOS Grid Manager                 | `username`                                |
-| NIOS_PASSWORD         | The password to access the NIOS Grid Manager                 | `password`                             | |
+| NIOS_WAPI_URL         | Infoblox WAPI endpoint URL                  | `https://gridmaster.example.com` |
+| NIOS_USERNAME         | Username for authentication                 | `admin`                                |
+| NIOS_PASSWORD         | Password for authentication                 | `password`                             | |
 
 ### Using Configuration for the API Client
 
 Instead of using environment variables, you can also configure the API client directly in your code. Here's an example of how to set up the configuration in Infoblox NIOS API client :
 
 ```go
-import "os"
+import (
+    "github.com/infobloxopen/infoblox-nios-go-client/client"
+    "github.com/infobloxopen/infoblox-nios-go-client/client/option"
+)
 
-conn := infoblox.NewConnector(
-    os.Getenv("NIOS_HOST_URL"),
-    os.Getenv("NIOS_USERNAME"),
-    os.Getenv("NIOS_PASSWORD"),
+apiClient := client.NewAPIClient(
+    option.WithNIOSHostUrl(NIOS_HOST_URL),
+    option.WithNIOSUsername("username"),
+    option.WithNIOSPassword("password"),
+    option.WithDebug(true),
 )
 ```
 
+Note: The Password is a secret and should be handled securely. Hardcoding the Password in your code is not recommended.
+
+## Debugging
+
+To enable debug logging for troubleshooting and development, use the `option.WithDebug(true)` option when creating the API client:
+
+```go
+apiClient := client.NewAPIClient(
+    option.WithDebug(true),
+)
+```
+
+This will print detailed request and response information to the console, helping you diagnose issues with API calls.
+
 ## Usage
+
+You can either use an aggregated client to interact with multiple BloxOne APIs or create a client for a specific API.
+
+#### Aggregated Client
+You can use an aggregated client to interact with multiple APIs. The aggregated client is available in the `client` package.
+
+Import the package in your code:
+
+```go
+import niosclient "github.com/infobloxopen/bloxone-go-client/client"
+```
+
+To create a new API client, you can use the `NewAPIClient` function as shown below
+```go
+client := niosclient.NewAPIClient()
+// Now you can access the API clients using the client object, e.g.:
+dnsClient := client.DNSAPI
+```
+
+#### Specific API Client
+Alternatively, you can create a client for a specific API using the API package. For example, to create a client for the DNS API:
+
+```go
+//import "github.com/infobloxopen/infoblox-nios-go-client/dns"
+client := dns.NewAPIClient()
+```
+
+# Configuration
+
+The `NewAPIClient` function accepts a variadic list of `option.ClientOption` functions that can be used to configure the client.
+It requires the `option` package to be imported. You can import the package using:
+```go
+import "github.com/infobloxopen/infoblox-nios-go-client/option"
+```
+
+### Client Name
+The client name is used to identify the client in the logs. By default, the client name is set to `nios-go-client`. You can change this using the `option.WithClientName` option. For example:
+```go
+client := niosclient.NewAPIClient(option.WithClientName("my-client"))
+```
+
+
+### Example Usage
+
 
 ```go
 package main
