@@ -3,6 +3,24 @@
 A Go client library for interacting with Infoblox NIOS via its WAPI (Web API). This library enables Go applications to automate DNS, DHCP, IPAM, and other network management tasks using Infoblox appliances.
 The library is generated using the [OpenAPI Generator](https://openapi-generator.tech) project.
 
+## Index
+
+- [Requirements](#requirements)
+- [Features](#features)
+- [Installation](#installation)
+- [Authentication](#authentication)
+- [Environment Variables](#environment-variables)
+- [Using Configuration for the API Client](#using-configuration-for-the-api-client)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Example Usage](#example-usage)
+- [Debugging](#debugging)
+- [Supported Operations](#supported-operations)
+- [Supported Object Groups](#supported-object-groups)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
+
 ## Requirements
 
 - Go (latest stable version recommended i.e. 1.24.4; minimum 1.18)
