@@ -493,6 +493,7 @@ Class | Method | HTTP request | Description
  - [Sharednetwork](docs/Sharednetwork.md)
  - [SharednetworkLogicFilterRules](docs/SharednetworkLogicFilterRules.md)
  - [SharednetworkMsAdUserData](docs/SharednetworkMsAdUserData.md)
+ - [SharednetworkNetworks](docs/SharednetworkNetworks.md)
  - [SharednetworkOptions](docs/SharednetworkOptions.md)
  - [UpdateDhcpStatisticsResponse](docs/UpdateDhcpStatisticsResponse.md)
  - [UpdateDhcpStatisticsResponseAsObject](docs/UpdateDhcpStatisticsResponseAsObject.md)

@@ -11780,12 +11780,14 @@ components:
         ddns_zone_primaries:
         - dns_grid_primary: Example dns_grid_primary
           dns_ext_zone: Example dns_ext_zone
-          dns_grid_zone: Example dns_grid_zone
+          dns_grid_zone:
+            _ref: _ref
           zone_match: Example zone_match
           dns_ext_primary: Example dns_ext_primary
         - dns_grid_primary: Example dns_grid_primary
           dns_ext_zone: Example dns_ext_zone
-          dns_grid_zone: Example dns_grid_zone
+          dns_grid_zone:
+            _ref: _ref
           zone_match: Example zone_match
           dns_ext_primary: Example dns_ext_primary
         comment: Example comment
@@ -12000,11 +12002,20 @@ components:
           example: Example name
           type: string
       type: object
+    NetworkviewDdnsZonePrimariesDnsGridZone:
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: The reference to the DNS zone object.
+          type: string
+      type: object
     NetworkviewDdnsZonePrimaries:
       example:
         dns_grid_primary: Example dns_grid_primary
         dns_ext_zone: Example dns_ext_zone
-        dns_grid_zone: Example dns_grid_zone
+        dns_grid_zone:
+          _ref: _ref
         zone_match: Example zone_match
         dns_ext_primary: Example dns_ext_primary
       properties:
@@ -12018,9 +12029,7 @@ components:
           example: Example zone_match
           type: string
         dns_grid_zone:
-          description: The ref of a DNS zone.
-          example: Example dns_grid_zone
-          type: string
+          $ref: '#/components/schemas/NetworkviewDdnsZonePrimariesDnsGridZone'
         dns_grid_primary:
           description: The name of a Grid member.
           example: Example dns_grid_primary
@@ -18397,12 +18406,14 @@ components:
           ddns_zone_primaries:
           - dns_grid_primary: Example dns_grid_primary
             dns_ext_zone: Example dns_ext_zone
-            dns_grid_zone: Example dns_grid_zone
+            dns_grid_zone:
+              _ref: _ref
             zone_match: Example zone_match
             dns_ext_primary: Example dns_ext_primary
           - dns_grid_primary: Example dns_grid_primary
             dns_ext_zone: Example dns_ext_zone
-            dns_grid_zone: Example dns_grid_zone
+            dns_grid_zone:
+              _ref: _ref
             zone_match: Example zone_match
             dns_ext_primary: Example dns_ext_primary
           comment: Example comment
@@ -18502,12 +18513,14 @@ components:
           ddns_zone_primaries:
           - dns_grid_primary: Example dns_grid_primary
             dns_ext_zone: Example dns_ext_zone
-            dns_grid_zone: Example dns_grid_zone
+            dns_grid_zone:
+              _ref: _ref
             zone_match: Example zone_match
             dns_ext_primary: Example dns_ext_primary
           - dns_grid_primary: Example dns_grid_primary
             dns_ext_zone: Example dns_ext_zone
-            dns_grid_zone: Example dns_grid_zone
+            dns_grid_zone:
+              _ref: _ref
             zone_match: Example zone_match
             dns_ext_primary: Example dns_ext_primary
           comment: Example comment

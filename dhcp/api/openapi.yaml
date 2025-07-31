@@ -19280,8 +19280,8 @@ components:
         ignore_client_identifier: false
         lease_scavenge_time: 1
         networks:
-        - network
-        - network
+        - _ref: _ref
+        - _ref: _ref
         use_ddns_ttl: false
         use_ddns_generate_hostname: false
         enable_ddns: false
@@ -19475,20 +19475,16 @@ components:
           example: Example network_view
           type: string
         networks:
-          description: "A list of networks belonging to the shared network Each individual\
+          description: "A list of networks belonging to the shared network. Each individual\
             \ list item must be specified as an object containing a '_ref' parameter\
             \ to a network reference, for example:: [{ \"_ref\": \"network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\"\
-            , }] if the reference of the wanted network is not known, it is possible\
+            \ }] if the reference of the wanted network is not known, it is possible\
             \ to specify search parameters for the network instead in the following\
-            \ way:: [{ \"_ref\": { 'network': '10.0.0.0/8', } }] note that in this\
+            \ way:: [{ \"_ref\": { 'network': '10.0.0.0/8' } }] note that in this\
             \ case the search must match exactly one network for the assignment to\
             \ be successful."
-          enum:
-          - network
           items:
-            enum:
-            - network
-            type: string
+            $ref: '#/components/schemas/SharednetworkNetworks'
           type: array
         nextserver:
           description: The name in FQDN and/or IPv4 Address of the next server that
@@ -19606,6 +19602,14 @@ components:
           description: "Use flag for: update_dns_on_lease_renewal"
           example: false
           type: boolean
+      type: object
+    SharednetworkNetworks:
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: Reference to the Network.
+          type: string
       type: object
     SharednetworkLogicFilterRules:
       example:
@@ -23501,8 +23505,8 @@ components:
           ignore_client_identifier: false
           lease_scavenge_time: 1
           networks:
-          - network
-          - network
+          - _ref: _ref
+          - _ref: _ref
           use_ddns_ttl: false
           use_ddns_generate_hostname: false
           enable_ddns: false
@@ -23591,8 +23595,8 @@ components:
           ignore_client_identifier: false
           lease_scavenge_time: 1
           networks:
-          - network
-          - network
+          - _ref: _ref
+          - _ref: _ref
           use_ddns_ttl: false
           use_ddns_generate_hostname: false
           enable_ddns: false

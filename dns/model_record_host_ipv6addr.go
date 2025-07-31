@@ -35,9 +35,9 @@ type RecordHostIpv6addr struct {
 	// DHCPv6 Unique Identifier (DUID) of the address object.
 	Duid *string `json:"duid,omitempty"`
 	// The host to which the IPv6 host address belongs, in FQDN format. It is only present when the host address object is not returned as part of a host.
-	Host *string `json:"host,omitempty"`
-	// The IPv6 Address prefix of the DHCP IPv6 Host Address object.
-	Ipv6addr *string `json:"ipv6addr,omitempty"`
+	Host     *string                     `json:"host,omitempty"`
+	Ipv6addr *RecordHostIpv6addrIpv6addr `json:"ipv6addr,omitempty"`
+	FuncCall *FuncCall                   `json:"func_call,omitempty"`
 	// The IPv6 Address prefix of the DHCP IPv6 Host Address object.
 	Ipv6prefix *string `json:"ipv6prefix,omitempty"`
 	// Prefix bits of the DHCP IPv6 Host Address object.
@@ -385,9 +385,9 @@ func (o *RecordHostIpv6addr) SetHost(v string) {
 }
 
 // GetIpv6addr returns the Ipv6addr field value if set, zero value otherwise.
-func (o *RecordHostIpv6addr) GetIpv6addr() string {
+func (o *RecordHostIpv6addr) GetIpv6addr() RecordHostIpv6addrIpv6addr {
 	if o == nil || IsNil(o.Ipv6addr) {
-		var ret string
+		var ret RecordHostIpv6addrIpv6addr
 		return ret
 	}
 	return *o.Ipv6addr
@@ -395,7 +395,7 @@ func (o *RecordHostIpv6addr) GetIpv6addr() string {
 
 // GetIpv6addrOk returns a tuple with the Ipv6addr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecordHostIpv6addr) GetIpv6addrOk() (*string, bool) {
+func (o *RecordHostIpv6addr) GetIpv6addrOk() (*RecordHostIpv6addrIpv6addr, bool) {
 	if o == nil || IsNil(o.Ipv6addr) {
 		return nil, false
 	}
@@ -411,9 +411,41 @@ func (o *RecordHostIpv6addr) HasIpv6addr() bool {
 	return false
 }
 
-// SetIpv6addr gets a reference to the given string and assigns it to the Ipv6addr field.
-func (o *RecordHostIpv6addr) SetIpv6addr(v string) {
+// SetIpv6addr gets a reference to the given RecordHostIpv6addrIpv6addr and assigns it to the Ipv6addr field.
+func (o *RecordHostIpv6addr) SetIpv6addr(v RecordHostIpv6addrIpv6addr) {
 	o.Ipv6addr = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *RecordHostIpv6addr) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordHostIpv6addr) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *RecordHostIpv6addr) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *RecordHostIpv6addr) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetIpv6prefix returns the Ipv6prefix field value if set, zero value otherwise.
@@ -1095,6 +1127,9 @@ func (o RecordHostIpv6addr) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ipv6addr) {
 		toSerialize["ipv6addr"] = o.Ipv6addr
+	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
 	}
 	if !IsNil(o.Ipv6prefix) {
 		toSerialize["ipv6prefix"] = o.Ipv6prefix
