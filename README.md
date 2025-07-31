@@ -31,11 +31,11 @@ The client uses HTTP Basic Authentication by default. Ensure your credentials ar
 
 You can configure the authentication for the client using environment variables for convenience:
 
-| Variable Name | Description                                 | Example                                |
-|---------------|---------------------------------------------|----------------------------------------|
-| NIOS_HOST_URL | Infoblox WAPI endpoint URL                  | `https://gridmaster.example.com` |
-| NIOS_USERNAME | Username for authentication                 | `admin`                                |
-| NIOS_PASSWORD | Password for authentication                 | `password`                             | |
+| Variable Name | Description                | Example                                |
+|---------------|----------------------------|----------------------------------------|
+| NIOS_HOST_URL | NIOS Grid URL              | `https://gridmaster.example.com` |
+| NIOS_USERNAME | Username for authentication | `admin`                                |
+| NIOS_PASSWORD | Password for authentication | `password`                             | |
 
 ### Using Configuration for the API Client
 
@@ -55,19 +55,7 @@ apiClient := client.NewAPIClient(
 )
 ```
 
-Note: The Password is a secret and should be handled securely. Hardcoding the Password in your code is not recommended.
-
-## Debugging
-
-To enable debug logging for troubleshooting and development, use the `option.WithDebug(true)` option when creating the API client:
-
-```go
-apiClient := client.NewAPIClient(
-    option.WithDebug(true),
-)
-```
-
-This will print detailed request and response information to the console, helping you diagnose issues with API calls.
+> Note: The Password is a secret and should be handled securely. Hardcoding the Password in your code is not recommended.
 
 ## Usage
 
@@ -79,7 +67,7 @@ You can use an aggregated client to interact with multiple APIs. The aggregated 
 Import the package in your code:
 
 ```go
-import niosclient "github.com/infobloxopen/bloxone-go-client/client"
+import niosclient "github.com/infobloxopen/infoblox-nios-go-client/client"
 ```
 
 To create a new API client, you can use the `NewAPIClient` function as shown below
@@ -112,7 +100,7 @@ client := niosclient.NewAPIClient(option.WithClientName("my-client"))
 ```
 
 
-### Example Usage
+## Example Usage
 
 
 ```go
@@ -151,6 +139,18 @@ func TestCreateARecord(t *testing.T) {
     require.NotNil(t, resp)
 }
 ```
+
+## Debugging
+
+To enable debug logging for troubleshooting and development, use the `option.WithDebug(true)` option when creating the API client:
+
+```go
+apiClient := client.NewAPIClient(
+    option.WithDebug(true),
+)
+```
+
+This will print detailed request and response information to the console, helping you diagnose issues with API calls.
 
 ## Supported Operations
 
