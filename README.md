@@ -53,7 +53,9 @@ You can configure the authentication for the client using environment variables 
 |---------------|----------------------------|----------------------------------------|
 | NIOS_HOST_URL | NIOS Grid URL              | `https://gridmaster.example.com` |
 | NIOS_USERNAME | Username for authentication | `admin`                                |
-| NIOS_PASSWORD | Password for authentication | `password`                             | |
+| NIOS_PASSWORD | Password for authentication | `password`                             |
+| CLIENT_CERT_PATH | Path to the cert file | `client.cert.pem`
+| CLIENT_KEY_PATH | Path to the key file | `client.key.pem`
 
 ### Using Configuration for the API Client
 
