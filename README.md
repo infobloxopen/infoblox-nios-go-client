@@ -1,6 +1,6 @@
 # Infoblox NIOS Go Client
 
-A Go client library for interacting with Infoblox NIOS (Network Identity Operating System) via its WAPI (Web API). This library enables Go applications to automate DNS, DHCP, IPAM, and other network management tasks using Infoblox appliances.
+A Go client library for interacting with Infoblox NIOS via its WAPI (Web API). This library enables Go applications to automate DNS, DHCP, IPAM, and other network management tasks using Infoblox appliances.
 
 ## Features
 
@@ -33,7 +33,7 @@ You can configure the client using environment variables for convenience:
 
 ### Using Configuration for the API Client
 
-Instead ofusing environment variables, you can also configure the API client directly in your code. Here's an example of how to set up the configuration in Infoblox NIOS API client :
+Instead of using environment variables, you can also configure the API client directly in your code. Here's an example of how to set up the configuration in Infoblox NIOS API client :
 
 ```go
 import "os"
@@ -60,7 +60,7 @@ import (
 
 var readableAttributes = "aws_rte53_record_info,cloud_info,comment,creation_time,creator,ddns_principal,ddns_protected,disable,discovered_data,dns_name,extattrs,forbid_reclamation,ipv4addr,last_queried,ms_ad_user_data,name,reclaimable,shared_record_group,ttl,use_ttl,view,zone"
 
-func CreateARecord(t *testing.T) {
+func TestCreateARecord(t *testing.T) {
     apiClient := dns.NewAPIClient()
     RecordA := dns.RecordA{
         Comment: dns.PtrString("Example comment"),
