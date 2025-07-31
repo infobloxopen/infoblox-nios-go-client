@@ -175,6 +175,7 @@ This will print detailed request and response information to the console, helpin
 - Customizable request parameters
 
 Refer to [Infoblox WAPI documentation](https://docs.infoblox.com/display/API/WAPI+Reference) for supported object types and fields.
+Alternatively, you can also refer to the [Infoblox NIOS Swagger](https://infobloxopen.github.io/nios-swagger/) to view the API endpoints and their parameters.
 
 ## Supported Object Groups
 
