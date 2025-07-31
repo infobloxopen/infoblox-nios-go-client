@@ -77,7 +77,7 @@ apiClient := client.NewAPIClient(
 
 ## Usage
 
-You can either use an aggregated client to interact with multiple BloxOne APIs or create a client for a specific API.
+You can either use an aggregated client to interact with multiple NIOS APIs or create a client for a specific API.
 
 #### Aggregated Client
 You can use an aggregated client to interact with multiple APIs. The aggregated client is available in the `client` package.
