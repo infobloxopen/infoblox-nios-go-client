@@ -125,38 +125,34 @@ client := niosclient.NewAPIClient(option.WithClientName("my-client"))
 
 ```go
 package main
+
 import (
-    "context"
-    "testing"
-	
-    "github.com/stretchr/testify/require"
-    
-    "github.com/infobloxopen/infoblox-nios-go-client/dns"
+	"context"
+	"fmt"
+
+	"github.com/infobloxopen/infoblox-nios-go-client/dns"
 )
 
-var readableAttributes = "aws_rte53_record_info,cloud_info,comment,creation_time,creator,ddns_principal,ddns_protected,disable,discovered_data,dns_name,extattrs,forbid_reclamation,ipv4addr,last_queried,ms_ad_user_data,name,reclaimable,shared_record_group,ttl,use_ttl,view,zone"
+var readableAttributes = "comment,name,ttl,use_ttl"
 
-func TestCreateARecord(t *testing.T) {
-    apiClient := dns.NewAPIClient()
-    RecordA := dns.RecordA{
-        Comment: dns.PtrString("Example comment"),
-        UseTtl:  dns.PtrBool(true),
-        Ttl:     dns.PtrInt64(0),
-        Name:    dns.PtrString("example_record.example.com"),
-        Ipv4addr: &dns.RecordAIpv4addr{
-            String: dns.PtrString("127.0.0.1"),
-        },
-    }
-    resp, _ , err := apiClient.RecordAAPI.Create(context.Background()).
-        RecordA(RecordA).
-        ReturnFieldsPlus(readableAttributes).
-        Execute()
 
-    if err != nil {
-        t.Errorf("Error: %v", err)
-    }
-    require.Nil(t, err)
-    require.NotNil(t, resp)
+func CreateARecord() {
+	apiClient := dns.NewAPIClient()
+	RecordA := dns.RecordA{
+		Comment: dns.PtrString("Example comment"),
+		UseTtl:  dns.PtrBool(true),
+		Ttl:     dns.PtrInt64(0),
+		Name:    dns.PtrString("example_record.example.com"),
+		Ipv4addr: &dns.RecordAIpv4addr{
+		},
+	}
+	resp, _, err := apiClient.RecordAAPI.Create(context.Background()).RecordA(RecordA).ReturnFieldsPlus(readableAttributes).Execute()
+
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return
+	}
+	fmt.Printf("Response: %v\n", resp)
 }
 ```
 
