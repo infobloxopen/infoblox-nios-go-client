@@ -123,7 +123,6 @@ client := niosclient.NewAPIClient(option.WithClientName("my-client"))
 
 ## Example Usage
 
-
 ```go
 package main
 
@@ -132,13 +131,18 @@ import (
 	"fmt"
 
 	"github.com/infobloxopen/infoblox-nios-go-client/dns"
+	"github.com/infobloxopen/infoblox-nios-go-client/option"
 )
 
 var readableAttributes = "comment,name,ttl,use_ttl"
 
-
 func CreateARecord() {
-	apiClient := dns.NewAPIClient()
+	// Configure the API client with necessary options
+	apiClient := dns.NewAPIClient(
+		option.WithNIOSHostUrl("NIOS_HOST_URL"),
+		option.WithNIOSUsername("NIOS_USERNAME"),
+		option.WithNIOSPassword("NIOS_PASSWORD"), // Use of environment variables is recommended
+	)
 	RecordA := dns.RecordA{
 		Comment: dns.PtrString("Example comment"),
 		UseTtl:  dns.PtrBool(true),
@@ -156,6 +160,11 @@ func CreateARecord() {
 	}
 	fmt.Printf("Response: %v\n", resp)
 }
+
+func main() {
+	CreateARecord()
+}
+
 ```
 
 ## Debugging
