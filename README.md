@@ -31,11 +31,11 @@ The client uses HTTP Basic Authentication by default. Ensure your credentials ar
 
 You can configure the authentication for the client using environment variables for convenience:
 
-| Variable Name         | Description                                 | Example                                |
-|---------------------- |---------------------------------------------|----------------------------------------|
-| NIOS_WAPI_URL         | Infoblox WAPI endpoint URL                  | `https://gridmaster.example.com` |
-| NIOS_USERNAME         | Username for authentication                 | `admin`                                |
-| NIOS_PASSWORD         | Password for authentication                 | `password`                             | |
+| Variable Name | Description                                 | Example                                |
+|---------------|---------------------------------------------|----------------------------------------|
+| NIOS_HOST_URL | Infoblox WAPI endpoint URL                  | `https://gridmaster.example.com` |
+| NIOS_USERNAME | Username for authentication                 | `admin`                                |
+| NIOS_PASSWORD | Password for authentication                 | `password`                             | |
 
 ### Using Configuration for the API Client
 
