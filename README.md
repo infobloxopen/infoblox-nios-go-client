@@ -20,6 +20,7 @@ The library is generated using the [OpenAPI Generator](https://openapi-generator
 - [Supported Operations](#supported-operations)
 - [Supported Object Groups](#supported-object-groups)
 - [Contributing](#contributing)
+- [License](#license)
 - [Support](#support)
 
 ## Requirements
