@@ -296,6 +296,10 @@ Additional utility and administrative objects:
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](./LICENSE) file for details.
+
 ## Support
 
 For issues, please open a GitHub issue or contact your Infoblox representative.
