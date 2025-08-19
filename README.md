@@ -20,6 +20,7 @@ The library is generated using the [OpenAPI Generator](https://openapi-generator
 - [Supported Operations](#supported-operations)
 - [Supported Object Groups](#supported-object-groups)
 - [Contributing](#contributing)
+- [License](#license)
 - [Support](#support)
 
 ## Requirements
@@ -295,6 +296,10 @@ Additional utility and administrative objects:
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](./LICENSE) file for details.
 
 ## Support
 
