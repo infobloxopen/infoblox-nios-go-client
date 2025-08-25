@@ -519,13 +519,15 @@ components:
         _ref: _ref
         name: Example name
         access_list:
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -533,13 +535,15 @@ components:
           use_tsig_key_name: false
         comment: Example comment
         exploded_access_list:
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -584,6 +588,7 @@ components:
       type: object
     NamedaclAccessList:
       example:
+        _struct: _struct
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
@@ -591,6 +596,10 @@ components:
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'addressac'
+            and 'tsigac'.
+          type: string
         address:
           description: The address this rule applies to or "Any".
           example: Example address
@@ -626,6 +635,7 @@ components:
       type: object
     NamedaclExplodedAccessList:
       example:
+        _struct: _struct
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
@@ -633,6 +643,10 @@ components:
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'addressac'
+            and 'tsigac'.
+          type: string
         address:
           description: The address this rule applies to or "Any".
           example: Example address
@@ -709,13 +723,15 @@ components:
           _ref: _ref
           name: Example name
           access_list:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -723,13 +739,15 @@ components:
             use_tsig_key_name: false
           comment: Example comment
           exploded_access_list:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -758,13 +776,15 @@ components:
           _ref: _ref
           name: Example name
           access_list:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -772,13 +792,15 @@ components:
             use_tsig_key_name: false
           comment: Example comment
           exploded_access_list:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission

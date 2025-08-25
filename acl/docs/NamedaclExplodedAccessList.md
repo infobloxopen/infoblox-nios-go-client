@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Struct** | Pointer to **string** | The struct type of the object. The value must be one of &#39;addressac&#39; and &#39;tsigac&#39;. | [optional] 
 **Address** | Pointer to **string** | The address this rule applies to or \&quot;Any\&quot;. | [optional] 
 **Permission** | Pointer to **string** | The permission to use for this address. | [optional] 
 **TsigKey** | Pointer to **string** | A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT. | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewNamedaclExplodedAccessListWithDefaults instantiates a new NamedaclExplodedAccessList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetStruct
+
+`func (o *NamedaclExplodedAccessList) GetStruct() string`
+
+GetStruct returns the Struct field if non-nil, zero value otherwise.
+
+### GetStructOk
+
+`func (o *NamedaclExplodedAccessList) GetStructOk() (*string, bool)`
+
+GetStructOk returns a tuple with the Struct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStruct
+
+`func (o *NamedaclExplodedAccessList) SetStruct(v string)`
+
+SetStruct sets Struct field to given value.
+
+### HasStruct
+
+`func (o *NamedaclExplodedAccessList) HasStruct() bool`
+
+HasStruct returns a boolean if a field has been set.
 
 ### GetAddress
 
