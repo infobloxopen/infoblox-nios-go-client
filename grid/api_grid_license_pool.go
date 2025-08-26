@@ -65,6 +65,7 @@ type GridLicensePoolAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -110,6 +111,12 @@ func (r GridLicensePoolAPIListRequest) Filters(filters map[string]interface{}) G
 
 func (r GridLicensePoolAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridLicensePoolAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r GridLicensePoolAPIListRequest) Inheritance(inheritance bool) GridLicensePoolAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -177,6 +184,9 @@ func (a *GridLicensePoolAPIService) ListExecute(r GridLicensePoolAPIListRequest)
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

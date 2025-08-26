@@ -79,6 +79,7 @@ type RecordHostIpv4addrAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -124,6 +125,12 @@ func (r RecordHostIpv4addrAPIListRequest) Filters(filters map[string]interface{}
 
 func (r RecordHostIpv4addrAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordHostIpv4addrAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r RecordHostIpv4addrAPIListRequest) Inheritance(inheritance bool) RecordHostIpv4addrAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -191,6 +198,9 @@ func (a *RecordHostIpv4addrAPIService) ListExecute(r RecordHostIpv4addrAPIListRe
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
