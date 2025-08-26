@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## List
 
-> ListDiscoveryResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDiscoveryResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Inheritance(inheritance).Execute()
 
 Retrieve discovery objects
 
@@ -62,6 +62,7 @@ Name | Type | Description  | Notes
 **pageId** | **string** | Page id for retrieving next page of results | 
 **filters** | **map[string]interface{}** |  | 
 **extattrfilter** | **map[string]interface{}** |  | 
+**inheritance** | **bool** | If this option is set to True, fields which support inheritance, will display data properly. | 
 
 ### Return type
 

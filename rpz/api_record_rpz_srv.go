@@ -341,6 +341,7 @@ type RecordRpzSrvAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -386,6 +387,12 @@ func (r RecordRpzSrvAPIListRequest) Filters(filters map[string]interface{}) Reco
 
 func (r RecordRpzSrvAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordRpzSrvAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r RecordRpzSrvAPIListRequest) Inheritance(inheritance bool) RecordRpzSrvAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -453,6 +460,9 @@ func (a *RecordRpzSrvAPIService) ListExecute(r RecordRpzSrvAPIListRequest) (*Lis
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

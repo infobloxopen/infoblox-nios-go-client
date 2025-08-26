@@ -79,6 +79,7 @@ type DiscoverytaskAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -124,6 +125,12 @@ func (r DiscoverytaskAPIListRequest) Filters(filters map[string]interface{}) Dis
 
 func (r DiscoverytaskAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DiscoverytaskAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r DiscoverytaskAPIListRequest) Inheritance(inheritance bool) DiscoverytaskAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -191,6 +198,9 @@ func (a *DiscoverytaskAPIService) ListExecute(r DiscoverytaskAPIListRequest) (*L
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

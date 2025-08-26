@@ -329,6 +329,7 @@ type SamlAuthserviceAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -374,6 +375,12 @@ func (r SamlAuthserviceAPIListRequest) Filters(filters map[string]interface{}) S
 
 func (r SamlAuthserviceAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SamlAuthserviceAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r SamlAuthserviceAPIListRequest) Inheritance(inheritance bool) SamlAuthserviceAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -441,6 +448,9 @@ func (a *SamlAuthserviceAPIService) ListExecute(r SamlAuthserviceAPIListRequest)
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

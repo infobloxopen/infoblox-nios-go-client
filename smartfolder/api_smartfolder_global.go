@@ -329,6 +329,7 @@ type SmartfolderGlobalAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -374,6 +375,12 @@ func (r SmartfolderGlobalAPIListRequest) Filters(filters map[string]interface{})
 
 func (r SmartfolderGlobalAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) SmartfolderGlobalAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r SmartfolderGlobalAPIListRequest) Inheritance(inheritance bool) SmartfolderGlobalAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -441,6 +448,9 @@ func (a *SmartfolderGlobalAPIService) ListExecute(r SmartfolderGlobalAPIListRequ
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

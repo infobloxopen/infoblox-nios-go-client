@@ -341,6 +341,7 @@ type Ipv6networktemplateAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -386,6 +387,12 @@ func (r Ipv6networktemplateAPIListRequest) Filters(filters map[string]interface{
 
 func (r Ipv6networktemplateAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) Ipv6networktemplateAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r Ipv6networktemplateAPIListRequest) Inheritance(inheritance bool) Ipv6networktemplateAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -453,6 +460,9 @@ func (a *Ipv6networktemplateAPIService) ListExecute(r Ipv6networktemplateAPIList
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -79,6 +79,7 @@ type CaptiveportalAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -124,6 +125,12 @@ func (r CaptiveportalAPIListRequest) Filters(filters map[string]interface{}) Cap
 
 func (r CaptiveportalAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) CaptiveportalAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r CaptiveportalAPIListRequest) Inheritance(inheritance bool) CaptiveportalAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -191,6 +198,9 @@ func (a *CaptiveportalAPIService) ListExecute(r CaptiveportalAPIListRequest) (*L
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

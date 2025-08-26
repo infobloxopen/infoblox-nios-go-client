@@ -341,6 +341,7 @@ type NotificationRestEndpointAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -386,6 +387,12 @@ func (r NotificationRestEndpointAPIListRequest) Filters(filters map[string]inter
 
 func (r NotificationRestEndpointAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NotificationRestEndpointAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r NotificationRestEndpointAPIListRequest) Inheritance(inheritance bool) NotificationRestEndpointAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -453,6 +460,9 @@ func (a *NotificationRestEndpointAPIService) ListExecute(r NotificationRestEndpo
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

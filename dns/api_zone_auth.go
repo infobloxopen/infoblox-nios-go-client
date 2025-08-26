@@ -351,6 +351,7 @@ type ZoneAuthAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -396,6 +397,12 @@ func (r ZoneAuthAPIListRequest) Filters(filters map[string]interface{}) ZoneAuth
 
 func (r ZoneAuthAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ZoneAuthAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r ZoneAuthAPIListRequest) Inheritance(inheritance bool) ZoneAuthAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -463,6 +470,9 @@ func (a *ZoneAuthAPIService) ListExecute(r ZoneAuthAPIListRequest) (*ListZoneAut
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

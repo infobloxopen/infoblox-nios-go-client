@@ -127,10 +127,4 @@ model_update_msserver_response.go
 model_update_msserver_response_as_object.go
 model_update_mssuperscope_response.go
 model_update_mssuperscope_response_as_object.go
-test/api_msserver_adsites_domain_test.go
-test/api_msserver_adsites_site_test.go
-test/api_msserver_dhcp_test.go
-test/api_msserver_dns_test.go
-test/api_msserver_test.go
-test/api_mssuperscope_test.go
 utils.go
