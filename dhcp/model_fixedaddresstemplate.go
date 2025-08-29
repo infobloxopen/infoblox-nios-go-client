@@ -39,6 +39,10 @@ type Fixedaddresstemplate struct {
 	EnablePxeLeaseTime *bool `json:"enable_pxe_lease_time,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}.
+	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}.
+	ExtAttrsMinus *map[string]ExtAttrsMinus `json:"extattrs-,omitempty"`
 	// If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested.
 	IgnoreDhcpOptionListRequest *bool `json:"ignore_dhcp_option_list_request,omitempty"`
 	// This field contains the logic filters to be applied on this fixed address. This list corresponds to the match rules that are written to the dhcpd configuration file.
@@ -412,6 +416,70 @@ func (o *Fixedaddresstemplate) HasExtAttrs() bool {
 // SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
 func (o *Fixedaddresstemplate) SetExtAttrs(v map[string]ExtAttrs) {
 	o.ExtAttrs = &v
+}
+
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *Fixedaddresstemplate) GetExtAttrsPlus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Fixedaddresstemplate) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *Fixedaddresstemplate) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsPlus field.
+func (o *Fixedaddresstemplate) SetExtAttrsPlus(v map[string]ExtAttrs) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *Fixedaddresstemplate) GetExtAttrsMinus() map[string]ExtAttrsMinus {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrsMinus
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Fixedaddresstemplate) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *Fixedaddresstemplate) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrsMinus and assigns it to the ExtAttrsMinus field.
+func (o *Fixedaddresstemplate) SetExtAttrsMinus(v map[string]ExtAttrsMinus) {
+	o.ExtAttrsMinus = &v
 }
 
 // GetIgnoreDhcpOptionListRequest returns the IgnoreDhcpOptionListRequest field value if set, zero value otherwise.
@@ -1029,6 +1097,12 @@ func (o Fixedaddresstemplate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs
+	}
+	if !IsNil(o.ExtAttrsPlus) {
+		toSerialize["extattrs+"] = o.ExtAttrsPlus
+	}
+	if !IsNil(o.ExtAttrsMinus) {
+		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
 	if !IsNil(o.IgnoreDhcpOptionListRequest) {
 		toSerialize["ignore_dhcp_option_list_request"] = o.IgnoreDhcpOptionListRequest

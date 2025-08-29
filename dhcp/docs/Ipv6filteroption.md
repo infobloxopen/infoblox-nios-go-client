@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | The descriptive comment of a DHCP IPv6 filter option object. | [optional] 
 **Expression** | Pointer to **string** | The conditional expression of a DHCP IPv6 filter option object. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **LeaseTime** | Pointer to **int64** | Determines the lease time of a DHCP IPv6 filter option object. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP IPv6 option filter object. | [optional] 
 **OptionList** | Pointer to [**[]Ipv6filteroptionOptionList**](Ipv6filteroptionOptionList.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
@@ -157,6 +159,56 @@ SetExtAttrs sets ExtAttrs field to given value.
 `func (o *Ipv6filteroption) HasExtAttrs() bool`
 
 HasExtAttrs returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *Ipv6filteroption) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *Ipv6filteroption) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *Ipv6filteroption) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *Ipv6filteroption) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *Ipv6filteroption) GetExtAttrsMinus() map[string]ExtAttrsMinus`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *Ipv6filteroption) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *Ipv6filteroption) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *Ipv6filteroption) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetLeaseTime
 

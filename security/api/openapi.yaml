@@ -6288,6 +6288,22 @@ components:
       required:
       - value
       type: object
+    ExtAttrsPlus:
+      description: Extensible attributes associated with the object.
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
+    ExtAttrsMinus:
+      description: Extensible attributes associated with the object.
+      properties:
+        value:
+          description: The value of the extensible attribute.
+      required:
+      - value
+      type: object
     Admingroup:
       additionalProperties: false
       example:
@@ -8791,7 +8807,13 @@ components:
     Adminrole:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         disable: false
@@ -8815,6 +8837,18 @@ components:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs+:values}."
+          type: object
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs-:values}."
           type: object
         name:
           description: The name of an admin role.
@@ -12216,7 +12250,13 @@ components:
       description: The response format to create __Adminrole__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           disable: false
@@ -12240,7 +12280,13 @@ components:
       description: The response format to update __Adminrole__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           disable: false

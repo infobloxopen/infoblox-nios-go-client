@@ -27,6 +27,10 @@ type Filternac struct {
 	Expression *string `json:"expression,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}.
+	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}.
+	ExtAttrsMinus *map[string]ExtAttrsMinus `json:"extattrs-,omitempty"`
 	// The length of time the DHCP server leases an IP address to a client. The lease time applies to hosts that meet the filter criteria.
 	LeaseTime *int64 `json:"lease_time,omitempty"`
 	// The name of a DHCP NAC Filter object.
@@ -180,6 +184,70 @@ func (o *Filternac) SetExtAttrs(v map[string]ExtAttrs) {
 	o.ExtAttrs = &v
 }
 
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *Filternac) GetExtAttrsPlus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Filternac) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *Filternac) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsPlus field.
+func (o *Filternac) SetExtAttrsPlus(v map[string]ExtAttrs) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *Filternac) GetExtAttrsMinus() map[string]ExtAttrsMinus {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrsMinus
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Filternac) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *Filternac) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrsMinus and assigns it to the ExtAttrsMinus field.
+func (o *Filternac) SetExtAttrsMinus(v map[string]ExtAttrsMinus) {
+	o.ExtAttrsMinus = &v
+}
+
 // GetLeaseTime returns the LeaseTime field value if set, zero value otherwise.
 func (o *Filternac) GetLeaseTime() int64 {
 	if o == nil || IsNil(o.LeaseTime) {
@@ -297,6 +365,12 @@ func (o Filternac) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs
+	}
+	if !IsNil(o.ExtAttrsPlus) {
+		toSerialize["extattrs+"] = o.ExtAttrsPlus
+	}
+	if !IsNil(o.ExtAttrsMinus) {
+		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
 	if !IsNil(o.LeaseTime) {
 		toSerialize["lease_time"] = o.LeaseTime

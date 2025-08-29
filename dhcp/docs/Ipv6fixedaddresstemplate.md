@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **DomainName** | Pointer to **string** | Domain name of the IPv6 fixed address template object. | [optional] 
 **DomainNameServers** | Pointer to **[]string** | The IPv6 addresses of DNS recursive name servers to which the DHCP client can send name resolution requests. The DHCP server includes this information in the DNS Recursive Name Server option in Advertise, Rebind, Information-Request, and Reply messages. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **LogicFilterRules** | Pointer to [**[]Ipv6fixedaddresstemplateLogicFilterRules**](Ipv6fixedaddresstemplateLogicFilterRules.md) | This field contains the logic filters to be applied to this IPv6 fixed address. This list corresponds to the match rules that are written to the DHCPv6 configuration file. | [optional] 
 **Name** | Pointer to **string** | Name of an IPv6 fixed address template object. | [optional] 
 **NumberOfAddresses** | Pointer to **int64** | The number of IPv6 addresses for this fixed address. | [optional] 
@@ -166,6 +168,56 @@ SetExtAttrs sets ExtAttrs field to given value.
 `func (o *Ipv6fixedaddresstemplate) HasExtAttrs() bool`
 
 HasExtAttrs returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *Ipv6fixedaddresstemplate) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *Ipv6fixedaddresstemplate) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *Ipv6fixedaddresstemplate) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *Ipv6fixedaddresstemplate) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *Ipv6fixedaddresstemplate) GetExtAttrsMinus() map[string]ExtAttrsMinus`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *Ipv6fixedaddresstemplate) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *Ipv6fixedaddresstemplate) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *Ipv6fixedaddresstemplate) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetLogicFilterRules
 

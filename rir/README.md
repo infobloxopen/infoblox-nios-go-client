@@ -94,6 +94,8 @@ Class | Method | HTTP request | Description
  - [CreateRirOrganizationResponse](docs/CreateRirOrganizationResponse.md)
  - [CreateRirOrganizationResponseAsObject](docs/CreateRirOrganizationResponseAsObject.md)
  - [ExtAttrs](docs/ExtAttrs.md)
+ - [ExtAttrsMinus](docs/ExtAttrsMinus.md)
+ - [ExtAttrsPlus](docs/ExtAttrsPlus.md)
  - [GetRirOrganizationResponse](docs/GetRirOrganizationResponse.md)
  - [GetRirOrganizationResponseObjectAsResult](docs/GetRirOrganizationResponseObjectAsResult.md)
  - [GetRirResponse](docs/GetRirResponse.md)

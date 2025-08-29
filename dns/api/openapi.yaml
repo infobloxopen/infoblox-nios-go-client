@@ -14336,6 +14336,22 @@ components:
       required:
       - value
       type: object
+    ExtAttrsPlus:
+      description: Extensible attributes associated with the object.
+      properties:
+        value:
+          description: The value of the extensible attribute plus.
+      required:
+      - value
+      type: object
+    ExtAttrsMinus:
+      description: Extensible attributes associated with the object.
+      properties:
+        value:
+          description: The value of the extensible attribute minus.
+      required:
+      - value
+      type: object
     RecordA:
       additionalProperties: false
       example:
@@ -16739,7 +16755,13 @@ components:
           delegated_root: Example delegated_root
         ttl: 1
         dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         disable: false
         _ref: _ref
@@ -16784,6 +16806,18 @@ components:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs+:values}."
+          type: object
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs-:values}."
           type: object
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
@@ -35638,7 +35672,13 @@ components:
             delegated_root: Example delegated_root
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           disable: false
           _ref: _ref
@@ -35697,7 +35737,13 @@ components:
             delegated_root: Example delegated_root
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           disable: false
           _ref: _ref

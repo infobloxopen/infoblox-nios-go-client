@@ -6,6 +6,8 @@ client.go
 docs/CreateRirOrganizationResponse.md
 docs/CreateRirOrganizationResponseAsObject.md
 docs/ExtAttrs.md
+docs/ExtAttrsMinus.md
+docs/ExtAttrsPlus.md
 docs/GetRirOrganizationResponse.md
 docs/GetRirOrganizationResponseObjectAsResult.md
 docs/GetRirResponse.md
@@ -25,6 +27,8 @@ docs/UpdateRirResponseAsObject.md
 model_create_rir_organization_response.go
 model_create_rir_organization_response_as_object.go
 model_ext_attrs.go
+model_ext_attrs_minus.go
+model_ext_attrs_plus.go
 model_get_rir_organization_response.go
 model_get_rir_organization_response_object_as_result.go
 model_get_rir_response.go
@@ -39,6 +43,4 @@ model_update_rir_organization_response.go
 model_update_rir_organization_response_as_object.go
 model_update_rir_response.go
 model_update_rir_response_as_object.go
-test/api_rir_organization_test.go
-test/api_rir_test.go
 utils.go

@@ -739,6 +739,26 @@ components:
       required:
       - value
       type: object
+    ExtAttrsPlus:
+      description: Extensible attributes associated with the object.
+      example:
+        value: ""
+      properties:
+        value:
+          description: The value of the extensible attribute plus.
+      required:
+      - value
+      type: object
+    ExtAttrsMinus:
+      description: Extensible attributes associated with the object.
+      example:
+        value: ""
+      properties:
+        value:
+          description: The value of the extensible attribute minus.
+      required:
+      - value
+      type: object
     Rir:
       additionalProperties: false
       example:
@@ -805,8 +825,14 @@ components:
     RirOrganization:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         password: Example password
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         _ref: _ref
@@ -824,6 +850,18 @@ components:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
+          type: object
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrsPlus'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs+:values}."
+          type: object
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrsMinus'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs-:values}."
           type: object
         id:
           description: The RIR organization identifier.
@@ -921,8 +959,14 @@ components:
       description: The response format to create __RirOrganization__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           password: Example password
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -948,8 +992,14 @@ components:
       description: The response format to update __RirOrganization__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           password: Example password
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref

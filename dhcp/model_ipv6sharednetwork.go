@@ -43,6 +43,10 @@ type Ipv6sharednetwork struct {
 	EnableDdns *bool `json:"enable_ddns,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}.
+	ExtAttrsPlus *map[string]ExtAttrsPlus `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}.
+	ExtAttrsMinus *map[string]ExtAttrsMinus `json:"extattrs-,omitempty"`
 	// This field contains the logic filters to be applied on the this IPv6 shared network. This list corresponds to the match rules that are written to the DHCPv6 configuration file.
 	LogicFilterRules []Ipv6sharednetworkLogicFilterRules `json:"logic_filter_rules,omitempty"`
 	// The name of the IPv6 Shared Network.
@@ -484,6 +488,70 @@ func (o *Ipv6sharednetwork) HasExtAttrs() bool {
 // SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
 func (o *Ipv6sharednetwork) SetExtAttrs(v map[string]ExtAttrs) {
 	o.ExtAttrs = &v
+}
+
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *Ipv6sharednetwork) GetExtAttrsPlus() map[string]ExtAttrsPlus {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrsPlus
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Ipv6sharednetwork) GetExtAttrsPlusOk() (*map[string]ExtAttrsPlus, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *Ipv6sharednetwork) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrsPlus and assigns it to the ExtAttrsPlus field.
+func (o *Ipv6sharednetwork) SetExtAttrsPlus(v map[string]ExtAttrsPlus) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *Ipv6sharednetwork) GetExtAttrsMinus() map[string]ExtAttrsMinus {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrsMinus
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Ipv6sharednetwork) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *Ipv6sharednetwork) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrsMinus and assigns it to the ExtAttrsMinus field.
+func (o *Ipv6sharednetwork) SetExtAttrsMinus(v map[string]ExtAttrsMinus) {
+	o.ExtAttrsMinus = &v
 }
 
 // GetLogicFilterRules returns the LogicFilterRules field value if set, zero value otherwise.
@@ -1171,6 +1239,12 @@ func (o Ipv6sharednetwork) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs
+	}
+	if !IsNil(o.ExtAttrsPlus) {
+		toSerialize["extattrs+"] = o.ExtAttrsPlus
+	}
+	if !IsNil(o.ExtAttrsMinus) {
+		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
 	if !IsNil(o.LogicFilterRules) {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules

@@ -55,6 +55,10 @@ type Sharednetwork struct {
 	EnablePxeLeaseTime *bool `json:"enable_pxe_lease_time,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}.
+	ExtAttrsPlus *map[string]ExtAttrsPlus `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}.
+	ExtAttrsMinus *map[string]ExtAttrsMinus `json:"extattrs-,omitempty"`
 	// If set to true, the client identifier will be ignored.
 	IgnoreClientIdentifier *bool `json:"ignore_client_identifier,omitempty"`
 	// If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested.
@@ -715,6 +719,70 @@ func (o *Sharednetwork) HasExtAttrs() bool {
 // SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
 func (o *Sharednetwork) SetExtAttrs(v map[string]ExtAttrs) {
 	o.ExtAttrs = &v
+}
+
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *Sharednetwork) GetExtAttrsPlus() map[string]ExtAttrsPlus {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrsPlus
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Sharednetwork) GetExtAttrsPlusOk() (*map[string]ExtAttrsPlus, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *Sharednetwork) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrsPlus and assigns it to the ExtAttrsPlus field.
+func (o *Sharednetwork) SetExtAttrsPlus(v map[string]ExtAttrsPlus) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *Sharednetwork) GetExtAttrsMinus() map[string]ExtAttrsMinus {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrsMinus
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Sharednetwork) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *Sharednetwork) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrsMinus and assigns it to the ExtAttrsMinus field.
+func (o *Sharednetwork) SetExtAttrsMinus(v map[string]ExtAttrsMinus) {
+	o.ExtAttrsMinus = &v
 }
 
 // GetIgnoreClientIdentifier returns the IgnoreClientIdentifier field value if set, zero value otherwise.
@@ -1868,6 +1936,12 @@ func (o Sharednetwork) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs
+	}
+	if !IsNil(o.ExtAttrsPlus) {
+		toSerialize["extattrs+"] = o.ExtAttrsPlus
+	}
+	if !IsNil(o.ExtAttrsMinus) {
+		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
 	if !IsNil(o.IgnoreClientIdentifier) {
 		toSerialize["ignore_client_identifier"] = o.IgnoreClientIdentifier
