@@ -26190,6 +26190,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -26197,6 +26198,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -26371,6 +26373,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -26378,6 +26381,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -26395,6 +26399,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -26402,6 +26407,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -27253,6 +27259,7 @@ components:
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
+        _ref: _ref
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
@@ -27260,6 +27267,9 @@ components:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
             and 'tsigac'.
+          type: string
+        _ref:
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27300,6 +27310,7 @@ components:
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
+        _ref: _ref
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
@@ -27307,6 +27318,9 @@ components:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
             and 'tsigac'.
+          type: string
+        _ref:
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27347,6 +27361,7 @@ components:
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
+        _ref: _ref
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
@@ -27354,6 +27369,9 @@ components:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
             and 'tsigac'.
+          type: string
+        _ref:
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -39320,6 +39338,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39327,6 +39346,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39501,6 +39521,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39508,6 +39529,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39525,6 +39547,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39532,6 +39555,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39795,6 +39819,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39802,6 +39827,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39976,6 +40002,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -39983,6 +40010,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -40000,6 +40028,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -40007,6 +40036,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false

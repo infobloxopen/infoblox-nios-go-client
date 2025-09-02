@@ -21,6 +21,8 @@ var _ MappedNullable = &ZoneAuthAllowQuery{}
 type ZoneAuthAllowQuery struct {
 	// The struct type of the object. The value must be one of 'addressac' and 'tsigac'.
 	Struct *string `json:"_struct,omitempty"`
+	// The reference to the object.
+	Ref *string `json:"_ref,omitempty"`
 	// The address this rule applies to or \"Any\".
 	Address *string `json:"address,omitempty"`
 	// The permission to use for this address.
@@ -85,6 +87,38 @@ func (o *ZoneAuthAllowQuery) HasStruct() bool {
 // SetStruct gets a reference to the given string and assigns it to the Struct field.
 func (o *ZoneAuthAllowQuery) SetStruct(v string) {
 	o.Struct = &v
+}
+
+// GetRef returns the Ref field value if set, zero value otherwise.
+func (o *ZoneAuthAllowQuery) GetRef() string {
+	if o == nil || IsNil(o.Ref) {
+		var ret string
+		return ret
+	}
+	return *o.Ref
+}
+
+// GetRefOk returns a tuple with the Ref field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ZoneAuthAllowQuery) GetRefOk() (*string, bool) {
+	if o == nil || IsNil(o.Ref) {
+		return nil, false
+	}
+	return o.Ref, true
+}
+
+// HasRef returns a boolean if a field has been set.
+func (o *ZoneAuthAllowQuery) HasRef() bool {
+	if o != nil && !IsNil(o.Ref) {
+		return true
+	}
+
+	return false
+}
+
+// SetRef gets a reference to the given string and assigns it to the Ref field.
+func (o *ZoneAuthAllowQuery) SetRef(v string) {
+	o.Ref = &v
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
@@ -292,6 +326,9 @@ func (o ZoneAuthAllowQuery) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Struct) {
 		toSerialize["_struct"] = o.Struct
 	}
+	if !IsNil(o.Ref) {
+		toSerialize["_ref"] = o.Ref
+	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
@@ -333,6 +370,7 @@ func (o *ZoneAuthAllowQuery) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "_struct")
+		delete(additionalProperties, "_ref")
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "permission")
 		delete(additionalProperties, "tsig_key")
