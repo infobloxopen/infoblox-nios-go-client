@@ -27269,7 +27269,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the object.
+          description: The reference to the Named ACL object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27320,7 +27320,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the object.
+          description: The reference to the Named ACL object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27371,7 +27371,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the object.
+          description: The reference to the Named ACL object.
           type: string
         address:
           description: The address this rule applies to or "Any".

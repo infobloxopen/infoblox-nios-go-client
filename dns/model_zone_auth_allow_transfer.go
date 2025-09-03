@@ -21,7 +21,7 @@ var _ MappedNullable = &ZoneAuthAllowTransfer{}
 type ZoneAuthAllowTransfer struct {
 	// The struct type of the object. The value must be one of 'addressac' and 'tsigac'.
 	Struct *string `json:"_struct,omitempty"`
-	// The reference to the object.
+	// The reference to the Named ACL object.
 	Ref *string `json:"_ref,omitempty"`
 	// The address this rule applies to or \"Any\".
 	Address *string `json:"address,omitempty"`

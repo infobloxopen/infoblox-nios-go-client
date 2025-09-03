@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Struct** | Pointer to **string** | The struct type of the object. The value must be one of &#39;addressac&#39; and &#39;tsigac&#39;. | [optional] 
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the Named ACL object. | [optional] 
 **Address** | Pointer to **string** | The address this rule applies to or \&quot;Any\&quot;. | [optional] 
 **Permission** | Pointer to **string** | The permission to use for this address. | [optional] 
 **TsigKey** | Pointer to **string** | A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT. | [optional] 
