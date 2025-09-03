@@ -139,8 +139,6 @@ docs/Dns64groupClients.md
 docs/Dns64groupExclude.md
 docs/Dns64groupMapped.md
 docs/ExtAttrs.md
-docs/ExtAttrsMinus.md
-docs/ExtAttrsPlus.md
 docs/FuncCall.md
 docs/GetAllnsgroupResponse.md
 docs/GetAllnsgroupResponseObjectAsResult.md
@@ -770,8 +768,6 @@ model_dns64group_clients.go
 model_dns64group_exclude.go
 model_dns64group_mapped.go
 model_ext_attrs.go
-model_ext_attrs_minus.go
-model_ext_attrs_plus.go
 model_func_call.go
 model_get_allnsgroup_response.go
 model_get_allnsgroup_response_object_as_result.go

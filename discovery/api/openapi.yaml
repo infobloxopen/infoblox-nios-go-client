@@ -3214,7 +3214,13 @@ components:
         type: Example type
         network: Example network
         cap_vlan_assignment_ind: false
+        extattrs-:
+          key:
+            value: ""
         cap_voice_vlan_ind: false
+        extattrs+:
+          key:
+            value: ""
         cap_admin_status_na_reason: Example cap_admin_status_na_reason
         neighbors:
         - discovery:deviceneighbor
@@ -3371,6 +3377,20 @@ components:
           example: Example description
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -3658,6 +3678,12 @@ components:
         vrf_name: Example vrf_name
         mac: Example mac
         speed: 1
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         vpc_peer_device: Example vpc_peer_device
         cap_if_net_deprovisioning_ipv6_na_reason: Example cap_if_net_deprovisioning_ipv6_na_reason
         cap_if_net_deprovisioning_ipv6_ind: false
@@ -3843,6 +3869,20 @@ components:
           example: Example duplex
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7397,7 +7437,13 @@ components:
           type: Example type
           network: Example network
           cap_vlan_assignment_ind: false
+          extattrs-:
+            key:
+              value: ""
           cap_voice_vlan_ind: false
+          extattrs+:
+            key:
+              value: ""
           cap_admin_status_na_reason: Example cap_admin_status_na_reason
           neighbors:
           - discovery:deviceneighbor
@@ -7514,6 +7560,12 @@ components:
           vrf_name: Example vrf_name
           mac: Example mac
           speed: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           vpc_peer_device: Example vpc_peer_device
           cap_if_net_deprovisioning_ipv6_na_reason: Example cap_if_net_deprovisioning_ipv6_na_reason
           cap_if_net_deprovisioning_ipv6_ind: false

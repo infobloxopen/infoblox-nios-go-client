@@ -34,11 +34,11 @@ type RecordAlias struct {
 	// Target name in punycode format.
 	DnsTargetName *string `json:"dns_target_name,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
-	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}.
 	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
-	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}.
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The time of the last DNS query in Epoch seconds format.
 	LastQueried *int64 `json:"last_queried,omitempty"`
 	// The name for an Alias record in FQDN format. This value can be in unicode format. Regular expression search is not supported for unicode values.
@@ -330,38 +330,6 @@ func (o *RecordAlias) SetDnsTargetName(v string) {
 	o.DnsTargetName = &v
 }
 
-// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
-func (o *RecordAlias) GetExtAttrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.ExtAttrs) {
-		var ret map[string]ExtAttrs
-		return ret
-	}
-	return *o.ExtAttrs
-}
-
-// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RecordAlias) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.ExtAttrs) {
-		return nil, false
-	}
-	return o.ExtAttrs, true
-}
-
-// HasExtAttrs returns a boolean if a field has been set.
-func (o *RecordAlias) HasExtAttrs() bool {
-	if o != nil && !IsNil(o.ExtAttrs) {
-		return true
-	}
-
-	return false
-}
-
-// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
-func (o *RecordAlias) SetExtAttrs(v map[string]ExtAttrs) {
-	o.ExtAttrs = &v
-}
-
 // GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
 func (o *RecordAlias) GetExtAttrsPlus() map[string]ExtAttrs {
 	if o == nil || IsNil(o.ExtAttrsPlus) {
@@ -424,6 +392,38 @@ func (o *RecordAlias) HasExtAttrsMinus() bool {
 // SetExtAttrsMinus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsMinus field.
 func (o *RecordAlias) SetExtAttrsMinus(v map[string]ExtAttrs) {
 	o.ExtAttrsMinus = &v
+}
+
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *RecordAlias) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrs
+}
+
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordAlias) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
+		return nil, false
+	}
+	return o.ExtAttrs, true
+}
+
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *RecordAlias) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *RecordAlias) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetLastQueried returns the LastQueried field value if set, zero value otherwise.
@@ -716,14 +716,14 @@ func (o RecordAlias) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsTargetName) {
 		toSerialize["dns_target_name"] = o.DnsTargetName
 	}
-	if !IsNil(o.ExtAttrs) {
-		toSerialize["extattrs"] = o.ExtAttrs
-	}
 	if !IsNil(o.ExtAttrsPlus) {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
 	if !IsNil(o.ExtAttrsMinus) {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
+	}
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.LastQueried) {
 		toSerialize["last_queried"] = o.LastQueried

@@ -250,8 +250,6 @@ Class | Method | HTTP request | Description
  - [CreateTacacsplusAuthserviceResponse](docs/CreateTacacsplusAuthserviceResponse.md)
  - [CreateTacacsplusAuthserviceResponseAsObject](docs/CreateTacacsplusAuthserviceResponseAsObject.md)
  - [ExtAttrs](docs/ExtAttrs.md)
- - [ExtAttrsMinus](docs/ExtAttrsMinus.md)
- - [ExtAttrsPlus](docs/ExtAttrsPlus.md)
  - [Ftpuser](docs/Ftpuser.md)
  - [GetAdAuthServiceResponse](docs/GetAdAuthServiceResponse.md)
  - [GetAdAuthServiceResponseObjectAsResult](docs/GetAdAuthServiceResponseObjectAsResult.md)

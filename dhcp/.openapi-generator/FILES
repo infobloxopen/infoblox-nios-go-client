@@ -85,8 +85,6 @@ docs/DhcpoptiondefinitionAPI.md
 docs/Dhcpoptionspace.md
 docs/DhcpoptionspaceAPI.md
 docs/ExtAttrs.md
-docs/ExtAttrsMinus.md
-docs/ExtAttrsPlus.md
 docs/Filterfingerprint.md
 docs/FilterfingerprintAPI.md
 docs/Filtermac.md
@@ -447,8 +445,6 @@ model_dhcpfailover.go
 model_dhcpoptiondefinition.go
 model_dhcpoptionspace.go
 model_ext_attrs.go
-model_ext_attrs_minus.go
-model_ext_attrs_plus.go
 model_filterfingerprint.go
 model_filtermac.go
 model_filtermac_options.go

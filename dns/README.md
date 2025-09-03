@@ -382,8 +382,6 @@ Class | Method | HTTP request | Description
  - [Dns64groupExclude](docs/Dns64groupExclude.md)
  - [Dns64groupMapped](docs/Dns64groupMapped.md)
  - [ExtAttrs](docs/ExtAttrs.md)
- - [ExtAttrsMinus](docs/ExtAttrsMinus.md)
- - [ExtAttrsPlus](docs/ExtAttrsPlus.md)
  - [FuncCall](docs/FuncCall.md)
  - [GetAllnsgroupResponse](docs/GetAllnsgroupResponse.md)
  - [GetAllnsgroupResponseObjectAsResult](docs/GetAllnsgroupResponseObjectAsResult.md)

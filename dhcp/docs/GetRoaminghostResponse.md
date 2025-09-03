@@ -17,9 +17,9 @@ Name | Type | Description | Notes
 **Disable** | Pointer to **bool** | Determines whether a roaming host is disabled or not. When this is set to False, the roaming host is enabled. | [optional] 
 **EnableDdns** | Pointer to **bool** | The dynamic DNS updates flag of the roaming host object. If set to True, the DHCP server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers. | [optional] 
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrsPlus**](ExtAttrsPlus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
-**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **ForceRoamingHostname** | Pointer to **bool** | Set this to True to use the roaming host name as its ddns_hostname. | [optional] 
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all the DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
 **Ipv6ClientHostname** | Pointer to **string** | The client hostname of a DHCP roaming host object. This field specifies the host name that the DHCP client sends to the Infoblox appliance using DHCP option 12. | [optional] [readonly] 
@@ -406,6 +406,56 @@ SetEnablePxeLeaseTime sets EnablePxeLeaseTime field to given value.
 
 HasEnablePxeLeaseTime returns a boolean if a field has been set.
 
+### GetExtAttrsPlus
+
+`func (o *GetRoaminghostResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetRoaminghostResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetRoaminghostResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetRoaminghostResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetRoaminghostResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetRoaminghostResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetRoaminghostResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetRoaminghostResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
+
 ### GetExtAttrs
 
 `func (o *GetRoaminghostResponse) GetExtAttrs() map[string]ExtAttrs`
@@ -430,56 +480,6 @@ SetExtAttrs sets ExtAttrs field to given value.
 `func (o *GetRoaminghostResponse) HasExtAttrs() bool`
 
 HasExtAttrs returns a boolean if a field has been set.
-
-### GetExtAttrsPlus
-
-`func (o *GetRoaminghostResponse) GetExtAttrsPlus() map[string]ExtAttrsPlus`
-
-GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
-
-### GetExtAttrsPlusOk
-
-`func (o *GetRoaminghostResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrsPlus, bool)`
-
-GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrsPlus
-
-`func (o *GetRoaminghostResponse) SetExtAttrsPlus(v map[string]ExtAttrsPlus)`
-
-SetExtAttrsPlus sets ExtAttrsPlus field to given value.
-
-### HasExtAttrsPlus
-
-`func (o *GetRoaminghostResponse) HasExtAttrsPlus() bool`
-
-HasExtAttrsPlus returns a boolean if a field has been set.
-
-### GetExtAttrsMinus
-
-`func (o *GetRoaminghostResponse) GetExtAttrsMinus() map[string]ExtAttrsMinus`
-
-GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
-
-### GetExtAttrsMinusOk
-
-`func (o *GetRoaminghostResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
-
-GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrsMinus
-
-`func (o *GetRoaminghostResponse) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
-
-SetExtAttrsMinus sets ExtAttrsMinus field to given value.
-
-### HasExtAttrsMinus
-
-`func (o *GetRoaminghostResponse) HasExtAttrsMinus() bool`
-
-HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetForceRoamingHostname
 

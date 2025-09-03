@@ -103,8 +103,6 @@ docs/CreateSnmpuserResponseAsObject.md
 docs/CreateTacacsplusAuthserviceResponse.md
 docs/CreateTacacsplusAuthserviceResponseAsObject.md
 docs/ExtAttrs.md
-docs/ExtAttrsMinus.md
-docs/ExtAttrsPlus.md
 docs/Ftpuser.md
 docs/FtpuserAPI.md
 docs/GetAdAuthServiceResponse.md
@@ -337,8 +335,6 @@ model_create_snmpuser_response_as_object.go
 model_create_tacacsplus_authservice_response.go
 model_create_tacacsplus_authservice_response_as_object.go
 model_ext_attrs.go
-model_ext_attrs_minus.go
-model_ext_attrs_plus.go
 model_ftpuser.go
 model_get_ad_auth_service_response.go
 model_get_ad_auth_service_response_object_as_result.go

@@ -28,11 +28,11 @@ type Macfilteraddress struct {
 	// The absolute UNIX time (in seconds) until the address expires.
 	ExpirationTime *int64 `json:"expiration_time,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
-	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}.
-	ExtAttrsPlus *map[string]ExtAttrsPlus `json:"extattrs+,omitempty"`
-	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}.
-	ExtAttrsMinus *map[string]ExtAttrsMinus `json:"extattrs-,omitempty"`
 	// Name of the MAC filter to which this address belongs.
 	Filter *string `json:"filter,omitempty"`
 	// DHCP fingerprint for the address.
@@ -212,6 +212,70 @@ func (o *Macfilteraddress) SetExpirationTime(v int64) {
 	o.ExpirationTime = &v
 }
 
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *Macfilteraddress) GetExtAttrsPlus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Macfilteraddress) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *Macfilteraddress) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsPlus field.
+func (o *Macfilteraddress) SetExtAttrsPlus(v map[string]ExtAttrs) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *Macfilteraddress) GetExtAttrsMinus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Macfilteraddress) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *Macfilteraddress) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsMinus field.
+func (o *Macfilteraddress) SetExtAttrsMinus(v map[string]ExtAttrs) {
+	o.ExtAttrsMinus = &v
+}
+
 // GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
 func (o *Macfilteraddress) GetExtAttrs() map[string]ExtAttrs {
 	if o == nil || IsNil(o.ExtAttrs) {
@@ -242,70 +306,6 @@ func (o *Macfilteraddress) HasExtAttrs() bool {
 // SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
 func (o *Macfilteraddress) SetExtAttrs(v map[string]ExtAttrs) {
 	o.ExtAttrs = &v
-}
-
-// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
-func (o *Macfilteraddress) GetExtAttrsPlus() map[string]ExtAttrsPlus {
-	if o == nil || IsNil(o.ExtAttrsPlus) {
-		var ret map[string]ExtAttrsPlus
-		return ret
-	}
-	return *o.ExtAttrsPlus
-}
-
-// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Macfilteraddress) GetExtAttrsPlusOk() (*map[string]ExtAttrsPlus, bool) {
-	if o == nil || IsNil(o.ExtAttrsPlus) {
-		return nil, false
-	}
-	return o.ExtAttrsPlus, true
-}
-
-// HasExtAttrsPlus returns a boolean if a field has been set.
-func (o *Macfilteraddress) HasExtAttrsPlus() bool {
-	if o != nil && !IsNil(o.ExtAttrsPlus) {
-		return true
-	}
-
-	return false
-}
-
-// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrsPlus and assigns it to the ExtAttrsPlus field.
-func (o *Macfilteraddress) SetExtAttrsPlus(v map[string]ExtAttrsPlus) {
-	o.ExtAttrsPlus = &v
-}
-
-// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
-func (o *Macfilteraddress) GetExtAttrsMinus() map[string]ExtAttrsMinus {
-	if o == nil || IsNil(o.ExtAttrsMinus) {
-		var ret map[string]ExtAttrsMinus
-		return ret
-	}
-	return *o.ExtAttrsMinus
-}
-
-// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Macfilteraddress) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool) {
-	if o == nil || IsNil(o.ExtAttrsMinus) {
-		return nil, false
-	}
-	return o.ExtAttrsMinus, true
-}
-
-// HasExtAttrsMinus returns a boolean if a field has been set.
-func (o *Macfilteraddress) HasExtAttrsMinus() bool {
-	if o != nil && !IsNil(o.ExtAttrsMinus) {
-		return true
-	}
-
-	return false
-}
-
-// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrsMinus and assigns it to the ExtAttrsMinus field.
-func (o *Macfilteraddress) SetExtAttrsMinus(v map[string]ExtAttrsMinus) {
-	o.ExtAttrsMinus = &v
 }
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
@@ -842,14 +842,14 @@ func (o Macfilteraddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExpirationTime) {
 		toSerialize["expiration_time"] = o.ExpirationTime
 	}
-	if !IsNil(o.ExtAttrs) {
-		toSerialize["extattrs"] = o.ExtAttrs
-	}
 	if !IsNil(o.ExtAttrsPlus) {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
 	if !IsNil(o.ExtAttrsMinus) {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
+	}
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter

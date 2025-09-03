@@ -8489,26 +8489,6 @@ components:
       required:
       - value
       type: object
-    ExtAttrsPlus:
-      description: Extensible attributes associated with the object.
-      example:
-        value: ""
-      properties:
-        value:
-          description: The value of the extensible attribute.
-      required:
-      - value
-      type: object
-    ExtAttrsMinus:
-      description: Extensible attributes associated with the object.
-      example:
-        value: ""
-      properties:
-        value:
-          description: The value of the extensible attribute.
-      required:
-      - value
-      type: object
     FixedAddressStruct:
       example:
         ms_server:
@@ -8651,23 +8631,25 @@ components:
           description: A descriptive comment about a DHCP failover object.
           example: Example comment
           type: string
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         failover_port:
           description: Determines the TCP port on which the server should listen for
@@ -9092,23 +9074,25 @@ components:
           description: The descriptive comment.
           example: Example comment
           type: string
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         fingerprint:
           description: The list of DHCP Fingerprint objects.
@@ -9204,23 +9188,25 @@ components:
             Address Filter object.
           example: false
           type: boolean
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         lease_time:
           description: The length of time the DHCP server leases an IP address to
@@ -9348,23 +9334,25 @@ components:
           description: The conditional expression of a DHCP NAC Filter object.
           example: Example expression
           type: string
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         lease_time:
           description: The length of time the DHCP server leases an IP address to
@@ -9505,23 +9493,25 @@ components:
           description: The conditional expression of a DHCP filter option object.
           example: Example expression
           type: string
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         lease_time:
           description: Determines the lease time of a DHCP filter option object.
@@ -9668,23 +9658,25 @@ components:
           description: A descriptive comment of a DHCP relay agent filter object.
           example: Example comment
           type: string
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         is_circuit_id:
           description: The circuit ID matching rule of a DHCP relay agent filter object.
@@ -9806,23 +9798,25 @@ components:
           description: Determines if the DHCP Fingerprint object is disabled or not.
           example: false
           type: boolean
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         ipv6_option_sequence:
           description: A list (comma separated list) of IPv6 option number sequences
@@ -10246,23 +10240,25 @@ components:
             lease time for PXE clients.
           example: false
           type: boolean
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         ignore_dhcp_option_list_request:
           description: "If this field is set to False, the appliance returns all DHCP\
@@ -11591,23 +11587,25 @@ components:
             lease time for PXE clients.
           example: false
           type: boolean
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         ignore_dhcp_option_list_request:
           description: "If this field is set to False, the appliance returns all DHCP\
@@ -11962,23 +11960,25 @@ components:
           description: The conditional expression of a DHCP IPv6 filter option object.
           example: Example expression
           type: string
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         lease_time:
           description: Determines the lease time of a DHCP IPv6 filter option object.
@@ -12367,23 +12367,25 @@ components:
           example: false
           type: boolean
           writeOnly: true
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         ipv6addr:
           $ref: '#/components/schemas/Ipv6fixedaddress_ipv6addr'
@@ -13548,23 +13550,25 @@ components:
           items:
             type: string
           type: array
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         logic_filter_rules:
           description: This field contains the logic filters to be applied to this
@@ -13934,23 +13938,25 @@ components:
           items:
             $ref: '#/components/schemas/Ipv6rangeExclude'
           type: array
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
+          x-tf-ignore: true
+        extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs-:
+          x-tf-ignore: true
+        extattrs:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         ipv6_end_prefix:
           description: The IPv6 Address end prefix of the DHCP IPv6 range.
@@ -15116,23 +15122,25 @@ components:
             \ the same Grid, and to external DNS servers."
           example: false
           type: boolean
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsPlus'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
-          type: object
+          x-tf-ignore: true
         extattrs-:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
@@ -16521,23 +16529,25 @@ components:
           example: 1
           format: int64
           type: integer
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsPlus'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
-          type: object
+          x-tf-ignore: true
         extattrs-:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         filter:
           description: Name of the MAC filter to which this address belongs.
@@ -17049,23 +17059,25 @@ components:
           items:
             $ref: '#/components/schemas/RangeExclude'
           type: array
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsPlus'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
-          type: object
+          x-tf-ignore: true
         extattrs-:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         failover_association:
           description: "The name of the failover association: the server in this failover\
@@ -18538,23 +18550,25 @@ components:
           items:
             $ref: '#/components/schemas/RangetemplateExclude'
           type: array
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsPlus'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
-          type: object
+          x-tf-ignore: true
         extattrs-:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         failover_association:
           description: "The name of the failover association: the server in this failover\
@@ -19263,23 +19277,25 @@ components:
             lease time for PXE clients.
           example: false
           type: boolean
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsPlus'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
-          type: object
+          x-tf-ignore: true
         extattrs-:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         force_roaming_hostname:
           description: Set this to True to use the roaming host name as its ddns_hostname.
@@ -19763,23 +19779,25 @@ components:
             lease time for PXE clients.
           example: false
           type: boolean
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsPlus'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
-          type: object
+          x-tf-ignore: true
         extattrs-:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         ignore_client_identifier:
           description: "If set to true, the client identifier will be ignored."

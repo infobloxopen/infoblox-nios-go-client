@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment of a DHCP NAC Filter object. | [optional] 
 **Expression** | Pointer to **string** | The conditional expression of a DHCP NAC Filter object. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
-**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **LeaseTime** | Pointer to **int64** | The length of time the DHCP server leases an IP address to a client. The lease time applies to hosts that meet the filter criteria. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP NAC Filter object. | [optional] 
 **Options** | Pointer to [**[]FilternacOptions**](FilternacOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
@@ -109,31 +109,6 @@ SetExpression sets Expression field to given value.
 
 HasExpression returns a boolean if a field has been set.
 
-### GetExtAttrs
-
-`func (o *GetFilternacResponse) GetExtAttrs() map[string]ExtAttrs`
-
-GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
-
-### GetExtAttrsOk
-
-`func (o *GetFilternacResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
-
-GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrs
-
-`func (o *GetFilternacResponse) SetExtAttrs(v map[string]ExtAttrs)`
-
-SetExtAttrs sets ExtAttrs field to given value.
-
-### HasExtAttrs
-
-`func (o *GetFilternacResponse) HasExtAttrs() bool`
-
-HasExtAttrs returns a boolean if a field has been set.
-
 ### GetExtAttrsPlus
 
 `func (o *GetFilternacResponse) GetExtAttrsPlus() map[string]ExtAttrs`
@@ -161,20 +136,20 @@ HasExtAttrsPlus returns a boolean if a field has been set.
 
 ### GetExtAttrsMinus
 
-`func (o *GetFilternacResponse) GetExtAttrsMinus() map[string]ExtAttrsMinus`
+`func (o *GetFilternacResponse) GetExtAttrsMinus() map[string]ExtAttrs`
 
 GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
 
 ### GetExtAttrsMinusOk
 
-`func (o *GetFilternacResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
+`func (o *GetFilternacResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
 
 GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtAttrsMinus
 
-`func (o *GetFilternacResponse) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
+`func (o *GetFilternacResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
 
 SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 
@@ -183,6 +158,31 @@ SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 `func (o *GetFilternacResponse) HasExtAttrsMinus() bool`
 
 HasExtAttrsMinus returns a boolean if a field has been set.
+
+### GetExtAttrs
+
+`func (o *GetFilternacResponse) GetExtAttrs() map[string]ExtAttrs`
+
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
+
+### GetExtAttrsOk
+
+`func (o *GetFilternacResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrs
+
+`func (o *GetFilternacResponse) SetExtAttrs(v map[string]ExtAttrs)`
+
+SetExtAttrs sets ExtAttrs field to given value.
+
+### HasExtAttrs
+
+`func (o *GetFilternacResponse) HasExtAttrs() bool`
+
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLeaseTime
 

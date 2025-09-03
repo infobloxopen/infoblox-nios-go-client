@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **DefaultMacAddressExpiration** | Pointer to **int64** | The default MAC expiration time of the DHCP MAC Address Filter object. By default, the MAC address filter never expires; otherwise, it is the absolute interval when the MAC address filter expires. The maximum value can extend up to 4294967295 secs. The minimum value is 60 secs (1 min). | [optional] 
 **Disable** | Pointer to **bool** | Determines if the DHCP Fingerprint object is disabled or not. | [optional] 
 **EnforceExpirationTimes** | Pointer to **bool** | The flag to enforce MAC address expiration of the DHCP MAC Address Filter object. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
-**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **LeaseTime** | Pointer to **int64** | The length of time the DHCP server leases an IP address to a client. The lease time applies to hosts that meet the filter criteria. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP MAC Filter object. | [optional] 
 **NeverExpires** | Pointer to **bool** | Determines if DHCP MAC Filter never expires or automatically expires. | [optional] 
@@ -163,31 +163,6 @@ SetEnforceExpirationTimes sets EnforceExpirationTimes field to given value.
 
 HasEnforceExpirationTimes returns a boolean if a field has been set.
 
-### GetExtAttrs
-
-`func (o *GetFiltermacResponse) GetExtAttrs() map[string]ExtAttrs`
-
-GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
-
-### GetExtAttrsOk
-
-`func (o *GetFiltermacResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
-
-GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrs
-
-`func (o *GetFiltermacResponse) SetExtAttrs(v map[string]ExtAttrs)`
-
-SetExtAttrs sets ExtAttrs field to given value.
-
-### HasExtAttrs
-
-`func (o *GetFiltermacResponse) HasExtAttrs() bool`
-
-HasExtAttrs returns a boolean if a field has been set.
-
 ### GetExtAttrsPlus
 
 `func (o *GetFiltermacResponse) GetExtAttrsPlus() map[string]ExtAttrs`
@@ -215,20 +190,20 @@ HasExtAttrsPlus returns a boolean if a field has been set.
 
 ### GetExtAttrsMinus
 
-`func (o *GetFiltermacResponse) GetExtAttrsMinus() map[string]ExtAttrsMinus`
+`func (o *GetFiltermacResponse) GetExtAttrsMinus() map[string]ExtAttrs`
 
 GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
 
 ### GetExtAttrsMinusOk
 
-`func (o *GetFiltermacResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
+`func (o *GetFiltermacResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
 
 GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtAttrsMinus
 
-`func (o *GetFiltermacResponse) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
+`func (o *GetFiltermacResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
 
 SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 
@@ -237,6 +212,31 @@ SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 `func (o *GetFiltermacResponse) HasExtAttrsMinus() bool`
 
 HasExtAttrsMinus returns a boolean if a field has been set.
+
+### GetExtAttrs
+
+`func (o *GetFiltermacResponse) GetExtAttrs() map[string]ExtAttrs`
+
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
+
+### GetExtAttrsOk
+
+`func (o *GetFiltermacResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrs
+
+`func (o *GetFiltermacResponse) SetExtAttrs(v map[string]ExtAttrs)`
+
+SetExtAttrs sets ExtAttrs field to given value.
+
+### HasExtAttrs
+
+`func (o *GetFiltermacResponse) HasExtAttrs() bool`
+
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLeaseTime
 

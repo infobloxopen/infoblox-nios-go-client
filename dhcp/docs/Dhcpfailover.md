@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **AssociationType** | Pointer to **string** | The value indicating whether the failover assoctaion is Microsoft or Grid based. This is a read-only attribute. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment about a DHCP failover object. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
-**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **FailoverPort** | Pointer to **int64** | Determines the TCP port on which the server should listen for connections from its failover peer. Valid values are between 1 and 63999. | [optional] 
 **LoadBalanceSplit** | Pointer to **int64** | A load balancing split value of a DHCP failover object. Specify the value of the maximum load balancing delay in a 8-bit integer format (range from 0 to 256). | [optional] 
 **MaxClientLeadTime** | Pointer to **int64** | The maximum client lead time value of a DHCP failover object. Specify the value of the maximum client lead time in a 32-bit integer format (range from 0 to 4294967295) that represents the duration in seconds. Valid values are between 1 and 4294967295. | [optional] 
@@ -134,31 +134,6 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
-### GetExtAttrs
-
-`func (o *Dhcpfailover) GetExtAttrs() map[string]ExtAttrs`
-
-GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
-
-### GetExtAttrsOk
-
-`func (o *Dhcpfailover) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
-
-GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrs
-
-`func (o *Dhcpfailover) SetExtAttrs(v map[string]ExtAttrs)`
-
-SetExtAttrs sets ExtAttrs field to given value.
-
-### HasExtAttrs
-
-`func (o *Dhcpfailover) HasExtAttrs() bool`
-
-HasExtAttrs returns a boolean if a field has been set.
-
 ### GetExtAttrsPlus
 
 `func (o *Dhcpfailover) GetExtAttrsPlus() map[string]ExtAttrs`
@@ -186,20 +161,20 @@ HasExtAttrsPlus returns a boolean if a field has been set.
 
 ### GetExtAttrsMinus
 
-`func (o *Dhcpfailover) GetExtAttrsMinus() map[string]ExtAttrsMinus`
+`func (o *Dhcpfailover) GetExtAttrsMinus() map[string]ExtAttrs`
 
 GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
 
 ### GetExtAttrsMinusOk
 
-`func (o *Dhcpfailover) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
+`func (o *Dhcpfailover) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
 
 GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtAttrsMinus
 
-`func (o *Dhcpfailover) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
+`func (o *Dhcpfailover) SetExtAttrsMinus(v map[string]ExtAttrs)`
 
 SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 
@@ -208,6 +183,31 @@ SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 `func (o *Dhcpfailover) HasExtAttrsMinus() bool`
 
 HasExtAttrsMinus returns a boolean if a field has been set.
+
+### GetExtAttrs
+
+`func (o *Dhcpfailover) GetExtAttrs() map[string]ExtAttrs`
+
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
+
+### GetExtAttrsOk
+
+`func (o *Dhcpfailover) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrs
+
+`func (o *Dhcpfailover) SetExtAttrs(v map[string]ExtAttrs)`
+
+SetExtAttrs sets ExtAttrs field to given value.
+
+### HasExtAttrs
+
+`func (o *Dhcpfailover) HasExtAttrs() bool`
+
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetFailoverPort
 

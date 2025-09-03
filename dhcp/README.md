@@ -265,8 +265,6 @@ Class | Method | HTTP request | Description
  - [Dhcpoptiondefinition](docs/Dhcpoptiondefinition.md)
  - [Dhcpoptionspace](docs/Dhcpoptionspace.md)
  - [ExtAttrs](docs/ExtAttrs.md)
- - [ExtAttrsMinus](docs/ExtAttrsMinus.md)
- - [ExtAttrsPlus](docs/ExtAttrsPlus.md)
  - [Filterfingerprint](docs/Filterfingerprint.md)
  - [Filtermac](docs/Filtermac.md)
  - [FiltermacOptions](docs/FiltermacOptions.md)

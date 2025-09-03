@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 **DenyBootp** | Pointer to **bool** | Determines if BOOTP settings are disabled and BOOTP requests will be denied. | [optional] 
 **EnableDdns** | Pointer to **bool** | Determines if the DHCP server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers. | [optional] 
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
-**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
 **LogicFilterRules** | Pointer to [**[]FixedaddresstemplateLogicFilterRules**](FixedaddresstemplateLogicFilterRules.md) | This field contains the logic filters to be applied on this fixed address. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **Name** | Pointer to **string** | The name of a fixed address template object. | [optional] 
@@ -279,31 +279,6 @@ SetEnablePxeLeaseTime sets EnablePxeLeaseTime field to given value.
 
 HasEnablePxeLeaseTime returns a boolean if a field has been set.
 
-### GetExtAttrs
-
-`func (o *Fixedaddresstemplate) GetExtAttrs() map[string]ExtAttrs`
-
-GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
-
-### GetExtAttrsOk
-
-`func (o *Fixedaddresstemplate) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
-
-GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrs
-
-`func (o *Fixedaddresstemplate) SetExtAttrs(v map[string]ExtAttrs)`
-
-SetExtAttrs sets ExtAttrs field to given value.
-
-### HasExtAttrs
-
-`func (o *Fixedaddresstemplate) HasExtAttrs() bool`
-
-HasExtAttrs returns a boolean if a field has been set.
-
 ### GetExtAttrsPlus
 
 `func (o *Fixedaddresstemplate) GetExtAttrsPlus() map[string]ExtAttrs`
@@ -331,20 +306,20 @@ HasExtAttrsPlus returns a boolean if a field has been set.
 
 ### GetExtAttrsMinus
 
-`func (o *Fixedaddresstemplate) GetExtAttrsMinus() map[string]ExtAttrsMinus`
+`func (o *Fixedaddresstemplate) GetExtAttrsMinus() map[string]ExtAttrs`
 
 GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
 
 ### GetExtAttrsMinusOk
 
-`func (o *Fixedaddresstemplate) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
+`func (o *Fixedaddresstemplate) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
 
 GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtAttrsMinus
 
-`func (o *Fixedaddresstemplate) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
+`func (o *Fixedaddresstemplate) SetExtAttrsMinus(v map[string]ExtAttrs)`
 
 SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 
@@ -353,6 +328,31 @@ SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 `func (o *Fixedaddresstemplate) HasExtAttrsMinus() bool`
 
 HasExtAttrsMinus returns a boolean if a field has been set.
+
+### GetExtAttrs
+
+`func (o *Fixedaddresstemplate) GetExtAttrs() map[string]ExtAttrs`
+
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
+
+### GetExtAttrsOk
+
+`func (o *Fixedaddresstemplate) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrs
+
+`func (o *Fixedaddresstemplate) SetExtAttrs(v map[string]ExtAttrs)`
+
+SetExtAttrs sets ExtAttrs field to given value.
+
+### HasExtAttrs
+
+`func (o *Fixedaddresstemplate) HasExtAttrs() bool`
+
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIgnoreDhcpOptionListRequest
 

@@ -35,6 +35,10 @@ type RecordUnknown struct {
 	// Determines if host name policy is applicable for the record.
 	EnableHostNamePolicy *bool `json:"enable_host_name_policy,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The time of the last DNS query in Epoch seconds format.
 	LastQueried *int64 `json:"last_queried,omitempty"`
@@ -327,6 +331,70 @@ func (o *RecordUnknown) HasEnableHostNamePolicy() bool {
 // SetEnableHostNamePolicy gets a reference to the given bool and assigns it to the EnableHostNamePolicy field.
 func (o *RecordUnknown) SetEnableHostNamePolicy(v bool) {
 	o.EnableHostNamePolicy = &v
+}
+
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *RecordUnknown) GetExtAttrsPlus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordUnknown) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *RecordUnknown) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsPlus field.
+func (o *RecordUnknown) SetExtAttrsPlus(v map[string]ExtAttrs) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *RecordUnknown) GetExtAttrsMinus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecordUnknown) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *RecordUnknown) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsMinus field.
+func (o *RecordUnknown) SetExtAttrsMinus(v map[string]ExtAttrs) {
+	o.ExtAttrsMinus = &v
 }
 
 // GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
@@ -682,6 +750,12 @@ func (o RecordUnknown) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableHostNamePolicy) {
 		toSerialize["enable_host_name_policy"] = o.EnableHostNamePolicy
+	}
+	if !IsNil(o.ExtAttrsPlus) {
+		toSerialize["extattrs+"] = o.ExtAttrsPlus
+	}
+	if !IsNil(o.ExtAttrsMinus) {
+		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs

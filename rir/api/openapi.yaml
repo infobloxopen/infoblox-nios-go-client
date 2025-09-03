@@ -739,26 +739,6 @@ components:
       required:
       - value
       type: object
-    ExtAttrsPlus:
-      description: Extensible attributes associated with the object.
-      example:
-        value: ""
-      properties:
-        value:
-          description: The value of the extensible attribute plus.
-      required:
-      - value
-      type: object
-    ExtAttrsMinus:
-      description: Extensible attributes associated with the object.
-      example:
-        value: ""
-      properties:
-        value:
-          description: The value of the extensible attribute minus.
-      required:
-      - value
-      type: object
     Rir:
       additionalProperties: false
       example:
@@ -845,23 +825,25 @@ components:
         _ref:
           description: The reference to the object.
           type: string
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsPlus'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
-          type: object
+          x-tf-ignore: true
         extattrs-:
           additionalProperties:
-            $ref: '#/components/schemas/ExtAttrsMinus'
+            $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         id:
           description: The RIR organization identifier.

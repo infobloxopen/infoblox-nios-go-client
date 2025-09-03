@@ -28,11 +28,11 @@ type Fingerprint struct {
 	// Determines if the DHCP Fingerprint object is disabled or not.
 	Disable *bool `json:"disable,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
-	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}.
 	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
-	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}.
-	ExtAttrsMinus *map[string]ExtAttrsMinus `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// A list (comma separated list) of IPv6 option number sequences of the device or operating system.
 	Ipv6OptionSequence []string `json:"ipv6_option_sequence,omitempty"`
 	// Name of the DHCP Fingerprint object.
@@ -190,38 +190,6 @@ func (o *Fingerprint) SetDisable(v bool) {
 	o.Disable = &v
 }
 
-// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
-func (o *Fingerprint) GetExtAttrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.ExtAttrs) {
-		var ret map[string]ExtAttrs
-		return ret
-	}
-	return *o.ExtAttrs
-}
-
-// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Fingerprint) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.ExtAttrs) {
-		return nil, false
-	}
-	return o.ExtAttrs, true
-}
-
-// HasExtAttrs returns a boolean if a field has been set.
-func (o *Fingerprint) HasExtAttrs() bool {
-	if o != nil && !IsNil(o.ExtAttrs) {
-		return true
-	}
-
-	return false
-}
-
-// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
-func (o *Fingerprint) SetExtAttrs(v map[string]ExtAttrs) {
-	o.ExtAttrs = &v
-}
-
 // GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
 func (o *Fingerprint) GetExtAttrsPlus() map[string]ExtAttrs {
 	if o == nil || IsNil(o.ExtAttrsPlus) {
@@ -255,9 +223,9 @@ func (o *Fingerprint) SetExtAttrsPlus(v map[string]ExtAttrs) {
 }
 
 // GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
-func (o *Fingerprint) GetExtAttrsMinus() map[string]ExtAttrsMinus {
+func (o *Fingerprint) GetExtAttrsMinus() map[string]ExtAttrs {
 	if o == nil || IsNil(o.ExtAttrsMinus) {
-		var ret map[string]ExtAttrsMinus
+		var ret map[string]ExtAttrs
 		return ret
 	}
 	return *o.ExtAttrsMinus
@@ -265,7 +233,7 @@ func (o *Fingerprint) GetExtAttrsMinus() map[string]ExtAttrsMinus {
 
 // GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Fingerprint) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool) {
+func (o *Fingerprint) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool) {
 	if o == nil || IsNil(o.ExtAttrsMinus) {
 		return nil, false
 	}
@@ -281,9 +249,41 @@ func (o *Fingerprint) HasExtAttrsMinus() bool {
 	return false
 }
 
-// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrsMinus and assigns it to the ExtAttrsMinus field.
-func (o *Fingerprint) SetExtAttrsMinus(v map[string]ExtAttrsMinus) {
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsMinus field.
+func (o *Fingerprint) SetExtAttrsMinus(v map[string]ExtAttrs) {
 	o.ExtAttrsMinus = &v
+}
+
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Fingerprint) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrs
+}
+
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Fingerprint) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
+		return nil, false
+	}
+	return o.ExtAttrs, true
+}
+
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Fingerprint) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Fingerprint) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetIpv6OptionSequence returns the Ipv6OptionSequence field value if set, zero value otherwise.
@@ -468,14 +468,14 @@ func (o Fingerprint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.ExtAttrs) {
-		toSerialize["extattrs"] = o.ExtAttrs
-	}
 	if !IsNil(o.ExtAttrsPlus) {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
 	if !IsNil(o.ExtAttrsMinus) {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
+	}
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.Ipv6OptionSequence) {
 		toSerialize["ipv6_option_sequence"] = o.Ipv6OptionSequence

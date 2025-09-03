@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **DnsAliases** | Pointer to **[]string** | The list of aliases for the host in punycode format. | [optional] 
 **DnsName** | Pointer to **string** | The name for a host record in punycode format. | [optional] [readonly] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the record should be immediately enabled. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Ipv4addrs** | Pointer to [**[]RecordHostIpv4addr**](RecordHostIpv4addr.md) | This is a list of IPv4 Addresses for the host. | [optional] 
 **Ipv6addrs** | Pointer to [**[]RecordHostIpv6addr**](RecordHostIpv6addr.md) | This is a list of IPv6 Addresses for the host. | [optional] 
@@ -511,6 +513,56 @@ SetEnableImmediateDiscovery sets EnableImmediateDiscovery field to given value.
 `func (o *GetRecordHostResponse) HasEnableImmediateDiscovery() bool`
 
 HasEnableImmediateDiscovery returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *GetRecordHostResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetRecordHostResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetRecordHostResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetRecordHostResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetRecordHostResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetRecordHostResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetRecordHostResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetRecordHostResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 

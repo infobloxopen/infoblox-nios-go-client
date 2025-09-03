@@ -145,11 +145,4 @@ model_update_gcpuser_response.go
 model_update_gcpuser_response_as_object.go
 model_update_multiregions_response.go
 model_update_multiregions_response_as_object.go
-test/api_awsrte53taskgroup_test.go
-test/api_awsuser_test.go
-test/api_azurednstaskgroup_test.go
-test/api_azureuser_test.go
-test/api_gcpdnstaskgroup_test.go
-test/api_gcpuser_test.go
-test/api_multiregions_test.go
 utils.go

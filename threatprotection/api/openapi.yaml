@@ -2280,6 +2280,12 @@ components:
         use_disable_multiple_dns_tcp_request: false
         use_current_ruleset: false
         use_events_per_second_per_rule: false
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         current_ruleset: Example current_ruleset
         members:
         - members
@@ -2312,6 +2318,20 @@ components:
           example: 1
           format: int64
           type: integer
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -3327,6 +3347,12 @@ components:
           use_disable_multiple_dns_tcp_request: false
           use_current_ruleset: false
           use_events_per_second_per_rule: false
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           current_ruleset: Example current_ruleset
           members:
           - members
@@ -3362,6 +3388,12 @@ components:
           use_disable_multiple_dns_tcp_request: false
           use_current_ruleset: false
           use_events_per_second_per_rule: false
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           current_ruleset: Example current_ruleset
           members:
           - members

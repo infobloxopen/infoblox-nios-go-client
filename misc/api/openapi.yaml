@@ -5329,6 +5329,12 @@ components:
         client_certificate_subject: Example client_certificate_subject
         timeout: 1
         client_certificate_valid_from: 1
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         vendor_identifier: Example vendor_identifier
         disable: false
         _ref: _ref
@@ -5399,6 +5405,20 @@ components:
           description: Determines whether a DXL endpoint is disabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5874,6 +5894,12 @@ components:
           - enabled_attributes
         timeout: 1
         client_certificate_valid_from: 1
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         vendor_identifier: Example vendor_identifier
         disable: false
         _ref: _ref
@@ -5933,6 +5959,20 @@ components:
             \ When this is set to False, the Cisco ISE endpoint is enabled."
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6650,14 +6690,21 @@ components:
           certificate_token: Example certificate_token
           facility: Example facility
         wapi_user_password: Example wapi_user_password
-        vendor_identifier: Example vendor_identifier
-        _ref: _ref
         log_level: Example log_level
-        name: Example name
         outbound_member_type: Example outbound_member_type
         outbound_members:
         - outbound_members
         - outbound_members
+        timeout: 1
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
+        vendor_identifier: Example vendor_identifier
+        _ref: _ref
+        name: Example name
         template_instance:
           template: Example template
           parameters:
@@ -6670,11 +6717,24 @@ components:
             default_value: Example default_value
             value: Example value
         wapi_user_name: Example wapi_user_name
-        timeout: 1
       properties:
         _ref:
           description: The reference to the object.
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7380,6 +7440,12 @@ components:
           client_certificate_subject: Example client_certificate_subject
           timeout: 1
           client_certificate_valid_from: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           vendor_identifier: Example vendor_identifier
           disable: false
           _ref: _ref
@@ -7441,6 +7507,12 @@ components:
           client_certificate_subject: Example client_certificate_subject
           timeout: 1
           client_certificate_valid_from: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           vendor_identifier: Example vendor_identifier
           disable: false
           _ref: _ref
@@ -7613,6 +7685,12 @@ components:
             - enabled_attributes
           timeout: 1
           client_certificate_valid_from: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           vendor_identifier: Example vendor_identifier
           disable: false
           _ref: _ref
@@ -7676,6 +7754,12 @@ components:
             - enabled_attributes
           timeout: 1
           client_certificate_valid_from: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           vendor_identifier: Example vendor_identifier
           disable: false
           _ref: _ref
@@ -7905,14 +7989,21 @@ components:
             certificate_token: Example certificate_token
             facility: Example facility
           wapi_user_password: Example wapi_user_password
-          vendor_identifier: Example vendor_identifier
-          _ref: _ref
           log_level: Example log_level
-          name: Example name
           outbound_member_type: Example outbound_member_type
           outbound_members:
           - outbound_members
           - outbound_members
+          timeout: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          vendor_identifier: Example vendor_identifier
+          _ref: _ref
+          name: Example name
           template_instance:
             template: Example template
             parameters:
@@ -7925,7 +8016,6 @@ components:
               default_value: Example default_value
               value: Example value
           wapi_user_name: Example wapi_user_name
-          timeout: 1
       properties:
         result:
           $ref: '#/components/schemas/SyslogEndpoint'
@@ -7966,14 +8056,21 @@ components:
             certificate_token: Example certificate_token
             facility: Example facility
           wapi_user_password: Example wapi_user_password
-          vendor_identifier: Example vendor_identifier
-          _ref: _ref
           log_level: Example log_level
-          name: Example name
           outbound_member_type: Example outbound_member_type
           outbound_members:
           - outbound_members
           - outbound_members
+          timeout: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          vendor_identifier: Example vendor_identifier
+          _ref: _ref
+          name: Example name
           template_instance:
             template: Example template
             parameters:
@@ -7986,7 +8083,6 @@ components:
               default_value: Example default_value
               value: Example value
           wapi_user_name: Example wapi_user_name
-          timeout: 1
       properties:
         result:
           $ref: '#/components/schemas/SyslogEndpoint'

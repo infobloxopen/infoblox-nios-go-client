@@ -46,6 +46,10 @@ type Approvalworkflow struct {
 	// Determines whether succeeded task notifications are enabled.
 	EnableSucceededNotify *bool `json:"enable_succeeded_notify,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The destination for failed task notifications.
 	FailedNotifyTo *string `json:"failed_notify_to,omitempty"`
@@ -496,6 +500,70 @@ func (o *Approvalworkflow) SetEnableSucceededNotify(v bool) {
 	o.EnableSucceededNotify = &v
 }
 
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *Approvalworkflow) GetExtAttrsPlus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approvalworkflow) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *Approvalworkflow) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsPlus field.
+func (o *Approvalworkflow) SetExtAttrsPlus(v map[string]ExtAttrs) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *Approvalworkflow) GetExtAttrsMinus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Approvalworkflow) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *Approvalworkflow) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsMinus field.
+func (o *Approvalworkflow) SetExtAttrsMinus(v map[string]ExtAttrs) {
+	o.ExtAttrsMinus = &v
+}
+
 // GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
 func (o *Approvalworkflow) GetExtAttrs() map[string]ExtAttrs {
 	if o == nil || IsNil(o.ExtAttrs) {
@@ -800,6 +868,12 @@ func (o Approvalworkflow) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableSucceededNotify) {
 		toSerialize["enable_succeeded_notify"] = o.EnableSucceededNotify
+	}
+	if !IsNil(o.ExtAttrsPlus) {
+		toSerialize["extattrs+"] = o.ExtAttrsPlus
+	}
+	if !IsNil(o.ExtAttrsMinus) {
+		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs

@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Comment for the Fingerprint; maximum 256 characters. | [optional] 
 **DeviceClass** | Pointer to **string** | A class of DHCP Fingerprint object; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines if the DHCP Fingerprint object is disabled or not. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
-**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **Ipv6OptionSequence** | Pointer to **[]string** | A list (comma separated list) of IPv6 option number sequences of the device or operating system. | [optional] 
 **Name** | Pointer to **string** | Name of the DHCP Fingerprint object. | [optional] 
 **OptionSequence** | Pointer to **[]string** | A list (comma separated list) of IPv4 option number sequences of the device or operating system. | [optional] 
@@ -137,31 +137,6 @@ SetDisable sets Disable field to given value.
 
 HasDisable returns a boolean if a field has been set.
 
-### GetExtAttrs
-
-`func (o *GetFingerprintResponse) GetExtAttrs() map[string]ExtAttrs`
-
-GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
-
-### GetExtAttrsOk
-
-`func (o *GetFingerprintResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
-
-GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrs
-
-`func (o *GetFingerprintResponse) SetExtAttrs(v map[string]ExtAttrs)`
-
-SetExtAttrs sets ExtAttrs field to given value.
-
-### HasExtAttrs
-
-`func (o *GetFingerprintResponse) HasExtAttrs() bool`
-
-HasExtAttrs returns a boolean if a field has been set.
-
 ### GetExtAttrsPlus
 
 `func (o *GetFingerprintResponse) GetExtAttrsPlus() map[string]ExtAttrs`
@@ -189,20 +164,20 @@ HasExtAttrsPlus returns a boolean if a field has been set.
 
 ### GetExtAttrsMinus
 
-`func (o *GetFingerprintResponse) GetExtAttrsMinus() map[string]ExtAttrsMinus`
+`func (o *GetFingerprintResponse) GetExtAttrsMinus() map[string]ExtAttrs`
 
 GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
 
 ### GetExtAttrsMinusOk
 
-`func (o *GetFingerprintResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
+`func (o *GetFingerprintResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
 
 GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtAttrsMinus
 
-`func (o *GetFingerprintResponse) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
+`func (o *GetFingerprintResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
 
 SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 
@@ -211,6 +186,31 @@ SetExtAttrsMinus sets ExtAttrsMinus field to given value.
 `func (o *GetFingerprintResponse) HasExtAttrsMinus() bool`
 
 HasExtAttrsMinus returns a boolean if a field has been set.
+
+### GetExtAttrs
+
+`func (o *GetFingerprintResponse) GetExtAttrs() map[string]ExtAttrs`
+
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
+
+### GetExtAttrsOk
+
+`func (o *GetFingerprintResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrs
+
+`func (o *GetFingerprintResponse) SetExtAttrs(v map[string]ExtAttrs)`
+
+SetExtAttrs sets ExtAttrs field to given value.
+
+### HasExtAttrs
+
+`func (o *GetFingerprintResponse) HasExtAttrs() bool`
+
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetIpv6OptionSequence
 

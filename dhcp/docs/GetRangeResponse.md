@@ -34,9 +34,9 @@ Name | Type | Description | Notes
 **EndAddr** | Pointer to **string** | The IPv4 Address end address of the range. | [optional] 
 **EndpointSources** | Pointer to **[]string** | The endpoints that provides data for the DHCP Range object. | [optional] [readonly] 
 **Exclude** | Pointer to [**[]RangeExclude**](RangeExclude.md) | These are ranges of IP addresses that the appliance does not use to assign to clients. You can use these exclusion addresses as static IP addresses. They contain the start and end addresses of the exclusion range, and optionally, information about this exclusion range. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrsPlus**](ExtAttrsPlus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
-**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **FailoverAssociation** | Pointer to **string** | The name of the failover association: the server in this failover association will serve the IPv4 range in case the main server is out of service. {range:range} must be set to &#39;FAILOVER&#39; or &#39;FAILOVER_MS&#39; if you want the failover association specified here to serve the range. | [optional] 
 **FingerprintFilterRules** | Pointer to [**[]RangeFingerprintFilterRules**](RangeFingerprintFilterRules.md) | This field contains the fingerprint filters for this DHCP range. The appliance uses matching rules in these filters to select the address range from which it assigns a lease. | [optional] 
 **HighWaterMark** | Pointer to **int64** | The percentage of DHCP range usage threshold above which range usage is not expected and may warrant your attention. When the high watermark is reached, the Infoblox appliance generates a syslog message and sends a warning (if enabled). A number that specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
@@ -874,6 +874,56 @@ SetExclude sets Exclude field to given value.
 
 HasExclude returns a boolean if a field has been set.
 
+### GetExtAttrsPlus
+
+`func (o *GetRangeResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetRangeResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetRangeResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetRangeResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetRangeResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetRangeResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetRangeResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetRangeResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
+
 ### GetExtAttrs
 
 `func (o *GetRangeResponse) GetExtAttrs() map[string]ExtAttrs`
@@ -898,56 +948,6 @@ SetExtAttrs sets ExtAttrs field to given value.
 `func (o *GetRangeResponse) HasExtAttrs() bool`
 
 HasExtAttrs returns a boolean if a field has been set.
-
-### GetExtAttrsPlus
-
-`func (o *GetRangeResponse) GetExtAttrsPlus() map[string]ExtAttrsPlus`
-
-GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
-
-### GetExtAttrsPlusOk
-
-`func (o *GetRangeResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrsPlus, bool)`
-
-GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrsPlus
-
-`func (o *GetRangeResponse) SetExtAttrsPlus(v map[string]ExtAttrsPlus)`
-
-SetExtAttrsPlus sets ExtAttrsPlus field to given value.
-
-### HasExtAttrsPlus
-
-`func (o *GetRangeResponse) HasExtAttrsPlus() bool`
-
-HasExtAttrsPlus returns a boolean if a field has been set.
-
-### GetExtAttrsMinus
-
-`func (o *GetRangeResponse) GetExtAttrsMinus() map[string]ExtAttrsMinus`
-
-GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
-
-### GetExtAttrsMinusOk
-
-`func (o *GetRangeResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
-
-GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrsMinus
-
-`func (o *GetRangeResponse) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
-
-SetExtAttrsMinus sets ExtAttrsMinus field to given value.
-
-### HasExtAttrsMinus
-
-`func (o *GetRangeResponse) HasExtAttrsMinus() bool`
-
-HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetFailoverAssociation
 

@@ -14336,22 +14336,6 @@ components:
       required:
       - value
       type: object
-    ExtAttrsPlus:
-      description: Extensible attributes associated with the object.
-      properties:
-        value:
-          description: The value of the extensible attribute plus.
-      required:
-      - value
-      type: object
-    ExtAttrsMinus:
-      description: Extensible attributes associated with the object.
-      properties:
-        value:
-          description: The value of the extensible attribute minus.
-      required:
-      - value
-      type: object
     RecordA:
       additionalProperties: false
       example:
@@ -14389,7 +14373,13 @@ components:
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         remove_associated_ptr: false
@@ -14556,6 +14546,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -15588,7 +15592,13 @@ components:
           _object: _object
           _parameters: "{}"
         ipv6addr: RecordAaaa_ipv6addr
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         remove_associated_ptr: false
@@ -15754,6 +15764,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -16801,23 +16825,25 @@ components:
           example: Example dns_target_name
           readOnly: true
           type: string
-        extattrs:
+        extattrs+:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
-        extattrs+:
-          additionalProperties:
-            $ref: '#/components/schemas/ExtAttrs'
-          description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs+:values}."
-          type: object
+          x-tf-ignore: true
         extattrs-:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
           description: "Extensible attributes associated with the object. For valid\
-            \ values for extensible attributes, see {extattrs-:values}."
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
           type: object
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
@@ -17124,7 +17150,13 @@ components:
         canonical: Example canonical
         ttl: 1
         dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         disable: false
@@ -17191,6 +17223,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -17479,14 +17525,7 @@ components:
           type: Example type
           geolocation_subdivision_code: Example geolocation_subdivision_code
           set_identifier: Example set_identifier
-        creator: Example creator
-        mail_exchanger: Example mail_exchanger
-        extattrs:
-          key:
-            value: ""
-        shared_record_group: Example shared_record_group
         use_ttl: false
-        preference: 1
         cloud_info:
           delegated_member:
             name: Example name
@@ -17499,20 +17538,33 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
-        ddns_protected: false
-        ttl: 1
         dns_mail_exchanger: Example dns_mail_exchanger
-        dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
+        last_queried: 1
+        forbid_reclamation: false
+        reclaimable: false
+        creator: Example creator
+        mail_exchanger: Example mail_exchanger
+        extattrs:
+          key:
+            value: ""
+        shared_record_group: Example shared_record_group
+        preference: 1
+        ddns_protected: false
+        ttl: 1
+        dns_name: Example dns_name
         disable: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        last_queried: 1
-        forbid_reclamation: false
-        reclaimable: false
       properties:
         _ref:
           description: The reference to the object.
@@ -17564,6 +17616,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -17883,7 +17949,13 @@ components:
         ddns_protected: false
         ttl: 1
         dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         disable: false
@@ -17940,6 +18012,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -18255,8 +18341,14 @@ components:
           _object: _object
           _parameters: "{}"
         ipv6addr: RecordPtr_ipv6addr
+        extattrs-:
+          key:
+            value: ""
         ptrdname: Example ptrdname
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         last_queried: 1
@@ -18428,6 +18520,20 @@ components:
           example: Example dns_ptrdname
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -19422,7 +19528,13 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         dns_target: Example dns_target
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         last_queried: 1
@@ -19495,6 +19607,20 @@ components:
           example: Example dns_target
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -20039,6 +20165,9 @@ components:
         device_type: Example device_type
         use_snmp_credential: false
         rrset_order: Example rrset_order
+        extattrs-:
+          key:
+            value: ""
         view: Example view
         cli_credentials:
         - credential_type: Example credential_type
@@ -20053,6 +20182,9 @@ components:
           comment: Example comment
           id: 1
           user: Example user
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         allow_telnet: false
         last_queried: 1
@@ -20782,6 +20914,20 @@ components:
           example: false
           type: boolean
           writeOnly: true
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -21147,7 +21293,13 @@ components:
         ttl: 1
         dns_name: Example dns_name
         target: Example target
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         disable: false
@@ -21204,6 +21356,20 @@ components:
           example: Example dns_target
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -21399,7 +21565,13 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         last_queried: 1
@@ -21469,6 +21641,20 @@ components:
           example: Example dns_replacement
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -21701,7 +21887,13 @@ components:
           delegated_root: Example delegated_root
         ttl: 1
         dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         disable: false
         _ref: _ref
@@ -21750,6 +21942,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -21945,8 +22151,14 @@ components:
         ddns_protected: false
         ttl: 1
         dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
         view: Example view
         ca_flag: 1
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
         disable: false
@@ -22013,6 +22225,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -23696,7 +23922,13 @@ components:
         ttl: 1
         record_type: Example record_type
         dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         disable: false
         _ref: _ref
@@ -23742,6 +23974,20 @@ components:
           description: Determines if host name policy is applicable for the record.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -26381,7 +26627,13 @@ components:
         use_external_primary: false
         use_check_names_policy: false
         ddns_force_creation_timestamp_update: false
+        extattrs-:
+          key:
+            value: ""
         create_ptr_for_bulk_hosts: false
+        extattrs+:
+          key:
+            value: ""
         use_copy_xfer_to_notify: false
         is_multimaster: false
         use_allow_active_dir: false
@@ -26775,6 +27027,20 @@ components:
           example: Example effective_record_name_policy
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -28727,8 +28993,14 @@ components:
           use_tsig_key_name: false
           shared_with_ms_parent_delegation: false
         mask_prefix: Example mask_prefix
+        extattrs-:
+          key:
+            value: ""
         view: Example view
         enable_rfc2317_exclusion: false
+        extattrs+:
+          key:
+            value: ""
         display_domain: Example display_domain
         ms_sync_master_name: Example ms_sync_master_name
         locked: false
@@ -28802,6 +29074,20 @@ components:
             \ when this flag is set to True the existing PTR records are not overwritten."
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -29026,7 +29312,13 @@ components:
         external_ns_group: Example external_ns_group
         forwarders_only: false
         mask_prefix: Example mask_prefix
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         display_domain: Example display_domain
         ms_sync_master_name: Example ms_sync_master_name
         locked: false
@@ -29124,6 +29416,20 @@ components:
           example: Example dns_fqdn
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -29491,8 +29797,14 @@ components:
         external_ns_group: Example external_ns_group
         soa_expire: 1
         mask_prefix: Example mask_prefix
+        extattrs-:
+          key:
+            value: ""
         soa_mname: Example soa_mname
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         stub_msservers:
         - is_master: false
           ns_ip: Example ns_ip
@@ -29583,6 +29895,20 @@ components:
           example: Example dns_fqdn
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -30092,6 +30418,12 @@ components:
         use_external_primary: false
         rpz_severity: Example rpz_severity
         mask_prefix: Example mask_prefix
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         fireeye_rule_mapping:
           substituted_domain_name: Example substituted_domain_name
           apt_override: Example apt_override
@@ -30242,6 +30574,20 @@ components:
           example: Example dns_soa_email
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -31246,12 +31592,18 @@ components:
     Dns64group:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         clients:
         - address: Example address
           permission: Example permission
         - address: Example address
           permission: Example permission
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         disable: false
@@ -31308,6 +31660,20 @@ components:
           items:
             $ref: '#/components/schemas/Dns64groupExclude'
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -31622,7 +31988,13 @@ components:
     SharedrecordA:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         shared_record_group: Example shared_record_group
@@ -31652,6 +32024,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -31710,7 +32096,13 @@ components:
     SharedrecordAaaa:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         shared_record_group: Example shared_record_group
@@ -31740,6 +32132,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -31802,15 +32208,21 @@ components:
           key:
             value: ""
         shared_record_group: Example shared_record_group
-        disable: false
         use_ttl: false
+        canonical: Example canonical
+        ttl: 1
+        dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
+        disable: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        canonical: Example canonical
-        ttl: 1
         dns_canonical: Example dns_canonical
-        dns_name: Example dns_name
       properties:
         _ref:
           description: The reference to the object.
@@ -31839,6 +32251,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -31898,15 +32324,21 @@ components:
           key:
             value: ""
         shared_record_group: Example shared_record_group
-        disable: false
         use_ttl: false
         preference: 1
-        _ref: _ref
-        name: Example name
-        comment: Example comment
         ttl: 1
         dns_mail_exchanger: Example dns_mail_exchanger
         dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
+        disable: false
+        _ref: _ref
+        name: Example name
+        comment: Example comment
       properties:
         _ref:
           description: The reference to the object.
@@ -31930,6 +32362,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -32006,6 +32452,12 @@ components:
         ttl: 1
         dns_name: Example dns_name
         target: Example target
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         port: 1
         disable: false
         _ref: _ref
@@ -32034,6 +32486,20 @@ components:
           example: Example dns_target
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -32111,7 +32577,13 @@ components:
     SharedrecordTxt:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         shared_record_group: Example shared_record_group
@@ -32141,6 +32613,20 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -32202,7 +32688,13 @@ components:
     Sharedrecordgroup:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         _ref: _ref
@@ -32223,6 +32715,20 @@ components:
           description: The descriptive comment of this shared record group.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -32460,6 +32966,12 @@ components:
         filter_aaaa: Example filter_aaaa
         use_ddns_principal_security: false
         ddns_force_creation_timestamp_update: false
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         use_forwarders: false
         edns_udp_size: 1
         enable_fixed_rrset_order_fqdns: false
@@ -32696,6 +33208,20 @@ components:
             is enabled or not.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -33697,6 +34223,44 @@ components:
     Nsgroup:
       additionalProperties: false
       example:
+        extattrs:
+          key:
+            value: ""
+        external_secondaries:
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        external_primaries:
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        - address: Example address
+          tsig_key_alg: Example tsig_key_alg
+          tsig_key: Example tsig_key
+          name: Example name
+          stealth: false
+          tsig_key_name: Example tsig_key_name
+          use_tsig_key_name: false
+          shared_with_ms_parent_delegation: false
+        use_external_primary: false
         grid_primary:
         - preferred_primaries:
           - address: Example address
@@ -33742,48 +34306,16 @@ components:
           name: Example name
           stealth: false
           lead: false
-        extattrs:
+        extattrs-:
           key:
             value: ""
-        external_secondaries:
-        - address: Example address
-          tsig_key_alg: Example tsig_key_alg
-          tsig_key: Example tsig_key
-          name: Example name
-          stealth: false
-          tsig_key_name: Example tsig_key_name
-          use_tsig_key_name: false
-          shared_with_ms_parent_delegation: false
-        - address: Example address
-          tsig_key_alg: Example tsig_key_alg
-          tsig_key: Example tsig_key
-          name: Example name
-          stealth: false
-          tsig_key_name: Example tsig_key_name
-          use_tsig_key_name: false
-          shared_with_ms_parent_delegation: false
         is_grid_default: false
+        extattrs+:
+          key:
+            value: ""
         is_multimaster: false
         _ref: _ref
         name: Example name
-        external_primaries:
-        - address: Example address
-          tsig_key_alg: Example tsig_key_alg
-          tsig_key: Example tsig_key
-          name: Example name
-          stealth: false
-          tsig_key_name: Example tsig_key_name
-          use_tsig_key_name: false
-          shared_with_ms_parent_delegation: false
-        - address: Example address
-          tsig_key_alg: Example tsig_key_alg
-          tsig_key: Example tsig_key
-          name: Example name
-          stealth: false
-          tsig_key_name: Example tsig_key_name
-          use_tsig_key_name: false
-          shared_with_ms_parent_delegation: false
-        use_external_primary: false
         comment: Example comment
         grid_secondaries:
         - preferred_primaries:
@@ -33838,6 +34370,20 @@ components:
           description: Comment for the name server group; maximum 256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -34240,7 +34786,13 @@ components:
     NsgroupDelegation:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         _ref: _ref
@@ -34278,6 +34830,20 @@ components:
           items:
             $ref: '#/components/schemas/NsgroupDelegationDelegateTo'
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -34366,7 +34932,13 @@ components:
     NsgroupForwardingmember:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         forwarding_servers:
@@ -34422,6 +34994,20 @@ components:
             256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -34577,7 +35163,13 @@ components:
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
           shared_with_ms_parent_delegation: false
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         _ref: _ref
@@ -34592,6 +35184,20 @@ components:
             256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -34688,7 +35294,13 @@ components:
     NsgroupStubmember:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         stub_members:
@@ -34748,6 +35360,20 @@ components:
             characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -34969,7 +35595,13 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           remove_associated_ptr: false
@@ -35139,7 +35771,13 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           remove_associated_ptr: false
@@ -35331,7 +35969,13 @@ components:
             _object: _object
             _parameters: "{}"
           ipv6addr: RecordAaaa_ipv6addr
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           remove_associated_ptr: false
@@ -35501,7 +36145,13 @@ components:
             _object: _object
             _parameters: "{}"
           ipv6addr: RecordAaaa_ipv6addr
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           remove_associated_ptr: false
@@ -35804,7 +36454,13 @@ components:
           canonical: Example canonical
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           disable: false
@@ -35868,7 +36524,13 @@ components:
           canonical: Example canonical
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           disable: false
@@ -35911,14 +36573,7 @@ components:
             type: Example type
             geolocation_subdivision_code: Example geolocation_subdivision_code
             set_identifier: Example set_identifier
-          creator: Example creator
-          mail_exchanger: Example mail_exchanger
-          extattrs:
-            key:
-              value: ""
-          shared_record_group: Example shared_record_group
           use_ttl: false
-          preference: 1
           cloud_info:
             delegated_member:
               name: Example name
@@ -35931,20 +36586,33 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
-          ddns_protected: false
-          ttl: 1
           dns_mail_exchanger: Example dns_mail_exchanger
-          dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
+          last_queried: 1
+          forbid_reclamation: false
+          reclaimable: false
+          creator: Example creator
+          mail_exchanger: Example mail_exchanger
+          extattrs:
+            key:
+              value: ""
+          shared_record_group: Example shared_record_group
+          preference: 1
+          ddns_protected: false
+          ttl: 1
+          dns_name: Example dns_name
           disable: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          last_queried: 1
-          forbid_reclamation: false
-          reclaimable: false
       properties:
         result:
           $ref: '#/components/schemas/RecordMx'
@@ -35976,14 +36644,7 @@ components:
             type: Example type
             geolocation_subdivision_code: Example geolocation_subdivision_code
             set_identifier: Example set_identifier
-          creator: Example creator
-          mail_exchanger: Example mail_exchanger
-          extattrs:
-            key:
-              value: ""
-          shared_record_group: Example shared_record_group
           use_ttl: false
-          preference: 1
           cloud_info:
             delegated_member:
               name: Example name
@@ -35996,20 +36657,33 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
-          ddns_protected: false
-          ttl: 1
           dns_mail_exchanger: Example dns_mail_exchanger
-          dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
+          last_queried: 1
+          forbid_reclamation: false
+          reclaimable: false
+          creator: Example creator
+          mail_exchanger: Example mail_exchanger
+          extattrs:
+            key:
+              value: ""
+          shared_record_group: Example shared_record_group
+          preference: 1
+          ddns_protected: false
+          ttl: 1
+          dns_name: Example dns_name
           disable: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          last_queried: 1
-          forbid_reclamation: false
-          reclaimable: false
       properties:
         result:
           $ref: '#/components/schemas/RecordMx'
@@ -36063,7 +36737,13 @@ components:
           ddns_protected: false
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           disable: false
@@ -36126,7 +36806,13 @@ components:
           ddns_protected: false
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           disable: false
@@ -36230,8 +36916,14 @@ components:
             _object: _object
             _parameters: "{}"
           ipv6addr: RecordPtr_ipv6addr
+          extattrs-:
+            key:
+              value: ""
           ptrdname: Example ptrdname
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           last_queried: 1
@@ -36402,8 +37094,14 @@ components:
             _object: _object
             _parameters: "{}"
           ipv6addr: RecordPtr_ipv6addr
+          extattrs-:
+            key:
+              value: ""
           ptrdname: Example ptrdname
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           last_queried: 1
@@ -36568,7 +37266,13 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           dns_target: Example dns_target
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           last_queried: 1
@@ -36635,7 +37339,13 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           dns_target: Example dns_target
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           last_queried: 1
@@ -36789,6 +37499,9 @@ components:
           device_type: Example device_type
           use_snmp_credential: false
           rrset_order: Example rrset_order
+          extattrs-:
+            key:
+              value: ""
           view: Example view
           cli_credentials:
           - credential_type: Example credential_type
@@ -36803,6 +37516,9 @@ components:
             comment: Example comment
             id: 1
             user: Example user
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           allow_telnet: false
           last_queried: 1
@@ -37483,6 +38199,9 @@ components:
           device_type: Example device_type
           use_snmp_credential: false
           rrset_order: Example rrset_order
+          extattrs-:
+            key:
+              value: ""
           view: Example view
           cli_credentials:
           - credential_type: Example credential_type
@@ -37497,6 +38216,9 @@ components:
             comment: Example comment
             id: 1
             user: Example user
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           allow_telnet: false
           last_queried: 1
@@ -38177,7 +38899,13 @@ components:
           ttl: 1
           dns_name: Example dns_name
           target: Example target
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           disable: false
@@ -38228,7 +38956,13 @@ components:
           ttl: 1
           dns_name: Example dns_name
           target: Example target
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           disable: false
@@ -38273,7 +39007,13 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           last_queried: 1
@@ -38328,7 +39068,13 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           last_queried: 1
@@ -38388,7 +39134,13 @@ components:
             delegated_root: Example delegated_root
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           disable: false
           _ref: _ref
@@ -38435,7 +39187,13 @@ components:
             delegated_root: Example delegated_root
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           disable: false
           _ref: _ref
@@ -38485,8 +39243,14 @@ components:
           ddns_protected: false
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
           ca_flag: 1
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           disable: false
@@ -38536,8 +39300,14 @@ components:
           ddns_protected: false
           ttl: 1
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
           ca_flag: 1
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
           disable: false
@@ -38762,7 +39532,13 @@ components:
           ttl: 1
           record_type: Example record_type
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           disable: false
           _ref: _ref
@@ -38816,7 +39592,13 @@ components:
           ttl: 1
           record_type: Example record_type
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           disable: false
           _ref: _ref
@@ -39541,7 +40323,13 @@ components:
           use_external_primary: false
           use_check_names_policy: false
           ddns_force_creation_timestamp_update: false
+          extattrs-:
+            key:
+              value: ""
           create_ptr_for_bulk_hosts: false
+          extattrs+:
+            key:
+              value: ""
           use_copy_xfer_to_notify: false
           is_multimaster: false
           use_allow_active_dir: false
@@ -40022,7 +40810,13 @@ components:
           use_external_primary: false
           use_check_names_policy: false
           ddns_force_creation_timestamp_update: false
+          extattrs-:
+            key:
+              value: ""
           create_ptr_for_bulk_hosts: false
+          extattrs+:
+            key:
+              value: ""
           use_copy_xfer_to_notify: false
           is_multimaster: false
           use_allow_active_dir: false
@@ -40224,8 +41018,14 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           mask_prefix: Example mask_prefix
+          extattrs-:
+            key:
+              value: ""
           view: Example view
           enable_rfc2317_exclusion: false
+          extattrs+:
+            key:
+              value: ""
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
           locked: false
@@ -40285,8 +41085,14 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           mask_prefix: Example mask_prefix
+          extattrs-:
+            key:
+              value: ""
           view: Example view
           enable_rfc2317_exclusion: false
+          extattrs+:
+            key:
+              value: ""
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
           locked: false
@@ -40347,7 +41153,13 @@ components:
           external_ns_group: Example external_ns_group
           forwarders_only: false
           mask_prefix: Example mask_prefix
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
           locked: false
@@ -40449,7 +41261,13 @@ components:
           external_ns_group: Example external_ns_group
           forwarders_only: false
           mask_prefix: Example mask_prefix
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
           locked: false
@@ -40581,8 +41399,14 @@ components:
           external_ns_group: Example external_ns_group
           soa_expire: 1
           mask_prefix: Example mask_prefix
+          extattrs-:
+            key:
+              value: ""
           soa_mname: Example soa_mname
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           stub_msservers:
           - is_master: false
             ns_ip: Example ns_ip
@@ -40706,8 +41530,14 @@ components:
           external_ns_group: Example external_ns_group
           soa_expire: 1
           mask_prefix: Example mask_prefix
+          extattrs-:
+            key:
+              value: ""
           soa_mname: Example soa_mname
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           stub_msservers:
           - is_master: false
             ns_ip: Example ns_ip
@@ -40853,6 +41683,12 @@ components:
           use_external_primary: false
           rpz_severity: Example rpz_severity
           mask_prefix: Example mask_prefix
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           fireeye_rule_mapping:
             substituted_domain_name: Example substituted_domain_name
             apt_override: Example apt_override
@@ -41065,6 +41901,12 @@ components:
           use_external_primary: false
           rpz_severity: Example rpz_severity
           mask_prefix: Example mask_prefix
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           fireeye_rule_mapping:
             substituted_domain_name: Example substituted_domain_name
             apt_override: Example apt_override
@@ -41299,12 +42141,18 @@ components:
       description: The response format to create __Dns64group__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           clients:
           - address: Example address
             permission: Example permission
           - address: Example address
             permission: Example permission
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           disable: false
@@ -41340,12 +42188,18 @@ components:
       description: The response format to update __Dns64group__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           clients:
           - address: Example address
             permission: Example permission
           - address: Example address
             permission: Example permission
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           disable: false
@@ -41540,7 +42394,13 @@ components:
       description: The response format to create __SharedrecordA__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           shared_record_group: Example shared_record_group
@@ -41569,7 +42429,13 @@ components:
       description: The response format to update __SharedrecordA__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           shared_record_group: Example shared_record_group
@@ -41599,7 +42465,13 @@ components:
       description: The response format to create __SharedrecordAaaa__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           shared_record_group: Example shared_record_group
@@ -41628,7 +42500,13 @@ components:
       description: The response format to update __SharedrecordAaaa__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           shared_record_group: Example shared_record_group
@@ -41662,15 +42540,21 @@ components:
             key:
               value: ""
           shared_record_group: Example shared_record_group
-          disable: false
           use_ttl: false
+          canonical: Example canonical
+          ttl: 1
+          dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          disable: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          ttl: 1
           dns_canonical: Example dns_canonical
-          dns_name: Example dns_name
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordCname'
@@ -41692,15 +42576,21 @@ components:
             key:
               value: ""
           shared_record_group: Example shared_record_group
-          disable: false
           use_ttl: false
+          canonical: Example canonical
+          ttl: 1
+          dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          disable: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          ttl: 1
           dns_canonical: Example dns_canonical
-          dns_name: Example dns_name
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordCname'
@@ -41724,15 +42614,21 @@ components:
             key:
               value: ""
           shared_record_group: Example shared_record_group
-          disable: false
           use_ttl: false
           preference: 1
-          _ref: _ref
-          name: Example name
-          comment: Example comment
           ttl: 1
           dns_mail_exchanger: Example dns_mail_exchanger
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          disable: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordMx'
@@ -41755,15 +42651,21 @@ components:
             key:
               value: ""
           shared_record_group: Example shared_record_group
-          disable: false
           use_ttl: false
           preference: 1
-          _ref: _ref
-          name: Example name
-          comment: Example comment
           ttl: 1
           dns_mail_exchanger: Example dns_mail_exchanger
           dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          disable: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordMx'
@@ -41793,6 +42695,12 @@ components:
           ttl: 1
           dns_name: Example dns_name
           target: Example target
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           port: 1
           disable: false
           _ref: _ref
@@ -41826,6 +42734,12 @@ components:
           ttl: 1
           dns_name: Example dns_name
           target: Example target
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           port: 1
           disable: false
           _ref: _ref
@@ -41849,7 +42763,13 @@ components:
       description: The response format to create __SharedrecordTxt__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           shared_record_group: Example shared_record_group
@@ -41878,7 +42798,13 @@ components:
       description: The response format to update __SharedrecordTxt__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           shared_record_group: Example shared_record_group
@@ -41908,7 +42834,13 @@ components:
       description: The response format to create __Sharedrecordgroup__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -41938,7 +42870,13 @@ components:
       description: The response format to update __Sharedrecordgroup__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -42136,6 +43074,12 @@ components:
           filter_aaaa: Example filter_aaaa
           use_ddns_principal_security: false
           ddns_force_creation_timestamp_update: false
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           use_forwarders: false
           edns_udp_size: 1
           enable_fixed_rrset_order_fqdns: false
@@ -42389,6 +43333,12 @@ components:
           filter_aaaa: Example filter_aaaa
           use_ddns_principal_security: false
           ddns_force_creation_timestamp_update: false
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           use_forwarders: false
           edns_udp_size: 1
           enable_fixed_rrset_order_fqdns: false
@@ -42476,6 +43426,44 @@ components:
       description: The response format to create __Nsgroup__ in object format.
       example:
         result:
+          extattrs:
+            key:
+              value: ""
+          external_secondaries:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          external_primaries:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          use_external_primary: false
           grid_primary:
           - preferred_primaries:
             - address: Example address
@@ -42521,48 +43509,16 @@ components:
             name: Example name
             stealth: false
             lead: false
-          extattrs:
+          extattrs-:
             key:
               value: ""
-          external_secondaries:
-          - address: Example address
-            tsig_key_alg: Example tsig_key_alg
-            tsig_key: Example tsig_key
-            name: Example name
-            stealth: false
-            tsig_key_name: Example tsig_key_name
-            use_tsig_key_name: false
-            shared_with_ms_parent_delegation: false
-          - address: Example address
-            tsig_key_alg: Example tsig_key_alg
-            tsig_key: Example tsig_key
-            name: Example name
-            stealth: false
-            tsig_key_name: Example tsig_key_name
-            use_tsig_key_name: false
-            shared_with_ms_parent_delegation: false
           is_grid_default: false
+          extattrs+:
+            key:
+              value: ""
           is_multimaster: false
           _ref: _ref
           name: Example name
-          external_primaries:
-          - address: Example address
-            tsig_key_alg: Example tsig_key_alg
-            tsig_key: Example tsig_key
-            name: Example name
-            stealth: false
-            tsig_key_name: Example tsig_key_name
-            use_tsig_key_name: false
-            shared_with_ms_parent_delegation: false
-          - address: Example address
-            tsig_key_alg: Example tsig_key_alg
-            tsig_key: Example tsig_key
-            name: Example name
-            stealth: false
-            tsig_key_name: Example tsig_key_name
-            use_tsig_key_name: false
-            shared_with_ms_parent_delegation: false
-          use_external_primary: false
           comment: Example comment
           grid_secondaries:
           - preferred_primaries:
@@ -42626,6 +43582,44 @@ components:
       description: The response format to update __Nsgroup__ in object format.
       example:
         result:
+          extattrs:
+            key:
+              value: ""
+          external_secondaries:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          external_primaries:
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          - address: Example address
+            tsig_key_alg: Example tsig_key_alg
+            tsig_key: Example tsig_key
+            name: Example name
+            stealth: false
+            tsig_key_name: Example tsig_key_name
+            use_tsig_key_name: false
+            shared_with_ms_parent_delegation: false
+          use_external_primary: false
           grid_primary:
           - preferred_primaries:
             - address: Example address
@@ -42671,48 +43665,16 @@ components:
             name: Example name
             stealth: false
             lead: false
-          extattrs:
+          extattrs-:
             key:
               value: ""
-          external_secondaries:
-          - address: Example address
-            tsig_key_alg: Example tsig_key_alg
-            tsig_key: Example tsig_key
-            name: Example name
-            stealth: false
-            tsig_key_name: Example tsig_key_name
-            use_tsig_key_name: false
-            shared_with_ms_parent_delegation: false
-          - address: Example address
-            tsig_key_alg: Example tsig_key_alg
-            tsig_key: Example tsig_key
-            name: Example name
-            stealth: false
-            tsig_key_name: Example tsig_key_name
-            use_tsig_key_name: false
-            shared_with_ms_parent_delegation: false
           is_grid_default: false
+          extattrs+:
+            key:
+              value: ""
           is_multimaster: false
           _ref: _ref
           name: Example name
-          external_primaries:
-          - address: Example address
-            tsig_key_alg: Example tsig_key_alg
-            tsig_key: Example tsig_key
-            name: Example name
-            stealth: false
-            tsig_key_name: Example tsig_key_name
-            use_tsig_key_name: false
-            shared_with_ms_parent_delegation: false
-          - address: Example address
-            tsig_key_alg: Example tsig_key_alg
-            tsig_key: Example tsig_key
-            name: Example name
-            stealth: false
-            tsig_key_name: Example tsig_key_name
-            use_tsig_key_name: false
-            shared_with_ms_parent_delegation: false
-          use_external_primary: false
           comment: Example comment
           grid_secondaries:
           - preferred_primaries:
@@ -42777,7 +43739,13 @@ components:
       description: The response format to create __NsgroupDelegation__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -42817,7 +43785,13 @@ components:
       description: The response format to update __NsgroupDelegation__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -42859,7 +43833,13 @@ components:
         format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           forwarding_servers:
@@ -42924,7 +43904,13 @@ components:
         format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           forwarding_servers:
@@ -43007,7 +43993,13 @@ components:
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -43048,7 +44040,13 @@ components:
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -43072,7 +44070,13 @@ components:
       description: The response format to create __NsgroupStubmember__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           stub_members:
@@ -43140,7 +44144,13 @@ components:
       description: The response format to update __NsgroupStubmember__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           stub_members:

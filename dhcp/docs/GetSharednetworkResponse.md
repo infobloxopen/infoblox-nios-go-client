@@ -21,9 +21,9 @@ Name | Type | Description | Notes
 **DynamicHosts** | Pointer to **int64** | The total number of DHCP leases issued for the shared network. | [optional] [readonly] 
 **EnableDdns** | Pointer to **bool** | The dynamic DNS updates flag of a shared network object. If set to True, the DHCP server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers. | [optional] 
 **EnablePxeLeaseTime** | Pointer to **bool** | Set this to True if you want the DHCP server to use a different lease time for PXE clients. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrsPlus**](ExtAttrsPlus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}. | [optional] 
-**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrsMinus**](ExtAttrsMinus.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}. | [optional] 
 **IgnoreClientIdentifier** | Pointer to **bool** | If set to true, the client identifier will be ignored. | [optional] 
 **IgnoreDhcpOptionListRequest** | Pointer to **bool** | If this field is set to False, the appliance returns all DHCP options the client is eligible to receive, rather than only the list of options the client has requested. | [optional] 
 **IgnoreId** | Pointer to **string** | Indicates whether the appliance will ignore DHCP client IDs or MAC addresses. Valid values are \&quot;NONE\&quot;, \&quot;CLIENT\&quot;, or \&quot;MACADDR\&quot;. The default is \&quot;NONE\&quot;. | [optional] 
@@ -504,6 +504,56 @@ SetEnablePxeLeaseTime sets EnablePxeLeaseTime field to given value.
 
 HasEnablePxeLeaseTime returns a boolean if a field has been set.
 
+### GetExtAttrsPlus
+
+`func (o *GetSharednetworkResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetSharednetworkResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetSharednetworkResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetSharednetworkResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetSharednetworkResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetSharednetworkResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetSharednetworkResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetSharednetworkResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
+
 ### GetExtAttrs
 
 `func (o *GetSharednetworkResponse) GetExtAttrs() map[string]ExtAttrs`
@@ -528,56 +578,6 @@ SetExtAttrs sets ExtAttrs field to given value.
 `func (o *GetSharednetworkResponse) HasExtAttrs() bool`
 
 HasExtAttrs returns a boolean if a field has been set.
-
-### GetExtAttrsPlus
-
-`func (o *GetSharednetworkResponse) GetExtAttrsPlus() map[string]ExtAttrsPlus`
-
-GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
-
-### GetExtAttrsPlusOk
-
-`func (o *GetSharednetworkResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrsPlus, bool)`
-
-GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrsPlus
-
-`func (o *GetSharednetworkResponse) SetExtAttrsPlus(v map[string]ExtAttrsPlus)`
-
-SetExtAttrsPlus sets ExtAttrsPlus field to given value.
-
-### HasExtAttrsPlus
-
-`func (o *GetSharednetworkResponse) HasExtAttrsPlus() bool`
-
-HasExtAttrsPlus returns a boolean if a field has been set.
-
-### GetExtAttrsMinus
-
-`func (o *GetSharednetworkResponse) GetExtAttrsMinus() map[string]ExtAttrsMinus`
-
-GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
-
-### GetExtAttrsMinusOk
-
-`func (o *GetSharednetworkResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool)`
-
-GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExtAttrsMinus
-
-`func (o *GetSharednetworkResponse) SetExtAttrsMinus(v map[string]ExtAttrsMinus)`
-
-SetExtAttrsMinus sets ExtAttrsMinus field to given value.
-
-### HasExtAttrsMinus
-
-`func (o *GetSharednetworkResponse) HasExtAttrsMinus() bool`
-
-HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetIgnoreClientIdentifier
 

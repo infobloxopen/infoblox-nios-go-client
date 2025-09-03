@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **DiscoverNowStatus** | Pointer to **string** | Discover now status for this address. | [optional] [readonly] 
 **DiscoveredData** | Pointer to [**Ipv6addressDiscoveredData**](Ipv6addressDiscoveredData.md) |  | [optional] 
 **Duid** | Pointer to **string** | DHCPv6 Unique Identifier (DUID) of the address object. | [optional] [readonly] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Fingerprint** | Pointer to **string** | DHCP fingerprint for the address. | [optional] [readonly] 
 **IpAddress** | Pointer to **string** | IPv6 addresses of the address object. | [optional] [readonly] 
@@ -194,6 +196,56 @@ SetDuid sets Duid field to given value.
 `func (o *GetIpv6addressResponse) HasDuid() bool`
 
 HasDuid returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *GetIpv6addressResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetIpv6addressResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetIpv6addressResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetIpv6addressResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetIpv6addressResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetIpv6addressResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetIpv6addressResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetIpv6addressResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 

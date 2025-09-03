@@ -28,11 +28,11 @@ type Ipv6fixedaddresstemplate struct {
 	// The IPv6 addresses of DNS recursive name servers to which the DHCP client can send name resolution requests. The DHCP server includes this information in the DNS Recursive Name Server option in Advertise, Rebind, Information-Request, and Reply messages.
 	DomainNameServers []string `json:"domain_name_servers,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
-	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
-	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs+:values}.
 	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
-	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs-:values}.
-	ExtAttrsMinus *map[string]ExtAttrsMinus `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// This field contains the logic filters to be applied to this IPv6 fixed address. This list corresponds to the match rules that are written to the DHCPv6 configuration file.
 	LogicFilterRules []Ipv6fixedaddresstemplateLogicFilterRules `json:"logic_filter_rules,omitempty"`
 	// Name of an IPv6 fixed address template object.
@@ -206,38 +206,6 @@ func (o *Ipv6fixedaddresstemplate) SetDomainNameServers(v []string) {
 	o.DomainNameServers = v
 }
 
-// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
-func (o *Ipv6fixedaddresstemplate) GetExtAttrs() map[string]ExtAttrs {
-	if o == nil || IsNil(o.ExtAttrs) {
-		var ret map[string]ExtAttrs
-		return ret
-	}
-	return *o.ExtAttrs
-}
-
-// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ipv6fixedaddresstemplate) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
-	if o == nil || IsNil(o.ExtAttrs) {
-		return nil, false
-	}
-	return o.ExtAttrs, true
-}
-
-// HasExtAttrs returns a boolean if a field has been set.
-func (o *Ipv6fixedaddresstemplate) HasExtAttrs() bool {
-	if o != nil && !IsNil(o.ExtAttrs) {
-		return true
-	}
-
-	return false
-}
-
-// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
-func (o *Ipv6fixedaddresstemplate) SetExtAttrs(v map[string]ExtAttrs) {
-	o.ExtAttrs = &v
-}
-
 // GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
 func (o *Ipv6fixedaddresstemplate) GetExtAttrsPlus() map[string]ExtAttrs {
 	if o == nil || IsNil(o.ExtAttrsPlus) {
@@ -271,9 +239,9 @@ func (o *Ipv6fixedaddresstemplate) SetExtAttrsPlus(v map[string]ExtAttrs) {
 }
 
 // GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
-func (o *Ipv6fixedaddresstemplate) GetExtAttrsMinus() map[string]ExtAttrsMinus {
+func (o *Ipv6fixedaddresstemplate) GetExtAttrsMinus() map[string]ExtAttrs {
 	if o == nil || IsNil(o.ExtAttrsMinus) {
-		var ret map[string]ExtAttrsMinus
+		var ret map[string]ExtAttrs
 		return ret
 	}
 	return *o.ExtAttrsMinus
@@ -281,7 +249,7 @@ func (o *Ipv6fixedaddresstemplate) GetExtAttrsMinus() map[string]ExtAttrsMinus {
 
 // GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6fixedaddresstemplate) GetExtAttrsMinusOk() (*map[string]ExtAttrsMinus, bool) {
+func (o *Ipv6fixedaddresstemplate) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool) {
 	if o == nil || IsNil(o.ExtAttrsMinus) {
 		return nil, false
 	}
@@ -297,9 +265,41 @@ func (o *Ipv6fixedaddresstemplate) HasExtAttrsMinus() bool {
 	return false
 }
 
-// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrsMinus and assigns it to the ExtAttrsMinus field.
-func (o *Ipv6fixedaddresstemplate) SetExtAttrsMinus(v map[string]ExtAttrsMinus) {
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsMinus field.
+func (o *Ipv6fixedaddresstemplate) SetExtAttrsMinus(v map[string]ExtAttrs) {
 	o.ExtAttrsMinus = &v
+}
+
+// GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
+func (o *Ipv6fixedaddresstemplate) GetExtAttrs() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrs) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrs
+}
+
+// GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Ipv6fixedaddresstemplate) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrs) {
+		return nil, false
+	}
+	return o.ExtAttrs, true
+}
+
+// HasExtAttrs returns a boolean if a field has been set.
+func (o *Ipv6fixedaddresstemplate) HasExtAttrs() bool {
+	if o != nil && !IsNil(o.ExtAttrs) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
+func (o *Ipv6fixedaddresstemplate) SetExtAttrs(v map[string]ExtAttrs) {
+	o.ExtAttrs = &v
 }
 
 // GetLogicFilterRules returns the LogicFilterRules field value if set, zero value otherwise.
@@ -740,14 +740,14 @@ func (o Ipv6fixedaddresstemplate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DomainNameServers) {
 		toSerialize["domain_name_servers"] = o.DomainNameServers
 	}
-	if !IsNil(o.ExtAttrs) {
-		toSerialize["extattrs"] = o.ExtAttrs
-	}
 	if !IsNil(o.ExtAttrsPlus) {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
 	if !IsNil(o.ExtAttrsMinus) {
 		toSerialize["extattrs-"] = o.ExtAttrsMinus
+	}
+	if !IsNil(o.ExtAttrs) {
+		toSerialize["extattrs"] = o.ExtAttrs
 	}
 	if !IsNil(o.LogicFilterRules) {
 		toSerialize["logic_filter_rules"] = o.LogicFilterRules

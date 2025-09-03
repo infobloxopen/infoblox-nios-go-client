@@ -1961,6 +1961,9 @@ components:
           use_enable_monitoring: false
         ms_max_connection: 1
         synchronization_status: Example synchronization_status
+        extattrs-:
+          key:
+            value: ""
         ad_sites:
           ldap_timeout: 1
           use_synchronization_min_delay: false
@@ -1979,6 +1982,9 @@ components:
           use_default_ip_site_link: false
           ldap_encryption: Example ldap_encryption
           default_ip_site_link: Example default_ip_site_link
+        extattrs+:
+          key:
+            value: ""
         login_password: Example login_password
         read_only: false
         disabled: false
@@ -2086,6 +2092,20 @@ components:
           description: Reference to the DNS view
           example: Example dns_view
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -3052,8 +3072,14 @@ components:
         static_hosts: 1
         total_hosts: 1
         dhcp_utilization_status: Example dhcp_utilization_status
+        extattrs-:
+          key:
+            value: ""
         high_water_mark: 1
         low_water_mark_reset: 1
+        extattrs+:
+          key:
+            value: ""
         disable: false
         _ref: _ref
         low_water_mark: 1
@@ -3098,6 +3124,20 @@ components:
           format: int64
           readOnly: true
           type: integer
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -3224,6 +3264,9 @@ components:
             use_enable_monitoring: false
           ms_max_connection: 1
           synchronization_status: Example synchronization_status
+          extattrs-:
+            key:
+              value: ""
           ad_sites:
             ldap_timeout: 1
             use_synchronization_min_delay: false
@@ -3242,6 +3285,9 @@ components:
             use_default_ip_site_link: false
             ldap_encryption: Example ldap_encryption
             default_ip_site_link: Example default_ip_site_link
+          extattrs+:
+            key:
+              value: ""
           login_password: Example login_password
           read_only: false
           disabled: false
@@ -3345,6 +3391,9 @@ components:
             use_enable_monitoring: false
           ms_max_connection: 1
           synchronization_status: Example synchronization_status
+          extattrs-:
+            key:
+              value: ""
           ad_sites:
             ldap_timeout: 1
             use_synchronization_min_delay: false
@@ -3363,6 +3412,9 @@ components:
             use_default_ip_site_link: false
             ldap_encryption: Example ldap_encryption
             default_ip_site_link: Example default_ip_site_link
+          extattrs+:
+            key:
+              value: ""
           login_password: Example login_password
           read_only: false
           disabled: false
@@ -3661,8 +3713,14 @@ components:
           static_hosts: 1
           total_hosts: 1
           dhcp_utilization_status: Example dhcp_utilization_status
+          extattrs-:
+            key:
+              value: ""
           high_water_mark: 1
           low_water_mark_reset: 1
+          extattrs+:
+            key:
+              value: ""
           disable: false
           _ref: _ref
           low_water_mark: 1
@@ -3698,8 +3756,14 @@ components:
           static_hosts: 1
           total_hosts: 1
           dhcp_utilization_status: Example dhcp_utilization_status
+          extattrs-:
+            key:
+              value: ""
           high_water_mark: 1
           low_water_mark_reset: 1
+          extattrs+:
+            key:
+              value: ""
           disable: false
           _ref: _ref
           low_water_mark: 1

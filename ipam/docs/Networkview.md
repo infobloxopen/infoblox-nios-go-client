@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Comment for the network view; maximum 256 characters. | [optional] 
 **DdnsDnsView** | Pointer to **string** | DNS views that will receive the updates if you enable the appliance to send updates to Grid members. | [optional] 
 **DdnsZonePrimaries** | Pointer to [**[]NetworkviewDdnsZonePrimaries**](NetworkviewDdnsZonePrimaries.md) | An array of Ddns Zone Primary dhcpddns structs that lists the information of primary zone to wich DDNS updates should be sent. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FederatedRealms** | Pointer to [**[]NetworkviewFederatedRealms**](NetworkviewFederatedRealms.md) | This field contains the federated realms associated to this network view | [optional] 
 **InternalForwardZones** | Pointer to **[]string** | The list of linked authoritative DNS zones. | [optional] 
@@ -214,6 +216,56 @@ SetDdnsZonePrimaries sets DdnsZonePrimaries field to given value.
 `func (o *Networkview) HasDdnsZonePrimaries() bool`
 
 HasDdnsZonePrimaries returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *Networkview) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *Networkview) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *Networkview) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *Networkview) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *Networkview) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *Networkview) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *Networkview) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *Networkview) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 

@@ -40,6 +40,8 @@ Name | Type | Description | Notes
 **EnableHostnameRewrite** | Pointer to **bool** | Determines if the Grid member&#39;s host name rewrite feature is enabled or not. | [optional] 
 **EnableLeasequery** | Pointer to **bool** | Determines if lease query is allowed or not. This setting overrides the Grid-level setting. | [optional] 
 **EnableSnmpWarnings** | Pointer to **bool** | Determines if SNMP warnings are enabled or disabled on this DHCP member. When DHCP threshold is enabled and DHCP address usage crosses a watermark threshold, the appliance sends an SNMP trap to the trap receiver that was defined for the Grid member level. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a member DHCP object. | [optional] 
 **HighWaterMark** | Pointer to **int64** | Determines the high watermark value of a member DHCP server. If the percentage of allocated addresses exceeds this watermark, the appliance makes a syslog entry and sends an e-mail notification (if enabled). Specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
@@ -1073,6 +1075,56 @@ SetEnableSnmpWarnings sets EnableSnmpWarnings field to given value.
 `func (o *MemberDhcpproperties) HasEnableSnmpWarnings() bool`
 
 HasEnableSnmpWarnings returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *MemberDhcpproperties) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *MemberDhcpproperties) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *MemberDhcpproperties) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *MemberDhcpproperties) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *MemberDhcpproperties) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *MemberDhcpproperties) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *MemberDhcpproperties) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *MemberDhcpproperties) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 
