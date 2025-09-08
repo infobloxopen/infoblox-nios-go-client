@@ -19,6 +19,8 @@ var _ MappedNullable = &ViewFilterAaaaList{}
 
 // ViewFilterAaaaList struct for ViewFilterAaaaList
 type ViewFilterAaaaList struct {
+	// The reference to the Named ACL object.
+	Ref *string `json:"_ref,omitempty"`
 	// The address this rule applies to or \"Any\".
 	Address *string `json:"address,omitempty"`
 	// The permission to use for this address.
@@ -43,6 +45,38 @@ func NewViewFilterAaaaList() *ViewFilterAaaaList {
 func NewViewFilterAaaaListWithDefaults() *ViewFilterAaaaList {
 	this := ViewFilterAaaaList{}
 	return &this
+}
+
+// GetRef returns the Ref field value if set, zero value otherwise.
+func (o *ViewFilterAaaaList) GetRef() string {
+	if o == nil || IsNil(o.Ref) {
+		var ret string
+		return ret
+	}
+	return *o.Ref
+}
+
+// GetRefOk returns a tuple with the Ref field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ViewFilterAaaaList) GetRefOk() (*string, bool) {
+	if o == nil || IsNil(o.Ref) {
+		return nil, false
+	}
+	return o.Ref, true
+}
+
+// HasRef returns a boolean if a field has been set.
+func (o *ViewFilterAaaaList) HasRef() bool {
+	if o != nil && !IsNil(o.Ref) {
+		return true
+	}
+
+	return false
+}
+
+// SetRef gets a reference to the given string and assigns it to the Ref field.
+func (o *ViewFilterAaaaList) SetRef(v string) {
+	o.Ref = &v
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
@@ -119,6 +153,9 @@ func (o ViewFilterAaaaList) MarshalJSON() ([]byte, error) {
 
 func (o ViewFilterAaaaList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ref) {
+		toSerialize["_ref"] = o.Ref
+	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
@@ -147,6 +184,7 @@ func (o *ViewFilterAaaaList) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "_ref")
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "permission")
 		o.AdditionalProperties = additionalProperties

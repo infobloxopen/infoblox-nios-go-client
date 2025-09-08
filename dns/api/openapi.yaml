@@ -32300,8 +32300,10 @@ components:
         use_ddns_patterns_restriction: false
         filter_aaaa_list:
         - address: Example address
+          _ref: _ref
           permission: Example permission
         - address: Example address
+          _ref: _ref
           permission: Example permission
         use_filter_aaaa: false
         recursion: false
@@ -32400,6 +32402,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -32407,6 +32410,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -32471,6 +32475,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -32478,6 +32483,7 @@ components:
           address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
+          _ref: _ref
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
@@ -33140,8 +33146,12 @@ components:
     ViewFilterAaaaList:
       example:
         address: Example address
+        _ref: _ref
         permission: Example permission
       properties:
+        _ref:
+          description: The reference to the Named ACL object.
+          type: string
         address:
           description: The address this rule applies to or "Any".
           example: Example address
@@ -33195,6 +33205,7 @@ components:
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
+        _ref: _ref
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
@@ -33202,6 +33213,9 @@ components:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
             and 'tsigac'.
+          type: string
+        _ref:
+          description: The reference to the Named ACL object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -33242,6 +33256,7 @@ components:
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
+        _ref: _ref
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
@@ -33249,6 +33264,9 @@ components:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
             and 'tsigac'.
+          type: string
+        _ref:
+          description: The reference to the Named ACL object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -41964,8 +41982,10 @@ components:
           use_ddns_patterns_restriction: false
           filter_aaaa_list:
           - address: Example address
+            _ref: _ref
             permission: Example permission
           - address: Example address
+            _ref: _ref
             permission: Example permission
           use_filter_aaaa: false
           recursion: false
@@ -42064,6 +42084,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -42071,6 +42092,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -42135,6 +42157,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -42142,6 +42165,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -42217,8 +42241,10 @@ components:
           use_ddns_patterns_restriction: false
           filter_aaaa_list:
           - address: Example address
+            _ref: _ref
             permission: Example permission
           - address: Example address
+            _ref: _ref
             permission: Example permission
           use_filter_aaaa: false
           recursion: false
@@ -42317,6 +42343,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -42324,6 +42351,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -42388,6 +42416,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
@@ -42395,6 +42424,7 @@ components:
             address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
+            _ref: _ref
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
