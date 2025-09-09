@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Ref** | Pointer to **string** | The reference to the Named ACL object. | [optional] 
 **Address** | Pointer to **string** | The address this rule applies to or \&quot;Any\&quot;. | [optional] 
 **Permission** | Pointer to **string** | The permission to use for this address. | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewViewFilterAaaaListWithDefaults instantiates a new ViewFilterAaaaList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetRef
+
+`func (o *ViewFilterAaaaList) GetRef() string`
+
+GetRef returns the Ref field if non-nil, zero value otherwise.
+
+### GetRefOk
+
+`func (o *ViewFilterAaaaList) GetRefOk() (*string, bool)`
+
+GetRefOk returns a tuple with the Ref field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRef
+
+`func (o *ViewFilterAaaaList) SetRef(v string)`
+
+SetRef sets Ref field to given value.
+
+### HasRef
+
+`func (o *ViewFilterAaaaList) HasRef() bool`
+
+HasRef returns a boolean if a field has been set.
 
 ### GetAddress
 
