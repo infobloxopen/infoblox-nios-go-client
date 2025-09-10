@@ -6901,7 +6901,9 @@ components:
         private_network_view: Example private_network_view
         public_network_view: Example public_network_view
         cdiscovery_file_token: Example cdiscovery_file_token
-        accounts_list: Example accounts_list
+        accounts_list:
+        - accounts_list
+        - accounts_list
         dns_view_public_ip: Example dns_view_public_ip
         auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
         role_arn: Example role_arn
@@ -6924,9 +6926,12 @@ components:
         accounts_list:
           description: The AWS Account IDs or GCP Project IDs list associated with
             this task.
-          example: Example accounts_list
+          enum:
+          - string
+          items:
+            type: string
           readOnly: true
-          type: string
+          type: array
         allow_unsecured_connection:
           description: Allow unsecured connection over HTTPS and bypass validation
             of the remote SSL certificate.
@@ -8167,7 +8172,9 @@ components:
           private_network_view: Example private_network_view
           public_network_view: Example public_network_view
           cdiscovery_file_token: Example cdiscovery_file_token
-          accounts_list: Example accounts_list
+          accounts_list:
+          - accounts_list
+          - accounts_list
           dns_view_public_ip: Example dns_view_public_ip
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
           role_arn: Example role_arn
@@ -8248,7 +8255,9 @@ components:
           private_network_view: Example private_network_view
           public_network_view: Example public_network_view
           cdiscovery_file_token: Example cdiscovery_file_token
-          accounts_list: Example accounts_list
+          accounts_list:
+          - accounts_list
+          - accounts_list
           dns_view_public_ip: Example dns_view_public_ip
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
           role_arn: Example role_arn

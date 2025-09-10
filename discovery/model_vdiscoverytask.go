@@ -22,7 +22,7 @@ type Vdiscoverytask struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
 	// The AWS Account IDs or GCP Project IDs list associated with this task.
-	AccountsList *string `json:"accounts_list,omitempty"`
+	AccountsList []string `json:"accounts_list,omitempty"`
 	// Allow unsecured connection over HTTPS and bypass validation of the remote SSL certificate.
 	AllowUnsecuredConnection *bool `json:"allow_unsecured_connection,omitempty"`
 	// Whether to insert or update cloud EAs with discovery data.
@@ -166,17 +166,17 @@ func (o *Vdiscoverytask) SetRef(v string) {
 }
 
 // GetAccountsList returns the AccountsList field value if set, zero value otherwise.
-func (o *Vdiscoverytask) GetAccountsList() string {
+func (o *Vdiscoverytask) GetAccountsList() []string {
 	if o == nil || IsNil(o.AccountsList) {
-		var ret string
+		var ret []string
 		return ret
 	}
-	return *o.AccountsList
+	return o.AccountsList
 }
 
 // GetAccountsListOk returns a tuple with the AccountsList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Vdiscoverytask) GetAccountsListOk() (*string, bool) {
+func (o *Vdiscoverytask) GetAccountsListOk() ([]string, bool) {
 	if o == nil || IsNil(o.AccountsList) {
 		return nil, false
 	}
@@ -192,9 +192,9 @@ func (o *Vdiscoverytask) HasAccountsList() bool {
 	return false
 }
 
-// SetAccountsList gets a reference to the given string and assigns it to the AccountsList field.
-func (o *Vdiscoverytask) SetAccountsList(v string) {
-	o.AccountsList = &v
+// SetAccountsList gets a reference to the given []string and assigns it to the AccountsList field.
+func (o *Vdiscoverytask) SetAccountsList(v []string) {
+	o.AccountsList = v
 }
 
 // GetAllowUnsecuredConnection returns the AllowUnsecuredConnection field value if set, zero value otherwise.

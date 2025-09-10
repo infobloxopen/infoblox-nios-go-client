@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**AccountsList** | Pointer to **string** | The AWS Account IDs or GCP Project IDs list associated with this task. | [optional] [readonly] 
+**AccountsList** | Pointer to **[]string** | The AWS Account IDs or GCP Project IDs list associated with this task. | [optional] [readonly] 
 **AllowUnsecuredConnection** | Pointer to **bool** | Allow unsecured connection over HTTPS and bypass validation of the remote SSL certificate. | [optional] 
 **AutoConsolidateCloudEa** | Pointer to **bool** | Whether to insert or update cloud EAs with discovery data. | [optional] 
 **AutoConsolidateManagedTenant** | Pointer to **bool** | Whether to replace managed tenant with discovery tenant data. | [optional] 
@@ -100,20 +100,20 @@ HasRef returns a boolean if a field has been set.
 
 ### GetAccountsList
 
-`func (o *GetVdiscoverytaskResponse) GetAccountsList() string`
+`func (o *GetVdiscoverytaskResponse) GetAccountsList() []string`
 
 GetAccountsList returns the AccountsList field if non-nil, zero value otherwise.
 
 ### GetAccountsListOk
 
-`func (o *GetVdiscoverytaskResponse) GetAccountsListOk() (*string, bool)`
+`func (o *GetVdiscoverytaskResponse) GetAccountsListOk() (*[]string, bool)`
 
 GetAccountsListOk returns a tuple with the AccountsList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountsList
 
-`func (o *GetVdiscoverytaskResponse) SetAccountsList(v string)`
+`func (o *GetVdiscoverytaskResponse) SetAccountsList(v []string)`
 
 SetAccountsList sets AccountsList field to given value.
 
