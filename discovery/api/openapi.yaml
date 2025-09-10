@@ -6924,9 +6924,13 @@ components:
         accounts_list:
           description: The AWS Account IDs or GCP Project IDs list associated with
             this task.
+          enum:
+          - string
           example: Example accounts_list
+          items:
+            type: string
           readOnly: true
-          type: string
+          type: array
         allow_unsecured_connection:
           description: Allow unsecured connection over HTTPS and bypass validation
             of the remote SSL certificate.
