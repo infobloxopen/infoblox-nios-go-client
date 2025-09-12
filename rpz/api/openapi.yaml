@@ -4964,19 +4964,25 @@ components:
     RecordRpzA:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        ipv4addr: Example ipv4addr
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        ipv4addr: Example ipv4addr
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -4990,6 +4996,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5060,19 +5080,25 @@ components:
     RecordRpzAaaa:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        ttl: 1
+        ipv6addr: Example ipv6addr
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        ttl: 1
-        ipv6addr: Example ipv6addr
       properties:
         _ref:
           description: The reference to the object.
@@ -5086,6 +5112,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5156,19 +5196,25 @@ components:
     RecordRpzCname:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        canonical: Example canonical
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        canonical: Example canonical
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -5187,6 +5233,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5254,19 +5314,25 @@ components:
       additionalProperties: false
       example:
         mail_exchanger: Example mail_exchanger
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        preference: 1
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
-        preference: 1
         _ref: _ref
         name: Example name
         comment: Example comment
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -5280,6 +5346,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5366,7 +5446,13 @@ components:
         flags: Example flags
         services: Example services
         ttl: 1
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
@@ -5389,6 +5475,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5509,8 +5609,14 @@ components:
         ipv4addr: Example ipv4addr
         ttl: 1
         ipv6addr: Example ipv6addr
+        extattrs-:
+          key:
+            value: ""
         ptrdname: Example ptrdname
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
@@ -5530,6 +5636,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5617,7 +5737,13 @@ components:
         priority: 1
         ttl: 1
         target: Example target
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         rp_zone: Example rp_zone
         port: 1
         zone: Example zone
@@ -5638,6 +5764,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5727,19 +5867,25 @@ components:
     RecordRpzTxt:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
         text: Example text
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -5753,6 +5899,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5826,19 +5986,25 @@ components:
     RecordRpzAIpaddress:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        ipv4addr: Example ipv4addr
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        ipv4addr: Example ipv4addr
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -5852,6 +6018,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -5922,19 +6102,25 @@ components:
     RecordRpzAaaaIpaddress:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        ttl: 1
+        ipv6addr: Example ipv6addr
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        ttl: 1
-        ipv6addr: Example ipv6addr
       properties:
         _ref:
           description: The reference to the object.
@@ -5948,6 +6134,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6018,20 +6218,26 @@ components:
     RecordRpzCnameIpaddress:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        canonical: Example canonical
+        is_ipv4: false
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        canonical: Example canonical
-        is_ipv4: false
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -6050,6 +6256,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6122,20 +6342,26 @@ components:
     RecordRpzCnameIpaddressdn:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        canonical: Example canonical
+        is_ipv4: false
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        canonical: Example canonical
-        is_ipv4: false
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -6154,6 +6380,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6227,20 +6467,26 @@ components:
     RecordRpzCnameClientipaddress:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        canonical: Example canonical
+        is_ipv4: false
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        canonical: Example canonical
-        is_ipv4: false
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -6259,6 +6505,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6333,20 +6593,26 @@ components:
     RecordRpzCnameClientipaddressdn:
       additionalProperties: false
       example:
-        view: Example view
         extattrs:
+          key:
+            value: ""
+        use_ttl: false
+        canonical: Example canonical
+        is_ipv4: false
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
           key:
             value: ""
         rp_zone: Example rp_zone
         zone: Example zone
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        canonical: Example canonical
-        is_ipv4: false
-        ttl: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -6365,6 +6631,20 @@ components:
             the record is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6473,19 +6753,25 @@ components:
       description: The response format to create __RecordRpzA__ in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ipv4addr: Example ipv4addr
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ipv4addr: Example ipv4addr
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzA'
@@ -6503,19 +6789,25 @@ components:
       description: The response format to update __RecordRpzA__ in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ipv4addr: Example ipv4addr
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ipv4addr: Example ipv4addr
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzA'
@@ -6534,19 +6826,25 @@ components:
       description: The response format to create __RecordRpzAaaa__ in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ttl: 1
+          ipv6addr: Example ipv6addr
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ttl: 1
-          ipv6addr: Example ipv6addr
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzAaaa'
@@ -6564,19 +6862,25 @@ components:
       description: The response format to update __RecordRpzAaaa__ in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ttl: 1
+          ipv6addr: Example ipv6addr
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ttl: 1
-          ipv6addr: Example ipv6addr
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzAaaa'
@@ -6595,19 +6899,25 @@ components:
       description: The response format to create __RecordRpzCname__ in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCname'
@@ -6625,19 +6935,25 @@ components:
       description: The response format to update __RecordRpzCname__ in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCname'
@@ -6657,19 +6973,25 @@ components:
       example:
         result:
           mail_exchanger: Example mail_exchanger
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          preference: 1
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
-          preference: 1
           _ref: _ref
           name: Example name
           comment: Example comment
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzMx'
@@ -6688,19 +7010,25 @@ components:
       example:
         result:
           mail_exchanger: Example mail_exchanger
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          preference: 1
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
-          preference: 1
           _ref: _ref
           name: Example name
           comment: Example comment
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzMx'
@@ -6728,7 +7056,13 @@ components:
           flags: Example flags
           services: Example services
           ttl: 1
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
@@ -6764,7 +7098,13 @@ components:
           flags: Example flags
           services: Example services
           ttl: 1
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
@@ -6799,8 +7139,14 @@ components:
           ipv4addr: Example ipv4addr
           ttl: 1
           ipv6addr: Example ipv6addr
+          extattrs-:
+            key:
+              value: ""
           ptrdname: Example ptrdname
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
@@ -6831,8 +7177,14 @@ components:
           ipv4addr: Example ipv4addr
           ttl: 1
           ipv6addr: Example ipv6addr
+          extattrs-:
+            key:
+              value: ""
           ptrdname: Example ptrdname
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
@@ -6865,7 +7217,13 @@ components:
           priority: 1
           ttl: 1
           target: Example target
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           rp_zone: Example rp_zone
           port: 1
           zone: Example zone
@@ -6898,7 +7256,13 @@ components:
           priority: 1
           ttl: 1
           target: Example target
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           rp_zone: Example rp_zone
           port: 1
           zone: Example zone
@@ -6924,19 +7288,25 @@ components:
       description: The response format to create __RecordRpzTxt__ in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
           text: Example text
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzTxt'
@@ -6954,19 +7324,25 @@ components:
       description: The response format to update __RecordRpzTxt__ in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
           text: Example text
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzTxt'
@@ -6986,19 +7362,25 @@ components:
         format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ipv4addr: Example ipv4addr
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ipv4addr: Example ipv4addr
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzAIpaddress'
@@ -7017,19 +7399,25 @@ components:
         format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ipv4addr: Example ipv4addr
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ipv4addr: Example ipv4addr
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzAIpaddress'
@@ -7049,19 +7437,25 @@ components:
         format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ttl: 1
+          ipv6addr: Example ipv6addr
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ttl: 1
-          ipv6addr: Example ipv6addr
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzAaaaIpaddress'
@@ -7080,19 +7474,25 @@ components:
         format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          ttl: 1
+          ipv6addr: Example ipv6addr
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ttl: 1
-          ipv6addr: Example ipv6addr
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzAaaaIpaddress'
@@ -7112,20 +7512,26 @@ components:
         format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          is_ipv4: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          is_ipv4: false
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCnameIpaddress'
@@ -7144,20 +7550,26 @@ components:
         format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          is_ipv4: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          is_ipv4: false
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCnameIpaddress'
@@ -7177,20 +7589,26 @@ components:
         object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          is_ipv4: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          is_ipv4: false
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCnameIpaddressdn'
@@ -7209,20 +7627,26 @@ components:
         object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          is_ipv4: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          is_ipv4: false
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCnameIpaddressdn'
@@ -7243,20 +7667,26 @@ components:
         in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          is_ipv4: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          is_ipv4: false
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCnameClientipaddress'
@@ -7276,20 +7706,26 @@ components:
         in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          is_ipv4: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          is_ipv4: false
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCnameClientipaddress'
@@ -7310,20 +7746,26 @@ components:
         in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          is_ipv4: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          is_ipv4: false
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCnameClientipaddressdn'
@@ -7343,20 +7785,26 @@ components:
         in object format.
       example:
         result:
-          view: Example view
           extattrs:
+            key:
+              value: ""
+          use_ttl: false
+          canonical: Example canonical
+          is_ipv4: false
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
             key:
               value: ""
           rp_zone: Example rp_zone
           zone: Example zone
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          canonical: Example canonical
-          is_ipv4: false
-          ttl: 1
       properties:
         result:
           $ref: '#/components/schemas/RecordRpzCnameClientipaddressdn'

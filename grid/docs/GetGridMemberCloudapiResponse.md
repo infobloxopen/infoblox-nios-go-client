@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **AllowApiAdmins** | Pointer to **string** | Defines which administrators are allowed to perform Cloud API request on the Grid Member: no administrators (NONE), any administrators (ALL) or administrators in the ACL list (LIST). Default is ALL. | [optional] 
 **AllowedApiAdmins** | Pointer to [**[]GridMemberCloudapiAllowedApiAdmins**](GridMemberCloudapiAllowedApiAdmins.md) | List of administrators allowed to perform Cloud Platform API requests on that member. | [optional] 
 **EnableService** | Pointer to **bool** | Controls whether the Cloud API service runs on the member or not. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] [readonly] 
 **GatewayConfig** | Pointer to [**GridMemberCloudapiGatewayConfig**](GridMemberCloudapiGatewayConfig.md) |  | [optional] 
 **Member** | Pointer to [**GridMemberCloudapiMember**](GridMemberCloudapiMember.md) |  | [optional] 
@@ -132,6 +134,56 @@ SetEnableService sets EnableService field to given value.
 `func (o *GetGridMemberCloudapiResponse) HasEnableService() bool`
 
 HasEnableService returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *GetGridMemberCloudapiResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetGridMemberCloudapiResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetGridMemberCloudapiResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetGridMemberCloudapiResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetGridMemberCloudapiResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetGridMemberCloudapiResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetGridMemberCloudapiResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetGridMemberCloudapiResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 

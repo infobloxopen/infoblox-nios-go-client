@@ -31,6 +31,10 @@ type Ipv6address struct {
 	// DHCPv6 Unique Identifier (DUID) of the address object.
 	Duid *string `json:"duid,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// DHCP fingerprint for the address.
 	Fingerprint *string `json:"fingerprint,omitempty"`
@@ -266,6 +270,70 @@ func (o *Ipv6address) HasDuid() bool {
 // SetDuid gets a reference to the given string and assigns it to the Duid field.
 func (o *Ipv6address) SetDuid(v string) {
 	o.Duid = &v
+}
+
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *Ipv6address) GetExtAttrsPlus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Ipv6address) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *Ipv6address) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsPlus field.
+func (o *Ipv6address) SetExtAttrsPlus(v map[string]ExtAttrs) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *Ipv6address) GetExtAttrsMinus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Ipv6address) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *Ipv6address) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsMinus field.
+func (o *Ipv6address) SetExtAttrsMinus(v map[string]ExtAttrs) {
+	o.ExtAttrsMinus = &v
 }
 
 // GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
@@ -743,6 +811,12 @@ func (o Ipv6address) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Duid) {
 		toSerialize["duid"] = o.Duid
+	}
+	if !IsNil(o.ExtAttrsPlus) {
+		toSerialize["extattrs+"] = o.ExtAttrsPlus
+	}
+	if !IsNil(o.ExtAttrsMinus) {
+		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs

@@ -30,6 +30,10 @@ type DtcMonitorSnmp struct {
 	// The SNMPv3 engine identifier.
 	EngineId *string `json:"engine_id,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
+	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
+	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The interval for TCP health check.
 	Interval *int64 `json:"interval,omitempty"`
@@ -226,6 +230,70 @@ func (o *DtcMonitorSnmp) HasEngineId() bool {
 // SetEngineId gets a reference to the given string and assigns it to the EngineId field.
 func (o *DtcMonitorSnmp) SetEngineId(v string) {
 	o.EngineId = &v
+}
+
+// GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
+func (o *DtcMonitorSnmp) GetExtAttrsPlus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsPlus
+}
+
+// GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtcMonitorSnmp) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsPlus) {
+		return nil, false
+	}
+	return o.ExtAttrsPlus, true
+}
+
+// HasExtAttrsPlus returns a boolean if a field has been set.
+func (o *DtcMonitorSnmp) HasExtAttrsPlus() bool {
+	if o != nil && !IsNil(o.ExtAttrsPlus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsPlus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsPlus field.
+func (o *DtcMonitorSnmp) SetExtAttrsPlus(v map[string]ExtAttrs) {
+	o.ExtAttrsPlus = &v
+}
+
+// GetExtAttrsMinus returns the ExtAttrsMinus field value if set, zero value otherwise.
+func (o *DtcMonitorSnmp) GetExtAttrsMinus() map[string]ExtAttrs {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		var ret map[string]ExtAttrs
+		return ret
+	}
+	return *o.ExtAttrsMinus
+}
+
+// GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtcMonitorSnmp) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool) {
+	if o == nil || IsNil(o.ExtAttrsMinus) {
+		return nil, false
+	}
+	return o.ExtAttrsMinus, true
+}
+
+// HasExtAttrsMinus returns a boolean if a field has been set.
+func (o *DtcMonitorSnmp) HasExtAttrsMinus() bool {
+	if o != nil && !IsNil(o.ExtAttrsMinus) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtAttrsMinus gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrsMinus field.
+func (o *DtcMonitorSnmp) SetExtAttrsMinus(v map[string]ExtAttrs) {
+	o.ExtAttrsMinus = &v
 }
 
 // GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
@@ -572,6 +640,12 @@ func (o DtcMonitorSnmp) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EngineId) {
 		toSerialize["engine_id"] = o.EngineId
+	}
+	if !IsNil(o.ExtAttrsPlus) {
+		toSerialize["extattrs+"] = o.ExtAttrsPlus
+	}
+	if !IsNil(o.ExtAttrsMinus) {
+		toSerialize["extattrs-"] = o.ExtAttrsMinus
 	}
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs

@@ -45,6 +45,8 @@ Name | Type | Description | Notes
 **DoHostAbstraction** | Pointer to **bool** | Determines if hosts and bulk hosts are automatically created when the zone data is imported. This field is meaningful only when import_from is set. | [optional] 
 **EffectiveCheckNamesPolicy** | Pointer to **string** | The value of the check names policy, which indicates the action the appliance takes when it encounters host names that do not comply with the Strict Hostname Checking policy. This value applies only if the host name restriction policy is set to \&quot;Strict Hostname Checking\&quot;. | [optional] 
 **EffectiveRecordNamePolicy** | Pointer to **string** | The selected hostname policy for records under this zone. | [optional] [readonly] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalPrimaries** | Pointer to [**[]ZoneAuthExternalPrimaries**](ZoneAuthExternalPrimaries.md) | The list of external primary servers. | [optional] 
 **ExternalSecondaries** | Pointer to [**[]ZoneAuthExternalSecondaries**](ZoneAuthExternalSecondaries.md) | The list of external secondary servers. | [optional] 
@@ -1165,6 +1167,56 @@ SetEffectiveRecordNamePolicy sets EffectiveRecordNamePolicy field to given value
 `func (o *ZoneAuth) HasEffectiveRecordNamePolicy() bool`
 
 HasEffectiveRecordNamePolicy returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *ZoneAuth) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *ZoneAuth) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *ZoneAuth) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *ZoneAuth) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *ZoneAuth) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *ZoneAuth) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *ZoneAuth) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *ZoneAuth) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 

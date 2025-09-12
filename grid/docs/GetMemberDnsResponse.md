@@ -88,6 +88,8 @@ Name | Type | Description | Notes
 **EnableQueryRewrite** | Pointer to **bool** | Determines if the DNS query rewrite is enabled or not for this member. | [optional] 
 **EnableQuerySourcePort** | Pointer to **bool** | Determines if the query source port for a memer is enabled or not. | [optional] 
 **ExcludedDomainNames** | Pointer to **[]string** | The list of domains that are excluded from DNS query and response capture. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FileTransferSetting** | Pointer to [**MemberDnsFileTransferSetting**](MemberDnsFileTransferSetting.md) |  | [optional] 
 **FilterAaaa** | Pointer to **string** | The type of AAAA filtering for this member DNS object. | [optional] 
@@ -2330,6 +2332,56 @@ SetExcludedDomainNames sets ExcludedDomainNames field to given value.
 `func (o *GetMemberDnsResponse) HasExcludedDomainNames() bool`
 
 HasExcludedDomainNames returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *GetMemberDnsResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetMemberDnsResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetMemberDnsResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetMemberDnsResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetMemberDnsResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetMemberDnsResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetMemberDnsResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetMemberDnsResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 

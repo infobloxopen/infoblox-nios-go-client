@@ -513,7 +513,13 @@ components:
     Namedacl:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         _ref: _ref
@@ -575,6 +581,20 @@ components:
             $ref: '#/components/schemas/NamedaclExplodedAccessList'
           readOnly: true
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -717,7 +737,13 @@ components:
       description: The response format to create __Namedacl__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -770,7 +796,13 @@ components:
       description: The response format to update __Namedacl__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref

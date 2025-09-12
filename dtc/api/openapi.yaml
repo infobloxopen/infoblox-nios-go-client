@@ -6375,23 +6375,29 @@ components:
         extattrs:
           key:
             value: ""
-        disable: false
-        _ref: _ref
-        host: Example host
-        name: Example name
         health:
           enabled_state: Example enabled_state
           description: Example description
           availability: Example availability
+        auto_create_host_record: false
+        use_sni_hostname: false
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
+        disable: false
+        _ref: _ref
+        host: Example host
+        name: Example name
         comment: Example comment
         sni_hostname: Example sni_hostname
-        auto_create_host_record: false
         monitors:
         - host: Example host
           monitor: Example monitor
         - host: Example host
           monitor: Example monitor
-        use_sni_hostname: false
       properties:
         _ref:
           description: The reference to the object.
@@ -6411,6 +6417,20 @@ components:
             \ this is set to False, the fixed address is enabled."
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6551,11 +6571,17 @@ components:
           invert_monitor_metric: false
           monitor: Example monitor
           monitor_weighing: Example monitor_weighing
+        extattrs-:
+          key:
+            value: ""
         servers:
         - server: Example server
           ratio: 1
         - server: Example server
           ratio: 1
+        extattrs+:
+          key:
+            value: ""
         disable: false
         _ref: _ref
         name: Example name
@@ -6604,6 +6630,20 @@ components:
             \ is set to False, the fixed address is enabled."
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6880,7 +6920,13 @@ components:
     DtcTopology:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         _ref: _ref
@@ -6898,6 +6944,20 @@ components:
             characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6972,6 +7032,12 @@ components:
         priority: 1
         lb_method: Example lb_method
         ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         disable: false
         _ref: _ref
         name: Example name
@@ -7004,6 +7070,20 @@ components:
             \ is set to False, the fixed address is enabled."
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7158,16 +7238,22 @@ components:
         extattrs:
           key:
             value: ""
+        monitor: Example monitor
+        type: Example type
+        timeout: 1
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         port: 1
         _ref: _ref
         name: Example name
         comment: Example comment
         interval: 1
-        monitor: Example monitor
-        type: Example type
         retry_down: 1
         retry_up: 1
-        timeout: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -7176,6 +7262,20 @@ components:
           description: Comment for this DTC monitor; maximum 256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7252,30 +7352,36 @@ components:
       example:
         content_check_regex: Example content_check_regex
         request: Example request
+        client_cert: Example client_cert
+        secure: false
+        timeout: 1
+        content_check: Example content_check
+        result: Example result
+        extattrs-:
+          key:
+            value: ""
+        content_extract_value: Example content_extract_value
+        extattrs+:
+          key:
+            value: ""
+        content_extract_group: 1
+        ciphers: Example ciphers
+        content_check_input: Example content_check_input
+        retry_up: 1
+        validate_cert: false
         extattrs:
           key:
             value: ""
         content_check_op: Example content_check_op
         content_extract_type: Example content_extract_type
-        client_cert: Example client_cert
-        secure: false
-        timeout: 1
         enable_sni: false
-        content_check: Example content_check
-        result: Example result
-        content_extract_value: Example content_extract_value
-        content_extract_group: 1
         port: 1
         _ref: _ref
-        ciphers: Example ciphers
         name: Example name
         comment: Example comment
         interval: 1
         result_code: 1
-        content_check_input: Example content_check_input
         retry_down: 1
-        retry_up: 1
-        validate_cert: false
       properties:
         _ref:
           description: The reference to the object.
@@ -7343,6 +7449,20 @@ components:
             monitor is enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7434,7 +7554,13 @@ components:
     DtcMonitorIcmp:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         _ref: _ref
@@ -7452,6 +7578,20 @@ components:
           description: Comment for this DTC monitor; maximum 256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7512,7 +7652,13 @@ components:
     DtcMonitorPdp:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         port: 1
@@ -7531,6 +7677,20 @@ components:
           description: Comment for this DTC monitor; maximum 256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7604,6 +7764,12 @@ components:
         transport: Example transport
         timeout: 1
         result: Example result
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         port: 1
         _ref: _ref
         ciphers: Example ciphers
@@ -7631,6 +7797,20 @@ components:
           description: Comment for this DTC monitor; maximum 256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7733,6 +7913,12 @@ components:
         community: Example community
         version: Example version
         timeout: 1
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         engine_id: Example engine_id
         port: 1
         _ref: _ref
@@ -7776,6 +7962,20 @@ components:
           description: The SNMPv3 engine identifier.
           example: Example engine_id
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7911,7 +8111,13 @@ components:
     DtcMonitorTcp:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         port: 1
@@ -7930,6 +8136,20 @@ components:
           description: Comment for this DTC monitor; maximum 256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -8535,20 +8755,26 @@ components:
     DtcObject:
       additionalProperties: false
       example:
-        display_type: Example display_type
         extattrs:
           key:
             value: ""
         ipv6_address_list:
         - ipv6_address_list
         - ipv6_address_list
+        ipv4_address_list:
+        - ipv4_address_list
+        - ipv4_address_list
+        display_type: Example display_type
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         abstract_type: Example abstract_type
         _ref: _ref
         name: Example name
         comment: Example comment
-        ipv4_address_list:
-        - ipv4_address_list
-        - ipv4_address_list
         status_time: 1
         object: Example object
         status: Example status
@@ -8571,6 +8797,20 @@ components:
           example: Example display_type
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -8840,23 +9080,29 @@ components:
           extattrs:
             key:
               value: ""
-          disable: false
-          _ref: _ref
-          host: Example host
-          name: Example name
           health:
             enabled_state: Example enabled_state
             description: Example description
             availability: Example availability
+          auto_create_host_record: false
+          use_sni_hostname: false
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          disable: false
+          _ref: _ref
+          host: Example host
+          name: Example name
           comment: Example comment
           sni_hostname: Example sni_hostname
-          auto_create_host_record: false
           monitors:
           - host: Example host
             monitor: Example monitor
           - host: Example host
             monitor: Example monitor
-          use_sni_hostname: false
       properties:
         result:
           $ref: '#/components/schemas/DtcServer'
@@ -8877,23 +9123,29 @@ components:
           extattrs:
             key:
               value: ""
-          disable: false
-          _ref: _ref
-          host: Example host
-          name: Example name
           health:
             enabled_state: Example enabled_state
             description: Example description
             availability: Example availability
+          auto_create_host_record: false
+          use_sni_hostname: false
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          disable: false
+          _ref: _ref
+          host: Example host
+          name: Example name
           comment: Example comment
           sni_hostname: Example sni_hostname
-          auto_create_host_record: false
           monitors:
           - host: Example host
             monitor: Example monitor
           - host: Example host
             monitor: Example monitor
-          use_sni_hostname: false
       properties:
         result:
           $ref: '#/components/schemas/DtcServer'
@@ -8947,11 +9199,17 @@ components:
             invert_monitor_metric: false
             monitor: Example monitor
             monitor_weighing: Example monitor_weighing
+          extattrs-:
+            key:
+              value: ""
           servers:
           - server: Example server
             ratio: 1
           - server: Example server
             ratio: 1
+          extattrs+:
+            key:
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -9017,11 +9275,17 @@ components:
             invert_monitor_metric: false
             monitor: Example monitor
             monitor_weighing: Example monitor_weighing
+          extattrs-:
+            key:
+              value: ""
           servers:
           - server: Example server
             ratio: 1
           - server: Example server
             ratio: 1
+          extattrs+:
+            key:
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -9053,7 +9317,13 @@ components:
       description: The response format to create __DtcTopology__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -9079,7 +9349,13 @@ components:
       description: The response format to update __DtcTopology__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -9133,6 +9409,12 @@ components:
           priority: 1
           lb_method: Example lb_method
           ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -9182,6 +9464,12 @@ components:
           priority: 1
           lb_method: Example lb_method
           ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -9216,16 +9504,22 @@ components:
           extattrs:
             key:
               value: ""
+          monitor: Example monitor
+          type: Example type
+          timeout: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           port: 1
           _ref: _ref
           name: Example name
           comment: Example comment
           interval: 1
-          monitor: Example monitor
-          type: Example type
           retry_down: 1
           retry_up: 1
-          timeout: 1
       properties:
         result:
           $ref: '#/components/schemas/DtcMonitor'
@@ -9246,30 +9540,36 @@ components:
         result:
           content_check_regex: Example content_check_regex
           request: Example request
+          client_cert: Example client_cert
+          secure: false
+          timeout: 1
+          content_check: Example content_check
+          result: Example result
+          extattrs-:
+            key:
+              value: ""
+          content_extract_value: Example content_extract_value
+          extattrs+:
+            key:
+              value: ""
+          content_extract_group: 1
+          ciphers: Example ciphers
+          content_check_input: Example content_check_input
+          retry_up: 1
+          validate_cert: false
           extattrs:
             key:
               value: ""
           content_check_op: Example content_check_op
           content_extract_type: Example content_extract_type
-          client_cert: Example client_cert
-          secure: false
-          timeout: 1
           enable_sni: false
-          content_check: Example content_check
-          result: Example result
-          content_extract_value: Example content_extract_value
-          content_extract_group: 1
           port: 1
           _ref: _ref
-          ciphers: Example ciphers
           name: Example name
           comment: Example comment
           interval: 1
           result_code: 1
-          content_check_input: Example content_check_input
           retry_down: 1
-          retry_up: 1
-          validate_cert: false
       properties:
         result:
           $ref: '#/components/schemas/DtcMonitorHttp'
@@ -9289,30 +9589,36 @@ components:
         result:
           content_check_regex: Example content_check_regex
           request: Example request
+          client_cert: Example client_cert
+          secure: false
+          timeout: 1
+          content_check: Example content_check
+          result: Example result
+          extattrs-:
+            key:
+              value: ""
+          content_extract_value: Example content_extract_value
+          extattrs+:
+            key:
+              value: ""
+          content_extract_group: 1
+          ciphers: Example ciphers
+          content_check_input: Example content_check_input
+          retry_up: 1
+          validate_cert: false
           extattrs:
             key:
               value: ""
           content_check_op: Example content_check_op
           content_extract_type: Example content_extract_type
-          client_cert: Example client_cert
-          secure: false
-          timeout: 1
           enable_sni: false
-          content_check: Example content_check
-          result: Example result
-          content_extract_value: Example content_extract_value
-          content_extract_group: 1
           port: 1
           _ref: _ref
-          ciphers: Example ciphers
           name: Example name
           comment: Example comment
           interval: 1
           result_code: 1
-          content_check_input: Example content_check_input
           retry_down: 1
-          retry_up: 1
-          validate_cert: false
       properties:
         result:
           $ref: '#/components/schemas/DtcMonitorHttp'
@@ -9331,7 +9637,13 @@ components:
       description: The response format to create __DtcMonitorIcmp__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -9358,7 +9670,13 @@ components:
       description: The response format to update __DtcMonitorIcmp__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -9386,7 +9704,13 @@ components:
       description: The response format to create __DtcMonitorPdp__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           port: 1
@@ -9414,7 +9738,13 @@ components:
       description: The response format to update __DtcMonitorPdp__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           port: 1
@@ -9451,6 +9781,12 @@ components:
           transport: Example transport
           timeout: 1
           result: Example result
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           port: 1
           _ref: _ref
           ciphers: Example ciphers
@@ -9486,6 +9822,12 @@ components:
           transport: Example transport
           timeout: 1
           result: Example result
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           port: 1
           _ref: _ref
           ciphers: Example ciphers
@@ -9520,6 +9862,12 @@ components:
           community: Example community
           version: Example version
           timeout: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           engine_id: Example engine_id
           port: 1
           _ref: _ref
@@ -9566,6 +9914,12 @@ components:
           community: Example community
           version: Example version
           timeout: 1
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           engine_id: Example engine_id
           port: 1
           _ref: _ref
@@ -9607,7 +9961,13 @@ components:
       description: The response format to create __DtcMonitorTcp__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           port: 1
@@ -9635,7 +9995,13 @@ components:
       description: The response format to update __DtcMonitorTcp__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           port: 1
@@ -10000,20 +10366,26 @@ components:
       description: The response format to update __DtcObject__ in object format.
       example:
         result:
-          display_type: Example display_type
           extattrs:
             key:
               value: ""
           ipv6_address_list:
           - ipv6_address_list
           - ipv6_address_list
+          ipv4_address_list:
+          - ipv4_address_list
+          - ipv4_address_list
+          display_type: Example display_type
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           abstract_type: Example abstract_type
           _ref: _ref
           name: Example name
           comment: Example comment
-          ipv4_address_list:
-          - ipv4_address_list
-          - ipv4_address_list
           status_time: 1
           object: Example object
           status: Example status

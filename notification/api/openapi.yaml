@@ -1103,7 +1103,13 @@ components:
         uri: Example uri
         timeout: 1
         client_certificate_valid_from: 1
+        extattrs-:
+          key:
+            value: ""
         password: Example password
+        extattrs+:
+          key:
+            value: ""
         vendor_identifier: Example vendor_identifier
         _ref: _ref
         client_certificate_token: Example client_certificate_token
@@ -1155,6 +1161,20 @@ components:
           description: The comment of a notification REST endpoint.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -1997,7 +2017,13 @@ components:
           uri: Example uri
           timeout: 1
           client_certificate_valid_from: 1
+          extattrs-:
+            key:
+              value: ""
           password: Example password
+          extattrs+:
+            key:
+              value: ""
           vendor_identifier: Example vendor_identifier
           _ref: _ref
           client_certificate_token: Example client_certificate_token
@@ -2050,7 +2076,13 @@ components:
           uri: Example uri
           timeout: 1
           client_certificate_valid_from: 1
+          extattrs-:
+            key:
+              value: ""
           password: Example password
+          extattrs+:
+            key:
+              value: ""
           vendor_identifier: Example vendor_identifier
           _ref: _ref
           client_certificate_token: Example client_certificate_token
