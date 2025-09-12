@@ -7956,10 +7956,12 @@ components:
         use_authority: false
         use_lease_scavenge_time: false
         members:
-        - name: Example name
+        - _struct: _struct
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
-        - name: Example name
+        - _struct: _struct
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         use_blackout_setting: false
@@ -9218,10 +9220,15 @@ components:
       type: object
     NetworkMembers:
       example:
+        _struct: _struct
         name: Example name
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'dhcpmember'
+            or 'msdhcpserver'.
+          type: string
         ipv4addr:
           description: The IPv4 Address or FQDN of the Microsoft server.
           example: Example ipv4addr
@@ -12002,14 +12009,6 @@ components:
           example: Example name
           type: string
       type: object
-    NetworkviewDdnsZonePrimariesDnsGridZone:
-      example:
-        _ref: _ref
-      properties:
-        _ref:
-          description: The reference to the DNS zone object.
-          type: string
-      type: object
     NetworkviewDdnsZonePrimaries:
       example:
         dns_grid_primary: Example dns_grid_primary
@@ -12173,6 +12172,14 @@ components:
           - NONE
           - TSIG
           example: Example key_type
+          type: string
+      type: object
+    NetworkviewDdnsZonePrimariesDnsGridZone:
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: The reference to the DNS zone object.
           type: string
       type: object
     ListNetworkviewResponse:
@@ -17182,10 +17189,12 @@ components:
           use_authority: false
           use_lease_scavenge_time: false
           members:
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           use_blackout_setting: false
@@ -17462,10 +17471,12 @@ components:
           use_authority: false
           use_lease_scavenge_time: false
           members:
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           use_blackout_setting: false

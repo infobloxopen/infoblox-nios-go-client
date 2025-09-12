@@ -19,6 +19,8 @@ var _ MappedNullable = &NetworkMembers{}
 
 // NetworkMembers struct for NetworkMembers
 type NetworkMembers struct {
+	// The struct type of the object. The value must be one of 'dhcpmember' or 'msdhcpserver'.
+	Struct *string `json:"_struct,omitempty"`
 	// The IPv4 Address or FQDN of the Microsoft server.
 	Ipv4addr *string `json:"ipv4addr,omitempty"`
 	// The IPv6 Address of the Grid Member.
@@ -45,6 +47,38 @@ func NewNetworkMembers() *NetworkMembers {
 func NewNetworkMembersWithDefaults() *NetworkMembers {
 	this := NetworkMembers{}
 	return &this
+}
+
+// GetStruct returns the Struct field value if set, zero value otherwise.
+func (o *NetworkMembers) GetStruct() string {
+	if o == nil || IsNil(o.Struct) {
+		var ret string
+		return ret
+	}
+	return *o.Struct
+}
+
+// GetStructOk returns a tuple with the Struct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NetworkMembers) GetStructOk() (*string, bool) {
+	if o == nil || IsNil(o.Struct) {
+		return nil, false
+	}
+	return o.Struct, true
+}
+
+// HasStruct returns a boolean if a field has been set.
+func (o *NetworkMembers) HasStruct() bool {
+	if o != nil && !IsNil(o.Struct) {
+		return true
+	}
+
+	return false
+}
+
+// SetStruct gets a reference to the given string and assigns it to the Struct field.
+func (o *NetworkMembers) SetStruct(v string) {
+	o.Struct = &v
 }
 
 // GetIpv4addr returns the Ipv4addr field value if set, zero value otherwise.
@@ -153,6 +187,9 @@ func (o NetworkMembers) MarshalJSON() ([]byte, error) {
 
 func (o NetworkMembers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Struct) {
+		toSerialize["_struct"] = o.Struct
+	}
 	if !IsNil(o.Ipv4addr) {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
@@ -184,6 +221,7 @@ func (o *NetworkMembers) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "_struct")
 		delete(additionalProperties, "ipv4addr")
 		delete(additionalProperties, "ipv6addr")
 		delete(additionalProperties, "name")
