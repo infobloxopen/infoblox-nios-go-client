@@ -329,6 +329,7 @@ type ExtensibleattributedefAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -374,6 +375,12 @@ func (r ExtensibleattributedefAPIListRequest) Filters(filters map[string]interfa
 
 func (r ExtensibleattributedefAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) ExtensibleattributedefAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r ExtensibleattributedefAPIListRequest) Inheritance(inheritance bool) ExtensibleattributedefAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -441,6 +448,9 @@ func (a *ExtensibleattributedefAPIService) ListExecute(r ExtensibleattributedefA
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

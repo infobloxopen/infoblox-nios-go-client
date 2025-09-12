@@ -329,6 +329,7 @@ type UpgradegroupAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -374,6 +375,12 @@ func (r UpgradegroupAPIListRequest) Filters(filters map[string]interface{}) Upgr
 
 func (r UpgradegroupAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) UpgradegroupAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r UpgradegroupAPIListRequest) Inheritance(inheritance bool) UpgradegroupAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -441,6 +448,9 @@ func (a *UpgradegroupAPIService) ListExecute(r UpgradegroupAPIListRequest) (*Lis
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

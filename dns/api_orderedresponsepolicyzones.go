@@ -79,6 +79,7 @@ type OrderedresponsepolicyzonesAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -124,6 +125,12 @@ func (r OrderedresponsepolicyzonesAPIListRequest) Filters(filters map[string]int
 
 func (r OrderedresponsepolicyzonesAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) OrderedresponsepolicyzonesAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r OrderedresponsepolicyzonesAPIListRequest) Inheritance(inheritance bool) OrderedresponsepolicyzonesAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -191,6 +198,9 @@ func (a *OrderedresponsepolicyzonesAPIService) ListExecute(r Orderedresponsepoli
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

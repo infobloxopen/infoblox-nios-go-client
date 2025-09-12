@@ -133,6 +133,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -388,6 +397,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -642,6 +660,15 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -964,6 +991,15 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -1297,6 +1333,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -1612,6 +1657,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -1926,6 +1980,15 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -2248,6 +2311,15 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -2582,6 +2654,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -2897,6 +2978,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -3055,6 +3145,15 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -3371,6 +3470,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -3685,6 +3793,15 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -4011,6 +4128,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -4327,6 +4453,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -4640,6 +4775,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -4867,6 +5011,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -5025,6 +5178,15 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -5341,6 +5503,15 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -5500,6 +5671,15 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: "If this option is set to True, fields which support inheritance,\
+          \ will display data properly."
+        explode: true
+        in: query
+        name: _inheritance
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -12002,14 +12182,6 @@ components:
           example: Example name
           type: string
       type: object
-    NetworkviewDdnsZonePrimariesDnsGridZone:
-      example:
-        _ref: _ref
-      properties:
-        _ref:
-          description: The reference to the DNS zone object.
-          type: string
-      type: object
     NetworkviewDdnsZonePrimaries:
       example:
         dns_grid_primary: Example dns_grid_primary
@@ -12173,6 +12345,14 @@ components:
           - NONE
           - TSIG
           example: Example key_type
+          type: string
+      type: object
+    NetworkviewDdnsZonePrimariesDnsGridZone:
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: The reference to the DNS zone object.
           type: string
       type: object
     ListNetworkviewResponse:

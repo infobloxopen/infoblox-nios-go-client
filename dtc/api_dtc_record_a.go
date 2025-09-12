@@ -329,6 +329,7 @@ type DtcRecordAAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -374,6 +375,12 @@ func (r DtcRecordAAPIListRequest) Filters(filters map[string]interface{}) DtcRec
 
 func (r DtcRecordAAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) DtcRecordAAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r DtcRecordAAPIListRequest) Inheritance(inheritance bool) DtcRecordAAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -441,6 +448,9 @@ func (a *DtcRecordAAPIService) ListExecute(r DtcRecordAAPIListRequest) (*ListDtc
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

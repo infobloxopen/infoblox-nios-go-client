@@ -378,6 +378,7 @@ type NetworkcontainerAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -423,6 +424,12 @@ func (r NetworkcontainerAPIListRequest) Filters(filters map[string]interface{}) 
 
 func (r NetworkcontainerAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) NetworkcontainerAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r NetworkcontainerAPIListRequest) Inheritance(inheritance bool) NetworkcontainerAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -490,6 +497,9 @@ func (a *NetworkcontainerAPIService) ListExecute(r NetworkcontainerAPIListReques
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

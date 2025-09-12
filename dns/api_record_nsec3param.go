@@ -65,6 +65,7 @@ type RecordNsec3paramAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -110,6 +111,12 @@ func (r RecordNsec3paramAPIListRequest) Filters(filters map[string]interface{}) 
 
 func (r RecordNsec3paramAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) RecordNsec3paramAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r RecordNsec3paramAPIListRequest) Inheritance(inheritance bool) RecordNsec3paramAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -177,6 +184,9 @@ func (a *RecordNsec3paramAPIService) ListExecute(r RecordNsec3paramAPIListReques
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

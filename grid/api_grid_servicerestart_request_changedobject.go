@@ -65,6 +65,7 @@ type GridServicerestartRequestChangedobjectAPIListRequest struct {
 	pageId           *string
 	filters          *map[string]interface{}
 	extattrfilter    *map[string]interface{}
+	inheritance      *bool
 }
 
 // Enter the field names followed by comma
@@ -110,6 +111,12 @@ func (r GridServicerestartRequestChangedobjectAPIListRequest) Filters(filters ma
 
 func (r GridServicerestartRequestChangedobjectAPIListRequest) Extattrfilter(extattrfilter map[string]interface{}) GridServicerestartRequestChangedobjectAPIListRequest {
 	r.extattrfilter = &extattrfilter
+	return r
+}
+
+// If this option is set to True, fields which support inheritance, will display data properly.
+func (r GridServicerestartRequestChangedobjectAPIListRequest) Inheritance(inheritance bool) GridServicerestartRequestChangedobjectAPIListRequest {
+	r.inheritance = &inheritance
 	return r
 }
 
@@ -177,6 +184,9 @@ func (a *GridServicerestartRequestChangedobjectAPIService) ListExecute(r GridSer
 	}
 	if r.extattrfilter != nil {
 		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "extattrfilter", r.extattrfilter, "form", "")
+	}
+	if r.inheritance != nil {
+		internal.ParameterAddToHeaderOrQuery(localVarQueryParams, "_inheritance", r.inheritance, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
