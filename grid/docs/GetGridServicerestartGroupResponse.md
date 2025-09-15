@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **RecurringSchedule** | Pointer to [**GridServicerestartGroupRecurringSchedule**](GridServicerestartGroupRecurringSchedule.md) |  | [optional] 
 **Requests** | Pointer to **[]string** | The list of requests associated with a restart group. | [optional] [readonly] 
 **Service** | Pointer to **string** | The applicable service for this Restart Group. | [optional] 
-**Status** | Pointer to **string** | The restart status for a restart group. | [optional] [readonly] 
+**Status** | Pointer to [**GridServicerestartStatus**](GridServicerestartStatus.md) |  | [optional] 
 **Result** | Pointer to [**GridServicerestartGroup**](GridServicerestartGroup.md) |  | [optional] 
 
 ## Methods
@@ -340,20 +340,20 @@ HasService returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *GetGridServicerestartGroupResponse) GetStatus() string`
+`func (o *GetGridServicerestartGroupResponse) GetStatus() GridServicerestartStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *GetGridServicerestartGroupResponse) GetStatusOk() (*string, bool)`
+`func (o *GetGridServicerestartGroupResponse) GetStatusOk() (*GridServicerestartStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *GetGridServicerestartGroupResponse) SetStatus(v string)`
+`func (o *GetGridServicerestartGroupResponse) SetStatus(v GridServicerestartStatus)`
 
 SetStatus sets Status field to given value.
 

@@ -14940,7 +14940,20 @@ components:
           services:
           - services
           - services
-        status: Example status
+        status:
+          parent: Example parent
+          restarting: 1
+          failures: 1
+          grouped: Example grouped
+          no_restart: 1
+          pending: 1
+          pending_restart: 1
+          timeouts: 1
+          finished: 1
+          success: 1
+          _ref: _ref
+          processing: 1
+          needed_restart: 1
       properties:
         _ref:
           description: The reference to the object.
@@ -15010,10 +15023,7 @@ components:
           example: Example service
           type: string
         status:
-          description: The restart status for a restart group.
-          example: Example status
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/GridServicerestartStatus'
       type: object
     GridServicerestartGroupRecurringSchedule:
       example:
@@ -30668,7 +30678,20 @@ components:
             services:
             - services
             - services
-          status: Example status
+          status:
+            parent: Example parent
+            restarting: 1
+            failures: 1
+            grouped: Example grouped
+            no_restart: 1
+            pending: 1
+            pending_restart: 1
+            timeouts: 1
+            finished: 1
+            success: 1
+            _ref: _ref
+            processing: 1
+            needed_restart: 1
       properties:
         result:
           $ref: '#/components/schemas/GridServicerestartGroup'
@@ -30725,7 +30748,20 @@ components:
             services:
             - services
             - services
-          status: Example status
+          status:
+            parent: Example parent
+            restarting: 1
+            failures: 1
+            grouped: Example grouped
+            no_restart: 1
+            pending: 1
+            pending_restart: 1
+            timeouts: 1
+            finished: 1
+            success: 1
+            _ref: _ref
+            processing: 1
+            needed_restart: 1
       properties:
         result:
           $ref: '#/components/schemas/GridServicerestartGroup'
