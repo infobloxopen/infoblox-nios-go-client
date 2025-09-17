@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **DcaSubQueryCount** | Pointer to **bool** | Enable/disable the DCA subscriber query count. | [optional] 
 **EnableGlobalAllowListRpz** | Pointer to **bool** | Enable/disable global allow list RPZ setting. | [optional] 
 **EnableRpzFilteringBypass** | Pointer to **bool** | Enable/disable Subscriber Secure Policy Bypass for Allowed list. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FirstPort** | Pointer to **int64** | The start of the first Deterministic block. | [optional] 
 **GlobalAllowListRpz** | Pointer to **int64** | Global allow list RPZ index. Valid values are between 0 and 63. | [optional] 
@@ -401,6 +403,56 @@ SetEnableRpzFilteringBypass sets EnableRpzFilteringBypass field to given value.
 `func (o *ParentalcontrolSubscribersite) HasEnableRpzFilteringBypass() bool`
 
 HasEnableRpzFilteringBypass returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *ParentalcontrolSubscribersite) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *ParentalcontrolSubscribersite) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *ParentalcontrolSubscribersite) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *ParentalcontrolSubscribersite) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *ParentalcontrolSubscribersite) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *ParentalcontrolSubscribersite) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *ParentalcontrolSubscribersite) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *ParentalcontrolSubscribersite) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 

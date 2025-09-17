@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **EnableLom** | Pointer to **bool** | Determines if the LOM functionality is enabled or not. | [optional] 
 **EnableMemberRedirect** | Pointer to **bool** | Determines if the member will redirect GUI connections to the Grid Master or not. | [optional] 
 **EnableRoApiAccess** | Pointer to **bool** | If set to True and the member object is a Grid Master Candidate, then read-only API access is enabled. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExternalSyslogBackupServers** | Pointer to [**[]MemberExternalSyslogBackupServers**](MemberExternalSyslogBackupServers.md) | The list of external syslog backup servers. | [optional] 
 **ExternalSyslogServerEnable** | Pointer to **bool** | Determines if external syslog servers should be enabled. | [optional] 
@@ -507,6 +509,56 @@ SetEnableRoApiAccess sets EnableRoApiAccess field to given value.
 `func (o *Member) HasEnableRoApiAccess() bool`
 
 HasEnableRoApiAccess returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *Member) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *Member) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *Member) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *Member) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *Member) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *Member) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *Member) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *Member) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 

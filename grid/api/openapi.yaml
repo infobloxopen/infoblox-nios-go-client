@@ -13144,17 +13144,10 @@ components:
     GridCloudapiVm:
       additionalProperties: false
       example:
-        availability_zone: Example availability_zone
-        tenant_name: Example tenant_name
-        extattrs:
-          key:
-            value: ""
         first_seen: 1
         vpc_name: Example vpc_name
         last_seen: 1
         vpc_id: Example vpc_id
-        network_count: 1
-        subnet_cidr: 1
         cloud_info:
           delegated_member:
             name: Example name
@@ -13167,19 +13160,32 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        extattrs-:
+          key:
+            value: ""
         hostname: Example hostname
         vm_type: Example vm_type
-        kernel_id: Example kernel_id
-        vpc_address: Example vpc_address
+        extattrs+:
+          key:
+            value: ""
         elastic_ip_address: Example elastic_ip_address
         vpc_cidr: 1
-        _ref: _ref
-        name: Example name
         operating_system: Example operating_system
-        subnet_id: Example subnet_id
-        comment: Example comment
         id: Example id
         primary_mac_address: Example primary_mac_address
+        availability_zone: Example availability_zone
+        tenant_name: Example tenant_name
+        extattrs:
+          key:
+            value: ""
+        network_count: 1
+        subnet_cidr: 1
+        kernel_id: Example kernel_id
+        vpc_address: Example vpc_address
+        _ref: _ref
+        name: Example name
+        subnet_id: Example subnet_id
+        comment: Example comment
         subnet_address: Example subnet_address
       properties:
         _ref:
@@ -13201,6 +13207,20 @@ components:
           example: Example elastic_ip_address
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -13828,6 +13848,9 @@ components:
       additionalProperties: false
       example:
         enable_service: false
+        extattrs-:
+          key:
+            value: ""
         extattrs:
           key:
             value: ""
@@ -13838,6 +13861,9 @@ components:
         - remote_admin: Example remote_admin
           local_admin: Example local_admin
           is_remote: false
+        extattrs+:
+          key:
+            value: ""
         gateway_config:
           port: 1
           enable_proxy_service: false
@@ -13880,6 +13906,20 @@ components:
             not.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -14910,6 +14950,12 @@ components:
         - grid:servicerestart:request
         is_default: false
         mode: Example mode
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         last_updated_time: 1
         service: Example service
         members:
@@ -14962,6 +15008,20 @@ components:
           description: Comment for the Restart Group; maximum 256 characters.
           example: Example comment
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -20543,7 +20603,13 @@ components:
           auth_dns_latency_listen_on_source: Example auth_dns_latency_listen_on_source
           auth_dns_latency_listen_on_ip: Example auth_dns_latency_listen_on_ip
         use_enable_member_redirect: false
+        extattrs-:
+          key:
+            value: ""
         enable_lom: false
+        extattrs+:
+          key:
+            value: ""
         passive_ha_arp_enabled: false
         ipv6_static_routes:
         - address: Example address
@@ -20948,6 +21014,20 @@ components:
             \ then read-only API access is enabled."
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -24160,9 +24240,15 @@ components:
         ipv6addr: Example ipv6addr
         ipv6_retry_updates_interval: 1
         use_logic_filter_rules: false
+        extattrs-:
+          key:
+            value: ""
         enable_fingerprint: false
         ddns_retry_interval: 1
         ddns_use_option81: false
+        extattrs+:
+          key:
+            value: ""
         ipv6_recycle_leases: false
         use_email_list: false
         use_log_lease_events: false
@@ -24394,6 +24480,20 @@ components:
             \ receiver that was defined for the Grid member level."
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -25626,6 +25726,12 @@ components:
         use_rpz_disable_nsdname_nsip: false
         auto_sort_views: false
         enable_excluded_domain_names: false
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         use_copy_xfer_to_notify: false
         dns_query_source_address: Example dns_query_source_address
         use_enable_query_rewrite: false
@@ -26171,6 +26277,20 @@ components:
           items:
             type: string
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -28572,10 +28692,16 @@ components:
     Memberdfp:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
           key:
             value: ""
         is_dfp_override: false
+        extattrs+:
+          key:
+            value: ""
         _ref: _ref
         host_name: Example host_name
         dfp_forward_first: false
@@ -28588,6 +28714,20 @@ components:
             Cloud failed.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -30343,17 +30483,10 @@ components:
       description: The response format to update __GridCloudapiVm__ in object format.
       example:
         result:
-          availability_zone: Example availability_zone
-          tenant_name: Example tenant_name
-          extattrs:
-            key:
-              value: ""
           first_seen: 1
           vpc_name: Example vpc_name
           last_seen: 1
           vpc_id: Example vpc_id
-          network_count: 1
-          subnet_cidr: 1
           cloud_info:
             delegated_member:
               name: Example name
@@ -30366,19 +30499,32 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          extattrs-:
+            key:
+              value: ""
           hostname: Example hostname
           vm_type: Example vm_type
-          kernel_id: Example kernel_id
-          vpc_address: Example vpc_address
+          extattrs+:
+            key:
+              value: ""
           elastic_ip_address: Example elastic_ip_address
           vpc_cidr: 1
-          _ref: _ref
-          name: Example name
           operating_system: Example operating_system
-          subnet_id: Example subnet_id
-          comment: Example comment
           id: Example id
           primary_mac_address: Example primary_mac_address
+          availability_zone: Example availability_zone
+          tenant_name: Example tenant_name
+          extattrs:
+            key:
+              value: ""
+          network_count: 1
+          subnet_cidr: 1
+          kernel_id: Example kernel_id
+          vpc_address: Example vpc_address
+          _ref: _ref
+          name: Example name
+          subnet_id: Example subnet_id
+          comment: Example comment
           subnet_address: Example subnet_address
       properties:
         result:
@@ -30433,6 +30579,9 @@ components:
       example:
         result:
           enable_service: false
+          extattrs-:
+            key:
+              value: ""
           extattrs:
             key:
               value: ""
@@ -30443,6 +30592,9 @@ components:
           - remote_admin: Example remote_admin
             local_admin: Example local_admin
             is_remote: false
+          extattrs+:
+            key:
+              value: ""
           gateway_config:
             port: 1
             enable_proxy_service: false
@@ -30648,6 +30800,12 @@ components:
           - grid:servicerestart:request
           is_default: false
           mode: Example mode
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           last_updated_time: 1
           service: Example service
           members:
@@ -30718,6 +30876,12 @@ components:
           - grid:servicerestart:request
           is_default: false
           mode: Example mode
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           last_updated_time: 1
           service: Example service
           members:
@@ -32216,7 +32380,13 @@ components:
             auth_dns_latency_listen_on_source: Example auth_dns_latency_listen_on_source
             auth_dns_latency_listen_on_ip: Example auth_dns_latency_listen_on_ip
           use_enable_member_redirect: false
+          extattrs-:
+            key:
+              value: ""
           enable_lom: false
+          extattrs+:
+            key:
+              value: ""
           passive_ha_arp_enabled: false
           ipv6_static_routes:
           - address: Example address
@@ -32887,7 +33057,13 @@ components:
             auth_dns_latency_listen_on_source: Example auth_dns_latency_listen_on_source
             auth_dns_latency_listen_on_ip: Example auth_dns_latency_listen_on_ip
           use_enable_member_redirect: false
+          extattrs-:
+            key:
+              value: ""
           enable_lom: false
+          extattrs+:
+            key:
+              value: ""
           passive_ha_arp_enabled: false
           ipv6_static_routes:
           - address: Example address
@@ -33416,9 +33592,15 @@ components:
           ipv6addr: Example ipv6addr
           ipv6_retry_updates_interval: 1
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           enable_fingerprint: false
           ddns_retry_interval: 1
           ddns_use_option81: false
+          extattrs+:
+            key:
+              value: ""
           ipv6_recycle_leases: false
           use_email_list: false
           use_log_lease_events: false
@@ -33862,6 +34044,12 @@ components:
           use_rpz_disable_nsdname_nsip: false
           auto_sort_views: false
           enable_excluded_domain_names: false
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           use_copy_xfer_to_notify: false
           dns_query_source_address: Example dns_query_source_address
           use_enable_query_rewrite: false
@@ -34190,10 +34378,16 @@ components:
       description: The response format to create __Memberdfp__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
             key:
               value: ""
           is_dfp_override: false
+          extattrs+:
+            key:
+              value: ""
           _ref: _ref
           host_name: Example host_name
           dfp_forward_first: false
@@ -34214,10 +34408,16 @@ components:
       description: The response format to update __Memberdfp__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
             key:
               value: ""
           is_dfp_override: false
+          extattrs+:
+            key:
+              value: ""
           _ref: _ref
           host_name: Example host_name
           dfp_forward_first: false

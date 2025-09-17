@@ -6533,6 +6533,9 @@ components:
           traffic_capture: false
           enable_all: false
           ping6: false
+        extattrs-:
+          key:
+            value: ""
         cloud_show_commands:
           disable_all: false
           show_cloud_services_portal: false
@@ -6543,6 +6546,9 @@ components:
           enable_all: false
           set_license: false
           set_reporting_reset_license: false
+        extattrs+:
+          key:
+            value: ""
         dns_set_commands:
           set_max_recursion_queries: false
           set_monitor: false
@@ -6772,6 +6778,20 @@ components:
             admin connector level for users of this Admin Group.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -8791,7 +8811,13 @@ components:
     Adminrole:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         disable: false
@@ -8810,6 +8836,20 @@ components:
           description: The disable flag.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -8860,6 +8900,9 @@ components:
         - admin_groups
         - admin_groups
         auth_method: Example auth_method
+        extattrs-:
+          key:
+            value: ""
         password: Example password
         ca_certificate_issuer: Example ca_certificate_issuer
         ssh_keys:
@@ -8869,6 +8912,9 @@ components:
         - key_name: Example key_name
           key_type: Example key_type
           key_value: Example key_value
+        extattrs+:
+          key:
+            value: ""
         disable: false
         _ref: _ref
         name: Example name
@@ -8932,6 +8978,20 @@ components:
             for this user.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -9449,8 +9509,14 @@ components:
         succeeded_notify_to: Example succeeded_notify_to
         enable_failed_notify: false
         enable_approval_notify: false
+        extattrs-:
+          key:
+            value: ""
         rejected_notify_to: Example rejected_notify_to
         approved_notify_to: Example approved_notify_to
+        extattrs+:
+          key:
+            value: ""
         enable_succeeded_notify: false
         enable_approved_notify: false
         _ref: _ref
@@ -9523,6 +9589,20 @@ components:
           description: Determines whether succeeded task notifications are enabled.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -10598,7 +10678,13 @@ components:
       additionalProperties: false
       example:
         authentication_password: Example authentication_password
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         privacy_protocol: Example privacy_protocol
@@ -10634,6 +10720,20 @@ components:
           description: Determines if SNMPv3 user is disabled or not.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -10685,8 +10785,14 @@ components:
     Ftpuser:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         password: Example password
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         home_dir: Example home_dir
@@ -10704,6 +10810,20 @@ components:
           example: false
           type: boolean
           writeOnly: true
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -11601,6 +11721,9 @@ components:
             traffic_capture: false
             enable_all: false
             ping6: false
+          extattrs-:
+            key:
+              value: ""
           cloud_show_commands:
             disable_all: false
             show_cloud_services_portal: false
@@ -11611,6 +11734,9 @@ components:
             enable_all: false
             set_license: false
             set_reporting_reset_license: false
+          extattrs+:
+            key:
+              value: ""
           dns_set_commands:
             set_max_recursion_queries: false
             set_monitor: false
@@ -12029,6 +12155,9 @@ components:
             traffic_capture: false
             enable_all: false
             ping6: false
+          extattrs-:
+            key:
+              value: ""
           cloud_show_commands:
             disable_all: false
             show_cloud_services_portal: false
@@ -12039,6 +12168,9 @@ components:
             enable_all: false
             set_license: false
             set_reporting_reset_license: false
+          extattrs+:
+            key:
+              value: ""
           dns_set_commands:
             set_max_recursion_queries: false
             set_monitor: false
@@ -12216,7 +12348,13 @@ components:
       description: The response format to create __Adminrole__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           disable: false
@@ -12240,7 +12378,13 @@ components:
       description: The response format to update __Adminrole__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           disable: false
@@ -12277,6 +12421,9 @@ components:
           - admin_groups
           - admin_groups
           auth_method: Example auth_method
+          extattrs-:
+            key:
+              value: ""
           password: Example password
           ca_certificate_issuer: Example ca_certificate_issuer
           ssh_keys:
@@ -12286,6 +12433,9 @@ components:
           - key_name: Example key_name
             key_type: Example key_type
             key_value: Example key_value
+          extattrs+:
+            key:
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -12322,6 +12472,9 @@ components:
           - admin_groups
           - admin_groups
           auth_method: Example auth_method
+          extattrs-:
+            key:
+              value: ""
           password: Example password
           ca_certificate_issuer: Example ca_certificate_issuer
           ssh_keys:
@@ -12331,6 +12484,9 @@ components:
           - key_name: Example key_name
             key_type: Example key_type
             key_value: Example key_value
+          extattrs+:
+            key:
+              value: ""
           disable: false
           _ref: _ref
           name: Example name
@@ -12501,8 +12657,14 @@ components:
           succeeded_notify_to: Example succeeded_notify_to
           enable_failed_notify: false
           enable_approval_notify: false
+          extattrs-:
+            key:
+              value: ""
           rejected_notify_to: Example rejected_notify_to
           approved_notify_to: Example approved_notify_to
+          extattrs+:
+            key:
+              value: ""
           enable_succeeded_notify: false
           enable_approved_notify: false
           _ref: _ref
@@ -12541,8 +12703,14 @@ components:
           succeeded_notify_to: Example succeeded_notify_to
           enable_failed_notify: false
           enable_approval_notify: false
+          extattrs-:
+            key:
+              value: ""
           rejected_notify_to: Example rejected_notify_to
           approved_notify_to: Example approved_notify_to
+          extattrs+:
+            key:
+              value: ""
           enable_succeeded_notify: false
           enable_approved_notify: false
           _ref: _ref
@@ -13073,7 +13241,13 @@ components:
       example:
         result:
           authentication_password: Example authentication_password
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           privacy_protocol: Example privacy_protocol
@@ -13101,7 +13275,13 @@ components:
       example:
         result:
           authentication_password: Example authentication_password
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           privacy_protocol: Example privacy_protocol
@@ -13129,8 +13309,14 @@ components:
       description: The response format to create __Ftpuser__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           password: Example password
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           home_dir: Example home_dir
@@ -13155,8 +13341,14 @@ components:
       description: The response format to update __Ftpuser__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           password: Example password
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           home_dir: Example home_dir

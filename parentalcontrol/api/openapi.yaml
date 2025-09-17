@@ -2227,6 +2227,12 @@ components:
         - name: Example name
         - name: Example name
         blocking_ipv4_vip2: Example blocking_ipv4_vip2
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         members:
         - name: Example name
           type: Example type
@@ -2329,6 +2335,20 @@ components:
             list.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -2826,6 +2846,12 @@ components:
           - name: Example name
           - name: Example name
           blocking_ipv4_vip2: Example blocking_ipv4_vip2
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           members:
           - name: Example name
             type: Example type
@@ -2901,6 +2927,12 @@ components:
           - name: Example name
           - name: Example name
           blocking_ipv4_vip2: Example blocking_ipv4_vip2
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           members:
           - name: Example name
             type: Example type

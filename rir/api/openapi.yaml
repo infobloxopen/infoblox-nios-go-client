@@ -805,8 +805,14 @@ components:
     RirOrganization:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         password: Example password
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         _ref: _ref
@@ -819,6 +825,20 @@ components:
         _ref:
           description: The reference to the object.
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -921,8 +941,14 @@ components:
       description: The response format to create __RirOrganization__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           password: Example password
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref
@@ -948,8 +974,14 @@ components:
       description: The response format to update __RirOrganization__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           password: Example password
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           _ref: _ref

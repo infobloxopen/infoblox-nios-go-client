@@ -5831,17 +5831,29 @@ components:
       additionalProperties: false
       example:
         network_view: Example network_view
+        is_invalid_mac: false
+        objects: Example objects
+        usage:
+        - usage
+        - usage
+        network: Example network
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
+        mac_address: Example mac_address
+        discover_now_status: Example discover_now_status
+        fingerprint: Example fingerprint
+        is_conflict: false
+        dhcp_client_identifier: Example dhcp_client_identifier
         types:
         - types
         - types
         extattrs:
           key:
             value: ""
-        is_invalid_mac: false
-        objects: Example objects
-        usage:
-        - usage
-        - usage
         discovered_data:
           vport_name: Example vport_name
           netbios_name: Example netbios_name
@@ -5942,22 +5954,16 @@ components:
         lease_state: Example lease_state
         reserved_port: Example reserved_port
         ip_address: Example ip_address
-        network: Example network
         ms_ad_user_data:
           active_users_count: 1
         names:
         - names
         - names
-        mac_address: Example mac_address
         _ref: _ref
-        discover_now_status: Example discover_now_status
-        fingerprint: Example fingerprint
         conflict_types:
         - conflict_types
         - conflict_types
         comment: Example comment
-        is_conflict: false
-        dhcp_client_identifier: Example dhcp_client_identifier
         status: Example status
         username: Example username
       properties:
@@ -6003,6 +6009,20 @@ components:
           type: string
         discovered_data:
           $ref: '#/components/schemas/Ipv4addressDiscoveredData'
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -6918,11 +6938,17 @@ components:
         reserved_port: Example reserved_port
         ip_address: Example ip_address
         network: Example network
+        extattrs-:
+          key:
+            value: ""
         ms_ad_user_data:
           active_users_count: 1
         names:
         - names
         - names
+        extattrs+:
+          key:
+            value: ""
         _ref: _ref
         discover_now_status: Example discover_now_status
         fingerprint: Example fingerprint
@@ -6975,6 +7001,20 @@ components:
           example: Example duid
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -7999,8 +8039,14 @@ components:
         rir_registration_status: Example rir_registration_status
         network: Network_network
         use_logic_filter_rules: false
+        extattrs-:
+          key:
+            value: ""
         use_subscribe_settings: false
         ddns_use_option81: false
+        extattrs+:
+          key:
+            value: ""
         netmask: 1
         discover_now_status: Example discover_now_status
         mgm_private_overridable: false
@@ -8279,6 +8325,20 @@ components:
             type: string
           readOnly: true
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -9747,8 +9807,14 @@ components:
         rir_registration_status: Example rir_registration_status
         network: Networkcontainer_network
         use_logic_filter_rules: false
+        extattrs-:
+          key:
+            value: ""
         use_subscribe_settings: false
         ddns_use_option81: false
+        extattrs+:
+          key:
+            value: ""
         discover_now_status: Example discover_now_status
         mgm_private_overridable: false
         use_email_list: false
@@ -9935,6 +10001,20 @@ components:
             type: string
           readOnly: true
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -11138,7 +11218,13 @@ components:
         enable_ddns: false
         recycle_leases: false
         use_logic_filter_rules: false
+        extattrs-:
+          key:
+            value: ""
         ddns_use_option81: false
+        extattrs+:
+          key:
+            value: ""
         netmask: 1
         pxe_lease_time: 1
         use_email_list: false
@@ -11288,6 +11374,20 @@ components:
           description: Determines if DHCP threshold warnings are send through SNMP.
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -11758,6 +11858,9 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         is_default: false
+        extattrs-:
+          key:
+            value: ""
         internal_forward_zones:
         - zone_auth
         - zone_auth
@@ -11780,6 +11883,9 @@ components:
           gss_tsig_dns_principal: Example gss_tsig_dns_principal
           server_address: Example server_address
           tsig_key_name: Example tsig_key_name
+        extattrs+:
+          key:
+            value: ""
         mgm_private: false
         _ref: _ref
         ddns_dns_view: Example ddns_dns_view
@@ -11837,6 +11943,20 @@ components:
           items:
             $ref: '#/components/schemas/NetworkviewDdnsZonePrimaries'
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -12367,7 +12487,13 @@ components:
         network: Ipv6network_network
         recycle_leases: false
         use_logic_filter_rules: false
+        extattrs-:
+          key:
+            value: ""
         use_subscribe_settings: false
+        extattrs+:
+          key:
+            value: ""
         use_domain_name: false
         discover_now_status: Example discover_now_status
         discovered_bgp_as: Example discovered_bgp_as
@@ -12603,6 +12729,20 @@ components:
             type: string
           readOnly: true
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -13771,7 +13911,13 @@ components:
         enable_ddns: false
         network: Ipv6networkcontainer_network
         use_logic_filter_rules: false
+        extattrs-:
+          key:
+            value: ""
         use_subscribe_settings: false
+        extattrs+:
+          key:
+            value: ""
         discover_now_status: Example discover_now_status
         mgm_private_overridable: false
         valid_lifetime: 1
@@ -13943,6 +14089,20 @@ components:
             type: string
           readOnly: true
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -14918,6 +15078,12 @@ components:
         recycle_leases: false
         use_logic_filter_rules: false
         domain_name: Example domain_name
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         use_ddns_domainname: false
         use_domain_name: false
         members:
@@ -15059,6 +15225,20 @@ components:
             \ the same Grid, and to external DNS servers."
           example: false
           type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -15437,11 +15617,17 @@ components:
         extattrs:
           key:
             value: ""
+        description: Example description
+        extattrs-:
+          key:
+            value: ""
+        extattrs+:
+          key:
+            value: ""
         reserved: false
         contact: Example contact
         _ref: _ref
         name: Example name
-        description: Example description
         comment: Example comment
         id: 1
         department: Example department
@@ -15480,6 +15666,20 @@ components:
             \ longer VLAN names."
           example: Example description
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -15540,7 +15740,13 @@ components:
     Vlanview:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         start_vlan_id: 1
@@ -15569,6 +15775,20 @@ components:
           example: 1
           format: int64
           type: integer
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -15621,7 +15841,13 @@ components:
     Vlanrange:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
+          key:
+            value: ""
+        extattrs+:
           key:
             value: ""
         start_vlan_id: 1
@@ -15652,6 +15878,20 @@ components:
           example: 1
           format: int64
           type: integer
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -15731,7 +15971,13 @@ components:
         dns_prefix: Example dns_prefix
         reverse: false
         ttl: 1
+        extattrs-:
+          key:
+            value: ""
         view: Example view
+        extattrs+:
+          key:
+            value: ""
         zone: Example zone
         disable: false
         _ref: _ref
@@ -15764,6 +16010,20 @@ components:
           description: The last IP address in the address range for the bulk host.
           example: Example end_addr
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -16393,12 +16653,18 @@ components:
     Superhost:
       additionalProperties: false
       example:
+        extattrs-:
+          key:
+            value: ""
         extattrs:
           key:
             value: ""
         dhcp_associated_objects:
         - fixedaddress
         - fixedaddress
+        extattrs+:
+          key:
+            value: ""
         delete_associated_objects: false
         _ref: _ref
         name: Example name
@@ -16446,6 +16712,20 @@ components:
             - record:a
             type: string
           type: array
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
         extattrs:
           additionalProperties:
             $ref: '#/components/schemas/ExtAttrs'
@@ -16661,17 +16941,29 @@ components:
       example:
         result:
           network_view: Example network_view
+          is_invalid_mac: false
+          objects: Example objects
+          usage:
+          - usage
+          - usage
+          network: Example network
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
+          mac_address: Example mac_address
+          discover_now_status: Example discover_now_status
+          fingerprint: Example fingerprint
+          is_conflict: false
+          dhcp_client_identifier: Example dhcp_client_identifier
           types:
           - types
           - types
           extattrs:
             key:
               value: ""
-          is_invalid_mac: false
-          objects: Example objects
-          usage:
-          - usage
-          - usage
           discovered_data:
             vport_name: Example vport_name
             netbios_name: Example netbios_name
@@ -16772,22 +17064,16 @@ components:
           lease_state: Example lease_state
           reserved_port: Example reserved_port
           ip_address: Example ip_address
-          network: Example network
           ms_ad_user_data:
             active_users_count: 1
           names:
           - names
           - names
-          mac_address: Example mac_address
           _ref: _ref
-          discover_now_status: Example discover_now_status
-          fingerprint: Example fingerprint
           conflict_types:
           - conflict_types
           - conflict_types
           comment: Example comment
-          is_conflict: false
-          dhcp_client_identifier: Example dhcp_client_identifier
           status: Example status
           username: Example username
       properties:
@@ -16929,11 +17215,17 @@ components:
           reserved_port: Example reserved_port
           ip_address: Example ip_address
           network: Example network
+          extattrs-:
+            key:
+              value: ""
           ms_ad_user_data:
             active_users_count: 1
           names:
           - names
           - names
+          extattrs+:
+            key:
+              value: ""
           _ref: _ref
           discover_now_status: Example discover_now_status
           fingerprint: Example fingerprint
@@ -17232,8 +17524,14 @@ components:
           rir_registration_status: Example rir_registration_status
           network: Network_network
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           use_subscribe_settings: false
           ddns_use_option81: false
+          extattrs+:
+            key:
+              value: ""
           netmask: 1
           discover_now_status: Example discover_now_status
           mgm_private_overridable: false
@@ -17514,8 +17812,14 @@ components:
           rir_registration_status: Example rir_registration_status
           network: Network_network
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           use_subscribe_settings: false
           ddns_use_option81: false
+          extattrs+:
+            key:
+              value: ""
           netmask: 1
           discover_now_status: Example discover_now_status
           mgm_private_overridable: false
@@ -17800,8 +18104,14 @@ components:
           rir_registration_status: Example rir_registration_status
           network: Networkcontainer_network
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           use_subscribe_settings: false
           ddns_use_option81: false
+          extattrs+:
+            key:
+              value: ""
           discover_now_status: Example discover_now_status
           mgm_private_overridable: false
           use_email_list: false
@@ -18044,8 +18354,14 @@ components:
           rir_registration_status: Example rir_registration_status
           network: Networkcontainer_network
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           use_subscribe_settings: false
           ddns_use_option81: false
+          extattrs+:
+            key:
+              value: ""
           discover_now_status: Example discover_now_status
           mgm_private_overridable: false
           use_email_list: false
@@ -18161,7 +18477,13 @@ components:
           enable_ddns: false
           recycle_leases: false
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           ddns_use_option81: false
+          extattrs+:
+            key:
+              value: ""
           netmask: 1
           pxe_lease_time: 1
           use_email_list: false
@@ -18286,7 +18608,13 @@ components:
           enable_ddns: false
           recycle_leases: false
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           ddns_use_option81: false
+          extattrs+:
+            key:
+              value: ""
           netmask: 1
           pxe_lease_time: 1
           use_email_list: false
@@ -18388,6 +18716,9 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           is_default: false
+          extattrs-:
+            key:
+              value: ""
           internal_forward_zones:
           - zone_auth
           - zone_auth
@@ -18410,6 +18741,9 @@ components:
             gss_tsig_dns_principal: Example gss_tsig_dns_principal
             server_address: Example server_address
             tsig_key_name: Example tsig_key_name
+          extattrs+:
+            key:
+              value: ""
           mgm_private: false
           _ref: _ref
           ddns_dns_view: Example ddns_dns_view
@@ -18495,6 +18829,9 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           is_default: false
+          extattrs-:
+            key:
+              value: ""
           internal_forward_zones:
           - zone_auth
           - zone_auth
@@ -18517,6 +18854,9 @@ components:
             gss_tsig_dns_principal: Example gss_tsig_dns_principal
             server_address: Example server_address
             tsig_key_name: Example tsig_key_name
+          extattrs+:
+            key:
+              value: ""
           mgm_private: false
           _ref: _ref
           ddns_dns_view: Example ddns_dns_view
@@ -18747,7 +19087,13 @@ components:
           network: Ipv6network_network
           recycle_leases: false
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           use_subscribe_settings: false
+          extattrs+:
+            key:
+              value: ""
           use_domain_name: false
           discover_now_status: Example discover_now_status
           discovered_bgp_as: Example discovered_bgp_as
@@ -18978,7 +19324,13 @@ components:
           network: Ipv6network_network
           recycle_leases: false
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           use_subscribe_settings: false
+          extattrs+:
+            key:
+              value: ""
           use_domain_name: false
           discover_now_status: Example discover_now_status
           discovered_bgp_as: Example discovered_bgp_as
@@ -19225,7 +19577,13 @@ components:
           enable_ddns: false
           network: Ipv6networkcontainer_network
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           use_subscribe_settings: false
+          extattrs+:
+            key:
+              value: ""
           discover_now_status: Example discover_now_status
           mgm_private_overridable: false
           valid_lifetime: 1
@@ -19428,7 +19786,13 @@ components:
           enable_ddns: false
           network: Ipv6networkcontainer_network
           use_logic_filter_rules: false
+          extattrs-:
+            key:
+              value: ""
           use_subscribe_settings: false
+          extattrs+:
+            key:
+              value: ""
           discover_now_status: Example discover_now_status
           mgm_private_overridable: false
           valid_lifetime: 1
@@ -19516,6 +19880,12 @@ components:
           recycle_leases: false
           use_logic_filter_rules: false
           domain_name: Example domain_name
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           use_ddns_domainname: false
           use_domain_name: false
           members:
@@ -19610,6 +19980,12 @@ components:
           recycle_leases: false
           use_logic_filter_rules: false
           domain_name: Example domain_name
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           use_ddns_domainname: false
           use_domain_name: false
           members:
@@ -19712,11 +20088,17 @@ components:
           extattrs:
             key:
               value: ""
+          description: Example description
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           reserved: false
           contact: Example contact
           _ref: _ref
           name: Example name
-          description: Example description
           comment: Example comment
           id: 1
           department: Example department
@@ -19745,11 +20127,17 @@ components:
           extattrs:
             key:
               value: ""
+          description: Example description
+          extattrs-:
+            key:
+              value: ""
+          extattrs+:
+            key:
+              value: ""
           reserved: false
           contact: Example contact
           _ref: _ref
           name: Example name
-          description: Example description
           comment: Example comment
           id: 1
           department: Example department
@@ -19775,7 +20163,13 @@ components:
       description: The response format to create __Vlanview__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           start_vlan_id: 1
@@ -19803,7 +20197,13 @@ components:
       description: The response format to update __Vlanview__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           start_vlan_id: 1
@@ -19832,7 +20232,13 @@ components:
       description: The response format to create __Vlanrange__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           start_vlan_id: 1
@@ -19861,7 +20267,13 @@ components:
       description: The response format to update __Vlanrange__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
+            key:
+              value: ""
+          extattrs+:
             key:
               value: ""
           start_vlan_id: 1
@@ -19914,7 +20326,13 @@ components:
           dns_prefix: Example dns_prefix
           reverse: false
           ttl: 1
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           disable: false
           _ref: _ref
@@ -19964,7 +20382,13 @@ components:
           dns_prefix: Example dns_prefix
           reverse: false
           ttl: 1
+          extattrs-:
+            key:
+              value: ""
           view: Example view
+          extattrs+:
+            key:
+              value: ""
           zone: Example zone
           disable: false
           _ref: _ref
@@ -20143,12 +20567,18 @@ components:
       description: The response format to create __Superhost__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
             key:
               value: ""
           dhcp_associated_objects:
           - fixedaddress
           - fixedaddress
+          extattrs+:
+            key:
+              value: ""
           delete_associated_objects: false
           _ref: _ref
           name: Example name
@@ -20174,12 +20604,18 @@ components:
       description: The response format to update __Superhost__ in object format.
       example:
         result:
+          extattrs-:
+            key:
+              value: ""
           extattrs:
             key:
               value: ""
           dhcp_associated_objects:
           - fixedaddress
           - fixedaddress
+          extattrs+:
+            key:
+              value: ""
           delete_associated_objects: false
           _ref: _ref
           name: Example name

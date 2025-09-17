@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | The comment for the DTC Pool; maximum 256 characters. | [optional] 
 **ConsolidatedMonitors** | Pointer to [**[]DtcPoolConsolidatedMonitors**](DtcPoolConsolidatedMonitors.md) | List of monitors and associated members statuses of which are shared across members and consolidated in server availability determination. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DTC Pool is disabled or not. When this is set to False, the fixed address is enabled. | [optional] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Health** | Pointer to [**DtcPoolHealth**](DtcPoolHealth.md) |  | [optional] 
 **LbAlternateMethod** | Pointer to **string** | The alternate load balancing method. Use this to select a method type from the pool if the preferred method does not return any results. | [optional] 
@@ -194,6 +196,56 @@ SetDisable sets Disable field to given value.
 `func (o *GetDtcPoolResponse) HasDisable() bool`
 
 HasDisable returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *GetDtcPoolResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetDtcPoolResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetDtcPoolResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetDtcPoolResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetDtcPoolResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetDtcPoolResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetDtcPoolResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetDtcPoolResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
 
 ### GetExtAttrs
 
