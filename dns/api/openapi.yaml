@@ -3144,6 +3144,17 @@ paths:
       x-tf-resource: dns_record_host
       x-tf-datasource: dns_record_host
       x-sdk-default-ext-attrs: true
+      x-sdk-post-function-call-nested:
+      - arrayField: Ipv4addrs
+        elementVar: ipv4addr
+        targetField: Ipv4addr
+        funcName: Ipv4addr
+        typeName: RecordHostIpv4addrIpv4addr
+      - arrayField: Ipv6addrs
+        elementVar: ipv6addr
+        targetField: Ipv6addr
+        funcName: Ipv6addr
+        typeName: RecordHostIpv6addrIpv6addr
   /record:host/{reference}:
     delete:
       description: Deletes a specific record:host object by reference
