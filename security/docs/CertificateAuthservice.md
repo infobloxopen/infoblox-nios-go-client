@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **OcspResponders** | Pointer to [**[]CertificateAuthserviceOcspResponders**](CertificateAuthserviceOcspResponders.md) | An ordered list of OCSP responders that are part of the certificate authentication service. | [optional] 
 **RecoveryInterval** | Pointer to **int64** | The period of time the appliance waits before it attempts to contact a responder that is out of service again. The value must be between 1 and 600 seconds. | [optional] 
 **RemoteLookupPassword** | Pointer to **string** | The password for the service account. | [optional] 
-**RemoteLookupService** | Pointer to **string** | The service that will be used for remote lookup. | [optional] 
+**RemoteLookupService** | Pointer to [**CertificateAuthserviceRemoteLookupService**](CertificateAuthserviceRemoteLookupService.md) |  | [optional] 
 **RemoteLookupUsername** | Pointer to **string** | The username for the service account. | [optional] 
 **ResponseTimeout** | Pointer to **int64** | The validation timeout period in milliseconds. | [optional] 
 **TrustModel** | Pointer to **string** | The OCSP trust model. | [optional] 
@@ -369,20 +369,20 @@ HasRemoteLookupPassword returns a boolean if a field has been set.
 
 ### GetRemoteLookupService
 
-`func (o *CertificateAuthservice) GetRemoteLookupService() string`
+`func (o *CertificateAuthservice) GetRemoteLookupService() CertificateAuthserviceRemoteLookupService`
 
 GetRemoteLookupService returns the RemoteLookupService field if non-nil, zero value otherwise.
 
 ### GetRemoteLookupServiceOk
 
-`func (o *CertificateAuthservice) GetRemoteLookupServiceOk() (*string, bool)`
+`func (o *CertificateAuthservice) GetRemoteLookupServiceOk() (*CertificateAuthserviceRemoteLookupService, bool)`
 
 GetRemoteLookupServiceOk returns a tuple with the RemoteLookupService field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemoteLookupService
 
-`func (o *CertificateAuthservice) SetRemoteLookupService(v string)`
+`func (o *CertificateAuthservice) SetRemoteLookupService(v CertificateAuthserviceRemoteLookupService)`
 
 SetRemoteLookupService sets RemoteLookupService field to given value.
 

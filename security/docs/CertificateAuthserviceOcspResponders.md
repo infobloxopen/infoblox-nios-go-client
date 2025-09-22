@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Port** | Pointer to **int64** | The port used for connecting. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the OCSP authentication responder. | [optional] 
 **Disabled** | Pointer to **bool** | Determines if this OCSP authentication responder is disabled. | [optional] 
-**Certificate** | Pointer to **string** | The reference to the OCSP responder certificate. | [optional] [readonly] 
+**Certificate** | Pointer to [**CertificateAuthserviceOcspRespondersCertificate**](CertificateAuthserviceOcspRespondersCertificate.md) |  | [optional] 
 **CertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop. | [optional] 
 
 ## Methods
@@ -132,20 +132,20 @@ HasDisabled returns a boolean if a field has been set.
 
 ### GetCertificate
 
-`func (o *CertificateAuthserviceOcspResponders) GetCertificate() string`
+`func (o *CertificateAuthserviceOcspResponders) GetCertificate() CertificateAuthserviceOcspRespondersCertificate`
 
 GetCertificate returns the Certificate field if non-nil, zero value otherwise.
 
 ### GetCertificateOk
 
-`func (o *CertificateAuthserviceOcspResponders) GetCertificateOk() (*string, bool)`
+`func (o *CertificateAuthserviceOcspResponders) GetCertificateOk() (*CertificateAuthserviceOcspRespondersCertificate, bool)`
 
 GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertificate
 
-`func (o *CertificateAuthserviceOcspResponders) SetCertificate(v string)`
+`func (o *CertificateAuthserviceOcspResponders) SetCertificate(v CertificateAuthserviceOcspRespondersCertificate)`
 
 SetCertificate sets Certificate field to given value.
 
