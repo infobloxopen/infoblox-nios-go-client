@@ -209,6 +209,72 @@ func (a *RecordHostAPIService) CreateExecute(r RecordHostAPICreateRequest) (*Cre
 			}
 		}
 	}
+	if r.recordHost != nil {
+		bodyForFuncCall := *r.recordHost
+		if bodyForFuncCall.Ipv4addrs != nil {
+			// Process each element in the array Ipv4addrs
+			for i := range bodyForFuncCall.Ipv4addrs {
+				ipv4addr := &bodyForFuncCall.Ipv4addrs[i]
+
+				if ipv4addr.FuncCall != nil {
+					if ipv4addr.FuncCall.AttributeName == "" {
+						return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+					}
+
+					if ipv4addr.Ipv4addr != nil && ipv4addr.Ipv4addr.String != nil {
+						return localVarReturnValue, nil, internal.ReportError("Ipv4addr cannot be provided when function call is used")
+					} else {
+						var l RecordHostIpv4addrIpv4addr
+						var m RecordHostIpv4addrIpv4addrOneOf
+						m.ObjectFunction = ipv4addr.FuncCall.ObjectFunction
+						m.Parameters = ipv4addr.FuncCall.Parameters
+						m.ResultField = ipv4addr.FuncCall.ResultField
+						m.Object = ipv4addr.FuncCall.Object
+						m.ObjectParameters = ipv4addr.FuncCall.ObjectParameters
+
+						l.RecordHostIpv4addrIpv4addrOneOf = &m
+						l.String = nil
+						ipv4addr.Ipv4addr = &l
+						ipv4addr.FuncCall = nil
+					}
+				}
+			}
+		}
+		r.recordHost = &bodyForFuncCall
+	}
+	if r.recordHost != nil {
+		bodyForFuncCall := *r.recordHost
+		if bodyForFuncCall.Ipv6addrs != nil {
+			// Process each element in the array Ipv6addrs
+			for i := range bodyForFuncCall.Ipv6addrs {
+				ipv6addr := &bodyForFuncCall.Ipv6addrs[i]
+
+				if ipv6addr.FuncCall != nil {
+					if ipv6addr.FuncCall.AttributeName == "" {
+						return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+					}
+
+					if ipv6addr.Ipv6addr != nil && ipv6addr.Ipv6addr.String != nil {
+						return localVarReturnValue, nil, internal.ReportError("Ipv6addr cannot be provided when function call is used")
+					} else {
+						var l RecordHostIpv6addrIpv6addr
+						var m RecordHostIpv6addrIpv6addrOneOf
+						m.ObjectFunction = ipv6addr.FuncCall.ObjectFunction
+						m.Parameters = ipv6addr.FuncCall.Parameters
+						m.ResultField = ipv6addr.FuncCall.ResultField
+						m.Object = ipv6addr.FuncCall.Object
+						m.ObjectParameters = ipv6addr.FuncCall.ObjectParameters
+
+						l.RecordHostIpv6addrIpv6addrOneOf = &m
+						l.String = nil
+						ipv6addr.Ipv6addr = &l
+						ipv6addr.FuncCall = nil
+					}
+				}
+			}
+		}
+		r.recordHost = &bodyForFuncCall
+	}
 	// body params
 	localVarPostBody = r.recordHost
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
