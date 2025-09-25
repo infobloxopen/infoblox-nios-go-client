@@ -6678,8 +6678,10 @@ components:
         name: Example name
         user_access:
         - address: Example address
+          _ref: Example ACL reference
           permission: Example permission
         - address: Example address
+          _ref: Example ACL reference
           permission: Example permission
         saml_setting:
           auto_create_user: false
@@ -8770,6 +8772,7 @@ components:
     AdmingroupUserAccess:
       example:
         address: Example address
+        _ref: Example ACL reference
         permission: Example permission
       properties:
         address:
@@ -8782,6 +8785,10 @@ components:
           - ALLOW
           - DENY
           example: Example permission
+          type: string
+        _ref:
+          description: The reference of the ACL object.
+          example: Example ACL reference
           type: string
       type: object
     ListAdmingroupResponse:
@@ -11866,8 +11873,10 @@ components:
           name: Example name
           user_access:
           - address: Example address
+            _ref: Example ACL reference
             permission: Example permission
           - address: Example address
+            _ref: Example ACL reference
             permission: Example permission
           saml_setting:
             auto_create_user: false
@@ -12300,8 +12309,10 @@ components:
           name: Example name
           user_access:
           - address: Example address
+            _ref: Example ACL reference
             permission: Example permission
           - address: Example address
+            _ref: Example ACL reference
             permission: Example permission
           saml_setting:
             auto_create_user: false

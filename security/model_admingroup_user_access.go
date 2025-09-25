@@ -22,7 +22,9 @@ type AdmingroupUserAccess struct {
 	// The address this rule applies to or \"Any\".
 	Address *string `json:"address,omitempty"`
 	// The permission to use for this address.
-	Permission           *string `json:"permission,omitempty"`
+	Permission *string `json:"permission,omitempty"`
+	// The reference of the ACL object.
+	Ref                  *string `json:"_ref,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +111,38 @@ func (o *AdmingroupUserAccess) SetPermission(v string) {
 	o.Permission = &v
 }
 
+// GetRef returns the Ref field value if set, zero value otherwise.
+func (o *AdmingroupUserAccess) GetRef() string {
+	if o == nil || IsNil(o.Ref) {
+		var ret string
+		return ret
+	}
+	return *o.Ref
+}
+
+// GetRefOk returns a tuple with the Ref field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdmingroupUserAccess) GetRefOk() (*string, bool) {
+	if o == nil || IsNil(o.Ref) {
+		return nil, false
+	}
+	return o.Ref, true
+}
+
+// HasRef returns a boolean if a field has been set.
+func (o *AdmingroupUserAccess) HasRef() bool {
+	if o != nil && !IsNil(o.Ref) {
+		return true
+	}
+
+	return false
+}
+
+// SetRef gets a reference to the given string and assigns it to the Ref field.
+func (o *AdmingroupUserAccess) SetRef(v string) {
+	o.Ref = &v
+}
+
 func (o AdmingroupUserAccess) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -124,6 +158,9 @@ func (o AdmingroupUserAccess) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Permission) {
 		toSerialize["permission"] = o.Permission
+	}
+	if !IsNil(o.Ref) {
+		toSerialize["_ref"] = o.Ref
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -149,6 +186,7 @@ func (o *AdmingroupUserAccess) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "permission")
+		delete(additionalProperties, "_ref")
 		o.AdditionalProperties = additionalProperties
 	}
 
