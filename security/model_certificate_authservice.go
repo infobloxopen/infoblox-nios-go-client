@@ -44,9 +44,8 @@ type CertificateAuthservice struct {
 	// The period of time the appliance waits before it attempts to contact a responder that is out of service again. The value must be between 1 and 600 seconds.
 	RecoveryInterval *int64 `json:"recovery_interval,omitempty"`
 	// The password for the service account.
-	RemoteLookupPassword *string `json:"remote_lookup_password,omitempty"`
-	// The service that will be used for remote lookup.
-	RemoteLookupService *string `json:"remote_lookup_service,omitempty"`
+	RemoteLookupPassword *string                                    `json:"remote_lookup_password,omitempty"`
+	RemoteLookupService  *CertificateAuthserviceRemoteLookupService `json:"remote_lookup_service,omitempty"`
 	// The username for the service account.
 	RemoteLookupUsername *string `json:"remote_lookup_username,omitempty"`
 	// The validation timeout period in milliseconds.
@@ -491,9 +490,9 @@ func (o *CertificateAuthservice) SetRemoteLookupPassword(v string) {
 }
 
 // GetRemoteLookupService returns the RemoteLookupService field value if set, zero value otherwise.
-func (o *CertificateAuthservice) GetRemoteLookupService() string {
+func (o *CertificateAuthservice) GetRemoteLookupService() CertificateAuthserviceRemoteLookupService {
 	if o == nil || IsNil(o.RemoteLookupService) {
-		var ret string
+		var ret CertificateAuthserviceRemoteLookupService
 		return ret
 	}
 	return *o.RemoteLookupService
@@ -501,7 +500,7 @@ func (o *CertificateAuthservice) GetRemoteLookupService() string {
 
 // GetRemoteLookupServiceOk returns a tuple with the RemoteLookupService field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateAuthservice) GetRemoteLookupServiceOk() (*string, bool) {
+func (o *CertificateAuthservice) GetRemoteLookupServiceOk() (*CertificateAuthserviceRemoteLookupService, bool) {
 	if o == nil || IsNil(o.RemoteLookupService) {
 		return nil, false
 	}
@@ -517,8 +516,8 @@ func (o *CertificateAuthservice) HasRemoteLookupService() bool {
 	return false
 }
 
-// SetRemoteLookupService gets a reference to the given string and assigns it to the RemoteLookupService field.
-func (o *CertificateAuthservice) SetRemoteLookupService(v string) {
+// SetRemoteLookupService gets a reference to the given CertificateAuthserviceRemoteLookupService and assigns it to the RemoteLookupService field.
+func (o *CertificateAuthservice) SetRemoteLookupService(v CertificateAuthserviceRemoteLookupService) {
 	o.RemoteLookupService = &v
 }
 

@@ -26,9 +26,8 @@ type CertificateAuthserviceOcspResponders struct {
 	// The descriptive comment for the OCSP authentication responder.
 	Comment *string `json:"comment,omitempty"`
 	// Determines if this OCSP authentication responder is disabled.
-	Disabled *bool `json:"disabled,omitempty"`
-	// The reference to the OCSP responder certificate.
-	Certificate *string `json:"certificate,omitempty"`
+	Disabled    *bool                                            `json:"disabled,omitempty"`
+	Certificate *CertificateAuthserviceOcspRespondersCertificate `json:"certificate,omitempty"`
 	// The token returned by the uploadinit function call in object fileop.
 	CertificateToken     *string `json:"certificate_token,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -182,9 +181,9 @@ func (o *CertificateAuthserviceOcspResponders) SetDisabled(v bool) {
 }
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise.
-func (o *CertificateAuthserviceOcspResponders) GetCertificate() string {
+func (o *CertificateAuthserviceOcspResponders) GetCertificate() CertificateAuthserviceOcspRespondersCertificate {
 	if o == nil || IsNil(o.Certificate) {
-		var ret string
+		var ret CertificateAuthserviceOcspRespondersCertificate
 		return ret
 	}
 	return *o.Certificate
@@ -192,7 +191,7 @@ func (o *CertificateAuthserviceOcspResponders) GetCertificate() string {
 
 // GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateAuthserviceOcspResponders) GetCertificateOk() (*string, bool) {
+func (o *CertificateAuthserviceOcspResponders) GetCertificateOk() (*CertificateAuthserviceOcspRespondersCertificate, bool) {
 	if o == nil || IsNil(o.Certificate) {
 		return nil, false
 	}
@@ -208,8 +207,8 @@ func (o *CertificateAuthserviceOcspResponders) HasCertificate() bool {
 	return false
 }
 
-// SetCertificate gets a reference to the given string and assigns it to the Certificate field.
-func (o *CertificateAuthserviceOcspResponders) SetCertificate(v string) {
+// SetCertificate gets a reference to the given CertificateAuthserviceOcspRespondersCertificate and assigns it to the Certificate field.
+func (o *CertificateAuthserviceOcspResponders) SetCertificate(v CertificateAuthserviceOcspRespondersCertificate) {
 	o.Certificate = &v
 }
 

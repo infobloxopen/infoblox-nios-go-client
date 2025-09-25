@@ -9772,13 +9772,13 @@ components:
         ocsp_responders:
         - fqdn_or_ip: Example fqdn_or_ip
           port: 1
-          certificate: Example certificate
+          certificate: Example remote_lookup_service
           comment: Example comment
           disabled: false
           certificate_token: Example certificate_token
         - fqdn_or_ip: Example fqdn_or_ip
           port: 1
-          certificate: Example certificate
+          certificate: Example remote_lookup_service
           comment: Example comment
           disabled: false
           certificate_token: Example certificate_token
@@ -9880,9 +9880,7 @@ components:
           type: string
           writeOnly: true
         remote_lookup_service:
-          description: The service that will be used for remote lookup.
-          example: Example remote_lookup_service
-          type: string
+          $ref: '#/components/schemas/CertificateAuthservice_remote_lookup_service'
         remote_lookup_username:
           description: The username for the service account.
           example: Example remote_lookup_username
@@ -9911,7 +9909,7 @@ components:
       example:
         fqdn_or_ip: Example fqdn_or_ip
         port: 1
-        certificate: Example certificate
+        certificate: Example remote_lookup_service
         comment: Example comment
         disabled: false
         certificate_token: Example certificate_token
@@ -9935,10 +9933,7 @@ components:
           example: false
           type: boolean
         certificate:
-          description: The reference to the OCSP responder certificate.
-          example: Example certificate
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/CertificateAuthserviceOcspResponders_certificate'
         certificate_token:
           description: The token returned by the uploadinit function call in object
             fileop.
@@ -12756,6 +12751,48 @@ components:
           $ref: '#/components/schemas/Cacertificate'
       title: UpdateCacertificateResponseAsObject
       type: object
+    CertificateAuthservice_remote_lookup_service_oneOf:
+      additionalProperties: true
+      properties:
+        _ref:
+          description: The reference to the LDAP auth service object.
+          type: string
+      type: object
+    CertificateAuthservice_remote_lookup_service:
+      oneOf:
+      - description: The service that will be used for remote lookup.
+        example: Example remote_lookup_service
+        type: string
+      - $ref: '#/components/schemas/CertificateAuthservice_remote_lookup_service_oneOf'
+    CertificateAuthserviceOcspResponders_certificate_oneOf:
+      properties:
+        _ref:
+          description: The reference to the LDAP auth service object.
+          type: string
+        issuer:
+          description: The certificate issuer subject name.
+          type: string
+        serial:
+          description: The certificate serial number in hex format.
+          type: string
+        subject:
+          description: The certificate subject name.
+          type: string
+        valid_not_after:
+          description: The date after which the certificate becomes invalid.
+          type: integer
+        valid_not_before:
+          description: The date before which the certificate is not valid.
+          type: integer
+      readOnly: true
+      type: object
+    CertificateAuthserviceOcspResponders_certificate:
+      oneOf:
+      - description: The service that will be used for remote lookup.
+        example: Example remote_lookup_service
+        readOnly: true
+        type: string
+      - $ref: '#/components/schemas/CertificateAuthserviceOcspResponders_certificate_oneOf'
     ListCertificateAuthserviceResponseObject:
       description: The response format to retrieve __CertificateAuthservice__ objects.
       properties:
@@ -12779,13 +12816,13 @@ components:
           ocsp_responders:
           - fqdn_or_ip: Example fqdn_or_ip
             port: 1
-            certificate: Example certificate
+            certificate: Example remote_lookup_service
             comment: Example comment
             disabled: false
             certificate_token: Example certificate_token
           - fqdn_or_ip: Example fqdn_or_ip
             port: 1
-            certificate: Example certificate
+            certificate: Example remote_lookup_service
             comment: Example comment
             disabled: false
             certificate_token: Example certificate_token
@@ -12829,13 +12866,13 @@ components:
           ocsp_responders:
           - fqdn_or_ip: Example fqdn_or_ip
             port: 1
-            certificate: Example certificate
+            certificate: Example remote_lookup_service
             comment: Example comment
             disabled: false
             certificate_token: Example certificate_token
           - fqdn_or_ip: Example fqdn_or_ip
             port: 1
-            certificate: Example certificate
+            certificate: Example remote_lookup_service
             comment: Example comment
             disabled: false
             certificate_token: Example certificate_token
