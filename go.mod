@@ -1,6 +1,6 @@
 module github.com/infobloxopen/infoblox-nios-go-client
 
-go 1.24.4
+go 1.25.1
 
 require (
 	github.com/stretchr/testify v1.10.0
