@@ -29784,7 +29784,7 @@ components:
         name: Example name
         namespace: Example namespace
         comment: Example comment
-        default_value: Example default_value
+        default_value: Example default_value.
         type: Example type
         descendants_action:
           option_delete_ea: Example option_delete_ea
@@ -29808,13 +29808,7 @@ components:
           example: Example comment
           type: string
         default_value:
-          description: "Default value used to pre-populate the attribute value in\
-            \ the GUI. For email, URL, and string types, the value is a string with\
-            \ a maximum of 256 characters. For an integer, the value is an integer\
-            \ from -2147483648 through 2147483647. For a date, the value is the number\
-            \ of seconds that have elapsed since January 1st, 1970 UTC."
-          example: Example default_value
-          type: string
+          $ref: '#/components/schemas/Extensibleattributedef_default_value'
         descendants_action:
           $ref: '#/components/schemas/ExtensibleattributedefDescendantsAction'
         flags:
@@ -34769,6 +34763,22 @@ components:
           $ref: '#/components/schemas/LicenseGridwide'
       title: UpdateLicenseGridwideResponseAsObject
       type: object
+    Extensibleattributedef_default_value:
+      oneOf:
+      - description: "Default value used to pre-populate the attribute value in the\
+          \ GUI. For email, URL, and string types, the value is a string with a maximum\
+          \ of 256 characters. For an integer, the value is an integer from -2147483648\
+          \ through 2147483647. For a date, the value is the number of seconds that\
+          \ have elapsed since January 1st, 1970 UTC."
+        example: Example default_value.
+        type: string
+      - description: "Default value used to pre-populate the attribute value in the\
+          \ GUI. For email, URL, and string types, the value is a string with a maximum\
+          \ of 256 characters. For an integer, the value is an integer from -2147483648\
+          \ through 2147483647. For a date, the value is the number of seconds that\
+          \ have elapsed since January 1st, 1970 UTC."
+        example: 101
+        type: integer
     ListExtensibleattributedefResponseObject:
       description: The response format to retrieve __Extensibleattributedef__ objects.
       properties:
@@ -34796,7 +34806,7 @@ components:
           name: Example name
           namespace: Example namespace
           comment: Example comment
-          default_value: Example default_value
+          default_value: Example default_value.
           type: Example type
           descendants_action:
             option_delete_ea: Example option_delete_ea
@@ -34833,7 +34843,7 @@ components:
           name: Example name
           namespace: Example namespace
           comment: Example comment
-          default_value: Example default_value
+          default_value: Example default_value.
           type: Example type
           descendants_action:
             option_delete_ea: Example option_delete_ea
