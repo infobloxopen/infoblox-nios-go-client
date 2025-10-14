@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// ExtensibleattributedefDefaultValue - struct for ExtensibleattributedefDefaultValue
+// ExtensibleattributedefDefaultValue - Default value used to pre-populate the attribute value in the GUI. For email, URL, and string types, the value is a string with a maximum of 256 characters. For an integer, the value is an integer from -2147483648 through 2147483647. For a date, the value is the number of seconds that have elapsed since January 1st, 1970 UTC.
 type ExtensibleattributedefDefaultValue struct {
 	Int32  *int32
 	String *string
