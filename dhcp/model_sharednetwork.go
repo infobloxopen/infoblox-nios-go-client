@@ -76,7 +76,7 @@ type Sharednetwork struct {
 	Name *string `json:"name,omitempty"`
 	// The name of the network view in which this shared network resides.
 	NetworkView *string `json:"network_view,omitempty"`
-	// A list of networks belonging to the shared network. Each individual list item must be specified as an object containing a '_ref' parameter to a network reference, for example:: [{ \"_ref\": \"network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\" }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \"_ref\": { 'network': '10.0.0.0/8' } }] note that in this case the search must match exactly one network for the assignment to be successful.
+	// A list of networks belonging to the shared network Each individual list item must be specified as an object containing a '_ref' parameter to a network reference, for example:: [{ \"_ref\": \"network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\", }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \"_ref\": { 'network': '10.0.0.0/8', } }] note that in this case the search must match exactly one network for the assignment to be successful.
 	Networks []SharednetworkNetworks `json:"networks,omitempty"`
 	// The name in FQDN and/or IPv4 Address of the next server that the host needs to boot.
 	Nextserver *string `json:"nextserver,omitempty"`

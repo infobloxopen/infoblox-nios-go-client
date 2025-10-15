@@ -19,7 +19,7 @@ var _ MappedNullable = &FixedAddressStructMsServer{}
 
 // FixedAddressStructMsServer Microsoft Server Fields to search fixed address
 type FixedAddressStructMsServer struct {
-	// Struct Field for MS Server
+	// Struct Field for ms_server
 	Struct *string `json:"_struct,omitempty"`
 	// The IPv4 address to perform the search with
 	Ipv4addr             *string `json:"ipv4addr,omitempty"`

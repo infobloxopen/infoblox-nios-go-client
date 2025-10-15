@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## List
 
-> ListDtcPoolResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListDtcPoolResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).ProxySearch(proxySearch).Execute()
 
 Retrieve dtc:pool objects
 
@@ -201,6 +201,7 @@ Name | Type | Description  | Notes
 **pageId** | **string** | Page id for retrieving next page of results | 
 **filters** | **map[string]interface{}** |  | 
 **extattrfilter** | **map[string]interface{}** |  | 
+**proxySearch** | **string** | Search Grid members for data | 
 
 ### Return type
 
@@ -222,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> GetDtcPoolResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+> GetDtcPoolResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).ProxySearch(proxySearch).Execute()
 
 Get a specific dtc:pool object
 
@@ -273,6 +274,7 @@ Name | Type | Description  | Notes
 **returnFields** | **string** | Enter the field names followed by comma | 
 **returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
+**proxySearch** | **string** | Search Grid members for data | 
 
 ### Return type
 

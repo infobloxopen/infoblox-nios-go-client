@@ -193,6 +193,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -353,6 +361,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -523,6 +539,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -683,6 +707,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -853,6 +885,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1001,6 +1041,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -1168,6 +1216,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1316,6 +1372,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -1483,6 +1547,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1631,6 +1703,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -1798,6 +1878,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1946,6 +2034,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -2113,6 +2209,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2265,6 +2369,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -2436,6 +2548,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2584,6 +2704,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -2751,6 +2879,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2898,6 +3034,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -3092,6 +3236,9 @@ paths:
       summary: Retrieve record:host objects
       tags:
       - RecordHost
+      x-tf-nested-function-call:
+      - Ipv4addrs
+      - Ipv6addrs
     post:
       description: Creates a new record:host object
       operationId: RecordHostCreate
@@ -3154,7 +3301,6 @@ paths:
       x-tf-nested-function-call:
       - Ipv4addrs
       - Ipv6addrs
-      x-sdk-default-ext-attrs: true
       x-sdk-post-function-call-nested:
       - arrayField: Ipv4addrs
         elementVar: ipv4addr
@@ -3164,6 +3310,7 @@ paths:
         elementVar: ipv6addr
         targetField: Ipv6addr
         typeName: RecordHostIpv6addrIpv6addr
+      x-sdk-default-ext-attrs: true
   /record:host/{reference}:
     delete:
       description: Deletes a specific record:host object by reference
@@ -3407,6 +3554,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3555,6 +3710,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -3722,6 +3885,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3870,6 +4041,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -4037,6 +4216,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4185,6 +4372,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -4352,6 +4547,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4500,6 +4703,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -4667,6 +4878,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4755,6 +4974,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -4854,6 +5081,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4914,6 +5149,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -5013,6 +5256,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -5101,6 +5352,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -5200,6 +5459,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -5260,6 +5527,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -5359,6 +5634,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -5419,6 +5702,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -5519,6 +5810,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -5579,6 +5878,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -5678,6 +5985,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -5738,6 +6053,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -5836,6 +6159,14 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -5985,6 +6316,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -6153,6 +6492,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -6213,6 +6560,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -6383,6 +6738,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -6443,6 +6806,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -6612,6 +6983,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -6771,6 +7150,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -6938,6 +7325,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -7086,6 +7481,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -7253,6 +7656,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -7401,6 +7812,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -7568,6 +7987,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -7716,6 +8143,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -7883,6 +8318,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -8031,6 +8474,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -8199,6 +8650,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -8259,6 +8718,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -8358,6 +8825,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -8418,6 +8893,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -8517,6 +9000,14 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -8665,6 +9156,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -8831,6 +9330,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -8979,6 +9486,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -9146,6 +9661,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -9206,6 +9729,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -9305,6 +9836,14 @@ paths:
         schema:
           additionalProperties: true
           type: object
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -9453,6 +9992,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -9620,6 +10167,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -9767,6 +10322,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -9934,6 +10497,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -9994,6 +10565,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -10160,6 +10739,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -10308,6 +10895,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -10476,6 +11071,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -10624,6 +11227,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -10792,6 +11403,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -10940,6 +11559,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -11107,6 +11734,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -11255,6 +11890,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -11423,6 +12066,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -11571,6 +12222,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -11739,6 +12398,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -11887,6 +12554,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -12055,6 +12730,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -12203,6 +12886,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -12370,6 +13061,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -12518,6 +13217,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -12685,6 +13392,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -12833,6 +13548,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -13001,6 +13724,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -13149,6 +13880,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -13317,6 +14056,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -13465,6 +14212,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -13633,6 +14388,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -13781,6 +14544,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -13949,6 +14720,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -14097,6 +14876,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -27597,7 +28384,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27648,7 +28435,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27699,7 +28486,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -33738,7 +34525,7 @@ components:
         permission: Example permission
       properties:
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -33803,7 +34590,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -33854,7 +34641,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".

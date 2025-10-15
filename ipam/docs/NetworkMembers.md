@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Struct** | Pointer to **string** | The struct type of the object. The value must be one of &#39;dhcpmember&#39; or &#39;msdhcpserver&#39;. | [optional] 
+**Struct** | Pointer to **string** | The struct type of the object. The value must be one of &#39;dhcpmember&#39; and &#39;msdhcpserver&#39;. | [optional] 
 **Ipv4addr** | Pointer to **string** | The IPv4 Address or FQDN of the Microsoft server. | [optional] 
 **Ipv6addr** | Pointer to **string** | The IPv6 Address of the Grid Member. | [optional] 
 **Name** | Pointer to **string** | The Grid member name | [optional] 

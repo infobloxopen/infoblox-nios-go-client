@@ -19,7 +19,7 @@ var _ MappedNullable = &ViewFilterAaaaList{}
 
 // ViewFilterAaaaList struct for ViewFilterAaaaList
 type ViewFilterAaaaList struct {
-	// The reference to the Named ACL object.
+	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
 	// The address this rule applies to or \"Any\".
 	Address *string `json:"address,omitempty"`

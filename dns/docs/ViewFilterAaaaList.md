@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the Named ACL object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] 
 **Address** | Pointer to **string** | The address this rule applies to or \&quot;Any\&quot;. | [optional] 
 **Permission** | Pointer to **string** | The permission to use for this address. | [optional] 
 

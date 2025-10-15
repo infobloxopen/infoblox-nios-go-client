@@ -97,6 +97,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -157,6 +165,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -324,6 +340,14 @@ paths:
           additionalProperties: true
           type: object
         style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -472,6 +496,14 @@ paths:
           - 0
           - 1
           type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
