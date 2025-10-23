@@ -4144,9 +4144,7 @@ func (o ZoneAuth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DdnsForceCreationTimestampUpdate) {
 		toSerialize["ddns_force_creation_timestamp_update"] = o.DdnsForceCreationTimestampUpdate
 	}
-	if !IsNil(o.DdnsPrincipalGroup) {
-		toSerialize["ddns_principal_group"] = o.DdnsPrincipalGroup
-	}
+	toSerialize["ddns_principal_group"] = o.DdnsPrincipalGroup
 	if !IsNil(o.DdnsPrincipalTracking) {
 		toSerialize["ddns_principal_tracking"] = o.DdnsPrincipalTracking
 	}
