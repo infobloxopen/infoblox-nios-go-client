@@ -27304,6 +27304,7 @@ components:
           description: The name server group that serves DNS for this zone.
           example: Example ns_group
           type: string
+          x-skip-nil-check: true
         parent:
           description: "The parent zone of this zone. Note that when searching for\
             \ reverse zones, the \"in-addr.arpa\" notation should be used."
