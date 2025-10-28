@@ -1064,9 +1064,7 @@ func (o ZoneForward) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExtAttrs) {
 		toSerialize["extattrs"] = o.ExtAttrs
 	}
-	if !IsNil(o.ExternalNsGroup) {
-		toSerialize["external_ns_group"] = o.ExternalNsGroup
-	}
+	toSerialize["external_ns_group"] = o.ExternalNsGroup
 	if !IsNil(o.ForwardTo) {
 		toSerialize["forward_to"] = o.ForwardTo
 	}

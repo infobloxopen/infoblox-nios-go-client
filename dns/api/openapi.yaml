@@ -26912,6 +26912,7 @@ components:
           description: The DDNS Principal cluster group name.
           example: Example ddns_principal_group
           type: string
+          x-go-skip-nil-check: true
         ddns_principal_tracking:
           description: The flag that indicates whether the DDNS principal track is
             enabled or disabled.
@@ -27303,6 +27304,7 @@ components:
           description: The name server group that serves DNS for this zone.
           example: Example ns_group
           type: string
+          x-go-skip-nil-check: true
         parent:
           description: "The parent zone of this zone. Note that when searching for\
             \ reverse zones, the \"in-addr.arpa\" notation should be used."
@@ -29452,6 +29454,7 @@ components:
           description: A forward stub server name server group.
           example: Example external_ns_group
           type: string
+          x-go-skip-nil-check: true
         forward_to:
           description: The information for the remote name servers to which you want
             the Infoblox appliance to forward queries for a specified domain name.
@@ -33127,6 +33130,7 @@ components:
           description: The DDNS Principal cluster group name.
           example: Example ddns_principal_group
           type: string
+          x-go-skip-nil-check: true
         ddns_principal_tracking:
           description: The flag that indicates whether the DDNS principal track is
             enabled or disabled.
