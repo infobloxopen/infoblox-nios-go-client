@@ -19,7 +19,7 @@ var _ MappedNullable = &CertificateAuthserviceOcspRespondersCertificateOneOf{}
 
 // CertificateAuthserviceOcspRespondersCertificateOneOf struct for CertificateAuthserviceOcspRespondersCertificateOneOf
 type CertificateAuthserviceOcspRespondersCertificateOneOf struct {
-	// The reference to the LDAP auth service object.
+	// The reference to the OCSP responder certificate.
 	Ref *string `json:"_ref,omitempty"`
 	// The certificate issuer subject name.
 	Issuer *string `json:"issuer,omitempty"`

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## List
 
-> ListThreatprotectionProfileRuleResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).Execute()
+> ListThreatprotectionProfileRuleResponse List(ctx).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).MaxResults(maxResults).ReturnAsObject(returnAsObject).Paging(paging).PageId(pageId).Filters(filters).Extattrfilter(extattrfilter).ProxySearch(proxySearch).Execute()
 
 Retrieve threatprotection:profile:rule objects
 
@@ -63,6 +63,7 @@ Name | Type | Description  | Notes
 **pageId** | **string** | Page id for retrieving next page of results | 
 **filters** | **map[string]interface{}** |  | 
 **extattrfilter** | **map[string]interface{}** |  | 
+**proxySearch** | **string** | Search Grid members for data | 
 
 ### Return type
 
@@ -84,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## Read
 
-> GetThreatprotectionProfileRuleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+> GetThreatprotectionProfileRuleResponse Read(ctx, reference).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).ProxySearch(proxySearch).Execute()
 
 Get a specific threatprotection:profile:rule object
 
@@ -135,6 +136,7 @@ Name | Type | Description  | Notes
 **returnFields** | **string** | Enter the field names followed by comma | 
 **returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
 **returnAsObject** | **int32** | Select 1 if result is required as an object | 
+**proxySearch** | **string** | Search Grid members for data | 
 
 ### Return type
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Struct** | Pointer to **string** | Struct Field for MS Server | [optional] 
+**Struct** | Pointer to **string** | Struct Field for ms_server | [optional] 
 **Ipv4addr** | Pointer to **string** | The IPv4 address to perform the search with | [optional] 
 
 ## Methods
