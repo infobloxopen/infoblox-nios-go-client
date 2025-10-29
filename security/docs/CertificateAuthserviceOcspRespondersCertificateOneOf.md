@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the LDAP auth service object. | [optional] 
-**Issuer** | Pointer to **string** | The certificate issuer subject name. | [optional] 
-**Serial** | Pointer to **string** | The certificate serial number in hex format. | [optional] 
-**Subject** | Pointer to **string** | The certificate subject name. | [optional] 
-**ValidNotAfter** | Pointer to **int32** | The date after which the certificate becomes invalid. | [optional] 
-**ValidNotBefore** | Pointer to **int32** | The date before which the certificate is not valid. | [optional] 
+**Ref** | Pointer to **string** | The reference to the LDAP auth service object. | [optional] [readonly] 
+**Issuer** | Pointer to **string** | The certificate issuer subject name. | [optional] [readonly] 
+**Serial** | Pointer to **string** | The certificate serial number in hex format. | [optional] [readonly] 
+**Subject** | Pointer to **string** | The certificate subject name. | [optional] [readonly] 
+**ValidNotAfter** | Pointer to **int32** | The date after which the certificate becomes invalid. | [optional] [readonly] 
+**ValidNotBefore** | Pointer to **int32** | The date before which the certificate is not valid. | [optional] [readonly] 
 
 ## Methods
 
