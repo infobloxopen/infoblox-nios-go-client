@@ -12752,7 +12752,6 @@ components:
       title: UpdateCacertificateResponseAsObject
       type: object
     CertificateAuthservice_remote_lookup_service_oneOf:
-      additionalProperties: true
       properties:
         _ref:
           description: The reference to the LDAP auth service object.
@@ -12768,21 +12767,27 @@ components:
       properties:
         _ref:
           description: The reference to the LDAP auth service object.
+          readOnly: true
           type: string
         issuer:
           description: The certificate issuer subject name.
+          readOnly: true
           type: string
         serial:
           description: The certificate serial number in hex format.
+          readOnly: true
           type: string
         subject:
           description: The certificate subject name.
+          readOnly: true
           type: string
         valid_not_after:
           description: The date after which the certificate becomes invalid.
+          readOnly: true
           type: integer
         valid_not_before:
           description: The date before which the certificate is not valid.
+          readOnly: true
           type: integer
       readOnly: true
       type: object
