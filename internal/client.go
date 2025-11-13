@@ -443,6 +443,10 @@ func (c *APIClient) CallAPI(request *http.Request) (*http.Response, error) {
 		log.Printf("\n%s\n", string(dump))
 	}
 
+	if request.Body == nil {
+		request.Body = http.NoBody
+	}
+
 	resp, err := c.Cfg.HTTPClient.Do(request)
 	if err != nil {
 		return resp, err
