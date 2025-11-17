@@ -13,9 +13,10 @@ Name | Type | Description | Notes
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**Id** | Pointer to **int64** | VLAN ID value. | [optional] 
+**Id** | Pointer to [**VlanId**](VlanId.md) |  | [optional] 
+**FuncCall** | Pointer to [**FuncCall**](FuncCall.md) |  | [optional] 
 **Name** | Pointer to **string** | Name of the VLAN. | [optional] 
-**Parent** | Pointer to **string** | The VLAN View or VLAN Range to which this VLAN belongs. | [optional] 
+**Parent** | Pointer to [**VlanParent**](VlanParent.md) |  | [optional] 
 **Reserved** | Pointer to **bool** | When set VLAN can only be assigned to IPAM object manually. | [optional] 
 **Status** | Pointer to **string** | Status of VLAN object. Can be Assigned, Unassigned, Reserved. | [optional] [readonly] 
 **Result** | Pointer to [**Vlan**](Vlan.md) |  | [optional] 
@@ -266,20 +267,20 @@ HasExtAttrs returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *GetVlanResponse) GetId() int64`
+`func (o *GetVlanResponse) GetId() VlanId`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetVlanResponse) GetIdOk() (*int64, bool)`
+`func (o *GetVlanResponse) GetIdOk() (*VlanId, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetVlanResponse) SetId(v int64)`
+`func (o *GetVlanResponse) SetId(v VlanId)`
 
 SetId sets Id field to given value.
 
@@ -288,6 +289,31 @@ SetId sets Id field to given value.
 `func (o *GetVlanResponse) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetFuncCall
+
+`func (o *GetVlanResponse) GetFuncCall() FuncCall`
+
+GetFuncCall returns the FuncCall field if non-nil, zero value otherwise.
+
+### GetFuncCallOk
+
+`func (o *GetVlanResponse) GetFuncCallOk() (*FuncCall, bool)`
+
+GetFuncCallOk returns a tuple with the FuncCall field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFuncCall
+
+`func (o *GetVlanResponse) SetFuncCall(v FuncCall)`
+
+SetFuncCall sets FuncCall field to given value.
+
+### HasFuncCall
+
+`func (o *GetVlanResponse) HasFuncCall() bool`
+
+HasFuncCall returns a boolean if a field has been set.
 
 ### GetName
 
@@ -316,20 +342,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetParent
 
-`func (o *GetVlanResponse) GetParent() string`
+`func (o *GetVlanResponse) GetParent() VlanParent`
 
 GetParent returns the Parent field if non-nil, zero value otherwise.
 
 ### GetParentOk
 
-`func (o *GetVlanResponse) GetParentOk() (*string, bool)`
+`func (o *GetVlanResponse) GetParentOk() (*VlanParent, bool)`
 
 GetParentOk returns a tuple with the Parent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParent
 
-`func (o *GetVlanResponse) SetParent(v string)`
+`func (o *GetVlanResponse) SetParent(v VlanParent)`
 
 SetParent sets Parent field to given value.
 
