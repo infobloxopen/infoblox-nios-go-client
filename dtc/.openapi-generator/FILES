@@ -108,6 +108,10 @@ docs/DtcTopologyLabelAPI.md
 docs/DtcTopologyRule.md
 docs/DtcTopologyRuleAPI.md
 docs/DtcTopologyRuleSources.md
+docs/DtcTopologyRulesInner.md
+docs/DtcTopologyRulesInnerOneOf.md
+docs/DtcTopologyRulesInnerOneOf1.md
+docs/DtcTopologyRulesInnerOneOf1SourcesInner.md
 docs/ExtAttrs.md
 docs/GetDtcAllrecordsResponse.md
 docs/GetDtcAllrecordsResponseObjectAsResult.md
@@ -304,6 +308,10 @@ model_dtc_topology.go
 model_dtc_topology_label.go
 model_dtc_topology_rule.go
 model_dtc_topology_rule_sources.go
+model_dtc_topology_rules_inner.go
+model_dtc_topology_rules_inner_one_of.go
+model_dtc_topology_rules_inner_one_of_1.go
+model_dtc_topology_rules_inner_one_of_1_sources_inner.go
 model_ext_attrs.go
 model_get_dtc_allrecords_response.go
 model_get_dtc_allrecords_response_object_as_result.go
