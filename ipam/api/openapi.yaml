@@ -3136,6 +3136,9 @@ paths:
       x-tf-resource: ipam_vlan
       x-tf-datasource: ipam_vlan
       x-sdk-default-ext-attrs: true
+      x-sdk-post-function-call:
+      - Id
+      x-tf-function-call: true
   /vlan/{reference}:
     delete:
       description: Deletes a specific vlan object by reference
@@ -15618,6 +15621,14 @@ components:
           key:
             value: ""
         description: Example description
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          _object_ref: _object_ref
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         extattrs-:
           key:
             value: ""
@@ -15687,18 +15698,15 @@ components:
             \ values for extensible attributes, see {extattrs:values}."
           type: object
         id:
-          description: VLAN ID value.
-          example: 1
-          format: int64
-          type: integer
+          $ref: '#/components/schemas/Vlan_id'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         name:
           description: Name of the VLAN.
           example: Example name
           type: string
         parent:
-          description: The VLAN View or VLAN Range to which this VLAN belongs.
-          example: Example parent
-          type: string
+          $ref: '#/components/schemas/Vlan_parent'
         reserved:
           description: When set VLAN can only be assigned to IPAM object manually.
           example: false
@@ -20071,6 +20079,43 @@ components:
           $ref: '#/components/schemas/IpamStatistics'
       title: UpdateIpamStatisticsResponseAsObject
       type: object
+    Vlan_id_oneOf:
+      description: VLAN ID value.
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+      type: object
+    Vlan_id:
+      description: VLAN ID value.
+      oneOf:
+      - description: VLAN ID value.
+        example: 1
+        format: int64
+        type: integer
+      - $ref: '#/components/schemas/Vlan_id_oneOf'
+    Vlan_parent_oneOf:
+      additionalProperties: false
+      description: The VLAN View or VLAN Range to which this VLAN belongs.
+      properties:
+        _ref:
+          description: Reference to the VLAN Parent
+          type: string
+      type: object
+    Vlan_parent:
+      description: The VLAN View or VLAN Range to which this VLAN belongs.
+      example: Example parent
+      oneOf:
+      - $ref: '#/components/schemas/Vlan_parent_oneOf'
+      - description: The VLAN View or VLAN Range to which this VLAN belongs.
+        type: string
     ListVlanResponseObject:
       description: The response format to retrieve __Vlan__ objects.
       properties:
@@ -20089,6 +20134,14 @@ components:
             key:
               value: ""
           description: Example description
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           extattrs-:
             key:
               value: ""
@@ -20128,6 +20181,14 @@ components:
             key:
               value: ""
           description: Example description
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           extattrs-:
             key:
               value: ""
