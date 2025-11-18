@@ -6933,8 +6933,8 @@ components:
         name: Example name
         comment: Example comment
         rules:
-        - dtc:topology:rule
-        - dtc:topology:rule
+        - _ref: _ref
+        - _ref: _ref
       properties:
         _ref:
           description: The reference to the object.
@@ -6970,12 +6970,8 @@ components:
           type: string
         rules:
           description: Topology rules.
-          enum:
-          - dtc:topology:rule
           items:
-            enum:
-            - dtc:topology:rule
-            type: string
+            $ref: '#/components/schemas/DtcTopology_rules_inner'
           type: array
       type: object
     ListDtcTopologyResponse:
@@ -9304,6 +9300,57 @@ components:
           $ref: '#/components/schemas/DtcPool'
       title: UpdateDtcPoolResponseAsObject
       type: object
+    DtcTopology_rules_inner_oneOf:
+      additionalProperties: false
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: Reference to the topology rule
+          type: string
+      type: object
+    DtcTopology_rules_inner_oneOf_1_sources_inner:
+      properties:
+        source_op:
+          description: Operation for matching the source.
+          type: string
+        source_type:
+          description: Type of the source.
+          type: string
+        source_value:
+          description: Value of the source.
+          type: string
+      type: object
+    DtcTopology_rules_inner_oneOf_1:
+      additionalProperties: false
+      properties:
+        dest_type:
+          description: The type of the destination for this rule.
+          type: string
+        destination_link:
+          description: The reference to the destination object.
+          type: string
+        return_type:
+          description: The type of the return value for this source.
+          type: string
+        topology:
+          description: The topology for this rule.
+          readOnly: true
+          type: string
+        valid:
+          description: Indicates whether the rule is valid.
+          readOnly: true
+          type: boolean
+        sources:
+          description: Conditions for matching sources.
+          items:
+            $ref: '#/components/schemas/DtcTopology_rules_inner_oneOf_1_sources_inner'
+          type: array
+      type: object
+    DtcTopology_rules_inner:
+      oneOf:
+      - $ref: '#/components/schemas/DtcTopology_rules_inner_oneOf'
+      - $ref: '#/components/schemas/DtcTopology_rules_inner_oneOf_1'
     ListDtcTopologyResponseObject:
       description: The response format to retrieve __DtcTopology__ objects.
       properties:
@@ -9330,8 +9377,8 @@ components:
           name: Example name
           comment: Example comment
           rules:
-          - dtc:topology:rule
-          - dtc:topology:rule
+          - _ref: _ref
+          - _ref: _ref
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9362,8 +9409,8 @@ components:
           name: Example name
           comment: Example comment
           rules:
-          - dtc:topology:rule
-          - dtc:topology:rule
+          - _ref: _ref
+          - _ref: _ref
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
