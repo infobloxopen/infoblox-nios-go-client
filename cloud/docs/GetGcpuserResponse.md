@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AuthProviderX509CertUrl** | Pointer to **string** | The URL where the public key certificates provided by the authentication provider can be retrieved.. Maximum 255 characters. | [optional] [readonly] 
 **AuthUri** | Pointer to **string** | The URI where authentication requests should be directed.. Maximum 255 characters. | [optional] [readonly] 
 **ClientEmail** | Pointer to **string** | The email address associated with the service account. Maximum 255 characters. | [optional] [readonly] 

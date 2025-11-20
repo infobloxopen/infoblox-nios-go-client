@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AuthnServerGroup** | Pointer to **string** | The authentication server group assigned to this captive portal. | [optional] 
 **CompanyName** | Pointer to **string** | The company name that appears in the guest registration page. | [optional] 
 **EnableSyslogAuthFailure** | Pointer to **bool** | Determines if authentication failures are logged to syslog or not. | [optional] 

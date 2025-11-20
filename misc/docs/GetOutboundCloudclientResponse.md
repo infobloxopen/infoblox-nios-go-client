@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Enable** | Pointer to **bool** | Determines whether the OutBound Cloud Client is enabled. | [optional] 
 **GridMember** | Pointer to **string** | The Grid member where our outbound is running. | [optional] 
 **Interval** | Pointer to **int64** | The time interval (in seconds) for requesting newly detected domains by the Infoblox Outbound Cloud Client and applying them to the list of configured RPZs. | [optional] 

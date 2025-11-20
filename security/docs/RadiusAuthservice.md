@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AcctRetries** | Pointer to **int64** | The number of times to attempt to contact an accounting RADIUS server. | [optional] 
 **AcctTimeout** | Pointer to **int64** | The number of seconds to wait for a response from the RADIUS server. | [optional] 
 **AuthRetries** | Pointer to **int64** | The number of times to attempt to contact an authentication RADIUS server. | [optional] 

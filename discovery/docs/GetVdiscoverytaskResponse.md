@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AccountsList** | Pointer to **[]string** | The AWS Account IDs or GCP Project IDs list associated with this task. | [optional] [readonly] 
 **AllowUnsecuredConnection** | Pointer to **bool** | Allow unsecured connection over HTTPS and bypass validation of the remote SSL certificate. | [optional] 
 **AutoConsolidateCloudEa** | Pointer to **bool** | Whether to insert or update cloud EAs with discovery data. | [optional] 

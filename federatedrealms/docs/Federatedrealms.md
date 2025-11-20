@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Id** | Pointer to **string** | Federated realm id. | [optional] [readonly] 
 **Name** | Pointer to **string** | Federated realm name. | [optional] [readonly] 
 

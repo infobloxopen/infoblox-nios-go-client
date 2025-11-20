@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the address; maximum 256 characters. | [optional] [readonly] 
 **ConflictTypes** | Pointer to **[]string** | Types of the conflict. | [optional] [readonly] 
 **DhcpClientIdentifier** | Pointer to **string** | The client unique identifier. | [optional] [readonly] 

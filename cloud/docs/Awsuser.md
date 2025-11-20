@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AccessKeyId** | Pointer to **string** | The unique Access Key ID of this AWS user. Maximum 255 characters. | [optional] 
 **AccountId** | Pointer to **string** | The AWS Account ID of this AWS user. Maximum 64 characters. | [optional] 
 **GovcloudEnabled** | Pointer to **bool** | Indicates if gov cloud is enabled or disabled. | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AutoCreateHostRecord** | Pointer to **bool** | Enabling this option will auto-create a single read-only A/AAAA/CNAME record corresponding to the configured hostname and update it if the hostname changes. | [optional] 
 **Comment** | Pointer to **string** | Comment for the DTC Server; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DTC Server is disabled or not. When this is set to False, the fixed address is enabled. | [optional] 

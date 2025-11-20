@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Action** | Pointer to **string** | The scavenging action. | [optional] [readonly] 
 **AssociatedObject** | Pointer to **string** | The reference to the object associated with the scavenging task. | [optional] [readonly] 
 **EndTime** | Pointer to **int64** | The scavenging process end time. | [optional] [readonly] 

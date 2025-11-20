@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowRecursiveDeletion** | Pointer to **string** | The property to allow recursive deletion. Determines the users who can choose to perform recursive deletion on networks or zones from the GUI only. | [optional] 
 **AuditLogFormat** | Pointer to **string** | Determines the audit log format. | [optional] 
 **AuditToSyslogEnable** | Pointer to **bool** | If set to True, audit log messages are also copied to the syslog. | [optional] 

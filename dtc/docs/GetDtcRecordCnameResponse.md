@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AutoCreated** | Pointer to **string** | Flag that indicates whether this record was automatically created by NIOS. | [optional] [readonly] 
 **Canonical** | Pointer to **string** | The canonical name of the host. | [optional] 
 **Comment** | Pointer to **string** | Comment for the record; maximum 256 characters. | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Config** | Pointer to [**ThreatprotectionRuleConfig**](ThreatprotectionRuleConfig.md) |  | [optional] 
 **Disable** | Pointer to **bool** | Determines if the rule is enabled or not for the member. | [optional] 
 **Member** | Pointer to **string** | The name of the Threat protection member. | [optional] [readonly] 

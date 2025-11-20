@@ -6349,6 +6349,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListDtcResponse:
@@ -6401,6 +6402,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_create_host_record:
           description: Enabling this option will auto-create a single read-only A/AAAA/CNAME
@@ -6437,6 +6439,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         health:
           $ref: '#/components/schemas/DtcServerHealth'
         host:
@@ -6464,6 +6467,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DtcServerHealth:
       example:
         enabled_state: Example enabled_state
@@ -6598,6 +6603,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_consolidated_monitors:
           description: Flag for enabling auto managing DTC Consolidated Monitors in
@@ -6650,6 +6656,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         health:
           $ref: '#/components/schemas/DtcPoolHealth'
         lb_alternate_method:
@@ -6729,6 +6736,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DtcPoolConsolidatedMonitors:
       example:
         members:
@@ -6938,6 +6947,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the DTC TOPOLOGY monitor object; maximum 256
@@ -6964,6 +6974,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Display name of the DTC Topology.
           example: Example name
@@ -6974,6 +6985,7 @@ components:
             $ref: '#/components/schemas/DtcTopology_rules_inner'
           type: array
       type: object
+      x-tf-extattrs-all: true
     ListDtcTopologyResponse:
       oneOf:
       - description: The response format to retrieve __DtcTopology__ objects.
@@ -7042,6 +7054,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auth_zones:
           description: List of linked auth zones.
@@ -7086,6 +7099,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         health:
           $ref: '#/components/schemas/DtcLbdnHealth'
         lb_method:
@@ -7158,6 +7172,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DtcLbdnHealth:
       example:
         enabled_state: Example enabled_state
@@ -7253,6 +7269,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -7278,6 +7295,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for a health check.
           example: 1
@@ -7325,6 +7343,7 @@ components:
           example: Example type
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitor__ objects.
@@ -7381,6 +7400,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ciphers:
           description: An optional cipher list for a secure HTTP/S connection.
@@ -7465,6 +7485,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -7523,6 +7544,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorHttpResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorHttp__ objects.
@@ -7569,6 +7591,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -7594,6 +7617,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -7621,6 +7645,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorIcmpResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorIcmp__ objects.
@@ -7668,6 +7693,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -7693,6 +7719,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -7725,6 +7752,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorPdpResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorPdp__ objects.
@@ -7779,6 +7807,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ciphers:
           description: An optional cipher list for secure TLS/SIPS connection.
@@ -7813,6 +7842,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -7876,6 +7906,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorSipResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorSip__ objects.
@@ -7941,6 +7972,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -7978,6 +8010,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -8029,6 +8062,8 @@ components:
           example: Example version
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DtcMonitorSnmpOids:
       example:
         condition: Example condition
@@ -8127,6 +8162,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -8152,6 +8188,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -8184,6 +8221,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorTcpResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorTcp__ objects.
@@ -8222,6 +8260,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_created:
           description: Flag that indicates whether this record was automatically created
@@ -8295,6 +8334,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_created:
           description: Flag that indicates whether this record was automatically created
@@ -8369,6 +8409,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_created:
           description: Flag that indicates whether this record was automatically created
@@ -8451,6 +8492,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the record; maximum 256 characters.
@@ -8557,6 +8599,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the record; maximum 256 characters.
@@ -8642,6 +8685,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         certificate:
           description: Reference to underlying X509Certificate.
@@ -8685,6 +8729,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The record comment.
@@ -8777,6 +8822,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         abstract_type:
           description: The abstract object type.
@@ -8813,6 +8859,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4_address_list:
           description: The list of IPv4 addresses.
           enum:
@@ -8858,6 +8905,7 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-extattrs-all: true
     ListDtcObjectResponse:
       oneOf:
       - description: The response format to retrieve __DtcObject__ objects.
@@ -8895,6 +8943,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         dest_type:
           description: The type of the destination for this DTC Topology rule.
@@ -8936,6 +8985,7 @@ components:
           readOnly: true
           type: boolean
       type: object
+      x-tf-skip-expand: true
     DtcTopologyRuleSources:
       example:
         source_op: Example source_op
@@ -8995,6 +9045,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         field:
           description: The name of the field in the Topology database the label was

@@ -2051,6 +2051,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ad_domain:
           description: The Active Directory domain to which this server belongs (if
@@ -2112,6 +2113,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         grid_member:
           description: eference to the assigned grid member
           example: Example grid_member
@@ -2218,6 +2220,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     MsserverAdSites:
       example:
         ldap_timeout: 1
@@ -2685,6 +2689,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ea_definition:
           description: The name of the Extensible Attribute Definition object that
@@ -2752,6 +2757,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         domain:
           description: The reference to the Active Directory Domain to which the site
@@ -2825,6 +2831,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The address or FQDN of the DHCP Microsoft Server.
@@ -2996,6 +3003,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The address or FQDN of the DNS Microsoft Server.
@@ -3090,6 +3098,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The superscope descriptive comment.
@@ -3144,6 +3153,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         high_water_mark:
           description: The percentage value for DHCP range usage after which an alarm
             will be active.
@@ -3204,6 +3214,7 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-extattrs-all: true
     ListMssuperscopeResponse:
       oneOf:
       - description: The response format to retrieve __Mssuperscope__ objects.

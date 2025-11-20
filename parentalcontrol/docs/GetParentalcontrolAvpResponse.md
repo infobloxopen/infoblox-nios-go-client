@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for the AVP. | [optional] 
 **DomainTypes** | Pointer to **[]string** | The list of domains applicable to AVP. | [optional] 
 **IsRestricted** | Pointer to **bool** | Determines if AVP is restricted to domains. | [optional] 

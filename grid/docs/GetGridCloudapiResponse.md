@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowApiAdmins** | Pointer to **string** | Defines administrators who can perform cloud API requests on the Grid Master. The valid value is NONE (no administrator), ALL (all administrators), or LIST (administrators on the ACL). | [optional] 
 **AllowedApiAdmins** | Pointer to [**[]GridCloudapiAllowedApiAdmins**](GridCloudapiAllowedApiAdmins.md) | The list of administrators who can perform cloud API requests on the Cloud Platform Appliance. | [optional] 
 **EnableRecycleBin** | Pointer to **bool** | Determines whether the recycle bin for deleted cloud objects is enabled or not on the Grid Master. | [optional] 

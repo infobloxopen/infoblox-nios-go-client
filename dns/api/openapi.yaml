@@ -3084,6 +3084,9 @@ paths:
       summary: Retrieve record:host objects
       tags:
       - RecordHost
+      x-tf-nested-function-call:
+      - Ipv4addrs
+      - Ipv6addrs
     post:
       description: Creates a new record:host object
       operationId: RecordHostCreate
@@ -3146,7 +3149,6 @@ paths:
       x-tf-nested-function-call:
       - Ipv4addrs
       - Ipv6addrs
-      x-sdk-default-ext-attrs: true
       x-sdk-post-function-call-nested:
       - arrayField: Ipv4addrs
         elementVar: ipv4addr
@@ -3156,6 +3158,7 @@ paths:
         elementVar: ipv6addr
         targetField: Ipv6addr
         typeName: RecordHostIpv6addrIpv6addr
+      x-sdk-default-ext-attrs: true
   /record:host/{reference}:
     delete:
       description: Deletes a specific record:host object by reference
@@ -14513,6 +14516,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aws_rte53_record_info:
           $ref: '#/components/schemas/RecordAAwsRte53RecordInfo'
@@ -14578,6 +14582,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if the reclamation is allowed for the record or
             not.
@@ -14640,6 +14645,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     FuncCall:
       description: Function Call attribute
       example:
@@ -15731,6 +15738,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aws_rte53_record_info:
           $ref: '#/components/schemas/RecordAaaaAwsRte53RecordInfo'
@@ -15796,6 +15804,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if the reclamation is allowed for the record or
             not.
@@ -15858,6 +15867,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordAaaaAwsRte53RecordInfo:
       example:
         alias_target_dns_name: Example alias_target_dns_name
@@ -16807,6 +16818,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aws_rte53_record_info:
           $ref: '#/components/schemas/RecordAliasAwsRte53RecordInfo'
@@ -16857,6 +16869,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
           example: 1
@@ -16910,6 +16923,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordAliasAwsRte53RecordInfo:
       example:
         alias_target_dns_name: Example alias_target_dns_name
@@ -17182,6 +17197,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aws_rte53_record_info:
           $ref: '#/components/schemas/RecordCnameAwsRte53RecordInfo'
@@ -17255,6 +17271,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if the reclamation is allowed for the record or
             not.
@@ -17307,6 +17324,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordCnameAwsRte53RecordInfo:
       example:
         alias_target_dns_name: Example alias_target_dns_name
@@ -17580,6 +17599,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aws_rte53_record_info:
           $ref: '#/components/schemas/RecordMxAwsRte53RecordInfo'
@@ -17648,6 +17668,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if the reclamation is allowed for the record or
             not.
@@ -17710,6 +17731,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordMxAwsRte53RecordInfo:
       example:
         alias_target_dns_name: Example alias_target_dns_name
@@ -17981,6 +18004,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aws_rte53_record_info:
           $ref: '#/components/schemas/RecordTxtAwsRte53RecordInfo'
@@ -18044,6 +18068,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if the reclamation is allowed for the record or
             not.
@@ -18102,6 +18127,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordTxtAwsRte53RecordInfo:
       example:
         alias_target_dns_name: Example alias_target_dns_name
@@ -18482,6 +18509,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aws_rte53_record_info:
           $ref: '#/components/schemas/RecordPtrAwsRte53RecordInfo'
@@ -18552,6 +18580,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if the reclamation is allowed for the record or
             not.
@@ -18614,6 +18643,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordPtrAwsRte53RecordInfo:
       example:
         alias_target_dns_name: Example alias_target_dns_name
@@ -19571,6 +19602,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aws_rte53_record_info:
           $ref: '#/components/schemas/RecordSrvAwsRte53RecordInfo'
@@ -19639,6 +19671,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if the reclamation is allowed for the record or
             not.
@@ -19712,6 +19745,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordSrvAwsRte53RecordInfo:
       example:
         alias_target_dns_name: Example alias_target_dns_name
@@ -19958,6 +19993,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         addresses:
           description: The list of zone name servers.
@@ -20019,6 +20055,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     RecordNsAddresses:
       example:
         address: Example address
@@ -20838,6 +20875,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         aliases:
           description: This is a list of aliases for the host. The aliases must be
@@ -20946,6 +20984,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4addrs:
           description: This is a list of IPv4 Addresses for the host.
           items:
@@ -21032,6 +21071,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordHostCliCredentials:
       example:
         credential_type: Example credential_type
@@ -21324,6 +21365,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_info:
           $ref: '#/components/schemas/RecordDnameCloudInfo'
@@ -21388,6 +21430,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if reclamation is allowed for the record.
           example: false
@@ -21441,6 +21484,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordDnameCloudInfo:
       example:
         delegated_member:
@@ -21607,6 +21652,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_info:
           $ref: '#/components/schemas/RecordNaptrCloudInfo'
@@ -21673,6 +21719,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         flags:
           description: "The flags used to control the interpretation of the fields\
             \ for an NAPTR record object. Supported values for the flags field are\
@@ -21759,6 +21806,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordNaptrCloudInfo:
       example:
         delegated_member:
@@ -21917,6 +21966,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         certificate_data:
           description: "Hex dump of either raw data for matching type 0, or the hash\
@@ -21974,6 +22024,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
           example: 1
@@ -22021,6 +22072,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordTlsaCloudInfo:
       example:
         delegated_member:
@@ -22183,6 +22236,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ca_flag:
           description: Flag of CAA record.
@@ -22257,6 +22311,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forbid_reclamation:
           description: Determines if the reclamation is allowed for the record or
             not.
@@ -22302,6 +22357,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordCaaCloudInfo:
       example:
         delegated_member:
@@ -22434,6 +22491,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         creation_time:
           description: The creation time of the record.
@@ -22531,6 +22589,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         algorithm:
           description: The public key encryption algorithm of a DNSKEY Record object.
@@ -22684,6 +22743,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         algorithm:
           description: The algorithm of the DNSKEY RR to which this DS RR refers.
@@ -22786,6 +22846,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     RecordDsCloudInfo:
       example:
         delegated_member:
@@ -22929,6 +22990,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_info:
           $ref: '#/components/schemas/RecordNsecCloudInfo'
@@ -23010,6 +23072,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     RecordNsecCloudInfo:
       example:
         delegated_member:
@@ -23156,6 +23219,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         algorithm:
           description: The hash algorithm that was used.
@@ -23270,6 +23334,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     RecordNsec3CloudInfo:
       example:
         delegated_member:
@@ -23412,6 +23477,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         algorithm:
           description: The hash algorithm that was used.
@@ -23512,6 +23578,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     RecordNsec3paramCloudInfo:
       example:
         delegated_member:
@@ -23660,6 +23727,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         algorithm:
           description: The cryptographic algorithm that was used to create the signature.
@@ -23792,6 +23860,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     RecordRrsigCloudInfo:
       example:
         delegated_member:
@@ -23951,6 +24020,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_info:
           $ref: '#/components/schemas/RecordUnknownCloudInfo'
@@ -24006,6 +24076,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
           example: 1
@@ -24057,6 +24128,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RecordUnknownCloudInfo:
       example:
         delegated_member:
@@ -24355,6 +24428,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         bootfile:
           description: The name of the boot file the client must download.
@@ -24523,6 +24597,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     RecordHostIpv4addrDiscoveredData:
       example:
         vport_name: Example vport_name
@@ -25426,6 +25501,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address_type:
           description: Type of the DHCP IPv6 Host Address object.
@@ -25586,6 +25662,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-skip-expand: true
     RecordHostIpv6addrDiscoveredData:
       example:
         vport_name: Example vport_name
@@ -26809,6 +26886,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IP address of the server that is serving this zone.
@@ -27060,6 +27138,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         external_primaries:
           description: The list of external primary servers.
           enum:
@@ -27550,6 +27629,8 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     ZoneAuthAllowActiveDir:
       example:
         address: Example address
@@ -27583,7 +27664,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27634,7 +27715,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27685,7 +27766,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -29037,6 +29118,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IP address of the server that is serving this zone.
@@ -29108,6 +29190,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fqdn:
           description: "The name of this DNS zone. For a reverse zone, this is in\
             \ \"address/cidr\" format. For other zones, this is in FQDN format. This\
@@ -29226,6 +29309,8 @@ components:
           example: Example zone_format
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     ZoneDelegatedDelegateTo:
       example:
         address: Example address
@@ -29397,6 +29482,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IP address of the server that is serving this zone.
@@ -29450,6 +29536,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         external_ns_group:
           description: A forward stub server name server group.
           example: Example external_ns_group
@@ -29590,6 +29677,8 @@ components:
           example: Example zone_format
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     ZoneForwardForwardTo:
       example:
         address: Example address
@@ -29877,6 +29966,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IP address of the server that is serving this zone.
@@ -29930,6 +30020,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         external_ns_group:
           description: A forward stub server name server group.
           example: Example external_ns_group
@@ -30134,6 +30225,8 @@ components:
           example: Example zone_format
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     ZoneStubStubFrom:
       example:
         address: Example address
@@ -30564,6 +30657,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IP address of the server that is serving this zone.
@@ -30609,6 +30703,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         external_primaries:
           description: The list of external primary servers.
           enum:
@@ -30881,6 +30976,8 @@ components:
           example: Example view
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     ZoneRpExternalPrimaries:
       example:
         address: Example address
@@ -31357,6 +31454,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         description:
           description: Information about the discrepancy.
@@ -31427,6 +31525,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The record address.
@@ -31560,6 +31659,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         is_default:
           description: Determines whether the record name policy is Grid default.
@@ -31640,6 +31740,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         clients:
           description: Access Control settings that contain IPv4 and IPv6 DNS clients
@@ -31695,6 +31796,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         mapped:
           description: Access Control settings that contain IPv4 addresses and networks
             for which the DNS server can synthesize AAAA records with the specified
@@ -31715,6 +31817,8 @@ components:
           example: Example prefix
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Dns64groupClients:
       example:
         address: Example address
@@ -31800,6 +31904,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the name server group.
@@ -31854,6 +31959,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the DDNS Principal Cluster.
@@ -31911,6 +32017,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         clusters:
           description: The list of equivalent DDNS principal clusters.
@@ -31967,6 +32074,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         rp_zones:
           description: An ordered list of Response Policy Zone names.
@@ -32024,6 +32132,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this shared record; maximum 256 characters.
@@ -32059,6 +32168,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4addr:
           description: The IPv4 Address of the shared record.
           example: Example ipv4addr
@@ -32084,6 +32194,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListSharedrecordAResponse:
       oneOf:
       - description: The response format to retrieve __SharedrecordA__ objects.
@@ -32132,6 +32243,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this shared record; maximum 256 characters.
@@ -32167,6 +32279,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv6addr:
           description: The IPv6 Address of the shared record.
           example: Example ipv6addr
@@ -32192,6 +32305,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListSharedrecordAaaaResponse:
       oneOf:
       - description: The response format to retrieve __SharedrecordAaaa__ objects.
@@ -32241,6 +32355,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: Canonical name in FQDN format. This value can be in unicode
@@ -32286,6 +32401,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name for this shared record. This value can be in unicode format.
           example: Example name
@@ -32307,6 +32423,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListSharedrecordCnameResponse:
       oneOf:
       - description: The response format to retrieve __SharedrecordCname__ objects.
@@ -32357,6 +32474,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this shared record; maximum 256 characters.
@@ -32397,6 +32515,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         mail_exchanger:
           description: The name of the mail exchanger in FQDN format. This value can
             be in unicode format.
@@ -32429,6 +32548,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListSharedrecordMxResponse:
       oneOf:
       - description: The response format to retrieve __SharedrecordMx__ objects.
@@ -32481,6 +32601,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this shared record; maximum 256 characters.
@@ -32521,6 +32642,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name for this shared record. This value can be in unicode format.
           example: Example name
@@ -32565,6 +32687,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
     ListSharedrecordSrvResponse:
       oneOf:
       - description: The response format to retrieve __SharedrecordSrv__ objects.
@@ -32613,6 +32736,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this shared record; maximum 256 characters.
@@ -32648,6 +32772,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name for this shared record. This value can be in unicode format.
           example: Example name
@@ -32676,6 +32801,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListSharedrecordTxtResponse:
       oneOf:
       - description: The response format to retrieve __SharedrecordTxt__ objects.
@@ -32725,6 +32851,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment of this shared record group.
@@ -32750,6 +32877,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name of this shared record group.
           example: Example name
@@ -32772,6 +32900,8 @@ components:
             $ref: '#/components/schemas/SharedrecordgroupZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     SharedrecordgroupZoneAssociations:
       example:
         view: Example view
@@ -33065,6 +33195,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         blacklist_action:
           description: The action to perform when a domain name matches the pattern
@@ -33250,6 +33381,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         filter_aaaa:
           description: The type of AAAA filtering for this DNS view object.
           enum:
@@ -33546,6 +33678,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     ViewCloudInfo:
       example:
         delegated_member:
@@ -33726,7 +33860,7 @@ components:
         permission: Example permission
       properties:
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -33791,7 +33925,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -33842,7 +33976,7 @@ components:
             and 'tsigac'.
           type: string
         _ref:
-          description: The reference to the Named ACL object.
+          description: The reference to the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -34399,6 +34533,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the name server group; maximum 256 characters.
@@ -34424,6 +34559,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         external_primaries:
           description: The list of external primary servers.
           enum:
@@ -34473,6 +34609,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NsgroupExternalPrimaries:
       example:
         address: Example address
@@ -34852,6 +34990,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the delegated NS group.
@@ -34884,11 +35023,14 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name of the delegated NS group.
           example: Example name
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NsgroupDelegationDelegateTo:
       example:
         address: Example address
@@ -35022,6 +35164,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the Forwarding Member Name Server Group; maximum
@@ -35048,6 +35191,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         forwarding_servers:
           description: The list of forwarding member servers.
           enum:
@@ -35060,6 +35204,8 @@ components:
           example: Example name
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NsgroupForwardingmemberForwardingServers:
       example:
         forward_to:
@@ -35212,6 +35358,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the Forward Stub Server Name Server Group; maximum
@@ -35238,6 +35385,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         external_servers:
           description: The list of external servers.
           enum:
@@ -35250,6 +35398,8 @@ components:
           example: Example name
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NsgroupForwardstubserverExternalServers:
       example:
         address: Example address
@@ -35388,6 +35538,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the Stub Member Name Server Group; maximum 256
@@ -35414,6 +35565,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name of the Stub Member Name Server Group.
           example: Example name
@@ -35428,6 +35580,8 @@ components:
             $ref: '#/components/schemas/NsgroupStubmemberStubMembers'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NsgroupStubmemberStubMembers:
       example:
         preferred_primaries:

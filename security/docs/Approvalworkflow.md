@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ApprovalGroup** | Pointer to **string** | The approval administration group. | [optional] 
 **ApprovalNotifyTo** | Pointer to **string** | The destination for approval task notifications. | [optional] 
 **ApprovedNotifyTo** | Pointer to **string** | The destination for approved task notifications. | [optional] 

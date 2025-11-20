@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AssignedTo** | Pointer to **[]string** | List of objects VLAN is assigned to. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment for this VLAN. | [optional] 
 **Contact** | Pointer to **string** | Contact information for person/team managing or using VLAN. | [optional] 

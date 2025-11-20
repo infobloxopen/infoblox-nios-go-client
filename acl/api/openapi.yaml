@@ -558,6 +558,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         access_list:
           description: "The access control list of IPv4/IPv6 addresses, networks,\
@@ -601,11 +602,14 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name of the named ACL.
           example: Example name
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NamedaclAccessList:
       example:
         _struct: _struct

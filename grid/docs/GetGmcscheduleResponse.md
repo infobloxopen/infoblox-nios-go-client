@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ActivateGmcGroupSchedule** | Pointer to **bool** | Determines whether the gmc schedule is active. | [optional] 
 **GmcGroups** | Pointer to **[]string** | Object array of gmc groups | [optional] [readonly] 
 **Result** | Pointer to [**Gmcschedule**](Gmcschedule.md) |  | [optional] 

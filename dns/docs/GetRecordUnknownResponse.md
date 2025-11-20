@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**RecordUnknownCloudInfo**](RecordUnknownCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the record; maximum 256 characters. | [optional] 
 **Creator** | Pointer to **string** | The record creator. Note that changing creator from or to &#39;SYSTEM&#39; value is not allowed. | [optional] 

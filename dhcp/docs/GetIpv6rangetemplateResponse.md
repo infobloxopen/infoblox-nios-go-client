@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudApiCompatible** | Pointer to **bool** | Determines whether the IPv6 DHCP range template can be used to create network objects in a cloud-computing deployment. | [optional] 
 **Comment** | Pointer to **string** | The IPv6 DHCP range template descriptive comment. | [optional] 
 **DelegatedMember** | Pointer to [**Ipv6rangetemplateDelegatedMember**](Ipv6rangetemplateDelegatedMember.md) |  | [optional] 

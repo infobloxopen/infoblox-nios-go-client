@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Authority** | Pointer to **bool** | The Grid-level authority flag. This flag specifies whether a DHCP server is authoritative for a domain. | [optional] 
 **Bootfile** | Pointer to **string** | The name of a file that DHCP clients need to boot. Some DHCP clients use BOOTP (bootstrap protocol) or include the boot file name option in their DHCPREQUEST messages. | [optional] 
 **Bootserver** | Pointer to **string** | The name of the server on which a boot file is stored. | [optional] 

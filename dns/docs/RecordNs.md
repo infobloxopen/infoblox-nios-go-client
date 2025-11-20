@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Addresses** | Pointer to [**[]RecordNsAddresses**](RecordNsAddresses.md) | The list of zone name servers. | [optional] 
 **CloudInfo** | Pointer to [**RecordNsCloudInfo**](RecordNsCloudInfo.md) |  | [optional] 
 **Creator** | Pointer to **string** | The record creator. | [optional] [readonly] 

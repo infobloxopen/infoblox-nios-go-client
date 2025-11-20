@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Action** | Pointer to **string** | The action to execute. | [optional] 
 **AdminName** | Pointer to **string** | The login name of the administrator. | [optional] [readonly] 
 **EndTime** | Pointer to **int64** | The end time of this import operation. | [optional] [readonly] 

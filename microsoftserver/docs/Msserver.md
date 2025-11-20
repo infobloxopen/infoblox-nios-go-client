@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AdDomain** | Pointer to **string** | The Active Directory domain to which this server belongs (if applicable). | [optional] [readonly] 
 **AdSites** | Pointer to [**MsserverAdSites**](MsserverAdSites.md) |  | [optional] 
 **AdUser** | Pointer to [**MsserverAdUser**](MsserverAdUser.md) |  | [optional] 

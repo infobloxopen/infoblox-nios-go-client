@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **BinaryMajorVersion** | Pointer to **int64** | The major version of DB binary format. | [optional] [readonly] 
 **BinaryMinorVersion** | Pointer to **int64** | The minor version of DB binary format. | [optional] [readonly] 
 **BuildTime** | Pointer to **int64** | The time at which the DB was built. | [optional] [readonly] 

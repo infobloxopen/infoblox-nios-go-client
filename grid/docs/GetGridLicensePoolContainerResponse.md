@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **LastEntitlementUpdate** | Pointer to **int64** | The timestamp when the last pool licenses were updated. | [optional] [readonly] 
 **LpcUid** | Pointer to **string** | The world-wide unique ID for the license pool container. | [optional] [readonly] 
 **Result** | Pointer to [**GridLicensePoolContainer**](GridLicensePoolContainer.md) |  | [optional] 

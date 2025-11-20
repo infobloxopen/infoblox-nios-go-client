@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AccessMethod** | Pointer to **[]string** | Access methods specify whether an admin group can use the GUI and the API to access the appliance or to send Taxii messages to the appliance. Note that API includes both the Perl API and RESTful API. | [optional] 
 **AdminSetCommands** | Pointer to [**AdmingroupAdminSetCommands**](AdmingroupAdminSetCommands.md) |  | [optional] 
 **AdminShowCommands** | Pointer to [**AdmingroupAdminShowCommands**](AdmingroupAdminShowCommands.md) |  | [optional] 

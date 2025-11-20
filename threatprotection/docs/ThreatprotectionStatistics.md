@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Member** | Pointer to **string** | The Grid member name to get threat protection statistics. If nothing is specified then event statistics is returned for the Grid. | [optional] [readonly] 
 **StatInfos** | Pointer to [**[]ThreatprotectionStatisticsStatInfos**](ThreatprotectionStatisticsStatInfos.md) | The list of event statistical information for the Grid or particular members. | [optional] [readonly] 
 

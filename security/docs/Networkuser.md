@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IPv4 Address or IPv6 Address of the Network User. | [optional] 
 **AddressObject** | Pointer to **string** | The reference of the IPAM IPv4Address or IPv6Address object describing the address of the Network User. | [optional] [readonly] 
 **DataSource** | Pointer to **string** | The Network User data source. | [optional] [readonly] 

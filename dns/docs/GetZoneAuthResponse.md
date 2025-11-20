@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IP address of the server that is serving this zone. | [optional] [readonly] 
 **AllowActiveDir** | Pointer to [**[]ZoneAuthAllowActiveDir**](ZoneAuthAllowActiveDir.md) | This field allows the zone to receive GSS-TSIG authenticated DDNS updates from DHCP clients and servers in an AD domain. Note that addresses specified in this field ignore the permission set in the struct which will be set to &#39;ALLOW&#39;. | [optional] 
 **AllowFixedRrsetOrder** | Pointer to **bool** | The flag that allows to enable or disable fixed RRset ordering for authoritative forward-mapping zones. | [optional] 

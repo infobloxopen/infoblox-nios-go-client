@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Descriptive comment about the Ruleset object. | [optional] 
 **Disabled** | Pointer to **bool** | The flag that indicates if the Ruleset object is disabled. | [optional] 
 **Name** | Pointer to **string** | The name of this Ruleset object. | [optional] 

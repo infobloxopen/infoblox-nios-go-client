@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AzureSubscriptionIdsFileToken** | Pointer to **string** | The Azure Subscription IDs file&#39;s token. | [optional] 
 **Comment** | Pointer to **string** | Comment for the task group; maximum 256 characters. | [optional] 
 **ConsolidateZones** | Pointer to **bool** | Indicates if all zones need to be saved into a single view. | [optional] 

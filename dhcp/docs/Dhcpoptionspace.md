@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment of a DHCP option space object. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP option space object. | [optional] 
 **OptionDefinitions** | Pointer to **[]string** | The list of DHCP option definition objects. | [optional] 

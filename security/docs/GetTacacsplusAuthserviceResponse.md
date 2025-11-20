@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AcctRetries** | Pointer to **int64** | The number of the accounting retries before giving up and moving on to the next server. | [optional] 
 **AcctTimeout** | Pointer to **int64** | The accounting retry period in milliseconds. | [optional] 
 **AuthRetries** | Pointer to **int64** | The number of the authentication/authorization retries before giving up and moving on to the next server. | [optional] 

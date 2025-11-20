@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for this DTC monitor; maximum 256 characters. | [optional] 
 **Community** | Pointer to **string** | The SNMP community string for SNMP authentication. | [optional] 
 **Context** | Pointer to **string** | The SNMPv3 context. | [optional] 

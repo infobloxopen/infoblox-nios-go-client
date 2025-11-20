@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The domain name or IP address for the Master Grid. | [optional] 
 **ConnectionDisabled** | Pointer to **bool** | Determines if the sub-grid is currently disabled. | [optional] [readonly] 
 **ConnectionTimestamp** | Pointer to **int64** | The timestamp that indicates when the connection to the Master Grid was established. | [optional] [readonly] 

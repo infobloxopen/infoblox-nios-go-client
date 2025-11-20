@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **IsGridDefault** | Pointer to **bool** | True if this template is Grid default. | [optional] [readonly] 
 **PreDefined** | Pointer to **bool** | True if this is a pre-defined template, False otherwise. | [optional] [readonly] 
 **TemplateFormat** | Pointer to **string** | The format of bulk host name template. It should follow certain rules (please use Administration Guide as reference). | [optional] 

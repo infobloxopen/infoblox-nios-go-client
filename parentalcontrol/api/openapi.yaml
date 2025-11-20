@@ -1706,6 +1706,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the AVP.
@@ -1799,6 +1800,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         name:
           description: The name of the blocking policy.
@@ -1874,6 +1876,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         alt_subscriber_id:
           description: The name of AVP to be used as an alternate subscriber ID for
@@ -2075,6 +2078,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         accounting_session_id:
           description: accounting_session_id
@@ -2272,6 +2276,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         abss:
           description: The list of ABS for the site.
@@ -2355,6 +2360,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         first_port:
           description: The start of the first Deterministic block.
           example: 1
@@ -2430,6 +2436,8 @@ components:
           example: Example subscriber_collection_type
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     ParentalcontrolSubscribersiteAbss:
       example:
         ip_address: Example ip_address

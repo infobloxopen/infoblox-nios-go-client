@@ -999,6 +999,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         resource:
           description: The object retuned by the Smart Folder query.
@@ -1022,6 +1023,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     SmartfolderChildrenValue:
       example:
         value_boolean: false
@@ -1103,6 +1105,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The global Smart Folder descriptive comment.
@@ -1127,6 +1130,7 @@ components:
             $ref: '#/components/schemas/SmartfolderGlobalQueryItems'
           type: array
       type: object
+      x-tf-skip-expand: true
     SmartfolderGlobalGroupBys:
       example:
         value_type: Example value_type
@@ -1302,6 +1306,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The personal Smart Folder descriptive comment.
@@ -1331,6 +1336,7 @@ components:
             $ref: '#/components/schemas/SmartfolderPersonalQueryItems'
           type: array
       type: object
+      x-tf-skip-expand: true
     SmartfolderPersonalGroupBys:
       example:
         value_type: Example value_type

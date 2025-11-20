@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AwsRte53RecordInfo** | Pointer to [**RecordAliasAwsRte53RecordInfo**](RecordAliasAwsRte53RecordInfo.md) |  | [optional] 
 **CloudInfo** | Pointer to [**RecordAliasCloudInfo**](RecordAliasCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the record; maximum 256 characters. | [optional] 
