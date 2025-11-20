@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ActiveDashboardType** | Pointer to **string** | Determines the active dashboard type. | [optional] 
 **AdminGroup** | Pointer to **string** | The Admin Group object to which the admin belongs. An admin user can belong to only one admin group at a time. | [optional] [readonly] 
 **DaysToExpire** | Pointer to **int64** | The number of days left before the admin&#39;s password expires. | [optional] [readonly] 

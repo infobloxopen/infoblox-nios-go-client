@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**RecordNsecCloudInfo**](RecordNsecCloudInfo.md) |  | [optional] 
 **CreationTime** | Pointer to **int64** | Time that the record was created. | [optional] [readonly] 
 **Creator** | Pointer to **string** | Creator of the record. | [optional] [readonly] 

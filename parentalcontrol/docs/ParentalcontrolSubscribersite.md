@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Abss** | Pointer to [**[]ParentalcontrolSubscribersiteAbss**](ParentalcontrolSubscribersiteAbss.md) | The list of ABS for the site. | [optional] 
 **ApiMembers** | Pointer to [**[]ParentalcontrolSubscribersiteApiMembers**](ParentalcontrolSubscribersiteApiMembers.md) | The list of API members for the site. | [optional] 
 **ApiPort** | Pointer to **int64** | The port number for gRPC API server. | [optional] [readonly] 

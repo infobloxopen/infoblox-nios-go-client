@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DestType** | Pointer to **string** | The type of the destination for this DTC Topology rule. | [optional] 
 **DestinationLink** | Pointer to **string** | The reference to the destination DTC pool or DTC server. | [optional] 
 **ReturnType** | Pointer to **string** | Type of the DNS response for rule. | [optional] 

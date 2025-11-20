@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AwsRte53RecordInfo** | Pointer to [**RecordCnameAwsRte53RecordInfo**](RecordCnameAwsRte53RecordInfo.md) |  | [optional] 
 **Canonical** | Pointer to **string** | Canonical name in FQDN format. This value can be in unicode format. | [optional] 
 **CloudInfo** | Pointer to [**RecordCnameCloudInfo**](RecordCnameCloudInfo.md) |  | [optional] 

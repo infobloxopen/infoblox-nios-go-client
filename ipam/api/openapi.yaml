@@ -3138,6 +3138,7 @@ paths:
       x-sdk-default-ext-attrs: true
       x-sdk-post-function-call:
       - Id
+      x-sdk-int-function-call: true
       x-tf-function-call: true
   /vlan/{reference}:
     delete:
@@ -5972,6 +5973,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the address; maximum 256 characters.
@@ -6032,6 +6034,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fingerprint:
           description: DHCP fingerprint for the address.
           example: Example fingerprint
@@ -6125,6 +6128,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv4addressDiscoveredData:
       example:
         vport_name: Example vport_name
@@ -6964,6 +6969,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the address; maximum 256 characters.
@@ -7024,6 +7030,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fingerprint:
           description: DHCP fingerprint for the address.
           example: Example fingerprint
@@ -7104,6 +7111,8 @@ components:
           readOnly: true
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6addressDiscoveredData:
       example:
         vport_name: Example vport_name
@@ -8081,6 +8090,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authority:
           description: Authority for the DHCP network.
@@ -8348,6 +8358,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network
@@ -8768,6 +8779,8 @@ components:
             $ref: '#/components/schemas/NetworkZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     FuncCall:
       description: Function Call attribute
       example:
@@ -9290,7 +9303,7 @@ components:
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'dhcpmember'
-            or 'msdhcpserver'.
+            and 'msdhcpserver'.
           type: string
         ipv4addr:
           description: The IPv4 Address or FQDN of the Microsoft server.
@@ -9844,6 +9857,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authority:
           description: Authority for the DHCP network container.
@@ -10024,6 +10038,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network container.
@@ -10390,6 +10405,8 @@ components:
             $ref: '#/components/schemas/NetworkcontainerZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NetworkcontainerCloudInfo:
       example:
         delegated_member:
@@ -11264,6 +11281,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_any_netmask:
           description: "This flag controls whether the template allows any netmask.\
@@ -11397,6 +11415,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fixed_address_templates:
           description: "The list of fixed address templates assigned to this network\
             \ template object. When you create a network based on a network template\
@@ -11666,6 +11685,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NetworktemplateDelegatedMember:
       example:
         name: Example name
@@ -11910,6 +11931,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         associated_dns_views:
           description: The list of DNS views associated with this network view.
@@ -11966,6 +11988,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network view
@@ -12019,6 +12042,8 @@ components:
             $ref: '#/components/schemas/NetworkviewRemoteReverseZones'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NetworkviewAssociatedMembers:
       example:
         failovers:
@@ -12555,6 +12580,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_create_reversezone:
           description: This flag controls whether reverse zones are automatically
@@ -12752,6 +12778,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network
@@ -13012,6 +13039,8 @@ components:
             $ref: '#/components/schemas/Ipv6networkZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6networkCloudInfo:
       example:
         delegated_member:
@@ -13972,6 +14001,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_create_reversezone:
           description: This flag controls whether reverse zones are automatically
@@ -14112,6 +14142,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network container.
@@ -14337,6 +14368,8 @@ components:
             $ref: '#/components/schemas/Ipv6networkcontainerZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6networkcontainerCloudInfo:
       example:
         delegated_member:
@@ -15146,6 +15179,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_any_netmask:
           description: "This flag controls whether the template allows any netmask.\
@@ -15248,6 +15282,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fixed_address_templates:
           description: "The list of IPv6 fixed address templates assigned to this\
             \ IPv6 network template object. When you create an IPv6 network based\
@@ -15411,6 +15446,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6networktemplateDelegatedMember:
       example:
         name: Example name
@@ -15536,6 +15573,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cidr:
           description: The network CIDR.
@@ -15584,6 +15622,7 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-skip-expand: true
     IpamStatisticsMsAdUserData:
       example:
         active_users_count: 1
@@ -15649,6 +15688,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         assigned_to:
           description: List of objects VLAN is assigned to.
@@ -15697,6 +15737,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         id:
           $ref: '#/components/schemas/Vlan_id'
         func_call:
@@ -15721,6 +15762,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListVlanResponse:
       oneOf:
       - description: The response format to retrieve __Vlan__ objects.
@@ -15768,6 +15810,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_range_overlapping:
           description: When set to true VLAN Ranges under VLAN View can have overlapping
@@ -15803,6 +15846,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name of the VLAN View.
           example: Example name
@@ -15822,6 +15866,7 @@ components:
           example: Example vlan_name_prefix
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListVlanviewResponse:
       oneOf:
       - description: The response format to retrieve __Vlanview__ objects.
@@ -15870,6 +15915,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: A descriptive comment for this VLAN Range.
@@ -15906,6 +15952,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name of the VLAN Range.
           example: Example name
@@ -15929,6 +15976,7 @@ components:
           example: Example vlan_view
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListVlanrangeResponse:
       oneOf:
       - description: The response format to retrieve __Vlanrange__ objects.
@@ -15998,6 +16046,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_info:
           $ref: '#/components/schemas/BulkhostCloudInfo'
@@ -16038,6 +16087,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
           example: 1
@@ -16099,6 +16149,8 @@ components:
           example: Example zone
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     BulkhostCloudInfo:
       example:
         delegated_member:
@@ -16226,6 +16278,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         is_grid_default:
           description: True if this template is Grid default.
@@ -16331,6 +16384,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         csv_file_name:
           description: The network discovery CSV file name.
@@ -16458,6 +16512,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     DiscoverytaskScheduledRun:
       example:
         month: 1
@@ -16638,6 +16693,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListNetworkDiscoveryResponse:
@@ -16684,6 +16740,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for Super Host.
@@ -16740,11 +16797,13 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name of the Superhost.
           example: Example name
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListSuperhostResponse:
       oneOf:
       - description: The response format to retrieve __Superhost__ objects.
@@ -16787,6 +16846,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         associated_object:
           description: "The record object, if supported by the WAPI. Otherwise, the\
@@ -16884,6 +16944,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         is_default:
           description: True if the policy is the Grid default.

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Field** | Pointer to **string** | The name of the field in the Topology database the label was obtained from. | [optional] [readonly] 
 **Label** | Pointer to **string** | The DTC Topology label name. | [optional] [readonly] 
 

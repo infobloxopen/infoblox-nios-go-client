@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The pxgrid endpoint IPv4 Address or IPv6 Address or Fully-Qualified Domain Name (FQDN) | [optional] 
 **ClientCertificateSubject** | Pointer to **string** | The Cisco ISE client certificate subject. | [optional] [readonly] 
 **ClientCertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop for Cisco ISE client certificate. | [optional] 

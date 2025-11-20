@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The Grid member address IP address. | [optional] [readonly] 
 **CliCredentials** | Pointer to [**[]DiscoveryMemberpropertiesCliCredentials**](DiscoveryMemberpropertiesCliCredentials.md) | Discovery CLI credentials. | [optional] 
 **DefaultSeedRouters** | Pointer to [**[]DiscoveryMemberpropertiesDefaultSeedRouters**](DiscoveryMemberpropertiesDefaultSeedRouters.md) | Default seed routers. | [optional] [readonly] 

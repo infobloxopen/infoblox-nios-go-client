@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowedActions** | Pointer to **[]string** | The list of allowed actions of the custom rule. | [optional] [readonly] 
 **Category** | Pointer to **string** | The rule category the custom rule assigned to. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The human readable comment for the custom rule. | [optional] 

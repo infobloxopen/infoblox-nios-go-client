@@ -8512,6 +8512,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         dhcp_utilization:
           description: The percentage of the total DHCP utilization of DHCP objects
@@ -8617,6 +8618,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         association_type:
           description: The value indicating whether the failover assoctaion is Microsoft
@@ -8651,6 +8653,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         failover_port:
           description: Determines the TCP port on which the server should listen for
             connections from its failover peer. Valid values are between 1 and 63999.
@@ -8878,6 +8881,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListDhcpfailoverResponse:
       oneOf:
       - description: The response format to retrieve __Dhcpfailover__ objects.
@@ -8913,6 +8917,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         code:
           description: The code of a DHCP option definition object. An option code
@@ -8999,6 +9004,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: A descriptive comment of a DHCP option space object.
@@ -9069,6 +9075,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment.
@@ -9094,6 +9101,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fingerprint:
           description: The list of DHCP Fingerprint objects.
           enum:
@@ -9106,6 +9114,7 @@ components:
           example: Example name
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListFilterfingerprintResponse:
       oneOf:
       - description: The response format to retrieve __Filterfingerprint__ objects.
@@ -9165,6 +9174,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment of a DHCP MAC Filter object.
@@ -9208,6 +9218,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         lease_time:
           description: The length of time the DHCP server leases an IP address to
             a client. The lease time applies to hosts that meet the filter criteria.
@@ -9237,6 +9248,8 @@ components:
           example: Example reserved_for_infoblox
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     FiltermacOptions:
       example:
         vendor_class: Example vendor_class
@@ -9325,6 +9338,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment of a DHCP NAC Filter object.
@@ -9354,6 +9368,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         lease_time:
           description: The length of time the DHCP server leases an IP address to
             a client. The lease time applies to hosts that meet the filter criteria.
@@ -9373,6 +9388,8 @@ components:
             $ref: '#/components/schemas/FilternacOptions'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     FilternacOptions:
       example:
         vendor_class: Example vendor_class
@@ -9467,6 +9484,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         apply_as_class:
           description: "Determines if apply as class is enabled or not. If this flag\
@@ -9513,6 +9531,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         lease_time:
           description: Determines the lease time of a DHCP filter option object.
           example: 1
@@ -9549,6 +9568,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     FilteroptionOptionList:
       example:
         vendor_class: Example vendor_class
@@ -9634,6 +9655,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         circuit_id_name:
           description: "The circuit_id_name of a DHCP relay agent filter object. This\
@@ -9678,6 +9700,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_circuit_id:
           description: The circuit ID matching rule of a DHCP relay agent filter object.
             The circuit_id value takes effect only if the value is "MATCHES_VALUE".
@@ -9731,6 +9754,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
     ListFilterrelayagentResponse:
       oneOf:
       - description: The response format to retrieve __Filterrelayagent__ objects.
@@ -9785,6 +9809,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the Fingerprint; maximum 256 characters.
@@ -9818,6 +9843,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv6_option_sequence:
           description: A list (comma separated list) of IPv6 option number sequences
             of the device or operating system.
@@ -9853,6 +9879,7 @@ components:
             type: string
           type: array
       type: object
+      x-tf-extattrs-all: true
     ListFingerprintResponse:
       oneOf:
       - description: The response format to retrieve __Fingerprint__ objects.
@@ -10116,6 +10143,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         agent_circuit_id:
           description: The agent circuit ID for the fixed address.
@@ -10260,6 +10288,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ignore_dhcp_option_list_request:
           description: "If this field is set to False, the appliance returns all DHCP\
             \ options the client is eligible to receive, rather than only the list\
@@ -10438,6 +10467,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     FuncCall:
       description: Function Call attribute
       example:
@@ -11546,6 +11577,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         bootfile:
           description: The boot file name for the fixed address. You can configure
@@ -11607,6 +11639,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ignore_dhcp_option_list_request:
           description: "If this field is set to False, the appliance returns all DHCP\
             \ options the client is eligible to receive, rather than only the list\
@@ -11702,6 +11735,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     FixedaddresstemplateLogicFilterRules:
       example:
         filter: Example filter
@@ -11784,6 +11819,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         code:
           description: The code of a DHCP IPv6 option definition object. An option
@@ -11865,6 +11901,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: A descriptive comment of a DHCP IPv6 option space object.
@@ -11944,6 +11981,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         apply_as_class:
           description: "Determines if apply as class is enabled or not. If this flag\
@@ -11980,6 +12018,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         lease_time:
           description: Determines the lease time of a DHCP IPv6 filter option object.
           example: 1
@@ -12002,6 +12041,8 @@ components:
           example: Example option_space
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6filteroptionOptionList:
       example:
         vendor_class: Example vendor_class
@@ -12272,6 +12313,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address_type:
           description: "The address type value for this IPv6 fixed address. When the\
@@ -12387,6 +12429,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv6addr:
           $ref: '#/components/schemas/Ipv6fixedaddress_ipv6addr'
         func_call:
@@ -12519,6 +12562,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6fixedaddressCliCredentials:
       example:
         credential_type: Example credential_type
@@ -13531,6 +13576,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: A descriptive comment of an IPv6 fixed address template object.
@@ -13570,6 +13616,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         logic_filter_rules:
           description: This field contains the logic filters to be applied to this
             IPv6 fixed address. This list corresponds to the match rules that are
@@ -13638,6 +13685,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6fixedaddresstemplateLogicFilterRules:
       example:
         filter: Example filter
@@ -13862,6 +13911,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address_type:
           description: "Type of a DHCP IPv6 Range object. Valid values are \"ADDRESS\"\
@@ -13958,6 +14008,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv6_end_prefix:
           description: The IPv6 Address end prefix of the DHCP IPv6 range.
           example: Example ipv6_end_prefix
@@ -14064,6 +14115,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6rangeCloudInfo:
       example:
         delegated_member:
@@ -14803,6 +14856,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_api_compatible:
           description: Determines whether the IPv6 DHCP range template can be used
@@ -14884,6 +14938,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     Ipv6rangetemplateDelegatedMember:
       example:
         name: Example name
@@ -15062,6 +15117,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: "Comment for the IPv6 shared network, maximum 256 characters."
@@ -15142,6 +15198,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         logic_filter_rules:
           description: This field contains the logic filters to be applied on the
             this IPv6 shared network. This list corresponds to the match rules that
@@ -15250,6 +15307,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6sharednetworkLogicFilterRules:
       example:
         filter: Example filter
@@ -15460,6 +15519,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IPv4 Address or IPv6 Address of the lease.
@@ -15778,6 +15838,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     LeaseDiscoveredData:
       example:
         vport_name: Example vport_name
@@ -16513,6 +16574,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authentication_time:
           description: The absolute UNIX time (in seconds) since the address was last
@@ -16549,6 +16611,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         filter:
           description: Name of the MAC filter to which this address belongs.
           example: Example filter
@@ -16616,6 +16679,7 @@ components:
           example: Example username
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListMacfilteraddressResponse:
       oneOf:
       - description: The response format to retrieve __Macfilteraddress__ objects.
@@ -16896,6 +16960,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         always_update_dns:
           description: "This field controls whether only the DHCP server is allowed\
@@ -17079,6 +17144,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         failover_association:
           description: "The name of the failover association: the server in this failover\
             \ association will serve the IPv4 range in case the main server is out\
@@ -17451,6 +17517,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RangeCloudInfo:
       example:
         delegated_member:
@@ -18466,6 +18534,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         bootfile:
           description: The bootfile name for the range. You can configure the DHCP
@@ -18570,6 +18639,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         failover_association:
           description: "The name of the failover association: the server in this failover\
             \ association will serve the IPv4 range in case the main server is out\
@@ -18852,6 +18922,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RangetemplateDelegatedMember:
       example:
         name: Example name
@@ -19214,6 +19286,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address_type:
           description: The address type for this roaming host.
@@ -19297,6 +19370,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         force_roaming_hostname:
           description: Set this to True to use the roaming host name as its ddns_hostname.
           example: false
@@ -19504,6 +19578,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     RoaminghostIpv6Options:
       example:
         vendor_class: Example vendor_class
@@ -19679,6 +19755,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authority:
           description: Authority for the shared network.
@@ -19799,6 +19876,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ignore_client_identifier:
           description: "If set to true, the client identifier will be ignored."
           example: false
@@ -19855,12 +19933,12 @@ components:
           example: Example network_view
           type: string
         networks:
-          description: "A list of networks belonging to the shared network. Each individual\
+          description: "A list of networks belonging to the shared network Each individual\
             \ list item must be specified as an object containing a '_ref' parameter\
             \ to a network reference, for example:: [{ \"_ref\": \"network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\"\
-            \ }] if the reference of the wanted network is not known, it is possible\
+            , }] if the reference of the wanted network is not known, it is possible\
             \ to specify search parameters for the network instead in the following\
-            \ way:: [{ \"_ref\": { 'network': '10.0.0.0/8' } }] note that in this\
+            \ way:: [{ \"_ref\": { 'network': '10.0.0.0/8', } }] note that in this\
             \ case the search must match exactly one network for the assignment to\
             \ be successful."
           items:
@@ -19983,14 +20061,8 @@ components:
           example: false
           type: boolean
       type: object
-    SharednetworkNetworks:
-      example:
-        _ref: _ref
-      properties:
-        _ref:
-          description: Reference to the Network.
-          type: string
-      type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     SharednetworkLogicFilterRules:
       example:
         filter: Example filter
@@ -20049,6 +20121,14 @@ components:
           example: false
           type: boolean
       type: object
+    SharednetworkNetworks:
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: Reference to the Network.
+          type: string
+      type: object
     ListSharednetworkResponse:
       oneOf:
       - description: The response format to retrieve __Sharednetwork__ objects.
@@ -20084,6 +20164,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         network:
           description: The reference to the network that contains ranges.
@@ -20125,7 +20206,7 @@ components:
         ipv4addr: ipv4addr
       properties:
         _struct:
-          description: Struct Field for MS Server
+          description: Struct Field for ms_server
           example: Example ms_server
           type: string
         ipv4addr:

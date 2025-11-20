@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CircuitIdName** | Pointer to **string** | The circuit_id_name of a DHCP relay agent filter object. This filter identifies the circuit between the remote host and the relay agent. For example, the identifier can be the ingress interface number of the circuit access unit, perhaps concatenated with the unit ID number and slot number. Also, the circuit ID can be an ATM virtual circuit ID or cable data virtual circuit ID. | [optional] 
 **CircuitIdSubstringLength** | Pointer to **int64** | The circuit ID substring length. | [optional] 
 **CircuitIdSubstringOffset** | Pointer to **int64** | The circuit ID substring offset. | [optional] 

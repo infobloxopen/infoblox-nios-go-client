@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Group** | Pointer to **string** | The name of the admin group this permission applies to. | [optional] 
 **Object** | Pointer to **string** | A reference to a WAPI object, which will be the object this permission applies to. | [optional] 
 **Permission** | Pointer to **string** | The type of permission. | [optional] 

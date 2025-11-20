@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AccountId** | Pointer to **string** | The AWS Account ID associated with this task group. | [optional] [readonly] 
 **AccountsList** | Pointer to **string** | The AWS Account IDs list associated with this task group. | [optional] [readonly] 
 **AwsAccountIdsFileToken** | Pointer to **string** | The AWS account IDs file&#39;s token. | [optional] 

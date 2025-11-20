@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **EnableRegistration** | Pointer to **bool** | Enable/disable new registration requests | [optional] 
 **Name** | Pointer to **string** | Display name for cluster | [optional] [readonly] 
 

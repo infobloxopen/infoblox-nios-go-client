@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CardName** | Pointer to **string** | The Entrust nShield HSM softcard name. | [optional] 
 **Comment** | Pointer to **string** | The Entrust nShield HSM group comment. | [optional] 
 **EntrustnshieldHsm** | Pointer to [**[]HsmEntrustnshieldgroupEntrustnshieldHsm**](HsmEntrustnshieldgroupEntrustnshieldHsm.md) | The list of Entrust nShield HSM devices. | [optional] 

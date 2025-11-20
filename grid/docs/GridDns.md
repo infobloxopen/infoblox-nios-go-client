@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AddClientIpMacOptions** | Pointer to **bool** | Add custom IP, MAC and DNS View name ENDS0 options to outgoing recursive queries. | [optional] 
 **AllowBulkhostDdns** | Pointer to **string** | Determines if DDNS bulk host is allowed or not. | [optional] 
 **AllowGssTsigZoneUpdates** | Pointer to **bool** | Determines whether GSS-TSIG zone update is enabled for all Grid members. | [optional] 

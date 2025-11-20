@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Description** | Pointer to **string** | Information about the discrepancy. | [optional] [readonly] 
 **Severity** | Pointer to **string** | The severity of the discrepancy reported. | [optional] [readonly] 
 **Timestamp** | Pointer to **int64** | The time when the DNS integrity check was last run for this zone. | [optional] [readonly] 

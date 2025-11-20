@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowApiAdmins** | Pointer to **string** | Defines which administrators are allowed to perform Cloud API request on the Grid Member: no administrators (NONE), any administrators (ALL) or administrators in the ACL list (LIST). Default is ALL. | [optional] 
 **AllowedApiAdmins** | Pointer to [**[]GridMemberCloudapiAllowedApiAdmins**](GridMemberCloudapiAllowedApiAdmins.md) | List of administrators allowed to perform Cloud Platform API requests on that member. | [optional] 
 **EnableService** | Pointer to **bool** | Controls whether the Cloud API service runs on the member or not. | [optional] 

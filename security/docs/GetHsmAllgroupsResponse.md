@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Groups** | Pointer to **[]string** | The list of HSM groups configured on the appliance. | [optional] 
 **Result** | Pointer to [**HsmAllgroups**](HsmAllgroups.md) |  | [optional] 
 

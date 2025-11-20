@@ -2072,6 +2072,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allowed_actions:
           description: The list of allowed actions of the custom rule.
@@ -2139,6 +2140,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionGridRuleConfig:
       example:
         log_severity: Example log_severity
@@ -2299,6 +2301,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the Threat Protection profile.
@@ -2338,6 +2341,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         members:
           description: The list of members that are associated with the profile.
           enum:
@@ -2374,6 +2378,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListThreatprotectionProfileResponse:
       oneOf:
       - description: The response format to retrieve __ThreatprotectionProfile__ objects.
@@ -2435,6 +2440,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         config:
           $ref: '#/components/schemas/ThreatprotectionProfileRuleConfig'
@@ -2467,6 +2473,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionProfileRuleConfig:
       example:
         log_severity: Example log_severity
@@ -2630,6 +2637,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         config:
           $ref: '#/components/schemas/ThreatprotectionRuleConfig'
@@ -2662,6 +2670,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionRuleConfig:
       example:
         log_severity: Example log_severity
@@ -2796,6 +2805,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         is_factory_reset_enabled:
           description: Determines if factory reset is enabled for this rule category.
@@ -2849,6 +2859,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         add_type:
           description: Determines the way the ruleset was added.
@@ -2948,6 +2959,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allowed_actions:
           description: The list of allowed actions of rhe rule template.
@@ -2988,6 +3000,7 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionRuletemplateDefaultConfig:
       example:
         log_severity: Example log_severity
@@ -3135,6 +3148,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         member:
           description: The Grid member name to get threat protection statistics. If
@@ -3152,6 +3166,7 @@ components:
           readOnly: true
           type: array
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionStatisticsStatInfos:
       example:
         total: "{}"

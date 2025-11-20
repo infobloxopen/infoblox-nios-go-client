@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Aliases** | Pointer to **[]string** | This is a list of aliases for the host. The aliases must be in FQDN format. This value can be in unicode format. | [optional] 
 **AllowTelnet** | Pointer to **bool** | This field controls whether the credential is used for both the Telnet and SSH credentials. If set to False, the credential is used only for SSH. | [optional] 
 **CliCredentials** | Pointer to [**[]RecordHostCliCredentials**](RecordHostCliCredentials.md) | The CLI credentials for the host record. | [optional] 

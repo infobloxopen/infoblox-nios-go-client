@@ -19,7 +19,7 @@ var _ MappedNullable = &NetworkMembers{}
 
 // NetworkMembers struct for NetworkMembers
 type NetworkMembers struct {
-	// The struct type of the object. The value must be one of 'dhcpmember' or 'msdhcpserver'.
+	// The struct type of the object. The value must be one of 'dhcpmember' and 'msdhcpserver'.
 	Struct *string `json:"_struct,omitempty"`
 	// The IPv4 Address or FQDN of the Microsoft server.
 	Ipv4addr *string `json:"ipv4addr,omitempty"`

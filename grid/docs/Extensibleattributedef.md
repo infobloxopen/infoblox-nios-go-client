@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowedObjectTypes** | Pointer to **[]string** | The object types this extensible attribute is allowed to associate with. | [optional] 
 **Comment** | Pointer to **string** | Comment for the Extensible Attribute Definition; maximum 256 characters. | [optional] 
-**DefaultValue** | Pointer to [**ExtensibleattributedefDefaultValue**](ExtensibleattributedefDefaultValue.md) |  | [optional] 
+**DefaultValue** | Pointer to **string** | Default value used to pre-populate the attribute value in the GUI. For email, URL, and string types, the value is a string with a maximum of 256 characters. For an integer, the value is an integer from -2147483648 through 2147483647. For a date, the value is the number of seconds that have elapsed since January 1st, 1970 UTC. | [optional] 
 **DescendantsAction** | Pointer to [**ExtensibleattributedefDescendantsAction**](ExtensibleattributedefDescendantsAction.md) |  | [optional] 
 **Flags** | Pointer to **string** | This field contains extensible attribute flags. Possible values: (A)udited, (C)loud API, Cloud (G)master, (I)nheritable, (L)isted, (M)andatory value, MGM (P)rivate, (R)ead Only, (S)ort enum values, Multiple (V)alues If there are two or more flags in the field, you must list them according to the order they are listed above. For example, &#39;CR&#39; is a valid value for the &#39;flags&#39; field because C &#x3D; Cloud API is listed before R &#x3D; Read only. However, the value &#39;RC&#39; is invalid because the order for the &#39;flags&#39; field is broken. | [optional] 
 **ListValues** | Pointer to [**[]ExtensibleattributedefListValues**](ExtensibleattributedefListValues.md) | List of Values. Applicable if the extensible attribute type is ENUM. | [optional] 
@@ -113,20 +113,20 @@ HasComment returns a boolean if a field has been set.
 
 ### GetDefaultValue
 
-`func (o *Extensibleattributedef) GetDefaultValue() ExtensibleattributedefDefaultValue`
+`func (o *Extensibleattributedef) GetDefaultValue() string`
 
 GetDefaultValue returns the DefaultValue field if non-nil, zero value otherwise.
 
 ### GetDefaultValueOk
 
-`func (o *Extensibleattributedef) GetDefaultValueOk() (*ExtensibleattributedefDefaultValue, bool)`
+`func (o *Extensibleattributedef) GetDefaultValueOk() (*string, bool)`
 
 GetDefaultValueOk returns a tuple with the DefaultValue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultValue
 
-`func (o *Extensibleattributedef) SetDefaultValue(v ExtensibleattributedefDefaultValue)`
+`func (o *Extensibleattributedef) SetDefaultValue(v string)`
 
 SetDefaultValue sets DefaultValue field to given value.
 

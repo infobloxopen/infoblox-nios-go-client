@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Algorithm** | Pointer to **string** | The hash algorithm that was used. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**RecordNsec3paramCloudInfo**](RecordNsec3paramCloudInfo.md) |  | [optional] 
 **CreationTime** | Pointer to **int64** | The creation time of the record. | [optional] [readonly] 

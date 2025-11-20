@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The LDAP descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | Determines if the LDAP authentication service is disabled. | [optional] 
 **EaMapping** | Pointer to [**[]LdapAuthServiceEaMapping**](LdapAuthServiceEaMapping.md) | The mapping LDAP fields to extensible attributes. | [optional] 

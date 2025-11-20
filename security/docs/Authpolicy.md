@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AdminGroups** | Pointer to **[]string** | List of names of local administration groups that are mapped to remote administration groups. | [optional] 
 **AuthServices** | Pointer to **[]string** | The array that contains an ordered list of refs to :doc:&#x60;localuser:authservice object &lt;/objects/localuser.authservice&gt;&#x60;, ldap_auth_service object ldap_auth_service, :doc:&#x60;radius:authservice object &lt;/objects/radius.authservice&gt;&#x60;, :doc:&#x60;tacacsplus:authservice object &lt;/objects/tacacsplus.authservice&gt;&#x60;, ad_auth_service object ad_auth_service, :doc:&#x60;certificate:authservice object &lt;/objects/certificate.authservice&gt;&#x60;. :doc:&#x60;saml:authservice object &lt;/objects/saml.authservice&gt;&#x60;, | [optional] 
 **DefaultGroup** | Pointer to **string** | The default admin group that provides authentication in case no valid group is found. | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**GridCloudapiTenantCloudInfo**](GridCloudapiTenantCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the Grid Cloud API Tenant object; maximum 256 characters. | [optional] 
 **CreatedTs** | Pointer to **int64** | The timestamp when the tenant was first created in the system. | [optional] [readonly] 

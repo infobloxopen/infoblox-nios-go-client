@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowDistribution** | Pointer to **bool** | Determines if distribution is allowed for the Grid. | [optional] [readonly] 
 **AllowDistributionScheduling** | Pointer to **bool** | Determines if distribution scheduling is allowed. | [optional] [readonly] 
 **AllowUpgrade** | Pointer to **bool** | Determines if upgrade is allowed for the Grid. | [optional] [readonly] 

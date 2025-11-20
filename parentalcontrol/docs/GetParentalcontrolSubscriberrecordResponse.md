@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AccountingSessionId** | Pointer to **string** | accounting_session_id | [optional] 
 **AltIpAddr** | Pointer to **string** | alt_ip_addr | [optional] 
 **Ans0** | Pointer to **string** | ans0 | [optional] 

@@ -4836,6 +4836,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The Grid endpoint IPv4 Address or IPv6 Address or Fully-Qualified
@@ -4906,6 +4907,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authentication_key:
           description: The authentication key for BFD protocol message-digest authentication.
@@ -4999,6 +5001,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         action:
           description: The action to execute.
@@ -5138,6 +5141,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         enable_registration:
           description: Enable/disable new registration requests
@@ -5184,6 +5188,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         last_sequence_id:
           description: The last returned sequence ID.
@@ -5234,6 +5239,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment.
@@ -5274,6 +5280,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         object_type:
           description: The object type of the deleted object. This is undefined if
@@ -5356,6 +5363,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         brokers:
           description: The list of DXL endpoint brokers. Note that you cannot specify
@@ -5425,6 +5433,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         log_level:
           description: The log level for a DXL endpoint.
           enum:
@@ -5480,6 +5489,8 @@ components:
           type: string
           writeOnly: true
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DxlEndpointBrokers:
       example:
         address: Example address
@@ -5588,6 +5599,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListFileopResponse:
@@ -5624,6 +5636,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         domain:
           description: The Kerberos domain name.
@@ -5710,6 +5723,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         hardware_type:
           description: Hardware type of a Grid member.
@@ -5754,6 +5768,7 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-skip-expand: true
     CapacityreportObjectCounts:
       example:
         type_name: Example type_name
@@ -5804,6 +5819,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         enable:
           description: Determines whether the OutBound Cloud Client is enabled.
@@ -5828,6 +5844,7 @@ components:
             $ref: '#/components/schemas/OutboundCloudclientOutboundCloudClientEvents'
           type: array
       type: object
+      x-tf-skip-expand: true
     OutboundCloudclientOutboundCloudClientEvents:
       example:
         event_type: Example event_type
@@ -5921,6 +5938,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The pxgrid endpoint IPv4 Address or IPv6 Address or Fully-Qualified
@@ -5979,6 +5997,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         log_level:
           description: The log level for a notification pxgrid endpoint.
           enum:
@@ -6035,6 +6054,8 @@ components:
           type: string
           writeOnly: true
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     PxgridEndpointPublishSettings:
       example:
         enabled_attributes:
@@ -6208,6 +6229,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Descriptive comment about the Ruleset object.
@@ -6237,6 +6259,7 @@ components:
           example: Example type
           type: string
       type: object
+      x-tf-skip-expand: true
     RulesetNxdomainRules:
       example:
         pattern: Example pattern
@@ -6295,6 +6318,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         action:
           description: The scavenging action.
@@ -6420,6 +6444,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         approval_status:
           description: The approval status of the task.
@@ -6564,6 +6589,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     ScheduledtaskChangedObjects:
       example:
         object_type: Example object_type
@@ -6644,6 +6670,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListSearchResponse:
@@ -6720,6 +6747,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         extattrs+:
           additionalProperties:
@@ -6741,6 +6769,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         log_level:
           description: The log level for a notification REST endpoint.
           enum:
@@ -6796,6 +6825,8 @@ components:
           type: string
           writeOnly: true
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     SyslogEndpointSyslogServers:
       example:
         severity: Example severity
@@ -6970,6 +7001,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         enable_service:
           description: Indicates whether the Taxii service is running on the given
@@ -6999,6 +7031,7 @@ components:
             $ref: '#/components/schemas/TaxiiTaxiiRpzConfig'
           type: array
       type: object
+      x-tf-skip-expand: true
     TaxiiTaxiiRpzConfig:
       example:
         zone: Example zone
@@ -7059,6 +7092,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         directory:
           description: The path to the directory that contains file or subdirectory.
@@ -7096,6 +7130,7 @@ components:
             $ref: '#/components/schemas/TftpfiledirVtftpDirMembers'
           type: array
       type: object
+      x-tf-skip-expand: true
     TftpfiledirVtftpDirMembers:
       example:
         address: Example address

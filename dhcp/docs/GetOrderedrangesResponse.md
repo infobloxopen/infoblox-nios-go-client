@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Network** | Pointer to **string** | The reference to the network that contains ranges. | [optional] [readonly] 
 **Ranges** | Pointer to **[]string** | The ordered list of references to ranges. | [optional] 
 **Result** | Pointer to [**Orderedranges**](Orderedranges.md) |  | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Domain** | Pointer to **string** | The Kerberos domain name. | [optional] [readonly] 
 **Enctype** | Pointer to **string** | The Kerberos key encryption type. | [optional] [readonly] 
 **InUse** | Pointer to **bool** | Determines whether the Kerberos key is assigned to the Grid or Grid member. | [optional] [readonly] 

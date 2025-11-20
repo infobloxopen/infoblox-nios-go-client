@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllMembers** | Pointer to **bool** | Determines whether the notification rule is applied on all members or not. When this is set to False, the notification rule is applied only on selected_members. | [optional] 
 **Comment** | Pointer to **string** | The notification rule descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether a notification rule is disabled or not. When this is set to False, the notification rule is enabled. | [optional] 

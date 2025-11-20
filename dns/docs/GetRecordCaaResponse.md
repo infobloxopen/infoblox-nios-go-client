@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CaFlag** | Pointer to **int64** | Flag of CAA record. | [optional] 
 **CaTag** | Pointer to **string** | Tag of CAA record. | [optional] 
 **CaValue** | Pointer to **string** | Value of CAA record | [optional] 

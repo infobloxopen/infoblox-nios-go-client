@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The global Smart Folder descriptive comment. | [optional] 
 **GroupBys** | Pointer to [**[]SmartfolderGlobalGroupBys**](SmartfolderGlobalGroupBys.md) | Global Smart Folder grouping rules. | [optional] 
 **Name** | Pointer to **string** | The global Smart Folder name. | [optional] 

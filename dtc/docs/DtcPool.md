@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AutoConsolidatedMonitors** | Pointer to **bool** | Flag for enabling auto managing DTC Consolidated Monitors in DTC Pool. | [optional] 
 **Availability** | Pointer to **string** | A resource in the pool is available if ANY, at least QUORUM, or ALL monitors for the pool say that it is up. | [optional] 
 **Comment** | Pointer to **string** | The comment for the DTC Pool; maximum 256 characters. | [optional] 

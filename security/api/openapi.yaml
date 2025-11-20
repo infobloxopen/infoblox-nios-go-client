@@ -6678,10 +6678,10 @@ components:
         name: Example name
         user_access:
         - address: Example address
-          _ref: Example ACL reference
+          _ref: _ref
           permission: Example permission
         - address: Example address
-          _ref: Example ACL reference
+          _ref: _ref
           permission: Example permission
         saml_setting:
           auto_create_user: false
@@ -6713,6 +6713,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         access_method:
           description: Access methods specify whether an admin group can use the GUI
@@ -6800,6 +6801,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         grid_set_commands:
           $ref: '#/components/schemas/AdmingroupGridSetCommands'
         grid_show_commands:
@@ -6869,6 +6871,8 @@ components:
             $ref: '#/components/schemas/AdmingroupUserAccess'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     AdmingroupAdminSetCommands:
       example:
         set_snmptrap: false
@@ -8772,9 +8776,12 @@ components:
     AdmingroupUserAccess:
       example:
         address: Example address
-        _ref: Example ACL reference
+        _ref: _ref
         permission: Example permission
       properties:
+        _ref:
+          description: The reference to the object.
+          type: string
         address:
           description: The address this rule applies to or "Any".
           example: Example address
@@ -8785,10 +8792,6 @@ components:
           - ALLOW
           - DENY
           example: Example permission
-          type: string
-        _ref:
-          description: The reference of the ACL object.
-          example: Example ACL reference
           type: string
       type: object
     ListAdmingroupResponse:
@@ -8834,6 +8837,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment of the Admin Role object.
@@ -8863,11 +8867,13 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name of an admin role.
           example: Example name
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListAdminroleResponse:
       oneOf:
       - description: The response format to retrieve __Adminrole__ objects.
@@ -8932,6 +8938,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         admin_groups:
           description: "The names of the Admin Groups to which this Admin User belongs.\
@@ -9005,6 +9012,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name of the admin user.
           example: Example name
@@ -9044,6 +9052,8 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     AdminuserSshKeys:
       example:
         key_name: Example key_name
@@ -9103,6 +9113,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         group:
           description: The name of the admin group this permission applies to.
@@ -9304,6 +9315,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         active_dashboard_type:
           description: Determines the active dashboard type.
@@ -9443,6 +9455,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         admin_groups:
           description: List of names of local administration groups that are mapped
@@ -9532,6 +9545,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         approval_group:
           description: The approval administration group.
@@ -9616,6 +9630,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         failed_notify_to:
           description: The destination for failed task notifications.
           enum:
@@ -9671,6 +9686,7 @@ components:
           example: Example ticket_number
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListApprovalworkflowResponse:
       oneOf:
       - description: The response format to retrieve __Approvalworkflow__ objects.
@@ -9708,6 +9724,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         distinguished_name:
           description: The certificate subject name.
@@ -9772,13 +9789,13 @@ components:
         ocsp_responders:
         - fqdn_or_ip: Example fqdn_or_ip
           port: 1
-          certificate: Example remote_lookup_service
+          certificate: Example certificate
           comment: Example comment
           disabled: false
           certificate_token: Example certificate_token
         - fqdn_or_ip: Example fqdn_or_ip
           port: 1
-          certificate: Example remote_lookup_service
+          certificate: Example certificate
           comment: Example comment
           disabled: false
           certificate_token: Example certificate_token
@@ -9798,6 +9815,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_populate_login:
           description: Specifies the value of the client certificate for automatically
@@ -9905,11 +9923,12 @@ components:
           example: Example user_match_type
           type: string
       type: object
+      x-tf-skip-expand: true
     CertificateAuthserviceOcspResponders:
       example:
         fqdn_or_ip: Example fqdn_or_ip
         port: 1
-        certificate: Example remote_lookup_service
+        certificate: Example certificate
         comment: Example comment
         disabled: false
         certificate_token: Example certificate_token
@@ -10002,6 +10021,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         acct_retries:
           description: The number of times to attempt to contact an accounting RADIUS
@@ -10069,6 +10089,7 @@ components:
             $ref: '#/components/schemas/RadiusAuthserviceServers'
           type: array
       type: object
+      x-tf-skip-expand: true
     RadiusAuthserviceServers:
       example:
         acct_port: 1
@@ -10182,6 +10203,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         acct_retries:
           description: The number of the accounting retries before giving up and moving
@@ -10226,6 +10248,7 @@ components:
             $ref: '#/components/schemas/TacacsplusAuthserviceServers'
           type: array
       type: object
+      x-tf-skip-expand: true
     TacacsplusAuthserviceServers:
       example:
         auth_type: Example auth_type
@@ -10347,6 +10370,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The LDAP descriptive comment.
@@ -10421,6 +10445,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-skip-expand: true
     LdapAuthServiceEaMapping:
       example:
         mapped_ea: Example mapped_ea
@@ -10547,6 +10572,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment for the SAML authentication service.
@@ -10564,6 +10590,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-skip-expand: true
     SamlAuthserviceIdp:
       example:
         metadata_url: Example metadata_url
@@ -10640,6 +10667,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The local user authentication service comment.
@@ -10699,6 +10727,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authentication_password:
           description: Determines an authentication password for the user. This is
@@ -10742,6 +10771,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name of the user.
           example: Example name
@@ -10760,6 +10790,7 @@ components:
           example: Example privacy_protocol
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListSnmpuserResponse:
       oneOf:
       - description: The response format to retrieve __Snmpuser__ objects.
@@ -10805,6 +10836,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         create_home_dir:
           description: Determines whether to create the home directory with the user
@@ -10832,6 +10864,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         home_dir:
           description: The absolute path of the FTP user's home directory.
           example: Example home_dir
@@ -10853,6 +10886,7 @@ components:
           example: Example username
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListFtpuserResponse:
       oneOf:
       - description: The response format to retrieve __Ftpuser__ objects.
@@ -10899,6 +10933,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IPv4 Address or IPv6 Address of the Network User.
@@ -11028,6 +11063,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ad_domain:
           description: The Active Directory domain to which this server belongs.
@@ -11063,6 +11099,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-skip-expand: true
     AdAuthServiceDomainControllers:
       example:
         fqdn_or_ip: Example fqdn_or_ip
@@ -11142,6 +11179,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         groups:
           description: The list of HSM groups configured on the appliance.
@@ -11199,6 +11237,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         card_name:
           description: The Entrust nShield HSM softcard name.
@@ -11251,6 +11290,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     HsmEntrustnshieldgroupEntrustnshieldHsm:
       example:
         remote_esn: Example remote_esn
@@ -11345,6 +11385,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The HSM Thales Luna group comment.
@@ -11389,6 +11430,7 @@ components:
             $ref: '#/components/schemas/HsmThaleslunagroupThalesluna'
           type: array
       type: object
+      x-tf-skip-expand: true
     HsmThaleslunagroupThalesluna:
       example:
         partition_id: Example partition_id
@@ -11868,10 +11910,10 @@ components:
           name: Example name
           user_access:
           - address: Example address
-            _ref: Example ACL reference
+            _ref: _ref
             permission: Example permission
           - address: Example address
-            _ref: Example ACL reference
+            _ref: _ref
             permission: Example permission
           saml_setting:
             auto_create_user: false
@@ -12304,10 +12346,10 @@ components:
           name: Example name
           user_access:
           - address: Example address
-            _ref: Example ACL reference
+            _ref: _ref
             permission: Example permission
           - address: Example address
-            _ref: Example ACL reference
+            _ref: _ref
             permission: Example permission
           saml_setting:
             auto_create_user: false
@@ -12766,7 +12808,7 @@ components:
     CertificateAuthserviceOcspResponders_certificate_oneOf:
       properties:
         _ref:
-          description: The reference to the LDAP auth service object.
+          description: The reference to the OCSP responder certificate.
           readOnly: true
           type: string
         issuer:
@@ -12793,8 +12835,8 @@ components:
       type: object
     CertificateAuthserviceOcspResponders_certificate:
       oneOf:
-      - description: The service that will be used for remote lookup.
-        example: Example remote_lookup_service
+      - description: The reference to the OCSP responder certificate.
+        example: Example certificate
         readOnly: true
         type: string
       - $ref: '#/components/schemas/CertificateAuthserviceOcspResponders_certificate_oneOf'
@@ -12821,13 +12863,13 @@ components:
           ocsp_responders:
           - fqdn_or_ip: Example fqdn_or_ip
             port: 1
-            certificate: Example remote_lookup_service
+            certificate: Example certificate
             comment: Example comment
             disabled: false
             certificate_token: Example certificate_token
           - fqdn_or_ip: Example fqdn_or_ip
             port: 1
-            certificate: Example remote_lookup_service
+            certificate: Example certificate
             comment: Example comment
             disabled: false
             certificate_token: Example certificate_token
@@ -12871,13 +12913,13 @@ components:
           ocsp_responders:
           - fqdn_or_ip: Example fqdn_or_ip
             port: 1
-            certificate: Example remote_lookup_service
+            certificate: Example certificate
             comment: Example comment
             disabled: false
             certificate_token: Example certificate_token
           - fqdn_or_ip: Example fqdn_or_ip
             port: 1
-            certificate: Example remote_lookup_service
+            certificate: Example certificate
             comment: Example comment
             disabled: false
             certificate_token: Example certificate_token

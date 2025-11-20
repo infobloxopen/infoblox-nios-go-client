@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AvailabilityZone** | Pointer to **string** | Availability zone of the VM. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**GridCloudapiVmCloudInfo**](GridCloudapiVmCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the vm object; maximum 1024 characters. | [optional] 

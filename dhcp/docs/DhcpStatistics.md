@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DhcpUtilization** | Pointer to **int64** | The percentage of the total DHCP utilization of DHCP objects multiplied by 1000. This is the percentage of the total number of available IP addresses belonging to the object versus the total number of all IP addresses in object. | [optional] [readonly] 
 **DhcpUtilizationStatus** | Pointer to **string** | A string describing the utilization level of the DHCP object. | [optional] [readonly] 
 **DynamicHosts** | Pointer to **int64** | The total number of DHCP leases issued for the DHCP object. | [optional] [readonly] 

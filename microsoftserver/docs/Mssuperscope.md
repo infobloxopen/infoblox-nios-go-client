@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The superscope descriptive comment. | [optional] 
 **DhcpUtilization** | Pointer to **int64** | The percentage of the total DHCP usage of the ranges in the superscope. | [optional] [readonly] 
 **DhcpUtilizationStatus** | Pointer to **string** | Utilization level of the DHCP range objects that belong to the superscope. | [optional] [readonly] 

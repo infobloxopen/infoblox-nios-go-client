@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **BlacklistAction** | Pointer to **string** | The action to perform when a domain name matches the pattern defined in a rule that is specified by the blacklist_ruleset method. Valid values are \&quot;REDIRECT\&quot; or \&quot;REFUSE\&quot;. The default value is \&quot;REFUSE\&quot;. | [optional] 
 **BlacklistLogQuery** | Pointer to **bool** | The flag that indicates whether blacklist redirection queries are logged. Specify \&quot;true\&quot; to enable logging, or \&quot;false\&quot; to disable it. The default value is \&quot;false\&quot;. | [optional] 
 **BlacklistRedirectAddresses** | Pointer to **[]string** | The array of IP addresses the appliance includes in the response it sends in place of a blacklisted IP address. | [optional] 

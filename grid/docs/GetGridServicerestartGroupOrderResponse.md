@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Groups** | Pointer to **[]string** | The ordered list of the Service Restart Group. | [optional] 
 **Result** | Pointer to [**GridServicerestartGroupOrder**](GridServicerestartGroupOrder.md) |  | [optional] 
 

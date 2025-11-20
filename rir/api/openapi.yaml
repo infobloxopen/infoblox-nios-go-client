@@ -752,6 +752,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         communication_mode:
           description: The communication mode for RIR.
@@ -824,6 +825,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         extattrs+:
           additionalProperties:
@@ -845,6 +847,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         id:
           description: The RIR organization identifier.
           example: Example id
@@ -871,6 +874,7 @@ components:
           example: Example sender_email
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRirOrganizationResponse:
       oneOf:
       - description: The response format to retrieve __RirOrganization__ objects.

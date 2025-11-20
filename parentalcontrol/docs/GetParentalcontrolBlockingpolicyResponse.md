@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the blocking policy. | [optional] 
 **Value** | Pointer to **string** | The 32 bit hex value of the blocking policy. | [optional] 
 **Result** | Pointer to [**ParentalcontrolBlockingpolicy**](ParentalcontrolBlockingpolicy.md) |  | [optional] 

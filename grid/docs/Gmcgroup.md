@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Description of the group | [optional] 
 **GmcPromotionPolicy** | Pointer to **string** | This field decides whether the members join back at the same time or sequentially with time gap of 30 seconds. | [optional] 
 **Members** | Pointer to [**[]GmcgroupMembers**](GmcgroupMembers.md) | gmcgroup members | [optional] 

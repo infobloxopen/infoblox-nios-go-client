@@ -4822,6 +4822,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         alert_type:
           description: The alert type of the record associated with the allrpzrecords
@@ -4986,6 +4987,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5016,6 +5018,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4addr:
           description: The IPv4 Address of the substitute rule.
           example: Example ipv4addr
@@ -5053,6 +5056,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzAResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzA__ objects.
@@ -5102,6 +5106,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5132,6 +5137,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv6addr:
           description: The IPv6 Address of the substitute rule.
           example: Example ipv6addr
@@ -5169,6 +5175,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzAaaaResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzAaaa__ objects.
@@ -5218,6 +5225,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -5253,6 +5261,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name for a record in FQDN format. This value cannot be
             in unicode format.
@@ -5286,6 +5295,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCname__ objects.
@@ -5336,6 +5346,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5366,6 +5377,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         mail_exchanger:
           description: Mail exchanger name in FQDN format. This value can be in unicode
             format.
@@ -5410,6 +5422,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzMxResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzMx__ objects.
@@ -5465,6 +5478,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5495,6 +5509,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         flags:
           description: "The flags used to control the interpretation of the fields\
             \ for a Substitute (NAPTR Record) Rule object. Supported values for the\
@@ -5575,6 +5590,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzNaptrResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzNaptr__ objects.
@@ -5626,6 +5642,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5656,6 +5673,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4addr:
           description: The IPv4 Address of the substitute rule.
           example: Example ipv4addr
@@ -5702,6 +5720,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzPtrResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzPtr__ objects.
@@ -5754,6 +5773,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5784,6 +5804,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name for a record in FQDN format. This value cannot be
             in unicode format.
@@ -5840,6 +5861,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzSrvResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzSrv__ objects.
@@ -5889,6 +5911,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5919,6 +5942,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name for a record in FQDN format. This value cannot be
             in unicode format.
@@ -5959,6 +5983,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzTxtResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzTxt__ objects.
@@ -6008,6 +6033,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -6038,6 +6064,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4addr:
           description: The IPv4 Address of the substitute rule.
           example: Example ipv4addr
@@ -6075,6 +6102,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzAIpaddressResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzAIpaddress__ objects.
@@ -6124,6 +6152,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -6154,6 +6183,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv6addr:
           description: The IPv6 Address of the substitute rule.
           example: Example ipv6addr
@@ -6191,6 +6221,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzAaaaIpaddressResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzAaaaIpaddress__ objects.
@@ -6241,6 +6272,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -6276,6 +6308,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
             \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
@@ -6315,6 +6348,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameIpaddressResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCnameIpaddress__ objects.
@@ -6365,6 +6399,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -6400,6 +6435,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
             \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
@@ -6439,6 +6475,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameIpaddressdnResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCnameIpaddressdn__
@@ -6490,6 +6527,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -6525,6 +6563,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
             \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
@@ -6564,6 +6603,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameClientipaddressResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCnameClientipaddress__
@@ -6616,6 +6656,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -6651,6 +6692,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
             \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
@@ -6690,6 +6732,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameClientipaddressdnResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCnameClientipaddressdn__

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DhcpStatus** | Pointer to **string** | The status of the DHCP service. | [optional] [readonly] 
 **DnsStatus** | Pointer to **string** | The status of the DNS service. | [optional] [readonly] 
 **Member** | Pointer to **string** | The name of this Grid member in FQDN format. | [optional] [readonly] 

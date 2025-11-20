@@ -1071,6 +1071,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment for the threat insight allowlist.
@@ -1131,6 +1132,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         blacklist_rpz_list:
           description: The RPZs to which you apply newly detected domains through
@@ -1186,6 +1188,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         version:
           description: Allowlist version string.
@@ -1221,6 +1224,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         version:
           description: The version number of the threat insight module set.

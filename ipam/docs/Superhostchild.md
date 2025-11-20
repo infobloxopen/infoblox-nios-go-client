@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AssociatedObject** | Pointer to **string** | The record object, if supported by the WAPI. Otherwise, the value is \&quot;None\&quot;. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The record comment. | [optional] [readonly] 
 **CreationTimestamp** | Pointer to **int64** | Time at which DNS RR was created. | [optional] [readonly] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ClientId** | Pointer to **string** | The unique Client ID of this Azure user. Maximum 255 characters. | [optional] 
 **ClientSecretKey** | Pointer to **string** | The Client Secret Key for the Client ID of this user. Maximum 255 characters. | [optional] 
 **LastUsed** | Pointer to **int64** | The timestamp when this Azure user credentials was last used. | [optional] [readonly] 
