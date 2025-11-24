@@ -316,6 +316,8 @@ docs/VlanParent.md
 docs/VlanParentOneOf.md
 docs/Vlanrange.md
 docs/VlanrangeAPI.md
+docs/VlanrangeVlanView.md
+docs/VlanrangeVlanViewOneOf.md
 docs/Vlanview.md
 docs/VlanviewAPI.md
 model_bulkhost.go
@@ -594,5 +596,7 @@ model_vlan_id_one_of.go
 model_vlan_parent.go
 model_vlan_parent_one_of.go
 model_vlanrange.go
+model_vlanrange_vlan_view.go
+model_vlanrange_vlan_view_one_of.go
 model_vlanview.go
 utils.go
