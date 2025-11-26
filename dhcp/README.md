@@ -390,6 +390,7 @@ Class | Method | HTTP request | Description
  - [Ipv6rangetemplateOptionFilterRules](docs/Ipv6rangetemplateOptionFilterRules.md)
  - [Ipv6sharednetwork](docs/Ipv6sharednetwork.md)
  - [Ipv6sharednetworkLogicFilterRules](docs/Ipv6sharednetworkLogicFilterRules.md)
+ - [Ipv6sharednetworkNetworks](docs/Ipv6sharednetworkNetworks.md)
  - [Ipv6sharednetworkOptions](docs/Ipv6sharednetworkOptions.md)
  - [Lease](docs/Lease.md)
  - [LeaseDiscoveredData](docs/LeaseDiscoveredData.md)
