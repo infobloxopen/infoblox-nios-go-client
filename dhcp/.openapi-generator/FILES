@@ -176,7 +176,6 @@ docs/GetRoaminghostResponse.md
 docs/GetRoaminghostResponseObjectAsResult.md
 docs/GetSharednetworkResponse.md
 docs/GetSharednetworkResponseObjectAsResult.md
-docs/IPv6SharednetworkNetworks.md
 docs/Ipv6dhcpoptiondefinition.md
 docs/Ipv6dhcpoptiondefinitionAPI.md
 docs/Ipv6dhcpoptionspace.md
@@ -227,6 +226,7 @@ docs/Ipv6rangetemplateOptionFilterRules.md
 docs/Ipv6sharednetwork.md
 docs/Ipv6sharednetworkAPI.md
 docs/Ipv6sharednetworkLogicFilterRules.md
+docs/Ipv6sharednetworkNetworks.md
 docs/Ipv6sharednetworkOptions.md
 docs/Lease.md
 docs/LeaseAPI.md
@@ -529,7 +529,6 @@ model_get_roaminghost_response.go
 model_get_roaminghost_response_object_as_result.go
 model_get_sharednetwork_response.go
 model_get_sharednetwork_response_object_as_result.go
-model_ipv6_sharednetwork_networks.go
 model_ipv6dhcpoptiondefinition.go
 model_ipv6dhcpoptionspace.go
 model_ipv6filteroption.go
@@ -572,6 +571,7 @@ model_ipv6rangetemplate_member.go
 model_ipv6rangetemplate_option_filter_rules.go
 model_ipv6sharednetwork.go
 model_ipv6sharednetwork_logic_filter_rules.go
+model_ipv6sharednetwork_networks.go
 model_ipv6sharednetwork_options.go
 model_lease.go
 model_lease_discovered_data.go

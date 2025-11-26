@@ -54,7 +54,7 @@ type Ipv6sharednetwork struct {
 	// The name of the network view in which this IPv6 shared network resides.
 	NetworkView *string `json:"network_view,omitempty"`
 	// A list of IPv6 networks belonging to the shared network Each individual list item must be specified as an object containing a '_ref' parameter to a network reference, for example:: [{ \"_ref\": \"ipv6network/ZG5zdHdvcmskMTAuAvMTYvMA\", }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \"_ref\": { 'network': 'aabb::/64', } }] note that in this case the search must match exactly one network for the assignment to be successful.
-	Networks []IPv6SharednetworkNetworks `json:"networks,omitempty"`
+	Networks []Ipv6sharednetworkNetworks `json:"networks,omitempty"`
 	// An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object.
 	Options []Ipv6sharednetworkOptions `json:"options,omitempty"`
 	// Use this method to set or retrieve the preferred lifetime value of a DHCP IPv6 Shared Network object.
@@ -651,9 +651,9 @@ func (o *Ipv6sharednetwork) SetNetworkView(v string) {
 }
 
 // GetNetworks returns the Networks field value if set, zero value otherwise.
-func (o *Ipv6sharednetwork) GetNetworks() []IPv6SharednetworkNetworks {
+func (o *Ipv6sharednetwork) GetNetworks() []Ipv6sharednetworkNetworks {
 	if o == nil || IsNil(o.Networks) {
-		var ret []IPv6SharednetworkNetworks
+		var ret []Ipv6sharednetworkNetworks
 		return ret
 	}
 	return o.Networks
@@ -661,7 +661,7 @@ func (o *Ipv6sharednetwork) GetNetworks() []IPv6SharednetworkNetworks {
 
 // GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Ipv6sharednetwork) GetNetworksOk() ([]IPv6SharednetworkNetworks, bool) {
+func (o *Ipv6sharednetwork) GetNetworksOk() ([]Ipv6sharednetworkNetworks, bool) {
 	if o == nil || IsNil(o.Networks) {
 		return nil, false
 	}
@@ -677,8 +677,8 @@ func (o *Ipv6sharednetwork) HasNetworks() bool {
 	return false
 }
 
-// SetNetworks gets a reference to the given []IPv6SharednetworkNetworks and assigns it to the Networks field.
-func (o *Ipv6sharednetwork) SetNetworks(v []IPv6SharednetworkNetworks) {
+// SetNetworks gets a reference to the given []Ipv6sharednetworkNetworks and assigns it to the Networks field.
+func (o *Ipv6sharednetwork) SetNetworks(v []Ipv6sharednetworkNetworks) {
 	o.Networks = v
 }
 

@@ -1,4 +1,4 @@
-# IPv6SharednetworkNetworks
+# Ipv6sharednetworkNetworks
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewIPv6SharednetworkNetworks
+### NewIpv6sharednetworkNetworks
 
-`func NewIPv6SharednetworkNetworks() *IPv6SharednetworkNetworks`
+`func NewIpv6sharednetworkNetworks() *Ipv6sharednetworkNetworks`
 
-NewIPv6SharednetworkNetworks instantiates a new IPv6SharednetworkNetworks object
+NewIpv6sharednetworkNetworks instantiates a new Ipv6sharednetworkNetworks object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewIPv6SharednetworkNetworksWithDefaults
+### NewIpv6sharednetworkNetworksWithDefaults
 
-`func NewIPv6SharednetworkNetworksWithDefaults() *IPv6SharednetworkNetworks`
+`func NewIpv6sharednetworkNetworksWithDefaults() *Ipv6sharednetworkNetworks`
 
-NewIPv6SharednetworkNetworksWithDefaults instantiates a new IPv6SharednetworkNetworks object
+NewIpv6sharednetworkNetworksWithDefaults instantiates a new Ipv6sharednetworkNetworks object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetRef
 
-`func (o *IPv6SharednetworkNetworks) GetRef() string`
+`func (o *Ipv6sharednetworkNetworks) GetRef() string`
 
 GetRef returns the Ref field if non-nil, zero value otherwise.
 
 ### GetRefOk
 
-`func (o *IPv6SharednetworkNetworks) GetRefOk() (*string, bool)`
+`func (o *Ipv6sharednetworkNetworks) GetRefOk() (*string, bool)`
 
 GetRefOk returns a tuple with the Ref field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRef
 
-`func (o *IPv6SharednetworkNetworks) SetRef(v string)`
+`func (o *Ipv6sharednetworkNetworks) SetRef(v string)`
 
 SetRef sets Ref field to given value.
 
 ### HasRef
 
-`func (o *IPv6SharednetworkNetworks) HasRef() bool`
+`func (o *Ipv6sharednetworkNetworks) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
 

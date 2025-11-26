@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the IPv6SharednetworkNetworks type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IPv6SharednetworkNetworks{}
+// checks if the Ipv6sharednetworkNetworks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Ipv6sharednetworkNetworks{}
 
-// IPv6SharednetworkNetworks struct for IPv6SharednetworkNetworks
-type IPv6SharednetworkNetworks struct {
+// Ipv6sharednetworkNetworks struct for Ipv6sharednetworkNetworks
+type Ipv6sharednetworkNetworks struct {
 	// Reference to the IPv6 Network.
 	Ref                  *string `json:"_ref,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _IPv6SharednetworkNetworks IPv6SharednetworkNetworks
+type _Ipv6sharednetworkNetworks Ipv6sharednetworkNetworks
 
-// NewIPv6SharednetworkNetworks instantiates a new IPv6SharednetworkNetworks object
+// NewIpv6sharednetworkNetworks instantiates a new Ipv6sharednetworkNetworks object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIPv6SharednetworkNetworks() *IPv6SharednetworkNetworks {
-	this := IPv6SharednetworkNetworks{}
+func NewIpv6sharednetworkNetworks() *Ipv6sharednetworkNetworks {
+	this := Ipv6sharednetworkNetworks{}
 	return &this
 }
 
-// NewIPv6SharednetworkNetworksWithDefaults instantiates a new IPv6SharednetworkNetworks object
+// NewIpv6sharednetworkNetworksWithDefaults instantiates a new Ipv6sharednetworkNetworks object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewIPv6SharednetworkNetworksWithDefaults() *IPv6SharednetworkNetworks {
-	this := IPv6SharednetworkNetworks{}
+func NewIpv6sharednetworkNetworksWithDefaults() *Ipv6sharednetworkNetworks {
+	this := Ipv6sharednetworkNetworks{}
 	return &this
 }
 
 // GetRef returns the Ref field value if set, zero value otherwise.
-func (o *IPv6SharednetworkNetworks) GetRef() string {
+func (o *Ipv6sharednetworkNetworks) GetRef() string {
 	if o == nil || IsNil(o.Ref) {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *IPv6SharednetworkNetworks) GetRef() string {
 
 // GetRefOk returns a tuple with the Ref field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IPv6SharednetworkNetworks) GetRefOk() (*string, bool) {
+func (o *Ipv6sharednetworkNetworks) GetRefOk() (*string, bool) {
 	if o == nil || IsNil(o.Ref) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *IPv6SharednetworkNetworks) GetRefOk() (*string, bool) {
 }
 
 // HasRef returns a boolean if a field has been set.
-func (o *IPv6SharednetworkNetworks) HasRef() bool {
+func (o *Ipv6sharednetworkNetworks) HasRef() bool {
 	if o != nil && !IsNil(o.Ref) {
 		return true
 	}
@@ -71,11 +71,11 @@ func (o *IPv6SharednetworkNetworks) HasRef() bool {
 }
 
 // SetRef gets a reference to the given string and assigns it to the Ref field.
-func (o *IPv6SharednetworkNetworks) SetRef(v string) {
+func (o *Ipv6sharednetworkNetworks) SetRef(v string) {
 	o.Ref = &v
 }
 
-func (o IPv6SharednetworkNetworks) MarshalJSON() ([]byte, error) {
+func (o Ipv6sharednetworkNetworks) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -83,7 +83,7 @@ func (o IPv6SharednetworkNetworks) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o IPv6SharednetworkNetworks) ToMap() (map[string]interface{}, error) {
+func (o Ipv6sharednetworkNetworks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
@@ -96,16 +96,16 @@ func (o IPv6SharednetworkNetworks) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *IPv6SharednetworkNetworks) UnmarshalJSON(data []byte) (err error) {
-	varIPv6SharednetworkNetworks := _IPv6SharednetworkNetworks{}
+func (o *Ipv6sharednetworkNetworks) UnmarshalJSON(data []byte) (err error) {
+	varIpv6sharednetworkNetworks := _Ipv6sharednetworkNetworks{}
 
-	err = json.Unmarshal(data, &varIPv6SharednetworkNetworks)
+	err = json.Unmarshal(data, &varIpv6sharednetworkNetworks)
 
 	if err != nil {
 		return err
 	}
 
-	*o = IPv6SharednetworkNetworks(varIPv6SharednetworkNetworks)
+	*o = Ipv6sharednetworkNetworks(varIpv6sharednetworkNetworks)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -117,38 +117,38 @@ func (o *IPv6SharednetworkNetworks) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableIPv6SharednetworkNetworks struct {
-	value *IPv6SharednetworkNetworks
+type NullableIpv6sharednetworkNetworks struct {
+	value *Ipv6sharednetworkNetworks
 	isSet bool
 }
 
-func (v NullableIPv6SharednetworkNetworks) Get() *IPv6SharednetworkNetworks {
+func (v NullableIpv6sharednetworkNetworks) Get() *Ipv6sharednetworkNetworks {
 	return v.value
 }
 
-func (v *NullableIPv6SharednetworkNetworks) Set(val *IPv6SharednetworkNetworks) {
+func (v *NullableIpv6sharednetworkNetworks) Set(val *Ipv6sharednetworkNetworks) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableIPv6SharednetworkNetworks) IsSet() bool {
+func (v NullableIpv6sharednetworkNetworks) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableIPv6SharednetworkNetworks) Unset() {
+func (v *NullableIpv6sharednetworkNetworks) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableIPv6SharednetworkNetworks(val *IPv6SharednetworkNetworks) *NullableIPv6SharednetworkNetworks {
-	return &NullableIPv6SharednetworkNetworks{value: val, isSet: true}
+func NewNullableIpv6sharednetworkNetworks(val *Ipv6sharednetworkNetworks) *NullableIpv6sharednetworkNetworks {
+	return &NullableIpv6sharednetworkNetworks{value: val, isSet: true}
 }
 
-func (v NullableIPv6SharednetworkNetworks) MarshalJSON() ([]byte, error) {
+func (v NullableIpv6sharednetworkNetworks) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableIPv6SharednetworkNetworks) UnmarshalJSON(src []byte) error {
+func (v *NullableIpv6sharednetworkNetworks) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
