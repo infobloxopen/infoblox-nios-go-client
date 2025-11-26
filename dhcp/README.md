@@ -348,6 +348,7 @@ Class | Method | HTTP request | Description
  - [GetRoaminghostResponseObjectAsResult](docs/GetRoaminghostResponseObjectAsResult.md)
  - [GetSharednetworkResponse](docs/GetSharednetworkResponse.md)
  - [GetSharednetworkResponseObjectAsResult](docs/GetSharednetworkResponseObjectAsResult.md)
+ - [IPv6SharednetworkNetworks](docs/IPv6SharednetworkNetworks.md)
  - [Ipv6dhcpoptiondefinition](docs/Ipv6dhcpoptiondefinition.md)
  - [Ipv6dhcpoptionspace](docs/Ipv6dhcpoptionspace.md)
  - [Ipv6filteroption](docs/Ipv6filteroption.md)

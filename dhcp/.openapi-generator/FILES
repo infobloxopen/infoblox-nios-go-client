@@ -176,6 +176,7 @@ docs/GetRoaminghostResponse.md
 docs/GetRoaminghostResponseObjectAsResult.md
 docs/GetSharednetworkResponse.md
 docs/GetSharednetworkResponseObjectAsResult.md
+docs/IPv6SharednetworkNetworks.md
 docs/Ipv6dhcpoptiondefinition.md
 docs/Ipv6dhcpoptiondefinitionAPI.md
 docs/Ipv6dhcpoptionspace.md
@@ -528,6 +529,7 @@ model_get_roaminghost_response.go
 model_get_roaminghost_response_object_as_result.go
 model_get_sharednetwork_response.go
 model_get_sharednetwork_response_object_as_result.go
+model_ipv6_sharednetwork_networks.go
 model_ipv6dhcpoptiondefinition.go
 model_ipv6dhcpoptionspace.go
 model_ipv6filteroption.go
