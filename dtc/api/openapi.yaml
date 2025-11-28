@@ -5876,6 +5876,65 @@ paths:
       summary: Retrieve dtc:topology:rule objects
       tags:
       - DtcTopologyRule
+    post:
+      description: Creates a new dtc:topology:rule object
+      operationId: DtcTopologyRuleCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DtcTopologyRule'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateDtcTopologyRuleResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a dtc:topology:rule object
+      tags:
+      - DtcTopologyRule
+      x-tf-resource: dtc_topology_rule
+      x-tf-datasource: dtc_topology_rule
   /dtc:topology:rule/{reference}:
     get:
       description: Returns a specific dtc:topology:rule object by reference
@@ -8939,7 +8998,7 @@ components:
         dest_type: Example dest_type
         topology: Example topology
         _ref: _ref
-        destination_link: Example destination_link
+        destination_link: Example remote_lookup_service
       properties:
         _ref:
           description: The reference to the object.
@@ -8953,9 +9012,7 @@ components:
           example: Example dest_type
           type: string
         destination_link:
-          description: The reference to the destination DTC pool or DTC server.
-          example: Example destination_link
-          type: string
+          $ref: '#/components/schemas/DtcTopologyRule_destination_link'
         return_type:
           description: Type of the DNS response for rule.
           enum:
@@ -9026,6 +9083,12 @@ components:
         title: ListDtcTopologyRuleResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcTopologyRuleResponseObject'
+    CreateDtcTopologyRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateDtcTopologyRuleResponseAsObject'
+      - description: The response format to create __DtcTopologyRule__.
+        title: CreateDtcTopologyRuleResponse
+        type: string
     GetDtcTopologyRuleResponse:
       oneOf:
       - $ref: '#/components/schemas/DtcTopologyRule'
@@ -10492,6 +10555,24 @@ components:
           $ref: '#/components/schemas/DtcObject'
       title: UpdateDtcObjectResponseAsObject
       type: object
+    DtcTopologyRule_destination_link_oneOf:
+      properties:
+        _ref:
+          description: The reference to the LDAP auth service object.
+          type: string
+        host:
+          description: The host of server.
+          type: string
+        name:
+          description: The name of the LDAP auth service object.
+          type: string
+      type: object
+    DtcTopologyRule_destination_link:
+      oneOf:
+      - description: The service that will be used for remote lookup.
+        example: Example remote_lookup_service
+        type: string
+      - $ref: '#/components/schemas/DtcTopologyRule_destination_link_oneOf'
     ListDtcTopologyRuleResponseObject:
       description: The response format to retrieve __DtcTopologyRule__ objects.
       properties:
@@ -10500,6 +10581,28 @@ components:
             $ref: '#/components/schemas/DtcTopologyRule'
           type: array
       title: ListDtcTopologyRuleResponseObject
+      type: object
+    CreateDtcTopologyRuleResponseAsObject:
+      description: The response format to create __DtcTopologyRule__ in object format.
+      example:
+        result:
+          return_type: Example return_type
+          valid: false
+          sources:
+          - source_op: Example source_op
+            source_type: Example source_type
+            source_value: Example source_value
+          - source_op: Example source_op
+            source_type: Example source_type
+            source_value: Example source_value
+          dest_type: Example dest_type
+          topology: Example topology
+          _ref: _ref
+          destination_link: Example remote_lookup_service
+      properties:
+        result:
+          $ref: '#/components/schemas/DtcTopologyRule'
+      title: CreateDtcTopologyRuleResponseAsObject
       type: object
     GetDtcTopologyRuleResponseObjectAsResult:
       additionalProperties: false
@@ -10525,7 +10628,7 @@ components:
           dest_type: Example dest_type
           topology: Example topology
           _ref: _ref
-          destination_link: Example destination_link
+          destination_link: Example remote_lookup_service
       properties:
         result:
           $ref: '#/components/schemas/DtcTopologyRule'

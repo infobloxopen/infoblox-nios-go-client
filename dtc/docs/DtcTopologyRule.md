@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DestType** | Pointer to **string** | The type of the destination for this DTC Topology rule. | [optional] 
-**DestinationLink** | Pointer to **string** | The reference to the destination DTC pool or DTC server. | [optional] 
+**DestinationLink** | Pointer to [**DtcTopologyRuleDestinationLink**](DtcTopologyRuleDestinationLink.md) |  | [optional] 
 **ReturnType** | Pointer to **string** | Type of the DNS response for rule. | [optional] 
 **Sources** | Pointer to [**[]DtcTopologyRuleSources**](DtcTopologyRuleSources.md) | The conditions for matching sources. Should be empty to set rule as default destination. | [optional] 
 **Topology** | Pointer to **string** | The DTC Topology the rule belongs to. | [optional] [readonly] 
@@ -83,20 +83,20 @@ HasDestType returns a boolean if a field has been set.
 
 ### GetDestinationLink
 
-`func (o *DtcTopologyRule) GetDestinationLink() string`
+`func (o *DtcTopologyRule) GetDestinationLink() DtcTopologyRuleDestinationLink`
 
 GetDestinationLink returns the DestinationLink field if non-nil, zero value otherwise.
 
 ### GetDestinationLinkOk
 
-`func (o *DtcTopologyRule) GetDestinationLinkOk() (*string, bool)`
+`func (o *DtcTopologyRule) GetDestinationLinkOk() (*DtcTopologyRuleDestinationLink, bool)`
 
 GetDestinationLinkOk returns a tuple with the DestinationLink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDestinationLink
 
-`func (o *DtcTopologyRule) SetDestinationLink(v string)`
+`func (o *DtcTopologyRule) SetDestinationLink(v DtcTopologyRuleDestinationLink)`
 
 SetDestinationLink sets DestinationLink field to given value.
 

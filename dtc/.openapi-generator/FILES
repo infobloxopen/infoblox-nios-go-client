@@ -53,6 +53,8 @@ docs/CreateDtcServerResponse.md
 docs/CreateDtcServerResponseAsObject.md
 docs/CreateDtcTopologyResponse.md
 docs/CreateDtcTopologyResponseAsObject.md
+docs/CreateDtcTopologyRuleResponse.md
+docs/CreateDtcTopologyRuleResponseAsObject.md
 docs/Dtc.md
 docs/DtcAPI.md
 docs/DtcAllrecords.md
@@ -107,6 +109,8 @@ docs/DtcTopologyLabel.md
 docs/DtcTopologyLabelAPI.md
 docs/DtcTopologyRule.md
 docs/DtcTopologyRuleAPI.md
+docs/DtcTopologyRuleDestinationLink.md
+docs/DtcTopologyRuleDestinationLinkOneOf.md
 docs/DtcTopologyRuleSources.md
 docs/DtcTopologyRulesInner.md
 docs/DtcTopologyRulesInnerOneOf.md
@@ -275,6 +279,8 @@ model_create_dtc_server_response.go
 model_create_dtc_server_response_as_object.go
 model_create_dtc_topology_response.go
 model_create_dtc_topology_response_as_object.go
+model_create_dtc_topology_rule_response.go
+model_create_dtc_topology_rule_response_as_object.go
 model_dtc.go
 model_dtc_allrecords.go
 model_dtc_certificate.go
@@ -307,6 +313,8 @@ model_dtc_server_monitors.go
 model_dtc_topology.go
 model_dtc_topology_label.go
 model_dtc_topology_rule.go
+model_dtc_topology_rule_destination_link.go
+model_dtc_topology_rule_destination_link_one_of.go
 model_dtc_topology_rule_sources.go
 model_dtc_topology_rules_inner.go
 model_dtc_topology_rules_inner_one_of.go
