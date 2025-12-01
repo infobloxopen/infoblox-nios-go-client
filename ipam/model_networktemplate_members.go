@@ -19,6 +19,8 @@ var _ MappedNullable = &NetworktemplateMembers{}
 
 // NetworktemplateMembers struct for NetworktemplateMembers
 type NetworktemplateMembers struct {
+	// The struct type of the object. The value must be one of 'dhcpmember' or 'msdhcpserver'.
+	Struct *string `json:"_struct,omitempty"`
 	// The IPv4 Address or FQDN of the Microsoft server.
 	Ipv4addr *string `json:"ipv4addr,omitempty"`
 	// The IPv6 Address of the Grid Member.
@@ -45,6 +47,38 @@ func NewNetworktemplateMembers() *NetworktemplateMembers {
 func NewNetworktemplateMembersWithDefaults() *NetworktemplateMembers {
 	this := NetworktemplateMembers{}
 	return &this
+}
+
+// GetStruct returns the Struct field value if set, zero value otherwise.
+func (o *NetworktemplateMembers) GetStruct() string {
+	if o == nil || IsNil(o.Struct) {
+		var ret string
+		return ret
+	}
+	return *o.Struct
+}
+
+// GetStructOk returns a tuple with the Struct field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NetworktemplateMembers) GetStructOk() (*string, bool) {
+	if o == nil || IsNil(o.Struct) {
+		return nil, false
+	}
+	return o.Struct, true
+}
+
+// HasStruct returns a boolean if a field has been set.
+func (o *NetworktemplateMembers) HasStruct() bool {
+	if o != nil && !IsNil(o.Struct) {
+		return true
+	}
+
+	return false
+}
+
+// SetStruct gets a reference to the given string and assigns it to the Struct field.
+func (o *NetworktemplateMembers) SetStruct(v string) {
+	o.Struct = &v
 }
 
 // GetIpv4addr returns the Ipv4addr field value if set, zero value otherwise.
@@ -153,6 +187,9 @@ func (o NetworktemplateMembers) MarshalJSON() ([]byte, error) {
 
 func (o NetworktemplateMembers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Struct) {
+		toSerialize["_struct"] = o.Struct
+	}
 	if !IsNil(o.Ipv4addr) {
 		toSerialize["ipv4addr"] = o.Ipv4addr
 	}
@@ -184,6 +221,7 @@ func (o *NetworktemplateMembers) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "_struct")
 		delete(additionalProperties, "ipv4addr")
 		delete(additionalProperties, "ipv6addr")
 		delete(additionalProperties, "name")

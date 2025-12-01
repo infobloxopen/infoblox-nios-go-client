@@ -444,8 +444,6 @@ Class | Method | HTTP request | Description
  - [VlanParent](docs/VlanParent.md)
  - [VlanParentOneOf](docs/VlanParentOneOf.md)
  - [Vlanrange](docs/Vlanrange.md)
- - [VlanrangeVlanView](docs/VlanrangeVlanView.md)
- - [VlanrangeVlanViewOneOf](docs/VlanrangeVlanViewOneOf.md)
  - [Vlanview](docs/Vlanview.md)
 
 

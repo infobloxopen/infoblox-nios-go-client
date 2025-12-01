@@ -11180,10 +11180,12 @@ components:
         use_authority: false
         use_lease_scavenge_time: false
         members:
-        - name: Example name
+        - _struct: _struct
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
-        - name: Example name
+        - _struct: _struct
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         ipam_trap_settings:
@@ -11755,10 +11757,15 @@ components:
       type: object
     NetworktemplateMembers:
       example:
+        _struct: _struct
         name: Example name
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'dhcpmember'
+            or 'msdhcpserver'.
+          type: string
         ipv4addr:
           description: The IPv4 Address or FQDN of the Microsoft server.
           example: Example ipv4addr
@@ -15972,7 +15979,9 @@ components:
           example: Example vlan_name_prefix
           type: string
         vlan_view:
-          $ref: '#/components/schemas/Vlanrange_vlan_view'
+          description: The VLAN View to which this VLAN Range belongs.
+          example: Example vlan_view
+          type: string
       type: object
       x-tf-extattrs-all: true
     ListVlanrangeResponse:
@@ -18486,10 +18495,12 @@ components:
           use_authority: false
           use_lease_scavenge_time: false
           members:
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           ipam_trap_settings:
@@ -18617,10 +18628,12 @@ components:
           use_authority: false
           use_lease_scavenge_time: false
           members:
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           ipam_trap_settings:
@@ -20339,21 +20352,6 @@ components:
           $ref: '#/components/schemas/Vlanview'
       title: UpdateVlanviewResponseAsObject
       type: object
-    Vlanrange_vlan_view_oneOf:
-      additionalProperties: false
-      description: The VLAN View to which this VLAN Range belongs.
-      properties:
-        _ref:
-          description: Reference to the VLAN Range Parent
-          type: string
-      type: object
-    Vlanrange_vlan_view:
-      description: The VLAN View to which this VLAN Range belongs.
-      example: Example vlan_view
-      oneOf:
-      - $ref: '#/components/schemas/Vlanrange_vlan_view_oneOf'
-      - description: The VLAN View to which this VLAN Range belongs.
-        type: string
     ListVlanrangeResponseObject:
       description: The response format to retrieve __Vlanrange__ objects.
       properties:
