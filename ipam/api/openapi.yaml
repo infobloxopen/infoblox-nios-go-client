@@ -15979,9 +15979,7 @@ components:
           example: Example vlan_name_prefix
           type: string
         vlan_view:
-          description: The VLAN View to which this VLAN Range belongs.
-          example: Example vlan_view
-          type: string
+          $ref: '#/components/schemas/Vlanrange_vlan_view'
       type: object
       x-tf-extattrs-all: true
     ListVlanrangeResponse:
@@ -20352,6 +20350,21 @@ components:
           $ref: '#/components/schemas/Vlanview'
       title: UpdateVlanviewResponseAsObject
       type: object
+    Vlanrange_vlan_view_oneOf:
+      additionalProperties: false
+      description: The VLAN View to which this VLAN Range belongs.
+      properties:
+        _ref:
+          description: Reference to the VLAN Range Parent
+          type: string
+      type: object
+    Vlanrange_vlan_view:
+      description: The VLAN View to which this VLAN Range belongs.
+      example: Example vlan_view
+      oneOf:
+      - $ref: '#/components/schemas/Vlanrange_vlan_view_oneOf'
+      - description: The VLAN View to which this VLAN Range belongs.
+        type: string
     ListVlanrangeResponseObject:
       description: The response format to retrieve __Vlanrange__ objects.
       properties:
