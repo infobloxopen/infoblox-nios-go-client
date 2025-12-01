@@ -8256,7 +8256,7 @@ components:
         comment: Example comment
         ipv4addr: Example ipv4addr
         ttl: 1
-        auto_created: Example auto_created
+        auto_created: false
       properties:
         _ref:
           description: The reference to the object.
@@ -8265,9 +8265,9 @@ components:
         auto_created:
           description: Flag that indicates whether this record was automatically created
             by NIOS.
-          example: Example auto_created
+          example: false
           readOnly: true
-          type: string
+          type: boolean
         comment:
           description: Comment for the record; maximum 256 characters.
           example: Example comment
@@ -10135,7 +10135,7 @@ components:
           comment: Example comment
           ipv4addr: Example ipv4addr
           ttl: 1
-          auto_created: Example auto_created
+          auto_created: false
       properties:
         result:
           $ref: '#/components/schemas/DtcRecordA'
@@ -10160,7 +10160,7 @@ components:
           comment: Example comment
           ipv4addr: Example ipv4addr
           ttl: 1
-          auto_created: Example auto_created
+          auto_created: false
       properties:
         result:
           $ref: '#/components/schemas/DtcRecordA'
