@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**AutoCreated** | Pointer to **string** | Flag that indicates whether this record was automatically created by NIOS. | [optional] [readonly] 
+**AutoCreated** | Pointer to **bool** | Flag that indicates whether this record was automatically created by NIOS. | [optional] [readonly] 
 **Canonical** | Pointer to **string** | The canonical name of the host. | [optional] 
 **Comment** | Pointer to **string** | Comment for the record; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines if the record is disabled or not. False means that the record is enabled. | [optional] 
@@ -61,20 +61,20 @@ HasRef returns a boolean if a field has been set.
 
 ### GetAutoCreated
 
-`func (o *GetDtcRecordCnameResponse) GetAutoCreated() string`
+`func (o *GetDtcRecordCnameResponse) GetAutoCreated() bool`
 
 GetAutoCreated returns the AutoCreated field if non-nil, zero value otherwise.
 
 ### GetAutoCreatedOk
 
-`func (o *GetDtcRecordCnameResponse) GetAutoCreatedOk() (*string, bool)`
+`func (o *GetDtcRecordCnameResponse) GetAutoCreatedOk() (*bool, bool)`
 
 GetAutoCreatedOk returns a tuple with the AutoCreated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutoCreated
 
-`func (o *GetDtcRecordCnameResponse) SetAutoCreated(v string)`
+`func (o *GetDtcRecordCnameResponse) SetAutoCreated(v bool)`
 
 SetAutoCreated sets AutoCreated field to given value.
 
