@@ -11180,10 +11180,12 @@ components:
         use_authority: false
         use_lease_scavenge_time: false
         members:
-        - name: Example name
+        - _struct: _struct
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
-        - name: Example name
+        - _struct: _struct
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         ipam_trap_settings:
@@ -11755,10 +11757,15 @@ components:
       type: object
     NetworktemplateMembers:
       example:
+        _struct: _struct
         name: Example name
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'dhcpmember'
+            or 'msdhcpserver'.
+          type: string
         ipv4addr:
           description: The IPv4 Address or FQDN of the Microsoft server.
           example: Example ipv4addr
@@ -18486,10 +18493,12 @@ components:
           use_authority: false
           use_lease_scavenge_time: false
           members:
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           ipam_trap_settings:
@@ -18617,10 +18626,12 @@ components:
           use_authority: false
           use_lease_scavenge_time: false
           members:
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           ipam_trap_settings:
