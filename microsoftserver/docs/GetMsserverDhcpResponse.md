@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The address or FQDN of the DHCP Microsoft Server. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment from Microsoft Server | [optional] [readonly] 
 **DhcpUtilization** | Pointer to **int64** | The percentage of the total DHCP utilization of DHCP objects belonging to the DHCP Microsoft Server multiplied by 1000. This is the percentage of the total number of available IP addresses from all the DHCP objects belonging to the DHCP Microsoft Server versus the total number of all IP addresses in all of the DHCP objects on the DHCP Microsoft Server. | [optional] [readonly] 
@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **TotalHosts** | Pointer to **int64** | The total number of DHCP addresses configured in DHCP objects that belong to the DHCP Microsoft Server. | [optional] [readonly] 
 **UseLogin** | Pointer to **bool** | Use flag for: login_name , login_password | [optional] 
 **UseSynchronizationInterval** | Pointer to **bool** | Use flag for: synchronization_interval | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**MsserverDhcp**](MsserverDhcp.md) |  | [optional] 
 
 ## Methods
@@ -596,6 +597,31 @@ SetUseSynchronizationInterval sets UseSynchronizationInterval field to given val
 `func (o *GetMsserverDhcpResponse) HasUseSynchronizationInterval() bool`
 
 HasUseSynchronizationInterval returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMsserverDhcpResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMsserverDhcpResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMsserverDhcpResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMsserverDhcpResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

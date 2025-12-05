@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **RpZones** | Pointer to **[]string** | An ordered list of Response Policy Zone names. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | The DNS View name. | [optional] 
 **Result** | Pointer to [**Orderedresponsepolicyzones**](Orderedresponsepolicyzones.md) |  | [optional] 
 
@@ -77,6 +78,31 @@ SetRpZones sets RpZones field to given value.
 `func (o *GetOrderedresponsepolicyzonesResponse) HasRpZones() bool`
 
 HasRpZones returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetOrderedresponsepolicyzonesResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetOrderedresponsepolicyzonesResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetOrderedresponsepolicyzonesResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetOrderedresponsepolicyzonesResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

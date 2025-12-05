@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for this shared record; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines if this shared record is disabled or not. False means that the record is enabled. | [optional] 
 **DnsName** | Pointer to **string** | The name for this shared record in punycode format. | [optional] [readonly] 
@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Target** | Pointer to **string** | The target of the shared SRV record in FQDN format. This value can be in unicode format. | [optional] 
 **Ttl** | Pointer to **int64** | The Time To Live (TTL) value for this shared record. A 32-bit unsigned integer that represents the duration, in seconds, for which the shared record is valid (cached). Zero indicates that the shared record should not be cached. | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Weight** | Pointer to **int64** | The weight of the shared SRV record. Valid values are from 0 to 65535 (inclusive), in 32-bit unsigned integer format. | [optional] 
 **Result** | Pointer to [**SharedrecordSrv**](SharedrecordSrv.md) |  | [optional] 
 
@@ -415,6 +416,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *GetSharedrecordSrvResponse) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetSharedrecordSrvResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetSharedrecordSrvResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetSharedrecordSrvResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetSharedrecordSrvResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetWeight
 

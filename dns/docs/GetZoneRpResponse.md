@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IP address of the server that is serving this zone. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the zone; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether a zone is disabled or not. When this is set to False, the zone is enabled. | [optional] 
@@ -55,6 +55,7 @@ Name | Type | Description | Notes
 **UseRecordNamePolicy** | Pointer to **bool** | Use flag for: record_name_policy | [optional] 
 **UseRpzDropIpRule** | Pointer to **bool** | Use flag for: rpz_drop_ip_rule_enabled , rpz_drop_ip_rule_min_prefix_length_ipv4, rpz_drop_ip_rule_min_prefix_length_ipv6 | [optional] 
 **UseSoaEmail** | Pointer to **bool** | Use flag for: soa_email | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | The name of the DNS view in which the zone resides. Example \&quot;external\&quot;. | [optional] 
 **Result** | Pointer to [**ZoneRp**](ZoneRp.md) |  | [optional] 
 
@@ -1351,6 +1352,31 @@ SetUseSoaEmail sets UseSoaEmail field to given value.
 `func (o *GetZoneRpResponse) HasUseSoaEmail() bool`
 
 HasUseSoaEmail returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetZoneRpResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetZoneRpResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetZoneRpResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetZoneRpResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

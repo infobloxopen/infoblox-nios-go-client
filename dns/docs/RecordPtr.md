@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AwsRte53RecordInfo** | Pointer to [**RecordPtrAwsRte53RecordInfo**](RecordPtrAwsRte53RecordInfo.md) |  | [optional] 
 **CloudInfo** | Pointer to [**RecordPtrCloudInfo**](RecordPtrCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the record; maximum 256 characters. | [optional] 
@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **SharedRecordGroup** | Pointer to **string** | The name of the shared record group in which the record resides. This field exists only on db_objects if this record is a shared record. | [optional] [readonly] 
 **Ttl** | Pointer to **int64** | Time To Live (TTL) value for the record. A 32-bit unsigned integer that represents the duration, in seconds, that the record is valid (cached). Zero indicates that the record should not be cached. | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | Name of the DNS View in which the record resides, for example \&quot;external\&quot;. | [optional] 
 **Zone** | Pointer to **string** | The name of the zone in which the record resides. For example: \&quot;zone.com\&quot;. If a view is not specified when searching by zone, the default view is used. | [optional] [readonly] 
 
@@ -727,6 +728,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *RecordPtr) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *RecordPtr) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *RecordPtr) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *RecordPtr) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *RecordPtr) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

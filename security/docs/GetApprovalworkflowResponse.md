@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ApprovalGroup** | Pointer to **string** | The approval administration group. | [optional] 
 **ApprovalNotifyTo** | Pointer to **string** | The destination for approval task notifications. | [optional] 
 **ApprovedNotifyTo** | Pointer to **string** | The destination for approved task notifications. | [optional] 
@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **SubmitterGroup** | Pointer to **string** | The submitter admininstration group. | [optional] 
 **SucceededNotifyTo** | Pointer to **string** | The destination for succeeded task notifications. | [optional] 
 **TicketNumber** | Pointer to **string** | The requirement for the ticket number when a submitter submits a task for approval. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Approvalworkflow**](Approvalworkflow.md) |  | [optional] 
 
 ## Methods
@@ -622,6 +623,31 @@ SetTicketNumber sets TicketNumber field to given value.
 `func (o *GetApprovalworkflowResponse) HasTicketNumber() bool`
 
 HasTicketNumber returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetApprovalworkflowResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetApprovalworkflowResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetApprovalworkflowResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetApprovalworkflowResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

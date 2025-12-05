@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DhcpStatus** | Pointer to **string** | The status of the DHCP service. | [optional] [readonly] 
 **DnsStatus** | Pointer to **string** | The status of the DNS service. | [optional] [readonly] 
 **Member** | Pointer to **string** | The name of this Grid member in FQDN format. | [optional] [readonly] 
 **ReportingStatus** | Pointer to **string** | The status of the reporting service. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Restartservicestatus**](Restartservicestatus.md) |  | [optional] 
 
 ## Methods
@@ -154,6 +155,31 @@ SetReportingStatus sets ReportingStatus field to given value.
 `func (o *GetRestartservicestatusResponse) HasReportingStatus() bool`
 
 HasReportingStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRestartservicestatusResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRestartservicestatusResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRestartservicestatusResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRestartservicestatusResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Clients** | Pointer to [**[]Dns64groupClients**](Dns64groupClients.md) | Access Control settings that contain IPv4 and IPv6 DNS clients and networks to which the DNS server is allowed to send synthesized AAAA records with the specified IPv6 prefix. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the DNS64 synthesis group object. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DNS64 synthesis group is disabled. | [optional] 
@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Mapped** | Pointer to [**[]Dns64groupMapped**](Dns64groupMapped.md) | Access Control settings that contain IPv4 addresses and networks for which the DNS server can synthesize AAAA records with the specified prefix. | [optional] 
 **Name** | Pointer to **string** | The name of the DNS64 synthesis group object. | [optional] 
 **Prefix** | Pointer to **string** | The IPv6 prefix used for the synthesized AAAA records. The prefix length must be /32, /40, /48, /56, /64 or /96, and all bits beyond the specified length must be zero. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Dns64group**](Dns64group.md) |  | [optional] 
 
 ## Methods
@@ -336,6 +337,31 @@ SetPrefix sets Prefix field to given value.
 `func (o *GetDns64groupResponse) HasPrefix() bool`
 
 HasPrefix returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDns64groupResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDns64groupResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDns64groupResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDns64groupResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

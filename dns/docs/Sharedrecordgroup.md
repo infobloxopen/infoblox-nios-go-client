@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The descriptive comment of this shared record group. | [optional] 
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of this shared record group. | [optional] 
 **RecordNamePolicy** | Pointer to **string** | The record name policy of this shared record group. | [optional] 
 **UseRecordNamePolicy** | Pointer to **bool** | Use flag for: record_name_policy | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ZoneAssociations** | Pointer to [**[]SharedrecordgroupZoneAssociations**](SharedrecordgroupZoneAssociations.md) | The list of zones associated with this shared record group. Starting from NIOS-9.0.6, this field has been updated to a structure that includes FQDN and DNS view details. | [optional] 
 
 ## Methods
@@ -232,6 +233,31 @@ SetUseRecordNamePolicy sets UseRecordNamePolicy field to given value.
 `func (o *Sharedrecordgroup) HasUseRecordNamePolicy() bool`
 
 HasUseRecordNamePolicy returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Sharedrecordgroup) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Sharedrecordgroup) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Sharedrecordgroup) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Sharedrecordgroup) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetZoneAssociations
 

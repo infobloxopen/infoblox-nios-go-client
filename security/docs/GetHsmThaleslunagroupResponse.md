@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The HSM Thales Luna group comment. | [optional] 
 **GroupSn** | Pointer to **string** | The HSM Thales Luna group serial number. | [optional] [readonly] 
 **HsmVersion** | Pointer to **string** | The HSM Thales Luna version. | [optional] 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **PassPhrase** | Pointer to **string** | The pass phrase used to unlock the HSM Thales Luna keystore. | [optional] 
 **Status** | Pointer to **string** | The status of all HSM Thales Luna devices in the group. | [optional] [readonly] 
 **Thalesluna** | Pointer to [**[]HsmThaleslunagroupThalesluna**](HsmThaleslunagroupThalesluna.md) | The list of HSM Thales Luna devices. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**HsmThaleslunagroup**](HsmThaleslunagroup.md) |  | [optional] 
 
 ## Methods
@@ -232,6 +233,31 @@ SetThalesluna sets Thalesluna field to given value.
 `func (o *GetHsmThaleslunagroupResponse) HasThalesluna() bool`
 
 HasThalesluna returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetHsmThaleslunagroupResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetHsmThaleslunagroupResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetHsmThaleslunagroupResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetHsmThaleslunagroupResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

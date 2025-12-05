@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AddClientIpMacOptions** | Pointer to **bool** | Add custom IP, MAC and DNS View name ENDS0 options to outgoing recursive queries. | [optional] 
 **AllowBulkhostDdns** | Pointer to **string** | Determines if DDNS bulk host is allowed or not. | [optional] 
 **AllowGssTsigZoneUpdates** | Pointer to **bool** | Determines whether GSS-TSIG zone update is enabled for all Grid members. | [optional] 
@@ -154,6 +154,7 @@ Name | Type | Description | Notes
 **TransfersIn** | Pointer to **int64** | The number of maximum concurrent transfers for the Grid. Valid values are unsigned integer between 10 and 10000, inclusive. | [optional] 
 **TransfersOut** | Pointer to **int64** | The number of maximum outbound concurrent zone transfers. Valid values are unsigned integer between 10 and 10000, inclusive. | [optional] 
 **TransfersPerNs** | Pointer to **int64** | The number of maximum concurrent transfers per member. Valid values are unsigned integer between 2 and 10000, inclusive. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ZoneDeletionDoubleConfirm** | Pointer to **bool** | Determines if the double confirmation during zone deletion is enabled or not. | [optional] 
 
 ## Methods
@@ -3924,6 +3925,31 @@ SetTransfersPerNs sets TransfersPerNs field to given value.
 `func (o *GridDns) HasTransfersPerNs() bool`
 
 HasTransfersPerNs returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridDns) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridDns) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridDns) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridDns) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetZoneDeletionDoubleConfirm
 

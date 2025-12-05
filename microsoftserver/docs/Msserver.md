@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AdDomain** | Pointer to **string** | The Active Directory domain to which this server belongs (if applicable). | [optional] [readonly] 
 **AdSites** | Pointer to [**MsserverAdSites**](MsserverAdSites.md) |  | [optional] 
 **AdUser** | Pointer to [**MsserverAdUser**](MsserverAdUser.md) |  | [optional] 
@@ -38,6 +38,7 @@ Name | Type | Description | Notes
 **UseLogDestination** | Pointer to **bool** | Override log_destination inherited from grid level | [optional] 
 **UseMsMaxConnection** | Pointer to **bool** | Override grid ms_max_connection setting | [optional] 
 **UseMsRpcTimeoutInSeconds** | Pointer to **bool** | Flag to override cluster RPC timeout | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Version** | Pointer to **string** | Version of the Microsoft Server | [optional] [readonly] 
 
 ## Methods
@@ -908,6 +909,31 @@ SetUseMsRpcTimeoutInSeconds sets UseMsRpcTimeoutInSeconds field to given value.
 `func (o *Msserver) HasUseMsRpcTimeoutInSeconds() bool`
 
 HasUseMsRpcTimeoutInSeconds returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Msserver) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Msserver) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Msserver) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Msserver) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVersion
 

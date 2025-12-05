@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AnalyticsTunnelingEventCriticalThreshold** | Pointer to **int64** | The Grid Dashboard critical threshold for Analytics tunneling events. | [optional] 
 **AnalyticsTunnelingEventWarningThreshold** | Pointer to **int64** | The Grid Dashboard warning threshold for Analytics tunneling events. | [optional] 
 **AtpCriticalEventCriticalThreshold** | Pointer to **int64** | The Grid Dashboard critical threshold for ATP critical events. | [optional] 
@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **RpzPassthruEventWarningThreshold** | Pointer to **int64** | The Grid Dashboard warning threshold for RPZ passthru events. | [optional] 
 **RpzSubstitutedHitCriticalThreshold** | Pointer to **int64** | The critical threshold value for substituted RPZ hits in the Grid dashboard. | [optional] 
 **RpzSubstitutedHitWarningThreshold** | Pointer to **int64** | The warning threshold value for substituted RPZ hits in the Grid dashboard. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**GridDashboard**](GridDashboard.md) |  | [optional] 
 
 ## Methods
@@ -414,6 +415,31 @@ SetRpzSubstitutedHitWarningThreshold sets RpzSubstitutedHitWarningThreshold fiel
 `func (o *GetGridDashboardResponse) HasRpzSubstitutedHitWarningThreshold() bool`
 
 HasRpzSubstitutedHitWarningThreshold returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGridDashboardResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGridDashboardResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGridDashboardResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGridDashboardResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

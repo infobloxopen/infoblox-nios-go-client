@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CardName** | Pointer to **string** | The Entrust nShield HSM softcard name. | [optional] 
 **Comment** | Pointer to **string** | The Entrust nShield HSM group comment. | [optional] 
 **EntrustnshieldHsm** | Pointer to [**[]HsmEntrustnshieldgroupEntrustnshieldHsm**](HsmEntrustnshieldgroupEntrustnshieldHsm.md) | The list of Entrust nShield HSM devices. | [optional] 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **PassPhrase** | Pointer to **string** | The password phrase used to unlock the Entrust nShield HSM keystore. | [optional] 
 **Protection** | Pointer to **string** | The level of protection that the HSM group uses for the DNSSEC key data. | [optional] 
 **Status** | Pointer to **string** | The status of all Entrust nShield HSM devices in the group. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**HsmEntrustnshieldgroup**](HsmEntrustnshieldgroup.md) |  | [optional] 
 
 ## Methods
@@ -284,6 +285,31 @@ SetStatus sets Status field to given value.
 `func (o *GetHsmEntrustnshieldgroupResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetHsmEntrustnshieldgroupResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetHsmEntrustnshieldgroupResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetHsmEntrustnshieldgroupResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetHsmEntrustnshieldgroupResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

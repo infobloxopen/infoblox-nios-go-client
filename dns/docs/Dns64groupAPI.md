@@ -1,6 +1,6 @@
 # Dns64groupAPI
 
-All URIs are relative to *http://localhost/wapi/v2.13.6*
+All URIs are relative to *http://localhost/wapi/v2.14*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

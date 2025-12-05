@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox IPAM API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for ipv4address objects
   name: Ipv4address
@@ -5969,6 +5969,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the address; maximum 256 characters.
@@ -6029,6 +6030,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fingerprint:
           description: DHCP fingerprint for the address.
           example: Example fingerprint
@@ -6117,11 +6119,15 @@ components:
           readOnly: true
           type: array
         username:
-          description: The name of the user who created or modified the record.
+          description: The name of the user who created or modified the record. The
+            "username" field is populated only for lease objects that have a MAC Address
+            Filter configured with user details.
           example: Example username
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv4addressDiscoveredData:
       example:
         vport_name: Example vport_name
@@ -6961,6 +6967,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the address; maximum 256 characters.
@@ -7021,6 +7028,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fingerprint:
           description: DHCP fingerprint for the address.
           example: Example fingerprint
@@ -7101,6 +7109,8 @@ components:
           readOnly: true
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6addressDiscoveredData:
       example:
         vport_name: Example vport_name
@@ -7992,6 +8002,7 @@ components:
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
+        uuid: Example uuid
         discovered_vlan_name: Example discovered_vlan_name
         use_authority: false
         use_lease_scavenge_time: false
@@ -8078,6 +8089,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authority:
           description: Authority for the DHCP network.
@@ -8345,6 +8357,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network
@@ -8750,6 +8763,11 @@ components:
           format: int64
           readOnly: true
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vlans:
           description: List of VLANs assigned to Network.
           enum:
@@ -8765,6 +8783,8 @@ components:
             $ref: '#/components/schemas/NetworkZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     FuncCall:
       description: Function Call attribute
       example:
@@ -9287,7 +9307,7 @@ components:
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'dhcpmember'
-            or 'msdhcpserver'.
+            and 'msdhcpserver'.
           type: string
         ipv4addr:
           description: The IPv4 Address or FQDN of the Microsoft server.
@@ -9780,6 +9800,7 @@ components:
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
+        uuid: Example uuid
         use_authority: false
         use_lease_scavenge_time: false
         use_blackout_setting: false
@@ -9841,6 +9862,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authority:
           description: Authority for the DHCP network container.
@@ -10021,6 +10043,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network container.
@@ -10379,6 +10402,11 @@ components:
           format: int64
           readOnly: true
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         zone_associations:
           description: The list of zones associated with this network.
           enum:
@@ -10387,6 +10415,8 @@ components:
             $ref: '#/components/schemas/NetworkcontainerZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NetworkcontainerCloudInfo:
       example:
         delegated_member:
@@ -11153,6 +11183,7 @@ components:
         nextserver: Example nextserver
         use_ddns_update_fixed_addresses: false
         use_pxe_lease_time: false
+        uuid: Example uuid
         use_ddns_domainname: false
         ipam_email_addresses:
         - ipam_email_addresses
@@ -11261,6 +11292,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_any_netmask:
           description: "This flag controls whether the template allows any netmask.\
@@ -11394,6 +11426,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fixed_address_templates:
           description: "The list of fixed address templates assigned to this network\
             \ template object. When you create a network based on a network template\
@@ -11662,7 +11695,14 @@ components:
           description: "Use flag for: update_dns_on_lease_renewal"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NetworktemplateDelegatedMember:
       example:
         name: Example name
@@ -11858,6 +11898,7 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         is_default: false
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -11907,6 +11948,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         associated_dns_views:
           description: The list of DNS views associated with this network view.
@@ -11963,6 +12005,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network view
@@ -12015,7 +12058,14 @@ components:
           items:
             $ref: '#/components/schemas/NetworkviewRemoteReverseZones'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NetworkviewAssociatedMembers:
       example:
         failovers:
@@ -12349,6 +12399,7 @@ components:
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
+        uuid: Example uuid
         use_valid_lifetime: false
         delete_reason: Example delete_reason
         domain_name_servers:
@@ -12552,6 +12603,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_create_reversezone:
           description: This flag controls whether reverse zones are automatically
@@ -12749,6 +12801,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network
@@ -12988,6 +13041,11 @@ components:
           description: "Use flag for: zone_associations"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         valid_lifetime:
           description: Use this method to set or retrieve the valid lifetime value
             of a DHCP IPv6 Network object.
@@ -13009,6 +13067,8 @@ components:
             $ref: '#/components/schemas/Ipv6networkZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6networkCloudInfo:
       example:
         delegated_member:
@@ -13793,6 +13853,7 @@ components:
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
+        uuid: Example uuid
         use_valid_lifetime: false
         delete_reason: Example delete_reason
         domain_name_servers:
@@ -13969,6 +14030,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_create_reversezone:
           description: This flag controls whether reverse zones are automatically
@@ -14109,6 +14171,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         federated_realms:
           description: This field contains the federated realms associated to this
             network container.
@@ -14320,6 +14383,11 @@ components:
           format: int64
           readOnly: true
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         valid_lifetime:
           description: Use this method to set or retrieve the valid lifetime value
             of a DHCP IPv6 Network Container object.
@@ -14334,6 +14402,8 @@ components:
             $ref: '#/components/schemas/Ipv6networkcontainerZoneAssociations'
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6networkcontainerCloudInfo:
       example:
         delegated_member:
@@ -15069,6 +15139,7 @@ components:
         rir_organization: Example rir_organization
         use_ddns_ttl: false
         rir_registration_status: Example rir_registration_status
+        uuid: Example uuid
         use_ddns_generate_hostname: false
         use_valid_lifetime: false
         enable_ddns: false
@@ -15143,6 +15214,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_any_netmask:
           description: "This flag controls whether the template allows any netmask.\
@@ -15245,6 +15317,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         fixed_address_templates:
           description: "The list of IPv6 fixed address templates assigned to this\
             \ IPv6 network template object. When you create an IPv6 network based\
@@ -15401,6 +15474,11 @@ components:
           description: "Use flag for: valid_lifetime"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         valid_lifetime:
           description: Use this method to set or retrieve the valid lifetime value
             of a DHCP IPv6 Network object.
@@ -15408,6 +15486,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     Ipv6networktemplateDelegatedMember:
       example:
         name: Example name
@@ -15528,11 +15608,13 @@ components:
         _ref: _ref
         cidr: 1
         utilization: 1
+        uuid: Example uuid
         unmanaged_count: 1
         network: Example network
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cidr:
           description: The network CIDR.
@@ -15580,7 +15662,13 @@ components:
           format: int64
           readOnly: true
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     IpamStatisticsMsAdUserData:
       example:
         active_users_count: 1
@@ -15618,6 +15706,7 @@ components:
           key:
             value: ""
         description: Example description
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -15638,6 +15727,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         assigned_to:
           description: List of objects VLAN is assigned to.
@@ -15686,6 +15776,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         id:
           description: VLAN ID value.
           example: 1
@@ -15712,7 +15803,13 @@ components:
           example: Example status
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListVlanResponse:
       oneOf:
       - description: The response format to retrieve __Vlan__ objects.
@@ -15756,10 +15853,12 @@ components:
         end_vlan_id: 1
         allow_range_overlapping: false
         vlan_name_prefix: Example vlan_name_prefix
+        uuid: Example uuid
         pre_create_vlan: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_range_overlapping:
           description: When set to true VLAN Ranges under VLAN View can have overlapping
@@ -15795,6 +15894,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name of the VLAN View.
           example: Example name
@@ -15809,11 +15909,17 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vlan_name_prefix:
           description: If set on creation prefix string will be used for VLAN name.
           example: Example vlan_name_prefix
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListVlanviewResponse:
       oneOf:
       - description: The response format to retrieve __Vlanview__ objects.
@@ -15841,27 +15947,29 @@ components:
     Vlanrange:
       additionalProperties: false
       example:
-        extattrs-:
+        extattrs:
           key:
             value: ""
-        extattrs:
+        start_vlan_id: 1
+        vlan_name_prefix: Example vlan_name_prefix
+        vlan_view: Example vlan_view
+        uuid: Example uuid
+        extattrs-:
           key:
             value: ""
         extattrs+:
           key:
             value: ""
-        start_vlan_id: 1
         _ref: _ref
         name: Example name
         comment: Example comment
         delete_vlans: false
         end_vlan_id: 1
-        vlan_name_prefix: Example vlan_name_prefix
-        vlan_view: Example vlan_view
         pre_create_vlan: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: A descriptive comment for this VLAN Range.
@@ -15898,6 +16006,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name of the VLAN Range.
           example: Example name
@@ -15912,6 +16021,11 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vlan_name_prefix:
           description: If set on creation prefix string will be used for VLAN name.
           example: Example vlan_name_prefix
@@ -15921,6 +16035,7 @@ components:
           example: Example vlan_view
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListVlanrangeResponse:
       oneOf:
       - description: The response format to retrieve __Vlanrange__ objects.
@@ -15971,6 +16086,7 @@ components:
         dns_prefix: Example dns_prefix
         reverse: false
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -15990,6 +16106,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_info:
           $ref: '#/components/schemas/BulkhostCloudInfo'
@@ -16030,6 +16147,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
           example: 1
@@ -16082,6 +16200,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: The view for the bulk host.
           example: Example view
@@ -16091,6 +16214,8 @@ components:
           example: Example zone
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     BulkhostCloudInfo:
       example:
         delegated_member:
@@ -16215,9 +16340,11 @@ components:
         pre_defined: false
         _ref: _ref
         template_format: Example template_format
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         is_grid_default:
           description: True if this template is Grid default.
@@ -16237,6 +16364,11 @@ components:
         template_name:
           description: The name of bulk host name template.
           example: Example template_name
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
           type: string
       type: object
     ListBulkhostnametemplateResponse:
@@ -16290,6 +16422,7 @@ components:
         networks:
         - network
         - network
+        uuid: Example uuid
         v_network_view: Example v_network_view
         ping_timeout: 1
         mode: Example mode
@@ -16323,6 +16456,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         csv_file_name:
           description: The network discovery CSV file name.
@@ -16432,6 +16566,11 @@ components:
           - CONNECT
           example: Example tcp_scan_technique
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         v_network_view:
           description: Name of the network view in which target networks for VMWare
             scanning reside.
@@ -16450,6 +16589,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     DiscoverytaskScheduledRun:
       example:
         month: 1
@@ -16630,6 +16770,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListNetworkDiscoveryResponse:
@@ -16670,12 +16811,14 @@ components:
         name: Example name
         comment: Example comment
         disabled: false
+        uuid: Example uuid
         dns_associated_objects:
         - record:a
         - record:a
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for Super Host.
@@ -16732,11 +16875,18 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Name of the Superhost.
           example: Example name
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListSuperhostResponse:
       oneOf:
       - description: The response format to retrieve __Superhost__ objects.
@@ -16766,19 +16916,21 @@ components:
       example:
         network_view: Example network_view
         parent: Example parent
-        view: Example view
         associated_object: Example associated_object
         data: Example data
         creation_timestamp: 1
+        type: Example type
+        uuid: Example uuid
+        view: Example view
         _ref: _ref
         name: Example name
         comment: Example comment
         disabled: false
         record_parent: Example record_parent
-        type: Example type
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         associated_object:
           description: "The record object, if supported by the WAPI. Otherwise, the\
@@ -16840,6 +16992,11 @@ components:
           example: Example type
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: Name of the DNS View in which the record resides.
           example: Example view
@@ -16873,9 +17030,11 @@ components:
         name: Example name
         replacement_character: Example replacement_character
         is_default: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         is_default:
           description: True if the policy is the Grid default.
@@ -16895,6 +17054,11 @@ components:
           description: The replacement character for symbols in hostnames that do
             not conform to the hostname policy.
           example: Example replacement_character
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
           type: string
         valid_characters:
           description: The set of valid characters represented in string format.
@@ -17477,6 +17641,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           discovered_vlan_name: Example discovered_vlan_name
           use_authority: false
           use_lease_scavenge_time: false
@@ -17765,6 +17930,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           discovered_vlan_name: Example discovered_vlan_name
           use_authority: false
           use_lease_scavenge_time: false
@@ -18077,6 +18243,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           use_authority: false
           use_lease_scavenge_time: false
           use_blackout_setting: false
@@ -18327,6 +18494,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           use_authority: false
           use_lease_scavenge_time: false
           use_blackout_setting: false
@@ -18412,6 +18580,7 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_ddns_domainname: false
           ipam_email_addresses:
           - ipam_email_addresses
@@ -18543,6 +18712,7 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_ddns_domainname: false
           ipam_email_addresses:
           - ipam_email_addresses
@@ -18716,6 +18886,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           is_default: false
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -18829,6 +19000,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           is_default: false
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -18949,6 +19121,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           use_valid_lifetime: false
           delete_reason: Example delete_reason
           domain_name_servers:
@@ -19186,6 +19359,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           use_valid_lifetime: false
           delete_reason: Example delete_reason
           domain_name_servers:
@@ -19459,6 +19633,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           use_valid_lifetime: false
           delete_reason: Example delete_reason
           domain_name_servers:
@@ -19668,6 +19843,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           use_valid_lifetime: false
           delete_reason: Example delete_reason
           domain_name_servers:
@@ -19871,6 +20047,7 @@ components:
           rir_organization: Example rir_organization
           use_ddns_ttl: false
           rir_registration_status: Example rir_registration_status
+          uuid: Example uuid
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
           enable_ddns: false
@@ -19971,6 +20148,7 @@ components:
           rir_organization: Example rir_organization
           use_ddns_ttl: false
           rir_registration_status: Example rir_registration_status
+          uuid: Example uuid
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
           enable_ddns: false
@@ -20089,6 +20267,7 @@ components:
             key:
               value: ""
           description: Example description
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -20128,6 +20307,7 @@ components:
             key:
               value: ""
           description: Example description
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -20179,6 +20359,7 @@ components:
           end_vlan_id: 1
           allow_range_overlapping: false
           vlan_name_prefix: Example vlan_name_prefix
+          uuid: Example uuid
           pre_create_vlan: false
       properties:
         result:
@@ -20213,6 +20394,7 @@ components:
           end_vlan_id: 1
           allow_range_overlapping: false
           vlan_name_prefix: Example vlan_name_prefix
+          uuid: Example uuid
           pre_create_vlan: false
       properties:
         result:
@@ -20232,23 +20414,24 @@ components:
       description: The response format to create __Vlanrange__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          start_vlan_id: 1
+          vlan_name_prefix: Example vlan_name_prefix
+          vlan_view: Example vlan_view
+          uuid: Example uuid
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          start_vlan_id: 1
           _ref: _ref
           name: Example name
           comment: Example comment
           delete_vlans: false
           end_vlan_id: 1
-          vlan_name_prefix: Example vlan_name_prefix
-          vlan_view: Example vlan_view
           pre_create_vlan: false
       properties:
         result:
@@ -20267,23 +20450,24 @@ components:
       description: The response format to update __Vlanrange__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          start_vlan_id: 1
+          vlan_name_prefix: Example vlan_name_prefix
+          vlan_view: Example vlan_view
+          uuid: Example uuid
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          start_vlan_id: 1
           _ref: _ref
           name: Example name
           comment: Example comment
           delete_vlans: false
           end_vlan_id: 1
-          vlan_name_prefix: Example vlan_name_prefix
-          vlan_view: Example vlan_view
           pre_create_vlan: false
       properties:
         result:
@@ -20326,6 +20510,7 @@ components:
           dns_prefix: Example dns_prefix
           reverse: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -20382,6 +20567,7 @@ components:
           dns_prefix: Example dns_prefix
           reverse: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -20422,6 +20608,7 @@ components:
           pre_defined: false
           _ref: _ref
           template_format: Example template_format
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Bulkhostnametemplate'
@@ -20445,6 +20632,7 @@ components:
           pre_defined: false
           _ref: _ref
           template_format: Example template_format
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Bulkhostnametemplate'
@@ -20495,6 +20683,7 @@ components:
           networks:
           - network
           - network
+          uuid: Example uuid
           v_network_view: Example v_network_view
           ping_timeout: 1
           mode: Example mode
@@ -20584,6 +20773,7 @@ components:
           name: Example name
           comment: Example comment
           disabled: false
+          uuid: Example uuid
           dns_associated_objects:
           - record:a
           - record:a
@@ -20621,6 +20811,7 @@ components:
           name: Example name
           comment: Example comment
           disabled: false
+          uuid: Example uuid
           dns_associated_objects:
           - record:a
           - record:a
@@ -20681,6 +20872,7 @@ components:
           name: Example name
           replacement_character: Example replacement_character
           is_default: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Hostnamerewritepolicy'

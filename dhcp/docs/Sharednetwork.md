@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Authority** | Pointer to **bool** | Authority for the shared network. | [optional] 
 **Bootfile** | Pointer to **string** | The bootfile name for the shared network. You can configure the DHCP server to support clients that use the boot file name option in their DHCPREQUEST messages. | [optional] 
 **Bootserver** | Pointer to **string** | The bootserver address for the shared network. You can specify the name and/or IP address of the boot server that the host needs to boot. The boot server IPv4 Address or name in FQDN format. | [optional] 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **MsAdUserData** | Pointer to [**SharednetworkMsAdUserData**](SharednetworkMsAdUserData.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the IPv6 Shared Network. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this shared network resides. | [optional] 
-**Networks** | Pointer to [**[]SharednetworkNetworks**](SharednetworkNetworks.md) | A list of networks belonging to the shared network. Each individual list item must be specified as an object containing a &#39;_ref&#39; parameter to a network reference, for example:: [{ \&quot;_ref\&quot;: \&quot;network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\&quot; }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \&quot;_ref\&quot;: { &#39;network&#39;: &#39;10.0.0.0/8&#39; } }] note that in this case the search must match exactly one network for the assignment to be successful. | [optional] 
+**Networks** | Pointer to [**[]SharednetworkNetworks**](SharednetworkNetworks.md) | A list of networks belonging to the shared network Each individual list item must be specified as an object containing a &#39;_ref&#39; parameter to a network reference, for example:: [{ \&quot;_ref\&quot;: \&quot;network/ZG5zLm5ldHdvcmskMTAuMwLvMTYvMA\&quot;, }] if the reference of the wanted network is not known, it is possible to specify search parameters for the network instead in the following way:: [{ \&quot;_ref\&quot;: { &#39;network&#39;: &#39;10.0.0.0/8&#39;, } }] note that in this case the search must match exactly one network for the assignment to be successful. | [optional] 
 **Nextserver** | Pointer to **string** | The name in FQDN and/or IPv4 Address of the next server that the host needs to boot. | [optional] 
 **Options** | Pointer to [**[]SharednetworkOptions**](SharednetworkOptions.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **PxeLeaseTime** | Pointer to **int64** | The PXE lease time value of a shared network object. Some hosts use PXE (Preboot Execution Environment) to boot remotely from a server. To better manage your IP resources, set a different lease time for PXE boot requests. You can configure the DHCP server to allocate an IP address with a shorter lease time to hosts that send PXE boot requests, so IP addresses are not leased longer than necessary. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached. | [optional] 
@@ -58,6 +58,7 @@ Name | Type | Description | Notes
 **UseOptions** | Pointer to **bool** | Use flag for: options | [optional] 
 **UsePxeLeaseTime** | Pointer to **bool** | Use flag for: pxe_lease_time | [optional] 
 **UseUpdateDnsOnLeaseRenewal** | Pointer to **bool** | Use flag for: update_dns_on_lease_renewal | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -1427,6 +1428,31 @@ SetUseUpdateDnsOnLeaseRenewal sets UseUpdateDnsOnLeaseRenewal field to given val
 `func (o *Sharednetwork) HasUseUpdateDnsOnLeaseRenewal() bool`
 
 HasUseUpdateDnsOnLeaseRenewal returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Sharednetwork) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Sharednetwork) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Sharednetwork) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Sharednetwork) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

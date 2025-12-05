@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CsvFileName** | Pointer to **string** | The network discovery CSV file name. | [optional] [readonly] 
 **DisableIpScanning** | Pointer to **bool** | Determines whether IP scanning is disabled. | [optional] 
 **DisableVmwareScanning** | Pointer to **bool** | Determines whether VMWare scanning is disabled. | [optional] 
@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **StatusTime** | Pointer to **int64** | The time when the network discovery process status was last updated. | [optional] [readonly] 
 **TcpPorts** | Pointer to [**[]DiscoverytaskTcpPorts**](DiscoverytaskTcpPorts.md) | The ports to scan for FULL and TCP modes. | [optional] 
 **TcpScanTechnique** | Pointer to **string** | The TCP scan techinque for FULL and TCP modes. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VNetworkView** | Pointer to **string** | Name of the network view in which target networks for VMWare scanning reside. | [optional] 
 **Vservers** | Pointer to [**[]DiscoverytaskVservers**](DiscoverytaskVservers.md) | The list of VMware vSphere servers for VM discovery. | [optional] 
 **Warning** | Pointer to **string** | The network discovery process warning. | [optional] [readonly] 
@@ -520,6 +521,31 @@ SetTcpScanTechnique sets TcpScanTechnique field to given value.
 `func (o *Discoverytask) HasTcpScanTechnique() bool`
 
 HasTcpScanTechnique returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Discoverytask) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Discoverytask) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Discoverytask) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Discoverytask) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVNetworkView
 

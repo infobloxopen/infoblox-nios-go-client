@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AssignedTo** | Pointer to **[]string** | List of objects VLAN is assigned to. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment for this VLAN. | [optional] 
 **Contact** | Pointer to **string** | Contact information for person/team managing or using VLAN. | [optional] 
@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Parent** | Pointer to **string** | The VLAN View or VLAN Range to which this VLAN belongs. | [optional] 
 **Reserved** | Pointer to **bool** | When set VLAN can only be assigned to IPAM object manually. | [optional] 
 **Status** | Pointer to **string** | Status of VLAN object. Can be Assigned, Unassigned, Reserved. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Vlan**](Vlan.md) |  | [optional] 
 
 ## Methods
@@ -388,6 +389,31 @@ SetStatus sets Status field to given value.
 `func (o *GetVlanResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetVlanResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetVlanResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetVlanResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetVlanResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the address; maximum 256 characters. | [optional] [readonly] 
 **ConflictTypes** | Pointer to **[]string** | Types of the conflict. | [optional] [readonly] 
 **DhcpClientIdentifier** | Pointer to **string** | The client unique identifier. | [optional] [readonly] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | The current status of the address. | [optional] [readonly] 
 **Types** | Pointer to **[]string** | The types of associated objects. This field supports both single and array search. | [optional] [readonly] 
 **Usage** | Pointer to **[]string** | Indicates whether the IP address is configured for DNS or DHCP. This field supports both single and array search. | [optional] [readonly] 
-**Username** | Pointer to **string** | The name of the user who created or modified the record. | [optional] [readonly] 
+**Username** | Pointer to **string** | The name of the user who created or modified the record. The \&quot;username\&quot; field is populated only for lease objects that have a MAC Address Filter configured with user details. | [optional] [readonly] 
 **Result** | Pointer to [**Ipv4address**](Ipv4address.md) |  | [optional] 
 
 ## Methods

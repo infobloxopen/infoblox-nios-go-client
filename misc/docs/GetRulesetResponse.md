@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Descriptive comment about the Ruleset object. | [optional] 
 **Disabled** | Pointer to **bool** | The flag that indicates if the Ruleset object is disabled. | [optional] 
 **Name** | Pointer to **string** | The name of this Ruleset object. | [optional] 
 **NxdomainRules** | Pointer to [**[]RulesetNxdomainRules**](RulesetNxdomainRules.md) | The list of Rules assigned to this Ruleset object. Rules can be set only when the Ruleset type is set to \&quot;NXDOMAIN\&quot;. | [optional] 
 **Type** | Pointer to **string** | The type of this Ruleset object. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Ruleset**](Ruleset.md) |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetType sets Type field to given value.
 `func (o *GetRulesetResponse) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRulesetResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRulesetResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRulesetResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRulesetResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

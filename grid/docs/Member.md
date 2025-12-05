@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ActivePosition** | Pointer to **string** | The active server of a Grid member. | [optional] [readonly] 
 **AdditionalIpList** | Pointer to [**[]MemberAdditionalIpList**](MemberAdditionalIpList.md) | The additional IP list of a Grid member. This list contains additional interface information that can be used at the member level. Note that interface structure(s) with interface type set to &#39;MGMT&#39; are not supported. | [optional] 
 **AutomatedTrafficCaptureSetting** | Pointer to [**MemberAutomatedTrafficCaptureSetting**](MemberAutomatedTrafficCaptureSetting.md) |  | [optional] 
@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **Ipv6Setting** | Pointer to [**MemberIpv6Setting**](MemberIpv6Setting.md) |  | [optional] 
 **Ipv6StaticRoutes** | Pointer to [**[]MemberIpv6StaticRoutes**](MemberIpv6StaticRoutes.md) | List of IPv6 static routes. | [optional] 
 **IsDscpCapable** | Pointer to **bool** | Determines if a Grid member supports DSCP (Differentiated Services Code Point). | [optional] [readonly] 
+**IsMaster** | Pointer to **bool** | Determines if a Grid member is a Grid Master or not. | [optional] [readonly] 
 **Lan2Enabled** | Pointer to **bool** | If this is set to \&quot;true\&quot;, the LAN2 port is enabled as an independent port or as a port for failover purposes. | [optional] 
 **Lan2PortSetting** | Pointer to [**MemberLan2PortSetting**](MemberLan2PortSetting.md) |  | [optional] 
 **LomNetworkConfig** | Pointer to [**[]MemberLomNetworkConfig**](MemberLomNetworkConfig.md) | The Network configurations for LOM. | [optional] 
@@ -88,6 +89,7 @@ Name | Type | Description | Notes
 **UseTrafficCaptureRecQueries** | Pointer to **bool** | This flag is the use flag for enabling automated traffic capture based on outgoing recursive queries. | [optional] 
 **UseTrapNotifications** | Pointer to **bool** | Use flag for: trap_notifications | [optional] 
 **UseV4Vrrp** | Pointer to **bool** | Specify \&quot;true\&quot; to use VRRPv4 or \&quot;false\&quot; to use VRRPv6. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VipSetting** | Pointer to [**MemberVipSetting**](MemberVipSetting.md) |  | [optional] 
 **VpnMtu** | Pointer to **int64** | The VPN maximum transmission unit (MTU). | [optional] 
 
@@ -784,6 +786,31 @@ SetIsDscpCapable sets IsDscpCapable field to given value.
 `func (o *Member) HasIsDscpCapable() bool`
 
 HasIsDscpCapable returns a boolean if a field has been set.
+
+### GetIsMaster
+
+`func (o *Member) GetIsMaster() bool`
+
+GetIsMaster returns the IsMaster field if non-nil, zero value otherwise.
+
+### GetIsMasterOk
+
+`func (o *Member) GetIsMasterOk() (*bool, bool)`
+
+GetIsMasterOk returns a tuple with the IsMaster field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsMaster
+
+`func (o *Member) SetIsMaster(v bool)`
+
+SetIsMaster sets IsMaster field to given value.
+
+### HasIsMaster
+
+`func (o *Member) HasIsMaster() bool`
+
+HasIsMaster returns a boolean if a field has been set.
 
 ### GetLan2Enabled
 
@@ -2209,6 +2236,31 @@ SetUseV4Vrrp sets UseV4Vrrp field to given value.
 `func (o *Member) HasUseV4Vrrp() bool`
 
 HasUseV4Vrrp returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Member) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Member) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Member) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Member) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVipSetting
 

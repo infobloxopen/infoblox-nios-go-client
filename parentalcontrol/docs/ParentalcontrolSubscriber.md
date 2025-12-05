@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AltSubscriberId** | Pointer to **string** | The name of AVP to be used as an alternate subscriber ID for fixed lines. | [optional] 
 **AltSubscriberIdRegexp** | Pointer to **string** | A character string to control aspects of rewriting of the fields. | [optional] 
 **AltSubscriberIdSubexpression** | Pointer to **int64** | The subexpression indicates which subexpression to extract. If zero, then the text matching the entire regular expression is extracted. If non-zero, then the regex must contain at least that many sub-expression groups. It takes values from 0 to 8. | [optional] 
@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **SubscriberId** | Pointer to **string** | The name of AVP to be used as a subscriber. | [optional] 
 **SubscriberIdRegexp** | Pointer to **string** | A character string to control aspects of rewriting of the fields. | [optional] 
 **SubscriberIdSubexpression** | Pointer to **int64** | The subexpression indicates which subexpression to extract. If zero, then the text matching the entire regular expression is extracted. If non-zero, then the regex must contain at least that many sub-expression groups. It takes values from 0 to 8. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ZveloUpdateFailureInDays** | Pointer to **int64** | Number of days since zvelo DB failed to update. | [optional] [readonly] 
 
 ## Methods
@@ -752,6 +753,31 @@ SetSubscriberIdSubexpression sets SubscriberIdSubexpression field to given value
 `func (o *ParentalcontrolSubscriber) HasSubscriberIdSubexpression() bool`
 
 HasSubscriberIdSubexpression returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *ParentalcontrolSubscriber) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *ParentalcontrolSubscriber) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *ParentalcontrolSubscriber) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *ParentalcontrolSubscriber) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetZveloUpdateFailureInDays
 

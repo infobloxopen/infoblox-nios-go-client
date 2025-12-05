@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AccessKeyId** | Pointer to **string** | The unique Access Key ID of this AWS user. Maximum 255 characters. | [optional] 
 **AccountId** | Pointer to **string** | The AWS Account ID of this AWS user. Maximum 64 characters. | [optional] 
 **GovcloudEnabled** | Pointer to **bool** | Indicates if gov cloud is enabled or disabled. | [optional] 
@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **NiosUserName** | Pointer to **string** | The NIOS user name mapped to this AWS user. Maximum 64 characters. | [optional] 
 **SecretAccessKey** | Pointer to **string** | The Secret Access Key for the Access Key ID of this user. Maximum 255 characters. | [optional] 
 **Status** | Pointer to **string** | Indicate the validity status of this AWS user. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Awsuser**](Awsuser.md) |  | [optional] 
 
 ## Methods
@@ -258,6 +259,31 @@ SetStatus sets Status field to given value.
 `func (o *GetAwsuserResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetAwsuserResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetAwsuserResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetAwsuserResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetAwsuserResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

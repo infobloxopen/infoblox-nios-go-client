@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Bootfile** | Pointer to **string** | The name of the boot file the client must download. | [optional] 
 **Bootserver** | Pointer to **string** | The IP address or hostname of the boot file server where the boot file is stored. | [optional] 
 **ConfigureForDhcp** | Pointer to **bool** | Set this to True to enable the DHCP configuration for this host address. | [optional] 
@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **UseNextserver** | Pointer to **bool** | Use flag for: nextserver | [optional] 
 **UseOptions** | Pointer to **bool** | Use flag for: options | [optional] 
 **UsePxeLeaseTime** | Pointer to **bool** | Use flag for: pxe_lease_time | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**RecordHostIpv4addr**](RecordHostIpv4addr.md) |  | [optional] 
 
 ## Methods
@@ -882,6 +883,31 @@ SetUsePxeLeaseTime sets UsePxeLeaseTime field to given value.
 `func (o *GetRecordHostIpv4addrResponse) HasUsePxeLeaseTime() bool`
 
 HasUsePxeLeaseTime returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordHostIpv4addrResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordHostIpv4addrResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordHostIpv4addrResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordHostIpv4addrResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

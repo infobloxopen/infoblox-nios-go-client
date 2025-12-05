@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the record; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines if the record is disabled or not. False means that the record is enabled. | [optional] 
 **DtcServer** | Pointer to **string** | The name of the DTC Server object with which the DTC record is associated. | [optional] 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Target** | Pointer to **string** | The target of the SRV record in FQDN format. This value can be in unicode format. | [optional] 
 **Ttl** | Pointer to **int64** | The Time to Live (TTL) value. | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Weight** | Pointer to **int64** | The weight of the SRV record. Valid values are from 0 to 65535 (inclusive), in 32-bit unsigned integer format. | [optional] 
 
 ## Methods
@@ -284,6 +285,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *DtcRecordSrv) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DtcRecordSrv) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DtcRecordSrv) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DtcRecordSrv) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DtcRecordSrv) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetWeight
 

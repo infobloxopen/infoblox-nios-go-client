@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DestType** | Pointer to **string** | The type of the destination for this DTC Topology rule. | [optional] 
 **DestinationLink** | Pointer to **string** | The reference to the destination DTC pool or DTC server. | [optional] 
 **ReturnType** | Pointer to **string** | Type of the DNS response for rule. | [optional] 
 **Sources** | Pointer to [**[]DtcTopologyRuleSources**](DtcTopologyRuleSources.md) | The conditions for matching sources. Should be empty to set rule as default destination. | [optional] 
 **Topology** | Pointer to **string** | The DTC Topology the rule belongs to. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Valid** | Pointer to **bool** | True if the label in the rule exists in the current Topology DB. Always true for SUBNET rules. Rules with non-existent labels may be configured but will never match. | [optional] [readonly] 
 **Result** | Pointer to [**DtcTopologyRule**](DtcTopologyRule.md) |  | [optional] 
 
@@ -181,6 +182,31 @@ SetTopology sets Topology field to given value.
 `func (o *GetDtcTopologyRuleResponse) HasTopology() bool`
 
 HasTopology returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDtcTopologyRuleResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDtcTopologyRuleResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDtcTopologyRuleResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDtcTopologyRuleResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetValid
 

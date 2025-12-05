@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox CLOUD API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for awsrte53taskgroup objects
   name: Awsrte53taskgroup
@@ -2316,6 +2316,7 @@ components:
       example:
         network_view: Example network_view
         grid_member: Example grid_member
+        uuid: Example uuid
         accounts_list: Example accounts_list
         account_id: Example account_id
         consolidated_view: Example consolidated_view
@@ -2362,6 +2363,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         account_id:
           description: The AWS Account ID associated with this task group.
@@ -2446,7 +2448,13 @@ components:
           items:
             $ref: '#/components/schemas/Awsrte53taskgroupTaskList'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     Awsrte53taskgroupTaskList:
       example:
         state_msg: Example state_msg
@@ -2582,10 +2590,12 @@ components:
         name: Example name
         secret_access_key: Example secret_access_key
         govcloud_enabled: false
+        uuid: Example uuid
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         access_key_id:
           description: The unique Access Key ID of this AWS user. Maximum 255 characters.
@@ -2628,6 +2638,11 @@ components:
           example: Example status
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListAwsuserResponse:
       oneOf:
@@ -2661,6 +2676,7 @@ components:
         grid_member: Example grid_member
         azure_subscription_ids_file_token: Example azure_subscription_ids_file_token
         subscriptions_list: Example subscriptions_list
+        uuid: Example uuid
         consolidated_view: Example consolidated_view
         _ref: _ref
         name: Example name
@@ -2702,6 +2718,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         azure_subscription_ids_file_token:
           description: The Azure Subscription IDs file's token.
@@ -2777,7 +2794,13 @@ components:
           example: Example tenant_id
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     AzurednstaskgroupTaskList:
       example:
         state_msg: Example state_msg
@@ -2910,11 +2933,13 @@ components:
         last_used: 1
         _ref: _ref
         name: Example name
+        uuid: Example uuid
         client_id: Example client_id
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         client_id:
           description: The unique Client ID of this Azure user. Maximum 255 characters.
@@ -2949,6 +2974,11 @@ components:
           description: The Azure Tenant ID of this Azure user. Maximum 64 characters.
           example: Example tenant_id
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListAzureuserResponse:
       oneOf:
@@ -2980,6 +3010,7 @@ components:
         network_view: Example network_view
         grid_member: Example grid_member
         multiple_projects_sync_policy: Example multiple_projects_sync_policy
+        uuid: Example uuid
         projects_list: Example projects_list
         consolidated_view: Example consolidated_view
         gcp_project_ids_file_token: Example gcp_project_ids_file_token
@@ -3040,6 +3071,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the task group; maximum 256 characters.
@@ -3120,7 +3152,13 @@ components:
           items:
             $ref: '#/components/schemas/GcpdnstaskgroupTaskList'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     GcpdnstaskgroupTaskList:
       example:
         dns_sync_state: Example dns_sync_state
@@ -3332,6 +3370,7 @@ components:
         client_email: Example client_email
         private_key: Example private_key
         type: Example type
+        uuid: Example uuid
         client_id: Example client_id
         token_uri: Example token_uri
         client_x509_cert_url: Example client_x509_cert_url
@@ -3344,6 +3383,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auth_provider_x509_cert_url:
           description: The URL where the public key certificates provided by the authentication
@@ -3427,6 +3467,11 @@ components:
           example: Example user_name
           type: string
           writeOnly: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListGcpuserResponse:
       oneOf:
@@ -3459,9 +3504,11 @@ components:
         cloud_platform: Example cloud_platform
         _ref: _ref
         govcloud_regions: Example govcloud_regions
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_platform:
           description: Type of cloud_platform to get the supported regions.
@@ -3474,6 +3521,11 @@ components:
         regions:
           description: Comma separated string which contains all supported regions.
           example: Example regions
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
           type: string
       type: object
     ListMultiregionsResponse:
@@ -3509,6 +3561,7 @@ components:
         result:
           network_view: Example network_view
           grid_member: Example grid_member
+          uuid: Example uuid
           accounts_list: Example accounts_list
           account_id: Example account_id
           consolidated_view: Example consolidated_view
@@ -3571,6 +3624,7 @@ components:
         result:
           network_view: Example network_view
           grid_member: Example grid_member
+          uuid: Example uuid
           accounts_list: Example accounts_list
           account_id: Example account_id
           consolidated_view: Example consolidated_view
@@ -3640,6 +3694,7 @@ components:
           name: Example name
           secret_access_key: Example secret_access_key
           govcloud_enabled: false
+          uuid: Example uuid
           status: Example status
       properties:
         result:
@@ -3666,6 +3721,7 @@ components:
           name: Example name
           secret_access_key: Example secret_access_key
           govcloud_enabled: false
+          uuid: Example uuid
           status: Example status
       properties:
         result:
@@ -3690,6 +3746,7 @@ components:
           grid_member: Example grid_member
           azure_subscription_ids_file_token: Example azure_subscription_ids_file_token
           subscriptions_list: Example subscriptions_list
+          uuid: Example uuid
           consolidated_view: Example consolidated_view
           _ref: _ref
           name: Example name
@@ -3750,6 +3807,7 @@ components:
           grid_member: Example grid_member
           azure_subscription_ids_file_token: Example azure_subscription_ids_file_token
           subscriptions_list: Example subscriptions_list
+          uuid: Example uuid
           consolidated_view: Example consolidated_view
           _ref: _ref
           name: Example name
@@ -3811,6 +3869,7 @@ components:
           last_used: 1
           _ref: _ref
           name: Example name
+          uuid: Example uuid
           client_id: Example client_id
           status: Example status
       properties:
@@ -3835,6 +3894,7 @@ components:
           last_used: 1
           _ref: _ref
           name: Example name
+          uuid: Example uuid
           client_id: Example client_id
           status: Example status
       properties:
@@ -3858,6 +3918,7 @@ components:
           network_view: Example network_view
           grid_member: Example grid_member
           multiple_projects_sync_policy: Example multiple_projects_sync_policy
+          uuid: Example uuid
           projects_list: Example projects_list
           consolidated_view: Example consolidated_view
           gcp_project_ids_file_token: Example gcp_project_ids_file_token
@@ -3935,6 +3996,7 @@ components:
           network_view: Example network_view
           grid_member: Example grid_member
           multiple_projects_sync_policy: Example multiple_projects_sync_policy
+          uuid: Example uuid
           projects_list: Example projects_list
           consolidated_view: Example consolidated_view
           gcp_project_ids_file_token: Example gcp_project_ids_file_token
@@ -4016,6 +4078,7 @@ components:
           client_email: Example client_email
           private_key: Example private_key
           type: Example type
+          uuid: Example uuid
           client_id: Example client_id
           token_uri: Example token_uri
           client_x509_cert_url: Example client_x509_cert_url
@@ -4048,6 +4111,7 @@ components:
           client_email: Example client_email
           private_key: Example private_key
           type: Example type
+          uuid: Example uuid
           client_id: Example client_id
           token_uri: Example token_uri
           client_x509_cert_url: Example client_x509_cert_url
@@ -4087,6 +4151,7 @@ components:
           cloud_platform: Example cloud_platform
           _ref: _ref
           govcloud_regions: Example govcloud_regions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Multiregions'

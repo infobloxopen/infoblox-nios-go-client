@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AlertType** | Pointer to **string** | The alert type of the record associated with the allrpzrecords object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The descriptive comment of the record associated with the allrpzrecords object. | [optional] [readonly] 
 **Disable** | Pointer to **bool** | The disable flag of the record associated with the allrpzrecords object (if present). | [optional] [readonly] 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **RpzRule** | Pointer to **string** | The RPZ rule type of the record associated with the allrpzrecrods object. | [optional] [readonly] 
 **Ttl** | Pointer to **int64** | The TTL value of the record associated with the allrpzrecords object (if present). | [optional] [readonly] 
 **Type** | Pointer to **string** | The type of record associated with the allrpzrecords object. This is a descriptive string that identifies the record to which this allrpzrecords object refers. (Examples: &#39;record:rpz:a&#39;, &#39;record:rpz:mx&#39;, etc.) | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | The DNS view name of the record associated with the allrpzrecords object. | [optional] [readonly] 
 **Zone** | Pointer to **string** | The Response Policy Zone name of the record associated with the allrpzrecords object. | [optional] [readonly] 
 
@@ -311,6 +312,31 @@ SetType sets Type field to given value.
 `func (o *Allrpzrecords) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Allrpzrecords) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Allrpzrecords) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Allrpzrecords) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Allrpzrecords) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

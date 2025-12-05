@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AutoPopulateLogin** | Pointer to **string** | Specifies the value of the client certificate for automatically populating the NIOS login name. | [optional] 
 **CaCertificates** | Pointer to **[]string** | The list of CA certificates. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the certificate authentication service. | [optional] 
@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **ResponseTimeout** | Pointer to **int64** | The validation timeout period in milliseconds. | [optional] 
 **TrustModel** | Pointer to **string** | The OCSP trust model. | [optional] 
 **UserMatchType** | Pointer to **string** | Specifies how to search for a user. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -491,6 +492,31 @@ SetUserMatchType sets UserMatchType field to given value.
 `func (o *CertificateAuthservice) HasUserMatchType() bool`
 
 HasUserMatchType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *CertificateAuthservice) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *CertificateAuthservice) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *CertificateAuthservice) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *CertificateAuthservice) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CommunicationMode** | Pointer to **string** | The communication mode for RIR. | [optional] 
 **Email** | Pointer to **string** | The e-mail address for RIR. | [optional] 
 **Name** | Pointer to **string** | The name of RIR. | [optional] 
 **Url** | Pointer to **string** | The WebAPI URL for RIR. | [optional] 
 **UseEmail** | Pointer to **bool** | Use flag for: email | [optional] 
 **UseUrl** | Pointer to **bool** | Use flag for: url | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Rir**](Rir.md) |  | [optional] 
 
 ## Methods
@@ -206,6 +207,31 @@ SetUseUrl sets UseUrl field to given value.
 `func (o *GetRirResponse) HasUseUrl() bool`
 
 HasUseUrl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRirResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRirResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRirResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRirResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

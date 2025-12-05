@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Description of the group | [optional] 
 **GmcPromotionPolicy** | Pointer to **string** | This field decides whether the members join back at the same time or sequentially with time gap of 30 seconds. | [optional] 
 **Members** | Pointer to [**[]GmcgroupMembers**](GmcgroupMembers.md) | gmcgroup members | [optional] 
 **Name** | Pointer to **string** | Group name | [optional] 
 **ScheduledTime** | Pointer to **int64** | Absolute time at which the reconnect starts | [optional] 
 **TimeZone** | Pointer to **string** | The time zone for scheduling operations. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Gmcgroup**](Gmcgroup.md) |  | [optional] 
 
 ## Methods
@@ -206,6 +207,31 @@ SetTimeZone sets TimeZone field to given value.
 `func (o *GetGmcgroupResponse) HasTimeZone() bool`
 
 HasTimeZone returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGmcgroupResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGmcgroupResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGmcgroupResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGmcgroupResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

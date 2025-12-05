@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox RPZ API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for allrpzrecords objects
   name: Allrpzrecords
@@ -4811,6 +4811,7 @@ components:
         expiration_time: 1
         type: Example type
         ttl: 1
+        uuid: Example uuid
         alert_type: Example alert_type
         view: Example view
         zone: Example zone
@@ -4822,6 +4823,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         alert_type:
           description: The alert type of the record associated with the allrpzrecords
@@ -4890,6 +4892,7 @@ components:
           - SubstituteARecord
           - SubstituteCName
           - SubstituteClientIPAddressCname
+          - SubstituteHTTPSRecord
           - SubstituteIPAddressCname
           - SubstituteIPv4AddressRecord
           - SubstituteIPv6AddressRecord
@@ -4897,6 +4900,7 @@ components:
           - SubstituteNAPTRRecord
           - SubstitutePTRRecord
           - SubstituteSRVRecord
+          - SubstituteSVCBRecord
           - SubstituteTXTRecord
           example: Example rpz_rule
           readOnly: true
@@ -4922,12 +4926,19 @@ components:
           - record:rpz:cname:clientipaddress
           - record:rpz:cname:ipaddress
           - record:rpz:cname:ipaddressdn
+          - record:rpz:https
           - record:rpz:mx
           - record:rpz:naptr
           - record:rpz:ptr
           - record:rpz:srv
+          - record:rpz:svcb
           - record:rpz:txt
           example: Example type
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         view:
@@ -4970,6 +4981,7 @@ components:
         use_ttl: false
         ipv4addr: Example ipv4addr
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -4986,6 +4998,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5016,6 +5029,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4addr:
           description: The IPv4 Address of the substitute rule.
           example: Example ipv4addr
@@ -5040,6 +5054,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -5053,6 +5072,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzAResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzA__ objects.
@@ -5085,6 +5105,7 @@ components:
             value: ""
         use_ttl: false
         ttl: 1
+        uuid: Example uuid
         ipv6addr: Example ipv6addr
         extattrs-:
           key:
@@ -5102,6 +5123,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5132,6 +5154,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv6addr:
           description: The IPv6 Address of the substitute rule.
           example: Example ipv6addr
@@ -5156,6 +5179,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -5169,6 +5197,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzAaaaResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzAaaa__ objects.
@@ -5202,6 +5231,7 @@ components:
         use_ttl: false
         canonical: Example canonical
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -5218,6 +5248,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -5253,6 +5284,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name for a record in FQDN format. This value cannot be
             in unicode format.
@@ -5273,6 +5305,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -5286,6 +5323,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCname__ objects.
@@ -5320,6 +5358,7 @@ components:
         use_ttl: false
         preference: 1
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -5336,6 +5375,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5366,6 +5406,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         mail_exchanger:
           description: Mail exchanger name in FQDN format. This value can be in unicode
             format.
@@ -5397,6 +5438,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -5410,6 +5456,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzMxResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzMx__ objects.
@@ -5446,6 +5493,7 @@ components:
         flags: Example flags
         services: Example services
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -5465,6 +5513,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5495,6 +5544,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         flags:
           description: "The flags used to control the interpretation of the fields\
             \ for a Substitute (NAPTR Record) Rule object. Supported values for the\
@@ -5562,6 +5612,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -5575,6 +5630,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzNaptrResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzNaptr__ objects.
@@ -5608,6 +5664,7 @@ components:
         use_ttl: false
         ipv4addr: Example ipv4addr
         ttl: 1
+        uuid: Example uuid
         ipv6addr: Example ipv6addr
         extattrs-:
           key:
@@ -5626,6 +5683,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5656,6 +5714,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4addr:
           description: The IPv4 Address of the substitute rule.
           example: Example ipv4addr
@@ -5689,6 +5748,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -5702,6 +5766,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzPtrResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzPtr__ objects.
@@ -5736,6 +5801,7 @@ components:
         weight: 1
         priority: 1
         ttl: 1
+        uuid: Example uuid
         target: Example target
         extattrs-:
           key:
@@ -5754,6 +5820,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5784,6 +5851,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name for a record in FQDN format. This value cannot be
             in unicode format.
@@ -5821,6 +5889,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -5840,6 +5913,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzSrvResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzSrv__ objects.
@@ -5872,6 +5946,7 @@ components:
             value: ""
         use_ttl: false
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -5889,6 +5964,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -5919,6 +5995,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: The name for a record in FQDN format. This value cannot be
             in unicode format.
@@ -5946,6 +6023,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -5959,6 +6041,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzTxtResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzTxt__ objects.
@@ -5992,6 +6075,7 @@ components:
         use_ttl: false
         ipv4addr: Example ipv4addr
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -6008,6 +6092,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -6038,6 +6123,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4addr:
           description: The IPv4 Address of the substitute rule.
           example: Example ipv4addr
@@ -6062,6 +6148,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -6075,6 +6166,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzAIpaddressResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzAIpaddress__ objects.
@@ -6107,6 +6199,7 @@ components:
             value: ""
         use_ttl: false
         ttl: 1
+        uuid: Example uuid
         ipv6addr: Example ipv6addr
         extattrs-:
           key:
@@ -6124,6 +6217,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the record; maximum 256 characters.
@@ -6154,6 +6248,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv6addr:
           description: The IPv6 Address of the substitute rule.
           example: Example ipv6addr
@@ -6178,6 +6273,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -6191,6 +6291,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzAaaaIpaddressResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzAaaaIpaddress__ objects.
@@ -6225,6 +6326,7 @@ components:
         canonical: Example canonical
         is_ipv4: false
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -6241,6 +6343,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -6276,6 +6379,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
             \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
@@ -6302,6 +6406,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -6315,6 +6424,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameIpaddressResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCnameIpaddress__ objects.
@@ -6349,6 +6459,7 @@ components:
         canonical: Example canonical
         is_ipv4: false
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -6365,6 +6476,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -6400,6 +6512,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
             \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
@@ -6426,6 +6539,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -6439,6 +6557,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameIpaddressdnResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCnameIpaddressdn__
@@ -6474,6 +6593,7 @@ components:
         canonical: Example canonical
         is_ipv4: false
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -6490,6 +6610,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -6525,6 +6646,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
             \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
@@ -6551,6 +6673,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -6564,6 +6691,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameClientipaddressResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCnameClientipaddress__
@@ -6600,6 +6728,7 @@ components:
         canonical: Example canonical
         is_ipv4: false
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -6616,6 +6745,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         canonical:
           description: The canonical name in FQDN format. This value can be in unicode
@@ -6651,6 +6781,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
             \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
@@ -6677,6 +6808,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         view:
           description: "The name of the DNS View in which the record resides. Example:\
             \ \"external\"."
@@ -6690,6 +6826,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
     ListRecordRpzCnameClientipaddressdnResponse:
       oneOf:
       - description: The response format to retrieve __RecordRpzCnameClientipaddressdn__
@@ -6759,6 +6896,7 @@ components:
           use_ttl: false
           ipv4addr: Example ipv4addr
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -6795,6 +6933,7 @@ components:
           use_ttl: false
           ipv4addr: Example ipv4addr
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -6831,6 +6970,7 @@ components:
               value: ""
           use_ttl: false
           ttl: 1
+          uuid: Example uuid
           ipv6addr: Example ipv6addr
           extattrs-:
             key:
@@ -6867,6 +7007,7 @@ components:
               value: ""
           use_ttl: false
           ttl: 1
+          uuid: Example uuid
           ipv6addr: Example ipv6addr
           extattrs-:
             key:
@@ -6905,6 +7046,7 @@ components:
           use_ttl: false
           canonical: Example canonical
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -6941,6 +7083,7 @@ components:
           use_ttl: false
           canonical: Example canonical
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -6979,6 +7122,7 @@ components:
           use_ttl: false
           preference: 1
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7016,6 +7160,7 @@ components:
           use_ttl: false
           preference: 1
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7056,6 +7201,7 @@ components:
           flags: Example flags
           services: Example services
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7098,6 +7244,7 @@ components:
           flags: Example flags
           services: Example services
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7138,6 +7285,7 @@ components:
           use_ttl: false
           ipv4addr: Example ipv4addr
           ttl: 1
+          uuid: Example uuid
           ipv6addr: Example ipv6addr
           extattrs-:
             key:
@@ -7176,6 +7324,7 @@ components:
           use_ttl: false
           ipv4addr: Example ipv4addr
           ttl: 1
+          uuid: Example uuid
           ipv6addr: Example ipv6addr
           extattrs-:
             key:
@@ -7216,6 +7365,7 @@ components:
           weight: 1
           priority: 1
           ttl: 1
+          uuid: Example uuid
           target: Example target
           extattrs-:
             key:
@@ -7255,6 +7405,7 @@ components:
           weight: 1
           priority: 1
           ttl: 1
+          uuid: Example uuid
           target: Example target
           extattrs-:
             key:
@@ -7293,6 +7444,7 @@ components:
               value: ""
           use_ttl: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7329,6 +7481,7 @@ components:
               value: ""
           use_ttl: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7368,6 +7521,7 @@ components:
           use_ttl: false
           ipv4addr: Example ipv4addr
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7405,6 +7559,7 @@ components:
           use_ttl: false
           ipv4addr: Example ipv4addr
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7442,6 +7597,7 @@ components:
               value: ""
           use_ttl: false
           ttl: 1
+          uuid: Example uuid
           ipv6addr: Example ipv6addr
           extattrs-:
             key:
@@ -7479,6 +7635,7 @@ components:
               value: ""
           use_ttl: false
           ttl: 1
+          uuid: Example uuid
           ipv6addr: Example ipv6addr
           extattrs-:
             key:
@@ -7519,6 +7676,7 @@ components:
           canonical: Example canonical
           is_ipv4: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7557,6 +7715,7 @@ components:
           canonical: Example canonical
           is_ipv4: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7596,6 +7755,7 @@ components:
           canonical: Example canonical
           is_ipv4: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7634,6 +7794,7 @@ components:
           canonical: Example canonical
           is_ipv4: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7674,6 +7835,7 @@ components:
           canonical: Example canonical
           is_ipv4: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7713,6 +7875,7 @@ components:
           canonical: Example canonical
           is_ipv4: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7753,6 +7916,7 @@ components:
           canonical: Example canonical
           is_ipv4: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -7792,6 +7956,7 @@ components:
           canonical: Example canonical
           is_ipv4: false
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""

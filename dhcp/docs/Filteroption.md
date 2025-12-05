@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ApplyAsClass** | Pointer to **bool** | Determines if apply as class is enabled or not. If this flag is set to \&quot;true\&quot; the filter is treated as global DHCP class, e.g it is written to dhcpd config file even if it is not present in any DHCP range. | [optional] 
 **Bootfile** | Pointer to **string** | A name of boot file of a DHCP filter option object. | [optional] 
 **Bootserver** | Pointer to **string** | Determines the boot server of a DHCP filter option object. You can specify the name and/or IP address of the boot server that host needs to boot. | [optional] 
@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **OptionList** | Pointer to [**[]FilteroptionOptionList**](FilteroptionOptionList.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **OptionSpace** | Pointer to **string** | The option space of a DHCP filter option object. | [optional] 
 **PxeLeaseTime** | Pointer to **int64** | Determines the PXE (Preboot Execution Environment) lease time of a DHCP filter option object. To specify the duration of time it takes a host to connect to a boot server, such as a TFTP server, and download the file it needs to boot. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -413,6 +414,31 @@ SetPxeLeaseTime sets PxeLeaseTime field to given value.
 `func (o *Filteroption) HasPxeLeaseTime() bool`
 
 HasPxeLeaseTime returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Filteroption) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Filteroption) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Filteroption) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Filteroption) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

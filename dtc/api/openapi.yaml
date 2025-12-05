@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DTC API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for dtc objects
   name: Dtc
@@ -6349,6 +6349,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListDtcResponse:
@@ -6380,6 +6381,7 @@ components:
           description: Example description
           availability: Example availability
         auto_create_host_record: false
+        uuid: Example uuid
         use_sni_hostname: false
         extattrs-:
           key:
@@ -6401,6 +6403,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_create_host_record:
           description: Enabling this option will auto-create a single read-only A/AAAA/CNAME
@@ -6437,6 +6440,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         health:
           $ref: '#/components/schemas/DtcServerHealth'
         host:
@@ -6463,7 +6467,14 @@ components:
           description: "Use flag for: sni_hostname"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DtcServerHealth:
       example:
         enabled_state: Example enabled_state
@@ -6565,6 +6576,7 @@ components:
         availability: Example availability
         auto_consolidated_monitors: false
         ttl: 1
+        uuid: Example uuid
         lb_dynamic_ratio_alternate:
           method: Example method
           monitor_metric: Example monitor_metric
@@ -6598,6 +6610,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_consolidated_monitors:
           description: Flag for enabling auto managing DTC Consolidated Monitors in
@@ -6650,6 +6663,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         health:
           $ref: '#/components/schemas/DtcPoolHealth'
         lb_alternate_method:
@@ -6728,7 +6742,14 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DtcPoolConsolidatedMonitors:
       example:
         members:
@@ -6935,9 +6956,11 @@ components:
         rules:
         - dtc:topology:rule
         - dtc:topology:rule
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the DTC TOPOLOGY monitor object; maximum 256
@@ -6964,6 +6987,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         name:
           description: Display name of the DTC Topology.
           example: Example name
@@ -6977,7 +7001,13 @@ components:
             - dtc:topology:rule
             type: string
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListDtcTopologyResponse:
       oneOf:
       - description: The response format to retrieve __DtcTopology__ objects.
@@ -7032,6 +7062,7 @@ components:
         priority: 1
         lb_method: Example lb_method
         ttl: 1
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -7046,6 +7077,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auth_zones:
           description: List of linked auth zones.
@@ -7090,6 +7122,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         health:
           $ref: '#/components/schemas/DtcLbdnHealth'
         lb_method:
@@ -7120,8 +7153,7 @@ components:
           format: int64
           type: integer
         pools:
-          description: "The maximum time, in seconds, for which client specific LBDN\
-            \ responses will be cached. Zero specifies no caching."
+          description: Pools linked to LBDN.
           enum:
           - dtc:pool:link
           items:
@@ -7161,7 +7193,14 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DtcLbdnHealth:
       example:
         enabled_state: Example enabled_state
@@ -7240,6 +7279,7 @@ components:
             value: ""
         monitor: Example monitor
         type: Example type
+        uuid: Example uuid
         timeout: 1
         extattrs-:
           key:
@@ -7257,6 +7297,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -7282,6 +7323,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for a health check.
           example: 1
@@ -7328,7 +7370,13 @@ components:
           - SNMP
           example: Example type
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitor__ objects.
@@ -7354,6 +7402,7 @@ components:
         request: Example request
         client_cert: Example client_cert
         secure: false
+        uuid: Example uuid
         timeout: 1
         content_check: Example content_check
         result: Example result
@@ -7385,6 +7434,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ciphers:
           description: An optional cipher list for a secure HTTP/S connection.
@@ -7469,6 +7519,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -7521,12 +7572,18 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         validate_cert:
           description: Determines whether the validation of the remote server's certificate
             is enabled.
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorHttpResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorHttp__ objects.
@@ -7567,12 +7624,14 @@ components:
         name: Example name
         comment: Example comment
         interval: 1
+        uuid: Example uuid
         retry_down: 1
         retry_up: 1
         timeout: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -7598,6 +7657,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -7624,7 +7684,13 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorIcmpResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorIcmp__ objects.
@@ -7666,12 +7732,14 @@ components:
         name: Example name
         comment: Example comment
         interval: 1
+        uuid: Example uuid
         retry_down: 1
         retry_up: 1
         timeout: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -7697,6 +7765,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -7728,7 +7797,13 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorPdpResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorPdp__ objects.
@@ -7762,6 +7837,7 @@ components:
             value: ""
         client_cert: Example client_cert
         transport: Example transport
+        uuid: Example uuid
         timeout: 1
         result: Example result
         extattrs-:
@@ -7783,6 +7859,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ciphers:
           description: An optional cipher list for secure TLS/SIPS connection.
@@ -7817,6 +7894,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -7874,12 +7952,18 @@ components:
           - UDP
           example: Example transport
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         validate_cert:
           description: Determines whether the validation of the remote server's certificate
             is enabled.
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorSipResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorSip__ objects.
@@ -7911,6 +7995,7 @@ components:
           key:
             value: ""
         community: Example community
+        uuid: Example uuid
         version: Example version
         timeout: 1
         extattrs-:
@@ -7945,6 +8030,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -7982,6 +8068,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -8024,6 +8111,11 @@ components:
           description: The SNMPv3 user setting.
           example: Example user
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         version:
           description: The SNMP protocol version for the SNMP health check.
           enum:
@@ -8033,6 +8125,8 @@ components:
           example: Example version
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DtcMonitorSnmpOids:
       example:
         condition: Example condition
@@ -8125,12 +8219,14 @@ components:
         name: Example name
         comment: Example comment
         interval: 1
+        uuid: Example uuid
         retry_down: 1
         retry_up: 1
         timeout: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for this DTC monitor; maximum 256 characters.
@@ -8156,6 +8252,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interval:
           description: The interval for TCP health check.
           example: 1
@@ -8187,7 +8284,13 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListDtcMonitorTcpResponse:
       oneOf:
       - description: The response format to retrieve __DtcMonitorTcp__ objects.
@@ -8222,10 +8325,12 @@ components:
         comment: Example comment
         ipv4addr: Example ipv4addr
         ttl: 1
+        uuid: Example uuid
         auto_created: Example auto_created
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_created:
           description: Flag that indicates whether this record was automatically created
@@ -8260,6 +8365,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListDtcRecordAResponse:
       oneOf:
@@ -8294,11 +8404,13 @@ components:
         _ref: _ref
         comment: Example comment
         ttl: 1
+        uuid: Example uuid
         auto_created: Example auto_created
         ipv6addr: Example ipv6addr
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_created:
           description: Flag that indicates whether this record was automatically created
@@ -8333,6 +8445,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListDtcRecordAaaaResponse:
       oneOf:
@@ -8368,11 +8485,13 @@ components:
         comment: Example comment
         canonical: Example canonical
         ttl: 1
+        uuid: Example uuid
         auto_created: Example auto_created
         dns_canonical: Example dns_canonical
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auto_created:
           description: Flag that indicates whether this record was automatically created
@@ -8412,6 +8531,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListDtcRecordCnameResponse:
       oneOf:
@@ -8441,20 +8565,22 @@ components:
       additionalProperties: false
       example:
         regexp: Example regexp
-        disable: false
-        dtc_server: Example dtc_server
         use_ttl: false
         preference: 1
-        _ref: _ref
         flags: Example flags
-        comment: Example comment
         services: Example services
-        replacement: Example replacement
         ttl: 1
+        uuid: Example uuid
+        disable: false
+        dtc_server: Example dtc_server
+        _ref: _ref
+        comment: Example comment
+        replacement: Example replacement
         order: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the record; maximum 256 characters.
@@ -8519,6 +8645,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListDtcRecordNaptrResponse:
       oneOf:
@@ -8557,10 +8688,12 @@ components:
         comment: Example comment
         priority: 1
         ttl: 1
+        uuid: Example uuid
         target: Example target
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the record; maximum 256 characters.
@@ -8606,6 +8739,11 @@ components:
           description: "Use flag for: ttl"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         weight:
           description: "The weight of the SRV record. Valid values are from 0 to 65535\
             \ (inclusive), in 32-bit unsigned integer format."
@@ -8643,9 +8781,11 @@ components:
         _ref: _ref
         certificate: Example certificate
         in_use: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         certificate:
           description: Reference to underlying X509Certificate.
@@ -8657,6 +8797,11 @@ components:
           example: false
           readOnly: true
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListDtcCertificateResponse:
       oneOf:
@@ -8686,9 +8831,11 @@ components:
         comment: Example comment
         type: Example type
         ttl: 1
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The record comment.
@@ -8731,6 +8878,11 @@ components:
           - dtc:record:naptr
           - dtc:record:srv
           example: Example type
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
       type: object
@@ -8781,6 +8933,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         abstract_type:
           description: The abstract object type.
@@ -8817,6 +8970,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ipv4_address_list:
           description: The list of IPv4 addresses.
           enum:
@@ -8862,6 +9016,7 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-extattrs-all: true
     ListDtcObjectResponse:
       oneOf:
       - description: The response format to retrieve __DtcObject__ objects.
@@ -8895,10 +9050,12 @@ components:
         dest_type: Example dest_type
         topology: Example topology
         _ref: _ref
+        uuid: Example uuid
         destination_link: Example destination_link
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         dest_type:
           description: The type of the destination for this DTC Topology rule.
@@ -8932,6 +9089,11 @@ components:
           example: Example topology
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         valid:
           description: True if the label in the rule exists in the current Topology
             DB. Always true for SUBNET rules. Rules with non-existent labels may be
@@ -8940,6 +9102,7 @@ components:
           readOnly: true
           type: boolean
       type: object
+      x-tf-skip-expand: true
     DtcTopologyRuleSources:
       example:
         source_op: Example source_op
@@ -8996,9 +9159,11 @@ components:
         field: Example field
         _ref: _ref
         label: Example label
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         field:
           description: The name of the field in the Topology database the label was
@@ -9019,6 +9184,11 @@ components:
         label:
           description: The DTC Topology label name.
           example: Example label
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
       type: object
@@ -9085,6 +9255,7 @@ components:
             description: Example description
             availability: Example availability
           auto_create_host_record: false
+          uuid: Example uuid
           use_sni_hostname: false
           extattrs-:
             key:
@@ -9128,6 +9299,7 @@ components:
             description: Example description
             availability: Example availability
           auto_create_host_record: false
+          uuid: Example uuid
           use_sni_hostname: false
           extattrs-:
             key:
@@ -9193,6 +9365,7 @@ components:
           availability: Example availability
           auto_consolidated_monitors: false
           ttl: 1
+          uuid: Example uuid
           lb_dynamic_ratio_alternate:
             method: Example method
             monitor_metric: Example monitor_metric
@@ -9269,6 +9442,7 @@ components:
           availability: Example availability
           auto_consolidated_monitors: false
           ttl: 1
+          uuid: Example uuid
           lb_dynamic_ratio_alternate:
             method: Example method
             monitor_metric: Example monitor_metric
@@ -9332,6 +9506,7 @@ components:
           rules:
           - dtc:topology:rule
           - dtc:topology:rule
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9364,6 +9539,7 @@ components:
           rules:
           - dtc:topology:rule
           - dtc:topology:rule
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9409,6 +9585,7 @@ components:
           priority: 1
           lb_method: Example lb_method
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -9464,6 +9641,7 @@ components:
           priority: 1
           lb_method: Example lb_method
           ttl: 1
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -9506,6 +9684,7 @@ components:
               value: ""
           monitor: Example monitor
           type: Example type
+          uuid: Example uuid
           timeout: 1
           extattrs-:
             key:
@@ -9542,6 +9721,7 @@ components:
           request: Example request
           client_cert: Example client_cert
           secure: false
+          uuid: Example uuid
           timeout: 1
           content_check: Example content_check
           result: Example result
@@ -9591,6 +9771,7 @@ components:
           request: Example request
           client_cert: Example client_cert
           secure: false
+          uuid: Example uuid
           timeout: 1
           content_check: Example content_check
           result: Example result
@@ -9650,6 +9831,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -9683,6 +9865,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -9718,6 +9901,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -9752,6 +9936,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -9779,6 +9964,7 @@ components:
               value: ""
           client_cert: Example client_cert
           transport: Example transport
+          uuid: Example uuid
           timeout: 1
           result: Example result
           extattrs-:
@@ -9820,6 +10006,7 @@ components:
               value: ""
           client_cert: Example client_cert
           transport: Example transport
+          uuid: Example uuid
           timeout: 1
           result: Example result
           extattrs-:
@@ -9860,6 +10047,7 @@ components:
             key:
               value: ""
           community: Example community
+          uuid: Example uuid
           version: Example version
           timeout: 1
           extattrs-:
@@ -9912,6 +10100,7 @@ components:
             key:
               value: ""
           community: Example community
+          uuid: Example uuid
           version: Example version
           timeout: 1
           extattrs-:
@@ -9975,6 +10164,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -10009,6 +10199,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -10037,6 +10228,7 @@ components:
           comment: Example comment
           ipv4addr: Example ipv4addr
           ttl: 1
+          uuid: Example uuid
           auto_created: Example auto_created
       properties:
         result:
@@ -10062,6 +10254,7 @@ components:
           comment: Example comment
           ipv4addr: Example ipv4addr
           ttl: 1
+          uuid: Example uuid
           auto_created: Example auto_created
       properties:
         result:
@@ -10087,6 +10280,7 @@ components:
           _ref: _ref
           comment: Example comment
           ttl: 1
+          uuid: Example uuid
           auto_created: Example auto_created
           ipv6addr: Example ipv6addr
       properties:
@@ -10112,6 +10306,7 @@ components:
           _ref: _ref
           comment: Example comment
           ttl: 1
+          uuid: Example uuid
           auto_created: Example auto_created
           ipv6addr: Example ipv6addr
       properties:
@@ -10139,6 +10334,7 @@ components:
           comment: Example comment
           canonical: Example canonical
           ttl: 1
+          uuid: Example uuid
           auto_created: Example auto_created
           dns_canonical: Example dns_canonical
       properties:
@@ -10165,6 +10361,7 @@ components:
           comment: Example comment
           canonical: Example canonical
           ttl: 1
+          uuid: Example uuid
           auto_created: Example auto_created
           dns_canonical: Example dns_canonical
       properties:
@@ -10186,16 +10383,17 @@ components:
       example:
         result:
           regexp: Example regexp
-          disable: false
-          dtc_server: Example dtc_server
           use_ttl: false
           preference: 1
-          _ref: _ref
           flags: Example flags
-          comment: Example comment
           services: Example services
-          replacement: Example replacement
           ttl: 1
+          uuid: Example uuid
+          disable: false
+          dtc_server: Example dtc_server
+          _ref: _ref
+          comment: Example comment
+          replacement: Example replacement
           order: 1
       properties:
         result:
@@ -10215,16 +10413,17 @@ components:
       example:
         result:
           regexp: Example regexp
-          disable: false
-          dtc_server: Example dtc_server
           use_ttl: false
           preference: 1
-          _ref: _ref
           flags: Example flags
-          comment: Example comment
           services: Example services
-          replacement: Example replacement
           ttl: 1
+          uuid: Example uuid
+          disable: false
+          dtc_server: Example dtc_server
+          _ref: _ref
+          comment: Example comment
+          replacement: Example replacement
           order: 1
       properties:
         result:
@@ -10254,6 +10453,7 @@ components:
           comment: Example comment
           priority: 1
           ttl: 1
+          uuid: Example uuid
           target: Example target
       properties:
         result:
@@ -10282,6 +10482,7 @@ components:
           comment: Example comment
           priority: 1
           ttl: 1
+          uuid: Example uuid
           target: Example target
       properties:
         result:
@@ -10340,6 +10541,7 @@ components:
           comment: Example comment
           type: Example type
           ttl: 1
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/DtcAllrecords'
@@ -10427,6 +10629,7 @@ components:
           dest_type: Example dest_type
           topology: Example topology
           _ref: _ref
+          uuid: Example uuid
           destination_link: Example destination_link
       properties:
         result:

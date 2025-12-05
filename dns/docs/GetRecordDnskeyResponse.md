@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Algorithm** | Pointer to **string** | The public key encryption algorithm of a DNSKEY Record object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for the record. | [optional] [readonly] 
 **CreationTime** | Pointer to **int64** | The creation time of the record. | [optional] [readonly] 
@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **PublicKey** | Pointer to **string** | The public key. The format of the returned value depends on the key algorithm. | [optional] [readonly] 
 **Ttl** | Pointer to **int64** | The Time To Live (TTL) value for the record. A 32-bit unsigned integer that represents the duration, in seconds, for which the record is valid (cached). Zero indicates that the record should not be cached. | [optional] [readonly] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | The name of the DNS View in which the record resides. Example: \&quot;external\&quot;. | [optional] [readonly] 
 **Zone** | Pointer to **string** | The name of the zone in which the record resides. Example: \&quot;zone.com\&quot;. If a view is not specified when searching by zone, the default view is used. | [optional] [readonly] 
 **Result** | Pointer to [**RecordDnskey**](RecordDnskey.md) |  | [optional] 
@@ -364,6 +365,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *GetRecordDnskeyResponse) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordDnskeyResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordDnskeyResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordDnskeyResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordDnskeyResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

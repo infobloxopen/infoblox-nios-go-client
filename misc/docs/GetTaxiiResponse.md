@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **EnableService** | Pointer to **bool** | Indicates whether the Taxii service is running on the given member or not. | [optional] 
 **Ipv4addr** | Pointer to **string** | The IPv4 Address of the Grid member. | [optional] [readonly] 
 **Ipv6addr** | Pointer to **string** | The IPv6 Address of the Grid member. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the Taxii Member. | [optional] [readonly] 
 **TaxiiRpzConfig** | Pointer to [**[]TaxiiTaxiiRpzConfig**](TaxiiTaxiiRpzConfig.md) | Taxii service RPZ configuration list. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Taxii**](Taxii.md) |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetTaxiiRpzConfig sets TaxiiRpzConfig field to given value.
 `func (o *GetTaxiiResponse) HasTaxiiRpzConfig() bool`
 
 HasTaxiiRpzConfig returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetTaxiiResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetTaxiiResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetTaxiiResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetTaxiiResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

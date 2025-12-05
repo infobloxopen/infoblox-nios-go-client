@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for the AVP. | [optional] 
 **DomainTypes** | Pointer to **[]string** | The list of domains applicable to AVP. | [optional] 
 **IsRestricted** | Pointer to **bool** | Determines if AVP is restricted to domains. | [optional] 
 **Name** | Pointer to **string** | The name of AVP. | [optional] 
 **Type** | Pointer to **int64** | The type of AVP as per RFC 2865/2866. | [optional] 
 **UserDefined** | Pointer to **bool** | Determines if AVP was defined by user. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ValueType** | Pointer to **string** | The type of value. | [optional] 
 **VendorId** | Pointer to **int64** | The vendor ID as per RFC 2865/2866. | [optional] 
 **VendorType** | Pointer to **int64** | The vendor type as per RFC 2865/2866. | [optional] 
@@ -209,6 +210,31 @@ SetUserDefined sets UserDefined field to given value.
 `func (o *GetParentalcontrolAvpResponse) HasUserDefined() bool`
 
 HasUserDefined returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetParentalcontrolAvpResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetParentalcontrolAvpResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetParentalcontrolAvpResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetParentalcontrolAvpResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetValueType
 

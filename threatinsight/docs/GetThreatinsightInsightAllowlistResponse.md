@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Version** | Pointer to **string** | Allowlist version string. | [optional] [readonly] 
 **Result** | Pointer to [**ThreatinsightInsightAllowlist**](ThreatinsightInsightAllowlist.md) |  | [optional] 
 
@@ -51,6 +52,31 @@ SetRef sets Ref field to given value.
 `func (o *GetThreatinsightInsightAllowlistResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetThreatinsightInsightAllowlistResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetThreatinsightInsightAllowlistResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetThreatinsightInsightAllowlistResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetThreatinsightInsightAllowlistResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVersion
 

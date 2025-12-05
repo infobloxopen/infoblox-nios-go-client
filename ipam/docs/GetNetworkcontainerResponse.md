@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Authority** | Pointer to **bool** | Authority for the DHCP network container. | [optional] 
 **AutoCreateReversezone** | Pointer to **bool** | This flag controls whether reverse zones are automatically created when the network is added. | [optional] 
 **Bootfile** | Pointer to **string** | The boot server IPv4 Address or name in FQDN format for the network container. You can specify the name and/or IP address of the boot server that the host needs to boot. | [optional] 
@@ -105,6 +105,7 @@ Name | Type | Description | Notes
 **UseUpdateDnsOnLeaseRenewal** | Pointer to **bool** | Use flag for: update_dns_on_lease_renewal | [optional] 
 **UseZoneAssociations** | Pointer to **bool** | Use flag for: zone_associations | [optional] 
 **Utilization** | Pointer to **int64** | The network container utilization in percentage. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ZoneAssociations** | Pointer to [**[]NetworkcontainerZoneAssociations**](NetworkcontainerZoneAssociations.md) | The list of zones associated with this network. | [optional] 
 **Result** | Pointer to [**Networkcontainer**](Networkcontainer.md) |  | [optional] 
 
@@ -2651,6 +2652,31 @@ SetUtilization sets Utilization field to given value.
 `func (o *GetNetworkcontainerResponse) HasUtilization() bool`
 
 HasUtilization returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetNetworkcontainerResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetNetworkcontainerResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetNetworkcontainerResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetNetworkcontainerResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetZoneAssociations
 

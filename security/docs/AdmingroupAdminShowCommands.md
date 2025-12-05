@@ -53,6 +53,7 @@ Name | Type | Description | Notes
 **ShowNtpStratum** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowPcDomain** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowReportFrequency** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
+**ShowQueryLoggingWarnings** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **EnableAll** | Pointer to **bool** | If True then enable all fields | [optional] 
 **DisableAll** | Pointer to **bool** | If True then disable all fields | [optional] 
 
@@ -1299,6 +1300,31 @@ SetShowReportFrequency sets ShowReportFrequency field to given value.
 `func (o *AdmingroupAdminShowCommands) HasShowReportFrequency() bool`
 
 HasShowReportFrequency returns a boolean if a field has been set.
+
+### GetShowQueryLoggingWarnings
+
+`func (o *AdmingroupAdminShowCommands) GetShowQueryLoggingWarnings() bool`
+
+GetShowQueryLoggingWarnings returns the ShowQueryLoggingWarnings field if non-nil, zero value otherwise.
+
+### GetShowQueryLoggingWarningsOk
+
+`func (o *AdmingroupAdminShowCommands) GetShowQueryLoggingWarningsOk() (*bool, bool)`
+
+GetShowQueryLoggingWarningsOk returns a tuple with the ShowQueryLoggingWarnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowQueryLoggingWarnings
+
+`func (o *AdmingroupAdminShowCommands) SetShowQueryLoggingWarnings(v bool)`
+
+SetShowQueryLoggingWarnings sets ShowQueryLoggingWarnings field to given value.
+
+### HasShowQueryLoggingWarnings
+
+`func (o *AdmingroupAdminShowCommands) HasShowQueryLoggingWarnings() bool`
+
+HasShowQueryLoggingWarnings returns a boolean if a field has been set.
 
 ### GetEnableAll
 

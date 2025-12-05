@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox SMARTFOLDER API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for smartfolder:children objects
   name: SmartfolderChildren
@@ -999,6 +999,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         resource:
           description: The object retuned by the Smart Folder query.
@@ -1022,6 +1023,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     SmartfolderChildrenValue:
       example:
         value_boolean: false
@@ -1100,9 +1102,11 @@ components:
             value_string: Example value_string
             value_date: 1
           operator: Example operator
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The global Smart Folder descriptive comment.
@@ -1126,7 +1130,13 @@ components:
           items:
             $ref: '#/components/schemas/SmartfolderGlobalQueryItems'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     SmartfolderGlobalGroupBys:
       example:
         value_type: Example value_type
@@ -1299,9 +1309,11 @@ components:
             value_date: 1
           operator: Example operator
         is_shortcut: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The personal Smart Folder descriptive comment.
@@ -1330,7 +1342,13 @@ components:
           items:
             $ref: '#/components/schemas/SmartfolderPersonalQueryItems'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     SmartfolderPersonalGroupBys:
       example:
         value_type: Example value_type
@@ -1537,6 +1555,7 @@ components:
               value_string: Example value_string
               value_date: 1
             operator: Example operator
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/SmartfolderGlobal'
@@ -1585,6 +1604,7 @@ components:
               value_string: Example value_string
               value_date: 1
             operator: Example operator
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/SmartfolderGlobal'
@@ -1636,6 +1656,7 @@ components:
               value_date: 1
             operator: Example operator
           is_shortcut: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/SmartfolderPersonal'
@@ -1686,6 +1707,7 @@ components:
               value_date: 1
             operator: Example operator
           is_shortcut: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/SmartfolderPersonal'

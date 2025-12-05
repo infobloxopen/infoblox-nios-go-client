@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ActionName** | Pointer to **string** | The action name. | [optional] [readonly] 
 **AddedOn** | Pointer to **int64** | The time stamp when a template was added. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for this REST API template. | [optional] 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **OutboundType** | Pointer to **string** | The outbound type for the template. | [optional] [readonly] 
 **Parameters** | Pointer to [**[]NotificationRestTemplateParameters**](NotificationRestTemplateParameters.md) | The notification REST template parameters. | [optional] [readonly] 
 **TemplateType** | Pointer to **string** | The template type. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VendorIdentifier** | Pointer to **string** | The vendor identifier. | [optional] [readonly] 
 
 ## Methods
@@ -284,6 +285,31 @@ SetTemplateType sets TemplateType field to given value.
 `func (o *NotificationRestTemplate) HasTemplateType() bool`
 
 HasTemplateType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *NotificationRestTemplate) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *NotificationRestTemplate) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *NotificationRestTemplate) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *NotificationRestTemplate) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVendorIdentifier
 

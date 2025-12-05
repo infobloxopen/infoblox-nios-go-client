@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CurrentRuleset** | Pointer to **string** | The current Grid ruleset. | [optional] 
 **DisableMultipleDnsTcpRequest** | Pointer to **bool** | Determines if multiple BIND responses via TCP connection are disabled. | [optional] 
 **EnableAccelRespBeforeThreatProtection** | Pointer to **bool** | Determines if DNS responses are sent from acceleration cache before applying Threat Protection rules. Recommended for better performance when using DNS Cache Acceleration. | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **OutboundSettings** | Pointer to [**GridThreatprotectionOutboundSettings**](GridThreatprotectionOutboundSettings.md) |  | [optional] 
 **RuleUpdatePolicy** | Pointer to **string** | The update rule policy. | [optional] 
 **ScheduledDownload** | Pointer to [**GridThreatprotectionScheduledDownload**](GridThreatprotectionScheduledDownload.md) |  | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -439,6 +440,31 @@ SetScheduledDownload sets ScheduledDownload field to given value.
 `func (o *GridThreatprotection) HasScheduledDownload() bool`
 
 HasScheduledDownload returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridThreatprotection) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridThreatprotection) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridThreatprotection) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridThreatprotection) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

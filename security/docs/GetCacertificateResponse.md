@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DistinguishedName** | Pointer to **string** | The certificate subject name. | [optional] [readonly] 
 **Issuer** | Pointer to **string** | The certificate issuer subject name. | [optional] [readonly] 
 **Serial** | Pointer to **string** | The certificate serial number in hex format. | [optional] [readonly] 
 **UsedBy** | Pointer to **string** | Information about the CA certificate usage. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ValidNotAfter** | Pointer to **int64** | The date after which the certificate becomes invalid. | [optional] [readonly] 
 **ValidNotBefore** | Pointer to **int64** | The date before which the certificate is not valid. | [optional] [readonly] 
 **Result** | Pointer to [**Cacertificate**](Cacertificate.md) |  | [optional] 
@@ -156,6 +157,31 @@ SetUsedBy sets UsedBy field to given value.
 `func (o *GetCacertificateResponse) HasUsedBy() bool`
 
 HasUsedBy returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetCacertificateResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetCacertificateResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetCacertificateResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetCacertificateResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetValidNotAfter
 

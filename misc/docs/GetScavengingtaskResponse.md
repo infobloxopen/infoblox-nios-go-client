@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Action** | Pointer to **string** | The scavenging action. | [optional] [readonly] 
 **AssociatedObject** | Pointer to **string** | The reference to the object associated with the scavenging task. | [optional] [readonly] 
 **EndTime** | Pointer to **int64** | The scavenging process end time. | [optional] [readonly] 
@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **ReclaimedRecords** | Pointer to **int64** | The number of reclaimed during the scavenging process resource records. | [optional] [readonly] 
 **StartTime** | Pointer to **int64** | The scavenging process start time. | [optional] [readonly] 
 **Status** | Pointer to **string** | The scavenging process status. This is a read-only attribute. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Scavengingtask**](Scavengingtask.md) |  | [optional] 
 
 ## Methods
@@ -258,6 +259,31 @@ SetStatus sets Status field to given value.
 `func (o *GetScavengingtaskResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetScavengingtaskResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetScavengingtaskResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetScavengingtaskResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetScavengingtaskResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

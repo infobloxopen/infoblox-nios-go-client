@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **IsDefault** | Pointer to **bool** | True if the policy is the Grid default. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of a hostname rewrite policy object. | [optional] 
 **PreDefined** | Pointer to **bool** | Determines whether the policy is a predefined one. | [optional] [readonly] 
 **ReplacementCharacter** | Pointer to **string** | The replacement character for symbols in hostnames that do not conform to the hostname policy. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ValidCharacters** | Pointer to **string** | The set of valid characters represented in string format. | [optional] 
 
 ## Methods
@@ -154,6 +155,31 @@ SetReplacementCharacter sets ReplacementCharacter field to given value.
 `func (o *Hostnamerewritepolicy) HasReplacementCharacter() bool`
 
 HasReplacementCharacter returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Hostnamerewritepolicy) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Hostnamerewritepolicy) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Hostnamerewritepolicy) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Hostnamerewritepolicy) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetValidCharacters
 

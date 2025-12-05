@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**RecordDnameCloudInfo**](RecordDnameCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | The comment for the record. | [optional] 
 **CreationTime** | Pointer to **int64** | The time of the record creation in Epoch seconds format. | [optional] [readonly] 
@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **Target** | Pointer to **string** | The target domain name of the DNS DNAME record in FQDN format. | [optional] 
 **Ttl** | Pointer to **int64** | Time To Live (TTL) value for the record. A 32-bit unsigned integer that represents the duration, in seconds, that the record is valid (cached). Zero indicates that the record should not be cached. | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | The name of the DNS View in which the record resides, for example \&quot;external\&quot;. | [optional] 
 **Zone** | Pointer to **string** | The name of the zone in which the record resides. For example: \&quot;zone.com\&quot;. If a view is not specified when searching by zone, the default view is used. | [optional] [readonly] 
 **Result** | Pointer to [**RecordDname**](RecordDname.md) |  | [optional] 
@@ -572,6 +573,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *GetRecordDnameResponse) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordDnameResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordDnameResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordDnameResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordDnameResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

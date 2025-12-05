@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AgentCircuitId** | Pointer to **string** | The agent circuit ID for the fixed address. | [optional] 
 **AgentRemoteId** | Pointer to **string** | The agent remote ID for the fixed address. | [optional] 
 **AllowTelnet** | Pointer to **bool** | This field controls whether the credential is used for both the Telnet and SSH credentials. If set to False, the credential is used only for SSH. | [optional] 
@@ -68,6 +68,7 @@ Name | Type | Description | Notes
 **UsePxeLeaseTime** | Pointer to **bool** | Use flag for: pxe_lease_time | [optional] 
 **UseSnmp3Credential** | Pointer to **bool** | Determines if the SNMPv3 credential should be used for the fixed address. | [optional] 
 **UseSnmpCredential** | Pointer to **bool** | If set to true, the SNMP credential will override member-level settings. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Fixedaddress**](Fixedaddress.md) |  | [optional] 
 
 ## Methods
@@ -1688,6 +1689,31 @@ SetUseSnmpCredential sets UseSnmpCredential field to given value.
 `func (o *GetFixedaddressResponse) HasUseSnmpCredential() bool`
 
 HasUseSnmpCredential returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetFixedaddressResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetFixedaddressResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetFixedaddressResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetFixedaddressResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IPv4 Address or IPv6 Address of the Network User. | [optional] 
 **AddressObject** | Pointer to **string** | The reference of the IPAM IPv4Address or IPv6Address object describing the address of the Network User. | [optional] [readonly] 
 **DataSource** | Pointer to **string** | The Network User data source. | [optional] [readonly] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **Network** | Pointer to **string** | The reference to the network to which the Network User belongs. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this Network User resides. | [optional] 
 **UserStatus** | Pointer to **string** | The status of the Network User. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Networkuser**](Networkuser.md) |  | [optional] 
 
 ## Methods
@@ -440,6 +441,31 @@ SetUserStatus sets UserStatus field to given value.
 `func (o *GetNetworkuserResponse) HasUserStatus() bool`
 
 HasUserStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetNetworkuserResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetNetworkuserResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetNetworkuserResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetNetworkuserResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowlistUpdatePolicy** | Pointer to **string** | allowlist update policy (manual or automatic) | [optional] 
 **ConfigureDomainCollapsing** | Pointer to **bool** | Disable domain collapsing at grid level | [optional] 
 **CurrentAllowlist** | Pointer to **string** | The Grid allowlist. | [optional] [readonly] 
@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The Grid name. | [optional] [readonly] 
 **ScheduledAllowlistDownload** | Pointer to [**GridThreatinsightScheduledAllowlistDownload**](GridThreatinsightScheduledAllowlistDownload.md) |  | [optional] 
 **ScheduledDownload** | Pointer to [**GridThreatinsightScheduledDownload**](GridThreatinsightScheduledDownload.md) |  | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**GridThreatinsight**](GridThreatinsight.md) |  | [optional] 
 
 ## Methods
@@ -622,6 +623,31 @@ SetScheduledDownload sets ScheduledDownload field to given value.
 `func (o *GetGridThreatinsightResponse) HasScheduledDownload() bool`
 
 HasScheduledDownload returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGridThreatinsightResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGridThreatinsightResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGridThreatinsightResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGridThreatinsightResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

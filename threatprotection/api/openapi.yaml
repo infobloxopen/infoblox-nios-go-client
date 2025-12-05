@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox THREATPROTECTION API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for threatprotection:grid:rule objects
   name: ThreatprotectionGridRule
@@ -2035,6 +2035,7 @@ components:
         ruleset: Example ruleset
         description: Example description
         type: Example type
+        uuid: Example uuid
         sid: 1
         allowed_actions:
         - allowed_actions
@@ -2072,6 +2073,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allowed_actions:
           description: The list of allowed actions of the custom rule.
@@ -2138,7 +2140,13 @@ components:
           example: Example type
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionGridRuleConfig:
       example:
         log_severity: Example log_severity
@@ -2280,6 +2288,7 @@ components:
         use_disable_multiple_dns_tcp_request: false
         use_current_ruleset: false
         use_events_per_second_per_rule: false
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -2299,6 +2308,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The comment for the Threat Protection profile.
@@ -2338,6 +2348,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         members:
           description: The list of members that are associated with the profile.
           enum:
@@ -2373,7 +2384,13 @@ components:
           description: "Use flag for: events_per_second_per_rule"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListThreatprotectionProfileResponse:
       oneOf:
       - description: The response format to retrieve __ThreatprotectionProfile__ objects.
@@ -2430,11 +2447,13 @@ components:
             description: Example description
             syntax: Example syntax
             value: Example value
+        uuid: Example uuid
         use_config: false
         sid: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         config:
           $ref: '#/components/schemas/ThreatprotectionProfileRuleConfig'
@@ -2466,7 +2485,13 @@ components:
           description: "Use flag for: disable"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionProfileRuleConfig:
       example:
         log_severity: Example log_severity
@@ -2625,11 +2650,13 @@ components:
             description: Example description
             syntax: Example syntax
             value: Example value
+        uuid: Example uuid
         use_config: false
         sid: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         config:
           $ref: '#/components/schemas/ThreatprotectionRuleConfig'
@@ -2661,7 +2688,13 @@ components:
           description: "Use flag for: disable"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionRuleConfig:
       example:
         log_severity: Example log_severity
@@ -2793,9 +2826,11 @@ components:
         _ref: _ref
         name: Example name
         ruleset: Example ruleset
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         is_factory_reset_enabled:
           description: Determines if factory reset is enabled for this rule category.
@@ -2810,6 +2845,11 @@ components:
         ruleset:
           description: The version of the ruleset the category assigned to.
           example: Example ruleset
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
       type: object
@@ -2844,11 +2884,13 @@ components:
         used_by:
         - used_by
         - used_by
+        uuid: Example uuid
         version: Example version
         add_type: Example add_type
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         add_type:
           description: Determines the way the ruleset was added.
@@ -2885,6 +2927,11 @@ components:
             type: string
           readOnly: true
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         version:
           description: The ruleset version.
           example: Example version
@@ -2944,10 +2991,12 @@ components:
             syntax: Example syntax
             value: Example value
         category: Example category
+        uuid: Example uuid
         sid: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allowed_actions:
           description: The list of allowed actions of rhe rule template.
@@ -2987,7 +3036,13 @@ components:
           format: int64
           readOnly: true
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionRuletemplateDefaultConfig:
       example:
         log_severity: Example log_severity
@@ -3135,6 +3190,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         member:
           description: The Grid member name to get threat protection statistics. If
@@ -3152,6 +3208,7 @@ components:
           readOnly: true
           type: array
       type: object
+      x-tf-skip-expand: true
     ThreatprotectionStatisticsStatInfos:
       example:
         total: "{}"
@@ -3231,6 +3288,7 @@ components:
           ruleset: Example ruleset
           description: Example description
           type: Example type
+          uuid: Example uuid
           sid: 1
           allowed_actions:
           - allowed_actions
@@ -3287,6 +3345,7 @@ components:
           ruleset: Example ruleset
           description: Example description
           type: Example type
+          uuid: Example uuid
           sid: 1
           allowed_actions:
           - allowed_actions
@@ -3347,6 +3406,7 @@ components:
           use_disable_multiple_dns_tcp_request: false
           use_current_ruleset: false
           use_events_per_second_per_rule: false
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -3388,6 +3448,7 @@ components:
           use_disable_multiple_dns_tcp_request: false
           use_current_ruleset: false
           use_events_per_second_per_rule: false
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -3462,6 +3523,7 @@ components:
               description: Example description
               syntax: Example syntax
               value: Example value
+          uuid: Example uuid
           use_config: false
           sid: 1
       properties:
@@ -3520,6 +3582,7 @@ components:
               description: Example description
               syntax: Example syntax
               value: Example value
+          uuid: Example uuid
           use_config: false
           sid: 1
       properties:
@@ -3584,6 +3647,7 @@ components:
           used_by:
           - used_by
           - used_by
+          uuid: Example uuid
           version: Example version
           add_type: Example add_type
       properties:

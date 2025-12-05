@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AuthenticationPassword** | Pointer to **string** | Determines an authentication password for the user. This is a write-only attribute. | [optional] 
 **AuthenticationProtocol** | Pointer to **string** | The authentication protocol to be used for this user. | [optional] 
 **Comment** | Pointer to **string** | A descriptive comment for the SNMPv3 User. | [optional] 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of the user. | [optional] 
 **PrivacyPassword** | Pointer to **string** | Determines a password for the privacy protocol. | [optional] 
 **PrivacyProtocol** | Pointer to **string** | The privacy protocol to be used for this user. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Snmpuser**](Snmpuser.md) |  | [optional] 
 
 ## Methods
@@ -310,6 +311,31 @@ SetPrivacyProtocol sets PrivacyProtocol field to given value.
 `func (o *GetSnmpuserResponse) HasPrivacyProtocol() bool`
 
 HasPrivacyProtocol returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetSnmpuserResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetSnmpuserResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetSnmpuserResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetSnmpuserResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for the name server group. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the name server group. | [optional] [readonly] 
 **Type** | Pointer to **string** | The type of the name server group. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Allnsgroup**](Allnsgroup.md) |  | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetType sets Type field to given value.
 `func (o *GetAllnsgroupResponse) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetAllnsgroupResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetAllnsgroupResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetAllnsgroupResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetAllnsgroupResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

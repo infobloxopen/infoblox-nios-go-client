@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox MISC API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for allendpoints objects
   name: Allendpoints
@@ -4831,11 +4831,13 @@ components:
         _ref: _ref
         comment: Example comment
         type: Example type
+        uuid: Example uuid
         version: Example version
         subscribing_member: Example subscribing_member
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The Grid endpoint IPv4 Address or IPv6 Address or Fully-Qualified
@@ -4866,6 +4868,11 @@ components:
           - TYPE_RESTAPI
           - TYPE_DXL
           example: Example type
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         version:
@@ -4903,9 +4910,11 @@ components:
         name: Example name
         authentication_type: Example authentication_type
         detection_multiplier: 1
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authentication_key:
           description: The authentication key for BFD protocol message-digest authentication.
@@ -4952,6 +4961,11 @@ components:
           description: The name of the BFD template object.
           example: Example name
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListBfdtemplateResponse:
       oneOf:
@@ -4988,6 +5002,7 @@ components:
         end_time: 1
         lines_warning: 1
         separator: Example separator
+        uuid: Example uuid
         file_size: 1
         start_time: 1
         _ref: _ref
@@ -4999,6 +5014,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         action:
           description: The action to execute.
@@ -5110,6 +5126,11 @@ components:
           - OVERRIDE
           example: Example update_method
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListCsvimporttaskResponse:
       oneOf:
@@ -5135,9 +5156,11 @@ components:
         enable_registration: false
         _ref: _ref
         name: Example name
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         enable_registration:
           description: Enable/disable new registration requests
@@ -5146,6 +5169,11 @@ components:
         name:
           description: Display name for cluster
           example: Example name
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
       type: object
@@ -5184,6 +5212,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         last_sequence_id:
           description: The last returned sequence ID.
@@ -5230,10 +5259,12 @@ components:
       example:
         _ref: _ref
         comment: Example comment
+        uuid: Example uuid
         timestamp: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The descriptive comment.
@@ -5247,6 +5278,11 @@ components:
           format: int64
           readOnly: true
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListDbsnapshotResponse:
       oneOf:
@@ -5274,6 +5310,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         object_type:
           description: The object type of the deleted object. This is undefined if
@@ -5327,6 +5364,7 @@ components:
         - outbound_members
         - outbound_members
         client_certificate_subject: Example client_certificate_subject
+        uuid: Example uuid
         timeout: 1
         client_certificate_valid_from: 1
         extattrs-:
@@ -5356,6 +5394,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         brokers:
           description: The list of DXL endpoint brokers. Note that you cannot specify
@@ -5425,6 +5464,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         log_level:
           description: The log level for a DXL endpoint.
           enum:
@@ -5466,6 +5506,11 @@ components:
           items:
             type: string
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vendor_identifier:
           description: The vendor identifier.
           example: Example vendor_identifier
@@ -5480,6 +5525,8 @@ components:
           type: string
           writeOnly: true
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DxlEndpointBrokers:
       example:
         address: Example address
@@ -5588,6 +5635,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListFileopResponse:
@@ -5620,10 +5668,12 @@ components:
         - members
         _ref: _ref
         in_use: false
+        uuid: Example uuid
         version: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         domain:
           description: The Kerberos domain name.
@@ -5667,6 +5717,11 @@ components:
           format: int64
           readOnly: true
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         version:
           description: The Kerberos key version number (KVNO).
           example: 1
@@ -5710,6 +5765,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         hardware_type:
           description: Hardware type of a Grid member.
@@ -5754,6 +5810,7 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-skip-expand: true
     CapacityreportObjectCounts:
       example:
         type_name: Example type_name
@@ -5801,9 +5858,11 @@ components:
           enabled: false
         _ref: _ref
         interval: 1
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         enable:
           description: Determines whether the OutBound Cloud Client is enabled.
@@ -5827,7 +5886,13 @@ components:
           items:
             $ref: '#/components/schemas/OutboundCloudclientOutboundCloudClientEvents'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     OutboundCloudclientOutboundCloudClientEvents:
       example:
         event_type: Example event_type
@@ -5888,6 +5953,7 @@ components:
         - outbound_members
         - outbound_members
         client_certificate_subject: Example client_certificate_subject
+        uuid: Example uuid
         publish_settings:
           enabled_attributes:
           - enabled_attributes
@@ -5921,6 +5987,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The pxgrid endpoint IPv4 Address or IPv6 Address or Fully-Qualified
@@ -5979,6 +6046,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         log_level:
           description: The log level for a notification pxgrid endpoint.
           enum:
@@ -6021,6 +6089,11 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vendor_identifier:
           description: The vendor identifier.
           example: Example vendor_identifier
@@ -6035,6 +6108,8 @@ components:
           type: string
           writeOnly: true
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     PxgridEndpointPublishSettings:
       example:
         enabled_attributes:
@@ -6205,9 +6280,11 @@ components:
           action: Example action
         - pattern: Example pattern
           action: Example action
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Descriptive comment about the Ruleset object.
@@ -6236,7 +6313,13 @@ components:
           - BLACKLIST
           example: Example type
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     RulesetNxdomainRules:
       example:
         pattern: Example pattern
@@ -6291,10 +6374,12 @@ components:
         end_time: 1
         action: Example action
         reclaimable_records: 1
+        uuid: Example uuid
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         action:
           description: The scavenging action.
@@ -6354,6 +6439,11 @@ components:
           example: Example status
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListScavengingtaskResponse:
       oneOf:
@@ -6404,6 +6494,7 @@ components:
         scheduled_time: 1
         ticket_number: Example ticket_number
         re_execute_task: false
+        uuid: Example uuid
         execute_now: false
         execution_time: 1
         is_network_insight_task: false
@@ -6420,6 +6511,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         approval_status:
           description: The approval status of the task.
@@ -6563,7 +6655,13 @@ components:
           example: Example ticket_number
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     ScheduledtaskChangedObjects:
       example:
         object_type: Example object_type
@@ -6644,6 +6742,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListSearchResponse:
@@ -6695,6 +6794,7 @@ components:
         outbound_members:
         - outbound_members
         - outbound_members
+        uuid: Example uuid
         timeout: 1
         extattrs-:
           key:
@@ -6720,6 +6820,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         extattrs+:
           additionalProperties:
@@ -6741,6 +6842,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         log_level:
           description: The log level for a notification REST endpoint.
           enum:
@@ -6782,6 +6884,11 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vendor_identifier:
           description: The vendor identifier.
           example: Example vendor_identifier
@@ -6796,6 +6903,8 @@ components:
           type: string
           writeOnly: true
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     SyslogEndpointSyslogServers:
       example:
         severity: Example severity
@@ -6966,10 +7075,12 @@ components:
         _ref: _ref
         name: Example name
         ipv4addr: Example ipv4addr
+        uuid: Example uuid
         ipv6addr: Example ipv6addr
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         enable_service:
           description: Indicates whether the Taxii service is running on the given
@@ -6998,7 +7109,13 @@ components:
           items:
             $ref: '#/components/schemas/TaxiiTaxiiRpzConfig'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     TaxiiTaxiiRpzConfig:
       example:
         zone: Example zone
@@ -7056,9 +7173,11 @@ components:
         is_synced_to_gm: false
         type: Example type
         directory: Example directory
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         directory:
           description: The path to the directory that contains file or subdirectory.
@@ -7087,6 +7206,11 @@ components:
           - FILE
           example: Example type
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vtftp_dir_members:
           description: The replication members with TFTP client addresses where this
             virtual folder is applicable.
@@ -7096,6 +7220,7 @@ components:
             $ref: '#/components/schemas/TftpfiledirVtftpDirMembers'
           type: array
       type: object
+      x-tf-skip-expand: true
     TftpfiledirVtftpDirMembers:
       example:
         address: Example address
@@ -7214,6 +7339,7 @@ components:
           name: Example name
           authentication_type: Example authentication_type
           detection_multiplier: 1
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Bfdtemplate'
@@ -7239,6 +7365,7 @@ components:
           name: Example name
           authentication_type: Example authentication_type
           detection_multiplier: 1
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Bfdtemplate'
@@ -7273,6 +7400,7 @@ components:
           end_time: 1
           lines_warning: 1
           separator: Example separator
+          uuid: Example uuid
           file_size: 1
           start_time: 1
           _ref: _ref
@@ -7303,6 +7431,7 @@ components:
           enable_registration: false
           _ref: _ref
           name: Example name
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Datacollectioncluster'
@@ -7324,6 +7453,7 @@ components:
           enable_registration: false
           _ref: _ref
           name: Example name
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Datacollectioncluster'
@@ -7438,6 +7568,7 @@ components:
           - outbound_members
           - outbound_members
           client_certificate_subject: Example client_certificate_subject
+          uuid: Example uuid
           timeout: 1
           client_certificate_valid_from: 1
           extattrs-:
@@ -7505,6 +7636,7 @@ components:
           - outbound_members
           - outbound_members
           client_certificate_subject: Example client_certificate_subject
+          uuid: Example uuid
           timeout: 1
           client_certificate_valid_from: 1
           extattrs-:
@@ -7639,6 +7771,7 @@ components:
             enabled: false
           _ref: _ref
           interval: 1
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/OutboundCloudclient'
@@ -7679,6 +7812,7 @@ components:
           - outbound_members
           - outbound_members
           client_certificate_subject: Example client_certificate_subject
+          uuid: Example uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes
@@ -7748,6 +7882,7 @@ components:
           - outbound_members
           - outbound_members
           client_certificate_subject: Example client_certificate_subject
+          uuid: Example uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes
@@ -7806,6 +7941,7 @@ components:
             action: Example action
           - pattern: Example pattern
             action: Example action
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Ruleset'
@@ -7833,6 +7969,7 @@ components:
             action: Example action
           - pattern: Example pattern
             action: Example action
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Ruleset'
@@ -7911,6 +8048,7 @@ components:
           scheduled_time: 1
           ticket_number: Example ticket_number
           re_execute_task: false
+          uuid: Example uuid
           execute_now: false
           execution_time: 1
           is_network_insight_task: false
@@ -7994,6 +8132,7 @@ components:
           outbound_members:
           - outbound_members
           - outbound_members
+          uuid: Example uuid
           timeout: 1
           extattrs-:
             key:
@@ -8061,6 +8200,7 @@ components:
           outbound_members:
           - outbound_members
           - outbound_members
+          uuid: Example uuid
           timeout: 1
           extattrs-:
             key:
@@ -8118,6 +8258,7 @@ components:
           _ref: _ref
           name: Example name
           ipv4addr: Example ipv4addr
+          uuid: Example uuid
           ipv6addr: Example ipv6addr
       properties:
         result:
@@ -8158,6 +8299,7 @@ components:
           is_synced_to_gm: false
           type: Example type
           directory: Example directory
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Tftpfiledir'
@@ -8196,6 +8338,7 @@ components:
           is_synced_to_gm: false
           type: Example type
           directory: Example directory
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Tftpfiledir'

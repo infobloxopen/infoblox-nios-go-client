@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox MICROSOFTSERVER API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for msserver objects
   name: Msserver
@@ -1959,6 +1959,7 @@ components:
           supports_failover: false
           status: Example status
           use_enable_monitoring: false
+        uuid: Example uuid
         ms_max_connection: 1
         synchronization_status: Example synchronization_status
         extattrs-:
@@ -2051,6 +2052,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ad_domain:
           description: The Active Directory domain to which this server belongs (if
@@ -2112,6 +2114,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         grid_member:
           description: eference to the assigned grid member
           example: Example grid_member
@@ -2212,12 +2215,19 @@ components:
           description: Flag to override cluster RPC timeout
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         version:
           description: Version of the Microsoft Server
           example: Example version
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     MsserverAdSites:
       example:
         ldap_timeout: 1
@@ -2680,11 +2690,13 @@ components:
         _ref: _ref
         name: Example name
         ms_sync_master_name: Example ms_sync_master_name
+        uuid: Example uuid
         ea_definition: Example ea_definition
         netbios: Example netbios
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         ea_definition:
           description: The name of the Extensible Attribute Definition object that
@@ -2721,6 +2733,11 @@ components:
           example: false
           readOnly: true
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListMsserverAdsitesDomainResponse:
       oneOf:
@@ -2749,9 +2766,11 @@ components:
         networks:
         - network
         - network
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         domain:
           description: The reference to the Active Directory Domain to which the site
@@ -2772,6 +2791,11 @@ components:
             - network
             type: string
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListMsserverAdsitesSiteResponse:
       oneOf:
@@ -2808,6 +2832,7 @@ components:
         total_hosts: 1
         dhcp_utilization_status: Example dhcp_utilization_status
         status_last_updated: 1
+        uuid: Example uuid
         status_detail: Example status_detail
         next_sync_control: Example next_sync_control
         login_name: Example login_name
@@ -2825,6 +2850,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The address or FQDN of the DHCP Microsoft Server.
@@ -2956,6 +2982,11 @@ components:
           description: "Use flag for: synchronization_interval"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListMsserverDhcpResponse:
       oneOf:
@@ -2992,10 +3023,12 @@ components:
         use_login: false
         _ref: _ref
         enable_dns_reports_sync: false
+        uuid: Example uuid
         use_synchronization_interval: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The address or FQDN of the DNS Microsoft Server.
@@ -3033,6 +3066,11 @@ components:
           description: "Use flag for: synchronization_interval"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListMsserverDnsResponse:
       oneOf:
@@ -3072,6 +3110,7 @@ components:
         static_hosts: 1
         total_hosts: 1
         dhcp_utilization_status: Example dhcp_utilization_status
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -3090,6 +3129,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The superscope descriptive comment.
@@ -3144,6 +3184,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         high_water_mark:
           description: The percentage value for DHCP range usage after which an alarm
             will be active.
@@ -3203,7 +3244,13 @@ components:
           format: int64
           readOnly: true
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-extattrs-all: true
     ListMssuperscopeResponse:
       oneOf:
       - description: The response format to retrieve __Mssuperscope__ objects.
@@ -3262,6 +3309,7 @@ components:
             supports_failover: false
             status: Example status
             use_enable_monitoring: false
+          uuid: Example uuid
           ms_max_connection: 1
           synchronization_status: Example synchronization_status
           extattrs-:
@@ -3389,6 +3437,7 @@ components:
             supports_failover: false
             status: Example status
             use_enable_monitoring: false
+          uuid: Example uuid
           ms_max_connection: 1
           synchronization_status: Example synchronization_status
           extattrs-:
@@ -3528,6 +3577,7 @@ components:
           networks:
           - network
           - network
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/MsserverAdsitesSite'
@@ -3552,6 +3602,7 @@ components:
           networks:
           - network
           - network
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/MsserverAdsitesSite'
@@ -3578,6 +3629,7 @@ components:
           total_hosts: 1
           dhcp_utilization_status: Example dhcp_utilization_status
           status_last_updated: 1
+          uuid: Example uuid
           status_detail: Example status_detail
           next_sync_control: Example next_sync_control
           login_name: Example login_name
@@ -3617,6 +3669,7 @@ components:
           total_hosts: 1
           dhcp_utilization_status: Example dhcp_utilization_status
           status_last_updated: 1
+          uuid: Example uuid
           status_detail: Example status_detail
           next_sync_control: Example next_sync_control
           login_name: Example login_name
@@ -3657,6 +3710,7 @@ components:
           use_login: false
           _ref: _ref
           enable_dns_reports_sync: false
+          uuid: Example uuid
           use_synchronization_interval: false
       properties:
         result:
@@ -3683,6 +3737,7 @@ components:
           use_login: false
           _ref: _ref
           enable_dns_reports_sync: false
+          uuid: Example uuid
           use_synchronization_interval: false
       properties:
         result:
@@ -3713,6 +3768,7 @@ components:
           static_hosts: 1
           total_hosts: 1
           dhcp_utilization_status: Example dhcp_utilization_status
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -3756,6 +3812,7 @@ components:
           static_hosts: 1
           total_hosts: 1
           dhcp_utilization_status: Example dhcp_utilization_status
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""

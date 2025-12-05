@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **BlacklistAction** | Pointer to **string** | The action to perform when a domain name matches the pattern defined in a rule that is specified by the blacklist_ruleset method. Valid values are \&quot;REDIRECT\&quot; or \&quot;REFUSE\&quot;. The default value is \&quot;REFUSE\&quot;. | [optional] 
 **BlacklistLogQuery** | Pointer to **bool** | The flag that indicates whether blacklist redirection queries are logged. Specify \&quot;true\&quot; to enable logging, or \&quot;false\&quot; to disable it. The default value is \&quot;false\&quot;. | [optional] 
 **BlacklistRedirectAddresses** | Pointer to **[]string** | The array of IP addresses the appliance includes in the response it sends in place of a blacklisted IP address. | [optional] 
@@ -48,6 +48,7 @@ Name | Type | Description | Notes
 **MaxCacheTtl** | Pointer to **int64** | The maximum number of seconds to cache ordinary (positive) answers. | [optional] 
 **MaxNcacheTtl** | Pointer to **int64** | The maximum number of seconds to cache negative (NXDOMAIN) answers. | [optional] 
 **MaxUdpSize** | Pointer to **int64** | The value is used by authoritative DNS servers to never send DNS responses larger than the configured value. The value should be between 512 and 4096 bytes. The recommended value is between 512 and 1220 bytes. | [optional] 
+**MgmPrivate** | Pointer to **bool** | This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized. | [optional] 
 **Name** | Pointer to **string** | Name of the DNS view. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view object associated with this DNS view. | [optional] 
 **NotifyDelay** | Pointer to **int64** | The number of seconds of delay the notify messages are sent to secondaries. | [optional] 
@@ -89,6 +90,7 @@ Name | Type | Description | Notes
 **UseRpzQnameWaitRecurse** | Pointer to **bool** | Use flag for: rpz_qname_wait_recurse | [optional] 
 **UseScavengingSettings** | Pointer to **bool** | Use flag for: scavenging_settings , last_queried_acl | [optional] 
 **UseSortlist** | Pointer to **bool** | Use flag for: sortlist | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -1209,6 +1211,31 @@ SetMaxUdpSize sets MaxUdpSize field to given value.
 
 HasMaxUdpSize returns a boolean if a field has been set.
 
+### GetMgmPrivate
+
+`func (o *View) GetMgmPrivate() bool`
+
+GetMgmPrivate returns the MgmPrivate field if non-nil, zero value otherwise.
+
+### GetMgmPrivateOk
+
+`func (o *View) GetMgmPrivateOk() (*bool, bool)`
+
+GetMgmPrivateOk returns a tuple with the MgmPrivate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMgmPrivate
+
+`func (o *View) SetMgmPrivate(v bool)`
+
+SetMgmPrivate sets MgmPrivate field to given value.
+
+### HasMgmPrivate
+
+`func (o *View) HasMgmPrivate() bool`
+
+HasMgmPrivate returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *View) GetName() string`
@@ -2233,6 +2260,31 @@ SetUseSortlist sets UseSortlist field to given value.
 `func (o *View) HasUseSortlist() bool`
 
 HasUseSortlist returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *View) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *View) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *View) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *View) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

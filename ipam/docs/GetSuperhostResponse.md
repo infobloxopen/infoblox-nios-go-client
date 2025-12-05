@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for Super Host. | [optional] 
 **DeleteAssociatedObjects** | Pointer to **bool** | True if we have to delete all DNS/DHCP associated objects with Super Host, false by default. | [optional] 
 **DhcpAssociatedObjects** | Pointer to **[]string** | A list of DHCP objects refs which are associated with Super Host. | [optional] 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | Name of the Superhost. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Superhost**](Superhost.md) |  | [optional] 
 
 ## Methods
@@ -284,6 +285,31 @@ SetName sets Name field to given value.
 `func (o *GetSuperhostResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetSuperhostResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetSuperhostResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetSuperhostResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetSuperhostResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

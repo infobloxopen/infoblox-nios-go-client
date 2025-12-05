@@ -4,19 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
-**Address** | Pointer to **string** | The domain name or IP address for the Master Grid. | [optional] 
-**ConnectionDisabled** | Pointer to **bool** | Determines if the sub-grid is currently disabled. | [optional] [readonly] 
-**ConnectionTimestamp** | Pointer to **int64** | The timestamp that indicates when the connection to the Master Grid was established. | [optional] [readonly] 
-**Detached** | Pointer to **bool** | The detached flag for the Master Grid. | [optional] [readonly] 
-**Enable** | Pointer to **bool** | Determines if the Master Grid is enabled. | [optional] 
-**Joined** | Pointer to **bool** | The flag shows if the Grid has joined the Master Grid. | [optional] [readonly] 
-**LastEvent** | Pointer to **string** | The Master Grid&#39;s last event. | [optional] [readonly] 
-**LastEventDetails** | Pointer to **string** | The details of the Master Grid&#39;s last event. | [optional] [readonly] 
-**LastSyncTimestamp** | Pointer to **int64** | The timestamp or the last synchronization operation with the Master Grid. | [optional] [readonly] 
-**Port** | Pointer to **int64** | The Master Grid port to which the Grid connects. | [optional] 
-**Status** | Pointer to **string** | The Master Grid&#39;s status. | [optional] [readonly] 
-**UseMgmtPort** | Pointer to **bool** | The flag shows if the MGMT port was used to join the Grid. | [optional] [readonly] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Address** | Pointer to **string** | IP Address or FQDN to use to contact the SGM | [optional] 
+**ConnectionDisabled** | Pointer to **bool** | Indicates whether the sub-grid is currently disabled (true) or not (false). | [optional] 
+**ConnectionTimestamp** | Pointer to **int64** | Timestamp of the beginning of the current VPN connection with the SGM. | [optional] [readonly] 
+**Detached** | Pointer to **bool** | Indicate detached state of subgrid with MGM. | [optional] [readonly] 
+**DiscoverySyncDisabled** | Pointer to **bool** | Enable/Disable discovery service. | [optional] 
+**Enable** | Pointer to **bool** | Enable/Disable SuperGrid membership feature | [optional] 
+**JoinStatus** | Pointer to **string** | Gives the overall status of the Super Grid connectivity | [optional] [readonly] 
+**JoinToken** | Pointer to **string** | Sub grid join token value. | [optional] [readonly] 
+**JoinTokenExpiration** | Pointer to **int64** | Timestamp when the sub grid join token expires. | [optional] [readonly] 
+**Joined** | Pointer to **bool** | Indicates whether the sub-grid is currently joined or not. | [optional] [readonly] 
+**LastEvent** | Pointer to **string** | Last event notified by the Super Grid Master. | [optional] [readonly] 
+**LastEventDetails** | Pointer to **string** | additional details on the event. | [optional] [readonly] 
+**LastSyncTimestamp** | Pointer to **int64** | Timestamp of the last synchronization with the SGM. | [optional] [readonly] 
+**MgmCommunicationMode** | Pointer to **string** | MGM Communication Mode. | [optional] [readonly] 
+**Port** | Pointer to **int64** | Alternate port number to use when connecting to the VPN endpoint. | [optional] 
+**UseMgmtPort** | Pointer to **bool** | Indicates whether to use the management port to connect to the SGM. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -162,6 +167,31 @@ SetDetached sets Detached field to given value.
 
 HasDetached returns a boolean if a field has been set.
 
+### GetDiscoverySyncDisabled
+
+`func (o *Mastergrid) GetDiscoverySyncDisabled() bool`
+
+GetDiscoverySyncDisabled returns the DiscoverySyncDisabled field if non-nil, zero value otherwise.
+
+### GetDiscoverySyncDisabledOk
+
+`func (o *Mastergrid) GetDiscoverySyncDisabledOk() (*bool, bool)`
+
+GetDiscoverySyncDisabledOk returns a tuple with the DiscoverySyncDisabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscoverySyncDisabled
+
+`func (o *Mastergrid) SetDiscoverySyncDisabled(v bool)`
+
+SetDiscoverySyncDisabled sets DiscoverySyncDisabled field to given value.
+
+### HasDiscoverySyncDisabled
+
+`func (o *Mastergrid) HasDiscoverySyncDisabled() bool`
+
+HasDiscoverySyncDisabled returns a boolean if a field has been set.
+
 ### GetEnable
 
 `func (o *Mastergrid) GetEnable() bool`
@@ -186,6 +216,81 @@ SetEnable sets Enable field to given value.
 `func (o *Mastergrid) HasEnable() bool`
 
 HasEnable returns a boolean if a field has been set.
+
+### GetJoinStatus
+
+`func (o *Mastergrid) GetJoinStatus() string`
+
+GetJoinStatus returns the JoinStatus field if non-nil, zero value otherwise.
+
+### GetJoinStatusOk
+
+`func (o *Mastergrid) GetJoinStatusOk() (*string, bool)`
+
+GetJoinStatusOk returns a tuple with the JoinStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJoinStatus
+
+`func (o *Mastergrid) SetJoinStatus(v string)`
+
+SetJoinStatus sets JoinStatus field to given value.
+
+### HasJoinStatus
+
+`func (o *Mastergrid) HasJoinStatus() bool`
+
+HasJoinStatus returns a boolean if a field has been set.
+
+### GetJoinToken
+
+`func (o *Mastergrid) GetJoinToken() string`
+
+GetJoinToken returns the JoinToken field if non-nil, zero value otherwise.
+
+### GetJoinTokenOk
+
+`func (o *Mastergrid) GetJoinTokenOk() (*string, bool)`
+
+GetJoinTokenOk returns a tuple with the JoinToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJoinToken
+
+`func (o *Mastergrid) SetJoinToken(v string)`
+
+SetJoinToken sets JoinToken field to given value.
+
+### HasJoinToken
+
+`func (o *Mastergrid) HasJoinToken() bool`
+
+HasJoinToken returns a boolean if a field has been set.
+
+### GetJoinTokenExpiration
+
+`func (o *Mastergrid) GetJoinTokenExpiration() int64`
+
+GetJoinTokenExpiration returns the JoinTokenExpiration field if non-nil, zero value otherwise.
+
+### GetJoinTokenExpirationOk
+
+`func (o *Mastergrid) GetJoinTokenExpirationOk() (*int64, bool)`
+
+GetJoinTokenExpirationOk returns a tuple with the JoinTokenExpiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJoinTokenExpiration
+
+`func (o *Mastergrid) SetJoinTokenExpiration(v int64)`
+
+SetJoinTokenExpiration sets JoinTokenExpiration field to given value.
+
+### HasJoinTokenExpiration
+
+`func (o *Mastergrid) HasJoinTokenExpiration() bool`
+
+HasJoinTokenExpiration returns a boolean if a field has been set.
 
 ### GetJoined
 
@@ -287,6 +392,31 @@ SetLastSyncTimestamp sets LastSyncTimestamp field to given value.
 
 HasLastSyncTimestamp returns a boolean if a field has been set.
 
+### GetMgmCommunicationMode
+
+`func (o *Mastergrid) GetMgmCommunicationMode() string`
+
+GetMgmCommunicationMode returns the MgmCommunicationMode field if non-nil, zero value otherwise.
+
+### GetMgmCommunicationModeOk
+
+`func (o *Mastergrid) GetMgmCommunicationModeOk() (*string, bool)`
+
+GetMgmCommunicationModeOk returns a tuple with the MgmCommunicationMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMgmCommunicationMode
+
+`func (o *Mastergrid) SetMgmCommunicationMode(v string)`
+
+SetMgmCommunicationMode sets MgmCommunicationMode field to given value.
+
+### HasMgmCommunicationMode
+
+`func (o *Mastergrid) HasMgmCommunicationMode() bool`
+
+HasMgmCommunicationMode returns a boolean if a field has been set.
+
 ### GetPort
 
 `func (o *Mastergrid) GetPort() int64`
@@ -312,31 +442,6 @@ SetPort sets Port field to given value.
 
 HasPort returns a boolean if a field has been set.
 
-### GetStatus
-
-`func (o *Mastergrid) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *Mastergrid) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *Mastergrid) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *Mastergrid) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
 ### GetUseMgmtPort
 
 `func (o *Mastergrid) GetUseMgmtPort() bool`
@@ -361,6 +466,31 @@ SetUseMgmtPort sets UseMgmtPort field to given value.
 `func (o *Mastergrid) HasUseMgmtPort() bool`
 
 HasUseMgmtPort returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Mastergrid) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Mastergrid) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Mastergrid) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Mastergrid) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

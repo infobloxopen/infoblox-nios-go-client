@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **FirstSeen** | Pointer to **int64** | Timestamp when this SDN network was first discovered. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the SDN network. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view assigned to this SDN network. | [optional] [readonly] 
 **SourceSdnConfig** | Pointer to **string** | Name of SDN configuration this network belongs to. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetSourceSdnConfig sets SourceSdnConfig field to given value.
 `func (o *DiscoverySdnnetwork) HasSourceSdnConfig() bool`
 
 HasSourceSdnConfig returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DiscoverySdnnetwork) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DiscoverySdnnetwork) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DiscoverySdnnetwork) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DiscoverySdnnetwork) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**BulkhostCloudInfo**](BulkhostCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | The disable flag of a DNS BulkHost record. | [optional] 
@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Ttl** | Pointer to **int64** | The Time to Live (TTL) value. | [optional] 
 **UseNameTemplate** | Pointer to **bool** | Use flag for: name_template | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | The view for the bulk host. | [optional] 
 **Zone** | Pointer to **string** | The zone name. | [optional] 
 **Result** | Pointer to [**Bulkhost**](Bulkhost.md) |  | [optional] 
@@ -546,6 +547,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *GetBulkhostResponse) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetBulkhostResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetBulkhostResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetBulkhostResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetBulkhostResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

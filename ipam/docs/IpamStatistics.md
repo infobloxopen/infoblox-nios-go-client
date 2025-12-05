@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Cidr** | Pointer to **int64** | The network CIDR. | [optional] [readonly] 
 **ConflictCount** | Pointer to **int64** | The number of conflicts discovered via network discovery. This attribute is only valid for a Network object. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**IpamStatisticsMsAdUserData**](IpamStatisticsMsAdUserData.md) |  | [optional] 
@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **UnmanagedCount** | Pointer to **int64** | The number of unmanaged IP addresses as discovered by network discovery. This attribute is only valid for a Network object. | [optional] [readonly] 
 **Utilization** | Pointer to **int64** | The network utilization in percentage. | [optional] [readonly] 
 **UtilizationUpdate** | Pointer to **int64** | The time that the utilization statistics were updated last. This attribute is only valid for a Network object. For a Network Container object, the return value is undefined. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -257,6 +258,31 @@ SetUtilizationUpdate sets UtilizationUpdate field to given value.
 `func (o *IpamStatistics) HasUtilizationUpdate() bool`
 
 HasUtilizationUpdate returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *IpamStatistics) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *IpamStatistics) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *IpamStatistics) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *IpamStatistics) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ClientCertificateSubject** | Pointer to **string** | The client certificate subject of a notification REST endpoint. | [optional] [readonly] 
 **ClientCertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop for a notification REST endpoit client certificate. | [optional] 
 **ClientCertificateValidFrom** | Pointer to **int64** | The timestamp when client certificate for a notification REST endpoint was created. | [optional] [readonly] 
@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Timeout** | Pointer to **int64** | The timeout of session management (in seconds). | [optional] 
 **Uri** | Pointer to **string** | The URI of a notification REST endpoint. | [optional] 
 **Username** | Pointer to **string** | The username of the user that can log into a notification REST endpoint. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VendorIdentifier** | Pointer to **string** | The vendor identifier. | [optional] 
 **WapiUserName** | Pointer to **string** | The user name for WAPI integration. | [optional] 
 **WapiUserPassword** | Pointer to **string** | The user password for WAPI integration. | [optional] 
@@ -546,6 +547,31 @@ SetUsername sets Username field to given value.
 `func (o *NotificationRestEndpoint) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *NotificationRestEndpoint) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *NotificationRestEndpoint) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *NotificationRestEndpoint) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *NotificationRestEndpoint) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVendorIdentifier
 

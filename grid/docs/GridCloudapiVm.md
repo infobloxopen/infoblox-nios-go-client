@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AvailabilityZone** | Pointer to **string** | Availability zone of the VM. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**GridCloudapiVmCloudInfo**](GridCloudapiVmCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the vm object; maximum 1024 characters. | [optional] 
@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **SubnetCidr** | Pointer to **int64** | CIDR of the network that is the container of the address associated with the VM&#39;s primary interface. | [optional] [readonly] 
 **SubnetId** | Pointer to **string** | Subnet ID of the network that is the container of the address associated with the VM&#39;s primary interface. | [optional] [readonly] 
 **TenantName** | Pointer to **string** | Name of the tenant associated with the VM. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VmType** | Pointer to **string** | VM type; maximum 64 characters. | [optional] 
 **VpcAddress** | Pointer to **string** | Network address of the parent VPC. | [optional] [readonly] 
 **VpcCidr** | Pointer to **int64** | Network CIDR of the parent VPC. | [optional] [readonly] 
@@ -574,6 +575,31 @@ SetTenantName sets TenantName field to given value.
 `func (o *GridCloudapiVm) HasTenantName() bool`
 
 HasTenantName returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridCloudapiVm) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridCloudapiVm) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridCloudapiVm) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridCloudapiVm) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVmType
 

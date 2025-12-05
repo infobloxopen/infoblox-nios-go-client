@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IP address of the server that is serving this zone. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the zone; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether a zone is disabled or not. When this is set to False, the zone is enabled. | [optional] 
@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **Locked** | Pointer to **bool** | If you enable this flag, other administrators cannot make conflicting changes. This is for administration purposes only. The zone will continue to serve DNS data even when it is locked. | [optional] 
 **LockedBy** | Pointer to **string** | The name of a superuser or the administrator who locked this zone. | [optional] [readonly] 
 **MaskPrefix** | Pointer to **string** | IPv4 Netmask or IPv6 prefix for this zone. | [optional] [readonly] 
+**MgmPrivate** | Pointer to **bool** | This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized. | [optional] 
+**MgmPrivateOverridable** | Pointer to **bool** | This field is assumed to be True unless filled by any conforming objects, such as Network, IPv6 Network, Network Container, IPv6 Network Container, and Network View. This value is set to False if mgm_private is set to True in the parent object. | [optional] [readonly] 
 **MsAdIntegrated** | Pointer to **bool** | The flag that determines whether Active Directory is integrated or not. This field is valid only when ms_managed is \&quot;STUB\&quot;, \&quot;AUTH_PRIMARY\&quot;, or \&quot;AUTH_BOTH\&quot;. | [optional] 
 **MsDdnsMode** | Pointer to **string** | Determines whether an Active Directory-integrated zone with a Microsoft DNS server as primary allows dynamic updates. Valid values are: \&quot;SECURE\&quot; if the zone allows secure updates only. \&quot;NONE\&quot; if the zone forbids dynamic updates. \&quot;ANY\&quot; if the zone accepts both secure and nonsecure updates. This field is valid only if ms_managed is either \&quot;AUTH_PRIMARY\&quot; or \&quot;AUTH_BOTH\&quot;. If the flag ms_ad_integrated is false, the value \&quot;SECURE\&quot; is not allowed. | [optional] 
 **MsManaged** | Pointer to **string** | The flag that indicates whether the zone is assigned to a Microsoft DNS server. This flag returns the authoritative name server type of the Microsoft DNS server. Valid values are: \&quot;NONE\&quot; if the zone is not assigned to any Microsoft DNS server. \&quot;STUB\&quot; if the zone is assigned to a Microsoft DNS server as a stub zone. \&quot;AUTH_PRIMARY\&quot; if only the primary server of the zone is a Microsoft DNS server. \&quot;AUTH_SECONDARY\&quot; if only the secondary server of the zone is a Microsoft DNS server. \&quot;AUTH_BOTH\&quot; if both the primary and secondary servers of the zone are Microsoft DNS servers. | [optional] [readonly] 
@@ -38,6 +40,7 @@ Name | Type | Description | Notes
 **StubMembers** | Pointer to [**[]ZoneStubStubMembers**](ZoneStubStubMembers.md) | The Grid member servers of this stub zone. Note that the lead/stealth/grid_replicate/ preferred_primaries/override_preferred_primaries fields of the struct will be ignored when set in this field. | [optional] 
 **StubMsservers** | Pointer to [**[]ZoneStubStubMsservers**](ZoneStubStubMsservers.md) | The Microsoft DNS servers of this stub zone. Note that the stealth field of the struct will be ignored when set in this field. | [optional] 
 **UsingSrgAssociations** | Pointer to **bool** | This is true if the zone is associated with a shared record group. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | The name of the DNS view in which the zone resides. Example \&quot;external\&quot;. | [optional] 
 **ZoneFormat** | Pointer to **string** | Determines the format of this zone. | [optional] 
 **Result** | Pointer to [**ZoneStub**](ZoneStub.md) |  | [optional] 
@@ -435,6 +438,56 @@ SetMaskPrefix sets MaskPrefix field to given value.
 `func (o *GetZoneStubResponse) HasMaskPrefix() bool`
 
 HasMaskPrefix returns a boolean if a field has been set.
+
+### GetMgmPrivate
+
+`func (o *GetZoneStubResponse) GetMgmPrivate() bool`
+
+GetMgmPrivate returns the MgmPrivate field if non-nil, zero value otherwise.
+
+### GetMgmPrivateOk
+
+`func (o *GetZoneStubResponse) GetMgmPrivateOk() (*bool, bool)`
+
+GetMgmPrivateOk returns a tuple with the MgmPrivate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMgmPrivate
+
+`func (o *GetZoneStubResponse) SetMgmPrivate(v bool)`
+
+SetMgmPrivate sets MgmPrivate field to given value.
+
+### HasMgmPrivate
+
+`func (o *GetZoneStubResponse) HasMgmPrivate() bool`
+
+HasMgmPrivate returns a boolean if a field has been set.
+
+### GetMgmPrivateOverridable
+
+`func (o *GetZoneStubResponse) GetMgmPrivateOverridable() bool`
+
+GetMgmPrivateOverridable returns the MgmPrivateOverridable field if non-nil, zero value otherwise.
+
+### GetMgmPrivateOverridableOk
+
+`func (o *GetZoneStubResponse) GetMgmPrivateOverridableOk() (*bool, bool)`
+
+GetMgmPrivateOverridableOk returns a tuple with the MgmPrivateOverridable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMgmPrivateOverridable
+
+`func (o *GetZoneStubResponse) SetMgmPrivateOverridable(v bool)`
+
+SetMgmPrivateOverridable sets MgmPrivateOverridable field to given value.
+
+### HasMgmPrivateOverridable
+
+`func (o *GetZoneStubResponse) HasMgmPrivateOverridable() bool`
+
+HasMgmPrivateOverridable returns a boolean if a field has been set.
 
 ### GetMsAdIntegrated
 
@@ -910,6 +963,31 @@ SetUsingSrgAssociations sets UsingSrgAssociations field to given value.
 `func (o *GetZoneStubResponse) HasUsingSrgAssociations() bool`
 
 HasUsingSrgAssociations returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetZoneStubResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetZoneStubResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetZoneStubResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetZoneStubResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Brokers** | Pointer to [**[]DxlEndpointBrokers**](DxlEndpointBrokers.md) | The list of DXL endpoint brokers. Note that you cannot specify brokers and brokers_import_token at the same time. | [optional] 
 **BrokersImportToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop for a DXL broker configuration file. Note that you cannot specify brokers and brokers_import_token at the same time. | [optional] 
 **ClientCertificateSubject** | Pointer to **string** | The client certificate subject of a DXL endpoint. | [optional] [readonly] 
@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **TemplateInstance** | Pointer to [**DxlEndpointTemplateInstance**](DxlEndpointTemplateInstance.md) |  | [optional] 
 **Timeout** | Pointer to **int64** | The timeout of session management (in seconds). | [optional] 
 **Topics** | Pointer to **[]string** | DXL topics | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VendorIdentifier** | Pointer to **string** | The vendor identifier. | [optional] 
 **WapiUserName** | Pointer to **string** | The user name for WAPI integration. | [optional] 
 **WapiUserPassword** | Pointer to **string** | The user password for WAPI integration. | [optional] 
@@ -521,6 +522,31 @@ SetTopics sets Topics field to given value.
 `func (o *GetDxlEndpointResponse) HasTopics() bool`
 
 HasTopics returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDxlEndpointResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDxlEndpointResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDxlEndpointResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDxlEndpointResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVendorIdentifier
 

@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Domain** | Pointer to **string** | The Kerberos domain name. | [optional] [readonly] 
 **Enctype** | Pointer to **string** | The Kerberos key encryption type. | [optional] [readonly] 
 **InUse** | Pointer to **bool** | Determines whether the Kerberos key is assigned to the Grid or Grid member. | [optional] [readonly] 
 **Members** | Pointer to **[]string** | The list of hostnames and services of Grid members where the key is assigned or Grid/DHCP4 or Grid/DHCP6 or Grid/DNS. | [optional] [readonly] 
 **Principal** | Pointer to **string** | The principal of the Kerberos key object. | [optional] [readonly] 
 **UploadTimestamp** | Pointer to **int64** | The timestamp of the Kerberos key upload operation. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Version** | Pointer to **int64** | The Kerberos key version number (KVNO). | [optional] [readonly] 
 **Result** | Pointer to [**Kerberoskey**](Kerberoskey.md) |  | [optional] 
 
@@ -207,6 +208,31 @@ SetUploadTimestamp sets UploadTimestamp field to given value.
 `func (o *GetKerberoskeyResponse) HasUploadTimestamp() bool`
 
 HasUploadTimestamp returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetKerberoskeyResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetKerberoskeyResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetKerberoskeyResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetKerberoskeyResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVersion
 

@@ -46,6 +46,7 @@ Name | Type | Description | Notes
 **SetNtpStratum** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetPcDomain** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetReportFrequency** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
+**SetQueryLoggingWarnings** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **EnableAll** | Pointer to **bool** | If True then enable all fields | [optional] 
 **DisableAll** | Pointer to **bool** | If True then disable all fields | [optional] 
 
@@ -1117,6 +1118,31 @@ SetSetReportFrequency sets SetReportFrequency field to given value.
 `func (o *AdmingroupAdminSetCommands) HasSetReportFrequency() bool`
 
 HasSetReportFrequency returns a boolean if a field has been set.
+
+### GetSetQueryLoggingWarnings
+
+`func (o *AdmingroupAdminSetCommands) GetSetQueryLoggingWarnings() bool`
+
+GetSetQueryLoggingWarnings returns the SetQueryLoggingWarnings field if non-nil, zero value otherwise.
+
+### GetSetQueryLoggingWarningsOk
+
+`func (o *AdmingroupAdminSetCommands) GetSetQueryLoggingWarningsOk() (*bool, bool)`
+
+GetSetQueryLoggingWarningsOk returns a tuple with the SetQueryLoggingWarnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSetQueryLoggingWarnings
+
+`func (o *AdmingroupAdminSetCommands) SetSetQueryLoggingWarnings(v bool)`
+
+SetSetQueryLoggingWarnings sets SetQueryLoggingWarnings field to given value.
+
+### HasSetQueryLoggingWarnings
+
+`func (o *AdmingroupAdminSetCommands) HasSetQueryLoggingWarnings() bool`
+
+HasSetQueryLoggingWarnings returns a boolean if a field has been set.
 
 ### GetEnableAll
 

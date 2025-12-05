@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AssociatedObject** | Pointer to **string** | The record object, if supported by the WAPI. Otherwise, the value is \&quot;None\&quot;. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The record comment. | [optional] [readonly] 
 **CreationTimestamp** | Pointer to **int64** | Time at which DNS RR was created. | [optional] [readonly] 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Parent** | Pointer to **string** | Name of the Super Host object in which record resides. | [optional] [readonly] 
 **RecordParent** | Pointer to **string** | Name of a parent zone/network. | [optional] [readonly] 
 **Type** | Pointer to **string** | The record type. When searching for an unspecified record type, the search is performed for all records. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | Name of the DNS View in which the record resides. | [optional] [readonly] 
 **Result** | Pointer to [**Superhostchild**](Superhostchild.md) |  | [optional] 
 
@@ -311,6 +312,31 @@ SetType sets Type field to given value.
 `func (o *GetSuperhostchildResponse) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetSuperhostchildResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetSuperhostchildResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetSuperhostchildResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetSuperhostchildResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

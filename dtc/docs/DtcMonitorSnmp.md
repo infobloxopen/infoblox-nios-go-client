@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for this DTC monitor; maximum 256 characters. | [optional] 
 **Community** | Pointer to **string** | The SNMP community string for SNMP authentication. | [optional] 
 **Context** | Pointer to **string** | The SNMPv3 context. | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **RetryUp** | Pointer to **int64** | The value of how many times the server should appear as up to be treated as alive after it was dead. | [optional] 
 **Timeout** | Pointer to **int64** | The timeout for TCP health check in seconds. | [optional] 
 **User** | Pointer to **string** | The SNMPv3 user setting. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Version** | Pointer to **string** | The SNMP protocol version for the SNMP health check. | [optional] 
 
 ## Methods
@@ -440,6 +441,31 @@ SetUser sets User field to given value.
 `func (o *DtcMonitorSnmp) HasUser() bool`
 
 HasUser returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DtcMonitorSnmp) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DtcMonitorSnmp) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DtcMonitorSnmp) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DtcMonitorSnmp) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVersion
 

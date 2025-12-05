@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The Grid member address IP address. | [optional] [readonly] 
 **CliCredentials** | Pointer to [**[]DiscoveryMemberpropertiesCliCredentials**](DiscoveryMemberpropertiesCliCredentials.md) | Discovery CLI credentials. | [optional] 
 **DefaultSeedRouters** | Pointer to [**[]DiscoveryMemberpropertiesDefaultSeedRouters**](DiscoveryMemberpropertiesDefaultSeedRouters.md) | Default seed routers. | [optional] [readonly] 
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **UseCliCredentials** | Pointer to **bool** | Use flag for: cli_credentials | [optional] 
 **UseSnmpv1v2Credentials** | Pointer to **bool** | Use flag for: snmpv1v2_credentials | [optional] 
 **UseSnmpv3Credentials** | Pointer to **bool** | Use flag for: snmpv3_credentials | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**DiscoveryMemberproperties**](DiscoveryMemberproperties.md) |  | [optional] 
 
 ## Methods
@@ -466,6 +467,31 @@ SetUseSnmpv3Credentials sets UseSnmpv3Credentials field to given value.
 `func (o *GetDiscoveryMemberpropertiesResponse) HasUseSnmpv3Credentials() bool`
 
 HasUseSnmpv3Credentials returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDiscoveryMemberpropertiesResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDiscoveryMemberpropertiesResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDiscoveryMemberpropertiesResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDiscoveryMemberpropertiesResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

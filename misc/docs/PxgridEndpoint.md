@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The pxgrid endpoint IPv4 Address or IPv6 Address or Fully-Qualified Domain Name (FQDN) | [optional] 
 **ClientCertificateSubject** | Pointer to **string** | The Cisco ISE client certificate subject. | [optional] [readonly] 
 **ClientCertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop for Cisco ISE client certificate. | [optional] 
@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **SubscribeSettings** | Pointer to [**PxgridEndpointSubscribeSettings**](PxgridEndpointSubscribeSettings.md) |  | [optional] 
 **TemplateInstance** | Pointer to [**PxgridEndpointTemplateInstance**](PxgridEndpointTemplateInstance.md) |  | [optional] 
 **Timeout** | Pointer to **int64** | The timeout of session management (in seconds). | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VendorIdentifier** | Pointer to **string** | The vendor identifier. | [optional] 
 **WapiUserName** | Pointer to **string** | The user name for WAPI integration. | [optional] 
 **WapiUserPassword** | Pointer to **string** | The user password for WAPI integration. | [optional] 
@@ -546,6 +547,31 @@ SetTimeout sets Timeout field to given value.
 `func (o *PxgridEndpoint) HasTimeout() bool`
 
 HasTimeout returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *PxgridEndpoint) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *PxgridEndpoint) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *PxgridEndpoint) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *PxgridEndpoint) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVendorIdentifier
 

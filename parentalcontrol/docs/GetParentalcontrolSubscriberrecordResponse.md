@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AccountingSessionId** | Pointer to **string** | accounting_session_id | [optional] 
 **AltIpAddr** | Pointer to **string** | alt_ip_addr | [optional] 
 **Ans0** | Pointer to **string** | ans0 | [optional] 
@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **SubscriberId** | Pointer to **string** | subscriber_id | [optional] 
 **SubscriberSecurePolicy** | Pointer to **string** | subscriber_secure_policy | [optional] 
 **UnknownCategoryPolicy** | Pointer to **bool** | unknown_category_policy | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **WhiteList** | Pointer to **string** | white_list | [optional] 
 **WpcCategoryPolicy** | Pointer to **string** | wpc_category_policy | [optional] 
 **Result** | Pointer to [**ParentalcontrolSubscriberrecord**](ParentalcontrolSubscriberrecord.md) |  | [optional] 
@@ -650,6 +651,31 @@ SetUnknownCategoryPolicy sets UnknownCategoryPolicy field to given value.
 `func (o *GetParentalcontrolSubscriberrecordResponse) HasUnknownCategoryPolicy() bool`
 
 HasUnknownCategoryPolicy returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetParentalcontrolSubscriberrecordResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetParentalcontrolSubscriberrecordResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetParentalcontrolSubscriberrecordResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetParentalcontrolSubscriberrecordResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetWhiteList
 

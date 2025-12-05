@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AddClientIpMacOptions** | Pointer to **bool** | Add custom IP, MAC and DNS View name ENDS0 options to outgoing recursive queries. | [optional] 
 **AdditionalIpList** | Pointer to **[]string** | The list of additional IP addresses on which DNS is enabled for a Grid member. Only one of \&quot;additional_ip_list\&quot; or \&quot;additional_ip_list_struct\&quot; should be set when modifying the object. | [optional] 
 **AdditionalIpListStruct** | Pointer to [**[]MemberDnsAdditionalIpListStruct**](MemberDnsAdditionalIpListStruct.md) | The list of additional IP addresses and IP Space Discriminator short names on which DNS is enabled for a Grid member. Only one of \&quot;additional_ip_list\&quot; or \&quot;additional_ip_list_struct\&quot; should be set when modifying the object. | [optional] 
@@ -211,6 +211,7 @@ Name | Type | Description | Notes
 **UseTransfersPerNs** | Pointer to **bool** | Use flag for: transfers_per_ns | [optional] 
 **UseUpdateSetting** | Pointer to **bool** | Use flag for: allow_update , allow_gss_tsig_zone_updates | [optional] 
 **UseZoneTransferFormat** | Pointer to **bool** | Use flag for: transfer_excluded_servers , transfer_format | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Views** | Pointer to **[]string** | The list of views associated with this member. | [optional] 
 **Result** | Pointer to [**MemberDns**](MemberDns.md) |  | [optional] 
 
@@ -5407,6 +5408,31 @@ SetUseZoneTransferFormat sets UseZoneTransferFormat field to given value.
 `func (o *GetMemberDnsResponse) HasUseZoneTransferFormat() bool`
 
 HasUseZoneTransferFormat returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMemberDnsResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMemberDnsResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMemberDnsResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMemberDnsResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetViews
 

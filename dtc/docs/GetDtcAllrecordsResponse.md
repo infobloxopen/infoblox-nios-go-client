@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The record comment. | [optional] [readonly] 
 **Disable** | Pointer to **bool** | The disable value determines if the record is disabled or not. \&quot;False\&quot; means the record is enabled. | [optional] [readonly] 
 **DtcServer** | Pointer to **string** | The name of the DTC Server object with which the record is associated. | [optional] [readonly] 
 **Record** | Pointer to **string** | The record object, if supported by the WAPI. Otherwise, the value is \&quot;None\&quot;. | [optional] [readonly] 
 **Ttl** | Pointer to **int64** | The TTL value of the record associated with the DTC AllRecords object. | [optional] 
 **Type** | Pointer to **string** | The record type. When searching for an unspecified record type, the search is performed for all records. On retrieval, the appliance returns \&quot;UNSUPPORTED\&quot; for unsupported records. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**DtcAllrecords**](DtcAllrecords.md) |  | [optional] 
 
 ## Methods
@@ -206,6 +207,31 @@ SetType sets Type field to given value.
 `func (o *GetDtcAllrecordsResponse) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDtcAllrecordsResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDtcAllrecordsResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDtcAllrecordsResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDtcAllrecordsResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

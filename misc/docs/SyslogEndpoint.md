@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **SyslogServers** | Pointer to [**[]SyslogEndpointSyslogServers**](SyslogEndpointSyslogServers.md) | List of syslog servers | [optional] 
 **TemplateInstance** | Pointer to [**SyslogEndpointTemplateInstance**](SyslogEndpointTemplateInstance.md) |  | [optional] 
 **Timeout** | Pointer to **int64** | The timeout of session management (in seconds). | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VendorIdentifier** | Pointer to **string** | The vendor identifier. | [optional] 
 **WapiUserName** | Pointer to **string** | The user name for WAPI integration. | [optional] 
 **WapiUserPassword** | Pointer to **string** | The user password for WAPI integration. | [optional] 
@@ -312,6 +313,31 @@ SetTimeout sets Timeout field to given value.
 `func (o *SyslogEndpoint) HasTimeout() bool`
 
 HasTimeout returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *SyslogEndpoint) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *SyslogEndpoint) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *SyslogEndpoint) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *SyslogEndpoint) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVendorIdentifier
 

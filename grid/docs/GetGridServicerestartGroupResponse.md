@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the Restart Group; maximum 256 characters. | [optional] 
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Requests** | Pointer to **[]string** | The list of requests associated with a restart group. | [optional] [readonly] 
 **Service** | Pointer to **string** | The applicable service for this Restart Group. | [optional] 
 **Status** | Pointer to [**GridServicerestartStatus**](GridServicerestartStatus.md) |  | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**GridServicerestartGroup**](GridServicerestartGroup.md) |  | [optional] 
 
 ## Methods
@@ -414,6 +415,31 @@ SetStatus sets Status field to given value.
 `func (o *GetGridServicerestartGroupResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGridServicerestartGroupResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGridServicerestartGroupResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGridServicerestartGroupResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGridServicerestartGroupResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

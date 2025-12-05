@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DISCOVERY API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for discovery objects
   name: Discovery
@@ -3138,6 +3138,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListDiscoveryResponse:
@@ -3163,13 +3164,20 @@ components:
       example:
         _ref: _ref
         name: Example name
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         name:
           description: The name of the Credential group.
           example: Example name
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
           type: string
       type: object
     ListDiscoveryCredentialgroupResponse:
@@ -3270,6 +3278,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IPv4 Address or IPv6 Address of the device.
@@ -3397,6 +3406,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interfaces:
           description: List of the device interfaces.
           enum:
@@ -3498,6 +3508,8 @@ components:
           readOnly: true
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DiscoveryDeviceMsAdUserData:
       example:
         active_users_count: 1
@@ -3606,6 +3618,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         component_name:
           description: The component name.
@@ -3748,6 +3761,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         admin_status:
           description: Administrative state of the interface.
@@ -3889,6 +3903,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ifaddr_infos:
           description: List of IFaddr information associated with the interface.
           enum:
@@ -4012,6 +4027,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DiscoveryDeviceinterfaceAdminStatusTaskInfo:
       example:
         details:
@@ -4270,6 +4287,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IPv4 Address or IPv6 Address of the device neighbor.
@@ -4310,6 +4328,7 @@ components:
           readOnly: true
           type: array
       type: object
+      x-tf-skip-expand: true
     DiscoveryDeviceneighborVlanInfos:
       example:
         name: Example name
@@ -4354,6 +4373,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         author:
           description: The developer of the device support bundle.
@@ -4407,10 +4427,12 @@ components:
         debug_snmp: false
         task_id: Example task_id
         ip_address: Example ip_address
+        uuid: Example uuid
         force_test: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         community_string:
           description: The SNMP community string of the discovery diagnostic task.
@@ -4440,6 +4462,11 @@ components:
         task_id:
           description: The ID of the discovery diagnostic task.
           example: Example task_id
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
           type: string
       type: object
     ListDiscoveryDiagnostictaskResponse:
@@ -4525,6 +4552,7 @@ components:
         - port: 1
           comment: Example comment
           type: Example type
+        uuid: Example uuid
         dns_lookup_option: Example dns_lookup_option
         unmanaged_ips_limit: 1
         cli_credentials:
@@ -4673,6 +4701,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         advanced_polling_settings:
           $ref: '#/components/schemas/DiscoveryGridpropertiesAdvancedPollingSettings'
@@ -4787,6 +4816,11 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vrf_mapping_policy:
           description: The policy type used to define the behavior of the VRF mapping.
           enum:
@@ -4803,6 +4837,7 @@ components:
             $ref: '#/components/schemas/DiscoveryGridpropertiesVrfMappingRules'
           type: array
       type: object
+      x-tf-skip-expand: true
     DiscoveryGridpropertiesAdvancedPollingSettings:
       example:
         purge_expired_endhost_data: 1
@@ -5937,6 +5972,7 @@ components:
           comment: Example comment
         role: Example role
         use_snmpv1v2_credentials: false
+        uuid: Example uuid
         default_seed_routers:
         - network_view: Example network_view
           address: Example address
@@ -6018,6 +6054,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The Grid member address IP address.
@@ -6116,7 +6153,13 @@ components:
           description: "Use flag for: snmpv3_credentials"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     DiscoveryMemberpropertiesCliCredentials:
       example:
         credential_type: Example credential_type
@@ -6446,9 +6489,11 @@ components:
         _ref: _ref
         name: Example name
         source_sdn_config: Example source_sdn_config
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         first_seen:
           description: Timestamp when this SDN network was first discovered.
@@ -6469,6 +6514,11 @@ components:
         source_sdn_config:
           description: Name of SDN configuration this network belongs to.
           example: Example source_sdn_config
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
       type: object
@@ -6538,6 +6588,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IPv4 Address or IPv6 Address of the device.
@@ -6626,6 +6677,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     DiscoveryStatusCliCredentialInfo:
       example:
         message: Example message
@@ -6845,6 +6897,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         description:
           description: Additional information about the VRF.
@@ -6893,6 +6946,34 @@ components:
     Vdiscoverytask:
       additionalProperties: false
       example:
+        auto_consolidate_managed_tenant: false
+        uuid: Example uuid
+        identity_version: Example identity_version
+        public_network_view_mapping_policy: Example public_network_view_mapping_policy
+        fqdn_or_ip: Example fqdn_or_ip
+        domain_name: Example domain_name
+        password: Example password
+        protocol: Example protocol
+        sync_child_accounts: false
+        state: Example state
+        service_account_file: Example service_account_file
+        network_filter: Example network_filter
+        update_metadata: false
+        service_account_file_token: Example service_account_file_token
+        allow_unsecured_connection: false
+        govcloud_enabled: false
+        private_network_view: Example private_network_view
+        public_network_view: Example public_network_view
+        cdiscovery_file_token: Example cdiscovery_file_token
+        dns_view_public_ip: Example dns_view_public_ip
+        role_arn: Example role_arn
+        port: 1
+        name: Example name
+        multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+        private_network_view_mapping_policy: Example private_network_view_mapping_policy
+        dns_view_private_ip: Example dns_view_private_ip
+        merge_data: false
+        credentials_type: Example credentials_type
         use_identity: false
         driver_type: Example driver_type
         update_dns_view_private_ip: false
@@ -6911,57 +6992,31 @@ components:
           day_of_month: 1
           hour_of_day: 1
           frequency: Example frequency
-        auto_consolidate_managed_tenant: false
         enable_filter: false
         enabled: false
         auto_create_dns_record: false
         auto_create_dns_record_type: Example auto_create_dns_record_type
-        identity_version: Example identity_version
-        public_network_view_mapping_policy: Example public_network_view_mapping_policy
-        fqdn_or_ip: Example fqdn_or_ip
-        domain_name: Example domain_name
-        password: Example password
-        protocol: Example protocol
         update_dns_view_public_ip: false
-        sync_child_accounts: false
         auto_consolidate_cloud_ea: false
         member: Example member
-        state: Example state
         network_list:
         - network_list
         - network_list
-        service_account_file: Example service_account_file
-        network_filter: Example network_filter
-        update_metadata: false
         state_msg: Example state_msg
-        service_account_file_token: Example service_account_file_token
-        allow_unsecured_connection: false
-        govcloud_enabled: false
         last_run: 1
-        private_network_view: Example private_network_view
-        public_network_view: Example public_network_view
-        cdiscovery_file_token: Example cdiscovery_file_token
         accounts_list:
         - accounts_list
         - accounts_list
-        dns_view_public_ip: Example dns_view_public_ip
         auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-        role_arn: Example role_arn
         selected_regions: Example selected_regions
-        port: 1
         _ref: _ref
-        name: Example name
         comment: Example comment
-        multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-        private_network_view_mapping_policy: Example private_network_view_mapping_policy
         auto_consolidate_managed_vm: false
-        dns_view_private_ip: Example dns_view_private_ip
-        merge_data: false
-        credentials_type: Example credentials_type
         username: Example username
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         accounts_list:
           description: The AWS Account IDs or GCP Project IDs list associated with
@@ -7217,7 +7272,13 @@ components:
           description: Username used for connecting to the cloud management platform.
           example: Example username
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
+      x-tf-skip-expand: true
     VdiscoverytaskScheduledRun:
       example:
         month: 1
@@ -7382,6 +7443,7 @@ components:
         result:
           _ref: _ref
           name: Example name
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/DiscoveryCredentialgroup'
@@ -7402,6 +7464,7 @@ components:
         result:
           _ref: _ref
           name: Example name
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/DiscoveryCredentialgroup'
@@ -7718,6 +7781,7 @@ components:
           debug_snmp: false
           task_id: Example task_id
           ip_address: Example ip_address
+          uuid: Example uuid
           force_test: false
       properties:
         result:
@@ -7808,6 +7872,7 @@ components:
           - port: 1
             comment: Example comment
             type: Example type
+          uuid: Example uuid
           dns_lookup_option: Example dns_lookup_option
           unmanaged_ips_limit: 1
           cli_credentials:
@@ -8007,6 +8072,7 @@ components:
             comment: Example comment
           role: Example role
           use_snmpv1v2_credentials: false
+          uuid: Example uuid
           default_seed_routers:
           - network_view: Example network_view
             address: Example address
@@ -8176,6 +8242,34 @@ components:
       description: The response format to create __Vdiscoverytask__ in object format.
       example:
         result:
+          auto_consolidate_managed_tenant: false
+          uuid: Example uuid
+          identity_version: Example identity_version
+          public_network_view_mapping_policy: Example public_network_view_mapping_policy
+          fqdn_or_ip: Example fqdn_or_ip
+          domain_name: Example domain_name
+          password: Example password
+          protocol: Example protocol
+          sync_child_accounts: false
+          state: Example state
+          service_account_file: Example service_account_file
+          network_filter: Example network_filter
+          update_metadata: false
+          service_account_file_token: Example service_account_file_token
+          allow_unsecured_connection: false
+          govcloud_enabled: false
+          private_network_view: Example private_network_view
+          public_network_view: Example public_network_view
+          cdiscovery_file_token: Example cdiscovery_file_token
+          dns_view_public_ip: Example dns_view_public_ip
+          role_arn: Example role_arn
+          port: 1
+          name: Example name
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+          private_network_view_mapping_policy: Example private_network_view_mapping_policy
+          dns_view_private_ip: Example dns_view_private_ip
+          merge_data: false
+          credentials_type: Example credentials_type
           use_identity: false
           driver_type: Example driver_type
           update_dns_view_private_ip: false
@@ -8194,53 +8288,26 @@ components:
             day_of_month: 1
             hour_of_day: 1
             frequency: Example frequency
-          auto_consolidate_managed_tenant: false
           enable_filter: false
           enabled: false
           auto_create_dns_record: false
           auto_create_dns_record_type: Example auto_create_dns_record_type
-          identity_version: Example identity_version
-          public_network_view_mapping_policy: Example public_network_view_mapping_policy
-          fqdn_or_ip: Example fqdn_or_ip
-          domain_name: Example domain_name
-          password: Example password
-          protocol: Example protocol
           update_dns_view_public_ip: false
-          sync_child_accounts: false
           auto_consolidate_cloud_ea: false
           member: Example member
-          state: Example state
           network_list:
           - network_list
           - network_list
-          service_account_file: Example service_account_file
-          network_filter: Example network_filter
-          update_metadata: false
           state_msg: Example state_msg
-          service_account_file_token: Example service_account_file_token
-          allow_unsecured_connection: false
-          govcloud_enabled: false
           last_run: 1
-          private_network_view: Example private_network_view
-          public_network_view: Example public_network_view
-          cdiscovery_file_token: Example cdiscovery_file_token
           accounts_list:
           - accounts_list
           - accounts_list
-          dns_view_public_ip: Example dns_view_public_ip
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-          role_arn: Example role_arn
           selected_regions: Example selected_regions
-          port: 1
           _ref: _ref
-          name: Example name
           comment: Example comment
-          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-          private_network_view_mapping_policy: Example private_network_view_mapping_policy
           auto_consolidate_managed_vm: false
-          dns_view_private_ip: Example dns_view_private_ip
-          merge_data: false
-          credentials_type: Example credentials_type
           username: Example username
       properties:
         result:
@@ -8259,6 +8326,34 @@ components:
       description: The response format to update __Vdiscoverytask__ in object format.
       example:
         result:
+          auto_consolidate_managed_tenant: false
+          uuid: Example uuid
+          identity_version: Example identity_version
+          public_network_view_mapping_policy: Example public_network_view_mapping_policy
+          fqdn_or_ip: Example fqdn_or_ip
+          domain_name: Example domain_name
+          password: Example password
+          protocol: Example protocol
+          sync_child_accounts: false
+          state: Example state
+          service_account_file: Example service_account_file
+          network_filter: Example network_filter
+          update_metadata: false
+          service_account_file_token: Example service_account_file_token
+          allow_unsecured_connection: false
+          govcloud_enabled: false
+          private_network_view: Example private_network_view
+          public_network_view: Example public_network_view
+          cdiscovery_file_token: Example cdiscovery_file_token
+          dns_view_public_ip: Example dns_view_public_ip
+          role_arn: Example role_arn
+          port: 1
+          name: Example name
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+          private_network_view_mapping_policy: Example private_network_view_mapping_policy
+          dns_view_private_ip: Example dns_view_private_ip
+          merge_data: false
+          credentials_type: Example credentials_type
           use_identity: false
           driver_type: Example driver_type
           update_dns_view_private_ip: false
@@ -8277,53 +8372,26 @@ components:
             day_of_month: 1
             hour_of_day: 1
             frequency: Example frequency
-          auto_consolidate_managed_tenant: false
           enable_filter: false
           enabled: false
           auto_create_dns_record: false
           auto_create_dns_record_type: Example auto_create_dns_record_type
-          identity_version: Example identity_version
-          public_network_view_mapping_policy: Example public_network_view_mapping_policy
-          fqdn_or_ip: Example fqdn_or_ip
-          domain_name: Example domain_name
-          password: Example password
-          protocol: Example protocol
           update_dns_view_public_ip: false
-          sync_child_accounts: false
           auto_consolidate_cloud_ea: false
           member: Example member
-          state: Example state
           network_list:
           - network_list
           - network_list
-          service_account_file: Example service_account_file
-          network_filter: Example network_filter
-          update_metadata: false
           state_msg: Example state_msg
-          service_account_file_token: Example service_account_file_token
-          allow_unsecured_connection: false
-          govcloud_enabled: false
           last_run: 1
-          private_network_view: Example private_network_view
-          public_network_view: Example public_network_view
-          cdiscovery_file_token: Example cdiscovery_file_token
           accounts_list:
           - accounts_list
           - accounts_list
-          dns_view_public_ip: Example dns_view_public_ip
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-          role_arn: Example role_arn
           selected_regions: Example selected_regions
-          port: 1
           _ref: _ref
-          name: Example name
           comment: Example comment
-          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-          private_network_view_mapping_policy: Example private_network_view_mapping_policy
           auto_consolidate_managed_vm: false
-          dns_view_private_ip: Example dns_view_private_ip
-          merge_data: false
-          credentials_type: Example credentials_type
           username: Example username
       properties:
         result:

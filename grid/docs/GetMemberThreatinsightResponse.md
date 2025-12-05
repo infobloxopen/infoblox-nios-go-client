@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The Grid member descriptive comment. | [optional] [readonly] 
 **EnableService** | Pointer to **bool** | Determines whether the threat insight service is enabled. | [optional] 
 **HostName** | Pointer to **string** | The Grid member host name. | [optional] [readonly] 
 **Ipv4Address** | Pointer to **string** | The IPv4 Address address of the Grid member. | [optional] [readonly] 
 **Ipv6Address** | Pointer to **string** | The IPv6 Address address of the Grid member. | [optional] [readonly] 
 **Status** | Pointer to **string** | The Grid member threat insight status. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**MemberThreatinsight**](MemberThreatinsight.md) |  | [optional] 
 
 ## Methods
@@ -206,6 +207,31 @@ SetStatus sets Status field to given value.
 `func (o *GetMemberThreatinsightResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMemberThreatinsightResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMemberThreatinsightResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMemberThreatinsightResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMemberThreatinsightResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

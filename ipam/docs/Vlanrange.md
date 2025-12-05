@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment for this VLAN Range. | [optional] 
 **DeleteVlans** | Pointer to **bool** | Vlans delete option. Determines whether all child objects should be removed alongside with the VLAN Range or child objects should be assigned to another parental VLAN Range/View. By default child objects are re-parented. | [optional] 
 **EndVlanId** | Pointer to **int64** | End ID for VLAN Range. | [optional] 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Name of the VLAN Range. | [optional] 
 **PreCreateVlan** | Pointer to **bool** | If set on creation VLAN objects will be created once VLAN Range created. | [optional] 
 **StartVlanId** | Pointer to **int64** | Start ID for VLAN Range. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VlanNamePrefix** | Pointer to **string** | If set on creation prefix string will be used for VLAN name. | [optional] 
 **VlanView** | Pointer to **string** | The VLAN View to which this VLAN Range belongs. | [optional] 
 
@@ -285,6 +286,31 @@ SetStartVlanId sets StartVlanId field to given value.
 `func (o *Vlanrange) HasStartVlanId() bool`
 
 HasStartVlanId returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Vlanrange) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Vlanrange) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Vlanrange) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Vlanrange) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVlanNamePrefix
 

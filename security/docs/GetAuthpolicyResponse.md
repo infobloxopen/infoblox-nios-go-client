@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AdminGroups** | Pointer to **[]string** | List of names of local administration groups that are mapped to remote administration groups. | [optional] 
 **AuthServices** | Pointer to **[]string** | The array that contains an ordered list of refs to :doc:&#x60;localuser:authservice object &lt;/objects/localuser.authservice&gt;&#x60;, ldap_auth_service object ldap_auth_service, :doc:&#x60;radius:authservice object &lt;/objects/radius.authservice&gt;&#x60;, :doc:&#x60;tacacsplus:authservice object &lt;/objects/tacacsplus.authservice&gt;&#x60;, ad_auth_service object ad_auth_service, :doc:&#x60;certificate:authservice object &lt;/objects/certificate.authservice&gt;&#x60;. :doc:&#x60;saml:authservice object &lt;/objects/saml.authservice&gt;&#x60;, | [optional] 
 **DefaultGroup** | Pointer to **string** | The default admin group that provides authentication in case no valid group is found. | [optional] 
 **UsageType** | Pointer to **string** | Remote policies usage. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Authpolicy**](Authpolicy.md) |  | [optional] 
 
 ## Methods
@@ -154,6 +155,31 @@ SetUsageType sets UsageType field to given value.
 `func (o *GetAuthpolicyResponse) HasUsageType() bool`
 
 HasUsageType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetAuthpolicyResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetAuthpolicyResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetAuthpolicyResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetAuthpolicyResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

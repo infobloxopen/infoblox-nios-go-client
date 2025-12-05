@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **BinaryMajorVersion** | Pointer to **int64** | The major version of DB binary format. | [optional] [readonly] 
 **BinaryMinorVersion** | Pointer to **int64** | The minor version of DB binary format. | [optional] [readonly] 
 **BuildTime** | Pointer to **int64** | The time at which the DB was built. | [optional] [readonly] 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DeploymentTime** | Pointer to **int64** | The time at which the current Topology DB was deployed. | [optional] [readonly] 
 **Member** | Pointer to **string** | The member for testing the connection. | [optional] [readonly] 
 **TopologyType** | Pointer to **string** | The topology type. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetTopologyType sets TopologyType field to given value.
 `func (o *GridMaxminddbinfo) HasTopologyType() bool`
 
 HasTopologyType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridMaxminddbinfo) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridMaxminddbinfo) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridMaxminddbinfo) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridMaxminddbinfo) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

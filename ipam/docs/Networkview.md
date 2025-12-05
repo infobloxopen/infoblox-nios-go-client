@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AssociatedDnsViews** | Pointer to **[]string** | The list of DNS views associated with this network view. | [optional] [readonly] 
 **AssociatedMembers** | Pointer to [**[]NetworkviewAssociatedMembers**](NetworkviewAssociatedMembers.md) | The list of members associated with a network view. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**NetworkviewCloudInfo**](NetworkviewCloudInfo.md) |  | [optional] 
@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Name of the network view. | [optional] 
 **RemoteForwardZones** | Pointer to [**[]NetworkviewRemoteForwardZones**](NetworkviewRemoteForwardZones.md) | The list of forward-mapping zones to which the DHCP server sends the updates. | [optional] 
 **RemoteReverseZones** | Pointer to [**[]NetworkviewRemoteReverseZones**](NetworkviewRemoteReverseZones.md) | The list of reverse-mapping zones to which the DHCP server sends the updates. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -491,6 +492,31 @@ SetRemoteReverseZones sets RemoteReverseZones field to given value.
 `func (o *Networkview) HasRemoteReverseZones() bool`
 
 HasRemoteReverseZones returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Networkview) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Networkview) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Networkview) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Networkview) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

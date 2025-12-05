@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowApiAdmins** | Pointer to **string** | Defines which administrators are allowed to perform Cloud API request on the Grid Member: no administrators (NONE), any administrators (ALL) or administrators in the ACL list (LIST). Default is ALL. | [optional] 
 **AllowedApiAdmins** | Pointer to [**[]GridMemberCloudapiAllowedApiAdmins**](GridMemberCloudapiAllowedApiAdmins.md) | List of administrators allowed to perform Cloud Platform API requests on that member. | [optional] 
 **EnableService** | Pointer to **bool** | Controls whether the Cloud API service runs on the member or not. | [optional] 
@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **GatewayConfig** | Pointer to [**GridMemberCloudapiGatewayConfig**](GridMemberCloudapiGatewayConfig.md) |  | [optional] 
 **Member** | Pointer to [**GridMemberCloudapiMember**](GridMemberCloudapiMember.md) |  | [optional] 
 **Status** | Pointer to **string** | Status of Cloud API service on the member. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**GridMemberCloudapi**](GridMemberCloudapi.md) |  | [optional] 
 
 ## Methods
@@ -284,6 +285,31 @@ SetStatus sets Status field to given value.
 `func (o *GetGridMemberCloudapiResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGridMemberCloudapiResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGridMemberCloudapiResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGridMemberCloudapiResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGridMemberCloudapiResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

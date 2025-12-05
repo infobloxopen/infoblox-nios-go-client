@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AbstractType** | Pointer to **string** | The abstract object type. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for the DTC object; maximum 256 characters. | [optional] [readonly] 
 **DisplayType** | Pointer to **string** | The display object type. | [optional] [readonly] 

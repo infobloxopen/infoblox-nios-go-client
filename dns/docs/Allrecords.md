@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The record address. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The record comment. | [optional] [readonly] 
 **Creator** | Pointer to **string** | The record creator. | [optional] [readonly] 
@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Record** | Pointer to **string** | The record object, if supported by the WAPI. Otherwise, the value is \&quot;None\&quot;. | [optional] [readonly] 
 **Ttl** | Pointer to **int64** | The Time To Live (TTL) value for which the record is valid or being cached. The 32-bit unsigned integer represents the duration in seconds. Zero indicates that the record should not be cached. | [optional] [readonly] 
 **Type** | Pointer to **string** | The record type. When searching for an unspecified record type, the search is performed for all records. On retrieval, the appliance returns \&quot;UNSUPPORTED\&quot; for unsupported records. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **View** | Pointer to **string** | Name of the DNS View in which the record resides. | [optional] [readonly] 
 **Zone** | Pointer to **string** | Name of the zone in which the record resides. | [optional] [readonly] 
 
@@ -363,6 +364,31 @@ SetType sets Type field to given value.
 `func (o *Allrecords) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Allrecords) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Allrecords) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Allrecords) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Allrecords) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetView
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Abss** | Pointer to [**[]ParentalcontrolSubscribersiteAbss**](ParentalcontrolSubscribersiteAbss.md) | The list of ABS for the site. | [optional] 
 **ApiMembers** | Pointer to [**[]ParentalcontrolSubscribersiteApiMembers**](ParentalcontrolSubscribersiteApiMembers.md) | The list of API members for the site. | [optional] 
 **ApiPort** | Pointer to **int64** | The port number for gRPC API server. | [optional] [readonly] 
@@ -16,13 +16,16 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | The human readable comment for the site. | [optional] 
 **DcaSubBwList** | Pointer to **bool** | Enable/disable the DCA subscriber B/W list support. | [optional] 
 **DcaSubQueryCount** | Pointer to **bool** | Enable/disable the DCA subscriber query count. | [optional] 
+**EnableGcpPrecedenceOverAllowedList** | Pointer to **bool** | Enable/disable global content filter policy over allowed list. | [optional] 
 **EnableGlobalAllowListRpz** | Pointer to **bool** | Enable/disable global allow list RPZ setting. | [optional] 
+**EnableGlobalContentPolicy** | Pointer to **bool** | Enable/disable global content policy setting. | [optional] 
 **EnableRpzFilteringBypass** | Pointer to **bool** | Enable/disable Subscriber Secure Policy Bypass for Allowed list. | [optional] 
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FirstPort** | Pointer to **int64** | The start of the first Deterministic block. | [optional] 
 **GlobalAllowListRpz** | Pointer to **int64** | Global allow list RPZ index. Valid values are between 0 and 63. | [optional] 
+**GlobalContentPolicyBitNumbers** | Pointer to **string** | Global content filter policy bit numbers in range of 0 to 127. | [optional] 
 **MaximumSubscribers** | Pointer to **int64** | The max number of subscribers for the site. It is used to configure the cache size. | [optional] 
 **Members** | Pointer to [**[]ParentalcontrolSubscribersiteMembers**](ParentalcontrolSubscribersiteMembers.md) | The list of members for the site. | [optional] 
 **Msps** | Pointer to [**[]ParentalcontrolSubscribersiteMsps**](ParentalcontrolSubscribersiteMsps.md) | The list of MSP for the site. | [optional] 
@@ -34,6 +37,7 @@ Name | Type | Description | Notes
 **StopAnycast** | Pointer to **bool** | Stop the anycast service when the subscriber service is in the interim state. | [optional] 
 **StrictNat** | Pointer to **bool** | Restrict subscriber cache entries to NATed clients. | [optional] 
 **SubscriberCollectionType** | Pointer to **string** | Subscriber collection type either RADIUS or API. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**ParentalcontrolSubscribersite**](ParentalcontrolSubscribersite.md) |  | [optional] 
 
 ## Methods
@@ -355,6 +359,31 @@ SetDcaSubQueryCount sets DcaSubQueryCount field to given value.
 
 HasDcaSubQueryCount returns a boolean if a field has been set.
 
+### GetEnableGcpPrecedenceOverAllowedList
+
+`func (o *GetParentalcontrolSubscribersiteResponse) GetEnableGcpPrecedenceOverAllowedList() bool`
+
+GetEnableGcpPrecedenceOverAllowedList returns the EnableGcpPrecedenceOverAllowedList field if non-nil, zero value otherwise.
+
+### GetEnableGcpPrecedenceOverAllowedListOk
+
+`func (o *GetParentalcontrolSubscribersiteResponse) GetEnableGcpPrecedenceOverAllowedListOk() (*bool, bool)`
+
+GetEnableGcpPrecedenceOverAllowedListOk returns a tuple with the EnableGcpPrecedenceOverAllowedList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableGcpPrecedenceOverAllowedList
+
+`func (o *GetParentalcontrolSubscribersiteResponse) SetEnableGcpPrecedenceOverAllowedList(v bool)`
+
+SetEnableGcpPrecedenceOverAllowedList sets EnableGcpPrecedenceOverAllowedList field to given value.
+
+### HasEnableGcpPrecedenceOverAllowedList
+
+`func (o *GetParentalcontrolSubscribersiteResponse) HasEnableGcpPrecedenceOverAllowedList() bool`
+
+HasEnableGcpPrecedenceOverAllowedList returns a boolean if a field has been set.
+
 ### GetEnableGlobalAllowListRpz
 
 `func (o *GetParentalcontrolSubscribersiteResponse) GetEnableGlobalAllowListRpz() bool`
@@ -379,6 +408,31 @@ SetEnableGlobalAllowListRpz sets EnableGlobalAllowListRpz field to given value.
 `func (o *GetParentalcontrolSubscribersiteResponse) HasEnableGlobalAllowListRpz() bool`
 
 HasEnableGlobalAllowListRpz returns a boolean if a field has been set.
+
+### GetEnableGlobalContentPolicy
+
+`func (o *GetParentalcontrolSubscribersiteResponse) GetEnableGlobalContentPolicy() bool`
+
+GetEnableGlobalContentPolicy returns the EnableGlobalContentPolicy field if non-nil, zero value otherwise.
+
+### GetEnableGlobalContentPolicyOk
+
+`func (o *GetParentalcontrolSubscribersiteResponse) GetEnableGlobalContentPolicyOk() (*bool, bool)`
+
+GetEnableGlobalContentPolicyOk returns a tuple with the EnableGlobalContentPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableGlobalContentPolicy
+
+`func (o *GetParentalcontrolSubscribersiteResponse) SetEnableGlobalContentPolicy(v bool)`
+
+SetEnableGlobalContentPolicy sets EnableGlobalContentPolicy field to given value.
+
+### HasEnableGlobalContentPolicy
+
+`func (o *GetParentalcontrolSubscribersiteResponse) HasEnableGlobalContentPolicy() bool`
+
+HasEnableGlobalContentPolicy returns a boolean if a field has been set.
 
 ### GetEnableRpzFilteringBypass
 
@@ -529,6 +583,31 @@ SetGlobalAllowListRpz sets GlobalAllowListRpz field to given value.
 `func (o *GetParentalcontrolSubscribersiteResponse) HasGlobalAllowListRpz() bool`
 
 HasGlobalAllowListRpz returns a boolean if a field has been set.
+
+### GetGlobalContentPolicyBitNumbers
+
+`func (o *GetParentalcontrolSubscribersiteResponse) GetGlobalContentPolicyBitNumbers() string`
+
+GetGlobalContentPolicyBitNumbers returns the GlobalContentPolicyBitNumbers field if non-nil, zero value otherwise.
+
+### GetGlobalContentPolicyBitNumbersOk
+
+`func (o *GetParentalcontrolSubscribersiteResponse) GetGlobalContentPolicyBitNumbersOk() (*string, bool)`
+
+GetGlobalContentPolicyBitNumbersOk returns a tuple with the GlobalContentPolicyBitNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGlobalContentPolicyBitNumbers
+
+`func (o *GetParentalcontrolSubscribersiteResponse) SetGlobalContentPolicyBitNumbers(v string)`
+
+SetGlobalContentPolicyBitNumbers sets GlobalContentPolicyBitNumbers field to given value.
+
+### HasGlobalContentPolicyBitNumbers
+
+`func (o *GetParentalcontrolSubscribersiteResponse) HasGlobalContentPolicyBitNumbers() bool`
+
+HasGlobalContentPolicyBitNumbers returns a boolean if a field has been set.
 
 ### GetMaximumSubscribers
 
@@ -804,6 +883,31 @@ SetSubscriberCollectionType sets SubscriberCollectionType field to given value.
 `func (o *GetParentalcontrolSubscribersiteResponse) HasSubscriberCollectionType() bool`
 
 HasSubscriberCollectionType returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetParentalcontrolSubscribersiteResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetParentalcontrolSubscribersiteResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetParentalcontrolSubscribersiteResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetParentalcontrolSubscribersiteResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

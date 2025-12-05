@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Ciphers** | Pointer to **string** | An optional cipher list for secure TLS/SIPS connection. | [optional] 
 **ClientCert** | Pointer to **string** | An optional client certificate, supplied in TLS and SIPS mode if present. | [optional] 
 **Comment** | Pointer to **string** | Comment for this DTC monitor; maximum 256 characters. | [optional] 
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **RetryUp** | Pointer to **int64** | The value of how many times the server should appear as up to be treated as alive after it was dead. | [optional] 
 **Timeout** | Pointer to **int64** | The timeout for TCP health check in seconds. | [optional] 
 **Transport** | Pointer to **string** | The transport layer protocol to use for SIP check. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ValidateCert** | Pointer to **bool** | Determines whether the validation of the remote server&#39;s certificate is enabled. | [optional] 
 
 ## Methods
@@ -466,6 +467,31 @@ SetTransport sets Transport field to given value.
 `func (o *DtcMonitorSip) HasTransport() bool`
 
 HasTransport returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DtcMonitorSip) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DtcMonitorSip) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DtcMonitorSip) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DtcMonitorSip) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetValidateCert
 

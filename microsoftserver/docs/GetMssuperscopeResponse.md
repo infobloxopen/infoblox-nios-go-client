@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The superscope descriptive comment. | [optional] 
 **DhcpUtilization** | Pointer to **int64** | The percentage of the total DHCP usage of the ranges in the superscope. | [optional] [readonly] 
 **DhcpUtilizationStatus** | Pointer to **string** | Utilization level of the DHCP range objects that belong to the superscope. | [optional] [readonly] 
@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Ranges** | Pointer to **[]string** | The list of DHCP ranges that are associated with the superscope. | [optional] 
 **StaticHosts** | Pointer to **int64** | The number of static DHCP addresses configured in DHCP range objects that belong to the superscope. | [optional] [readonly] 
 **TotalHosts** | Pointer to **int64** | The total number of DHCP addresses configured in DHCP range objects that belong to the superscope. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Mssuperscope**](Mssuperscope.md) |  | [optional] 
 
 ## Methods
@@ -492,6 +493,31 @@ SetTotalHosts sets TotalHosts field to given value.
 `func (o *GetMssuperscopeResponse) HasTotalHosts() bool`
 
 HasTotalHosts returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMssuperscopeResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMssuperscopeResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMssuperscopeResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMssuperscopeResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

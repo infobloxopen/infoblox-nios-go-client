@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AccessList** | Pointer to [**[]NamedaclAccessList**](NamedaclAccessList.md) | The access control list of IPv4/IPv6 addresses, networks, TSIG-based anonymous access controls, and other named ACLs. | [optional] 
 **Comment** | Pointer to **string** | Comment for the named ACL; maximum 256 characters. | [optional] 
 **ExplodedAccessList** | Pointer to [**[]NamedaclExplodedAccessList**](NamedaclExplodedAccessList.md) | The exploded access list for the named ACL. This list displays all the access control entries in a named ACL and its nested named ACLs, if applicable. | [optional] [readonly] 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | The name of the named ACL. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetName sets Name field to given value.
 `func (o *Namedacl) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Namedacl) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Namedacl) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Namedacl) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Namedacl) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

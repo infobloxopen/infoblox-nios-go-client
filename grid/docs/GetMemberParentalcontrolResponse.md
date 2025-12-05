@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **EnableService** | Pointer to **bool** | Determines if the parental control service is enabled. | [optional] 
 **Name** | Pointer to **string** | The parental control member hostname. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**MemberParentalcontrol**](MemberParentalcontrol.md) |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetName sets Name field to given value.
 `func (o *GetMemberParentalcontrolResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMemberParentalcontrolResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMemberParentalcontrolResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMemberParentalcontrolResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMemberParentalcontrolResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

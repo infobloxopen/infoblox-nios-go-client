@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Domain** | Pointer to **string** | The reference to the Active Directory Domain to which the site belongs. | [optional] 
 **Name** | Pointer to **string** | The name of the site properties object for the Active Directory Sites. | [optional] 
 **Networks** | Pointer to **[]string** | The list of networks to which the device interfaces belong. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**MsserverAdsitesSite**](MsserverAdsitesSite.md) |  | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetNetworks sets Networks field to given value.
 `func (o *GetMsserverAdsitesSiteResponse) HasNetworks() bool`
 
 HasNetworks returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMsserverAdsitesSiteResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMsserverAdsitesSiteResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMsserverAdsitesSiteResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMsserverAdsitesSiteResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 
