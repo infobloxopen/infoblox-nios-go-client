@@ -1802,7 +1802,7 @@ components:
         - enabled_attributes
       properties:
         enabled_attributes:
-          description: The list of NIOS extensible attributes enalbed for publishsing
+          description: The list of NIOS extensible attributes enalbed for publishing
             to Cisco ISE endpoint.
           enum:
           - CLIENT_ID
