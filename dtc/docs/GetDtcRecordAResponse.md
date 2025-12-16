@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**AutoCreated** | Pointer to **string** | Flag that indicates whether this record was automatically created by NIOS. | [optional] [readonly] 
+**AutoCreated** | Pointer to **bool** | Flag that indicates whether this record was automatically created by NIOS. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the record; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines if the record is disabled or not. False means that the record is enabled. | [optional] 
 **DtcServer** | Pointer to **string** | The name of the DTC Server object with which the DTC record is associated. | [optional] 
@@ -60,20 +60,20 @@ HasRef returns a boolean if a field has been set.
 
 ### GetAutoCreated
 
-`func (o *GetDtcRecordAResponse) GetAutoCreated() string`
+`func (o *GetDtcRecordAResponse) GetAutoCreated() bool`
 
 GetAutoCreated returns the AutoCreated field if non-nil, zero value otherwise.
 
 ### GetAutoCreatedOk
 
-`func (o *GetDtcRecordAResponse) GetAutoCreatedOk() (*string, bool)`
+`func (o *GetDtcRecordAResponse) GetAutoCreatedOk() (*bool, bool)`
 
 GetAutoCreatedOk returns a tuple with the AutoCreated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutoCreated
 
-`func (o *GetDtcRecordAResponse) SetAutoCreated(v string)`
+`func (o *GetDtcRecordAResponse) SetAutoCreated(v bool)`
 
 SetAutoCreated sets AutoCreated field to given value.
 

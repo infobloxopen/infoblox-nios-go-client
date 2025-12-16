@@ -8315,7 +8315,7 @@ components:
         comment: Example comment
         ipv4addr: Example ipv4addr
         ttl: 1
-        auto_created: Example auto_created
+        auto_created: false
       properties:
         _ref:
           description: The reference to the object.
@@ -8324,9 +8324,9 @@ components:
         auto_created:
           description: Flag that indicates whether this record was automatically created
             by NIOS.
-          example: Example auto_created
+          example: false
           readOnly: true
-          type: string
+          type: boolean
         comment:
           description: Comment for the record; maximum 256 characters.
           example: Example comment
@@ -8388,7 +8388,7 @@ components:
         _ref: _ref
         comment: Example comment
         ttl: 1
-        auto_created: Example auto_created
+        auto_created: false
         ipv6addr: Example ipv6addr
       properties:
         _ref:
@@ -8398,9 +8398,9 @@ components:
         auto_created:
           description: Flag that indicates whether this record was automatically created
             by NIOS.
-          example: Example auto_created
+          example: false
           readOnly: true
-          type: string
+          type: boolean
         comment:
           description: Comment for the record; maximum 256 characters.
           example: Example comment
@@ -8463,7 +8463,7 @@ components:
         comment: Example comment
         canonical: Example canonical
         ttl: 1
-        auto_created: Example auto_created
+        auto_created: false
         dns_canonical: Example dns_canonical
       properties:
         _ref:
@@ -8473,9 +8473,9 @@ components:
         auto_created:
           description: Flag that indicates whether this record was automatically created
             by NIOS.
-          example: Example auto_created
+          example: false
           readOnly: true
-          type: string
+          type: boolean
         canonical:
           description: The canonical name of the host.
           example: Example canonical
@@ -10198,7 +10198,7 @@ components:
           comment: Example comment
           ipv4addr: Example ipv4addr
           ttl: 1
-          auto_created: Example auto_created
+          auto_created: false
       properties:
         result:
           $ref: '#/components/schemas/DtcRecordA'
@@ -10223,7 +10223,7 @@ components:
           comment: Example comment
           ipv4addr: Example ipv4addr
           ttl: 1
-          auto_created: Example auto_created
+          auto_created: false
       properties:
         result:
           $ref: '#/components/schemas/DtcRecordA'
@@ -10248,7 +10248,7 @@ components:
           _ref: _ref
           comment: Example comment
           ttl: 1
-          auto_created: Example auto_created
+          auto_created: false
           ipv6addr: Example ipv6addr
       properties:
         result:
@@ -10273,7 +10273,7 @@ components:
           _ref: _ref
           comment: Example comment
           ttl: 1
-          auto_created: Example auto_created
+          auto_created: false
           ipv6addr: Example ipv6addr
       properties:
         result:
@@ -10300,7 +10300,7 @@ components:
           comment: Example comment
           canonical: Example canonical
           ttl: 1
-          auto_created: Example auto_created
+          auto_created: false
           dns_canonical: Example dns_canonical
       properties:
         result:
@@ -10326,7 +10326,7 @@ components:
           comment: Example comment
           canonical: Example canonical
           ttl: 1
-          auto_created: Example auto_created
+          auto_created: false
           dns_canonical: Example dns_canonical
       properties:
         result:
