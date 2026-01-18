@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CsvFileName** | Pointer to **string** | The network discovery CSV file name. | [optional] [readonly] 
 **DisableIpScanning** | Pointer to **bool** | Determines whether IP scanning is disabled. | [optional] 
 **DisableVmwareScanning** | Pointer to **bool** | Determines whether VMWare scanning is disabled. | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**BulkhostCloudInfo**](BulkhostCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | The disable flag of a DNS BulkHost record. | [optional] 

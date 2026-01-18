@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ExpirationStatus** | Pointer to **string** | The license expiration status. | [optional] [readonly] 
 **ExpiryDate** | Pointer to **int64** | The expiration timestamp of the license. | [optional] [readonly] 
 **Hwid** | Pointer to **string** | The hardware ID of the physical node on which the license is installed. | [optional] [readonly] 

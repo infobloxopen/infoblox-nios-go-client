@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **HardwareType** | Pointer to **string** | Hardware type of a Grid member. | [optional] [readonly] 
 **MaxCapacity** | Pointer to **int64** | The maximum amount of capacity available for the Grid member. | [optional] [readonly] 
 **Name** | Pointer to **string** | The Grid member name. | [optional] [readonly] 

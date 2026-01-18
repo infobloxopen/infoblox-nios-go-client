@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CreationTime** | Pointer to **int64** | The creation time of the record. | [optional] [readonly] 
 **Creator** | Pointer to **string** | The record creator. | [optional] [readonly] 
 **Dhcid** | Pointer to **string** | The Base64 encoded DHCP client information. | [optional] [readonly] 

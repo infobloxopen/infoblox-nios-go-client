@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IP address of the server that is serving this zone. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the zone; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether a zone is disabled or not. When this is set to False, the zone is enabled. | [optional] 

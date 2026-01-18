@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **RpZones** | Pointer to **[]string** | An ordered list of Response Policy Zone names. | [optional] 
 **View** | Pointer to **string** | The DNS View name. | [optional] 
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowUploads** | Pointer to **bool** | Determines whether uploads to the Grid member are allowed. | [optional] 
 **Comment** | Pointer to **string** | The Grid member descriptive comment. | [optional] [readonly] 
 **EnableFtp** | Pointer to **bool** | Determines whether the FTP prtocol is enabled for file distribution. | [optional] 

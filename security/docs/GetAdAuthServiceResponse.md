@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AdDomain** | Pointer to **string** | The Active Directory domain to which this server belongs. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the AD authentication service. | [optional] 
 **Disabled** | Pointer to **bool** | Determines if Active Directory Authentication Service is disabled. | [optional] 

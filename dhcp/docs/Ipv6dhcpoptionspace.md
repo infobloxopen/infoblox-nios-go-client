@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment of a DHCP IPv6 option space object. | [optional] 
 **EnterpriseNumber** | Pointer to **int64** | The enterprise number of a DHCP IPv6 option space object. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP IPv6 option space object. | [optional] 

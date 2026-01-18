@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for the DTC TOPOLOGY monitor object; maximum 256 characters. | [optional] 
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **Name** | Pointer to **string** | Display name of the DTC Topology. | [optional] 
-**Rules** | Pointer to **[]string** | Topology rules. | [optional] 
+**Rules** | Pointer to [**[]DtcTopologyRulesInner**](DtcTopologyRulesInner.md) | Topology rules. | [optional] 
 
 ## Methods
 
@@ -183,20 +183,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetRules
 
-`func (o *DtcTopology) GetRules() []string`
+`func (o *DtcTopology) GetRules() []DtcTopologyRulesInner`
 
 GetRules returns the Rules field if non-nil, zero value otherwise.
 
 ### GetRulesOk
 
-`func (o *DtcTopology) GetRulesOk() (*[]string, bool)`
+`func (o *DtcTopology) GetRulesOk() (*[]DtcTopologyRulesInner, bool)`
 
 GetRulesOk returns a tuple with the Rules field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRules
 
-`func (o *DtcTopology) SetRules(v []string)`
+`func (o *DtcTopology) SetRules(v []DtcTopologyRulesInner)`
 
 SetRules sets Rules field to given value.
 

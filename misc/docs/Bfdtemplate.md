@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AuthenticationKey** | Pointer to **string** | The authentication key for BFD protocol message-digest authentication. | [optional] 
 **AuthenticationKeyId** | Pointer to **int64** | The authentication key identifier for BFD protocol authentication. Valid values are between 1 and 255. | [optional] 
 **AuthenticationType** | Pointer to **string** | The authentication type for BFD protocol. | [optional] 

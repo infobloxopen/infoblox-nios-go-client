@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ApplyAsClass** | Pointer to **bool** | Determines if apply as class is enabled or not. If this flag is set to \&quot;true\&quot; the filter is treated as global DHCP class, e.g it is written to DHCPv6 configuration file even if it is not present in any DHCP range. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment of a DHCP IPv6 filter option object. | [optional] 
 **Expression** | Pointer to **string** | The conditional expression of a DHCP IPv6 filter option object. | [optional] 

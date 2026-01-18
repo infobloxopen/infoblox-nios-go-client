@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AuthenticationTime** | Pointer to **int64** | The absolute UNIX time (in seconds) since the address was last authenticated. | [optional] 
 **Comment** | Pointer to **string** | Comment for the MAC filter address; maximum 256 characters. | [optional] 
 **ExpirationTime** | Pointer to **int64** | The absolute UNIX time (in seconds) until the address expires. | [optional] 

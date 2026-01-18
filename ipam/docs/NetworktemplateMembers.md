@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Struct** | Pointer to **string** | The struct type of the object. The value must be one of &#39;dhcpmember&#39; or &#39;msdhcpserver&#39;. | [optional] 
 **Ipv4addr** | Pointer to **string** | The IPv4 Address or FQDN of the Microsoft server. | [optional] 
 **Ipv6addr** | Pointer to **string** | The IPv6 Address of the Grid Member. | [optional] 
 **Name** | Pointer to **string** | The Grid member name | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewNetworktemplateMembersWithDefaults instantiates a new NetworktemplateMembers object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetStruct
+
+`func (o *NetworktemplateMembers) GetStruct() string`
+
+GetStruct returns the Struct field if non-nil, zero value otherwise.
+
+### GetStructOk
+
+`func (o *NetworktemplateMembers) GetStructOk() (*string, bool)`
+
+GetStructOk returns a tuple with the Struct field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStruct
+
+`func (o *NetworktemplateMembers) SetStruct(v string)`
+
+SetStruct sets Struct field to given value.
+
+### HasStruct
+
+`func (o *NetworktemplateMembers) HasStruct() bool`
+
+HasStruct returns a boolean if a field has been set.
 
 ### GetIpv4addr
 

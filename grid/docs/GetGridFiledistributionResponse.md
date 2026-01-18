@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowUploads** | Pointer to **bool** | Determines whether the uploads to Grid members are allowed. | [optional] 
 **BackupStorage** | Pointer to **bool** | Determines whether to include distributed files in the backup. | [optional] 
 **CurrentUsage** | Pointer to **int64** | The value is the percentage of the allocated TFTP storage space that is used, expressed in tenth of a percent. Valid values are from 0 to 1000. | [optional] [readonly] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AdminGroups** | Pointer to **[]string** | The names of the Admin Groups to which this Admin User belongs. Currently, this is limited to only one Admin Group. | [optional] 
 **AuthMethod** | Pointer to **string** | Determines the way of authentication | [optional] 
 **AuthType** | Pointer to **string** | The authentication type for the admin user. | [optional] 

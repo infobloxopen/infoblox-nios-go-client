@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Author** | Pointer to **string** | The developer of the device support bundle. | [optional] [readonly] 
 **IntegratedInd** | Pointer to **bool** | Determines whether the device support bundle is integrated or imported. Note that integrated support bundles cannot be removed. | [optional] [readonly] 
 **Name** | Pointer to **string** | The descriptive device name for the device support bundle. | [optional] [readonly] 

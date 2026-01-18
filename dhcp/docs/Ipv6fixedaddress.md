@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AddressType** | Pointer to **string** | The address type value for this IPv6 fixed address. When the address type is \&quot;ADDRESS\&quot;, a value for the &#39;ipv6addr&#39; member is required. When the address type is \&quot;PREFIX\&quot;, values for &#39;ipv6prefix&#39; and &#39;ipv6prefix_bits&#39; are required. When the address type is \&quot;BOTH\&quot;, values for &#39;ipv6addr&#39;, &#39;ipv6prefix&#39;, and &#39;ipv6prefix_bits&#39; are all required. | [optional] 
 **AllowTelnet** | Pointer to **bool** | This field controls whether the credential is used for both the Telnet and SSH credentials. If set to False, the credential is used only for SSH. | [optional] 
 **CliCredentials** | Pointer to [**[]Ipv6fixedaddressCliCredentials**](Ipv6fixedaddressCliCredentials.md) | The CLI credentials for the IPv6 fixed address. | [optional] 

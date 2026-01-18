@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Issuer** | Pointer to **string** | Certificate issuer. | [optional] [readonly] 
 **Serial** | Pointer to **string** | X509Certificate serial number. | [optional] [readonly] 
 **Subject** | Pointer to **string** | A Distinguished Name that is made of multiple relative distinguished names (RDNs). | [optional] [readonly] 

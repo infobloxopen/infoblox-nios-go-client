@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The record address. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The record comment. | [optional] [readonly] 
 **Creator** | Pointer to **string** | The record creator. | [optional] [readonly] 

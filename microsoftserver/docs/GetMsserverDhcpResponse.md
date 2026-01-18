@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The address or FQDN of the DHCP Microsoft Server. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment from Microsoft Server | [optional] [readonly] 
 **DhcpUtilization** | Pointer to **int64** | The percentage of the total DHCP utilization of DHCP objects belonging to the DHCP Microsoft Server multiplied by 1000. This is the percentage of the total number of available IP addresses from all the DHCP objects belonging to the DHCP Microsoft Server versus the total number of all IP addresses in all of the DHCP objects on the DHCP Microsoft Server. | [optional] [readonly] 

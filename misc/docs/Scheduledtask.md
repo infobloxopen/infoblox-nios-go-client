@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ApprovalStatus** | Pointer to **string** | The approval status of the task. | [optional] 
 **Approver** | Pointer to **string** | The approver of the task. | [optional] [readonly] 
 **ApproverComment** | Pointer to **string** | The comment specified by the approver of the task. | [optional] 

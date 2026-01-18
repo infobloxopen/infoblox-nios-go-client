@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AssociationType** | Pointer to **string** | The value indicating whether the failover assoctaion is Microsoft or Grid based. This is a read-only attribute. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment about a DHCP failover object. | [optional] 
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 

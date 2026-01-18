@@ -70,6 +70,7 @@ docs/DistributionscheduleUpgradeGroups.md
 docs/ExtAttrs.md
 docs/Extensibleattributedef.md
 docs/ExtensibleattributedefAPI.md
+docs/ExtensibleattributedefDefaultValue.md
 docs/ExtensibleattributedefDescendantsAction.md
 docs/ExtensibleattributedefListValues.md
 docs/GetCaptiveportalResponse.md
@@ -632,6 +633,7 @@ model_distributionschedule.go
 model_distributionschedule_upgrade_groups.go
 model_ext_attrs.go
 model_extensibleattributedef.go
+model_extensibleattributedef_default_value.go
 model_extensibleattributedef_descendants_action.go
 model_extensibleattributedef_list_values.go
 model_get_captiveportal_response.go

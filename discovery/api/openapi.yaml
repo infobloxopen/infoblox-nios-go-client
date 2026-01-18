@@ -3362,6 +3362,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListDiscoveryResponse:
@@ -3390,6 +3391,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         name:
           description: The name of the Credential group.
@@ -3494,6 +3496,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IPv4 Address or IPv6 Address of the device.
@@ -3621,6 +3624,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         interfaces:
           description: List of the device interfaces.
           enum:
@@ -3722,6 +3726,8 @@ components:
           readOnly: true
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DiscoveryDeviceMsAdUserData:
       example:
         active_users_count: 1
@@ -3830,6 +3836,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         component_name:
           description: The component name.
@@ -3972,6 +3979,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         admin_status:
           description: Administrative state of the interface.
@@ -4113,6 +4121,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         ifaddr_infos:
           description: List of IFaddr information associated with the interface.
           enum:
@@ -4236,6 +4245,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     DiscoveryDeviceinterfaceAdminStatusTaskInfo:
       example:
         details:
@@ -4494,6 +4505,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IPv4 Address or IPv6 Address of the device neighbor.
@@ -4534,6 +4546,7 @@ components:
           readOnly: true
           type: array
       type: object
+      x-tf-skip-expand: true
     DiscoveryDeviceneighborVlanInfos:
       example:
         name: Example name
@@ -4578,6 +4591,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         author:
           description: The developer of the device support bundle.
@@ -4635,6 +4649,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         community_string:
           description: The SNMP community string of the discovery diagnostic task.
@@ -4897,6 +4912,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         advanced_polling_settings:
           $ref: '#/components/schemas/DiscoveryGridpropertiesAdvancedPollingSettings'
@@ -5027,6 +5043,7 @@ components:
             $ref: '#/components/schemas/DiscoveryGridpropertiesVrfMappingRules'
           type: array
       type: object
+      x-tf-skip-expand: true
     DiscoveryGridpropertiesAdvancedPollingSettings:
       example:
         purge_expired_endhost_data: 1
@@ -6242,6 +6259,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The Grid member address IP address.
@@ -6341,6 +6359,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     DiscoveryMemberpropertiesCliCredentials:
       example:
         credential_type: Example credential_type
@@ -6673,6 +6692,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         first_seen:
           description: Timestamp when this SDN network was first discovered.
@@ -6762,6 +6782,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IPv4 Address or IPv6 Address of the device.
@@ -6850,6 +6871,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     DiscoveryStatusCliCredentialInfo:
       example:
         message: Example message
@@ -7069,6 +7091,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         description:
           description: Additional information about the VRF.
@@ -7186,6 +7209,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         accounts_list:
           description: The AWS Account IDs or GCP Project IDs list associated with
@@ -7442,6 +7466,7 @@ components:
           example: Example username
           type: string
       type: object
+      x-tf-skip-expand: true
     VdiscoverytaskScheduledRun:
       example:
         month: 1

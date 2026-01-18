@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The upgrade group descriptive comment. | [optional] 
 **DistributionDependentGroup** | Pointer to **string** | The distribution dependent group name. | [optional] 
 **DistributionPolicy** | Pointer to **string** | The distribution scheduling policy. | [optional] 

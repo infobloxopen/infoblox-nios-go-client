@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The personal Smart Folder descriptive comment. | [optional] 
 **GroupBys** | Pointer to [**[]SmartfolderPersonalGroupBys**](SmartfolderPersonalGroupBys.md) | The personal Smart Folder groupping rules. | [optional] 
 **IsShortcut** | Pointer to **bool** | Determines whether the personal Smart Folder is a shortcut. | [optional] [readonly] 

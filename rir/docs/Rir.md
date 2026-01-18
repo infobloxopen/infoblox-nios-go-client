@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CommunicationMode** | Pointer to **string** | The communication mode for RIR. | [optional] 
 **Email** | Pointer to **string** | The e-mail address for RIR. | [optional] 
 **Name** | Pointer to **string** | The name of RIR. | [optional] 

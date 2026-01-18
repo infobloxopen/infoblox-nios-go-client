@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AddClientIpMacOptions** | Pointer to **bool** | Add custom IP, MAC and DNS View name ENDS0 options to outgoing recursive queries. | [optional] 
 **AdditionalIpList** | Pointer to **[]string** | The list of additional IP addresses on which DNS is enabled for a Grid member. Only one of \&quot;additional_ip_list\&quot; or \&quot;additional_ip_list_struct\&quot; should be set when modifying the object. | [optional] 
 **AdditionalIpListStruct** | Pointer to [**[]MemberDnsAdditionalIpListStruct**](MemberDnsAdditionalIpListStruct.md) | The list of additional IP addresses and IP Space Discriminator short names on which DNS is enabled for a Grid member. Only one of \&quot;additional_ip_list\&quot; or \&quot;additional_ip_list_struct\&quot; should be set when modifying the object. | [optional] 

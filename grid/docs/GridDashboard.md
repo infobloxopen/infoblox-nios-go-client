@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AnalyticsTunnelingEventCriticalThreshold** | Pointer to **int64** | The Grid Dashboard critical threshold for Analytics tunneling events. | [optional] 
 **AnalyticsTunnelingEventWarningThreshold** | Pointer to **int64** | The Grid Dashboard warning threshold for Analytics tunneling events. | [optional] 
 **AtpCriticalEventCriticalThreshold** | Pointer to **int64** | The Grid Dashboard critical threshold for ATP critical events. | [optional] 

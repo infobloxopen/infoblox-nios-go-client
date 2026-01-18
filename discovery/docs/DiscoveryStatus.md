@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IPv4 Address or IPv6 Address of the device. | [optional] [readonly] 
 **CliCollectionEnabled** | Pointer to **bool** | Indicates if CLI collection is enabled. | [optional] [readonly] 
 **CliCredentialInfo** | Pointer to [**DiscoveryStatusCliCredentialInfo**](DiscoveryStatusCliCredentialInfo.md) |  | [optional] 

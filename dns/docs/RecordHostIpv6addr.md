@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AddressType** | Pointer to **string** | Type of the DHCP IPv6 Host Address object. | [optional] 
 **ConfigureForDhcp** | Pointer to **bool** | Set this to True to enable the DHCP configuration for this IPv6 host address. | [optional] 
 **DiscoverNowStatus** | Pointer to **string** | The discovery status of this IPv6 Host Address. | [optional] [readonly] 

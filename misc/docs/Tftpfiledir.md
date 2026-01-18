@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Directory** | Pointer to **string** | The path to the directory that contains file or subdirectory. | [optional] 
 **IsSyncedToGm** | Pointer to **bool** | Determines whether the TFTP entity is synchronized to Grid Master. | [optional] [readonly] 
 **LastModify** | Pointer to **int64** | The time when the file or directory was last modified. | [optional] [readonly] 

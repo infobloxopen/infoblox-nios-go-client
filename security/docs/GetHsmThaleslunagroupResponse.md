@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The HSM Thales Luna group comment. | [optional] 
 **GroupSn** | Pointer to **string** | The HSM Thales Luna group serial number. | [optional] [readonly] 
 **HsmVersion** | Pointer to **string** | The HSM Thales Luna version. | [optional] 

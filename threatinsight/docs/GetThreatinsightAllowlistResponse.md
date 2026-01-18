@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The descriptive comment for the threat insight allowlist. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the threat insight allowlist is disabled. | [optional] 
 **Fqdn** | Pointer to **string** | The FQDN of the threat insight allowlist. | [optional] 

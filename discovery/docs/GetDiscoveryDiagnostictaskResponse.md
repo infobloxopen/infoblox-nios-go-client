@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CommunityString** | Pointer to **string** | The SNMP community string of the discovery diagnostic task. | [optional] 
 **DebugSnmp** | Pointer to **bool** | The SNMP debug flag of the discovery diagnostic task. | [optional] 
 **ForceTest** | Pointer to **bool** | The force test flag of the discovery diagnostic task. | [optional] 

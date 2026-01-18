@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AssociatedDnsViews** | Pointer to **[]string** | The list of DNS views associated with this network view. | [optional] [readonly] 
 **AssociatedMembers** | Pointer to [**[]NetworkviewAssociatedMembers**](NetworkviewAssociatedMembers.md) | The list of members associated with a network view. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**NetworkviewCloudInfo**](NetworkviewCloudInfo.md) |  | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The local user authentication service comment. | [optional] [readonly] 
 **Disabled** | Pointer to **bool** | Flag that indicates whether the local user authentication service is enabled or not. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the local user authentication service. | [optional] [readonly] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AutoCreateReversezone** | Pointer to **bool** | This flag controls whether reverse zones are automatically created when the network is added. | [optional] 
 **CloudInfo** | Pointer to [**Ipv6networkCloudInfo**](Ipv6networkCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the network; maximum 256 characters. | [optional] 

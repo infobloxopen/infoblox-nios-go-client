@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ClientCertificateSubject** | Pointer to **string** | The client certificate subject of a notification REST endpoint. | [optional] [readonly] 
 **ClientCertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop for a notification REST endpoit client certificate. | [optional] 
 **ClientCertificateValidFrom** | Pointer to **int64** | The timestamp when client certificate for a notification REST endpoint was created. | [optional] [readonly] 

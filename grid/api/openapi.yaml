@@ -11263,6 +11263,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_recursive_deletion:
           description: The property to allow recursive deletion. Determines the users
@@ -11529,6 +11530,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-skip-expand: true
     GridAutomatedTrafficCaptureSetting:
       example:
         duration: 1
@@ -13472,6 +13474,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_api_admins:
           description: "Defines administrators who can perform cloud API requests\
@@ -13499,6 +13502,7 @@ components:
         gateway_config:
           $ref: '#/components/schemas/GridCloudapiGatewayConfig'
       type: object
+      x-tf-skip-expand: true
     GridCloudapiAllowedApiAdmins:
       example:
         remote_admin: Example remote_admin
@@ -13592,6 +13596,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allocated_available_ratio:
           description: Ratio of allocated vs. available IPs
@@ -13692,6 +13697,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_info:
           $ref: '#/components/schemas/GridCloudapiTenantCloudInfo'
@@ -13735,6 +13741,7 @@ components:
           readOnly: true
           type: integer
       type: object
+      x-tf-skip-expand: true
     GridCloudapiTenantCloudInfo:
       example:
         delegated_member:
@@ -13894,6 +13901,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         availability_zone:
           description: Availability zone of the VM.
@@ -13931,6 +13939,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         first_seen:
           description: The timestamp when the VM was first seen in the system.
           example: 1
@@ -14031,6 +14040,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     GridCloudapiVmCloudInfo:
       example:
         delegated_member:
@@ -14205,6 +14216,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The IP address of the interface.
@@ -14427,6 +14439,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     GridCloudapiVmaddressCloudInfo:
       example:
         delegated_member:
@@ -14586,6 +14599,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_api_admins:
           description: "Defines which administrators are allowed to perform Cloud\
@@ -14631,6 +14645,7 @@ components:
             \ values for extensible attributes, see {extattrs:values}."
           readOnly: true
           type: object
+          x-tf-extattrs: true
         gateway_config:
           $ref: '#/components/schemas/GridMemberCloudapiGatewayConfig'
         member:
@@ -14647,6 +14662,8 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     GridMemberCloudapiAllowedApiAdmins:
       example:
         remote_admin: Example remote_admin
@@ -14886,6 +14903,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authority:
           description: The Grid-level authority flag. This flag specifies whether
@@ -15492,6 +15510,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-skip-expand: true
     GridDhcppropertiesIpv6Options:
       example:
         vendor_class: Example vendor_class
@@ -15707,6 +15726,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the Restart Group; maximum 256 characters.
@@ -15732,6 +15752,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         is_default:
           description: Determines if this Restart Group is the default group.
           example: false
@@ -15789,6 +15810,8 @@ components:
         status:
           $ref: '#/components/schemas/GridServicerestartStatus'
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     GridServicerestartGroupRecurringSchedule:
       example:
         mode: Example mode
@@ -15981,6 +16004,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         failures:
           description: The number of failed requests.
@@ -16094,6 +16118,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         error:
           description: The error message if restart has failed.
@@ -16206,6 +16231,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         address:
           description: The domain name or IP address for the Master Grid.
@@ -16320,6 +16346,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         analytics_tunneling_event_critical_threshold:
           description: The Grid Dashboard critical threshold for Analytics tunneling
@@ -16879,6 +16906,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         add_client_ip_mac_options:
           description: "Add custom IP, MAC and DNS View name ENDS0 options to outgoing\
@@ -17766,6 +17794,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     GridDnsAllowQuery:
       example:
         address: Example address
@@ -19303,6 +19332,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_uploads:
           description: Determines whether the uploads to Grid members are allowed.
@@ -19431,6 +19461,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         current_ruleset:
           description: The current Grid ruleset.
@@ -19507,6 +19538,7 @@ components:
         scheduled_download:
           $ref: '#/components/schemas/GridThreatprotectionScheduledDownload'
       type: object
+      x-tf-skip-expand: true
     GridThreatprotectionNatRules:
       example:
         rule_type: Example rule_type
@@ -19775,6 +19807,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allowlist_update_policy:
           description: allowlist update policy (manual or automatic)
@@ -19894,6 +19927,7 @@ components:
         scheduled_download:
           $ref: '#/components/schemas/GridThreatinsightScheduledDownload'
       type: object
+      x-tf-skip-expand: true
     GridThreatinsightScheduledAllowlistDownload:
       example:
         month: 1
@@ -20136,6 +20170,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         assigned:
           description: The number of dynamic licenses allocated to vNIOS appliances.
@@ -20259,6 +20294,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     GridLicensePoolSubpools:
       example:
         installed: 1
@@ -20314,6 +20350,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         issuer:
           description: Certificate issuer.
@@ -20403,6 +20440,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         authn_server_group:
           description: The authentication server group assigned to this captive portal.
@@ -20574,6 +20612,7 @@ components:
           example: Example welcome_message
           type: string
       type: object
+      x-tf-skip-expand: true
     CaptiveportalFiles:
       example:
         name: Example name
@@ -20620,6 +20659,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         last_entitlement_update:
           description: The timestamp when the last pool licenses were updated.
@@ -20666,6 +20706,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         binary_major_version:
           description: The major version of DB binary format.
@@ -20739,6 +20780,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         groups:
           description: The ordered list of the Service Restart Group.
@@ -20789,6 +20831,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         action:
           description: The operation on the changed object.
@@ -20866,6 +20909,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         dhcp_status:
           description: The status of the DHCP service.
@@ -20945,6 +20989,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The NAT group descriptive comment.
@@ -21645,6 +21690,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         active_position:
           description: The active server of a Grid member.
@@ -21738,6 +21784,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         external_syslog_backup_servers:
           description: The list of external syslog backup servers.
           enum:
@@ -22061,6 +22108,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     MemberAdditionalIpList:
       example:
         anycast: false
@@ -24986,6 +25035,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auth_server_group:
           description: The Authentication Server Group object associated with this
@@ -25204,6 +25254,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         gss_tsig_keys:
           description: The list of GSS-TSIG keys for a member DHCP object.
           enum:
@@ -25876,6 +25927,8 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     MemberDhcppropertiesDdnsZonePrimaries:
       example:
         dns_grid_primary: Example dns_grid_primary
@@ -26494,6 +26547,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         add_client_ip_mac_options:
           description: "Add custom IP, MAC and DNS View name ENDS0 options to outgoing\
@@ -27001,6 +27055,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         file_transfer_setting:
           $ref: '#/components/schemas/MemberDnsFileTransferSetting'
         filter_aaaa:
@@ -27643,6 +27698,8 @@ components:
             type: string
           type: array
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     MemberDnsAdditionalIpListStruct:
       example:
         ip_address: Example ip_address
@@ -28653,6 +28710,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_uploads:
           description: Determines whether uploads to the Grid member are allowed.
@@ -28783,6 +28841,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     MemberFiledistributionFtpAcls:
       example:
         address: Example address
@@ -28867,6 +28926,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         expiration_status:
           description: The license expiration status.
@@ -29042,6 +29102,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The human readable comment for member threat protection properties.
@@ -29140,6 +29201,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     MemberThreatprotectionNatRules:
       example:
         rule_type: Example rule_type
@@ -29258,6 +29320,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         enable_service:
           description: Determines if the parental control service is enabled.
@@ -29300,6 +29363,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The Grid member descriptive comment.
@@ -29364,6 +29428,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_sync_enabled:
           description: Option to enable/disable Cloud Sync.
@@ -29412,6 +29477,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         dfp_forward_first:
           description: Option to resolve DNS query if resolution over Active Trust
@@ -29438,6 +29504,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         host_name:
           description: Host name of the parent Member
           example: Example host_name
@@ -29448,6 +29515,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-extattrs-all: true
     ListMemberdfpResponse:
       oneOf:
       - description: The response format to retrieve __Memberdfp__ objects.
@@ -29487,6 +29555,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Description of the group
@@ -29522,6 +29591,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     GmcgroupMembers:
       example:
         member: Example member
@@ -29566,6 +29636,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         activate_gmc_group_schedule:
           description: Determines whether the gmc schedule is active.
@@ -29623,6 +29694,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         active:
           description: Determines whether the distribution schedule is active.
@@ -29646,6 +29718,7 @@ components:
             $ref: '#/components/schemas/DistributionscheduleUpgradeGroups'
           type: array
       type: object
+      x-tf-skip-expand: true
     DistributionscheduleUpgradeGroups:
       example:
         upgrade_time: 1
@@ -29722,6 +29795,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: The upgrade group descriptive comment.
@@ -29776,6 +29850,7 @@ components:
           format: int64
           type: integer
       type: object
+      x-tf-skip-expand: true
     UpgradegroupMembers:
       example:
         member: Example member
@@ -29838,6 +29913,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         active:
           description: Determines whether the upgrade schedule is active.
@@ -29861,6 +29937,7 @@ components:
             $ref: '#/components/schemas/UpgradescheduleUpgradeGroups'
           type: array
       type: object
+      x-tf-skip-expand: true
     UpgradescheduleUpgradeGroups:
       example:
         upgrade_time: 1
@@ -29979,6 +30056,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allow_distribution:
           description: Determines if distribution is allowed for the Grid.
@@ -30304,6 +30382,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     UpgradestatusHotfixes:
       example:
         unique_id: Example unique_id
@@ -30369,6 +30448,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         expiration_status:
           description: The license expiration status.
@@ -30497,6 +30577,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         allowed_object_types:
           description: The object types this extensible attribute is allowed to associate
@@ -30512,13 +30593,7 @@ components:
           example: Example comment
           type: string
         default_value:
-          description: "Default value used to pre-populate the attribute value in\
-            \ the GUI. For email, URL, and string types, the value is a string with\
-            \ a maximum of 256 characters. For an integer, the value is an integer\
-            \ from -2147483648 through 2147483647. For a date, the value is the number\
-            \ of seconds that have elapsed since January 1st, 1970 UTC."
-          example: Example default_value
-          type: string
+          $ref: '#/components/schemas/Extensibleattributedef_default_value'
         descendants_action:
           $ref: '#/components/schemas/ExtensibleattributedefDescendantsAction'
         flags:
@@ -30579,6 +30654,7 @@ components:
           example: Example type
           type: string
       type: object
+      x-tf-skip-expand: true
     ExtensibleattributedefDescendantsAction:
       example:
         option_delete_ea: Example option_delete_ea
@@ -35473,6 +35549,24 @@ components:
           $ref: '#/components/schemas/LicenseGridwide'
       title: UpdateLicenseGridwideResponseAsObject
       type: object
+    Extensibleattributedef_default_value:
+      description: "Default value used to pre-populate the attribute value in the\
+        \ GUI. For email, URL, and string types, the value is a string with a maximum\
+        \ of 256 characters. For an integer, the value is an integer from -2147483648\
+        \ through 2147483647. For a date, the value is the number of seconds that\
+        \ have elapsed since January 1st, 1970 UTC."
+      oneOf:
+      - description: "Default value used to pre-populate the attribute value in the\
+          \ GUI. For email, URL, and string types, the value is a string with a maximum\
+          \ of 256 characters. For a date, the value is the number of seconds that\
+          \ have elapsed since January 1st, 1970 UTC."
+        example: Example default_value
+        type: string
+      - description: "Default value used to pre-populate the attribute value in the\
+          \ GUI. For an integer, the value is an integer from -2147483648 through\
+          \ 2147483647."
+        example: 101
+        type: integer
     ListExtensibleattributedefResponseObject:
       description: The response format to retrieve __Extensibleattributedef__ objects.
       properties:

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for Super Host. | [optional] 
 **DeleteAssociatedObjects** | Pointer to **bool** | True if we have to delete all DNS/DHCP associated objects with Super Host, false by default. | [optional] 
 **DhcpAssociatedObjects** | Pointer to **[]string** | A list of DHCP objects refs which are associated with Super Host. | [optional] 

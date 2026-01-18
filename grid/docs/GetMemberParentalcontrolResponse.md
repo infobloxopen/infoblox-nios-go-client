@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **EnableService** | Pointer to **bool** | Determines if the parental control service is enabled. | [optional] 
 **Name** | Pointer to **string** | The parental control member hostname. | [optional] [readonly] 
 **Result** | Pointer to [**MemberParentalcontrol**](MemberParentalcontrol.md) |  | [optional] 

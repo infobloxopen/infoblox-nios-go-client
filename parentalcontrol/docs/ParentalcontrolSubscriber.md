@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AltSubscriberId** | Pointer to **string** | The name of AVP to be used as an alternate subscriber ID for fixed lines. | [optional] 
 **AltSubscriberIdRegexp** | Pointer to **string** | A character string to control aspects of rewriting of the fields. | [optional] 
 **AltSubscriberIdSubexpression** | Pointer to **int64** | The subexpression indicates which subexpression to extract. If zero, then the text matching the entire regular expression is extracted. If non-zero, then the regex must contain at least that many sub-expression groups. It takes values from 0 to 8. | [optional] 

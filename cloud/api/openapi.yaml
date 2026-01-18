@@ -2474,6 +2474,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         account_id:
           description: The AWS Account ID associated with this task group.
@@ -2559,6 +2560,7 @@ components:
             $ref: '#/components/schemas/Awsrte53taskgroupTaskList'
           type: array
       type: object
+      x-tf-skip-expand: true
     Awsrte53taskgroupTaskList:
       example:
         state_msg: Example state_msg
@@ -2698,6 +2700,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         access_key_id:
           description: The unique Access Key ID of this AWS user. Maximum 255 characters.
@@ -2814,6 +2817,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         azure_subscription_ids_file_token:
           description: The Azure Subscription IDs file's token.
@@ -2890,6 +2894,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     AzurednstaskgroupTaskList:
       example:
         state_msg: Example state_msg
@@ -3027,6 +3032,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         client_id:
           description: The unique Client ID of this Azure user. Maximum 255 characters.
@@ -3152,6 +3158,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         comment:
           description: Comment for the task group; maximum 256 characters.
@@ -3233,6 +3240,7 @@ components:
             $ref: '#/components/schemas/GcpdnstaskgroupTaskList'
           type: array
       type: object
+      x-tf-skip-expand: true
     GcpdnstaskgroupTaskList:
       example:
         dns_sync_state: Example dns_sync_state
@@ -3456,6 +3464,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         auth_provider_x509_cert_url:
           description: The URL where the public key certificates provided by the authentication
@@ -3574,6 +3583,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         cloud_platform:
           description: Type of cloud_platform to get the supported regions.

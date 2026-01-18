@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Canonical** | Pointer to **string** | The canonical name in FQDN format. This value can be in unicode format. | [optional] 
 **Comment** | Pointer to **string** | The comment for the record; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines if the record is disabled or not. False means that the record is enabled. | [optional] 

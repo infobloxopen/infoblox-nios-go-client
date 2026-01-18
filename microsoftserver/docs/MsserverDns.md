@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The address or FQDN of the DNS Microsoft Server. | [optional] [readonly] 
 **EnableDnsReportsSync** | Pointer to **bool** | Determines if synchronization of DNS reporting data from the Microsoft server is enabled or not. | [optional] 
 **LoginName** | Pointer to **string** | The login name of the DNS Microsoft Server. | [optional] 

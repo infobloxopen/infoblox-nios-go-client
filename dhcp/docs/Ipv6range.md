@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AddressType** | Pointer to **string** | Type of a DHCP IPv6 Range object. Valid values are \&quot;ADDRESS\&quot;, \&quot;PREFIX\&quot;, or \&quot;BOTH\&quot;. When the address type is \&quot;ADDRESS\&quot;, values for the &#39;start_addr&#39; and &#39;end_addr&#39; members are required. When the address type is \&quot;PREFIX\&quot;, values for &#39;ipv6_start_prefix&#39;, &#39;ipv6_end_prefix&#39;, and &#39;ipv6_prefix_bits&#39; are required. When the address type is \&quot;BOTH\&quot;, values for &#39;start_addr&#39;, &#39;end_addr&#39;, &#39;ipv6_start_prefix&#39;, &#39;ipv6_end_prefix&#39;, and &#39;ipv6_prefix_bits&#39; are all required. | [optional] 
 **CloudInfo** | Pointer to [**Ipv6rangeCloudInfo**](Ipv6rangeCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the range; maximum 256 characters. | [optional] 

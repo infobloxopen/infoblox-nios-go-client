@@ -209,6 +209,33 @@ func (a *VlanAPIService) CreateExecute(r VlanAPICreateRequest) (*CreateVlanRespo
 			}
 		}
 	}
+	if r.vlan.FuncCall != nil {
+		bodyForFuncCall := r.vlan
+		if bodyForFuncCall.FuncCall.AttributeName == "" {
+			return localVarReturnValue, nil, internal.ReportError("FuncCall.AttributeName is required and must be specified")
+		}
+		var funcStr string = bodyForFuncCall.FuncCall.AttributeName
+		if funcStr == "Id" {
+			if bodyForFuncCall.Id.Int64 != nil {
+				return localVarReturnValue, nil, internal.ReportError("Id cannot be provided when function call is used")
+			} else {
+
+				var l VlanId
+				var m VlanIdOneOf
+				m.ObjectFunction = bodyForFuncCall.FuncCall.ObjectFunction
+				m.Parameters = bodyForFuncCall.FuncCall.Parameters
+				m.ResultField = bodyForFuncCall.FuncCall.ResultField
+				m.Object = bodyForFuncCall.FuncCall.Object
+				m.ObjectParameters = bodyForFuncCall.FuncCall.ObjectParameters
+
+				l.VlanIdOneOf = &m
+				l.Int64 = nil
+				bodyForFuncCall.Id = &l
+				bodyForFuncCall.FuncCall = nil
+			}
+		}
+		r.vlan = bodyForFuncCall
+	}
 	// body params
 	localVarPostBody = r.vlan
 	req, err := a.Client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)

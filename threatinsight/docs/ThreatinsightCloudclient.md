@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **BlacklistRpzList** | Pointer to **[]string** | The RPZs to which you apply newly detected domains through the Infoblox Threat Insight Cloud Client. | [optional] 
 **Enable** | Pointer to **bool** | Determines whether the Threat Insight in Cloud Client is enabled. | [optional] 
 **ForceRefresh** | Pointer to **bool** | Force a refresh if at least one RPZ is configured. | [optional] 

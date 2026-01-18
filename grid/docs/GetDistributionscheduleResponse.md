@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Active** | Pointer to **bool** | Determines whether the distribution schedule is active. | [optional] 
 **StartTime** | Pointer to **int64** | The start time of the distribution. | [optional] 
 **TimeZone** | Pointer to **string** | Time zone of the distribution start time. | [optional] [readonly] 

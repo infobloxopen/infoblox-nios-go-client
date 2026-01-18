@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The human readable comment for member threat protection properties. | [optional] [readonly] 
 **CurrentRuleset** | Pointer to **string** | The ruleset used for threat protection. | [optional] 
 **DisableMultipleDnsTcpRequest** | Pointer to **bool** | Determines if multiple BIND responses via TCP connection is enabled or not. | [optional] 

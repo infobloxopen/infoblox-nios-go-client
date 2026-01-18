@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudPlatform** | Pointer to **string** | Type of cloud_platform to get the supported regions. | [optional] 
 **GovcloudRegions** | Pointer to **string** | Comma separated sting containing only GovCloud supported regions. | [optional] 
 **Regions** | Pointer to **string** | Comma separated string which contains all supported regions. | [optional] 

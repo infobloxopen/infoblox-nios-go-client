@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowlistUpdatePolicy** | Pointer to **string** | allowlist update policy (manual or automatic) | [optional] 
 **ConfigureDomainCollapsing** | Pointer to **bool** | Disable domain collapsing at grid level | [optional] 
 **CurrentAllowlist** | Pointer to **string** | The Grid allowlist. | [optional] [readonly] 

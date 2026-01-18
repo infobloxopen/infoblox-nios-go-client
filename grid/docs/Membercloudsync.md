@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudSyncEnabled** | Pointer to **bool** | Option to enable/disable Cloud Sync. | [optional] 
 **HostName** | Pointer to **string** | Host name of the parent Member | [optional] [readonly] 
 

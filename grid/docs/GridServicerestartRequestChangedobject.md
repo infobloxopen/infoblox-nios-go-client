@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Action** | Pointer to **string** | The operation on the changed object. | [optional] [readonly] 
 **ChangedProperties** | Pointer to **[]string** | The list of changed properties in the object. | [optional] [readonly] 
 **ChangedTime** | Pointer to **int64** | The time when the object was changed. | [optional] [readonly] 

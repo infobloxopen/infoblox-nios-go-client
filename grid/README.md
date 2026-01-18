@@ -242,6 +242,7 @@ Class | Method | HTTP request | Description
  - [DistributionscheduleUpgradeGroups](docs/DistributionscheduleUpgradeGroups.md)
  - [ExtAttrs](docs/ExtAttrs.md)
  - [Extensibleattributedef](docs/Extensibleattributedef.md)
+ - [ExtensibleattributedefDefaultValue](docs/ExtensibleattributedefDefaultValue.md)
  - [ExtensibleattributedefDescendantsAction](docs/ExtensibleattributedefDescendantsAction.md)
  - [ExtensibleattributedefListValues](docs/ExtensibleattributedefListValues.md)
  - [GetCaptiveportalResponse](docs/GetCaptiveportalResponse.md)

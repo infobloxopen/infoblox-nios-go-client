@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **FirstSeen** | Pointer to **int64** | Timestamp when this SDN network was first discovered. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the SDN network. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view assigned to this SDN network. | [optional] [readonly] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AddType** | Pointer to **string** | Determines the way the ruleset was added. | [optional] [readonly] 
 **AddedTime** | Pointer to **int64** | The time when the ruleset was added. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The human readable comment for the ruleset. | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**RecordNaptrCloudInfo**](RecordNaptrCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the record; maximum 256 characters. | [optional] 
 **CreationTime** | Pointer to **int64** | The time of the record creation in Epoch seconds format. | [optional] [readonly] 

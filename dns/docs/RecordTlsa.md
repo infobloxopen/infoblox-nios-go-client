@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **CertificateData** | Pointer to **string** | Hex dump of either raw data for matching type 0, or the hash of the raw data for matching types 1 and 2. | [optional] 
 **CertificateUsage** | Pointer to **int64** | Specifies the provided association that will be used to match the certificate presented in the TLS handshake. Based on RFC-6698. | [optional] 
 **CloudInfo** | Pointer to [**RecordTlsaCloudInfo**](RecordTlsaCloudInfo.md) |  | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllocatedAvailableRatio** | Pointer to **int64** | Ratio of allocated vs. available IPs | [optional] [readonly] 
 **AllocatedIpCount** | Pointer to **int64** | Total number of IPs allocated by tenants. | [optional] [readonly] 
 **AvailableIpCount** | Pointer to **string** | The total number of IP addresses available to tenants. Only IP addresses in networks that are within a delegation scope are counted. | [optional] [readonly] 

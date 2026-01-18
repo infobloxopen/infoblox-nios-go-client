@@ -4,10 +4,80 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Create**](DtcTopologyRuleAPI.md#Create) | **Post** /dtc:topology:rule | Create a dtc:topology:rule object
 [**List**](DtcTopologyRuleAPI.md#List) | **Get** /dtc:topology:rule | Retrieve dtc:topology:rule objects
 [**Read**](DtcTopologyRuleAPI.md#Read) | **Get** /dtc:topology:rule/{reference} | Get a specific dtc:topology:rule object
 [**Update**](DtcTopologyRuleAPI.md#Update) | **Put** /dtc:topology:rule/{reference} | Update a dtc:topology:rule object
 
+
+
+## Create
+
+> CreateDtcTopologyRuleResponse Create(ctx).DtcTopologyRule(dtcTopologyRule).ReturnFields(returnFields).ReturnFieldsPlus(returnFieldsPlus).ReturnAsObject(returnAsObject).Execute()
+
+Create a dtc:topology:rule object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/infoblox-nios-go-client/dtc"
+)
+
+func main() {
+	dtcTopologyRule := *dtc.NewDtcTopologyRule() // DtcTopologyRule | Object data to create
+
+	apiClient := dtc.NewAPIClient()
+	resp, r, err := apiClient.DtcTopologyRuleAPI.Create(context.Background()).DtcTopologyRule(dtcTopologyRule).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DtcTopologyRuleAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateDtcTopologyRuleResponse
+	fmt.Fprintf(os.Stdout, "Response from `DtcTopologyRuleAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `DtcTopologyRuleAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**dtcTopologyRule** | [**DtcTopologyRule**](DtcTopologyRule.md) | Object data to create | 
+**returnFields** | **string** | Enter the field names followed by comma | 
+**returnFieldsPlus** | **string** | Enter the field names followed by comma, this returns the required fields along with the default fields | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateDtcTopologyRuleResponse**](CreateDtcTopologyRuleResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## List

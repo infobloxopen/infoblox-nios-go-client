@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AllowedActions** | Pointer to **[]string** | The list of allowed actions of rhe rule template. | [optional] [readonly] 
 **Category** | Pointer to **string** | The rule category this template assigned to. | [optional] [readonly] 
 **DefaultConfig** | Pointer to [**ThreatprotectionRuletemplateDefaultConfig**](ThreatprotectionRuletemplateDefaultConfig.md) |  | [optional] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Active** | Pointer to **bool** | Determines whether the upgrade schedule is active. | [optional] 
 **StartTime** | Pointer to **int64** | The start time of the upgrade. | [optional] 
 **TimeZone** | Pointer to **string** | The time zone for upgrade start time. | [optional] [readonly] 

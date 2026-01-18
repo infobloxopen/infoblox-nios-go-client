@@ -439,7 +439,13 @@ Class | Method | HTTP request | Description
  - [UpdateVlanviewResponse](docs/UpdateVlanviewResponse.md)
  - [UpdateVlanviewResponseAsObject](docs/UpdateVlanviewResponseAsObject.md)
  - [Vlan](docs/Vlan.md)
+ - [VlanId](docs/VlanId.md)
+ - [VlanIdOneOf](docs/VlanIdOneOf.md)
+ - [VlanParent](docs/VlanParent.md)
+ - [VlanParentOneOf](docs/VlanParentOneOf.md)
  - [Vlanrange](docs/Vlanrange.md)
+ - [VlanrangeVlanView](docs/VlanrangeVlanView.md)
+ - [VlanrangeVlanViewOneOf](docs/VlanrangeVlanViewOneOf.md)
  - [Vlanview](docs/Vlanview.md)
 
 

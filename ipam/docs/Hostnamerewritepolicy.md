@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **IsDefault** | Pointer to **bool** | True if the policy is the Grid default. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of a hostname rewrite policy object. | [optional] 
 **PreDefined** | Pointer to **bool** | Determines whether the policy is a predefined one. | [optional] [readonly] 

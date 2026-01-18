@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Domain** | Pointer to **string** | The reference to the Active Directory Domain to which the site belongs. | [optional] 
 **Name** | Pointer to **string** | The name of the site properties object for the Active Directory Sites. | [optional] 
 **Networks** | Pointer to **[]string** | The list of networks to which the device interfaces belong. | [optional] 

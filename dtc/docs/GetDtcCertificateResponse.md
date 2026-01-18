@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Certificate** | Pointer to **string** | Reference to underlying X509Certificate. | [optional] [readonly] 
 **InUse** | Pointer to **bool** | Determines whether the certificate is in use or not. | [optional] [readonly] 
 **Result** | Pointer to [**DtcCertificate**](DtcCertificate.md) |  | [optional] 

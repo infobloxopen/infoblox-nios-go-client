@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **EaDefinition** | Pointer to **string** | The name of the Extensible Attribute Definition object that is linked to the Active Directory Sites Domain. | [optional] [readonly] 
 **MsSyncMasterName** | Pointer to **string** | The IP address or FQDN of the managing master for the MS server, if applicable. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the Active Directory Domain properties object. | [optional] [readonly] 

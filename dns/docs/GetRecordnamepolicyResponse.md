@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **IsDefault** | Pointer to **bool** | Determines whether the record name policy is Grid default. | [optional] 
 **Name** | Pointer to **string** | The name of the record name policy object. | [optional] 
 **PreDefined** | Pointer to **bool** | Determines whether the record name policy is a predefined one. | [optional] [readonly] 

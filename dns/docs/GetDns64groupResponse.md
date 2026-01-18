@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Clients** | Pointer to [**[]Dns64groupClients**](Dns64groupClients.md) | Access Control settings that contain IPv4 and IPv6 DNS clients and networks to which the DNS server is allowed to send synthesized AAAA records with the specified IPv6 prefix. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the DNS64 synthesis group object. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DNS64 synthesis group is disabled. | [optional] 

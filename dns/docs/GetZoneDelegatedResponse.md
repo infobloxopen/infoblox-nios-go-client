@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IP address of the server that is serving this zone. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the zone; maximum 256 characters. | [optional] 
 **DelegateTo** | Pointer to [**[]ZoneDelegatedDelegateTo**](ZoneDelegatedDelegateTo.md) | This provides information for the remote name server that maintains data for the delegated zone. The Infoblox appliance redirects queries for data for the delegated zone to this remote name server. | [optional] 

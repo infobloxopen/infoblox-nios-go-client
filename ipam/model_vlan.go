@@ -37,12 +37,11 @@ type Vlan struct {
 	ExtAttrsMinus *map[string]ExtAttrs `json:"extattrs-,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
-	// VLAN ID value.
-	Id *int64 `json:"id,omitempty"`
+	Id       *VlanId              `json:"id,omitempty"`
+	FuncCall *FuncCall            `json:"func_call,omitempty"`
 	// Name of the VLAN.
-	Name *string `json:"name,omitempty"`
-	// The VLAN View or VLAN Range to which this VLAN belongs.
-	Parent *string `json:"parent,omitempty"`
+	Name   *string     `json:"name,omitempty"`
+	Parent *VlanParent `json:"parent,omitempty"`
 	// When set VLAN can only be assigned to IPAM object manually.
 	Reserved *bool `json:"reserved,omitempty"`
 	// Status of VLAN object. Can be Assigned, Unassigned, Reserved.
@@ -355,9 +354,9 @@ func (o *Vlan) SetExtAttrs(v map[string]ExtAttrs) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Vlan) GetId() int64 {
+func (o *Vlan) GetId() VlanId {
 	if o == nil || IsNil(o.Id) {
-		var ret int64
+		var ret VlanId
 		return ret
 	}
 	return *o.Id
@@ -365,7 +364,7 @@ func (o *Vlan) GetId() int64 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Vlan) GetIdOk() (*int64, bool) {
+func (o *Vlan) GetIdOk() (*VlanId, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -381,9 +380,41 @@ func (o *Vlan) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int64 and assigns it to the Id field.
-func (o *Vlan) SetId(v int64) {
+// SetId gets a reference to the given VlanId and assigns it to the Id field.
+func (o *Vlan) SetId(v VlanId) {
 	o.Id = &v
+}
+
+// GetFuncCall returns the FuncCall field value if set, zero value otherwise.
+func (o *Vlan) GetFuncCall() FuncCall {
+	if o == nil || IsNil(o.FuncCall) {
+		var ret FuncCall
+		return ret
+	}
+	return *o.FuncCall
+}
+
+// GetFuncCallOk returns a tuple with the FuncCall field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Vlan) GetFuncCallOk() (*FuncCall, bool) {
+	if o == nil || IsNil(o.FuncCall) {
+		return nil, false
+	}
+	return o.FuncCall, true
+}
+
+// HasFuncCall returns a boolean if a field has been set.
+func (o *Vlan) HasFuncCall() bool {
+	if o != nil && !IsNil(o.FuncCall) {
+		return true
+	}
+
+	return false
+}
+
+// SetFuncCall gets a reference to the given FuncCall and assigns it to the FuncCall field.
+func (o *Vlan) SetFuncCall(v FuncCall) {
+	o.FuncCall = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -419,9 +450,9 @@ func (o *Vlan) SetName(v string) {
 }
 
 // GetParent returns the Parent field value if set, zero value otherwise.
-func (o *Vlan) GetParent() string {
+func (o *Vlan) GetParent() VlanParent {
 	if o == nil || IsNil(o.Parent) {
-		var ret string
+		var ret VlanParent
 		return ret
 	}
 	return *o.Parent
@@ -429,7 +460,7 @@ func (o *Vlan) GetParent() string {
 
 // GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Vlan) GetParentOk() (*string, bool) {
+func (o *Vlan) GetParentOk() (*VlanParent, bool) {
 	if o == nil || IsNil(o.Parent) {
 		return nil, false
 	}
@@ -445,8 +476,8 @@ func (o *Vlan) HasParent() bool {
 	return false
 }
 
-// SetParent gets a reference to the given string and assigns it to the Parent field.
-func (o *Vlan) SetParent(v string) {
+// SetParent gets a reference to the given VlanParent and assigns it to the Parent field.
+func (o *Vlan) SetParent(v VlanParent) {
 	o.Parent = &v
 }
 
@@ -553,6 +584,9 @@ func (o Vlan) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.FuncCall) {
+		toSerialize["func_call"] = o.FuncCall
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

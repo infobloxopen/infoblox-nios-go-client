@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The Grid member descriptive comment. | [optional] [readonly] 
 **EnableService** | Pointer to **bool** | Determines whether the threat insight service is enabled. | [optional] 
 **HostName** | Pointer to **string** | The Grid member host name. | [optional] [readonly] 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the DDNS Principal Cluster. | [optional] 
 **Group** | Pointer to **string** | The DDNS Principal cluster group name. | [optional] 
 **Name** | Pointer to **string** | The name of this DDNS Principal Cluster. | [optional] 

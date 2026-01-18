@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IPv4 Address or IPv6 Address of the lease. | [optional] [readonly] 
 **BillingClass** | Pointer to **string** | The billing_class value of a DHCP Lease object. This field specifies the class to which this lease is currently billed. This field is for IPv4 leases only. | [optional] [readonly] 
 **BindingState** | Pointer to **string** | The binding state for the current lease. Following are some of the values this field can be set to: * ABANDONED: The Infoblox appliance cannot lease this IP address because the appliance received a response when it pinged the address. * ACTIVE: The lease is currently in use by a DHCP client. * EXPIRED: The lease was in use, but the DHCP client never renewed it, so it is no longer valid. * FREE: The lease is available for clients to use. * RELEASED: The DHCP client returned the lease to the appliance. | [optional] [readonly] 

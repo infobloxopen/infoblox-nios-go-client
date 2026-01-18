@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for the name server group. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the name server group. | [optional] [readonly] 
 **Type** | Pointer to **string** | The type of the name server group. | [optional] [readonly] 

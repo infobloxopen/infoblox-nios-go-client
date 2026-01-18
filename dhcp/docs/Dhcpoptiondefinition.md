@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Code** | Pointer to **int64** | The code of a DHCP option definition object. An option code number is used to identify the DHCP option. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP option definition object. | [optional] 
 **Space** | Pointer to **string** | The space of a DHCP option definition object. | [optional] 

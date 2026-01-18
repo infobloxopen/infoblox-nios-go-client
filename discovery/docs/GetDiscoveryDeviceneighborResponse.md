@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IPv4 Address or IPv6 Address of the device neighbor. | [optional] [readonly] 
 **AddressRef** | Pointer to **string** | The ref to the management IP address of the device neighbor. | [optional] [readonly] 
 **Device** | Pointer to **string** | The ref to the device to which the device neighbor belongs. | [optional] [readonly] 

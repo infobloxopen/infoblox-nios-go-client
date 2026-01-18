@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Algorithm** | Pointer to **string** | The cryptographic algorithm that was used to create the signature. It uses the same algorithm types as the DNSKEY record indicated in the key tag field. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**RecordRrsigCloudInfo**](RecordRrsigCloudInfo.md) |  | [optional] 
 **CreationTime** | Pointer to **int64** | The creation time of the record. | [optional] [readonly] 

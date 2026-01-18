@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AuthenticationPassword** | Pointer to **string** | Determines an authentication password for the user. This is a write-only attribute. | [optional] 
 **AuthenticationProtocol** | Pointer to **string** | The authentication protocol to be used for this user. | [optional] 
 **Comment** | Pointer to **string** | A descriptive comment for the SNMPv3 User. | [optional] 

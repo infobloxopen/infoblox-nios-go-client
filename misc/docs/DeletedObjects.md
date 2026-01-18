@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ObjectType** | Pointer to **string** | The object type of the deleted object. This is undefined if the object is not supported. | [optional] [readonly] 
 
 ## Methods

@@ -1179,6 +1179,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         client_certificate_subject:
           description: The client certificate subject of a notification REST endpoint.
@@ -1229,6 +1230,7 @@ components:
           description: "Extensible attributes associated with the object. For valid\
             \ values for extensible attributes, see {extattrs:values}."
           type: object
+          x-tf-extattrs: true
         log_level:
           description: The log level for a notification REST endpoint.
           enum:
@@ -1305,6 +1307,8 @@ components:
           type: string
           writeOnly: true
       type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
     NotificationRestEndpointTemplateInstance:
       example:
         template: Example template
@@ -1409,6 +1413,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         action_name:
           description: The action name.
@@ -1490,6 +1495,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-skip-expand: true
     NotificationRestTemplateParameters:
       example:
         name: Example name
@@ -1604,6 +1610,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         all_members:
           description: "Determines whether the notification rule is applied on all\
@@ -1731,6 +1738,7 @@ components:
           example: false
           type: boolean
       type: object
+      x-tf-skip-expand: true
     NotificationRuleExpressionList:
       example:
         op2: Example op2

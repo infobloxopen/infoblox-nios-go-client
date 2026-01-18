@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DistinguishedName** | Pointer to **string** | The certificate subject name. | [optional] [readonly] 
 **Issuer** | Pointer to **string** | The certificate issuer subject name. | [optional] [readonly] 
 **Serial** | Pointer to **string** | The certificate serial number in hex format. | [optional] [readonly] 

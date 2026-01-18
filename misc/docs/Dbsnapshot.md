@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The descriptive comment. | [optional] [readonly] 
 **Timestamp** | Pointer to **int64** | The time when the latest OneDB snapshot was taken in Epoch seconds format. | [optional] [readonly] 
 

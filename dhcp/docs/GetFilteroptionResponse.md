@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **ApplyAsClass** | Pointer to **bool** | Determines if apply as class is enabled or not. If this flag is set to \&quot;true\&quot; the filter is treated as global DHCP class, e.g it is written to dhcpd config file even if it is not present in any DHCP range. | [optional] 
 **Bootfile** | Pointer to **string** | A name of boot file of a DHCP filter option object. | [optional] 
 **Bootserver** | Pointer to **string** | Determines the boot server of a DHCP filter option object. You can specify the name and/or IP address of the boot server that host needs to boot. | [optional] 

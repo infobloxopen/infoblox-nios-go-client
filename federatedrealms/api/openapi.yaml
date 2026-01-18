@@ -554,6 +554,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
         id:
           description: Federated realm id.
@@ -591,6 +592,7 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
           type: string
       type: object
     ListFedipamopResponse:

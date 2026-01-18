@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AutoPopulateLogin** | Pointer to **string** | Specifies the value of the client certificate for automatically populating the NIOS login name. | [optional] 
 **CaCertificates** | Pointer to **[]string** | The list of CA certificates. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the certificate authentication service. | [optional] 

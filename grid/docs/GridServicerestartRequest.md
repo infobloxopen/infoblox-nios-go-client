@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Error** | Pointer to **string** | The error message if restart has failed. | [optional] [readonly] 
 **Forced** | Pointer to **bool** | Indicates if this is a force restart. | [optional] [readonly] 
 **Group** | Pointer to **string** | The name of the Restart Group associated with the request. | [optional] [readonly] 

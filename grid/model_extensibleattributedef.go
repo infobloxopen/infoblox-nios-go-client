@@ -24,9 +24,8 @@ type Extensibleattributedef struct {
 	// The object types this extensible attribute is allowed to associate with.
 	AllowedObjectTypes []string `json:"allowed_object_types,omitempty"`
 	// Comment for the Extensible Attribute Definition; maximum 256 characters.
-	Comment *string `json:"comment,omitempty"`
-	// Default value used to pre-populate the attribute value in the GUI. For email, URL, and string types, the value is a string with a maximum of 256 characters. For an integer, the value is an integer from -2147483648 through 2147483647. For a date, the value is the number of seconds that have elapsed since January 1st, 1970 UTC.
-	DefaultValue      *string                                  `json:"default_value,omitempty"`
+	Comment           *string                                  `json:"comment,omitempty"`
+	DefaultValue      *ExtensibleattributedefDefaultValue      `json:"default_value,omitempty"`
 	DescendantsAction *ExtensibleattributedefDescendantsAction `json:"descendants_action,omitempty"`
 	// This field contains extensible attribute flags. Possible values: (A)udited, (C)loud API, Cloud (G)master, (I)nheritable, (L)isted, (M)andatory value, MGM (P)rivate, (R)ead Only, (S)ort enum values, Multiple (V)alues If there are two or more flags in the field, you must list them according to the order they are listed above. For example, 'CR' is a valid value for the 'flags' field because C = Cloud API is listed before R = Read only. However, the value 'RC' is invalid because the order for the 'flags' field is broken.
 	Flags *string `json:"flags,omitempty"`
@@ -158,9 +157,9 @@ func (o *Extensibleattributedef) SetComment(v string) {
 }
 
 // GetDefaultValue returns the DefaultValue field value if set, zero value otherwise.
-func (o *Extensibleattributedef) GetDefaultValue() string {
+func (o *Extensibleattributedef) GetDefaultValue() ExtensibleattributedefDefaultValue {
 	if o == nil || IsNil(o.DefaultValue) {
-		var ret string
+		var ret ExtensibleattributedefDefaultValue
 		return ret
 	}
 	return *o.DefaultValue
@@ -168,7 +167,7 @@ func (o *Extensibleattributedef) GetDefaultValue() string {
 
 // GetDefaultValueOk returns a tuple with the DefaultValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Extensibleattributedef) GetDefaultValueOk() (*string, bool) {
+func (o *Extensibleattributedef) GetDefaultValueOk() (*ExtensibleattributedefDefaultValue, bool) {
 	if o == nil || IsNil(o.DefaultValue) {
 		return nil, false
 	}
@@ -184,8 +183,8 @@ func (o *Extensibleattributedef) HasDefaultValue() bool {
 	return false
 }
 
-// SetDefaultValue gets a reference to the given string and assigns it to the DefaultValue field.
-func (o *Extensibleattributedef) SetDefaultValue(v string) {
+// SetDefaultValue gets a reference to the given ExtensibleattributedefDefaultValue and assigns it to the DefaultValue field.
+func (o *Extensibleattributedef) SetDefaultValue(v ExtensibleattributedefDefaultValue) {
 	o.DefaultValue = &v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **AdminStatus** | Pointer to **string** | Administrative state of the interface. | [optional] [readonly] 
 **AdminStatusTaskInfo** | Pointer to [**DiscoveryDeviceinterfaceAdminStatusTaskInfo**](DiscoveryDeviceinterfaceAdminStatusTaskInfo.md) |  | [optional] 
 **AggrInterfaceName** | Pointer to **string** | Name of the port channel current interface belongs to. | [optional] [readonly] 

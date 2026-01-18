@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **IsFactoryResetEnabled** | Pointer to **bool** | Determines if factory reset is enabled for this rule category. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the rule category. | [optional] [readonly] 
 **Ruleset** | Pointer to **string** | The version of the ruleset the category assigned to. | [optional] [readonly] 

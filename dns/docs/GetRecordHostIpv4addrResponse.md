@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Bootfile** | Pointer to **string** | The name of the boot file the client must download. | [optional] 
 **Bootserver** | Pointer to **string** | The IP address or hostname of the boot file server where the boot file is stored. | [optional] 
 **ConfigureForDhcp** | Pointer to **bool** | Set this to True to enable the DHCP configuration for this host address. | [optional] 

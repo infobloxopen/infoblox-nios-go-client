@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **Algorithm** | Pointer to **string** | The algorithm of the DNSKEY RR to which this DS RR refers. It uses the same algorithm values and types as the corresponding DNSKEY RR. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**RecordDsCloudInfo**](RecordDsCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | The comment for the record. | [optional] [readonly] 
