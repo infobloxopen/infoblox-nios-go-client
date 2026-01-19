@@ -15737,14 +15737,6 @@ components:
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
-    Ipv6sharednetworkNetworks:
-      example:
-        _ref: _ref
-      properties:
-        _ref:
-          description: Reference to the IPv6 Network.
-          type: string
-      type: object
     Ipv6sharednetworkLogicFilterRules:
       example:
         filter: Example filter
@@ -15791,6 +15783,14 @@ components:
             \ * broadcast-address-offset * dhcp-lease-time * dhcp6.name-servers"
           example: false
           type: boolean
+      type: object
+    Ipv6sharednetworkNetworks:
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: Reference to the IPv6 Network.
+          type: string
       type: object
     ListIpv6sharednetworkResponse:
       oneOf:

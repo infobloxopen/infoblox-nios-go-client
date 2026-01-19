@@ -3306,8 +3306,8 @@ paths:
       x-sdk-default-ext-attrs: true
       x-sdk-post-function-call:
       - Id
-      x-sdk-int-function-call: true
       x-tf-function-call: true
+      x-sdk-int-function-call: true
   /vlan/{reference}:
     delete:
       description: Deletes a specific vlan object by reference
@@ -12084,7 +12084,7 @@ components:
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'dhcpmember'
-            or 'msdhcpserver'.
+            and 'msdhcpserver'.
           type: string
         ipv4addr:
           description: The IPv4 Address or FQDN of the Microsoft server.

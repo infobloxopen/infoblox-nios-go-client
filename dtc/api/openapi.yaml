@@ -6781,6 +6781,12 @@ components:
       - description: The response format to update __Dtc__ .
         title: UpdateDtcResponse
         type: string
+    CreateDtcTopologyRuleResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateDtcTopologyRuleResponseAsObject'
+      - description: The response format to create __DtcTopologyRule__.
+        title: CreateDtcTopologyRuleResponse
+        type: string
     DtcServer:
       additionalProperties: false
       example:
@@ -9435,12 +9441,6 @@ components:
         title: ListDtcTopologyRuleResponseArray
         type: array
       - $ref: '#/components/schemas/ListDtcTopologyRuleResponseObject'
-    CreateDtcTopologyRuleResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateDtcTopologyRuleResponseAsObject'
-      - description: The response format to create __DtcTopologyRule__.
-        title: CreateDtcTopologyRuleResponse
-        type: string
     GetDtcTopologyRuleResponse:
       oneOf:
       - $ref: '#/components/schemas/DtcTopologyRule'
@@ -9525,6 +9525,28 @@ components:
         result:
           $ref: '#/components/schemas/Dtc'
       title: UpdateDtcResponseAsObject
+      type: object
+    CreateDtcTopologyRuleResponseAsObject:
+      description: The response format to create __DtcTopologyRule__ in object format.
+      example:
+        result:
+          return_type: Example return_type
+          valid: false
+          sources:
+          - source_op: Example source_op
+            source_type: Example source_type
+            source_value: Example source_value
+          - source_op: Example source_op
+            source_type: Example source_type
+            source_value: Example source_value
+          dest_type: Example dest_type
+          topology: Example topology
+          _ref: _ref
+          destination_link: Example remote_lookup_service
+      properties:
+        result:
+          $ref: '#/components/schemas/DtcTopologyRule'
+      title: CreateDtcTopologyRuleResponseAsObject
       type: object
     ListDtcServerResponseObject:
       description: The response format to retrieve __DtcServer__ objects.
@@ -10933,28 +10955,6 @@ components:
             $ref: '#/components/schemas/DtcTopologyRule'
           type: array
       title: ListDtcTopologyRuleResponseObject
-      type: object
-    CreateDtcTopologyRuleResponseAsObject:
-      description: The response format to create __DtcTopologyRule__ in object format.
-      example:
-        result:
-          return_type: Example return_type
-          valid: false
-          sources:
-          - source_op: Example source_op
-            source_type: Example source_type
-            source_value: Example source_value
-          - source_op: Example source_op
-            source_type: Example source_type
-            source_value: Example source_value
-          dest_type: Example dest_type
-          topology: Example topology
-          _ref: _ref
-          destination_link: Example remote_lookup_service
-      properties:
-        result:
-          $ref: '#/components/schemas/DtcTopologyRule'
-      title: CreateDtcTopologyRuleResponseAsObject
       type: object
     GetDtcTopologyRuleResponseObjectAsResult:
       additionalProperties: false
