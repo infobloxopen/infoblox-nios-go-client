@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Groups** | Pointer to **[]string** | The ordered list of the Service Restart Group. | [optional] 
 **Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
+**Groups** | Pointer to **[]string** | The ordered list of the Service Restart Group. | [optional] 
 **Result** | Pointer to [**GridServicerestartGroupOrder**](GridServicerestartGroupOrder.md) |  | [optional] 
 
 ## Methods
@@ -53,31 +53,6 @@ SetRef sets Ref field to given value.
 
 HasRef returns a boolean if a field has been set.
 
-### GetGroups
-
-`func (o *GetGridServicerestartGroupOrderResponse) GetGroups() []string`
-
-GetGroups returns the Groups field if non-nil, zero value otherwise.
-
-### GetGroupsOk
-
-`func (o *GetGridServicerestartGroupOrderResponse) GetGroupsOk() (*[]string, bool)`
-
-GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroups
-
-`func (o *GetGridServicerestartGroupOrderResponse) SetGroups(v []string)`
-
-SetGroups sets Groups field to given value.
-
-### HasGroups
-
-`func (o *GetGridServicerestartGroupOrderResponse) HasGroups() bool`
-
-HasGroups returns a boolean if a field has been set.
-
 ### GetUuid
 
 `func (o *GetGridServicerestartGroupOrderResponse) GetUuid() string`
@@ -102,6 +77,31 @@ SetUuid sets Uuid field to given value.
 `func (o *GetGridServicerestartGroupOrderResponse) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
+
+### GetGroups
+
+`func (o *GetGridServicerestartGroupOrderResponse) GetGroups() []string`
+
+GetGroups returns the Groups field if non-nil, zero value otherwise.
+
+### GetGroupsOk
+
+`func (o *GetGridServicerestartGroupOrderResponse) GetGroupsOk() (*[]string, bool)`
+
+GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroups
+
+`func (o *GetGridServicerestartGroupOrderResponse) SetGroups(v []string)`
+
+SetGroups sets Groups field to given value.
+
+### HasGroups
+
+`func (o *GetGridServicerestartGroupOrderResponse) HasGroups() bool`
+
+HasGroups returns a boolean if a field has been set.
 
 ### GetResult
 

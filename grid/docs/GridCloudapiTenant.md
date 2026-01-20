@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **CloudInfo** | Pointer to [**GridCloudapiTenantCloudInfo**](GridCloudapiTenantCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the Grid Cloud API Tenant object; maximum 256 characters. | [optional] 
 **CreatedTs** | Pointer to **int64** | The timestamp when the tenant was first created in the system. | [optional] [readonly] 
@@ -12,7 +13,6 @@ Name | Type | Description | Notes
 **LastEventTs** | Pointer to **int64** | The timestamp when the last event associated with the tenant happened. | [optional] [readonly] 
 **Name** | Pointer to **string** | Name of the tenant. | [optional] 
 **NetworkCount** | Pointer to **int64** | Number of Networks associated with the tenant. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VmCount** | Pointer to **int64** | Number of VMs associated with the tenant. | [optional] [readonly] 
 
 ## Methods
@@ -58,6 +58,31 @@ SetRef sets Ref field to given value.
 `func (o *GridCloudapiTenant) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridCloudapiTenant) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridCloudapiTenant) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridCloudapiTenant) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridCloudapiTenant) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetCloudInfo
 
@@ -233,31 +258,6 @@ SetNetworkCount sets NetworkCount field to given value.
 `func (o *GridCloudapiTenant) HasNetworkCount() bool`
 
 HasNetworkCount returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *GridCloudapiTenant) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *GridCloudapiTenant) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *GridCloudapiTenant) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *GridCloudapiTenant) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetVmCount
 

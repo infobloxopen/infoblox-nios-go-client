@@ -21,6 +21,8 @@ var _ MappedNullable = &MemberDhcpproperties{}
 type MemberDhcpproperties struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The Authentication Server Group object associated with this member.
 	AuthServerGroup *string `json:"auth_server_group,omitempty"`
 	// The captive portal responsible for authenticating this DHCP member.
@@ -321,8 +323,6 @@ type MemberDhcpproperties struct {
 	UseUpdateDnsOnLeaseRenewal *bool `json:"use_update_dns_on_lease_renewal,omitempty"`
 	// Use flag for: valid_lifetime
 	UseValidLifetime *bool `json:"use_valid_lifetime,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The valid lifetime for Grid Member DHCP. Specifies the length of time addresses that are assigned to DHCPv6 clients remain in the valid state.
 	ValidLifetime *int64 `json:"valid_lifetime,omitempty"`
 }
@@ -374,6 +374,38 @@ func (o *MemberDhcpproperties) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *MemberDhcpproperties) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *MemberDhcpproperties) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MemberDhcpproperties) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *MemberDhcpproperties) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *MemberDhcpproperties) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAuthServerGroup returns the AuthServerGroup field value if set, zero value otherwise.
@@ -5176,38 +5208,6 @@ func (o *MemberDhcpproperties) SetUseValidLifetime(v bool) {
 	o.UseValidLifetime = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *MemberDhcpproperties) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MemberDhcpproperties) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *MemberDhcpproperties) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *MemberDhcpproperties) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetValidLifetime returns the ValidLifetime field value if set, zero value otherwise.
 func (o *MemberDhcpproperties) GetValidLifetime() int64 {
 	if o == nil || IsNil(o.ValidLifetime) {
@@ -5252,6 +5252,9 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AuthServerGroup) {
 		toSerialize["auth_server_group"] = o.AuthServerGroup
@@ -5702,9 +5705,6 @@ func (o MemberDhcpproperties) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UseValidLifetime) {
 		toSerialize["use_valid_lifetime"] = o.UseValidLifetime
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.ValidLifetime) {
 		toSerialize["valid_lifetime"] = o.ValidLifetime

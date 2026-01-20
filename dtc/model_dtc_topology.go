@@ -32,7 +32,7 @@ type DtcTopology struct {
 	// Display name of the DTC Topology.
 	Name *string `json:"name,omitempty"`
 	// Topology rules.
-	Rules []string `json:"rules,omitempty"`
+	Rules []DtcTopologyRulesInner `json:"rules,omitempty"`
 	// Universally Unique ID assigned for this object
 	Uuid *string `json:"uuid,omitempty"`
 }
@@ -247,9 +247,9 @@ func (o *DtcTopology) SetName(v string) {
 }
 
 // GetRules returns the Rules field value if set, zero value otherwise.
-func (o *DtcTopology) GetRules() []string {
+func (o *DtcTopology) GetRules() []DtcTopologyRulesInner {
 	if o == nil || IsNil(o.Rules) {
-		var ret []string
+		var ret []DtcTopologyRulesInner
 		return ret
 	}
 	return o.Rules
@@ -257,7 +257,7 @@ func (o *DtcTopology) GetRules() []string {
 
 // GetRulesOk returns a tuple with the Rules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcTopology) GetRulesOk() ([]string, bool) {
+func (o *DtcTopology) GetRulesOk() ([]DtcTopologyRulesInner, bool) {
 	if o == nil || IsNil(o.Rules) {
 		return nil, false
 	}
@@ -273,8 +273,8 @@ func (o *DtcTopology) HasRules() bool {
 	return false
 }
 
-// SetRules gets a reference to the given []string and assigns it to the Rules field.
-func (o *DtcTopology) SetRules(v []string) {
+// SetRules gets a reference to the given []DtcTopologyRulesInner and assigns it to the Rules field.
+func (o *DtcTopology) SetRules(v []DtcTopologyRulesInner) {
 	o.Rules = v
 }
 

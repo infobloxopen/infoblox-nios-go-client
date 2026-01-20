@@ -21,6 +21,8 @@ var _ MappedNullable = &ThreatprotectionGridRule{}
 type ThreatprotectionGridRule struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The list of allowed actions of the custom rule.
 	AllowedActions []string `json:"allowed_actions,omitempty"`
 	// The rule category the custom rule assigned to.
@@ -44,8 +46,6 @@ type ThreatprotectionGridRule struct {
 	Template *string `json:"template,omitempty"`
 	// The type of the custom rule.
 	Type *string `json:"type,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewThreatprotectionGridRule instantiates a new ThreatprotectionGridRule object
@@ -95,6 +95,38 @@ func (o *ThreatprotectionGridRule) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *ThreatprotectionGridRule) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *ThreatprotectionGridRule) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThreatprotectionGridRule) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *ThreatprotectionGridRule) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *ThreatprotectionGridRule) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAllowedActions returns the AllowedActions field value if set, zero value otherwise.
@@ -481,38 +513,6 @@ func (o *ThreatprotectionGridRule) SetType(v string) {
 	o.Type = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *ThreatprotectionGridRule) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThreatprotectionGridRule) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *ThreatprotectionGridRule) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *ThreatprotectionGridRule) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o ThreatprotectionGridRule) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -525,6 +525,9 @@ func (o ThreatprotectionGridRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AllowedActions) {
 		toSerialize["allowed_actions"] = o.AllowedActions
@@ -561,9 +564,6 @@ func (o ThreatprotectionGridRule) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

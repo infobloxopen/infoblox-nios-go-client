@@ -21,6 +21,8 @@ var _ MappedNullable = &GridDashboard{}
 type GridDashboard struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The Grid Dashboard critical threshold for Analytics tunneling events.
 	AnalyticsTunnelingEventCriticalThreshold *int64 `json:"analytics_tunneling_event_critical_threshold,omitempty"`
 	// The Grid Dashboard warning threshold for Analytics tunneling events.
@@ -49,8 +51,6 @@ type GridDashboard struct {
 	RpzSubstitutedHitCriticalThreshold *int64 `json:"rpz_substituted_hit_critical_threshold,omitempty"`
 	// The warning threshold value for substituted RPZ hits in the Grid dashboard.
 	RpzSubstitutedHitWarningThreshold *int64 `json:"rpz_substituted_hit_warning_threshold,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewGridDashboard instantiates a new GridDashboard object
@@ -100,6 +100,38 @@ func (o *GridDashboard) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridDashboard) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridDashboard) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridDashboard) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridDashboard) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridDashboard) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAnalyticsTunnelingEventCriticalThreshold returns the AnalyticsTunnelingEventCriticalThreshold field value if set, zero value otherwise.
@@ -550,38 +582,6 @@ func (o *GridDashboard) SetRpzSubstitutedHitWarningThreshold(v int64) {
 	o.RpzSubstitutedHitWarningThreshold = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridDashboard) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridDashboard) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridDashboard) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridDashboard) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o GridDashboard) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -594,6 +594,9 @@ func (o GridDashboard) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AnalyticsTunnelingEventCriticalThreshold) {
 		toSerialize["analytics_tunneling_event_critical_threshold"] = o.AnalyticsTunnelingEventCriticalThreshold
@@ -636,9 +639,6 @@ func (o GridDashboard) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RpzSubstitutedHitWarningThreshold) {
 		toSerialize["rpz_substituted_hit_warning_threshold"] = o.RpzSubstitutedHitWarningThreshold
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

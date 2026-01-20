@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AuthnServerGroup** | Pointer to **string** | The authentication server group assigned to this captive portal. | [optional] 
 **CompanyName** | Pointer to **string** | The company name that appears in the guest registration page. | [optional] 
 **EnableSyslogAuthFailure** | Pointer to **bool** | Determines if authentication failures are logged to syslog or not. | [optional] 
@@ -34,7 +35,6 @@ Name | Type | Description | Notes
 **ServiceEnabled** | Pointer to **bool** | Determines if the captive portal service is enabled or not. | [optional] 
 **SyslogAuthFailureLevel** | Pointer to **string** | The syslog level at which authentication failures are logged. | [optional] 
 **SyslogAuthSuccessLevel** | Pointer to **string** | The syslog level at which successful authentications are logged. | [optional] 
-**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **WelcomeMessage** | Pointer to **string** | The welcome message that appears in the guest registration page. | [optional] 
 
 ## Methods
@@ -80,6 +80,31 @@ SetRef sets Ref field to given value.
 `func (o *Captiveportal) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Captiveportal) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Captiveportal) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Captiveportal) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Captiveportal) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAuthnServerGroup
 
@@ -805,31 +830,6 @@ SetSyslogAuthSuccessLevel sets SyslogAuthSuccessLevel field to given value.
 `func (o *Captiveportal) HasSyslogAuthSuccessLevel() bool`
 
 HasSyslogAuthSuccessLevel returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *Captiveportal) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *Captiveportal) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *Captiveportal) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *Captiveportal) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetWelcomeMessage
 

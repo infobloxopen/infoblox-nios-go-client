@@ -15167,8 +15167,8 @@ components:
         network_view: Example network_view
         use_ddns_use_option81: false
         networks:
-        - ipv6network
-        - ipv6network
+        - _ref: _ref
+        - _ref: _ref
         use_ddns_ttl: false
         uuid: Example uuid
         use_ddns_generate_hostname: false
@@ -15335,12 +15335,8 @@ components:
             \ way:: [{ \"_ref\": { 'network': 'aabb::/64', } }] note that in this\
             \ case the search must match exactly one network for the assignment to\
             \ be successful."
-          enum:
-          - ipv6network
           items:
-            enum:
-            - ipv6network
-            type: string
+            $ref: '#/components/schemas/Ipv6sharednetworkNetworks'
           type: array
         options:
           description: An array of DHCP option dhcpoption structs that lists the DHCP
@@ -15469,6 +15465,14 @@ components:
             \ * broadcast-address-offset * dhcp-lease-time * dhcp6.name-servers"
           example: false
           type: boolean
+      type: object
+    Ipv6sharednetworkNetworks:
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: Reference to the Network.
+          type: string
       type: object
     ListIpv6sharednetworkResponse:
       oneOf:
@@ -23027,8 +23031,8 @@ components:
           network_view: Example network_view
           use_ddns_use_option81: false
           networks:
-          - ipv6network
-          - ipv6network
+          - _ref: _ref
+          - _ref: _ref
           use_ddns_ttl: false
           uuid: Example uuid
           use_ddns_generate_hostname: false
@@ -23103,8 +23107,8 @@ components:
           network_view: Example network_view
           use_ddns_use_option81: false
           networks:
-          - ipv6network
-          - ipv6network
+          - _ref: _ref
+          - _ref: _ref
           use_ddns_ttl: false
           uuid: Example uuid
           use_ddns_generate_hostname: false

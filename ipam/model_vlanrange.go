@@ -42,9 +42,8 @@ type Vlanrange struct {
 	// Universally Unique ID assigned for this object
 	Uuid *string `json:"uuid,omitempty"`
 	// If set on creation prefix string will be used for VLAN name.
-	VlanNamePrefix *string `json:"vlan_name_prefix,omitempty"`
-	// The VLAN View to which this VLAN Range belongs.
-	VlanView *string `json:"vlan_view,omitempty"`
+	VlanNamePrefix *string            `json:"vlan_name_prefix,omitempty"`
+	VlanView       *VlanrangeVlanView `json:"vlan_view,omitempty"`
 }
 
 // NewVlanrange instantiates a new Vlanrange object
@@ -449,9 +448,9 @@ func (o *Vlanrange) SetVlanNamePrefix(v string) {
 }
 
 // GetVlanView returns the VlanView field value if set, zero value otherwise.
-func (o *Vlanrange) GetVlanView() string {
+func (o *Vlanrange) GetVlanView() VlanrangeVlanView {
 	if o == nil || IsNil(o.VlanView) {
-		var ret string
+		var ret VlanrangeVlanView
 		return ret
 	}
 	return *o.VlanView
@@ -459,7 +458,7 @@ func (o *Vlanrange) GetVlanView() string {
 
 // GetVlanViewOk returns a tuple with the VlanView field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Vlanrange) GetVlanViewOk() (*string, bool) {
+func (o *Vlanrange) GetVlanViewOk() (*VlanrangeVlanView, bool) {
 	if o == nil || IsNil(o.VlanView) {
 		return nil, false
 	}
@@ -475,8 +474,8 @@ func (o *Vlanrange) HasVlanView() bool {
 	return false
 }
 
-// SetVlanView gets a reference to the given string and assigns it to the VlanView field.
-func (o *Vlanrange) SetVlanView(v string) {
+// SetVlanView gets a reference to the given VlanrangeVlanView and assigns it to the VlanView field.
+func (o *Vlanrange) SetVlanView(v VlanrangeVlanView) {
 	o.VlanView = &v
 }
 

@@ -21,6 +21,8 @@ var _ MappedNullable = &GridDns{}
 type GridDns struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Add custom IP, MAC and DNS View name ENDS0 options to outgoing recursive queries.
 	AddClientIpMacOptions *bool `json:"add_client_ip_mac_options,omitempty"`
 	// Determines if DDNS bulk host is allowed or not.
@@ -309,8 +311,6 @@ type GridDns struct {
 	TransfersOut *int64 `json:"transfers_out,omitempty"`
 	// The number of maximum concurrent transfers per member. Valid values are unsigned integer between 2 and 10000, inclusive.
 	TransfersPerNs *int64 `json:"transfers_per_ns,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// Determines if the double confirmation during zone deletion is enabled or not.
 	ZoneDeletionDoubleConfirm *bool `json:"zone_deletion_double_confirm,omitempty"`
 }
@@ -362,6 +362,38 @@ func (o *GridDns) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridDns) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridDns) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridDns) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridDns) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridDns) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAddClientIpMacOptions returns the AddClientIpMacOptions field value if set, zero value otherwise.
@@ -5132,38 +5164,6 @@ func (o *GridDns) SetTransfersPerNs(v int64) {
 	o.TransfersPerNs = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridDns) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridDns) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridDns) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridDns) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetZoneDeletionDoubleConfirm returns the ZoneDeletionDoubleConfirm field value if set, zero value otherwise.
 func (o *GridDns) GetZoneDeletionDoubleConfirm() bool {
 	if o == nil || IsNil(o.ZoneDeletionDoubleConfirm) {
@@ -5208,6 +5208,9 @@ func (o GridDns) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AddClientIpMacOptions) {
 		toSerialize["add_client_ip_mac_options"] = o.AddClientIpMacOptions
@@ -5655,9 +5658,6 @@ func (o GridDns) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TransfersPerNs) {
 		toSerialize["transfers_per_ns"] = o.TransfersPerNs
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.ZoneDeletionDoubleConfirm) {
 		toSerialize["zone_deletion_double_confirm"] = o.ZoneDeletionDoubleConfirm

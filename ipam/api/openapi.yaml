@@ -11191,10 +11191,12 @@ components:
         use_authority: false
         use_lease_scavenge_time: false
         members:
-        - name: Example name
+        - _struct: _struct
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
-        - name: Example name
+        - _struct: _struct
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         ipam_trap_settings:
@@ -11771,10 +11773,15 @@ components:
       type: object
     NetworktemplateMembers:
       example:
+        _struct: _struct
         name: Example name
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'dhcpmember'
+            and 'msdhcpserver'.
+          type: string
         ipv4addr:
           description: The IPv4 Address or FQDN of the Microsoft server.
           example: Example ipv4addr
@@ -15706,6 +15713,14 @@ components:
           key:
             value: ""
         description: Example description
+        func_call:
+          _result_field: _result_field
+          _object_function: _object_function
+          _object_parameters: "{}"
+          _object_ref: _object_ref
+          attribute_name: attribute_name
+          _object: _object
+          _parameters: "{}"
         uuid: Example uuid
         extattrs-:
           key:
@@ -15778,18 +15793,15 @@ components:
           type: object
           x-tf-extattrs: true
         id:
-          description: VLAN ID value.
-          example: 1
-          format: int64
-          type: integer
+          $ref: '#/components/schemas/Vlan_id'
+        func_call:
+          $ref: '#/components/schemas/FuncCall'
         name:
           description: Name of the VLAN.
           example: Example name
           type: string
         parent:
-          description: The VLAN View or VLAN Range to which this VLAN belongs.
-          example: Example parent
-          type: string
+          $ref: '#/components/schemas/Vlan_parent'
         reserved:
           description: When set VLAN can only be assigned to IPAM object manually.
           example: false
@@ -16031,9 +16043,7 @@ components:
           example: Example vlan_name_prefix
           type: string
         vlan_view:
-          description: The VLAN View to which this VLAN Range belongs.
-          example: Example vlan_view
-          type: string
+          $ref: '#/components/schemas/Vlanrange_vlan_view'
       type: object
       x-tf-extattrs-all: true
     ListVlanrangeResponse:
@@ -18588,10 +18598,12 @@ components:
           use_authority: false
           use_lease_scavenge_time: false
           members:
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           ipam_trap_settings:
@@ -18720,10 +18732,12 @@ components:
           use_authority: false
           use_lease_scavenge_time: false
           members:
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - _struct: _struct
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           ipam_trap_settings:
@@ -20249,6 +20263,43 @@ components:
           $ref: '#/components/schemas/IpamStatistics'
       title: UpdateIpamStatisticsResponseAsObject
       type: object
+    Vlan_id_oneOf:
+      description: VLAN ID value.
+      properties:
+        _object_function:
+          type: string
+        _parameters:
+          type: object
+        _result_field:
+          type: string
+        _object:
+          type: string
+        _object_parameters:
+          type: object
+      type: object
+    Vlan_id:
+      description: VLAN ID value.
+      oneOf:
+      - description: VLAN ID value.
+        example: 1
+        format: int64
+        type: integer
+      - $ref: '#/components/schemas/Vlan_id_oneOf'
+    Vlan_parent_oneOf:
+      additionalProperties: false
+      description: The VLAN View or VLAN Range to which this VLAN belongs.
+      properties:
+        _ref:
+          description: Reference to the VLAN Parent
+          type: string
+      type: object
+    Vlan_parent:
+      description: The VLAN View or VLAN Range to which this VLAN belongs.
+      example: Example parent
+      oneOf:
+      - $ref: '#/components/schemas/Vlan_parent_oneOf'
+      - description: The VLAN View or VLAN Range to which this VLAN belongs.
+        type: string
     ListVlanResponseObject:
       description: The response format to retrieve __Vlan__ objects.
       properties:
@@ -20267,6 +20318,14 @@ components:
             key:
               value: ""
           description: Example description
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           uuid: Example uuid
           extattrs-:
             key:
@@ -20307,6 +20366,14 @@ components:
             key:
               value: ""
           description: Example description
+          func_call:
+            _result_field: _result_field
+            _object_function: _object_function
+            _object_parameters: "{}"
+            _object_ref: _object_ref
+            attribute_name: attribute_name
+            _object: _object
+            _parameters: "{}"
           uuid: Example uuid
           extattrs-:
             key:
@@ -20401,6 +20468,19 @@ components:
           $ref: '#/components/schemas/Vlanview'
       title: UpdateVlanviewResponseAsObject
       type: object
+    Vlanrange_vlan_view_oneOf:
+      additionalProperties: false
+      properties:
+        _ref:
+          description: Reference to the VLAN Range Parent
+          type: string
+      type: object
+    Vlanrange_vlan_view:
+      oneOf:
+      - description: The VLAN View to which this VLAN Range belongs.
+        example: Example vlan_view
+        type: string
+      - $ref: '#/components/schemas/Vlanrange_vlan_view_oneOf'
     ListVlanrangeResponseObject:
       description: The response format to retrieve __Vlanrange__ objects.
       properties:

@@ -21,6 +21,8 @@ var _ MappedNullable = &DxlEndpoint{}
 type DxlEndpoint struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The list of DXL endpoint brokers. Note that you cannot specify brokers and brokers_import_token at the same time.
 	Brokers []DxlEndpointBrokers `json:"brokers,omitempty"`
 	// The token returned by the uploadinit function call in object fileop for a DXL broker configuration file. Note that you cannot specify brokers and brokers_import_token at the same time.
@@ -56,8 +58,6 @@ type DxlEndpoint struct {
 	Timeout *int64 `json:"timeout,omitempty"`
 	// DXL topics
 	Topics []string `json:"topics,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The vendor identifier.
 	VendorIdentifier *string `json:"vendor_identifier,omitempty"`
 	// The user name for WAPI integration.
@@ -113,6 +113,38 @@ func (o *DxlEndpoint) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *DxlEndpoint) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *DxlEndpoint) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DxlEndpoint) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *DxlEndpoint) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *DxlEndpoint) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetBrokers returns the Brokers field value if set, zero value otherwise.
@@ -691,38 +723,6 @@ func (o *DxlEndpoint) SetTopics(v []string) {
 	o.Topics = v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *DxlEndpoint) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DxlEndpoint) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *DxlEndpoint) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *DxlEndpoint) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVendorIdentifier returns the VendorIdentifier field value if set, zero value otherwise.
 func (o *DxlEndpoint) GetVendorIdentifier() string {
 	if o == nil || IsNil(o.VendorIdentifier) {
@@ -832,6 +832,9 @@ func (o DxlEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Brokers) {
 		toSerialize["brokers"] = o.Brokers
 	}
@@ -885,9 +888,6 @@ func (o DxlEndpoint) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Topics) {
 		toSerialize["topics"] = o.Topics
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.VendorIdentifier) {
 		toSerialize["vendor_identifier"] = o.VendorIdentifier

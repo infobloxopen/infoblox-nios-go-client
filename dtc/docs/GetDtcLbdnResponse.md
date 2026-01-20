@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The display name of the DTC LBDN, not DNS related. | [optional] 
 **Patterns** | Pointer to **[]string** | LBDN wildcards for pattern match. | [optional] 
 **Persistence** | Pointer to **int64** | Maximum time, in seconds, for which client specific LBDN responses will be cached. Zero specifies no caching. | [optional] 
-**Pools** | Pointer to [**[]DtcLbdnPools**](DtcLbdnPools.md) | Pools linked to LBDN. | [optional] 
+**Pools** | Pointer to [**[]DtcLbdnPools**](DtcLbdnPools.md) | The maximum time, in seconds, for which client specific LBDN responses will be cached. Zero specifies no caching. | [optional] 
 **Priority** | Pointer to **int64** | The LBDN pattern match priority for \&quot;overlapping\&quot; DTC LBDN objects. LBDNs are \&quot;overlapping\&quot; if they are simultaneously assigned to a zone and have patterns that can match the same FQDN. The matching LBDN with highest priority (lowest ordinal) will be used. | [optional] 
 **Topology** | Pointer to **string** | The topology rules for TOPOLOGY method. | [optional] 
 **Ttl** | Pointer to **int64** | The Time To Live (TTL) value for the DTC LBDN. A 32-bit unsigned integer that represents the duration, in seconds, for which the record is valid (cached). Zero indicates that the record should not be cached. | [optional] 

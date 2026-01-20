@@ -21,6 +21,8 @@ var _ MappedNullable = &Tftpfiledir{}
 type Tftpfiledir struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// The uuid of the object.
+	Uuid *string `json:"uuid,omitempty"`
 	// The path to the directory that contains file or subdirectory.
 	Directory *string `json:"directory,omitempty"`
 	// Determines whether the TFTP entity is synchronized to Grid Master.
@@ -31,8 +33,6 @@ type Tftpfiledir struct {
 	Name *string `json:"name,omitempty"`
 	// The type of TFTP file system entity (directory or file).
 	Type *string `json:"type,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The replication members with TFTP client addresses where this virtual folder is applicable.
 	VtftpDirMembers []TftpfiledirVtftpDirMembers `json:"vtftp_dir_members,omitempty"`
 }
@@ -84,6 +84,38 @@ func (o *Tftpfiledir) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Tftpfiledir) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Tftpfiledir) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Tftpfiledir) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Tftpfiledir) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Tftpfiledir) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetDirectory returns the Directory field value if set, zero value otherwise.
@@ -246,38 +278,6 @@ func (o *Tftpfiledir) SetType(v string) {
 	o.Type = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Tftpfiledir) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Tftpfiledir) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Tftpfiledir) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Tftpfiledir) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVtftpDirMembers returns the VtftpDirMembers field value if set, zero value otherwise.
 func (o *Tftpfiledir) GetVtftpDirMembers() []TftpfiledirVtftpDirMembers {
 	if o == nil || IsNil(o.VtftpDirMembers) {
@@ -323,6 +323,9 @@ func (o Tftpfiledir) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Directory) {
 		toSerialize["directory"] = o.Directory
 	}
@@ -337,9 +340,6 @@ func (o Tftpfiledir) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.VtftpDirMembers) {
 		toSerialize["vtftp_dir_members"] = o.VtftpDirMembers

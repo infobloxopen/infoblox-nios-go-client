@@ -21,6 +21,8 @@ var _ MappedNullable = &GridDhcpproperties{}
 type GridDhcpproperties struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The Grid-level authority flag. This flag specifies whether a DHCP server is authoritative for a domain.
 	Authority *bool `json:"authority,omitempty"`
 	// The name of a file that DHCP clients need to boot. Some DHCP clients use BOOTP (bootstrap protocol) or include the boot file name option in their DHCPREQUEST messages.
@@ -186,8 +188,6 @@ type GridDhcpproperties struct {
 	TxtRecordHandling *string `json:"txt_record_handling,omitempty"`
 	// Controls whether the DHCP server updates DNS when a DHCP lease is renewed.
 	UpdateDnsOnLeaseRenewal *bool `json:"update_dns_on_lease_renewal,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The valid lifetime for the Grid members.
 	ValidLifetime *int64 `json:"valid_lifetime,omitempty"`
 }
@@ -239,6 +239,38 @@ func (o *GridDhcpproperties) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridDhcpproperties) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridDhcpproperties) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridDhcpproperties) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridDhcpproperties) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridDhcpproperties) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAuthority returns the Authority field value if set, zero value otherwise.
@@ -2897,38 +2929,6 @@ func (o *GridDhcpproperties) SetUpdateDnsOnLeaseRenewal(v bool) {
 	o.UpdateDnsOnLeaseRenewal = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridDhcpproperties) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridDhcpproperties) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridDhcpproperties) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridDhcpproperties) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetValidLifetime returns the ValidLifetime field value if set, zero value otherwise.
 func (o *GridDhcpproperties) GetValidLifetime() int64 {
 	if o == nil || IsNil(o.ValidLifetime) {
@@ -2973,6 +2973,9 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Authority) {
 		toSerialize["authority"] = o.Authority
@@ -3222,9 +3225,6 @@ func (o GridDhcpproperties) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UpdateDnsOnLeaseRenewal) {
 		toSerialize["update_dns_on_lease_renewal"] = o.UpdateDnsOnLeaseRenewal
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.ValidLifetime) {
 		toSerialize["valid_lifetime"] = o.ValidLifetime

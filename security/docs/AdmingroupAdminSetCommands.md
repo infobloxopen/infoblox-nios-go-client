@@ -33,7 +33,6 @@ Name | Type | Description | Notes
 **SetMaintenancemode** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetTransferReportingData** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetTransferSupportbundle** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
-**SetAnalyticsDatabaseDump** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetAnalyticsParameter** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetCollectOldLogs** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **SetCoreFilesQuota** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
@@ -793,31 +792,6 @@ SetSetTransferSupportbundle sets SetTransferSupportbundle field to given value.
 `func (o *AdmingroupAdminSetCommands) HasSetTransferSupportbundle() bool`
 
 HasSetTransferSupportbundle returns a boolean if a field has been set.
-
-### GetSetAnalyticsDatabaseDump
-
-`func (o *AdmingroupAdminSetCommands) GetSetAnalyticsDatabaseDump() bool`
-
-GetSetAnalyticsDatabaseDump returns the SetAnalyticsDatabaseDump field if non-nil, zero value otherwise.
-
-### GetSetAnalyticsDatabaseDumpOk
-
-`func (o *AdmingroupAdminSetCommands) GetSetAnalyticsDatabaseDumpOk() (*bool, bool)`
-
-GetSetAnalyticsDatabaseDumpOk returns a tuple with the SetAnalyticsDatabaseDump field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSetAnalyticsDatabaseDump
-
-`func (o *AdmingroupAdminSetCommands) SetSetAnalyticsDatabaseDump(v bool)`
-
-SetSetAnalyticsDatabaseDump sets SetAnalyticsDatabaseDump field to given value.
-
-### HasSetAnalyticsDatabaseDump
-
-`func (o *AdmingroupAdminSetCommands) HasSetAnalyticsDatabaseDump() bool`
-
-HasSetAnalyticsDatabaseDump returns a boolean if a field has been set.
 
 ### GetSetAnalyticsParameter
 

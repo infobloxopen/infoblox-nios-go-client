@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AllowRecursiveDeletion** | Pointer to **string** | The property to allow recursive deletion. Determines the users who can choose to perform recursive deletion on networks or zones from the GUI only. | [optional] 
 **AuditLogFormat** | Pointer to **string** | Determines the audit log format. | [optional] 
 **AuditToSyslogEnable** | Pointer to **bool** | If set to True, audit log messages are also copied to the syslog. | [optional] 
@@ -63,7 +64,6 @@ Name | Type | Description | Notes
 **TrafficCaptureRecQueriesSetting** | Pointer to [**GridTrafficCaptureRecQueriesSetting**](GridTrafficCaptureRecQueriesSetting.md) |  | [optional] 
 **TrapNotifications** | Pointer to [**[]GridTrapNotifications**](GridTrapNotifications.md) | Determines configuration of the trap notifications. | [optional] 
 **UpdatesDownloadMemberConfig** | Pointer to [**[]GridUpdatesDownloadMemberConfig**](GridUpdatesDownloadMemberConfig.md) | The list of member configuration structures, which provides information and settings for configuring the member that is responsible for downloading updates. | [optional] 
-**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VpnPort** | Pointer to **int64** | The VPN port. | [optional] 
 **Result** | Pointer to [**Grid**](Grid.md) |  | [optional] 
 
@@ -110,6 +110,31 @@ SetRef sets Ref field to given value.
 `func (o *GetGridResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGridResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGridResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGridResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGridResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAllowRecursiveDeletion
 
@@ -1560,31 +1585,6 @@ SetUpdatesDownloadMemberConfig sets UpdatesDownloadMemberConfig field to given v
 `func (o *GetGridResponse) HasUpdatesDownloadMemberConfig() bool`
 
 HasUpdatesDownloadMemberConfig returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *GetGridResponse) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *GetGridResponse) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *GetGridResponse) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *GetGridResponse) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetVpnPort
 

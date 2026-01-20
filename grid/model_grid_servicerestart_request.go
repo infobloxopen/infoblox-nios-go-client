@@ -21,6 +21,8 @@ var _ MappedNullable = &GridServicerestartRequest{}
 type GridServicerestartRequest struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The error message if restart has failed.
 	Error *string `json:"error,omitempty"`
 	// Indicates if this is a force restart.
@@ -41,8 +43,6 @@ type GridServicerestartRequest struct {
 	Service *string `json:"service,omitempty"`
 	// The state of the request.
 	State *string `json:"state,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewGridServicerestartRequest instantiates a new GridServicerestartRequest object
@@ -92,6 +92,38 @@ func (o *GridServicerestartRequest) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridServicerestartRequest) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridServicerestartRequest) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridServicerestartRequest) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridServicerestartRequest) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridServicerestartRequest) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetError returns the Error field value if set, zero value otherwise.
@@ -414,38 +446,6 @@ func (o *GridServicerestartRequest) SetState(v string) {
 	o.State = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridServicerestartRequest) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridServicerestartRequest) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridServicerestartRequest) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridServicerestartRequest) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o GridServicerestartRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -458,6 +458,9 @@ func (o GridServicerestartRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
@@ -488,9 +491,6 @@ func (o GridServicerestartRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

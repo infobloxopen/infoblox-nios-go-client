@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Action** | Pointer to **string** | The operation on the changed object. | [optional] [readonly] 
 **ChangedProperties** | Pointer to **[]string** | The list of changed properties in the object. | [optional] [readonly] 
 **ChangedTime** | Pointer to **int64** | The time when the object was changed. | [optional] [readonly] 
 **ObjectName** | Pointer to **string** | The name of the changed object. | [optional] [readonly] 
 **ObjectType** | Pointer to **string** | The type of the changed object. This is undefined if the object is not supported. | [optional] [readonly] 
 **UserName** | Pointer to **string** | The name of the user who changed the object properties. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -56,6 +56,31 @@ SetRef sets Ref field to given value.
 `func (o *GridServicerestartRequestChangedobject) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridServicerestartRequestChangedobject) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridServicerestartRequestChangedobject) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridServicerestartRequestChangedobject) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridServicerestartRequestChangedobject) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAction
 
@@ -206,31 +231,6 @@ SetUserName sets UserName field to given value.
 `func (o *GridServicerestartRequestChangedobject) HasUserName() bool`
 
 HasUserName returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *GridServicerestartRequestChangedobject) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *GridServicerestartRequestChangedobject) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *GridServicerestartRequestChangedobject) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *GridServicerestartRequestChangedobject) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

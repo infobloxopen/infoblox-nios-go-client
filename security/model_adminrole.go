@@ -21,6 +21,8 @@ var _ MappedNullable = &Adminrole{}
 type Adminrole struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The descriptive comment of the Admin Role object.
 	Comment *string `json:"comment,omitempty"`
 	// The disable flag.
@@ -33,8 +35,6 @@ type Adminrole struct {
 	ExtAttrs *map[string]ExtAttrs `json:"extattrs,omitempty"`
 	// The name of an admin role.
 	Name *string `json:"name,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewAdminrole instantiates a new Adminrole object
@@ -84,6 +84,38 @@ func (o *Adminrole) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Adminrole) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Adminrole) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Adminrole) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Adminrole) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Adminrole) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -278,38 +310,6 @@ func (o *Adminrole) SetName(v string) {
 	o.Name = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Adminrole) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Adminrole) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Adminrole) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Adminrole) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Adminrole) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -322,6 +322,9 @@ func (o Adminrole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -340,9 +343,6 @@ func (o Adminrole) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

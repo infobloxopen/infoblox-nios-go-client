@@ -21,6 +21,8 @@ var _ MappedNullable = &Memberdfp{}
 type Memberdfp struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Option to resolve DNS query if resolution over Active Trust Cloud failed.
 	DfpForwardFirst *bool `json:"dfp_forward_first,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
@@ -33,8 +35,6 @@ type Memberdfp struct {
 	HostName *string `json:"host_name,omitempty"`
 	// DFP override lock'.
 	IsDfpOverride *bool `json:"is_dfp_override,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewMemberdfp instantiates a new Memberdfp object
@@ -84,6 +84,38 @@ func (o *Memberdfp) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Memberdfp) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Memberdfp) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Memberdfp) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Memberdfp) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Memberdfp) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetDfpForwardFirst returns the DfpForwardFirst field value if set, zero value otherwise.
@@ -278,38 +310,6 @@ func (o *Memberdfp) SetIsDfpOverride(v bool) {
 	o.IsDfpOverride = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Memberdfp) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Memberdfp) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Memberdfp) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Memberdfp) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Memberdfp) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -322,6 +322,9 @@ func (o Memberdfp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.DfpForwardFirst) {
 		toSerialize["dfp_forward_first"] = o.DfpForwardFirst
@@ -340,9 +343,6 @@ func (o Memberdfp) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsDfpOverride) {
 		toSerialize["is_dfp_override"] = o.IsDfpOverride
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

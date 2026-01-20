@@ -21,6 +21,8 @@ var _ MappedNullable = &Mastergrid{}
 type Mastergrid struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// IP Address or FQDN to use to contact the SGM
 	Address *string `json:"address,omitempty"`
 	// Indicates whether the sub-grid is currently disabled (true) or not (false).
@@ -53,8 +55,6 @@ type Mastergrid struct {
 	Port *int64 `json:"port,omitempty"`
 	// Indicates whether to use the management port to connect to the SGM.
 	UseMgmtPort *bool `json:"use_mgmt_port,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewMastergrid instantiates a new Mastergrid object
@@ -104,6 +104,38 @@ func (o *Mastergrid) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Mastergrid) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Mastergrid) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Mastergrid) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Mastergrid) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Mastergrid) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
@@ -618,38 +650,6 @@ func (o *Mastergrid) SetUseMgmtPort(v bool) {
 	o.UseMgmtPort = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Mastergrid) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Mastergrid) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Mastergrid) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Mastergrid) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Mastergrid) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -662,6 +662,9 @@ func (o Mastergrid) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
@@ -710,9 +713,6 @@ func (o Mastergrid) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UseMgmtPort) {
 		toSerialize["use_mgmt_port"] = o.UseMgmtPort
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

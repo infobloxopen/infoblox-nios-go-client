@@ -21,6 +21,8 @@ var _ MappedNullable = &Gmcgroup{}
 type Gmcgroup struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Description of the group
 	Comment *string `json:"comment,omitempty"`
 	// This field decides whether the members join back at the same time or sequentially with time gap of 30 seconds.
@@ -33,8 +35,6 @@ type Gmcgroup struct {
 	ScheduledTime *int64 `json:"scheduled_time,omitempty"`
 	// The time zone for scheduling operations.
 	TimeZone *string `json:"time_zone,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewGmcgroup instantiates a new Gmcgroup object
@@ -84,6 +84,38 @@ func (o *Gmcgroup) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Gmcgroup) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Gmcgroup) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Gmcgroup) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Gmcgroup) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Gmcgroup) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -278,38 +310,6 @@ func (o *Gmcgroup) SetTimeZone(v string) {
 	o.TimeZone = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Gmcgroup) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Gmcgroup) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Gmcgroup) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Gmcgroup) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Gmcgroup) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -322,6 +322,9 @@ func (o Gmcgroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -340,9 +343,6 @@ func (o Gmcgroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TimeZone) {
 		toSerialize["time_zone"] = o.TimeZone
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

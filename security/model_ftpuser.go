@@ -21,6 +21,8 @@ var _ MappedNullable = &Ftpuser{}
 type Ftpuser struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Determines whether to create the home directory with the user name or to use the existing directory as the home directory.
 	CreateHomeDir *bool `json:"create_home_dir,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
@@ -37,8 +39,6 @@ type Ftpuser struct {
 	Permission *string `json:"permission,omitempty"`
 	// The FTP user name.
 	Username *string `json:"username,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewFtpuser instantiates a new Ftpuser object
@@ -88,6 +88,38 @@ func (o *Ftpuser) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Ftpuser) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Ftpuser) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Ftpuser) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Ftpuser) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Ftpuser) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetCreateHomeDir returns the CreateHomeDir field value if set, zero value otherwise.
@@ -346,38 +378,6 @@ func (o *Ftpuser) SetUsername(v string) {
 	o.Username = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Ftpuser) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Ftpuser) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Ftpuser) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Ftpuser) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Ftpuser) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -390,6 +390,9 @@ func (o Ftpuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.CreateHomeDir) {
 		toSerialize["create_home_dir"] = o.CreateHomeDir
@@ -414,9 +417,6 @@ func (o Ftpuser) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

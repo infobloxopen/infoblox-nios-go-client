@@ -21,6 +21,8 @@ var _ MappedNullable = &Admingroup{}
 type Admingroup struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Access methods specify whether an admin group can use the GUI and the API to access the appliance or to send Taxii messages to the appliance. Note that API includes both the Perl API and RESTful API.
 	AccessMethod          []string                         `json:"access_method,omitempty"`
 	AdminSetCommands      *AdmingroupAdminSetCommands      `json:"admin_set_commands,omitempty"`
@@ -83,8 +85,6 @@ type Admingroup struct {
 	UsePasswordSetting *bool `json:"use_password_setting,omitempty"`
 	// The access control items for this Admin Group.
 	UserAccess []AdmingroupUserAccess `json:"user_access,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewAdmingroup instantiates a new Admingroup object
@@ -134,6 +134,38 @@ func (o *Admingroup) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Admingroup) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Admingroup) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Admingroup) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Admingroup) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Admingroup) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAccessMethod returns the AccessMethod field value if set, zero value otherwise.
@@ -1576,38 +1608,6 @@ func (o *Admingroup) SetUserAccess(v []AdmingroupUserAccess) {
 	o.UserAccess = v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Admingroup) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Admingroup) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Admingroup) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Admingroup) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Admingroup) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1620,6 +1620,9 @@ func (o Admingroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AccessMethod) {
 		toSerialize["access_method"] = o.AccessMethod
@@ -1755,9 +1758,6 @@ func (o Admingroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UserAccess) {
 		toSerialize["user_access"] = o.UserAccess
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

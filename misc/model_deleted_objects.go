@@ -21,6 +21,8 @@ var _ MappedNullable = &DeletedObjects{}
 type DeletedObjects struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// The uuid of the object.
+	Uuid *string `json:"uuid,omitempty"`
 	// The object type of the deleted object. This is undefined if the object is not supported.
 	ObjectType *string `json:"object_type,omitempty"`
 }
@@ -74,6 +76,38 @@ func (o *DeletedObjects) SetRef(v string) {
 	o.Ref = &v
 }
 
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *DeletedObjects) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeletedObjects) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *DeletedObjects) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *DeletedObjects) SetUuid(v string) {
+	o.Uuid = &v
+}
+
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
 func (o *DeletedObjects) GetObjectType() string {
 	if o == nil || IsNil(o.ObjectType) {
@@ -118,6 +152,9 @@ func (o DeletedObjects) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.ObjectType) {
 		toSerialize["object_type"] = o.ObjectType

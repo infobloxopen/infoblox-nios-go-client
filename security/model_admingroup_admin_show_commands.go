@@ -88,8 +88,6 @@ type AdmingroupAdminShowCommands struct {
 	// If True then CLI user has permission to run the command
 	ShowVersion *bool `json:"show_version,omitempty"`
 	// If True then CLI user has permission to run the command
-	ShowAnalyticsDatabaseDumps *bool `json:"show_analytics_database_dumps,omitempty"`
-	// If True then CLI user has permission to run the command
 	ShowCores *bool `json:"show_cores,omitempty"`
 	// If True then CLI user has permission to run the command
 	ShowCoresummary *bool `json:"show_coresummary,omitempty"`
@@ -1233,38 +1231,6 @@ func (o *AdmingroupAdminShowCommands) SetShowVersion(v bool) {
 	o.ShowVersion = &v
 }
 
-// GetShowAnalyticsDatabaseDumps returns the ShowAnalyticsDatabaseDumps field value if set, zero value otherwise.
-func (o *AdmingroupAdminShowCommands) GetShowAnalyticsDatabaseDumps() bool {
-	if o == nil || IsNil(o.ShowAnalyticsDatabaseDumps) {
-		var ret bool
-		return ret
-	}
-	return *o.ShowAnalyticsDatabaseDumps
-}
-
-// GetShowAnalyticsDatabaseDumpsOk returns a tuple with the ShowAnalyticsDatabaseDumps field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdmingroupAdminShowCommands) GetShowAnalyticsDatabaseDumpsOk() (*bool, bool) {
-	if o == nil || IsNil(o.ShowAnalyticsDatabaseDumps) {
-		return nil, false
-	}
-	return o.ShowAnalyticsDatabaseDumps, true
-}
-
-// HasShowAnalyticsDatabaseDumps returns a boolean if a field has been set.
-func (o *AdmingroupAdminShowCommands) HasShowAnalyticsDatabaseDumps() bool {
-	if o != nil && !IsNil(o.ShowAnalyticsDatabaseDumps) {
-		return true
-	}
-
-	return false
-}
-
-// SetShowAnalyticsDatabaseDumps gets a reference to the given bool and assigns it to the ShowAnalyticsDatabaseDumps field.
-func (o *AdmingroupAdminShowCommands) SetShowAnalyticsDatabaseDumps(v bool) {
-	o.ShowAnalyticsDatabaseDumps = &v
-}
-
 // GetShowCores returns the ShowCores field value if set, zero value otherwise.
 func (o *AdmingroupAdminShowCommands) GetShowCores() bool {
 	if o == nil || IsNil(o.ShowCores) {
@@ -1921,9 +1887,6 @@ func (o AdmingroupAdminShowCommands) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ShowVersion) {
 		toSerialize["show_version"] = o.ShowVersion
 	}
-	if !IsNil(o.ShowAnalyticsDatabaseDumps) {
-		toSerialize["show_analytics_database_dumps"] = o.ShowAnalyticsDatabaseDumps
-	}
 	if !IsNil(o.ShowCores) {
 		toSerialize["show_cores"] = o.ShowCores
 	}
@@ -2031,7 +1994,6 @@ func (o *AdmingroupAdminShowCommands) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "show_upgrade_history")
 		delete(additionalProperties, "show_uptime")
 		delete(additionalProperties, "show_version")
-		delete(additionalProperties, "show_analytics_database_dumps")
 		delete(additionalProperties, "show_cores")
 		delete(additionalProperties, "show_coresummary")
 		delete(additionalProperties, "show_csp_threat_db")

@@ -21,6 +21,8 @@ var _ MappedNullable = &Adminuser{}
 type Adminuser struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The names of the Admin Groups to which this Admin User belongs. Currently, this is limited to only one Admin Group.
 	AdminGroups []string `json:"admin_groups,omitempty"`
 	// Determines the way of authentication
@@ -59,8 +61,6 @@ type Adminuser struct {
 	UseSshKeys *bool `json:"use_ssh_keys,omitempty"`
 	// Use flag for: time_zone
 	UseTimeZone *bool `json:"use_time_zone,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewAdminuser instantiates a new Adminuser object
@@ -110,6 +110,38 @@ func (o *Adminuser) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Adminuser) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Adminuser) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Adminuser) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Adminuser) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Adminuser) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAdminGroups returns the AdminGroups field value if set, zero value otherwise.
@@ -720,38 +752,6 @@ func (o *Adminuser) SetUseTimeZone(v bool) {
 	o.UseTimeZone = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Adminuser) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Adminuser) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Adminuser) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Adminuser) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Adminuser) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -764,6 +764,9 @@ func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AdminGroups) {
 		toSerialize["admin_groups"] = o.AdminGroups
@@ -821,9 +824,6 @@ func (o Adminuser) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UseTimeZone) {
 		toSerialize["use_time_zone"] = o.UseTimeZone
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

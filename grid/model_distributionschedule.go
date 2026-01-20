@@ -21,6 +21,8 @@ var _ MappedNullable = &Distributionschedule{}
 type Distributionschedule struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// The uuid of the object.
+	Uuid *string `json:"uuid,omitempty"`
 	// Determines whether the distribution schedule is active.
 	Active *bool `json:"active,omitempty"`
 	// The start time of the distribution.
@@ -78,6 +80,38 @@ func (o *Distributionschedule) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Distributionschedule) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Distributionschedule) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Distributionschedule) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Distributionschedule) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Distributionschedule) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
@@ -220,6 +254,9 @@ func (o Distributionschedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Active) {
 		toSerialize["active"] = o.Active

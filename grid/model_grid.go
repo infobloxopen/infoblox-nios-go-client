@@ -21,6 +21,8 @@ var _ MappedNullable = &Grid{}
 type Grid struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The property to allow recursive deletion. Determines the users who can choose to perform recursive deletion on networks or zones from the GUI only.
 	AllowRecursiveDeletion *string `json:"allow_recursive_deletion,omitempty"`
 	// Determines the audit log format.
@@ -113,8 +115,6 @@ type Grid struct {
 	TrapNotifications []GridTrapNotifications `json:"trap_notifications,omitempty"`
 	// The list of member configuration structures, which provides information and settings for configuring the member that is responsible for downloading updates.
 	UpdatesDownloadMemberConfig []GridUpdatesDownloadMemberConfig `json:"updates_download_member_config,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The VPN port.
 	VpnPort *int64 `json:"vpn_port,omitempty"`
 }
@@ -166,6 +166,38 @@ func (o *Grid) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Grid) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Grid) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Grid) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Grid) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Grid) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAllowRecursiveDeletion returns the AllowRecursiveDeletion field value if set, zero value otherwise.
@@ -2024,38 +2056,6 @@ func (o *Grid) SetUpdatesDownloadMemberConfig(v []GridUpdatesDownloadMemberConfi
 	o.UpdatesDownloadMemberConfig = v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Grid) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Grid) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Grid) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Grid) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVpnPort returns the VpnPort field value if set, zero value otherwise.
 func (o *Grid) GetVpnPort() int64 {
 	if o == nil || IsNil(o.VpnPort) {
@@ -2100,6 +2100,9 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AllowRecursiveDeletion) {
 		toSerialize["allow_recursive_deletion"] = o.AllowRecursiveDeletion
@@ -2274,9 +2277,6 @@ func (o Grid) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UpdatesDownloadMemberConfig) {
 		toSerialize["updates_download_member_config"] = o.UpdatesDownloadMemberConfig
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.VpnPort) {
 		toSerialize["vpn_port"] = o.VpnPort

@@ -21,6 +21,8 @@ var _ MappedNullable = &Scheduledtask{}
 type Scheduledtask struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The approval status of the task.
 	ApprovalStatus *string `json:"approval_status,omitempty"`
 	// The approver of the task.
@@ -65,8 +67,6 @@ type Scheduledtask struct {
 	TaskType *string `json:"task_type,omitempty"`
 	// The task ticket number.
 	TicketNumber *string `json:"ticket_number,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewScheduledtask instantiates a new Scheduledtask object
@@ -116,6 +116,38 @@ func (o *Scheduledtask) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Scheduledtask) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Scheduledtask) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Scheduledtask) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Scheduledtask) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Scheduledtask) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetApprovalStatus returns the ApprovalStatus field value if set, zero value otherwise.
@@ -822,38 +854,6 @@ func (o *Scheduledtask) SetTicketNumber(v string) {
 	o.TicketNumber = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Scheduledtask) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Scheduledtask) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Scheduledtask) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Scheduledtask) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Scheduledtask) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -866,6 +866,9 @@ func (o Scheduledtask) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.ApprovalStatus) {
 		toSerialize["approval_status"] = o.ApprovalStatus
@@ -932,9 +935,6 @@ func (o Scheduledtask) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TicketNumber) {
 		toSerialize["ticket_number"] = o.TicketNumber
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

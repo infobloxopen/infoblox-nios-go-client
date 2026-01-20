@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ActivePosition** | Pointer to **string** | The active server of a Grid member. | [optional] [readonly] 
 **AdditionalIpList** | Pointer to [**[]MemberAdditionalIpList**](MemberAdditionalIpList.md) | The additional IP list of a Grid member. This list contains additional interface information that can be used at the member level. Note that interface structure(s) with interface type set to &#39;MGMT&#39; are not supported. | [optional] 
 **AutomatedTrafficCaptureSetting** | Pointer to [**MemberAutomatedTrafficCaptureSetting**](MemberAutomatedTrafficCaptureSetting.md) |  | [optional] 
@@ -89,7 +90,6 @@ Name | Type | Description | Notes
 **UseTrafficCaptureRecQueries** | Pointer to **bool** | This flag is the use flag for enabling automated traffic capture based on outgoing recursive queries. | [optional] 
 **UseTrapNotifications** | Pointer to **bool** | Use flag for: trap_notifications | [optional] 
 **UseV4Vrrp** | Pointer to **bool** | Specify \&quot;true\&quot; to use VRRPv4 or \&quot;false\&quot; to use VRRPv6. | [optional] 
-**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VipSetting** | Pointer to [**MemberVipSetting**](MemberVipSetting.md) |  | [optional] 
 **VpnMtu** | Pointer to **int64** | The VPN maximum transmission unit (MTU). | [optional] 
 
@@ -136,6 +136,31 @@ SetRef sets Ref field to given value.
 `func (o *Member) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Member) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Member) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Member) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Member) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetActivePosition
 
@@ -2236,31 +2261,6 @@ SetUseV4Vrrp sets UseV4Vrrp field to given value.
 `func (o *Member) HasUseV4Vrrp() bool`
 
 HasUseV4Vrrp returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *Member) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *Member) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *Member) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *Member) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetVipSetting
 

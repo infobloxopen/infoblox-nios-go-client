@@ -21,6 +21,8 @@ var _ MappedNullable = &ThreatprotectionRuletemplate{}
 type ThreatprotectionRuletemplate struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The list of allowed actions of rhe rule template.
 	AllowedActions []string `json:"allowed_actions,omitempty"`
 	// The rule category this template assigned to.
@@ -34,8 +36,6 @@ type ThreatprotectionRuletemplate struct {
 	Ruleset *string `json:"ruleset,omitempty"`
 	// The Rule ID.
 	Sid *int64 `json:"sid,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewThreatprotectionRuletemplate instantiates a new ThreatprotectionRuletemplate object
@@ -85,6 +85,38 @@ func (o *ThreatprotectionRuletemplate) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *ThreatprotectionRuletemplate) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *ThreatprotectionRuletemplate) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThreatprotectionRuletemplate) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *ThreatprotectionRuletemplate) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *ThreatprotectionRuletemplate) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAllowedActions returns the AllowedActions field value if set, zero value otherwise.
@@ -311,38 +343,6 @@ func (o *ThreatprotectionRuletemplate) SetSid(v int64) {
 	o.Sid = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *ThreatprotectionRuletemplate) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThreatprotectionRuletemplate) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *ThreatprotectionRuletemplate) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *ThreatprotectionRuletemplate) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o ThreatprotectionRuletemplate) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -355,6 +355,9 @@ func (o ThreatprotectionRuletemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AllowedActions) {
 		toSerialize["allowed_actions"] = o.AllowedActions
@@ -376,9 +379,6 @@ func (o ThreatprotectionRuletemplate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Sid) {
 		toSerialize["sid"] = o.Sid
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

@@ -21,6 +21,8 @@ var _ MappedNullable = &LdapAuthService{}
 type LdapAuthService struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The LDAP descriptive comment.
 	Comment *string `json:"comment,omitempty"`
 	// Determines if the LDAP authentication service is disabled.
@@ -47,8 +49,6 @@ type LdapAuthService struct {
 	Servers []LdapAuthServiceServers `json:"servers,omitempty"`
 	// The LDAP authentication timeout in seconds.
 	Timeout *int64 `json:"timeout,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewLdapAuthService instantiates a new LdapAuthService object
@@ -98,6 +98,38 @@ func (o *LdapAuthService) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *LdapAuthService) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *LdapAuthService) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LdapAuthService) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *LdapAuthService) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *LdapAuthService) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
@@ -516,38 +548,6 @@ func (o *LdapAuthService) SetTimeout(v int64) {
 	o.Timeout = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *LdapAuthService) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LdapAuthService) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *LdapAuthService) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *LdapAuthService) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o LdapAuthService) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -560,6 +560,9 @@ func (o LdapAuthService) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -599,9 +602,6 @@ func (o LdapAuthService) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

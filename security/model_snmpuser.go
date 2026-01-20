@@ -21,6 +21,8 @@ var _ MappedNullable = &Snmpuser{}
 type Snmpuser struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Determines an authentication password for the user. This is a write-only attribute.
 	AuthenticationPassword *string `json:"authentication_password,omitempty"`
 	// The authentication protocol to be used for this user.
@@ -41,8 +43,6 @@ type Snmpuser struct {
 	PrivacyPassword *string `json:"privacy_password,omitempty"`
 	// The privacy protocol to be used for this user.
 	PrivacyProtocol *string `json:"privacy_protocol,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewSnmpuser instantiates a new Snmpuser object
@@ -92,6 +92,38 @@ func (o *Snmpuser) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Snmpuser) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Snmpuser) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Snmpuser) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Snmpuser) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Snmpuser) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAuthenticationPassword returns the AuthenticationPassword field value if set, zero value otherwise.
@@ -414,38 +446,6 @@ func (o *Snmpuser) SetPrivacyProtocol(v string) {
 	o.PrivacyProtocol = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Snmpuser) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Snmpuser) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Snmpuser) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Snmpuser) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Snmpuser) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -458,6 +458,9 @@ func (o Snmpuser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AuthenticationPassword) {
 		toSerialize["authentication_password"] = o.AuthenticationPassword
@@ -488,9 +491,6 @@ func (o Snmpuser) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PrivacyProtocol) {
 		toSerialize["privacy_protocol"] = o.PrivacyProtocol
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

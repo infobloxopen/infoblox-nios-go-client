@@ -38,7 +38,6 @@ Name | Type | Description | Notes
 **ShowUpgradeHistory** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowUptime** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowVersion** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
-**ShowAnalyticsDatabaseDumps** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowCores** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowCoresummary** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowCspThreatDb** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
@@ -925,31 +924,6 @@ SetShowVersion sets ShowVersion field to given value.
 `func (o *AdmingroupAdminShowCommands) HasShowVersion() bool`
 
 HasShowVersion returns a boolean if a field has been set.
-
-### GetShowAnalyticsDatabaseDumps
-
-`func (o *AdmingroupAdminShowCommands) GetShowAnalyticsDatabaseDumps() bool`
-
-GetShowAnalyticsDatabaseDumps returns the ShowAnalyticsDatabaseDumps field if non-nil, zero value otherwise.
-
-### GetShowAnalyticsDatabaseDumpsOk
-
-`func (o *AdmingroupAdminShowCommands) GetShowAnalyticsDatabaseDumpsOk() (*bool, bool)`
-
-GetShowAnalyticsDatabaseDumpsOk returns a tuple with the ShowAnalyticsDatabaseDumps field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShowAnalyticsDatabaseDumps
-
-`func (o *AdmingroupAdminShowCommands) SetShowAnalyticsDatabaseDumps(v bool)`
-
-SetShowAnalyticsDatabaseDumps sets ShowAnalyticsDatabaseDumps field to given value.
-
-### HasShowAnalyticsDatabaseDumps
-
-`func (o *AdmingroupAdminShowCommands) HasShowAnalyticsDatabaseDumps() bool`
-
-HasShowAnalyticsDatabaseDumps returns a boolean if a field has been set.
 
 ### GetShowCores
 

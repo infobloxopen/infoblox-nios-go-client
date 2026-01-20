@@ -21,10 +21,10 @@ var _ MappedNullable = &GridServicerestartGroupOrder{}
 type GridServicerestartGroupOrder struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The ordered list of the Service Restart Group.
-	Groups []string `json:"groups,omitempty"`
 	// Universally Unique ID assigned for this object
 	Uuid *string `json:"uuid,omitempty"`
+	// The ordered list of the Service Restart Group.
+	Groups []string `json:"groups,omitempty"`
 }
 
 // NewGridServicerestartGroupOrder instantiates a new GridServicerestartGroupOrder object
@@ -76,38 +76,6 @@ func (o *GridServicerestartGroupOrder) SetRef(v string) {
 	o.Ref = &v
 }
 
-// GetGroups returns the Groups field value if set, zero value otherwise.
-func (o *GridServicerestartGroupOrder) GetGroups() []string {
-	if o == nil || IsNil(o.Groups) {
-		var ret []string
-		return ret
-	}
-	return o.Groups
-}
-
-// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridServicerestartGroupOrder) GetGroupsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Groups) {
-		return nil, false
-	}
-	return o.Groups, true
-}
-
-// HasGroups returns a boolean if a field has been set.
-func (o *GridServicerestartGroupOrder) HasGroups() bool {
-	if o != nil && !IsNil(o.Groups) {
-		return true
-	}
-
-	return false
-}
-
-// SetGroups gets a reference to the given []string and assigns it to the Groups field.
-func (o *GridServicerestartGroupOrder) SetGroups(v []string) {
-	o.Groups = v
-}
-
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *GridServicerestartGroupOrder) GetUuid() string {
 	if o == nil || IsNil(o.Uuid) {
@@ -140,6 +108,38 @@ func (o *GridServicerestartGroupOrder) SetUuid(v string) {
 	o.Uuid = &v
 }
 
+// GetGroups returns the Groups field value if set, zero value otherwise.
+func (o *GridServicerestartGroupOrder) GetGroups() []string {
+	if o == nil || IsNil(o.Groups) {
+		var ret []string
+		return ret
+	}
+	return o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridServicerestartGroupOrder) GetGroupsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
+	}
+	return o.Groups, true
+}
+
+// HasGroups returns a boolean if a field has been set.
+func (o *GridServicerestartGroupOrder) HasGroups() bool {
+	if o != nil && !IsNil(o.Groups) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []string and assigns it to the Groups field.
+func (o *GridServicerestartGroupOrder) SetGroups(v []string) {
+	o.Groups = v
+}
+
 func (o GridServicerestartGroupOrder) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -153,11 +153,11 @@ func (o GridServicerestartGroupOrder) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
-	if !IsNil(o.Groups) {
-		toSerialize["groups"] = o.Groups
-	}
 	if !IsNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
 	}
 	return toSerialize, nil
 }

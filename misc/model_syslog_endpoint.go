@@ -21,6 +21,8 @@ var _ MappedNullable = &SyslogEndpoint{}
 type SyslogEndpoint struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
 	ExtAttrsPlus *map[string]ExtAttrs `json:"extattrs+,omitempty"`
 	// Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}.
@@ -40,8 +42,6 @@ type SyslogEndpoint struct {
 	TemplateInstance *SyslogEndpointTemplateInstance `json:"template_instance,omitempty"`
 	// The timeout of session management (in seconds).
 	Timeout *int64 `json:"timeout,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The vendor identifier.
 	VendorIdentifier *string `json:"vendor_identifier,omitempty"`
 	// The user name for WAPI integration.
@@ -97,6 +97,38 @@ func (o *SyslogEndpoint) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *SyslogEndpoint) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *SyslogEndpoint) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SyslogEndpoint) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *SyslogEndpoint) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *SyslogEndpoint) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetExtAttrsPlus returns the ExtAttrsPlus field value if set, zero value otherwise.
@@ -419,38 +451,6 @@ func (o *SyslogEndpoint) SetTimeout(v int64) {
 	o.Timeout = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *SyslogEndpoint) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SyslogEndpoint) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *SyslogEndpoint) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *SyslogEndpoint) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVendorIdentifier returns the VendorIdentifier field value if set, zero value otherwise.
 func (o *SyslogEndpoint) GetVendorIdentifier() string {
 	if o == nil || IsNil(o.VendorIdentifier) {
@@ -560,6 +560,9 @@ func (o SyslogEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.ExtAttrsPlus) {
 		toSerialize["extattrs+"] = o.ExtAttrsPlus
 	}
@@ -589,9 +592,6 @@ func (o SyslogEndpoint) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.VendorIdentifier) {
 		toSerialize["vendor_identifier"] = o.VendorIdentifier

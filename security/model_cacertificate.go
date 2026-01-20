@@ -21,6 +21,8 @@ var _ MappedNullable = &Cacertificate{}
 type Cacertificate struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The certificate subject name.
 	DistinguishedName *string `json:"distinguished_name,omitempty"`
 	// The certificate issuer subject name.
@@ -29,8 +31,6 @@ type Cacertificate struct {
 	Serial *string `json:"serial,omitempty"`
 	// Information about the CA certificate usage.
 	UsedBy *string `json:"used_by,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The date after which the certificate becomes invalid.
 	ValidNotAfter *int64 `json:"valid_not_after,omitempty"`
 	// The date before which the certificate is not valid.
@@ -84,6 +84,38 @@ func (o *Cacertificate) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Cacertificate) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Cacertificate) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cacertificate) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Cacertificate) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Cacertificate) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetDistinguishedName returns the DistinguishedName field value if set, zero value otherwise.
@@ -214,38 +246,6 @@ func (o *Cacertificate) SetUsedBy(v string) {
 	o.UsedBy = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Cacertificate) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cacertificate) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Cacertificate) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Cacertificate) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetValidNotAfter returns the ValidNotAfter field value if set, zero value otherwise.
 func (o *Cacertificate) GetValidNotAfter() int64 {
 	if o == nil || IsNil(o.ValidNotAfter) {
@@ -323,6 +323,9 @@ func (o Cacertificate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.DistinguishedName) {
 		toSerialize["distinguished_name"] = o.DistinguishedName
 	}
@@ -334,9 +337,6 @@ func (o Cacertificate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UsedBy) {
 		toSerialize["used_by"] = o.UsedBy
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.ValidNotAfter) {
 		toSerialize["valid_not_after"] = o.ValidNotAfter

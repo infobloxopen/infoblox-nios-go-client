@@ -21,14 +21,14 @@ var _ MappedNullable = &ThreatprotectionRulecategory{}
 type ThreatprotectionRulecategory struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Determines if factory reset is enabled for this rule category.
 	IsFactoryResetEnabled *bool `json:"is_factory_reset_enabled,omitempty"`
 	// The name of the rule category.
 	Name *string `json:"name,omitempty"`
 	// The version of the ruleset the category assigned to.
 	Ruleset *string `json:"ruleset,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewThreatprotectionRulecategory instantiates a new ThreatprotectionRulecategory object
@@ -78,6 +78,38 @@ func (o *ThreatprotectionRulecategory) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *ThreatprotectionRulecategory) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *ThreatprotectionRulecategory) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThreatprotectionRulecategory) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *ThreatprotectionRulecategory) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *ThreatprotectionRulecategory) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetIsFactoryResetEnabled returns the IsFactoryResetEnabled field value if set, zero value otherwise.
@@ -176,38 +208,6 @@ func (o *ThreatprotectionRulecategory) SetRuleset(v string) {
 	o.Ruleset = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *ThreatprotectionRulecategory) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThreatprotectionRulecategory) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *ThreatprotectionRulecategory) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *ThreatprotectionRulecategory) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o ThreatprotectionRulecategory) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -221,6 +221,9 @@ func (o ThreatprotectionRulecategory) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.IsFactoryResetEnabled) {
 		toSerialize["is_factory_reset_enabled"] = o.IsFactoryResetEnabled
 	}
@@ -229,9 +232,6 @@ func (o ThreatprotectionRulecategory) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ruleset) {
 		toSerialize["ruleset"] = o.Ruleset
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

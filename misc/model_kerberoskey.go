@@ -21,6 +21,8 @@ var _ MappedNullable = &Kerberoskey{}
 type Kerberoskey struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The Kerberos domain name.
 	Domain *string `json:"domain,omitempty"`
 	// The Kerberos key encryption type.
@@ -33,8 +35,6 @@ type Kerberoskey struct {
 	Principal *string `json:"principal,omitempty"`
 	// The timestamp of the Kerberos key upload operation.
 	UploadTimestamp *int64 `json:"upload_timestamp,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The Kerberos key version number (KVNO).
 	Version *int64 `json:"version,omitempty"`
 }
@@ -86,6 +86,38 @@ func (o *Kerberoskey) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Kerberoskey) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Kerberoskey) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Kerberoskey) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Kerberoskey) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Kerberoskey) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
@@ -280,38 +312,6 @@ func (o *Kerberoskey) SetUploadTimestamp(v int64) {
 	o.UploadTimestamp = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Kerberoskey) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Kerberoskey) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Kerberoskey) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Kerberoskey) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *Kerberoskey) GetVersion() int64 {
 	if o == nil || IsNil(o.Version) {
@@ -357,6 +357,9 @@ func (o Kerberoskey) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
 	}
@@ -374,9 +377,6 @@ func (o Kerberoskey) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UploadTimestamp) {
 		toSerialize["upload_timestamp"] = o.UploadTimestamp
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version

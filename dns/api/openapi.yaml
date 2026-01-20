@@ -26744,6 +26744,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -26752,6 +26753,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         member_soa_serials:
         - ms_server_primary: Example ms_server_primary
           grid_primary: Example grid_primary
@@ -26936,6 +26938,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -26944,6 +26947,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         ms_dc_ns_record_creation:
         - address: Example address
           comment: Example comment
@@ -26962,6 +26966,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -26970,6 +26975,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         grid_primary:
         - preferred_primaries:
           - address: Example address
@@ -27861,6 +27867,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -27868,6 +27875,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27912,6 +27922,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -27919,6 +27930,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -27963,6 +27977,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -27970,6 +27985,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -33355,9 +33373,11 @@ components:
         - address: Example address
           _ref: _ref
           permission: Example permission
+          uuid: uuid
         - address: Example address
           _ref: _ref
           permission: Example permission
+          uuid: uuid
         use_filter_aaaa: false
         recursion: false
         ddns_principal_group: Example ddns_principal_group
@@ -33460,6 +33480,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -33468,6 +33489,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         cloud_info:
           delegated_member:
             name: Example name
@@ -33539,6 +33561,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -33547,6 +33570,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         _ref: _ref
         use_root_name_server: false
         nxdomain_redirect_addresses:
@@ -34238,9 +34262,13 @@ components:
         address: Example address
         _ref: _ref
         permission: Example permission
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -34299,6 +34327,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -34306,6 +34335,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -34350,6 +34382,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -34357,6 +34390,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -40826,6 +40862,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -40834,6 +40871,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           member_soa_serials:
           - ms_server_primary: Example ms_server_primary
             grid_primary: Example grid_primary
@@ -41018,6 +41056,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41026,6 +41065,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           ms_dc_ns_record_creation:
           - address: Example address
             comment: Example comment
@@ -41044,6 +41084,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41052,6 +41093,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           grid_primary:
           - preferred_primaries:
             - address: Example address
@@ -41316,6 +41358,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41324,6 +41367,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           member_soa_serials:
           - ms_server_primary: Example ms_server_primary
             grid_primary: Example grid_primary
@@ -41508,6 +41552,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41516,6 +41561,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           ms_dc_ns_record_creation:
           - address: Example address
             comment: Example comment
@@ -41534,6 +41580,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41542,6 +41589,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           grid_primary:
           - preferred_primaries:
             - address: Example address
@@ -43656,9 +43704,11 @@ components:
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           use_filter_aaaa: false
           recursion: false
           ddns_principal_group: Example ddns_principal_group
@@ -43761,6 +43811,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -43769,6 +43820,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           cloud_info:
             delegated_member:
               name: Example name
@@ -43840,6 +43892,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -43848,6 +43901,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           _ref: _ref
           use_root_name_server: false
           nxdomain_redirect_addresses:
@@ -43923,9 +43977,11 @@ components:
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           use_filter_aaaa: false
           recursion: false
           ddns_principal_group: Example ddns_principal_group
@@ -44028,6 +44084,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -44036,6 +44093,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           cloud_info:
             delegated_member:
               name: Example name
@@ -44107,6 +44165,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -44115,6 +44174,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           _ref: _ref
           use_root_name_server: false
           nxdomain_redirect_addresses:

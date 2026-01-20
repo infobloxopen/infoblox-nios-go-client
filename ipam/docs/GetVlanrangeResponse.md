@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **StartVlanId** | Pointer to **int64** | Start ID for VLAN Range. | [optional] 
 **Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **VlanNamePrefix** | Pointer to **string** | If set on creation prefix string will be used for VLAN name. | [optional] 
-**VlanView** | Pointer to **string** | The VLAN View to which this VLAN Range belongs. | [optional] 
+**VlanView** | Pointer to [**VlanrangeVlanView**](VlanrangeVlanView.md) |  | [optional] 
 **Result** | Pointer to [**Vlanrange**](Vlanrange.md) |  | [optional] 
 
 ## Methods
@@ -340,20 +340,20 @@ HasVlanNamePrefix returns a boolean if a field has been set.
 
 ### GetVlanView
 
-`func (o *GetVlanrangeResponse) GetVlanView() string`
+`func (o *GetVlanrangeResponse) GetVlanView() VlanrangeVlanView`
 
 GetVlanView returns the VlanView field if non-nil, zero value otherwise.
 
 ### GetVlanViewOk
 
-`func (o *GetVlanrangeResponse) GetVlanViewOk() (*string, bool)`
+`func (o *GetVlanrangeResponse) GetVlanViewOk() (*VlanrangeVlanView, bool)`
 
 GetVlanViewOk returns a tuple with the VlanView field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVlanView
 
-`func (o *GetVlanrangeResponse) SetVlanView(v string)`
+`func (o *GetVlanrangeResponse) SetVlanView(v VlanrangeVlanView)`
 
 SetVlanView sets VlanView field to given value.
 

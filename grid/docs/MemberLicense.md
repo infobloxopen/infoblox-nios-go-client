@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ExpirationStatus** | Pointer to **string** | The license expiration status. | [optional] [readonly] 
 **ExpiryDate** | Pointer to **int64** | The expiration timestamp of the license. | [optional] [readonly] 
 **Hwid** | Pointer to **string** | The hardware ID of the physical node on which the license is installed. | [optional] [readonly] 
@@ -13,7 +14,6 @@ Name | Type | Description | Notes
 **Limit** | Pointer to **string** | The license limit value. | [optional] [readonly] 
 **LimitContext** | Pointer to **string** | The license limit context. | [optional] [readonly] 
 **Type** | Pointer to **string** | The license type. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -58,6 +58,31 @@ SetRef sets Ref field to given value.
 `func (o *MemberLicense) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *MemberLicense) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *MemberLicense) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *MemberLicense) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *MemberLicense) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetExpirationStatus
 
@@ -258,31 +283,6 @@ SetType sets Type field to given value.
 `func (o *MemberLicense) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *MemberLicense) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *MemberLicense) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *MemberLicense) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *MemberLicense) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

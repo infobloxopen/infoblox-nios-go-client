@@ -20,7 +20,9 @@ var _ MappedNullable = &GridCloudapiTenant{}
 // GridCloudapiTenant struct for GridCloudapiTenant
 type GridCloudapiTenant struct {
 	// The reference to the object.
-	Ref       *string                      `json:"_ref,omitempty"`
+	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid      *string                      `json:"uuid,omitempty"`
 	CloudInfo *GridCloudapiTenantCloudInfo `json:"cloud_info,omitempty"`
 	// Comment for the Grid Cloud API Tenant object; maximum 256 characters.
 	Comment *string `json:"comment,omitempty"`
@@ -34,8 +36,6 @@ type GridCloudapiTenant struct {
 	Name *string `json:"name,omitempty"`
 	// Number of Networks associated with the tenant.
 	NetworkCount *int64 `json:"network_count,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// Number of VMs associated with the tenant.
 	VmCount *int64 `json:"vm_count,omitempty"`
 }
@@ -87,6 +87,38 @@ func (o *GridCloudapiTenant) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridCloudapiTenant) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridCloudapiTenant) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridCloudapiTenant) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridCloudapiTenant) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridCloudapiTenant) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetCloudInfo returns the CloudInfo field value if set, zero value otherwise.
@@ -313,38 +345,6 @@ func (o *GridCloudapiTenant) SetNetworkCount(v int64) {
 	o.NetworkCount = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridCloudapiTenant) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridCloudapiTenant) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridCloudapiTenant) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridCloudapiTenant) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVmCount returns the VmCount field value if set, zero value otherwise.
 func (o *GridCloudapiTenant) GetVmCount() int64 {
 	if o == nil || IsNil(o.VmCount) {
@@ -390,6 +390,9 @@ func (o GridCloudapiTenant) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.CloudInfo) {
 		toSerialize["cloud_info"] = o.CloudInfo
 	}
@@ -410,9 +413,6 @@ func (o GridCloudapiTenant) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NetworkCount) {
 		toSerialize["network_count"] = o.NetworkCount
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.VmCount) {
 		toSerialize["vm_count"] = o.VmCount

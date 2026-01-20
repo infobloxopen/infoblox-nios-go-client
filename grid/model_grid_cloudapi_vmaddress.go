@@ -21,6 +21,8 @@ var _ MappedNullable = &GridCloudapiVmaddress{}
 type GridCloudapiVmaddress struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The IP address of the interface.
 	Address *string `json:"address,omitempty"`
 	// IP address type (Public, Private, Elastic, Floating, ...).
@@ -65,8 +67,6 @@ type GridCloudapiVmaddress struct {
 	SubnetId *string `json:"subnet_id,omitempty"`
 	// The Cloud API Tenant object.
 	Tenant *string `json:"tenant,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// Availability zone of the VM.
 	VmAvailabilityZone *string `json:"vm_availability_zone,omitempty"`
 	// VM comment.
@@ -148,6 +148,38 @@ func (o *GridCloudapiVmaddress) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridCloudapiVmaddress) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridCloudapiVmaddress) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridCloudapiVmaddress) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridCloudapiVmaddress) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridCloudapiVmaddress) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
@@ -886,38 +918,6 @@ func (o *GridCloudapiVmaddress) SetTenant(v string) {
 	o.Tenant = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridCloudapiVmaddress) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridCloudapiVmaddress) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridCloudapiVmaddress) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridCloudapiVmaddress) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVmAvailabilityZone returns the VmAvailabilityZone field value if set, zero value otherwise.
 func (o *GridCloudapiVmaddress) GetVmAvailabilityZone() string {
 	if o == nil || IsNil(o.VmAvailabilityZone) {
@@ -1443,6 +1443,9 @@ func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
@@ -1511,9 +1514,6 @@ func (o GridCloudapiVmaddress) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tenant) {
 		toSerialize["tenant"] = o.Tenant
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.VmAvailabilityZone) {
 		toSerialize["vm_availability_zone"] = o.VmAvailabilityZone

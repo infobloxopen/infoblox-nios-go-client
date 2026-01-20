@@ -78,8 +78,6 @@ type AdmingroupAdminSetCommands struct {
 	// If True then CLI user has permission to run the command
 	SetTransferSupportbundle *bool `json:"set_transfer_supportbundle,omitempty"`
 	// If True then CLI user has permission to run the command
-	SetAnalyticsDatabaseDump *bool `json:"set_analytics_database_dump,omitempty"`
-	// If True then CLI user has permission to run the command
 	SetAnalyticsParameter *bool `json:"set_analytics_parameter,omitempty"`
 	// If True then CLI user has permission to run the command
 	SetCollectOldLogs *bool `json:"set_collect_old_logs,omitempty"`
@@ -1059,38 +1057,6 @@ func (o *AdmingroupAdminSetCommands) SetSetTransferSupportbundle(v bool) {
 	o.SetTransferSupportbundle = &v
 }
 
-// GetSetAnalyticsDatabaseDump returns the SetAnalyticsDatabaseDump field value if set, zero value otherwise.
-func (o *AdmingroupAdminSetCommands) GetSetAnalyticsDatabaseDump() bool {
-	if o == nil || IsNil(o.SetAnalyticsDatabaseDump) {
-		var ret bool
-		return ret
-	}
-	return *o.SetAnalyticsDatabaseDump
-}
-
-// GetSetAnalyticsDatabaseDumpOk returns a tuple with the SetAnalyticsDatabaseDump field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AdmingroupAdminSetCommands) GetSetAnalyticsDatabaseDumpOk() (*bool, bool) {
-	if o == nil || IsNil(o.SetAnalyticsDatabaseDump) {
-		return nil, false
-	}
-	return o.SetAnalyticsDatabaseDump, true
-}
-
-// HasSetAnalyticsDatabaseDump returns a boolean if a field has been set.
-func (o *AdmingroupAdminSetCommands) HasSetAnalyticsDatabaseDump() bool {
-	if o != nil && !IsNil(o.SetAnalyticsDatabaseDump) {
-		return true
-	}
-
-	return false
-}
-
-// SetSetAnalyticsDatabaseDump gets a reference to the given bool and assigns it to the SetAnalyticsDatabaseDump field.
-func (o *AdmingroupAdminSetCommands) SetSetAnalyticsDatabaseDump(v bool) {
-	o.SetAnalyticsDatabaseDump = &v
-}
-
 // GetSetAnalyticsParameter returns the SetAnalyticsParameter field value if set, zero value otherwise.
 func (o *AdmingroupAdminSetCommands) GetSetAnalyticsParameter() bool {
 	if o == nil || IsNil(o.SetAnalyticsParameter) {
@@ -1668,9 +1634,6 @@ func (o AdmingroupAdminSetCommands) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SetTransferSupportbundle) {
 		toSerialize["set_transfer_supportbundle"] = o.SetTransferSupportbundle
 	}
-	if !IsNil(o.SetAnalyticsDatabaseDump) {
-		toSerialize["set_analytics_database_dump"] = o.SetAnalyticsDatabaseDump
-	}
 	if !IsNil(o.SetAnalyticsParameter) {
 		toSerialize["set_analytics_parameter"] = o.SetAnalyticsParameter
 	}
@@ -1767,7 +1730,6 @@ func (o *AdmingroupAdminSetCommands) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "set_maintenancemode")
 		delete(additionalProperties, "set_transfer_reporting_data")
 		delete(additionalProperties, "set_transfer_supportbundle")
-		delete(additionalProperties, "set_analytics_database_dump")
 		delete(additionalProperties, "set_analytics_parameter")
 		delete(additionalProperties, "set_collect_old_logs")
 		delete(additionalProperties, "set_core_files_quota")

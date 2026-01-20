@@ -21,12 +21,12 @@ var _ MappedNullable = &MemberParentalcontrol{}
 type MemberParentalcontrol struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Determines if the parental control service is enabled.
 	EnableService *bool `json:"enable_service,omitempty"`
 	// The parental control member hostname.
 	Name *string `json:"name,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewMemberParentalcontrol instantiates a new MemberParentalcontrol object
@@ -76,6 +76,38 @@ func (o *MemberParentalcontrol) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *MemberParentalcontrol) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *MemberParentalcontrol) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MemberParentalcontrol) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *MemberParentalcontrol) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *MemberParentalcontrol) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetEnableService returns the EnableService field value if set, zero value otherwise.
@@ -142,38 +174,6 @@ func (o *MemberParentalcontrol) SetName(v string) {
 	o.Name = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *MemberParentalcontrol) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MemberParentalcontrol) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *MemberParentalcontrol) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *MemberParentalcontrol) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o MemberParentalcontrol) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -187,14 +187,14 @@ func (o MemberParentalcontrol) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.EnableService) {
 		toSerialize["enable_service"] = o.EnableService
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

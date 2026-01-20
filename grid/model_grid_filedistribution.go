@@ -21,6 +21,8 @@ var _ MappedNullable = &GridFiledistribution{}
 type GridFiledistribution struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Determines whether the uploads to Grid members are allowed.
 	AllowUploads *bool `json:"allow_uploads,omitempty"`
 	// Determines whether to include distributed files in the backup.
@@ -35,8 +37,6 @@ type GridFiledistribution struct {
 	Name *string `json:"name,omitempty"`
 	// Maximum storage in megabytes allowed on the Grid. The maximum storage space allowed for all file distribution services on a Grid is equal to the storage space allowed to the Grid member with the smallest amount of space allowed.
 	StorageLimit *int64 `json:"storage_limit,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewGridFiledistribution instantiates a new GridFiledistribution object
@@ -86,6 +86,38 @@ func (o *GridFiledistribution) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridFiledistribution) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridFiledistribution) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridFiledistribution) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridFiledistribution) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridFiledistribution) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAllowUploads returns the AllowUploads field value if set, zero value otherwise.
@@ -312,38 +344,6 @@ func (o *GridFiledistribution) SetStorageLimit(v int64) {
 	o.StorageLimit = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridFiledistribution) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridFiledistribution) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridFiledistribution) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridFiledistribution) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o GridFiledistribution) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -356,6 +356,9 @@ func (o GridFiledistribution) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AllowUploads) {
 		toSerialize["allow_uploads"] = o.AllowUploads
@@ -377,9 +380,6 @@ func (o GridFiledistribution) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StorageLimit) {
 		toSerialize["storage_limit"] = o.StorageLimit
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

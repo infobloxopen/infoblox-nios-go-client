@@ -21,6 +21,8 @@ var _ MappedNullable = &Allendpoints{}
 type Allendpoints struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// The uuid of the object.
+	Uuid *string `json:"uuid,omitempty"`
 	// The Grid endpoint IPv4 Address or IPv6 Address or Fully-Qualified Domain Name (FQDN).
 	Address *string `json:"address,omitempty"`
 	// The Grid endpoint descriptive comment.
@@ -31,8 +33,6 @@ type Allendpoints struct {
 	SubscribingMember *string `json:"subscribing_member,omitempty"`
 	// The Grid endpoint type.
 	Type *string `json:"type,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The Grid endpoint version.
 	Version *string `json:"version,omitempty"`
 }
@@ -84,6 +84,38 @@ func (o *Allendpoints) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Allendpoints) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Allendpoints) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Allendpoints) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Allendpoints) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Allendpoints) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
@@ -246,38 +278,6 @@ func (o *Allendpoints) SetType(v string) {
 	o.Type = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Allendpoints) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Allendpoints) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Allendpoints) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Allendpoints) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *Allendpoints) GetVersion() string {
 	if o == nil || IsNil(o.Version) {
@@ -323,6 +323,9 @@ func (o Allendpoints) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
@@ -337,9 +340,6 @@ func (o Allendpoints) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version

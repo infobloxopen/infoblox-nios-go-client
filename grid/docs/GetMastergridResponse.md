@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Address** | Pointer to **string** | IP Address or FQDN to use to contact the SGM | [optional] 
 **ConnectionDisabled** | Pointer to **bool** | Indicates whether the sub-grid is currently disabled (true) or not (false). | [optional] 
 **ConnectionTimestamp** | Pointer to **int64** | Timestamp of the beginning of the current VPN connection with the SGM. | [optional] [readonly] 
@@ -21,7 +22,6 @@ Name | Type | Description | Notes
 **MgmCommunicationMode** | Pointer to **string** | MGM Communication Mode. | [optional] [readonly] 
 **Port** | Pointer to **int64** | Alternate port number to use when connecting to the VPN endpoint. | [optional] 
 **UseMgmtPort** | Pointer to **bool** | Indicates whether to use the management port to connect to the SGM. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Mastergrid**](Mastergrid.md) |  | [optional] 
 
 ## Methods
@@ -67,6 +67,31 @@ SetRef sets Ref field to given value.
 `func (o *GetMastergridResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMastergridResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMastergridResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMastergridResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMastergridResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 
@@ -467,31 +492,6 @@ SetUseMgmtPort sets UseMgmtPort field to given value.
 `func (o *GetMastergridResponse) HasUseMgmtPort() bool`
 
 HasUseMgmtPort returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *GetMastergridResponse) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *GetMastergridResponse) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *GetMastergridResponse) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *GetMastergridResponse) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

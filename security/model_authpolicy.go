@@ -21,6 +21,8 @@ var _ MappedNullable = &Authpolicy{}
 type Authpolicy struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// List of names of local administration groups that are mapped to remote administration groups.
 	AdminGroups []string `json:"admin_groups,omitempty"`
 	// The array that contains an ordered list of refs to :doc:`localuser:authservice object </objects/localuser.authservice>`, ldap_auth_service object ldap_auth_service, :doc:`radius:authservice object </objects/radius.authservice>`, :doc:`tacacsplus:authservice object </objects/tacacsplus.authservice>`, ad_auth_service object ad_auth_service, :doc:`certificate:authservice object </objects/certificate.authservice>`. :doc:`saml:authservice object </objects/saml.authservice>`,
@@ -29,8 +31,6 @@ type Authpolicy struct {
 	DefaultGroup *string `json:"default_group,omitempty"`
 	// Remote policies usage.
 	UsageType *string `json:"usage_type,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewAuthpolicy instantiates a new Authpolicy object
@@ -80,6 +80,38 @@ func (o *Authpolicy) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Authpolicy) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Authpolicy) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Authpolicy) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Authpolicy) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Authpolicy) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAdminGroups returns the AdminGroups field value if set, zero value otherwise.
@@ -210,38 +242,6 @@ func (o *Authpolicy) SetUsageType(v string) {
 	o.UsageType = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Authpolicy) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Authpolicy) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Authpolicy) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Authpolicy) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Authpolicy) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -255,6 +255,9 @@ func (o Authpolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.AdminGroups) {
 		toSerialize["admin_groups"] = o.AdminGroups
 	}
@@ -266,9 +269,6 @@ func (o Authpolicy) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UsageType) {
 		toSerialize["usage_type"] = o.UsageType
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

@@ -21,6 +21,8 @@ var _ MappedNullable = &CertificateAuthservice{}
 type CertificateAuthservice struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Specifies the value of the client certificate for automatically populating the NIOS login name.
 	AutoPopulateLogin *string `json:"auto_populate_login,omitempty"`
 	// The list of CA certificates.
@@ -54,8 +56,6 @@ type CertificateAuthservice struct {
 	TrustModel *string `json:"trust_model,omitempty"`
 	// Specifies how to search for a user.
 	UserMatchType *string `json:"user_match_type,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewCertificateAuthservice instantiates a new CertificateAuthservice object
@@ -105,6 +105,38 @@ func (o *CertificateAuthservice) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *CertificateAuthservice) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *CertificateAuthservice) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateAuthservice) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *CertificateAuthservice) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *CertificateAuthservice) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAutoPopulateLogin returns the AutoPopulateLogin field value if set, zero value otherwise.
@@ -651,38 +683,6 @@ func (o *CertificateAuthservice) SetUserMatchType(v string) {
 	o.UserMatchType = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *CertificateAuthservice) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CertificateAuthservice) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *CertificateAuthservice) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *CertificateAuthservice) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o CertificateAuthservice) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -695,6 +695,9 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AutoPopulateLogin) {
 		toSerialize["auto_populate_login"] = o.AutoPopulateLogin
@@ -746,9 +749,6 @@ func (o CertificateAuthservice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UserMatchType) {
 		toSerialize["user_match_type"] = o.UserMatchType
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

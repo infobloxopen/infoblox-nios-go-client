@@ -21,6 +21,8 @@ var _ MappedNullable = &GridThreatinsight{}
 type GridThreatinsight struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// allowlist update policy (manual or automatic)
 	AllowlistUpdatePolicy *string `json:"allowlist_update_policy,omitempty"`
 	// Disable domain collapsing at grid level
@@ -63,8 +65,6 @@ type GridThreatinsight struct {
 	Name                       *string                                      `json:"name,omitempty"`
 	ScheduledAllowlistDownload *GridThreatinsightScheduledAllowlistDownload `json:"scheduled_allowlist_download,omitempty"`
 	ScheduledDownload          *GridThreatinsightScheduledDownload          `json:"scheduled_download,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewGridThreatinsight instantiates a new GridThreatinsight object
@@ -114,6 +114,38 @@ func (o *GridThreatinsight) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridThreatinsight) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridThreatinsight) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridThreatinsight) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridThreatinsight) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridThreatinsight) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAllowlistUpdatePolicy returns the AllowlistUpdatePolicy field value if set, zero value otherwise.
@@ -820,38 +852,6 @@ func (o *GridThreatinsight) SetScheduledDownload(v GridThreatinsightScheduledDow
 	o.ScheduledDownload = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridThreatinsight) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridThreatinsight) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridThreatinsight) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridThreatinsight) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o GridThreatinsight) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -864,6 +864,9 @@ func (o GridThreatinsight) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.AllowlistUpdatePolicy) {
 		toSerialize["allowlist_update_policy"] = o.AllowlistUpdatePolicy
@@ -930,9 +933,6 @@ func (o GridThreatinsight) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ScheduledDownload) {
 		toSerialize["scheduled_download"] = o.ScheduledDownload
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

@@ -21,6 +21,8 @@ var _ MappedNullable = &Restartservicestatus{}
 type Restartservicestatus struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The status of the DHCP service.
 	DhcpStatus *string `json:"dhcp_status,omitempty"`
 	// The status of the DNS service.
@@ -29,8 +31,6 @@ type Restartservicestatus struct {
 	Member *string `json:"member,omitempty"`
 	// The status of the reporting service.
 	ReportingStatus *string `json:"reporting_status,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewRestartservicestatus instantiates a new Restartservicestatus object
@@ -80,6 +80,38 @@ func (o *Restartservicestatus) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Restartservicestatus) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Restartservicestatus) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Restartservicestatus) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Restartservicestatus) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Restartservicestatus) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetDhcpStatus returns the DhcpStatus field value if set, zero value otherwise.
@@ -210,38 +242,6 @@ func (o *Restartservicestatus) SetReportingStatus(v string) {
 	o.ReportingStatus = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Restartservicestatus) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Restartservicestatus) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Restartservicestatus) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Restartservicestatus) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Restartservicestatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -255,6 +255,9 @@ func (o Restartservicestatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.DhcpStatus) {
 		toSerialize["dhcp_status"] = o.DhcpStatus
 	}
@@ -266,9 +269,6 @@ func (o Restartservicestatus) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ReportingStatus) {
 		toSerialize["reporting_status"] = o.ReportingStatus
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

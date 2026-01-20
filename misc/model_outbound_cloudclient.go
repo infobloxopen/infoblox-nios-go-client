@@ -21,6 +21,8 @@ var _ MappedNullable = &OutboundCloudclient{}
 type OutboundCloudclient struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Determines whether the OutBound Cloud Client is enabled.
 	Enable *bool `json:"enable,omitempty"`
 	// The Grid member where our outbound is running.
@@ -29,8 +31,6 @@ type OutboundCloudclient struct {
 	Interval *int64 `json:"interval,omitempty"`
 	// List of event types to request
 	OutboundCloudClientEvents []OutboundCloudclientOutboundCloudClientEvents `json:"outbound_cloud_client_events,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewOutboundCloudclient instantiates a new OutboundCloudclient object
@@ -80,6 +80,38 @@ func (o *OutboundCloudclient) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *OutboundCloudclient) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *OutboundCloudclient) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutboundCloudclient) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *OutboundCloudclient) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *OutboundCloudclient) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetEnable returns the Enable field value if set, zero value otherwise.
@@ -210,38 +242,6 @@ func (o *OutboundCloudclient) SetOutboundCloudClientEvents(v []OutboundCloudclie
 	o.OutboundCloudClientEvents = v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *OutboundCloudclient) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OutboundCloudclient) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *OutboundCloudclient) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *OutboundCloudclient) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o OutboundCloudclient) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -255,6 +255,9 @@ func (o OutboundCloudclient) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Enable) {
 		toSerialize["enable"] = o.Enable
 	}
@@ -266,9 +269,6 @@ func (o OutboundCloudclient) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OutboundCloudClientEvents) {
 		toSerialize["outbound_cloud_client_events"] = o.OutboundCloudClientEvents
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

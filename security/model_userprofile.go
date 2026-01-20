@@ -21,6 +21,8 @@ var _ MappedNullable = &Userprofile{}
 type Userprofile struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// The uuid of the object.
+	Uuid *string `json:"uuid,omitempty"`
 	// Determines the active dashboard type.
 	ActiveDashboardType *string `json:"active_dashboard_type,omitempty"`
 	// The Admin Group object to which the admin belongs. An admin user can belong to only one admin group at a time.
@@ -106,6 +108,38 @@ func (o *Userprofile) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Userprofile) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Userprofile) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Userprofile) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Userprofile) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Userprofile) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetActiveDashboardType returns the ActiveDashboardType field value if set, zero value otherwise.
@@ -696,6 +730,9 @@ func (o Userprofile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.ActiveDashboardType) {
 		toSerialize["active_dashboard_type"] = o.ActiveDashboardType

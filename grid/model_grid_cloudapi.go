@@ -21,6 +21,8 @@ var _ MappedNullable = &GridCloudapi{}
 type GridCloudapi struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Defines administrators who can perform cloud API requests on the Grid Master. The valid value is NONE (no administrator), ALL (all administrators), or LIST (administrators on the ACL).
 	AllowApiAdmins *string `json:"allow_api_admins,omitempty"`
 	// The list of administrators who can perform cloud API requests on the Cloud Platform Appliance.
@@ -28,8 +30,6 @@ type GridCloudapi struct {
 	// Determines whether the recycle bin for deleted cloud objects is enabled or not on the Grid Master.
 	EnableRecycleBin *bool                      `json:"enable_recycle_bin,omitempty"`
 	GatewayConfig    *GridCloudapiGatewayConfig `json:"gateway_config,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewGridCloudapi instantiates a new GridCloudapi object
@@ -79,6 +79,38 @@ func (o *GridCloudapi) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridCloudapi) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridCloudapi) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridCloudapi) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridCloudapi) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridCloudapi) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAllowApiAdmins returns the AllowApiAdmins field value if set, zero value otherwise.
@@ -209,38 +241,6 @@ func (o *GridCloudapi) SetGatewayConfig(v GridCloudapiGatewayConfig) {
 	o.GatewayConfig = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridCloudapi) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridCloudapi) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridCloudapi) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridCloudapi) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o GridCloudapi) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -254,6 +254,9 @@ func (o GridCloudapi) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.AllowApiAdmins) {
 		toSerialize["allow_api_admins"] = o.AllowApiAdmins
 	}
@@ -265,9 +268,6 @@ func (o GridCloudapi) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GatewayConfig) {
 		toSerialize["gateway_config"] = o.GatewayConfig
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

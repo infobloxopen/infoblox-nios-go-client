@@ -21,6 +21,8 @@ var _ MappedNullable = &PxgridEndpoint{}
 type PxgridEndpoint struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The pxgrid endpoint IPv4 Address or IPv6 Address or Fully-Qualified Domain Name (FQDN)
 	Address *string `json:"address,omitempty"`
 	// The Cisco ISE client certificate subject.
@@ -56,8 +58,6 @@ type PxgridEndpoint struct {
 	TemplateInstance  *PxgridEndpointTemplateInstance  `json:"template_instance,omitempty"`
 	// The timeout of session management (in seconds).
 	Timeout *int64 `json:"timeout,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 	// The vendor identifier.
 	VendorIdentifier *string `json:"vendor_identifier,omitempty"`
 	// The user name for WAPI integration.
@@ -113,6 +113,38 @@ func (o *PxgridEndpoint) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *PxgridEndpoint) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *PxgridEndpoint) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PxgridEndpoint) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *PxgridEndpoint) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *PxgridEndpoint) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
@@ -723,38 +755,6 @@ func (o *PxgridEndpoint) SetTimeout(v int64) {
 	o.Timeout = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *PxgridEndpoint) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PxgridEndpoint) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *PxgridEndpoint) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *PxgridEndpoint) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 // GetVendorIdentifier returns the VendorIdentifier field value if set, zero value otherwise.
 func (o *PxgridEndpoint) GetVendorIdentifier() string {
 	if o == nil || IsNil(o.VendorIdentifier) {
@@ -864,6 +864,9 @@ func (o PxgridEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
@@ -920,9 +923,6 @@ func (o PxgridEndpoint) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.VendorIdentifier) {
 		toSerialize["vendor_identifier"] = o.VendorIdentifier

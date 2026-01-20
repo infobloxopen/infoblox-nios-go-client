@@ -21,6 +21,8 @@ var _ MappedNullable = &Taxii{}
 type Taxii struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// Indicates whether the Taxii service is running on the given member or not.
 	EnableService *bool `json:"enable_service,omitempty"`
 	// The IPv4 Address of the Grid member.
@@ -31,8 +33,6 @@ type Taxii struct {
 	Name *string `json:"name,omitempty"`
 	// Taxii service RPZ configuration list.
 	TaxiiRpzConfig []TaxiiTaxiiRpzConfig `json:"taxii_rpz_config,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewTaxii instantiates a new Taxii object
@@ -82,6 +82,38 @@ func (o *Taxii) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *Taxii) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *Taxii) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Taxii) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *Taxii) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *Taxii) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetEnableService returns the EnableService field value if set, zero value otherwise.
@@ -244,38 +276,6 @@ func (o *Taxii) SetTaxiiRpzConfig(v []TaxiiTaxiiRpzConfig) {
 	o.TaxiiRpzConfig = v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *Taxii) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Taxii) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *Taxii) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *Taxii) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o Taxii) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -288,6 +288,9 @@ func (o Taxii) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	if !IsNil(o.EnableService) {
 		toSerialize["enable_service"] = o.EnableService
@@ -303,9 +306,6 @@ func (o Taxii) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TaxiiRpzConfig) {
 		toSerialize["taxii_rpz_config"] = o.TaxiiRpzConfig
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

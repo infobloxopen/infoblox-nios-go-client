@@ -2075,6 +2075,12 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         allowed_actions:
           description: The list of allowed actions of the custom rule.
           enum:
@@ -2138,11 +2144,6 @@ components:
           - AUTO
           - CUSTOM
           example: Example type
-          readOnly: true
-          type: string
-        uuid:
-          description: Universally Unique ID assigned for this object
-          example: Example uuid
           readOnly: true
           type: string
       type: object
@@ -2310,6 +2311,12 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         comment:
           description: The comment for the Threat Protection profile.
           example: Example comment
@@ -2384,11 +2391,6 @@ components:
           description: "Use flag for: events_per_second_per_rule"
           example: false
           type: boolean
-        uuid:
-          description: Universally Unique ID assigned for this object
-          example: Example uuid
-          readOnly: true
-          type: string
       type: object
       x-tf-extattrs-all: true
     ListThreatprotectionProfileResponse:
@@ -2423,6 +2425,7 @@ components:
         profile: Example profile
         _ref: _ref
         rule: Example rule
+        uuid: uuid
         config:
           log_severity: Example log_severity
           action: Example action
@@ -2447,12 +2450,16 @@ components:
             description: Example description
             syntax: Example syntax
             value: Example value
-        uuid: Example uuid
         use_config: false
         sid: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         config:
@@ -2485,11 +2492,6 @@ components:
           description: "Use flag for: disable"
           example: false
           type: boolean
-        uuid:
-          description: Universally Unique ID assigned for this object
-          example: Example uuid
-          readOnly: true
-          type: string
       type: object
       x-tf-skip-expand: true
     ThreatprotectionProfileRuleConfig:
@@ -2626,6 +2628,7 @@ components:
         _ref: _ref
         member: Example member
         rule: Example rule
+        uuid: Example uuid
         config:
           log_severity: Example log_severity
           action: Example action
@@ -2650,12 +2653,17 @@ components:
             description: Example description
             syntax: Example syntax
             value: Example value
-        uuid: Example uuid
         use_config: false
         sid: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         config:
@@ -2688,11 +2696,6 @@ components:
           description: "Use flag for: disable"
           example: false
           type: boolean
-        uuid:
-          description: Universally Unique ID assigned for this object
-          example: Example uuid
-          readOnly: true
-          type: string
       type: object
       x-tf-skip-expand: true
     ThreatprotectionRuleConfig:
@@ -2832,6 +2835,12 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         is_factory_reset_enabled:
           description: Determines if factory reset is enabled for this rule category.
           example: false
@@ -2845,11 +2854,6 @@ components:
         ruleset:
           description: The version of the ruleset the category assigned to.
           example: Example ruleset
-          readOnly: true
-          type: string
-        uuid:
-          description: Universally Unique ID assigned for this object
-          example: Example uuid
           readOnly: true
           type: string
       type: object
@@ -2881,15 +2885,21 @@ components:
         do_not_delete: false
         _ref: _ref
         comment: Example comment
+        uuid: Example uuid
         used_by:
         - used_by
         - used_by
-        uuid: Example uuid
         version: Example version
         add_type: Example add_type
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         add_type:
@@ -2927,11 +2937,6 @@ components:
             type: string
           readOnly: true
           type: array
-        uuid:
-          description: Universally Unique ID assigned for this object
-          example: Example uuid
-          readOnly: true
-          type: string
         version:
           description: The ruleset version.
           example: Example version
@@ -2998,6 +3003,12 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         allowed_actions:
           description: The list of allowed actions of rhe rule template.
           enum:
@@ -3036,11 +3047,6 @@ components:
           format: int64
           readOnly: true
           type: integer
-        uuid:
-          description: Universally Unique ID assigned for this object
-          example: Example uuid
-          readOnly: true
-          type: string
       type: object
       x-tf-skip-expand: true
     ThreatprotectionRuletemplateDefaultConfig:
@@ -3187,9 +3193,15 @@ components:
           timestamp: 1
         _ref: _ref
         member: Example member
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         member:
@@ -3499,6 +3511,7 @@ components:
           profile: Example profile
           _ref: _ref
           rule: Example rule
+          uuid: uuid
           config:
             log_severity: Example log_severity
             action: Example action
@@ -3523,7 +3536,6 @@ components:
               description: Example description
               syntax: Example syntax
               value: Example value
-          uuid: Example uuid
           use_config: false
           sid: 1
       properties:
@@ -3558,6 +3570,7 @@ components:
           _ref: _ref
           member: Example member
           rule: Example rule
+          uuid: Example uuid
           config:
             log_severity: Example log_severity
             action: Example action
@@ -3582,7 +3595,6 @@ components:
               description: Example description
               syntax: Example syntax
               value: Example value
-          uuid: Example uuid
           use_config: false
           sid: 1
       properties:
@@ -3644,10 +3656,10 @@ components:
           do_not_delete: false
           _ref: _ref
           comment: Example comment
+          uuid: Example uuid
           used_by:
           - used_by
           - used_by
-          uuid: Example uuid
           version: Example version
           add_type: Example add_type
       properties:

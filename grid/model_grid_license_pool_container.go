@@ -21,12 +21,12 @@ var _ MappedNullable = &GridLicensePoolContainer{}
 type GridLicensePoolContainer struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The timestamp when the last pool licenses were updated.
 	LastEntitlementUpdate *int64 `json:"last_entitlement_update,omitempty"`
 	// The world-wide unique ID for the license pool container.
 	LpcUid *string `json:"lpc_uid,omitempty"`
-	// Universally Unique ID assigned for this object
-	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewGridLicensePoolContainer instantiates a new GridLicensePoolContainer object
@@ -76,6 +76,38 @@ func (o *GridLicensePoolContainer) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *GridLicensePoolContainer) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *GridLicensePoolContainer) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GridLicensePoolContainer) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *GridLicensePoolContainer) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *GridLicensePoolContainer) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetLastEntitlementUpdate returns the LastEntitlementUpdate field value if set, zero value otherwise.
@@ -142,38 +174,6 @@ func (o *GridLicensePoolContainer) SetLpcUid(v string) {
 	o.LpcUid = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise.
-func (o *GridLicensePoolContainer) GetUuid() string {
-	if o == nil || IsNil(o.Uuid) {
-		var ret string
-		return ret
-	}
-	return *o.Uuid
-}
-
-// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GridLicensePoolContainer) GetUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.Uuid) {
-		return nil, false
-	}
-	return o.Uuid, true
-}
-
-// HasUuid returns a boolean if a field has been set.
-func (o *GridLicensePoolContainer) HasUuid() bool {
-	if o != nil && !IsNil(o.Uuid) {
-		return true
-	}
-
-	return false
-}
-
-// SetUuid gets a reference to the given string and assigns it to the Uuid field.
-func (o *GridLicensePoolContainer) SetUuid(v string) {
-	o.Uuid = &v
-}
-
 func (o GridLicensePoolContainer) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -187,14 +187,14 @@ func (o GridLicensePoolContainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.LastEntitlementUpdate) {
 		toSerialize["last_entitlement_update"] = o.LastEntitlementUpdate
 	}
 	if !IsNil(o.LpcUid) {
 		toSerialize["lpc_uid"] = o.LpcUid
-	}
-	if !IsNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

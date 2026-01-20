@@ -44,7 +44,7 @@ type DtcLbdn struct {
 	Patterns []string `json:"patterns,omitempty"`
 	// Maximum time, in seconds, for which client specific LBDN responses will be cached. Zero specifies no caching.
 	Persistence *int64 `json:"persistence,omitempty"`
-	// Pools linked to LBDN.
+	// The maximum time, in seconds, for which client specific LBDN responses will be cached. Zero specifies no caching.
 	Pools []DtcLbdnPools `json:"pools,omitempty"`
 	// The LBDN pattern match priority for \"overlapping\" DTC LBDN objects. LBDNs are \"overlapping\" if they are simultaneously assigned to a zone and have patterns that can match the same FQDN. The matching LBDN with highest priority (lowest ordinal) will be used.
 	Priority *int64 `json:"priority,omitempty"`

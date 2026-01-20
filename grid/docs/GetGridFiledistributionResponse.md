@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AllowUploads** | Pointer to **bool** | Determines whether the uploads to Grid members are allowed. | [optional] 
 **BackupStorage** | Pointer to **bool** | Determines whether to include distributed files in the backup. | [optional] 
 **CurrentUsage** | Pointer to **int64** | The value is the percentage of the allocated TFTP storage space that is used, expressed in tenth of a percent. Valid values are from 0 to 1000. | [optional] [readonly] 
@@ -12,7 +13,6 @@ Name | Type | Description | Notes
 **GlobalStatus** | Pointer to **string** | The Grid file distribution global status. | [optional] [readonly] 
 **Name** | Pointer to **string** | The Grid name. | [optional] [readonly] 
 **StorageLimit** | Pointer to **int64** | Maximum storage in megabytes allowed on the Grid. The maximum storage space allowed for all file distribution services on a Grid is equal to the storage space allowed to the Grid member with the smallest amount of space allowed. | [optional] 
-**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**GridFiledistribution**](GridFiledistribution.md) |  | [optional] 
 
 ## Methods
@@ -58,6 +58,31 @@ SetRef sets Ref field to given value.
 `func (o *GetGridFiledistributionResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGridFiledistributionResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGridFiledistributionResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGridFiledistributionResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGridFiledistributionResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAllowUploads
 
@@ -233,31 +258,6 @@ SetStorageLimit sets StorageLimit field to given value.
 `func (o *GetGridFiledistributionResponse) HasStorageLimit() bool`
 
 HasStorageLimit returns a boolean if a field has been set.
-
-### GetUuid
-
-`func (o *GetGridFiledistributionResponse) GetUuid() string`
-
-GetUuid returns the Uuid field if non-nil, zero value otherwise.
-
-### GetUuidOk
-
-`func (o *GetGridFiledistributionResponse) GetUuidOk() (*string, bool)`
-
-GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUuid
-
-`func (o *GetGridFiledistributionResponse) SetUuid(v string)`
-
-SetUuid sets Uuid field to given value.
-
-### HasUuid
-
-`func (o *GetGridFiledistributionResponse) HasUuid() bool`
-
-HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 
