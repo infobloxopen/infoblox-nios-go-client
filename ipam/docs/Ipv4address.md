@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | The current status of the address. | [optional] [readonly] 
 **Types** | Pointer to **[]string** | The types of associated objects. This field supports both single and array search. | [optional] [readonly] 
 **Usage** | Pointer to **[]string** | Indicates whether the IP address is configured for DNS or DHCP. This field supports both single and array search. | [optional] [readonly] 
-**Username** | Pointer to **string** | The name of the user who created or modified the record. | [optional] [readonly] 
+**Username** | Pointer to **string** | The name of the user who created or modified the record. The \&quot;username\&quot; field is populated only for lease objects that have a MAC Address Filter configured with user details. | [optional] [readonly] 
 
 ## Methods
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | Reference to the IPv6 Network. | [optional] 
+**Ref** | Pointer to **string** | Reference to the Network. | [optional] 
 
 ## Methods
 

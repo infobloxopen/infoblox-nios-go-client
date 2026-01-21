@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Ipv6addr** | Pointer to **string** | The IPv6 Address of the domain name. | [optional] 
 **Ttl** | Pointer to **int64** | The Time to Live (TTL) value. | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**DtcRecordAaaa**](DtcRecordAaaa.md) |  | [optional] 
 
 ## Methods
@@ -232,6 +233,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *GetDtcRecordAaaaResponse) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDtcRecordAaaaResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDtcRecordAaaaResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDtcRecordAaaaResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDtcRecordAaaaResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **UseLogicFilterRules** | Pointer to **bool** | Use flag for: logic_filter_rules | [optional] 
 **UseRecycleLeases** | Pointer to **bool** | Use flag for: recycle_leases | [optional] 
 **UseSubscribeSettings** | Pointer to **bool** | Use flag for: subscribe_settings | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Ipv6range**](Ipv6range.md) |  | [optional] 
 
 ## Methods
@@ -1064,6 +1065,31 @@ SetUseSubscribeSettings sets UseSubscribeSettings field to given value.
 `func (o *GetIpv6rangeResponse) HasUseSubscribeSettings() bool`
 
 HasUseSubscribeSettings returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetIpv6rangeResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetIpv6rangeResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetIpv6rangeResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetIpv6rangeResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

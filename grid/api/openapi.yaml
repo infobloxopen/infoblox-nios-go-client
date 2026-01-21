@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox GRID API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for grid objects
   name: Grid
@@ -10201,6 +10201,7 @@ components:
         - member: Example member
           is_online: false
           interface: Example interface
+        uuid: Example uuid
         csp_grid_setting:
           csp_https_proxy: Example csp_https_proxy
           csp_join_token: Example csp_join_token
@@ -10561,6 +10562,11 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         allow_recursive_deletion:
           description: The property to allow recursive deletion. Determines the users
             who can choose to perform recursive deletion on networks or zones from
@@ -10610,8 +10616,8 @@ components:
         email_setting:
           $ref: '#/components/schemas/GridEmailSetting'
         enable_federation:
-          description: Determines if the federation feature is enabled or not. Test
-            Setting will be performed for any change in enable_federation.
+          description: Determines if the Cloud Grid Management feature is enabled
+            or not. Test Setting will be performed for any change in enable_federation.
           example: false
           type: boolean
         enable_force_sync_join_token_to_gmc:
@@ -11487,6 +11493,10 @@ components:
           - DES_ASCII
           - DES_NTP
           - SHA1_ASCII
+          - SHA-224_HEX
+          - SHA-256_HEX
+          - SHA-384_HEX
+          - SHA-512_HEX
           example: Example type
           type: string
       type: object
@@ -12404,6 +12414,7 @@ components:
           description: Determines the type of a given trap.
           enum:
           - DBObjects
+          - DBWrites
           - Disk
           - Memory
           - NetworkCapacity
@@ -12689,6 +12700,7 @@ components:
           - AutomatedTrafficCapture
           - CloudDNSsync
           - IMCGRPCServer
+          - DBActivity
           - IPAMUtilization
           - RPZHitRate
           example: Example trap_type
@@ -12767,9 +12779,15 @@ components:
         _ref: _ref
         enable_recycle_bin: false
         allow_api_admins: Example allow_api_admins
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         allow_api_admins:
@@ -12887,11 +12905,16 @@ components:
         fixed_ip_count: 1
         available_ip_count: Example available_ip_count
         tenant_vm_count: 1
+        uuid: uuid
         floating_ip_count: 1
         tenant_ip_count: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         allocated_available_ratio:
@@ -12989,10 +13012,16 @@ components:
           delegated_root: Example delegated_root
         comment: Example comment
         id: Example id
+        uuid: Example uuid
         last_event_ts: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         cloud_info:
@@ -13167,6 +13196,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -13197,6 +13227,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         availability_zone:
@@ -13468,6 +13503,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         is_ipv4: false
         vm_hostname: Example vm_hostname
         vm_vpc_address: Example vm_vpc_address
@@ -13512,6 +13548,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address:
@@ -13891,10 +13932,16 @@ components:
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         allow_api_admins: Example allow_api_admins
+        uuid: Example uuid
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         allow_api_admins:
@@ -14079,6 +14126,7 @@ components:
           name: Example name
           value: Example value
         kdc_server: Example kdc_server
+        uuid: Example uuid
         ipv6_enable_lease_scavenging: false
         ipv6_generate_hostname: false
         enable_leasequery: false
@@ -14199,6 +14247,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         authority:
@@ -14968,6 +15021,7 @@ components:
         - grid:servicerestart:request
         - grid:servicerestart:request
         is_default: false
+        uuid: Example uuid
         mode: Example mode
         extattrs-:
           key:
@@ -15015,6 +15069,7 @@ components:
           pending_restart: 1
           timeouts: 1
           finished: 1
+          uuid: uuid
           success: 1
           _ref: _ref
           processing: 1
@@ -15022,6 +15077,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -15293,6 +15353,7 @@ components:
         pending_restart: 1
         timeouts: 1
         finished: 1
+        uuid: uuid
         success: 1
         _ref: _ref
         processing: 1
@@ -15300,6 +15361,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         failures:
@@ -15409,11 +15474,17 @@ components:
         member: Example member
         state: Example state
         error: Example error
+        uuid: Example uuid
         group: Example group
         order: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         error:
@@ -15517,50 +15588,85 @@ components:
         joined: false
         use_mgmt_port: false
         connection_timestamp: 1
+        uuid: Example uuid
+        join_token_expiration: 1
+        mgm_communication_mode: Example mgm_communication_mode
         detached: false
+        join_token: Example join_token
         port: 1
         enable: false
         last_event: Example last_event
         _ref: _ref
         connection_disabled: false
-        status: Example status
+        discovery_sync_disabled: false
+        join_status: Example join_status
       properties:
         _ref:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         address:
-          description: The domain name or IP address for the Master Grid.
+          description: IP Address or FQDN to use to contact the SGM
           example: Example address
           type: string
         connection_disabled:
-          description: Determines if the sub-grid is currently disabled.
+          description: Indicates whether the sub-grid is currently disabled (true)
+            or not (false).
           example: false
-          readOnly: true
           type: boolean
         connection_timestamp:
-          description: The timestamp that indicates when the connection to the Master
-            Grid was established.
+          description: Timestamp of the beginning of the current VPN connection with
+            the SGM.
           example: 1
           format: int64
           readOnly: true
           type: integer
         detached:
-          description: The detached flag for the Master Grid.
+          description: Indicate detached state of subgrid with MGM.
           example: false
           readOnly: true
           type: boolean
-        enable:
-          description: Determines if the Master Grid is enabled.
+        discovery_sync_disabled:
+          description: Enable/Disable discovery service.
           example: false
           type: boolean
+        enable:
+          description: Enable/Disable SuperGrid membership feature
+          example: false
+          type: boolean
+        join_status:
+          description: Gives the overall status of the Super Grid connectivity
+          enum:
+          - FAILED
+          - WARNING
+          - WORKING
+          - INACTIVE
+          example: Example join_status
+          readOnly: true
+          type: string
+        join_token:
+          description: Sub grid join token value.
+          example: Example join_token
+          readOnly: true
+          type: string
+        join_token_expiration:
+          description: Timestamp when the sub grid join token expires.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
         joined:
-          description: The flag shows if the Grid has joined the Master Grid.
+          description: Indicates whether the sub-grid is currently joined or not.
           example: false
           readOnly: true
           type: boolean
         last_event:
-          description: The Master Grid's last event.
+          description: Last event notified by the Super Grid Master.
           enum:
           - EVICT
           - DISABLE
@@ -15571,34 +15677,32 @@ components:
           readOnly: true
           type: string
         last_event_details:
-          description: The details of the Master Grid's last event.
+          description: additional details on the event.
           example: Example last_event_details
           readOnly: true
           type: string
         last_sync_timestamp:
-          description: The timestamp or the last synchronization operation with the
-            Master Grid.
+          description: Timestamp of the last synchronization with the SGM.
           example: 1
           format: int64
           readOnly: true
           type: integer
-        port:
-          description: The Master Grid port to which the Grid connects.
-          example: 1
-          format: int64
-          type: integer
-        status:
-          description: The Master Grid's status.
+        mgm_communication_mode:
+          description: MGM Communication Mode.
           enum:
-          - FAILED
-          - WARNING
-          - WORKING
-          - INACTIVE
-          example: Example status
+          - MODE1
+          - MODE2
+          example: Example mgm_communication_mode
           readOnly: true
           type: string
+        port:
+          description: Alternate port number to use when connecting to the VPN endpoint.
+          example: 1
+          format: int64
+          type: integer
         use_mgmt_port:
-          description: The flag shows if the MGMT port was used to join the Grid.
+          description: Indicates whether to use the management port to connect to
+            the SGM.
           example: false
           readOnly: true
           type: boolean
@@ -15629,6 +15733,7 @@ components:
         rpz_passthru_event_warning_threshold: 1
         atp_critical_event_warning_threshold: 1
         rpz_substituted_hit_warning_threshold: 1
+        uuid: Example uuid
         rpz_substituted_hit_critical_threshold: 1
         analytics_tunneling_event_warning_threshold: 1
         analytics_tunneling_event_critical_threshold: 1
@@ -15642,6 +15747,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         analytics_tunneling_event_critical_threshold:
@@ -15994,6 +16104,7 @@ components:
         forward_only: false
         dns_health_check_recursion_flag: false
         enable_host_rrset_order: false
+        uuid: Example uuid
         nxdomain_log_query: false
         dns_health_check_retries: 1
         response_rate_limiting:
@@ -16202,6 +16313,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         add_client_ip_mac_options:
@@ -18625,9 +18741,15 @@ components:
         name: Example name
         backup_storage: false
         allow_uploads: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         allow_uploads:
@@ -18701,6 +18823,7 @@ components:
         enable_auto_download: false
         enable_scheduled_download: false
         grid_name: Example grid_name
+        uuid: Example uuid
         enable_accel_resp_before_threat_protection: false
         last_rule_update_timestamp: 1
         outbound_settings:
@@ -18757,6 +18880,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         current_ruleset:
@@ -19073,6 +19201,7 @@ components:
         enable_auto_download: false
         enable_scheduled_download: false
         current_moduleset: Example current_moduleset
+        uuid: Example uuid
         domain_collapsing_level: 1
         current_allowlist: Example current_allowlist
         last_updated_package_version: Example last_updated_package_version
@@ -19103,6 +19232,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         allowlist_update_policy:
@@ -19448,14 +19582,10 @@ components:
         installed: 1
         expiry_date: 1
         limit_context: Example limit_context
-        _ref: _ref
-        limit: Example limit
         temp_assigned: 1
-        assigned: 1
-        model: Example model
         expiration_status: Example expiration_status
         type: Example type
-        key: Example key
+        uuid: Example uuid
         subpools:
         - installed: 1
           expiry_date: 1
@@ -19463,9 +19593,19 @@ components:
         - installed: 1
           expiry_date: 1
           key: Example key
+        _ref: _ref
+        limit: Example limit
+        assigned: 1
+        model: Example model
+        key: Example key
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         assigned:
@@ -19642,10 +19782,16 @@ components:
         subject: Example subject
         _ref: _ref
         valid_not_after: 1
+        uuid: Example uuid
         issuer: Example issuer
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         issuer:
@@ -19707,6 +19853,7 @@ components:
         guest_phone_required: false
         syslog_auth_failure_level: Example syslog_auth_failure_level
         welcome_message: Example welcome_message
+        uuid: Example uuid
         guest_custom_field4_required: false
         encryption: Example encryption
         guest_last_name_required: false
@@ -19736,6 +19883,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         authn_server_group:
@@ -19951,10 +20103,16 @@ components:
       example:
         last_entitlement_update: 1
         _ref: _ref
+        uuid: Example uuid
         lpc_uid: Example lpc_uid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         last_entitlement_update:
@@ -19998,10 +20156,16 @@ components:
         build_time: 1
         member: Example member
         binary_minor_version: 1
+        uuid: Example uuid
         binary_major_version: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         binary_major_version:
@@ -20073,9 +20237,15 @@ components:
         groups:
         - groups
         - groups
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         groups:
@@ -20124,9 +20294,15 @@ components:
         changed_properties:
         - changed_properties
         - changed_properties
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         action:
@@ -20202,9 +20378,15 @@ components:
         _ref: _ref
         member: Example member
         reporting_status: Example reporting_status
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         dhcp_status:
@@ -20282,9 +20464,15 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -20348,6 +20536,7 @@ components:
         csp_access_key:
         - csp_access_key
         - csp_access_key
+        uuid: Example uuid
         ntp_setting:
           ntp_acl:
             ac_list:
@@ -20442,6 +20631,7 @@ components:
           destination_host: Example destination_host
           traffic_capture_directory: Example traffic_capture_directory
           username: Example username
+        is_master: false
         remote_console_access_enable: false
         syslog_servers:
         - severity: Example severity
@@ -20988,6 +21178,11 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         active_position:
           description: The active server of a Grid member.
           example: Example active_position
@@ -21120,6 +21315,11 @@ components:
         is_dscp_capable:
           description: Determines if a Grid member supports DSCP (Differentiated Services
             Code Point).
+          example: false
+          readOnly: true
+          type: boolean
+        is_master:
+          description: Determines if a Grid member is a Grid Master or not.
           example: false
           readOnly: true
           type: boolean
@@ -22513,13 +22713,14 @@ components:
           - SNIC_CORE_UTIL
           - FP_UTIL
           - FP_CORE_UTIL
-          - CPU_USAGE
+          - QUERY_LOGGING_ENABLED
           - MEMORY
           - EXTERNAL_STORAGE
           - SWAP_USAGE
           - DISCOVERY_CAPACITY
           - PASSIVE_HA_CONNECTIVITY
           - VPN_CERT
+          - DB_WRITES
           example: Example service
           readOnly: true
           type: string
@@ -22946,6 +23147,10 @@ components:
           - DES_ASCII
           - DES_NTP
           - SHA1_ASCII
+          - SHA-224_HEX
+          - SHA-256_HEX
+          - SHA-384_HEX
+          - SHA-512_HEX
           example: Example type
           type: string
       type: object
@@ -23721,6 +23926,7 @@ components:
           description: Determines the type of a given trap.
           enum:
           - DBObjects
+          - DBWrites
           - Disk
           - Memory
           - NetworkCapacity
@@ -24020,6 +24226,7 @@ components:
           - AutomatedTrafficCapture
           - CloudDNSsync
           - IMCGRPCServer
+          - DBActivity
           - IPAMUtilization
           - RPZHitRate
           example: Example trap_type
@@ -24247,6 +24454,7 @@ components:
         use_ddns_update_fixed_addresses: false
         immediate_fa_configuration: false
         use_pxe_lease_time: false
+        uuid: Example uuid
         ipv6_generate_hostname: false
         use_valid_lifetime: false
         enable_leasequery: false
@@ -24331,6 +24539,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         auth_server_group:
@@ -25748,6 +25961,7 @@ components:
         blacklist_log_query: false
         forward_only: false
         use_serial_query_rate: false
+        uuid: Example uuid
         dns_health_check_retries: 1
         use_lan_ipv6_port: false
         gss_tsig_keys:
@@ -25843,6 +26057,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         add_client_ip_mac_options:
@@ -27977,6 +28196,7 @@ components:
         ftp_status: Example ftp_status
         tftp_port: 1
         use_allow_uploads: false
+        uuid: Example uuid
         tftp_acls:
         - address: Example address
           permission: Example permission
@@ -28006,6 +28226,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         allow_uploads:
@@ -28218,10 +28443,16 @@ components:
         hwid: Example hwid
         expiration_status: Example expiration_status
         type: Example type
+        uuid: Example uuid
         key: Example key
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         expiration_status:
@@ -28355,6 +28586,7 @@ components:
         use_current_ruleset: false
         use_enable_accel_resp_before_threat_protection: false
         use_events_per_second_per_rule: false
+        uuid: Example uuid
         enable_accel_resp_before_threat_protection: false
         outbound_settings:
           enable_query_fqdn: false
@@ -28398,6 +28630,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -28613,9 +28850,15 @@ components:
         enable_service: false
         _ref: _ref
         name: Example name
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         enable_service:
@@ -28654,11 +28897,17 @@ components:
         _ref: _ref
         ipv4_address: Example ipv4_address
         comment: Example comment
+        uuid: Example uuid
         host_name: Example host_name
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -28720,10 +28969,16 @@ components:
       example:
         cloud_sync_enabled: false
         _ref: _ref
+        uuid: Example uuid
         host_name: Example host_name
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         cloud_sync_enabled:
@@ -28768,11 +29023,17 @@ components:
           key:
             value: ""
         _ref: _ref
+        uuid: Example uuid
         host_name: Example host_name
         dfp_forward_first: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         dfp_forward_first:
@@ -28848,9 +29109,15 @@ components:
         comment: Example comment
         scheduled_time: 1
         time_zone: Example time_zone
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -28929,9 +29196,15 @@ components:
         - gmcgroup
         _ref: _ref
         activate_gmc_group_schedule: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         activate_gmc_group_schedule:
@@ -28987,9 +29260,14 @@ components:
         _ref: _ref
         active: false
         time_zone: Example time_zone
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         active:
@@ -29087,10 +29365,16 @@ components:
         name: Example name
         comment: Example comment
         time_zone: Example time_zone
+        uuid: Example uuid
         distribution_dependent_group: Example distribution_dependent_group
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -29206,9 +29490,14 @@ components:
         _ref: _ref
         active: false
         time_zone: Example time_zone
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         active:
@@ -29302,6 +29591,7 @@ components:
         ipv4_address: Example ipv4_address
         steps_total: 1
         type: Example type
+        uuid: uuid
         allow_upgrade_pause: false
         status_value_update_time: 1
         current_version_summary: Example current_version_summary
@@ -29352,6 +29642,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         allow_distribution:
@@ -29740,10 +30034,16 @@ components:
         limit: Example limit
         expiration_status: Example expiration_status
         type: Example type
+        uuid: Example uuid
         key: Example key
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         expiration_status:
@@ -29851,6 +30151,15 @@ components:
     Extensibleattributedef:
       additionalProperties: false
       example:
+        max: 1
+        flags: Example flags
+        default_value: Example default_value
+        type: Example type
+        uuid: Example uuid
+        descendants_action:
+          option_delete_ea: Example option_delete_ea
+          option_with_ea: Example option_with_ea
+          option_without_ea: Example option_without_ea
         allowed_object_types:
         - allowed_object_types
         - allowed_object_types
@@ -29858,21 +30167,18 @@ components:
         list_values:
         - value: Example value
         - value: Example value
-        max: 1
         _ref: _ref
-        flags: Example flags
         name: Example name
         namespace: Example namespace
         comment: Example comment
-        default_value: Example default_value
-        type: Example type
-        descendants_action:
-          option_delete_ea: Example option_delete_ea
-          option_with_ea: Example option_with_ea
-          option_without_ea: Example option_without_ea
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         allowed_object_types:
@@ -30060,6 +30366,7 @@ components:
           - member: Example member
             is_online: false
             interface: Example interface
+          uuid: Example uuid
           csp_grid_setting:
             csp_https_proxy: Example csp_https_proxy
             csp_join_token: Example csp_join_token
@@ -30459,6 +30766,7 @@ components:
           _ref: _ref
           enable_recycle_bin: false
           allow_api_admins: Example allow_api_admins
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/GridCloudapi'
@@ -30532,6 +30840,7 @@ components:
             delegated_root: Example delegated_root
           comment: Example comment
           id: Example id
+          uuid: Example uuid
           last_event_ts: 1
       properties:
         result:
@@ -30575,6 +30884,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -30685,6 +30995,7 @@ components:
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           allow_api_admins: Example allow_api_admins
+          uuid: Example uuid
           status: Example status
       properties:
         result:
@@ -30732,6 +31043,7 @@ components:
             name: Example name
             value: Example value
           kdc_server: Example kdc_server
+          uuid: Example uuid
           ipv6_enable_lease_scavenging: false
           ipv6_generate_hostname: false
           enable_leasequery: false
@@ -30875,6 +31187,7 @@ components:
           - grid:servicerestart:request
           - grid:servicerestart:request
           is_default: false
+          uuid: Example uuid
           mode: Example mode
           extattrs-:
             key:
@@ -30922,6 +31235,7 @@ components:
             pending_restart: 1
             timeouts: 1
             finished: 1
+            uuid: uuid
             success: 1
             _ref: _ref
             processing: 1
@@ -30951,6 +31265,7 @@ components:
           - grid:servicerestart:request
           - grid:servicerestart:request
           is_default: false
+          uuid: Example uuid
           mode: Example mode
           extattrs-:
             key:
@@ -30998,6 +31313,7 @@ components:
             pending_restart: 1
             timeouts: 1
             finished: 1
+            uuid: uuid
             success: 1
             _ref: _ref
             processing: 1
@@ -31084,13 +31400,18 @@ components:
           joined: false
           use_mgmt_port: false
           connection_timestamp: 1
+          uuid: Example uuid
+          join_token_expiration: 1
+          mgm_communication_mode: Example mgm_communication_mode
           detached: false
+          join_token: Example join_token
           port: 1
           enable: false
           last_event: Example last_event
           _ref: _ref
           connection_disabled: false
-          status: Example status
+          discovery_sync_disabled: false
+          join_status: Example join_status
       properties:
         result:
           $ref: '#/components/schemas/Mastergrid'
@@ -31122,6 +31443,7 @@ components:
           rpz_passthru_event_warning_threshold: 1
           atp_critical_event_warning_threshold: 1
           rpz_substituted_hit_warning_threshold: 1
+          uuid: Example uuid
           rpz_substituted_hit_critical_threshold: 1
           analytics_tunneling_event_warning_threshold: 1
           analytics_tunneling_event_critical_threshold: 1
@@ -31410,6 +31732,7 @@ components:
           forward_only: false
           dns_health_check_recursion_flag: false
           enable_host_rrset_order: false
+          uuid: Example uuid
           nxdomain_log_query: false
           dns_health_check_retries: 1
           response_rate_limiting:
@@ -31650,6 +31973,7 @@ components:
           name: Example name
           backup_storage: false
           allow_uploads: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/GridFiledistribution'
@@ -31682,6 +32006,7 @@ components:
           enable_auto_download: false
           enable_scheduled_download: false
           grid_name: Example grid_name
+          uuid: Example uuid
           enable_accel_resp_before_threat_protection: false
           last_rule_update_timestamp: 1
           outbound_settings:
@@ -31787,6 +32112,7 @@ components:
           enable_auto_download: false
           enable_scheduled_download: false
           current_moduleset: Example current_moduleset
+          uuid: Example uuid
           domain_collapsing_level: 1
           current_allowlist: Example current_allowlist
           last_updated_package_version: Example last_updated_package_version
@@ -31898,6 +32224,7 @@ components:
           guest_phone_required: false
           syslog_auth_failure_level: Example syslog_auth_failure_level
           welcome_message: Example welcome_message
+          uuid: Example uuid
           guest_custom_field4_required: false
           encryption: Example encryption
           guest_last_name_required: false
@@ -31997,6 +32324,7 @@ components:
           groups:
           - groups
           - groups
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/GridServicerestartGroupOrder'
@@ -32020,6 +32348,7 @@ components:
           groups:
           - groups
           - groups
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/GridServicerestartGroupOrder'
@@ -32093,6 +32422,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Natgroup'
@@ -32113,6 +32443,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Natgroup'
@@ -32156,6 +32487,7 @@ components:
           csp_access_key:
           - csp_access_key
           - csp_access_key
+          uuid: Example uuid
           ntp_setting:
             ntp_acl:
               ac_list:
@@ -32250,6 +32582,7 @@ components:
             destination_host: Example destination_host
             traffic_capture_directory: Example traffic_capture_directory
             username: Example username
+          is_master: false
           remote_console_access_enable: false
           syslog_servers:
           - severity: Example severity
@@ -32833,6 +33166,7 @@ components:
           csp_access_key:
           - csp_access_key
           - csp_access_key
+          uuid: Example uuid
           ntp_setting:
             ntp_acl:
               ac_list:
@@ -32927,6 +33261,7 @@ components:
             destination_host: Example destination_host
             traffic_capture_directory: Example traffic_capture_directory
             username: Example username
+          is_master: false
           remote_console_access_enable: false
           syslog_servers:
           - severity: Example severity
@@ -33626,6 +33961,7 @@ components:
           use_ddns_update_fixed_addresses: false
           immediate_fa_configuration: false
           use_pxe_lease_time: false
+          uuid: Example uuid
           ipv6_generate_hostname: false
           use_valid_lifetime: false
           enable_leasequery: false
@@ -34089,6 +34425,7 @@ components:
           blacklist_log_query: false
           forward_only: false
           use_serial_query_rate: false
+          uuid: Example uuid
           dns_health_check_retries: 1
           use_lan_ipv6_port: false
           gss_tsig_keys:
@@ -34216,6 +34553,7 @@ components:
           ftp_status: Example ftp_status
           tftp_port: 1
           use_allow_uploads: false
+          uuid: Example uuid
           tftp_acls:
           - address: Example address
             permission: Example permission
@@ -34303,6 +34641,7 @@ components:
           use_current_ruleset: false
           use_enable_accel_resp_before_threat_protection: false
           use_events_per_second_per_rule: false
+          uuid: Example uuid
           enable_accel_resp_before_threat_protection: false
           outbound_settings:
             enable_query_fqdn: false
@@ -34373,6 +34712,7 @@ components:
           enable_service: false
           _ref: _ref
           name: Example name
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/MemberParentalcontrol'
@@ -34405,6 +34745,7 @@ components:
           _ref: _ref
           ipv4_address: Example ipv4_address
           comment: Example comment
+          uuid: Example uuid
           host_name: Example host_name
           status: Example status
       properties:
@@ -34435,6 +34776,7 @@ components:
         result:
           cloud_sync_enabled: false
           _ref: _ref
+          uuid: Example uuid
           host_name: Example host_name
       properties:
         result:
@@ -34465,6 +34807,7 @@ components:
             key:
               value: ""
           _ref: _ref
+          uuid: Example uuid
           host_name: Example host_name
           dfp_forward_first: false
       properties:
@@ -34495,6 +34838,7 @@ components:
             key:
               value: ""
           _ref: _ref
+          uuid: Example uuid
           host_name: Example host_name
           dfp_forward_first: false
       properties:
@@ -34524,6 +34868,7 @@ components:
           comment: Example comment
           scheduled_time: 1
           time_zone: Example time_zone
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Gmcgroup'
@@ -34550,6 +34895,7 @@ components:
           comment: Example comment
           scheduled_time: 1
           time_zone: Example time_zone
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Gmcgroup'
@@ -34581,6 +34927,7 @@ components:
           - gmcgroup
           _ref: _ref
           activate_gmc_group_schedule: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Gmcschedule'
@@ -34625,6 +34972,7 @@ components:
           _ref: _ref
           active: false
           time_zone: Example time_zone
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Distributionschedule'
@@ -34657,6 +35005,7 @@ components:
           name: Example name
           comment: Example comment
           time_zone: Example time_zone
+          uuid: Example uuid
           distribution_dependent_group: Example distribution_dependent_group
       properties:
         result:
@@ -34689,6 +35038,7 @@ components:
           name: Example name
           comment: Example comment
           time_zone: Example time_zone
+          uuid: Example uuid
           distribution_dependent_group: Example distribution_dependent_group
       properties:
         result:
@@ -34733,6 +35083,7 @@ components:
           _ref: _ref
           active: false
           time_zone: Example time_zone
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Upgradeschedule'
@@ -34769,6 +35120,7 @@ components:
           ipv4_address: Example ipv4_address
           steps_total: 1
           type: Example type
+          uuid: uuid
           allow_upgrade_pause: false
           status_value_update_time: 1
           current_version_summary: Example current_version_summary
@@ -34877,6 +35229,15 @@ components:
         format.
       example:
         result:
+          max: 1
+          flags: Example flags
+          default_value: Example default_value
+          type: Example type
+          uuid: Example uuid
+          descendants_action:
+            option_delete_ea: Example option_delete_ea
+            option_with_ea: Example option_with_ea
+            option_without_ea: Example option_without_ea
           allowed_object_types:
           - allowed_object_types
           - allowed_object_types
@@ -34884,18 +35245,10 @@ components:
           list_values:
           - value: Example value
           - value: Example value
-          max: 1
           _ref: _ref
-          flags: Example flags
           name: Example name
           namespace: Example namespace
           comment: Example comment
-          default_value: Example default_value
-          type: Example type
-          descendants_action:
-            option_delete_ea: Example option_delete_ea
-            option_with_ea: Example option_with_ea
-            option_without_ea: Example option_without_ea
       properties:
         result:
           $ref: '#/components/schemas/Extensibleattributedef'
@@ -34914,6 +35267,15 @@ components:
         format.
       example:
         result:
+          max: 1
+          flags: Example flags
+          default_value: Example default_value
+          type: Example type
+          uuid: Example uuid
+          descendants_action:
+            option_delete_ea: Example option_delete_ea
+            option_with_ea: Example option_with_ea
+            option_without_ea: Example option_without_ea
           allowed_object_types:
           - allowed_object_types
           - allowed_object_types
@@ -34921,18 +35283,10 @@ components:
           list_values:
           - value: Example value
           - value: Example value
-          max: 1
           _ref: _ref
-          flags: Example flags
           name: Example name
           namespace: Example namespace
           comment: Example comment
-          default_value: Example default_value
-          type: Example type
-          descendants_action:
-            option_delete_ea: Example option_delete_ea
-            option_with_ea: Example option_with_ea
-            option_without_ea: Example option_without_ea
       properties:
         result:
           $ref: '#/components/schemas/Extensibleattributedef'

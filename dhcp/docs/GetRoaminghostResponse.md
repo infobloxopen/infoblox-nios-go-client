@@ -59,6 +59,7 @@ Name | Type | Description | Notes
 **UsePreferredLifetime** | Pointer to **bool** | Use flag for: preferred_lifetime | [optional] 
 **UsePxeLeaseTime** | Pointer to **bool** | Use flag for: pxe_lease_time | [optional] 
 **UseValidLifetime** | Pointer to **bool** | Use flag for: valid_lifetime | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ValidLifetime** | Pointer to **int64** | The valid lifetime value for this roaming host object. | [optional] 
 **Result** | Pointer to [**Roaminghost**](Roaminghost.md) |  | [optional] 
 
@@ -1455,6 +1456,31 @@ SetUseValidLifetime sets UseValidLifetime field to given value.
 `func (o *GetRoaminghostResponse) HasUseValidLifetime() bool`
 
 HasUseValidLifetime returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRoaminghostResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRoaminghostResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRoaminghostResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRoaminghostResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetValidLifetime
 

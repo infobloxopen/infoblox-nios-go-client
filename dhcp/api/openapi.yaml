@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DHCP API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for dhcp:statistics objects
   name: DhcpStatistics
@@ -8578,6 +8578,7 @@ components:
         association_type: Example association_type
         ms_state: Example ms_state
         ms_shared_secret: Example ms_shared_secret
+        uuid: Example uuid
         ms_switchover_interval: 1
         recycle_leases: false
         extattrs-:
@@ -8880,6 +8881,11 @@ components:
           description: "Use flag for: recycle_leases"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
     ListDhcpfailoverResponse:
@@ -8913,6 +8919,7 @@ components:
         _ref: _ref
         name: Example name
         type: Example type
+        uuid: Example uuid
         space: Example space
       properties:
         _ref:
@@ -8966,6 +8973,11 @@ components:
           - text
           example: Example type
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListDhcpoptiondefinitionResponse:
       oneOf:
@@ -9001,6 +9013,7 @@ components:
         option_definitions:
         - option_definitions
         - option_definitions
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
@@ -9027,6 +9040,11 @@ components:
           - PREDEFINED_DHCP
           - VENDOR_SPACE
           example: Example space_type
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
       type: object
@@ -9072,6 +9090,7 @@ components:
         - fingerprint
         name: Example name
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
@@ -9113,6 +9132,11 @@ components:
           description: The name of a DHCP Fingerprint Filter object.
           example: Example name
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
     ListFilterfingerprintResponse:
@@ -9148,6 +9172,7 @@ components:
             value: ""
         default_mac_address_expiration: 1
         never_expires: false
+        uuid: Example uuid
         enforce_expiration_times: false
         extattrs-:
           key:
@@ -9247,6 +9272,11 @@ components:
             MAC address filter. The length of comment cannot exceed 1024 bytes.
           example: Example reserved_for_infoblox
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -9335,6 +9365,7 @@ components:
           name: Example name
           value: Example value
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
@@ -9387,6 +9418,11 @@ components:
           items:
             $ref: '#/components/schemas/FilternacOptions'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -9456,6 +9492,7 @@ components:
             value: ""
         next_server: Example next_server
         bootfile: Example bootfile
+        uuid: Example uuid
         apply_as_class: false
         extattrs-:
           key:
@@ -9567,6 +9604,11 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -9636,6 +9678,7 @@ components:
         circuit_id_substring_length: 1
         circuit_id_name: Example circuit_id_name
         remote_id_name: Example remote_id_name
+        uuid: Example uuid
         is_remote_id_substring: false
         is_circuit_id_substring: false
         remote_id_substring_length: 1
@@ -9753,6 +9796,11 @@ components:
           example: 1
           format: int64
           type: integer
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
     ListFilterrelayagentResponse:
@@ -9782,19 +9830,21 @@ components:
     Fingerprint:
       additionalProperties: false
       example:
-        extattrs-:
+        extattrs:
           key:
             value: ""
-        extattrs:
+        ipv6_option_sequence:
+        - ipv6_option_sequence
+        - ipv6_option_sequence
+        type: Example type
+        uuid: Example uuid
+        extattrs-:
           key:
             value: ""
         extattrs+:
           key:
             value: ""
         disable: false
-        ipv6_option_sequence:
-        - ipv6_option_sequence
-        - ipv6_option_sequence
         vendor_id:
         - vendor_id
         - vendor_id
@@ -9802,7 +9852,6 @@ components:
         name: Example name
         device_class: Example device_class
         comment: Example comment
-        type: Example type
         option_sequence:
         - option_sequence
         - option_sequence
@@ -9871,6 +9920,11 @@ components:
           - CUSTOM
           example: Example type
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vendor_id:
           description: A list of vendor IDs of the device or operating system.
           enum:
@@ -9922,6 +9976,7 @@ components:
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
+        uuid: Example uuid
         cli_credentials:
         - credential_type: Example credential_type
           password: Example password
@@ -10466,6 +10521,11 @@ components:
             \ settings."
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -11527,6 +11587,7 @@ components:
         use_bootserver: false
         nextserver: Example nextserver
         use_pxe_lease_time: false
+        uuid: Example uuid
         enable_ddns: false
         use_logic_filter_rules: false
         extattrs-:
@@ -11734,6 +11795,11 @@ components:
           description: "Use flag for: pxe_lease_time"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -11815,6 +11881,7 @@ components:
         _ref: _ref
         name: Example name
         type: Example type
+        uuid: Example uuid
         space: Example space
       properties:
         _ref:
@@ -11862,6 +11929,11 @@ components:
           - text
           example: Example type
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListIpv6dhcpoptiondefinitionResponse:
       oneOf:
@@ -11898,6 +11970,7 @@ components:
         option_definitions:
         - option_definitions
         - option_definitions
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
@@ -11923,6 +11996,11 @@ components:
           items:
             type: string
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListIpv6dhcpoptionspaceResponse:
       oneOf:
@@ -11977,6 +12055,7 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
         option_space: Example option_space
       properties:
         _ref:
@@ -12039,6 +12118,11 @@ components:
         option_space:
           description: The option space of a DHCP IPv6 filter option object.
           example: Example option_space
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
           type: string
       type: object
       x-tf-extattrs-all: true
@@ -12112,6 +12196,7 @@ components:
           attribute_name: attribute_name
           _object: _object
           _parameters: "{}"
+        uuid: Example uuid
         use_valid_lifetime: false
         domain_name_servers:
         - domain_name_servers
@@ -12556,6 +12641,11 @@ components:
           description: "Use flag for: valid_lifetime"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         valid_lifetime:
           description: The valid lifetime value for this DHCP IPv6 Fixed Address object.
           example: 1
@@ -13536,6 +13626,7 @@ components:
           key:
             value: ""
         offset: 1
+        uuid: Example uuid
         use_valid_lifetime: false
         domain_name_servers:
         - domain_name_servers
@@ -13678,6 +13769,11 @@ components:
           description: "Use flag for: valid_lifetime"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         valid_lifetime:
           description: The valid lifetime value for this DHCP IPv6 fixed address template
             object.
@@ -13788,6 +13884,7 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         enable_discovery: false
+        uuid: Example uuid
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
@@ -14114,6 +14211,11 @@ components:
           description: "Use flag for: subscribe_settings"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -14829,6 +14931,7 @@ components:
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         offset: 1
+        uuid: Example uuid
         recycle_leases: false
         use_logic_filter_rules: false
         use_recycle_leases: false
@@ -14937,6 +15040,11 @@ components:
           description: "Use flag for: recycle_leases"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-skip-expand: true
     Ipv6rangetemplateDelegatedMember:
@@ -15062,6 +15170,7 @@ components:
         - _ref: _ref
         - _ref: _ref
         use_ddns_ttl: false
+        uuid: Example uuid
         use_ddns_generate_hostname: false
         use_valid_lifetime: false
         enable_ddns: false
@@ -15296,6 +15405,11 @@ components:
           description: "Use flag for: valid_lifetime"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         valid_lifetime:
           description: Use this method to set or retrieve the valid lifetime value
             of a DHCP IPv6 Shared Network object.
@@ -15305,14 +15419,6 @@ components:
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
-    Ipv6sharednetworkNetworks:
-      example:
-        _ref: _ref
-      properties:
-        _ref:
-          description: Reference to the IPv6 Network.
-          type: string
-      type: object
     Ipv6sharednetworkLogicFilterRules:
       example:
         filter: Example filter
@@ -15360,6 +15466,14 @@ components:
           example: false
           type: boolean
       type: object
+    Ipv6sharednetworkNetworks:
+      example:
+        _ref: _ref
+      properties:
+        _ref:
+          description: Reference to the Network.
+          type: string
+      type: object
     ListIpv6sharednetworkResponse:
       oneOf:
       - description: The response format to retrieve __Ipv6sharednetwork__ objects.
@@ -15397,6 +15511,7 @@ components:
         on_commit: Example on_commit
         ipv6_iaid: Example ipv6_iaid
         tstp: 1
+        uuid: Example uuid
         ipv6_prefix_bits: 1
         network: Example network
         uid: Example uid
@@ -15817,6 +15932,11 @@ components:
           description: The user name that the server has associated with a DHCP Lease
             object.
           example: Example username
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         variable:
@@ -16555,6 +16675,7 @@ components:
             value: ""
         expiration_time: 1
         never_expires: false
+        uuid: Example uuid
         guest_last_name: Example guest_last_name
         mac: Example mac
         filter: Example filter
@@ -16681,6 +16802,11 @@ components:
         username:
           description: Username for authenticated DHCP purposes.
           example: Example username
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
           type: string
       type: object
       x-tf-extattrs-all: true
@@ -16892,6 +17018,7 @@ components:
         use_bootserver: false
         nextserver: Example nextserver
         use_pxe_lease_time: false
+        uuid: Example uuid
         is_split_scope: false
         use_unknown_clients: false
         use_lease_scavenge_time: false
@@ -17520,6 +17647,11 @@ components:
           description: "Use flag for: update_dns_on_lease_renewal"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -18419,6 +18551,7 @@ components:
           permission: Example permission
         nextserver: Example nextserver
         use_pxe_lease_time: false
+        uuid: Example uuid
         use_unknown_clients: false
         use_ddns_domainname: false
         use_lease_scavenge_time: false
@@ -18925,6 +19058,11 @@ components:
           description: "Use flag for: update_dns_on_lease_renewal"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -19220,6 +19358,7 @@ components:
           name: Example name
           value: Example value
         use_pxe_lease_time: false
+        uuid: Example uuid
         use_valid_lifetime: false
         use_ddns_domainname: false
         options:
@@ -19576,6 +19715,11 @@ components:
           description: "Use flag for: valid_lifetime"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         valid_lifetime:
           description: The valid lifetime value for this roaming host object.
           example: 1
@@ -19686,6 +19830,7 @@ components:
         use_ddns_update_fixed_addresses: false
         static_hosts: 1
         use_pxe_lease_time: false
+        uuid: Example uuid
         use_authority: false
         use_lease_scavenge_time: false
         options:
@@ -20064,6 +20209,11 @@ components:
           description: "Use flag for: update_dns_on_lease_renewal"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -20164,6 +20314,7 @@ components:
         - range
         - range
         _ref: _ref
+        uuid: Example uuid
         network: Example network
       properties:
         _ref:
@@ -20184,6 +20335,11 @@ components:
             - range
             type: string
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListOrderedrangesResponse:
       oneOf:
@@ -20258,6 +20414,7 @@ components:
           association_type: Example association_type
           ms_state: Example ms_state
           ms_shared_secret: Example ms_shared_secret
+          uuid: Example uuid
           ms_switchover_interval: 1
           recycle_leases: false
           extattrs-:
@@ -20316,6 +20473,7 @@ components:
           association_type: Example association_type
           ms_state: Example ms_state
           ms_shared_secret: Example ms_shared_secret
+          uuid: Example uuid
           ms_switchover_interval: 1
           recycle_leases: false
           extattrs-:
@@ -20376,6 +20534,7 @@ components:
           _ref: _ref
           name: Example name
           type: Example type
+          uuid: Example uuid
           space: Example space
       properties:
         result:
@@ -20399,6 +20558,7 @@ components:
           _ref: _ref
           name: Example name
           type: Example type
+          uuid: Example uuid
           space: Example space
       properties:
         result:
@@ -20425,6 +20585,7 @@ components:
           option_definitions:
           - option_definitions
           - option_definitions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Dhcpoptionspace'
@@ -20449,6 +20610,7 @@ components:
           option_definitions:
           - option_definitions
           - option_definitions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Dhcpoptionspace'
@@ -20482,6 +20644,7 @@ components:
           - fingerprint
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Filterfingerprint'
@@ -20514,6 +20677,7 @@ components:
           - fingerprint
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Filterfingerprint'
@@ -20538,6 +20702,7 @@ components:
               value: ""
           default_mac_address_expiration: 1
           never_expires: false
+          uuid: Example uuid
           enforce_expiration_times: false
           extattrs-:
             key:
@@ -20584,6 +20749,7 @@ components:
               value: ""
           default_mac_address_expiration: 1
           never_expires: false
+          uuid: Example uuid
           enforce_expiration_times: false
           extattrs-:
             key:
@@ -20650,6 +20816,7 @@ components:
             name: Example name
             value: Example value
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Filternac'
@@ -20692,6 +20859,7 @@ components:
             name: Example name
             value: Example value
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Filternac'
@@ -20716,6 +20884,7 @@ components:
               value: ""
           next_server: Example next_server
           bootfile: Example bootfile
+          uuid: Example uuid
           apply_as_class: false
           extattrs-:
             key:
@@ -20764,6 +20933,7 @@ components:
               value: ""
           next_server: Example next_server
           bootfile: Example bootfile
+          uuid: Example uuid
           apply_as_class: false
           extattrs-:
             key:
@@ -20813,6 +20983,7 @@ components:
           circuit_id_substring_length: 1
           circuit_id_name: Example circuit_id_name
           remote_id_name: Example remote_id_name
+          uuid: Example uuid
           is_remote_id_substring: false
           is_circuit_id_substring: false
           remote_id_substring_length: 1
@@ -20852,6 +21023,7 @@ components:
           circuit_id_substring_length: 1
           circuit_id_name: Example circuit_id_name
           remote_id_name: Example remote_id_name
+          uuid: Example uuid
           is_remote_id_substring: false
           is_circuit_id_substring: false
           remote_id_substring_length: 1
@@ -20886,19 +21058,21 @@ components:
       description: The response format to create __Fingerprint__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          ipv6_option_sequence:
+          - ipv6_option_sequence
+          - ipv6_option_sequence
+          type: Example type
+          uuid: Example uuid
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
           disable: false
-          ipv6_option_sequence:
-          - ipv6_option_sequence
-          - ipv6_option_sequence
           vendor_id:
           - vendor_id
           - vendor_id
@@ -20906,7 +21080,6 @@ components:
           name: Example name
           device_class: Example device_class
           comment: Example comment
-          type: Example type
           option_sequence:
           - option_sequence
           - option_sequence
@@ -20927,19 +21100,21 @@ components:
       description: The response format to update __Fingerprint__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          ipv6_option_sequence:
+          - ipv6_option_sequence
+          - ipv6_option_sequence
+          type: Example type
+          uuid: Example uuid
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
           disable: false
-          ipv6_option_sequence:
-          - ipv6_option_sequence
-          - ipv6_option_sequence
           vendor_id:
           - vendor_id
           - vendor_id
@@ -20947,7 +21122,6 @@ components:
           name: Example name
           device_class: Example device_class
           comment: Example comment
-          type: Example type
           option_sequence:
           - option_sequence
           - option_sequence
@@ -21004,6 +21178,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           cli_credentials:
           - credential_type: Example credential_type
             password: Example password
@@ -21254,6 +21429,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           cli_credentials:
           - credential_type: Example credential_type
             password: Example password
@@ -21494,6 +21670,7 @@ components:
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           enable_ddns: false
           use_logic_filter_rules: false
           extattrs-:
@@ -21562,6 +21739,7 @@ components:
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           enable_ddns: false
           use_logic_filter_rules: false
           extattrs-:
@@ -21632,6 +21810,7 @@ components:
           _ref: _ref
           name: Example name
           type: Example type
+          uuid: Example uuid
           space: Example space
       properties:
         result:
@@ -21655,6 +21834,7 @@ components:
           _ref: _ref
           name: Example name
           type: Example type
+          uuid: Example uuid
           space: Example space
       properties:
         result:
@@ -21682,6 +21862,7 @@ components:
           option_definitions:
           - option_definitions
           - option_definitions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Ipv6dhcpoptionspace'
@@ -21707,6 +21888,7 @@ components:
           option_definitions:
           - option_definitions
           - option_definitions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Ipv6dhcpoptionspace'
@@ -21751,6 +21933,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           option_space: Example option_space
       properties:
         result:
@@ -21795,6 +21978,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           option_space: Example option_space
       properties:
         result:
@@ -21843,6 +22027,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           use_valid_lifetime: false
           domain_name_servers:
           - domain_name_servers
@@ -22067,6 +22252,7 @@ components:
             attribute_name: attribute_name
             _object: _object
             _parameters: "{}"
+          uuid: Example uuid
           use_valid_lifetime: false
           domain_name_servers:
           - domain_name_servers
@@ -22289,6 +22475,7 @@ components:
             key:
               value: ""
           offset: 1
+          uuid: Example uuid
           use_valid_lifetime: false
           domain_name_servers:
           - domain_name_servers
@@ -22349,6 +22536,7 @@ components:
             key:
               value: ""
           offset: 1
+          uuid: Example uuid
           use_valid_lifetime: false
           domain_name_servers:
           - domain_name_servers
@@ -22430,6 +22618,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           enable_discovery: false
+          uuid: Example uuid
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
@@ -22593,6 +22782,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           enable_discovery: false
+          uuid: Example uuid
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
@@ -22742,6 +22932,7 @@ components:
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           offset: 1
+          uuid: Example uuid
           recycle_leases: false
           use_logic_filter_rules: false
           use_recycle_leases: false
@@ -22794,6 +22985,7 @@ components:
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           offset: 1
+          uuid: Example uuid
           recycle_leases: false
           use_logic_filter_rules: false
           use_recycle_leases: false
@@ -22842,6 +23034,7 @@ components:
           - _ref: _ref
           - _ref: _ref
           use_ddns_ttl: false
+          uuid: Example uuid
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
           enable_ddns: false
@@ -22917,6 +23110,7 @@ components:
           - _ref: _ref
           - _ref: _ref
           use_ddns_ttl: false
+          uuid: Example uuid
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
           enable_ddns: false
@@ -23020,6 +23214,7 @@ components:
               value: ""
           expiration_time: 1
           never_expires: false
+          uuid: Example uuid
           guest_last_name: Example guest_last_name
           mac: Example mac
           filter: Example filter
@@ -23066,6 +23261,7 @@ components:
               value: ""
           expiration_time: 1
           never_expires: false
+          uuid: Example uuid
           guest_last_name: Example guest_last_name
           mac: Example mac
           filter: Example filter
@@ -23285,6 +23481,7 @@ components:
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           is_split_scope: false
           use_unknown_clients: false
           use_lease_scavenge_time: false
@@ -23552,6 +23749,7 @@ components:
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           is_split_scope: false
           use_unknown_clients: false
           use_lease_scavenge_time: false
@@ -23656,6 +23854,7 @@ components:
             permission: Example permission
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_unknown_clients: false
           use_ddns_domainname: false
           use_lease_scavenge_time: false
@@ -23806,6 +24005,7 @@ components:
             permission: Example permission
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_unknown_clients: false
           use_ddns_domainname: false
           use_lease_scavenge_time: false
@@ -23957,6 +24157,7 @@ components:
             name: Example name
             value: Example value
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_valid_lifetime: false
           use_ddns_domainname: false
           options:
@@ -24058,6 +24259,7 @@ components:
             name: Example name
             value: Example value
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_valid_lifetime: false
           use_ddns_domainname: false
           options:
@@ -24152,6 +24354,7 @@ components:
           use_ddns_update_fixed_addresses: false
           static_hosts: 1
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_authority: false
           use_lease_scavenge_time: false
           options:
@@ -24248,6 +24451,7 @@ components:
           use_ddns_update_fixed_addresses: false
           static_hosts: 1
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_authority: false
           use_lease_scavenge_time: false
           options:
@@ -24348,6 +24552,7 @@ components:
           - range
           - range
           _ref: _ref
+          uuid: Example uuid
           network: Example network
       properties:
         result:

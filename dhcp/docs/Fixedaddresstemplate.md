@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **UseNextserver** | Pointer to **bool** | Use flag for: nextserver | [optional] 
 **UseOptions** | Pointer to **bool** | Use flag for: options | [optional] 
 **UsePxeLeaseTime** | Pointer to **bool** | Use flag for: pxe_lease_time | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -803,6 +804,31 @@ SetUsePxeLeaseTime sets UsePxeLeaseTime field to given value.
 `func (o *Fixedaddresstemplate) HasUsePxeLeaseTime() bool`
 
 HasUsePxeLeaseTime returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Fixedaddresstemplate) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Fixedaddresstemplate) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Fixedaddresstemplate) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Fixedaddresstemplate) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

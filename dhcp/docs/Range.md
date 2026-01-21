@@ -103,6 +103,7 @@ Name | Type | Description | Notes
 **UseSubscribeSettings** | Pointer to **bool** | Use flag for: subscribe_settings | [optional] 
 **UseUnknownClients** | Pointer to **bool** | Use flag for: unknown_clients | [optional] 
 **UseUpdateDnsOnLeaseRenewal** | Pointer to **bool** | Use flag for: update_dns_on_lease_renewal | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -2597,6 +2598,31 @@ SetUseUpdateDnsOnLeaseRenewal sets UseUpdateDnsOnLeaseRenewal field to given val
 `func (o *Range) HasUseUpdateDnsOnLeaseRenewal() bool`
 
 HasUseUpdateDnsOnLeaseRenewal returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Range) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Range) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Range) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Range) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

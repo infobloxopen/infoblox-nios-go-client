@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of a DHCP IPv6 option filter object. | [optional] 
 **OptionList** | Pointer to [**[]Ipv6filteroptionOptionList**](Ipv6filteroptionOptionList.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **OptionSpace** | Pointer to **string** | The option space of a DHCP IPv6 filter option object. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Ipv6filteroption**](Ipv6filteroption.md) |  | [optional] 
 
 ## Methods
@@ -310,6 +311,31 @@ SetOptionSpace sets OptionSpace field to given value.
 `func (o *GetIpv6filteroptionResponse) HasOptionSpace() bool`
 
 HasOptionSpace returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetIpv6filteroptionResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetIpv6filteroptionResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetIpv6filteroptionResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetIpv6filteroptionResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

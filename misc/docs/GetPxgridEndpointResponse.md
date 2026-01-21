@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Address** | Pointer to **string** | The pxgrid endpoint IPv4 Address or IPv6 Address or Fully-Qualified Domain Name (FQDN) | [optional] 
 **ClientCertificateSubject** | Pointer to **string** | The Cisco ISE client certificate subject. | [optional] [readonly] 
 **ClientCertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop for Cisco ISE client certificate. | [optional] 
@@ -72,6 +73,31 @@ SetRef sets Ref field to given value.
 `func (o *GetPxgridEndpointResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetPxgridEndpointResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetPxgridEndpointResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetPxgridEndpointResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetPxgridEndpointResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 

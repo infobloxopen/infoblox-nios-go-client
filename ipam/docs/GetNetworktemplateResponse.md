@@ -77,6 +77,7 @@ Name | Type | Description | Notes
 **UsePxeLeaseTime** | Pointer to **bool** | Use flag for: pxe_lease_time | [optional] 
 **UseRecycleLeases** | Pointer to **bool** | Use flag for: recycle_leases | [optional] 
 **UseUpdateDnsOnLeaseRenewal** | Pointer to **bool** | Use flag for: update_dns_on_lease_renewal | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Networktemplate**](Networktemplate.md) |  | [optional] 
 
 ## Methods
@@ -1922,6 +1923,31 @@ SetUseUpdateDnsOnLeaseRenewal sets UseUpdateDnsOnLeaseRenewal field to given val
 `func (o *GetNetworktemplateResponse) HasUseUpdateDnsOnLeaseRenewal() bool`
 
 HasUseUpdateDnsOnLeaseRenewal returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetNetworktemplateResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetNetworktemplateResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetNetworktemplateResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetNetworktemplateResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

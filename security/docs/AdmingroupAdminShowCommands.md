@@ -38,7 +38,6 @@ Name | Type | Description | Notes
 **ShowUpgradeHistory** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowUptime** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowVersion** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
-**ShowAnalyticsDatabaseDumps** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowCores** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowCoresummary** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowCspThreatDb** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
@@ -53,6 +52,7 @@ Name | Type | Description | Notes
 **ShowNtpStratum** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowPcDomain** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **ShowReportFrequency** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
+**ShowQueryLoggingWarnings** | Pointer to **bool** | If True then CLI user has permission to run the command | [optional] 
 **EnableAll** | Pointer to **bool** | If True then enable all fields | [optional] 
 **DisableAll** | Pointer to **bool** | If True then disable all fields | [optional] 
 
@@ -925,31 +925,6 @@ SetShowVersion sets ShowVersion field to given value.
 
 HasShowVersion returns a boolean if a field has been set.
 
-### GetShowAnalyticsDatabaseDumps
-
-`func (o *AdmingroupAdminShowCommands) GetShowAnalyticsDatabaseDumps() bool`
-
-GetShowAnalyticsDatabaseDumps returns the ShowAnalyticsDatabaseDumps field if non-nil, zero value otherwise.
-
-### GetShowAnalyticsDatabaseDumpsOk
-
-`func (o *AdmingroupAdminShowCommands) GetShowAnalyticsDatabaseDumpsOk() (*bool, bool)`
-
-GetShowAnalyticsDatabaseDumpsOk returns a tuple with the ShowAnalyticsDatabaseDumps field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetShowAnalyticsDatabaseDumps
-
-`func (o *AdmingroupAdminShowCommands) SetShowAnalyticsDatabaseDumps(v bool)`
-
-SetShowAnalyticsDatabaseDumps sets ShowAnalyticsDatabaseDumps field to given value.
-
-### HasShowAnalyticsDatabaseDumps
-
-`func (o *AdmingroupAdminShowCommands) HasShowAnalyticsDatabaseDumps() bool`
-
-HasShowAnalyticsDatabaseDumps returns a boolean if a field has been set.
-
 ### GetShowCores
 
 `func (o *AdmingroupAdminShowCommands) GetShowCores() bool`
@@ -1299,6 +1274,31 @@ SetShowReportFrequency sets ShowReportFrequency field to given value.
 `func (o *AdmingroupAdminShowCommands) HasShowReportFrequency() bool`
 
 HasShowReportFrequency returns a boolean if a field has been set.
+
+### GetShowQueryLoggingWarnings
+
+`func (o *AdmingroupAdminShowCommands) GetShowQueryLoggingWarnings() bool`
+
+GetShowQueryLoggingWarnings returns the ShowQueryLoggingWarnings field if non-nil, zero value otherwise.
+
+### GetShowQueryLoggingWarningsOk
+
+`func (o *AdmingroupAdminShowCommands) GetShowQueryLoggingWarningsOk() (*bool, bool)`
+
+GetShowQueryLoggingWarningsOk returns a tuple with the ShowQueryLoggingWarnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowQueryLoggingWarnings
+
+`func (o *AdmingroupAdminShowCommands) SetShowQueryLoggingWarnings(v bool)`
+
+SetShowQueryLoggingWarnings sets ShowQueryLoggingWarnings field to given value.
+
+### HasShowQueryLoggingWarnings
+
+`func (o *AdmingroupAdminShowCommands) HasShowQueryLoggingWarnings() bool`
+
+HasShowQueryLoggingWarnings returns a boolean if a field has been set.
 
 ### GetEnableAll
 

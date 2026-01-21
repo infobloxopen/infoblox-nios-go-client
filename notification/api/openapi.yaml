@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox NOTIFICATION API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for notification:rest:endpoint objects
   name: NotificationRestEndpoint
@@ -1101,6 +1101,7 @@ components:
         server_cert_validation: Example server_cert_validation
         sync_disabled: false
         uri: Example uri
+        uuid: Example uuid
         timeout: 1
         client_certificate_valid_from: 1
         extattrs-:
@@ -1245,6 +1246,11 @@ components:
             endpoint.
           example: Example username
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vendor_identifier:
           description: The vendor identifier.
           example: Example vendor_identifier
@@ -1360,6 +1366,7 @@ components:
           syntax: Example syntax
           default_value: Example default_value
           value: Example value
+        uuid: Example uuid
         content: Example content
         outbound_type: Example outbound_type
       properties:
@@ -1441,6 +1448,11 @@ components:
           example: Example template_type
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         vendor_identifier:
           description: The vendor identifier.
           example: Example vendor_identifier
@@ -1503,6 +1515,7 @@ components:
         event_deduplication_fields:
         - event_deduplication_fields
         - event_deduplication_fields
+        uuid: Example uuid
         publish_settings:
           enabled_attributes:
           - enabled_attributes
@@ -1689,6 +1702,11 @@ components:
           description: "Use flag for: publish_settings"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-skip-expand: true
     NotificationRuleExpressionList:
@@ -2023,6 +2041,7 @@ components:
           server_cert_validation: Example server_cert_validation
           sync_disabled: false
           uri: Example uri
+          uuid: Example uuid
           timeout: 1
           client_certificate_valid_from: 1
           extattrs-:
@@ -2082,6 +2101,7 @@ components:
           server_cert_validation: Example server_cert_validation
           sync_disabled: false
           uri: Example uri
+          uuid: Example uuid
           timeout: 1
           client_certificate_valid_from: 1
           extattrs-:
@@ -2155,6 +2175,7 @@ components:
             syntax: Example syntax
             default_value: Example default_value
             value: Example value
+          uuid: Example uuid
           content: Example content
           outbound_type: Example outbound_type
       properties:
@@ -2179,6 +2200,7 @@ components:
           event_deduplication_fields:
           - event_deduplication_fields
           - event_deduplication_fields
+          uuid: Example uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes
@@ -2256,6 +2278,7 @@ components:
           event_deduplication_fields:
           - event_deduplication_fields
           - event_deduplication_fields
+          uuid: Example uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes

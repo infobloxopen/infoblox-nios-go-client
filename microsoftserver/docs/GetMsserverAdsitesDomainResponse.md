@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Netbios** | Pointer to **string** | The NetBIOS name of the Active Directory Domain properties object. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which the Active Directory Domain resides. | [optional] [readonly] 
 **ReadOnly** | Pointer to **bool** | Determines whether the Active Directory Domain properties object is a read-only object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**MsserverAdsitesDomain**](MsserverAdsitesDomain.md) |  | [optional] 
 
 ## Methods
@@ -206,6 +207,31 @@ SetReadOnly sets ReadOnly field to given value.
 `func (o *GetMsserverAdsitesDomainResponse) HasReadOnly() bool`
 
 HasReadOnly returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMsserverAdsitesDomainResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMsserverAdsitesDomainResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMsserverAdsitesDomainResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMsserverAdsitesDomainResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

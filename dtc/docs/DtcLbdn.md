@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **Ttl** | Pointer to **int64** | The Time To Live (TTL) value for the DTC LBDN. A 32-bit unsigned integer that represents the duration, in seconds, for which the record is valid (cached). Zero indicates that the record should not be cached. | [optional] 
 **Types** | Pointer to **[]string** | The list of resource record types supported by LBDN. | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 
 ## Methods
 
@@ -517,6 +518,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *DtcLbdn) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DtcLbdn) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DtcLbdn) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DtcLbdn) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DtcLbdn) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

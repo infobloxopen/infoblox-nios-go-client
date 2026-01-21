@@ -103,6 +103,7 @@ Name | Type | Description | Notes
 **UseSubscribeSettings** | Pointer to **bool** | Use flag for: subscribe_settings | [optional] 
 **UseUnknownClients** | Pointer to **bool** | Use flag for: unknown_clients | [optional] 
 **UseUpdateDnsOnLeaseRenewal** | Pointer to **bool** | Use flag for: update_dns_on_lease_renewal | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Range**](Range.md) |  | [optional] 
 
 ## Methods
@@ -2598,6 +2599,31 @@ SetUseUpdateDnsOnLeaseRenewal sets UseUpdateDnsOnLeaseRenewal field to given val
 `func (o *GetRangeResponse) HasUseUpdateDnsOnLeaseRenewal() bool`
 
 HasUseUpdateDnsOnLeaseRenewal returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRangeResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRangeResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRangeResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRangeResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

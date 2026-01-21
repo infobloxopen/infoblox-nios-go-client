@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox THREATPROTECTION API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for threatprotection:grid:rule objects
   name: ThreatprotectionGridRule
@@ -2035,6 +2035,7 @@ components:
         ruleset: Example ruleset
         description: Example description
         type: Example type
+        uuid: Example uuid
         sid: 1
         allowed_actions:
         - allowed_actions
@@ -2072,6 +2073,12 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         allowed_actions:
@@ -2282,6 +2289,7 @@ components:
         use_disable_multiple_dns_tcp_request: false
         use_current_ruleset: false
         use_events_per_second_per_rule: false
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -2301,6 +2309,12 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -2411,6 +2425,7 @@ components:
         profile: Example profile
         _ref: _ref
         rule: Example rule
+        uuid: uuid
         config:
           log_severity: Example log_severity
           action: Example action
@@ -2440,6 +2455,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         config:
@@ -2608,6 +2628,7 @@ components:
         _ref: _ref
         member: Example member
         rule: Example rule
+        uuid: Example uuid
         config:
           log_severity: Example log_severity
           action: Example action
@@ -2637,6 +2658,12 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         config:
@@ -2802,9 +2829,16 @@ components:
         _ref: _ref
         name: Example name
         ruleset: Example ruleset
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         is_factory_reset_enabled:
@@ -2851,6 +2885,7 @@ components:
         do_not_delete: false
         _ref: _ref
         comment: Example comment
+        uuid: Example uuid
         used_by:
         - used_by
         - used_by
@@ -2859,6 +2894,12 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         add_type:
@@ -2955,10 +2996,17 @@ components:
             syntax: Example syntax
             value: Example value
         category: Example category
+        uuid: Example uuid
         sid: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         allowed_actions:
@@ -3145,9 +3193,15 @@ components:
           timestamp: 1
         _ref: _ref
         member: Example member
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+          x-tf-ref: true
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         member:
@@ -3246,6 +3300,7 @@ components:
           ruleset: Example ruleset
           description: Example description
           type: Example type
+          uuid: Example uuid
           sid: 1
           allowed_actions:
           - allowed_actions
@@ -3302,6 +3357,7 @@ components:
           ruleset: Example ruleset
           description: Example description
           type: Example type
+          uuid: Example uuid
           sid: 1
           allowed_actions:
           - allowed_actions
@@ -3362,6 +3418,7 @@ components:
           use_disable_multiple_dns_tcp_request: false
           use_current_ruleset: false
           use_events_per_second_per_rule: false
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -3403,6 +3460,7 @@ components:
           use_disable_multiple_dns_tcp_request: false
           use_current_ruleset: false
           use_events_per_second_per_rule: false
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -3453,6 +3511,7 @@ components:
           profile: Example profile
           _ref: _ref
           rule: Example rule
+          uuid: uuid
           config:
             log_severity: Example log_severity
             action: Example action
@@ -3511,6 +3570,7 @@ components:
           _ref: _ref
           member: Example member
           rule: Example rule
+          uuid: Example uuid
           config:
             log_severity: Example log_severity
             action: Example action
@@ -3596,6 +3656,7 @@ components:
           do_not_delete: false
           _ref: _ref
           comment: Example comment
+          uuid: Example uuid
           used_by:
           - used_by
           - used_by

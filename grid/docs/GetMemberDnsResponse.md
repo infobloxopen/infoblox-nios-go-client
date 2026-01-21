@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AddClientIpMacOptions** | Pointer to **bool** | Add custom IP, MAC and DNS View name ENDS0 options to outgoing recursive queries. | [optional] 
 **AdditionalIpList** | Pointer to **[]string** | The list of additional IP addresses on which DNS is enabled for a Grid member. Only one of \&quot;additional_ip_list\&quot; or \&quot;additional_ip_list_struct\&quot; should be set when modifying the object. | [optional] 
 **AdditionalIpListStruct** | Pointer to [**[]MemberDnsAdditionalIpListStruct**](MemberDnsAdditionalIpListStruct.md) | The list of additional IP addresses and IP Space Discriminator short names on which DNS is enabled for a Grid member. Only one of \&quot;additional_ip_list\&quot; or \&quot;additional_ip_list_struct\&quot; should be set when modifying the object. | [optional] 
@@ -257,6 +258,31 @@ SetRef sets Ref field to given value.
 `func (o *GetMemberDnsResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMemberDnsResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMemberDnsResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMemberDnsResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMemberDnsResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddClientIpMacOptions
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Group** | Pointer to **string** | The name of the admin group this permission applies to. | [optional] 
 **Object** | Pointer to **string** | A reference to a WAPI object, which will be the object this permission applies to. | [optional] 
 **Permission** | Pointer to **string** | The type of permission. | [optional] 
@@ -54,6 +55,31 @@ SetRef sets Ref field to given value.
 `func (o *Permission) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Permission) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Permission) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Permission) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Permission) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetGroup
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Issuer** | Pointer to **string** | Certificate issuer. | [optional] [readonly] 
 **Serial** | Pointer to **string** | X509Certificate serial number. | [optional] [readonly] 
 **Subject** | Pointer to **string** | A Distinguished Name that is made of multiple relative distinguished names (RDNs). | [optional] [readonly] 
@@ -54,6 +55,31 @@ SetRef sets Ref field to given value.
 `func (o *GridX509certificate) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridX509certificate) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridX509certificate) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridX509certificate) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridX509certificate) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetIssuer
 

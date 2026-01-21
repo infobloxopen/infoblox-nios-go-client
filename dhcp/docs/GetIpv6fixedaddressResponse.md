@@ -52,6 +52,7 @@ Name | Type | Description | Notes
 **UseSnmp3Credential** | Pointer to **bool** | Determines if the SNMPv3 credential should be used for the IPv6 fixed address. | [optional] 
 **UseSnmpCredential** | Pointer to **bool** | If set to true, SNMP credential will override member level settings. | [optional] 
 **UseValidLifetime** | Pointer to **bool** | Use flag for: valid_lifetime | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ValidLifetime** | Pointer to **int64** | The valid lifetime value for this DHCP IPv6 Fixed Address object. | [optional] 
 **Result** | Pointer to [**Ipv6fixedaddress**](Ipv6fixedaddress.md) |  | [optional] 
 
@@ -1273,6 +1274,31 @@ SetUseValidLifetime sets UseValidLifetime field to given value.
 `func (o *GetIpv6fixedaddressResponse) HasUseValidLifetime() bool`
 
 HasUseValidLifetime returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetIpv6fixedaddressResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetIpv6fixedaddressResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetIpv6fixedaddressResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetIpv6fixedaddressResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetValidLifetime
 

@@ -39,6 +39,7 @@ Name | Type | Description | Notes
 **Tstp** | Pointer to **int64** | The TSTP (Time Sent To Partner) value of a DHCP Lease object. This field specifies the time that the current lease state ends, from the point of view of a local DHCP failover peer. This field is for IPv4 leases only. | [optional] [readonly] 
 **Uid** | Pointer to **string** | The UID (User ID) value of a DHCP Lease object. This field specifies the client identifier that the DHCP client sends the Infoblox appliance (in DHCP option 61) when it acquires the lease. Not all DHCP clients send a UID. This field is for IPv4 leases only. | [optional] [readonly] 
 **Username** | Pointer to **string** | The user name that the server has associated with a DHCP Lease object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Variable** | Pointer to **string** | The variable value of a DHCP Lease object. This field keeps all variables related to the DDNS update of the DHCP lease. The variables related to the DDNS updates of the DHCP lease. The variables can be one of the following: ddns-text: The ddns-text variable is used to record the value of the client&#39;s TXT identification record when the interim DDNS update style has been used to update the DNS service for a particular lease. ddns-fwd-name: When a DDNS update was successfully completed, the ddns-fwd-name variable records the value of the name used when the client&#39;s A record was updated. The server may have used this name when it updated the client&#39;s PTR record. ddns-client-fqdn: If the server is configured to use the interim DDNS update style and is also configured to allow clients to update their own FQDNs, the ddns-client-fqdn variable records the name that the client used when it updated its own FQDN. This is also the name that the server used to update the client&#39;s PTR record. ddns-rev-name: If the server successfully updates the client&#39;s PTR record, this variable will record the name that the DHCP server used for the PTR record. The name to which the PTR record points will be either the ddns-fwd-name or the ddns-client-fqdn. | [optional] [readonly] 
 
 ## Methods
@@ -934,6 +935,31 @@ SetUsername sets Username field to given value.
 `func (o *Lease) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Lease) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Lease) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Lease) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Lease) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetVariable
 

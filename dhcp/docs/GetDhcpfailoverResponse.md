@@ -39,6 +39,7 @@ Name | Type | Description | Notes
 **UseFailoverPort** | Pointer to **bool** | Use flag for: failover_port | [optional] 
 **UseMsSwitchoverInterval** | Pointer to **bool** | Use flag for: ms_switchover_interval | [optional] 
 **UseRecycleLeases** | Pointer to **bool** | Use flag for: recycle_leases | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Dhcpfailover**](Dhcpfailover.md) |  | [optional] 
 
 ## Methods
@@ -934,6 +935,31 @@ SetUseRecycleLeases sets UseRecycleLeases field to given value.
 `func (o *GetDhcpfailoverResponse) HasUseRecycleLeases() bool`
 
 HasUseRecycleLeases returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDhcpfailoverResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDhcpfailoverResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDhcpfailoverResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDhcpfailoverResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

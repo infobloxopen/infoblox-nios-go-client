@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AllowApiAdmins** | Pointer to **string** | Defines administrators who can perform cloud API requests on the Grid Master. The valid value is NONE (no administrator), ALL (all administrators), or LIST (administrators on the ACL). | [optional] 
 **AllowedApiAdmins** | Pointer to [**[]GridCloudapiAllowedApiAdmins**](GridCloudapiAllowedApiAdmins.md) | The list of administrators who can perform cloud API requests on the Cloud Platform Appliance. | [optional] 
 **EnableRecycleBin** | Pointer to **bool** | Determines whether the recycle bin for deleted cloud objects is enabled or not on the Grid Master. | [optional] 
@@ -53,6 +54,31 @@ SetRef sets Ref field to given value.
 `func (o *GridCloudapi) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridCloudapi) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridCloudapi) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridCloudapi) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridCloudapi) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAllowApiAdmins
 

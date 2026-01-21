@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox ACL API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for namedacl objects
   name: Namedacl
@@ -555,6 +555,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
@@ -606,6 +607,11 @@ components:
         name:
           description: The name of the named ACL.
           example: Example name
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
           type: string
       type: object
       x-tf-extattrs-all: true
@@ -783,6 +789,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Namedacl'
@@ -842,6 +849,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Namedacl'

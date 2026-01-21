@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox SMARTFOLDER API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for smartfolder:children objects
   name: SmartfolderChildren
@@ -1102,6 +1102,7 @@ components:
             value_string: Example value_string
             value_date: 1
           operator: Example operator
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
@@ -1129,6 +1130,11 @@ components:
           items:
             $ref: '#/components/schemas/SmartfolderGlobalQueryItems'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-skip-expand: true
     SmartfolderGlobalGroupBys:
@@ -1303,6 +1309,7 @@ components:
             value_date: 1
           operator: Example operator
         is_shortcut: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
@@ -1335,6 +1342,11 @@ components:
           items:
             $ref: '#/components/schemas/SmartfolderPersonalQueryItems'
           type: array
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-skip-expand: true
     SmartfolderPersonalGroupBys:
@@ -1543,6 +1555,7 @@ components:
               value_string: Example value_string
               value_date: 1
             operator: Example operator
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/SmartfolderGlobal'
@@ -1591,6 +1604,7 @@ components:
               value_string: Example value_string
               value_date: 1
             operator: Example operator
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/SmartfolderGlobal'
@@ -1642,6 +1656,7 @@ components:
               value_date: 1
             operator: Example operator
           is_shortcut: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/SmartfolderPersonal'
@@ -1692,6 +1707,7 @@ components:
               value_date: 1
             operator: Example operator
           is_shortcut: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/SmartfolderPersonal'

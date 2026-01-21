@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Services** | Pointer to **string** | The services field of the NAPTR record object; maximum 128 characters. The services field contains protocol and service identifiers, such as \&quot;http+E2U\&quot; or \&quot;SIPS+D2T\&quot;. | [optional] 
 **Ttl** | Pointer to **int64** | The Time to Live (TTL) value. | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**DtcRecordNaptr**](DtcRecordNaptr.md) |  | [optional] 
 
 ## Methods
@@ -336,6 +337,31 @@ SetUseTtl sets UseTtl field to given value.
 `func (o *GetDtcRecordNaptrResponse) HasUseTtl() bool`
 
 HasUseTtl returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDtcRecordNaptrResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDtcRecordNaptrResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDtcRecordNaptrResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDtcRecordNaptrResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

@@ -6,10 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
 **DestType** | Pointer to **string** | The type of the destination for this DTC Topology rule. | [optional] 
-**DestinationLink** | Pointer to [**DtcTopologyRuleDestinationLink**](DtcTopologyRuleDestinationLink.md) |  | [optional] 
+**DestinationLink** | Pointer to **string** | The reference to the destination DTC pool or DTC server. | [optional] 
 **ReturnType** | Pointer to **string** | Type of the DNS response for rule. | [optional] 
 **Sources** | Pointer to [**[]DtcTopologyRuleSources**](DtcTopologyRuleSources.md) | The conditions for matching sources. Should be empty to set rule as default destination. | [optional] 
 **Topology** | Pointer to **string** | The DTC Topology the rule belongs to. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Valid** | Pointer to **bool** | True if the label in the rule exists in the current Topology DB. Always true for SUBNET rules. Rules with non-existent labels may be configured but will never match. | [optional] [readonly] 
 
 ## Methods
@@ -83,20 +84,20 @@ HasDestType returns a boolean if a field has been set.
 
 ### GetDestinationLink
 
-`func (o *DtcTopologyRule) GetDestinationLink() DtcTopologyRuleDestinationLink`
+`func (o *DtcTopologyRule) GetDestinationLink() string`
 
 GetDestinationLink returns the DestinationLink field if non-nil, zero value otherwise.
 
 ### GetDestinationLinkOk
 
-`func (o *DtcTopologyRule) GetDestinationLinkOk() (*DtcTopologyRuleDestinationLink, bool)`
+`func (o *DtcTopologyRule) GetDestinationLinkOk() (*string, bool)`
 
 GetDestinationLinkOk returns a tuple with the DestinationLink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDestinationLink
 
-`func (o *DtcTopologyRule) SetDestinationLink(v DtcTopologyRuleDestinationLink)`
+`func (o *DtcTopologyRule) SetDestinationLink(v string)`
 
 SetDestinationLink sets DestinationLink field to given value.
 
@@ -180,6 +181,31 @@ SetTopology sets Topology field to given value.
 `func (o *DtcTopologyRule) HasTopology() bool`
 
 HasTopology returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DtcTopologyRule) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DtcTopologyRule) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DtcTopologyRule) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DtcTopologyRule) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetValid
 

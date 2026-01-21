@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **OptionList** | Pointer to [**[]FilteroptionOptionList**](FilteroptionOptionList.md) | An array of DHCP option dhcpoption structs that lists the DHCP options associated with the object. | [optional] 
 **OptionSpace** | Pointer to **string** | The option space of a DHCP filter option object. | [optional] 
 **PxeLeaseTime** | Pointer to **int64** | Determines the PXE (Preboot Execution Environment) lease time of a DHCP filter option object. To specify the duration of time it takes a host to connect to a boot server, such as a TFTP server, and download the file it needs to boot. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Result** | Pointer to [**Filteroption**](Filteroption.md) |  | [optional] 
 
 ## Methods
@@ -414,6 +415,31 @@ SetPxeLeaseTime sets PxeLeaseTime field to given value.
 `func (o *GetFilteroptionResponse) HasPxeLeaseTime() bool`
 
 HasPxeLeaseTime returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetFilteroptionResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetFilteroptionResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetFilteroptionResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetFilteroptionResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetResult
 

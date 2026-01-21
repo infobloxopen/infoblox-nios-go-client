@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox RIR API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for rir objects
   name: Rir
@@ -747,6 +747,7 @@ components:
         use_url: false
         _ref: _ref
         name: Example name
+        uuid: Example uuid
         email: Example email
         url: Example url
       properties:
@@ -784,6 +785,11 @@ components:
           description: "Use flag for: url"
           example: false
           type: boolean
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
     ListRirResponse:
       oneOf:
@@ -820,6 +826,7 @@ components:
         name: Example name
         rir: Example rir
         id: Example id
+        uuid: Example uuid
         maintainer: Example maintainer
         sender_email: Example sender_email
       properties:
@@ -873,6 +880,11 @@ components:
           description: The sender e-mail address for RIR organization.
           example: Example sender_email
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
       type: object
       x-tf-extattrs-all: true
     ListRirOrganizationResponse:
@@ -925,6 +937,7 @@ components:
           use_url: false
           _ref: _ref
           name: Example name
+          uuid: Example uuid
           email: Example email
           url: Example url
       properties:
@@ -959,6 +972,7 @@ components:
           name: Example name
           rir: Example rir
           id: Example id
+          uuid: Example uuid
           maintainer: Example maintainer
           sender_email: Example sender_email
       properties:
@@ -992,6 +1006,7 @@ components:
           name: Example name
           rir: Example rir
           id: Example id
+          uuid: Example uuid
           maintainer: Example maintainer
           sender_email: Example sender_email
       properties:
