@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
 **HardwareType** | Pointer to **string** | Hardware type of a Grid member. | [optional] [readonly] 
 **MaxCapacity** | Pointer to **int64** | The maximum amount of capacity available for the Grid member. | [optional] [readonly] 
 **Name** | Pointer to **string** | The Grid member name. | [optional] [readonly] 
@@ -57,6 +58,31 @@ SetRef sets Ref field to given value.
 `func (o *GetCapacityreportResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetCapacityreportResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetCapacityreportResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetCapacityreportResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetCapacityreportResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetHardwareType
 

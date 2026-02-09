@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Address** | Pointer to **string** | The IP address of the server that is serving this zone. | [optional] [readonly] 
 **AllowActiveDir** | Pointer to [**[]ZoneAuthAllowActiveDir**](ZoneAuthAllowActiveDir.md) | This field allows the zone to receive GSS-TSIG authenticated DDNS updates from DHCP clients and servers in an AD domain. Note that addresses specified in this field ignore the permission set in the struct which will be set to &#39;ALLOW&#39;. | [optional] 
 **AllowFixedRrsetOrder** | Pointer to **bool** | The flag that allows to enable or disable fixed RRset ordering for authoritative forward-mapping zones. | [optional] 
@@ -65,6 +66,8 @@ Name | Type | Description | Notes
 **MaskPrefix** | Pointer to **string** | IPv4 Netmask or IPv6 prefix for this zone. | [optional] [readonly] 
 **MemberSoaMnames** | Pointer to [**[]ZoneAuthMemberSoaMnames**](ZoneAuthMemberSoaMnames.md) | The list of per-member SOA MNAME information. | [optional] 
 **MemberSoaSerials** | Pointer to [**[]ZoneAuthMemberSoaSerials**](ZoneAuthMemberSoaSerials.md) | The list of per-member SOA serial information. | [optional] [readonly] 
+**MgmPrivate** | Pointer to **bool** | This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized. | [optional] 
+**MgmPrivateOverridable** | Pointer to **bool** | This field is assumed to be True unless filled by any conforming objects, such as Network, IPv6 Network, Network Container, IPv6 Network Container, and Network View. This value is set to False if mgm_private is set to True in the parent object. | [optional] [readonly] 
 **MsAdIntegrated** | Pointer to **bool** | The flag that determines whether Active Directory is integrated or not. This field is valid only when ms_managed is \&quot;STUB\&quot;, \&quot;AUTH_PRIMARY\&quot;, or \&quot;AUTH_BOTH\&quot;. | [optional] 
 **MsAllowTransfer** | Pointer to [**[]ZoneAuthMsAllowTransfer**](ZoneAuthMsAllowTransfer.md) | The list of DNS clients that are allowed to perform zone transfers from a Microsoft DNS server. This setting applies only to zones with Microsoft DNS servers that are either primary or secondary servers. This setting does not inherit any value from the Grid or from any member that defines an allow_transfer value. This setting does not apply to any grid member. Use the allow_transfer field to control which DNS clients are allowed to perform zone transfers on Grid members. | [optional] 
 **MsAllowTransferMode** | Pointer to **string** | Determines which DNS clients are allowed to perform zone transfers from a Microsoft DNS server. Valid values are: \&quot;ADDRESS_AC\&quot;, to use ms_allow_transfer field for specifying IP addresses, networks and Transaction Signature (TSIG) keys for clients that are allowed to do zone transfers. \&quot;ANY\&quot;, to allow any client. \&quot;ANY_NS\&quot;, to allow only the nameservers listed in this zone. \&quot;NONE\&quot;, to deny all zone transfer requests. | [optional] 
@@ -168,6 +171,31 @@ SetRef sets Ref field to given value.
 `func (o *GetZoneAuthResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetZoneAuthResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetZoneAuthResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetZoneAuthResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetZoneAuthResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 
@@ -1668,6 +1696,56 @@ SetMemberSoaSerials sets MemberSoaSerials field to given value.
 `func (o *GetZoneAuthResponse) HasMemberSoaSerials() bool`
 
 HasMemberSoaSerials returns a boolean if a field has been set.
+
+### GetMgmPrivate
+
+`func (o *GetZoneAuthResponse) GetMgmPrivate() bool`
+
+GetMgmPrivate returns the MgmPrivate field if non-nil, zero value otherwise.
+
+### GetMgmPrivateOk
+
+`func (o *GetZoneAuthResponse) GetMgmPrivateOk() (*bool, bool)`
+
+GetMgmPrivateOk returns a tuple with the MgmPrivate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMgmPrivate
+
+`func (o *GetZoneAuthResponse) SetMgmPrivate(v bool)`
+
+SetMgmPrivate sets MgmPrivate field to given value.
+
+### HasMgmPrivate
+
+`func (o *GetZoneAuthResponse) HasMgmPrivate() bool`
+
+HasMgmPrivate returns a boolean if a field has been set.
+
+### GetMgmPrivateOverridable
+
+`func (o *GetZoneAuthResponse) GetMgmPrivateOverridable() bool`
+
+GetMgmPrivateOverridable returns the MgmPrivateOverridable field if non-nil, zero value otherwise.
+
+### GetMgmPrivateOverridableOk
+
+`func (o *GetZoneAuthResponse) GetMgmPrivateOverridableOk() (*bool, bool)`
+
+GetMgmPrivateOverridableOk returns a tuple with the MgmPrivateOverridable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMgmPrivateOverridable
+
+`func (o *GetZoneAuthResponse) SetMgmPrivateOverridable(v bool)`
+
+SetMgmPrivateOverridable sets MgmPrivateOverridable field to given value.
+
+### HasMgmPrivateOverridable
+
+`func (o *GetZoneAuthResponse) HasMgmPrivateOverridable() bool`
+
+HasMgmPrivateOverridable returns a boolean if a field has been set.
 
 ### GetMsAdIntegrated
 

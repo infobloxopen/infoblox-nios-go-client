@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox RPZ API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for allrpzrecords objects
   name: Allrpzrecords
@@ -5050,6 +5050,7 @@ components:
         last_updated: 1
         expiration_time: 1
         type: Example type
+        uuid: uuid
         ttl: 1
         alert_type: Example alert_type
         view: Example view
@@ -5062,6 +5063,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         alert_type:
@@ -5131,6 +5136,7 @@ components:
           - SubstituteARecord
           - SubstituteCName
           - SubstituteClientIPAddressCname
+          - SubstituteHTTPSRecord
           - SubstituteIPAddressCname
           - SubstituteIPv4AddressRecord
           - SubstituteIPv6AddressRecord
@@ -5138,6 +5144,7 @@ components:
           - SubstituteNAPTRRecord
           - SubstitutePTRRecord
           - SubstituteSRVRecord
+          - SubstituteSVCBRecord
           - SubstituteTXTRecord
           example: Example rpz_rule
           readOnly: true
@@ -5163,10 +5170,12 @@ components:
           - record:rpz:cname:clientipaddress
           - record:rpz:cname:ipaddress
           - record:rpz:cname:ipaddressdn
+          - record:rpz:https
           - record:rpz:mx
           - record:rpz:naptr
           - record:rpz:ptr
           - record:rpz:srv
+          - record:rpz:svcb
           - record:rpz:txt
           example: Example type
           readOnly: true
@@ -5209,6 +5218,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: Example uuid
         ipv4addr: Example ipv4addr
         ttl: 1
         extattrs-:
@@ -5227,6 +5237,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -5328,6 +5343,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: Example uuid
         ttl: 1
         ipv6addr: Example ipv6addr
         extattrs-:
@@ -5346,6 +5362,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -5448,6 +5469,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: Example uuid
         ttl: 1
         extattrs-:
           key:
@@ -5465,6 +5487,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         canonical:
@@ -5569,6 +5596,7 @@ components:
             value: ""
         use_ttl: false
         preference: 1
+        uuid: Example uuid
         ttl: 1
         extattrs-:
           key:
@@ -5586,6 +5614,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -5698,6 +5731,7 @@ components:
         preference: 1
         flags: Example flags
         services: Example services
+        uuid: Example uuid
         ttl: 1
         extattrs-:
           key:
@@ -5718,6 +5752,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -5862,6 +5901,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: Example uuid
         ipv4addr: Example ipv4addr
         ttl: 1
         ipv6addr: Example ipv6addr
@@ -5882,6 +5922,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -5994,6 +6039,7 @@ components:
         use_ttl: false
         weight: 1
         priority: 1
+        uuid: Example uuid
         ttl: 1
         target: Example target
         extattrs-:
@@ -6013,6 +6059,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -6133,6 +6184,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: Example uuid
         ttl: 1
         extattrs-:
           key:
@@ -6151,6 +6203,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -6255,6 +6312,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: Example uuid
         ipv4addr: Example ipv4addr
         ttl: 1
         extattrs-:
@@ -6273,6 +6331,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -6374,6 +6437,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: Example uuid
         ttl: 1
         ipv6addr: Example ipv6addr
         extattrs-:
@@ -6392,6 +6456,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -6494,6 +6563,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: Example uuid
         is_ipv4: false
         ttl: 1
         extattrs-:
@@ -6512,6 +6582,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         canonical:
@@ -6621,6 +6696,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: Example uuid
         is_ipv4: false
         ttl: 1
         extattrs-:
@@ -6639,6 +6715,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         canonical:
@@ -6749,6 +6830,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: Example uuid
         is_ipv4: false
         ttl: 1
         extattrs-:
@@ -6767,6 +6849,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         canonical:
@@ -6878,6 +6965,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: Example uuid
         is_ipv4: false
         ttl: 1
         extattrs-:
@@ -6896,6 +6984,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         canonical:
@@ -7040,6 +7133,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           extattrs-:
@@ -7076,6 +7170,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           extattrs-:
@@ -7113,6 +7208,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ttl: 1
           ipv6addr: Example ipv6addr
           extattrs-:
@@ -7149,6 +7245,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ttl: 1
           ipv6addr: Example ipv6addr
           extattrs-:
@@ -7187,6 +7284,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           ttl: 1
           extattrs-:
             key:
@@ -7223,6 +7321,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           ttl: 1
           extattrs-:
             key:
@@ -7261,6 +7360,7 @@ components:
               value: ""
           use_ttl: false
           preference: 1
+          uuid: Example uuid
           ttl: 1
           extattrs-:
             key:
@@ -7298,6 +7398,7 @@ components:
               value: ""
           use_ttl: false
           preference: 1
+          uuid: Example uuid
           ttl: 1
           extattrs-:
             key:
@@ -7338,6 +7439,7 @@ components:
           preference: 1
           flags: Example flags
           services: Example services
+          uuid: Example uuid
           ttl: 1
           extattrs-:
             key:
@@ -7380,6 +7482,7 @@ components:
           preference: 1
           flags: Example flags
           services: Example services
+          uuid: Example uuid
           ttl: 1
           extattrs-:
             key:
@@ -7419,6 +7522,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           ipv6addr: Example ipv6addr
@@ -7457,6 +7561,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           ipv6addr: Example ipv6addr
@@ -7498,6 +7603,7 @@ components:
           use_ttl: false
           weight: 1
           priority: 1
+          uuid: Example uuid
           ttl: 1
           target: Example target
           extattrs-:
@@ -7537,6 +7643,7 @@ components:
           use_ttl: false
           weight: 1
           priority: 1
+          uuid: Example uuid
           ttl: 1
           target: Example target
           extattrs-:
@@ -7575,6 +7682,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ttl: 1
           extattrs-:
             key:
@@ -7611,6 +7719,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ttl: 1
           extattrs-:
             key:
@@ -7649,6 +7758,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           extattrs-:
@@ -7686,6 +7796,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           extattrs-:
@@ -7724,6 +7835,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ttl: 1
           ipv6addr: Example ipv6addr
           extattrs-:
@@ -7761,6 +7873,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: Example uuid
           ttl: 1
           ipv6addr: Example ipv6addr
           extattrs-:
@@ -7800,6 +7913,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7838,6 +7952,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7877,6 +7992,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7915,6 +8031,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7955,6 +8072,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7994,6 +8112,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -8034,6 +8153,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -8073,6 +8193,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           is_ipv4: false
           ttl: 1
           extattrs-:

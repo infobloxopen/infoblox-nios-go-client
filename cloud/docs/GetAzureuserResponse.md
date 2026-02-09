@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ClientId** | Pointer to **string** | The unique Client ID of this Azure user. Maximum 255 characters. | [optional] 
 **ClientSecretKey** | Pointer to **string** | The Client Secret Key for the Client ID of this user. Maximum 255 characters. | [optional] 
 **LastUsed** | Pointer to **int64** | The timestamp when this Azure user credentials was last used. | [optional] [readonly] 
@@ -56,6 +57,31 @@ SetRef sets Ref field to given value.
 `func (o *GetAzureuserResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetAzureuserResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetAzureuserResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetAzureuserResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetAzureuserResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetClientId
 

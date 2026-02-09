@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Assigned** | Pointer to **int64** | The number of dynamic licenses allocated to vNIOS appliances. | [optional] [readonly] 
 **ExpirationStatus** | Pointer to **string** | The license expiration status. * DELETED - The temporary license has been deleted. * EXPIRED - License/Pool has reached the expiry date. * EXPIRING_SOON - License/Pool expires in 31-90 days. * EXPIRING_VERY_SOON - License/Pool expires in 30 days or earlier. * NOT_EXPIRED - License/Pool has not expired. * PERMANENT - License/Pool does not expire. | [optional] [readonly] 
 **ExpiryDate** | Pointer to **int64** | The expiration timestamp of the license. | [optional] [readonly] 
@@ -60,6 +61,31 @@ SetRef sets Ref field to given value.
 `func (o *GridLicensePool) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridLicensePool) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridLicensePool) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridLicensePool) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridLicensePool) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAssigned
 

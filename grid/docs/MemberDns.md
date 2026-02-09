@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AddClientIpMacOptions** | Pointer to **bool** | Add custom IP, MAC and DNS View name ENDS0 options to outgoing recursive queries. | [optional] 
 **AdditionalIpList** | Pointer to **[]string** | The list of additional IP addresses on which DNS is enabled for a Grid member. Only one of \&quot;additional_ip_list\&quot; or \&quot;additional_ip_list_struct\&quot; should be set when modifying the object. | [optional] 
 **AdditionalIpListStruct** | Pointer to [**[]MemberDnsAdditionalIpListStruct**](MemberDnsAdditionalIpListStruct.md) | The list of additional IP addresses and IP Space Discriminator short names on which DNS is enabled for a Grid member. Only one of \&quot;additional_ip_list\&quot; or \&quot;additional_ip_list_struct\&quot; should be set when modifying the object. | [optional] 
@@ -46,6 +47,8 @@ Name | Type | Description | Notes
 **DnsHealthCheckTimeout** | Pointer to **int64** | The DNS health check timeout interval (in seconds). | [optional] 
 **DnsNotifyTransferSource** | Pointer to **string** | Determines which IP address is used as the source for DDNS notify and transfer operations. | [optional] 
 **DnsNotifyTransferSourceAddress** | Pointer to **string** | The source address used if dns_notify_transfer_source type is \&quot;IP\&quot;. | [optional] 
+**DnsOverHttpsEndpoint** | Pointer to **string** | DoH end point. Available in WAPI 2.14 and later | [optional] 
+**DnsOverHttpsStreamPerConnection** | Pointer to **int64** | DNS over HTTPS streams per connection. Available in WAPI 2.14 and later | [optional] 
 **DnsOverTlsService** | Pointer to **bool** | Enables DNS over TLS service. | [optional] 
 **DnsQueryCaptureFileTimeLimit** | Pointer to **int64** | The time limit (in minutes) for the DNS query capture file. | [optional] 
 **DnsQuerySourceAddress** | Pointer to **string** | The source address used if dns_query_source_interface type is \&quot;IP\&quot;. | [optional] 
@@ -60,6 +63,7 @@ Name | Type | Description | Notes
 **DnssecRpzEnabled** | Pointer to **bool** | Determines if the RPZ policies for DNSSEC-enabled clients are enabled or not. | [optional] 
 **DnssecTrustedKeys** | Pointer to [**[]MemberDnsDnssecTrustedKeys**](MemberDnsDnssecTrustedKeys.md) | The list of trusted keys for the DNSSEC feature. | [optional] 
 **DnssecValidationEnabled** | Pointer to **bool** | Determines if the DNS security validation is enabled or not. | [optional] 
+**DnstapIdentity** | Pointer to **string** | The DNSTAP identity string for this member. | [optional] 
 **DnstapSetting** | Pointer to [**MemberDnsDnstapSetting**](MemberDnsDnstapSetting.md) |  | [optional] 
 **DohHttpsSessionDuration** | Pointer to **int64** | DNS over HTTPS sessions duration. | [optional] 
 **DohService** | Pointer to **bool** | Enables DNS over HTTPS service. | [optional] 
@@ -77,8 +81,18 @@ Name | Type | Description | Notes
 **EnableDns64** | Pointer to **bool** | Determines if the DNS64 support is enabled or not for this member. | [optional] 
 **EnableDnsCacheAcceleration** | Pointer to **bool** | Determines if the DNS Cache Acceleration service is enabled or not for a member. | [optional] 
 **EnableDnsHealthCheck** | Pointer to **bool** | The flag that indicates whether the DNS health check is enabled or not. | [optional] 
+**EnableDnstapAuthQueries** | Pointer to **bool** | Enable DNSTAP for authoritative query messages. | [optional] 
+**EnableDnstapAuthResponses** | Pointer to **bool** | Enable DNSTAP for authoritative response messages. | [optional] 
+**EnableDnstapClientQueries** | Pointer to **bool** | Enable DNSTAP for client query messages. | [optional] 
+**EnableDnstapClientResponses** | Pointer to **bool** | Enable DNSTAP for client response messages. | [optional] 
+**EnableDnstapForwarderQueries** | Pointer to **bool** | Enable DNSTAP for forwarder query messages. | [optional] 
+**EnableDnstapForwarderResponses** | Pointer to **bool** | Enable DNSTAP for forwarder response messages. | [optional] 
+**EnableDnstapLoggingType** | Pointer to **bool** | DNSTAP logging type for this member. | [optional] 
 **EnableDnstapQueries** | Pointer to **bool** | Determines whether the query messages need to be forwarded to DNSTAP or not. | [optional] 
+**EnableDnstapResolverQueries** | Pointer to **bool** | Enable DNSTAP for resolver query messages. | [optional] 
+**EnableDnstapResolverResponses** | Pointer to **bool** | Enable DNSTAP for resolver response messages. | [optional] 
 **EnableDnstapResponses** | Pointer to **bool** | Determines whether the response messages need to be forwarded to DNSTAP or not. | [optional] 
+**EnableDnstapSetting** | Pointer to **bool** | Indicates whether DNSTAP is enabled for this member. | [optional] 
 **EnableDnstapViolationsTls** | Pointer to **bool** | Determines whether the violations messages need to be forwarded to DNSTAP or not. | [optional] 
 **EnableExcludedDomainNames** | Pointer to **bool** | The flag that indicates whether excluding domain names from captured DNS queries and responses is enabled or disabled. | [optional] 
 **EnableFixedRrsetOrderFqdns** | Pointer to **bool** | Determines if the fixed RRset order FQDN is enabled or not. | [optional] 
@@ -164,7 +178,7 @@ Name | Type | Description | Notes
 **UseDnsCacheAccelerationTtl** | Pointer to **bool** | Use flag for: dns_cache_acceleration_ttl | [optional] 
 **UseDnsHealthCheck** | Pointer to **bool** | Use flag for: dns_health_check_domain_list , dns_health_check_recursion_flag, dns_health_check_anycast_control, enable_dns_health_check, dns_health_check_interval, dns_health_check_timeout, dns_health_check_retries | [optional] 
 **UseDnssec** | Pointer to **bool** | Use flag for: dnssec_enabled , dnssec_expired_signatures_enabled, dnssec_validation_enabled, dnssec_trusted_keys | [optional] 
-**UseDnstapSetting** | Pointer to **bool** | Use flag for: enable_dnstap_queries , enable_dnstap_responses, enable_dnstap_violations_tls, dnstap_setting | [optional] 
+**UseDnstapSetting** | Pointer to **bool** | Use flag for: enable_dnstap_queries , enable_dnstap_responses, enable_dnstap_violations_tls, enable_dnstap_setting, enable_dnstap_logging_type, enable_dnstap_client_queries, enable_dnstap_resolver_queries, enable_dnstap_forwarder_queries, enable_dnstap_auth_queries, enable_dnstap_client_responses, enable_dnstap_resolver_responses, enable_dnstap_forwarder_responses, enable_dnstap_auth_responses, dnstap_setting | [optional] 
 **UseDtcDnsQueriesSpecificBehavior** | Pointer to **bool** | Use flag for: dtc_dns_queries_specific_behavior | [optional] 
 **UseDtcEdnsPreferClientSubnet** | Pointer to **bool** | Use flag for: dtc_edns_prefer_client_subnet | [optional] 
 **UseEdnsUdpSize** | Pointer to **bool** | Use flag for: edns_udp_size | [optional] 
@@ -256,6 +270,31 @@ SetRef sets Ref field to given value.
 `func (o *MemberDns) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *MemberDns) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *MemberDns) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *MemberDns) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *MemberDns) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddClientIpMacOptions
 
@@ -1282,6 +1321,56 @@ SetDnsNotifyTransferSourceAddress sets DnsNotifyTransferSourceAddress field to g
 
 HasDnsNotifyTransferSourceAddress returns a boolean if a field has been set.
 
+### GetDnsOverHttpsEndpoint
+
+`func (o *MemberDns) GetDnsOverHttpsEndpoint() string`
+
+GetDnsOverHttpsEndpoint returns the DnsOverHttpsEndpoint field if non-nil, zero value otherwise.
+
+### GetDnsOverHttpsEndpointOk
+
+`func (o *MemberDns) GetDnsOverHttpsEndpointOk() (*string, bool)`
+
+GetDnsOverHttpsEndpointOk returns a tuple with the DnsOverHttpsEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsOverHttpsEndpoint
+
+`func (o *MemberDns) SetDnsOverHttpsEndpoint(v string)`
+
+SetDnsOverHttpsEndpoint sets DnsOverHttpsEndpoint field to given value.
+
+### HasDnsOverHttpsEndpoint
+
+`func (o *MemberDns) HasDnsOverHttpsEndpoint() bool`
+
+HasDnsOverHttpsEndpoint returns a boolean if a field has been set.
+
+### GetDnsOverHttpsStreamPerConnection
+
+`func (o *MemberDns) GetDnsOverHttpsStreamPerConnection() int64`
+
+GetDnsOverHttpsStreamPerConnection returns the DnsOverHttpsStreamPerConnection field if non-nil, zero value otherwise.
+
+### GetDnsOverHttpsStreamPerConnectionOk
+
+`func (o *MemberDns) GetDnsOverHttpsStreamPerConnectionOk() (*int64, bool)`
+
+GetDnsOverHttpsStreamPerConnectionOk returns a tuple with the DnsOverHttpsStreamPerConnection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsOverHttpsStreamPerConnection
+
+`func (o *MemberDns) SetDnsOverHttpsStreamPerConnection(v int64)`
+
+SetDnsOverHttpsStreamPerConnection sets DnsOverHttpsStreamPerConnection field to given value.
+
+### HasDnsOverHttpsStreamPerConnection
+
+`func (o *MemberDns) HasDnsOverHttpsStreamPerConnection() bool`
+
+HasDnsOverHttpsStreamPerConnection returns a boolean if a field has been set.
+
 ### GetDnsOverTlsService
 
 `func (o *MemberDns) GetDnsOverTlsService() bool`
@@ -1631,6 +1720,31 @@ SetDnssecValidationEnabled sets DnssecValidationEnabled field to given value.
 `func (o *MemberDns) HasDnssecValidationEnabled() bool`
 
 HasDnssecValidationEnabled returns a boolean if a field has been set.
+
+### GetDnstapIdentity
+
+`func (o *MemberDns) GetDnstapIdentity() string`
+
+GetDnstapIdentity returns the DnstapIdentity field if non-nil, zero value otherwise.
+
+### GetDnstapIdentityOk
+
+`func (o *MemberDns) GetDnstapIdentityOk() (*string, bool)`
+
+GetDnstapIdentityOk returns a tuple with the DnstapIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnstapIdentity
+
+`func (o *MemberDns) SetDnstapIdentity(v string)`
+
+SetDnstapIdentity sets DnstapIdentity field to given value.
+
+### HasDnstapIdentity
+
+`func (o *MemberDns) HasDnstapIdentity() bool`
+
+HasDnstapIdentity returns a boolean if a field has been set.
 
 ### GetDnstapSetting
 
@@ -2057,6 +2171,181 @@ SetEnableDnsHealthCheck sets EnableDnsHealthCheck field to given value.
 
 HasEnableDnsHealthCheck returns a boolean if a field has been set.
 
+### GetEnableDnstapAuthQueries
+
+`func (o *MemberDns) GetEnableDnstapAuthQueries() bool`
+
+GetEnableDnstapAuthQueries returns the EnableDnstapAuthQueries field if non-nil, zero value otherwise.
+
+### GetEnableDnstapAuthQueriesOk
+
+`func (o *MemberDns) GetEnableDnstapAuthQueriesOk() (*bool, bool)`
+
+GetEnableDnstapAuthQueriesOk returns a tuple with the EnableDnstapAuthQueries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapAuthQueries
+
+`func (o *MemberDns) SetEnableDnstapAuthQueries(v bool)`
+
+SetEnableDnstapAuthQueries sets EnableDnstapAuthQueries field to given value.
+
+### HasEnableDnstapAuthQueries
+
+`func (o *MemberDns) HasEnableDnstapAuthQueries() bool`
+
+HasEnableDnstapAuthQueries returns a boolean if a field has been set.
+
+### GetEnableDnstapAuthResponses
+
+`func (o *MemberDns) GetEnableDnstapAuthResponses() bool`
+
+GetEnableDnstapAuthResponses returns the EnableDnstapAuthResponses field if non-nil, zero value otherwise.
+
+### GetEnableDnstapAuthResponsesOk
+
+`func (o *MemberDns) GetEnableDnstapAuthResponsesOk() (*bool, bool)`
+
+GetEnableDnstapAuthResponsesOk returns a tuple with the EnableDnstapAuthResponses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapAuthResponses
+
+`func (o *MemberDns) SetEnableDnstapAuthResponses(v bool)`
+
+SetEnableDnstapAuthResponses sets EnableDnstapAuthResponses field to given value.
+
+### HasEnableDnstapAuthResponses
+
+`func (o *MemberDns) HasEnableDnstapAuthResponses() bool`
+
+HasEnableDnstapAuthResponses returns a boolean if a field has been set.
+
+### GetEnableDnstapClientQueries
+
+`func (o *MemberDns) GetEnableDnstapClientQueries() bool`
+
+GetEnableDnstapClientQueries returns the EnableDnstapClientQueries field if non-nil, zero value otherwise.
+
+### GetEnableDnstapClientQueriesOk
+
+`func (o *MemberDns) GetEnableDnstapClientQueriesOk() (*bool, bool)`
+
+GetEnableDnstapClientQueriesOk returns a tuple with the EnableDnstapClientQueries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapClientQueries
+
+`func (o *MemberDns) SetEnableDnstapClientQueries(v bool)`
+
+SetEnableDnstapClientQueries sets EnableDnstapClientQueries field to given value.
+
+### HasEnableDnstapClientQueries
+
+`func (o *MemberDns) HasEnableDnstapClientQueries() bool`
+
+HasEnableDnstapClientQueries returns a boolean if a field has been set.
+
+### GetEnableDnstapClientResponses
+
+`func (o *MemberDns) GetEnableDnstapClientResponses() bool`
+
+GetEnableDnstapClientResponses returns the EnableDnstapClientResponses field if non-nil, zero value otherwise.
+
+### GetEnableDnstapClientResponsesOk
+
+`func (o *MemberDns) GetEnableDnstapClientResponsesOk() (*bool, bool)`
+
+GetEnableDnstapClientResponsesOk returns a tuple with the EnableDnstapClientResponses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapClientResponses
+
+`func (o *MemberDns) SetEnableDnstapClientResponses(v bool)`
+
+SetEnableDnstapClientResponses sets EnableDnstapClientResponses field to given value.
+
+### HasEnableDnstapClientResponses
+
+`func (o *MemberDns) HasEnableDnstapClientResponses() bool`
+
+HasEnableDnstapClientResponses returns a boolean if a field has been set.
+
+### GetEnableDnstapForwarderQueries
+
+`func (o *MemberDns) GetEnableDnstapForwarderQueries() bool`
+
+GetEnableDnstapForwarderQueries returns the EnableDnstapForwarderQueries field if non-nil, zero value otherwise.
+
+### GetEnableDnstapForwarderQueriesOk
+
+`func (o *MemberDns) GetEnableDnstapForwarderQueriesOk() (*bool, bool)`
+
+GetEnableDnstapForwarderQueriesOk returns a tuple with the EnableDnstapForwarderQueries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapForwarderQueries
+
+`func (o *MemberDns) SetEnableDnstapForwarderQueries(v bool)`
+
+SetEnableDnstapForwarderQueries sets EnableDnstapForwarderQueries field to given value.
+
+### HasEnableDnstapForwarderQueries
+
+`func (o *MemberDns) HasEnableDnstapForwarderQueries() bool`
+
+HasEnableDnstapForwarderQueries returns a boolean if a field has been set.
+
+### GetEnableDnstapForwarderResponses
+
+`func (o *MemberDns) GetEnableDnstapForwarderResponses() bool`
+
+GetEnableDnstapForwarderResponses returns the EnableDnstapForwarderResponses field if non-nil, zero value otherwise.
+
+### GetEnableDnstapForwarderResponsesOk
+
+`func (o *MemberDns) GetEnableDnstapForwarderResponsesOk() (*bool, bool)`
+
+GetEnableDnstapForwarderResponsesOk returns a tuple with the EnableDnstapForwarderResponses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapForwarderResponses
+
+`func (o *MemberDns) SetEnableDnstapForwarderResponses(v bool)`
+
+SetEnableDnstapForwarderResponses sets EnableDnstapForwarderResponses field to given value.
+
+### HasEnableDnstapForwarderResponses
+
+`func (o *MemberDns) HasEnableDnstapForwarderResponses() bool`
+
+HasEnableDnstapForwarderResponses returns a boolean if a field has been set.
+
+### GetEnableDnstapLoggingType
+
+`func (o *MemberDns) GetEnableDnstapLoggingType() bool`
+
+GetEnableDnstapLoggingType returns the EnableDnstapLoggingType field if non-nil, zero value otherwise.
+
+### GetEnableDnstapLoggingTypeOk
+
+`func (o *MemberDns) GetEnableDnstapLoggingTypeOk() (*bool, bool)`
+
+GetEnableDnstapLoggingTypeOk returns a tuple with the EnableDnstapLoggingType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapLoggingType
+
+`func (o *MemberDns) SetEnableDnstapLoggingType(v bool)`
+
+SetEnableDnstapLoggingType sets EnableDnstapLoggingType field to given value.
+
+### HasEnableDnstapLoggingType
+
+`func (o *MemberDns) HasEnableDnstapLoggingType() bool`
+
+HasEnableDnstapLoggingType returns a boolean if a field has been set.
+
 ### GetEnableDnstapQueries
 
 `func (o *MemberDns) GetEnableDnstapQueries() bool`
@@ -2082,6 +2371,56 @@ SetEnableDnstapQueries sets EnableDnstapQueries field to given value.
 
 HasEnableDnstapQueries returns a boolean if a field has been set.
 
+### GetEnableDnstapResolverQueries
+
+`func (o *MemberDns) GetEnableDnstapResolverQueries() bool`
+
+GetEnableDnstapResolverQueries returns the EnableDnstapResolverQueries field if non-nil, zero value otherwise.
+
+### GetEnableDnstapResolverQueriesOk
+
+`func (o *MemberDns) GetEnableDnstapResolverQueriesOk() (*bool, bool)`
+
+GetEnableDnstapResolverQueriesOk returns a tuple with the EnableDnstapResolverQueries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapResolverQueries
+
+`func (o *MemberDns) SetEnableDnstapResolverQueries(v bool)`
+
+SetEnableDnstapResolverQueries sets EnableDnstapResolverQueries field to given value.
+
+### HasEnableDnstapResolverQueries
+
+`func (o *MemberDns) HasEnableDnstapResolverQueries() bool`
+
+HasEnableDnstapResolverQueries returns a boolean if a field has been set.
+
+### GetEnableDnstapResolverResponses
+
+`func (o *MemberDns) GetEnableDnstapResolverResponses() bool`
+
+GetEnableDnstapResolverResponses returns the EnableDnstapResolverResponses field if non-nil, zero value otherwise.
+
+### GetEnableDnstapResolverResponsesOk
+
+`func (o *MemberDns) GetEnableDnstapResolverResponsesOk() (*bool, bool)`
+
+GetEnableDnstapResolverResponsesOk returns a tuple with the EnableDnstapResolverResponses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapResolverResponses
+
+`func (o *MemberDns) SetEnableDnstapResolverResponses(v bool)`
+
+SetEnableDnstapResolverResponses sets EnableDnstapResolverResponses field to given value.
+
+### HasEnableDnstapResolverResponses
+
+`func (o *MemberDns) HasEnableDnstapResolverResponses() bool`
+
+HasEnableDnstapResolverResponses returns a boolean if a field has been set.
+
 ### GetEnableDnstapResponses
 
 `func (o *MemberDns) GetEnableDnstapResponses() bool`
@@ -2106,6 +2445,31 @@ SetEnableDnstapResponses sets EnableDnstapResponses field to given value.
 `func (o *MemberDns) HasEnableDnstapResponses() bool`
 
 HasEnableDnstapResponses returns a boolean if a field has been set.
+
+### GetEnableDnstapSetting
+
+`func (o *MemberDns) GetEnableDnstapSetting() bool`
+
+GetEnableDnstapSetting returns the EnableDnstapSetting field if non-nil, zero value otherwise.
+
+### GetEnableDnstapSettingOk
+
+`func (o *MemberDns) GetEnableDnstapSettingOk() (*bool, bool)`
+
+GetEnableDnstapSettingOk returns a tuple with the EnableDnstapSetting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapSetting
+
+`func (o *MemberDns) SetEnableDnstapSetting(v bool)`
+
+SetEnableDnstapSetting sets EnableDnstapSetting field to given value.
+
+### HasEnableDnstapSetting
+
+`func (o *MemberDns) HasEnableDnstapSetting() bool`
+
+HasEnableDnstapSetting returns a boolean if a field has been set.
 
 ### GetEnableDnstapViolationsTls
 

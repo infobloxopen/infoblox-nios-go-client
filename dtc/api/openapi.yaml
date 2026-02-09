@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DTC API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for dtc objects
   name: Dtc
@@ -6757,9 +6757,14 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
       type: object
@@ -6797,6 +6802,7 @@ components:
           enabled_state: Example enabled_state
           description: Example description
           availability: Example availability
+        uuid: Example uuid
         auto_create_host_record: false
         use_sni_hostname: false
         extattrs-:
@@ -6819,6 +6825,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         auto_create_host_record:
@@ -6986,6 +6997,7 @@ components:
           availability: Example availability
         availability: Example availability
         auto_consolidated_monitors: false
+        uuid: Example uuid
         ttl: 1
         lb_dynamic_ratio_alternate:
           method: Example method
@@ -7020,6 +7032,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         auto_consolidated_monitors:
@@ -7360,10 +7377,18 @@ components:
         comment: Example comment
         rules:
         - _ref: _ref
+          uuid: uuid
         - _ref: _ref
+          uuid: uuid
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -7455,6 +7480,7 @@ components:
           ratio: 1
         auto_consolidated_monitors: false
         priority: 1
+        uuid: Example uuid
         lb_method: Example lb_method
         ttl: 1
         extattrs-:
@@ -7471,6 +7497,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         auth_zones:
@@ -7547,8 +7578,7 @@ components:
           format: int64
           type: integer
         pools:
-          description: "The maximum time, in seconds, for which client specific LBDN\
-            \ responses will be cached. Zero specifies no caching."
+          description: Pools linked to LBDN.
           enum:
           - dtc:pool:link
           items:
@@ -7669,6 +7699,7 @@ components:
             value: ""
         monitor: Example monitor
         type: Example type
+        uuid: uuid
         timeout: 1
         extattrs-:
           key:
@@ -7686,6 +7717,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         comment:
@@ -7786,6 +7821,7 @@ components:
         request: Example request
         client_cert: Example client_cert
         secure: false
+        uuid: Example uuid
         timeout: 1
         content_check: Example content_check
         result: Example result
@@ -7817,6 +7853,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         ciphers:
@@ -8002,12 +8043,18 @@ components:
         name: Example name
         comment: Example comment
         interval: 1
+        uuid: Example uuid
         retry_down: 1
         retry_up: 1
         timeout: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -8104,12 +8151,18 @@ components:
         name: Example name
         comment: Example comment
         interval: 1
+        uuid: Example uuid
         retry_down: 1
         retry_up: 1
         timeout: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -8203,6 +8256,7 @@ components:
             value: ""
         client_cert: Example client_cert
         transport: Example transport
+        uuid: Example uuid
         timeout: 1
         result: Example result
         extattrs-:
@@ -8224,6 +8278,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         ciphers:
@@ -8355,6 +8414,7 @@ components:
           key:
             value: ""
         community: Example community
+        uuid: Example uuid
         version: Example version
         timeout: 1
         extattrs-:
@@ -8389,6 +8449,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -8573,12 +8638,18 @@ components:
         name: Example name
         comment: Example comment
         interval: 1
+        uuid: Example uuid
         retry_down: 1
         retry_up: 1
         timeout: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -8671,12 +8742,18 @@ components:
         use_ttl: false
         _ref: _ref
         comment: Example comment
+        uuid: Example uuid
         ipv4addr: Example ipv4addr
         ttl: 1
         auto_created: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         auto_created:
@@ -8745,12 +8822,18 @@ components:
         use_ttl: false
         _ref: _ref
         comment: Example comment
+        uuid: Example uuid
         ttl: 1
         auto_created: false
         ipv6addr: Example ipv6addr
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         auto_created:
@@ -8820,12 +8903,18 @@ components:
         _ref: _ref
         comment: Example comment
         canonical: Example canonical
+        uuid: Example uuid
         ttl: 1
         auto_created: false
         dns_canonical: Example dns_canonical
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         auto_created:
@@ -8895,20 +8984,26 @@ components:
       additionalProperties: false
       example:
         regexp: Example regexp
-        disable: false
-        dtc_server: Example dtc_server
         use_ttl: false
         preference: 1
-        _ref: _ref
         flags: Example flags
-        comment: Example comment
         services: Example services
-        replacement: Example replacement
+        uuid: Example uuid
         ttl: 1
+        disable: false
+        dtc_server: Example dtc_server
+        _ref: _ref
+        comment: Example comment
+        replacement: Example replacement
         order: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -9011,11 +9106,17 @@ components:
         weight: 1
         comment: Example comment
         priority: 1
+        uuid: Example uuid
         ttl: 1
         target: Example target
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -9099,9 +9200,15 @@ components:
         _ref: _ref
         certificate: Example certificate
         in_use: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         certificate:
@@ -9142,10 +9249,15 @@ components:
         _ref: _ref
         comment: Example comment
         type: Example type
+        uuid: uuid
         ttl: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         comment:
@@ -9222,6 +9334,7 @@ components:
         ipv4_address_list:
         - ipv4_address_list
         - ipv4_address_list
+        uuid: uuid
         display_type: Example display_type
         extattrs-:
           key:
@@ -9239,6 +9352,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         abstract_type:
@@ -9356,10 +9473,21 @@ components:
         dest_type: Example dest_type
         topology: Example topology
         _ref: _ref
+        destination:
+        - priority: 1
+          destination_link: Example destination_link
+        - priority: 1
+          destination_link: Example destination_link
+        uuid: Example uuid
         destination_link: Example remote_lookup_service
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         dest_type:
@@ -9369,6 +9497,13 @@ components:
           - SERVER
           example: Example dest_type
           type: string
+        destination:
+          description: Set of destinations for this DTC Topology rule.
+          enum:
+          - dtc:topology:rule:destination
+          items:
+            $ref: '#/components/schemas/DtcTopologyRuleDestination'
+          type: array
         destination_link:
           $ref: '#/components/schemas/DtcTopologyRule_destination_link'
         return_type:
@@ -9401,6 +9536,21 @@ components:
           type: boolean
       type: object
       x-tf-skip-expand: true
+    DtcTopologyRuleDestination:
+      example:
+        priority: 1
+        destination_link: Example destination_link
+      properties:
+        destination_link:
+          description: The reference to the destination DTC pool or DTC server.
+          example: Example destination_link
+          type: string
+        priority:
+          description: Priority.
+          example: 1
+          format: int64
+          type: integer
+      type: object
     DtcTopologyRuleSources:
       example:
         source_op: Example source_op
@@ -9457,9 +9607,14 @@ components:
         field: Example field
         _ref: _ref
         label: Example label
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         field:
@@ -9542,6 +9697,12 @@ components:
           dest_type: Example dest_type
           topology: Example topology
           _ref: _ref
+          destination:
+          - priority: 1
+            destination_link: Example destination_link
+          - priority: 1
+            destination_link: Example destination_link
+          uuid: Example uuid
           destination_link: Example remote_lookup_service
       properties:
         result:
@@ -9568,6 +9729,7 @@ components:
             enabled_state: Example enabled_state
             description: Example description
             availability: Example availability
+          uuid: Example uuid
           auto_create_host_record: false
           use_sni_hostname: false
           extattrs-:
@@ -9611,6 +9773,7 @@ components:
             enabled_state: Example enabled_state
             description: Example description
             availability: Example availability
+          uuid: Example uuid
           auto_create_host_record: false
           use_sni_hostname: false
           extattrs-:
@@ -9676,6 +9839,7 @@ components:
             availability: Example availability
           availability: Example availability
           auto_consolidated_monitors: false
+          uuid: Example uuid
           ttl: 1
           lb_dynamic_ratio_alternate:
             method: Example method
@@ -9752,6 +9916,7 @@ components:
             availability: Example availability
           availability: Example availability
           auto_consolidated_monitors: false
+          uuid: Example uuid
           ttl: 1
           lb_dynamic_ratio_alternate:
             method: Example method
@@ -9792,9 +9957,13 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: Reference to the topology rule
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
       type: object
     DtcTopology_rules_inner_oneOf_1_sources_inner:
@@ -9866,7 +10035,10 @@ components:
           comment: Example comment
           rules:
           - _ref: _ref
+            uuid: uuid
           - _ref: _ref
+            uuid: uuid
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9898,7 +10070,10 @@ components:
           comment: Example comment
           rules:
           - _ref: _ref
+            uuid: uuid
           - _ref: _ref
+            uuid: uuid
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/DtcTopology'
@@ -9942,6 +10117,7 @@ components:
             ratio: 1
           auto_consolidated_monitors: false
           priority: 1
+          uuid: Example uuid
           lb_method: Example lb_method
           ttl: 1
           extattrs-:
@@ -9997,6 +10173,7 @@ components:
             ratio: 1
           auto_consolidated_monitors: false
           priority: 1
+          uuid: Example uuid
           lb_method: Example lb_method
           ttl: 1
           extattrs-:
@@ -10041,6 +10218,7 @@ components:
               value: ""
           monitor: Example monitor
           type: Example type
+          uuid: uuid
           timeout: 1
           extattrs-:
             key:
@@ -10077,6 +10255,7 @@ components:
           request: Example request
           client_cert: Example client_cert
           secure: false
+          uuid: Example uuid
           timeout: 1
           content_check: Example content_check
           result: Example result
@@ -10126,6 +10305,7 @@ components:
           request: Example request
           client_cert: Example client_cert
           secure: false
+          uuid: Example uuid
           timeout: 1
           content_check: Example content_check
           result: Example result
@@ -10185,6 +10365,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -10218,6 +10399,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -10253,6 +10435,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -10287,6 +10470,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -10314,6 +10498,7 @@ components:
               value: ""
           client_cert: Example client_cert
           transport: Example transport
+          uuid: Example uuid
           timeout: 1
           result: Example result
           extattrs-:
@@ -10355,6 +10540,7 @@ components:
               value: ""
           client_cert: Example client_cert
           transport: Example transport
+          uuid: Example uuid
           timeout: 1
           result: Example result
           extattrs-:
@@ -10395,6 +10581,7 @@ components:
             key:
               value: ""
           community: Example community
+          uuid: Example uuid
           version: Example version
           timeout: 1
           extattrs-:
@@ -10447,6 +10634,7 @@ components:
             key:
               value: ""
           community: Example community
+          uuid: Example uuid
           version: Example version
           timeout: 1
           extattrs-:
@@ -10510,6 +10698,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -10544,6 +10733,7 @@ components:
           name: Example name
           comment: Example comment
           interval: 1
+          uuid: Example uuid
           retry_down: 1
           retry_up: 1
           timeout: 1
@@ -10570,6 +10760,7 @@ components:
           use_ttl: false
           _ref: _ref
           comment: Example comment
+          uuid: Example uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           auto_created: false
@@ -10595,6 +10786,7 @@ components:
           use_ttl: false
           _ref: _ref
           comment: Example comment
+          uuid: Example uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           auto_created: false
@@ -10621,6 +10813,7 @@ components:
           use_ttl: false
           _ref: _ref
           comment: Example comment
+          uuid: Example uuid
           ttl: 1
           auto_created: false
           ipv6addr: Example ipv6addr
@@ -10646,6 +10839,7 @@ components:
           use_ttl: false
           _ref: _ref
           comment: Example comment
+          uuid: Example uuid
           ttl: 1
           auto_created: false
           ipv6addr: Example ipv6addr
@@ -10673,6 +10867,7 @@ components:
           _ref: _ref
           comment: Example comment
           canonical: Example canonical
+          uuid: Example uuid
           ttl: 1
           auto_created: false
           dns_canonical: Example dns_canonical
@@ -10699,6 +10894,7 @@ components:
           _ref: _ref
           comment: Example comment
           canonical: Example canonical
+          uuid: Example uuid
           ttl: 1
           auto_created: false
           dns_canonical: Example dns_canonical
@@ -10721,16 +10917,17 @@ components:
       example:
         result:
           regexp: Example regexp
-          disable: false
-          dtc_server: Example dtc_server
           use_ttl: false
           preference: 1
-          _ref: _ref
           flags: Example flags
-          comment: Example comment
           services: Example services
-          replacement: Example replacement
+          uuid: Example uuid
           ttl: 1
+          disable: false
+          dtc_server: Example dtc_server
+          _ref: _ref
+          comment: Example comment
+          replacement: Example replacement
           order: 1
       properties:
         result:
@@ -10750,16 +10947,17 @@ components:
       example:
         result:
           regexp: Example regexp
-          disable: false
-          dtc_server: Example dtc_server
           use_ttl: false
           preference: 1
-          _ref: _ref
           flags: Example flags
-          comment: Example comment
           services: Example services
-          replacement: Example replacement
+          uuid: Example uuid
           ttl: 1
+          disable: false
+          dtc_server: Example dtc_server
+          _ref: _ref
+          comment: Example comment
+          replacement: Example replacement
           order: 1
       properties:
         result:
@@ -10788,6 +10986,7 @@ components:
           weight: 1
           comment: Example comment
           priority: 1
+          uuid: Example uuid
           ttl: 1
           target: Example target
       properties:
@@ -10816,6 +11015,7 @@ components:
           weight: 1
           comment: Example comment
           priority: 1
+          uuid: Example uuid
           ttl: 1
           target: Example target
       properties:
@@ -10874,6 +11074,7 @@ components:
           _ref: _ref
           comment: Example comment
           type: Example type
+          uuid: uuid
           ttl: 1
       properties:
         result:
@@ -10910,6 +11111,7 @@ components:
           ipv4_address_list:
           - ipv4_address_list
           - ipv4_address_list
+          uuid: uuid
           display_type: Example display_type
           extattrs-:
             key:
@@ -10980,6 +11182,12 @@ components:
           dest_type: Example dest_type
           topology: Example topology
           _ref: _ref
+          destination:
+          - priority: 1
+            destination_link: Example destination_link
+          - priority: 1
+            destination_link: Example destination_link
+          uuid: Example uuid
           destination_link: Example remote_lookup_service
       properties:
         result:

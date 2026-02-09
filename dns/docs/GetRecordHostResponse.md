@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Aliases** | Pointer to **[]string** | This is a list of aliases for the host. The aliases must be in FQDN format. This value can be in unicode format. | [optional] 
 **AllowTelnet** | Pointer to **bool** | This field controls whether the credential is used for both the Telnet and SSH credentials. If set to False, the credential is used only for SSH. | [optional] 
 **CliCredentials** | Pointer to [**[]RecordHostCliCredentials**](RecordHostCliCredentials.md) | The CLI credentials for the host record. | [optional] 
@@ -88,6 +89,31 @@ SetRef sets Ref field to given value.
 `func (o *GetRecordHostResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordHostResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordHostResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordHostResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordHostResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAliases
 

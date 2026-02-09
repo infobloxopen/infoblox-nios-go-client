@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **CloudApiCompatible** | Pointer to **bool** | Determines whether the IPv6 DHCP range template can be used to create network objects in a cloud-computing deployment. | [optional] 
 **Comment** | Pointer to **string** | The IPv6 DHCP range template descriptive comment. | [optional] 
 **DelegatedMember** | Pointer to [**Ipv6rangetemplateDelegatedMember**](Ipv6rangetemplateDelegatedMember.md) |  | [optional] 
@@ -63,6 +64,31 @@ SetRef sets Ref field to given value.
 `func (o *Ipv6rangetemplate) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Ipv6rangetemplate) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Ipv6rangetemplate) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Ipv6rangetemplate) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Ipv6rangetemplate) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetCloudApiCompatible
 

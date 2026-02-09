@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the address; maximum 256 characters. | [optional] [readonly] 
 **ConflictTypes** | Pointer to **[]string** | Types of the conflict. | [optional] [readonly] 
 **DhcpClientIdentifier** | Pointer to **string** | The client unique identifier. | [optional] [readonly] 
@@ -28,7 +29,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | The current status of the address. | [optional] [readonly] 
 **Types** | Pointer to **[]string** | The types of associated objects. This field supports both single and array search. | [optional] [readonly] 
 **Usage** | Pointer to **[]string** | Indicates whether the IP address is configured for DNS or DHCP. This field supports both single and array search. | [optional] [readonly] 
-**Username** | Pointer to **string** | The name of the user who created or modified the record. | [optional] [readonly] 
+**Username** | Pointer to **string** | The name of the user who created or modified the record. The \&quot;username\&quot; field is populated only for lease objects that have a MAC Address Filter configured with user details. | [optional] [readonly] 
 
 ## Methods
 
@@ -73,6 +74,31 @@ SetRef sets Ref field to given value.
 `func (o *Ipv4address) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Ipv4address) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Ipv4address) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Ipv4address) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Ipv4address) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetComment
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The local user authentication service comment. | [optional] [readonly] 
 **Disabled** | Pointer to **bool** | Flag that indicates whether the local user authentication service is enabled or not. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the local user authentication service. | [optional] [readonly] 
@@ -52,6 +53,31 @@ SetRef sets Ref field to given value.
 `func (o *LocaluserAuthservice) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *LocaluserAuthservice) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *LocaluserAuthservice) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *LocaluserAuthservice) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *LocaluserAuthservice) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetComment
 

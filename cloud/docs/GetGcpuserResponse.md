@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AuthProviderX509CertUrl** | Pointer to **string** | The URL where the public key certificates provided by the authentication provider can be retrieved.. Maximum 255 characters. | [optional] [readonly] 
 **AuthUri** | Pointer to **string** | The URI where authentication requests should be directed.. Maximum 255 characters. | [optional] [readonly] 
 **ClientEmail** | Pointer to **string** | The email address associated with the service account. Maximum 255 characters. | [optional] [readonly] 
@@ -64,6 +65,31 @@ SetRef sets Ref field to given value.
 `func (o *GetGcpuserResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGcpuserResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGcpuserResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGcpuserResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGcpuserResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAuthProviderX509CertUrl
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
 **ComponentName** | Pointer to **string** | The component name. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the device component. | [optional] [readonly] 
 **Device** | Pointer to **string** | A reference to a device, to which this component belongs to. | [optional] [readonly] 
@@ -56,6 +57,31 @@ SetRef sets Ref field to given value.
 `func (o *GetDiscoveryDevicecomponentResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDiscoveryDevicecomponentResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDiscoveryDevicecomponentResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDiscoveryDevicecomponentResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDiscoveryDevicecomponentResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetComponentName
 

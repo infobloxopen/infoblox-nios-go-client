@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Address** | Pointer to **string** | The address or FQDN of the DNS Microsoft Server. | [optional] [readonly] 
 **EnableDnsReportsSync** | Pointer to **bool** | Determines if synchronization of DNS reporting data from the Microsoft server is enabled or not. | [optional] 
 **LoginName** | Pointer to **string** | The login name of the DNS Microsoft Server. | [optional] 
@@ -57,6 +58,31 @@ SetRef sets Ref field to given value.
 `func (o *MsserverDns) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *MsserverDns) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *MsserverDns) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *MsserverDns) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *MsserverDns) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 

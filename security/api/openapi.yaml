@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox SECURITY API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for admingroup objects
   name: Admingroup
@@ -6681,6 +6681,7 @@ components:
           set_enable_doh_key_logging: false
           set_bfd: false
           set_wred: false
+          set_query_logging_warnings: false
           set_ms_max_connection: false
           set_debug_analytics: false
           set_mgm: false
@@ -6704,7 +6705,6 @@ components:
           set_admin_group_acl: false
           set_hw_ident: false
           set_bgp: false
-          set_analytics_database_dump: false
           set_ibtrap: false
           set_analytics_parameter: false
           set_expertmode: false
@@ -6772,7 +6772,9 @@ components:
           enable_all: false
           show_license_pool_container: false
         use_disable_concurrent_login: false
+        uuid: Example uuid
         admin_show_commands:
+          show_query_logging_warnings: false
           show_hsm_info: false
           show_wred_status: false
           show_uptime: false
@@ -6817,7 +6819,6 @@ components:
           show_ibtrap: false
           show_hsm_group: false
           show_coresummary: false
-          show_analytics_database_dumps: false
           show_tech_support: false
           show_hardware_type: false
           show_version: false
@@ -7016,9 +7017,11 @@ components:
         - address: Example address
           _ref: _ref
           permission: Example permission
+          uuid: uuid
         - address: Example address
           _ref: _ref
           permission: Example permission
+          uuid: uuid
         saml_setting:
           auto_create_user: false
           persist_auto_created_user: false
@@ -7049,6 +7052,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         access_method:
@@ -7228,6 +7236,7 @@ components:
         set_enable_doh_key_logging: false
         set_bfd: false
         set_wred: false
+        set_query_logging_warnings: false
         set_ms_max_connection: false
         set_debug_analytics: false
         set_mgm: false
@@ -7251,7 +7260,6 @@ components:
         set_admin_group_acl: false
         set_hw_ident: false
         set_bgp: false
-        set_analytics_database_dump: false
         set_ibtrap: false
         set_analytics_parameter: false
         set_expertmode: false
@@ -7372,10 +7380,6 @@ components:
           description: If True then CLI user has permission to run the command
           example: false
           type: boolean
-        set_analytics_database_dump:
-          description: If True then CLI user has permission to run the command
-          example: false
-          type: boolean
         set_analytics_parameter:
           description: If True then CLI user has permission to run the command
           example: false
@@ -7424,6 +7428,10 @@ components:
           description: If True then CLI user has permission to run the command
           example: false
           type: boolean
+        set_query_logging_warnings:
+          description: If True then CLI user has permission to run the command
+          example: false
+          type: boolean
         enable_all:
           description: If True then enable all fields
           example: false
@@ -7435,6 +7443,7 @@ components:
       type: object
     AdmingroupAdminShowCommands:
       example:
+        show_query_logging_warnings: false
         show_hsm_info: false
         show_wred_status: false
         show_uptime: false
@@ -7479,7 +7488,6 @@ components:
         show_ibtrap: false
         show_hsm_group: false
         show_coresummary: false
-        show_analytics_database_dumps: false
         show_tech_support: false
         show_hardware_type: false
         show_version: false
@@ -7623,10 +7631,6 @@ components:
           description: If True then CLI user has permission to run the command
           example: false
           type: boolean
-        show_analytics_database_dumps:
-          description: If True then CLI user has permission to run the command
-          example: false
-          type: boolean
         show_cores:
           description: If True then CLI user has permission to run the command
           example: false
@@ -7680,6 +7684,10 @@ components:
           example: false
           type: boolean
         show_report_frequency:
+          description: If True then CLI user has permission to run the command
+          example: false
+          type: boolean
+        show_query_logging_warnings:
           description: If True then CLI user has permission to run the command
           example: false
           type: boolean
@@ -9114,9 +9122,13 @@ components:
         address: Example address
         _ref: _ref
         permission: Example permission
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -9170,9 +9182,15 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -9245,6 +9263,7 @@ components:
             value: ""
         use_ssh_keys: false
         time_zone: Example time_zone
+        uuid: Example uuid
         admin_groups:
         - admin_groups
         - admin_groups
@@ -9274,6 +9293,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         admin_groups:
@@ -9444,11 +9468,17 @@ components:
         _ref: _ref
         resource_type: Example resource_type
         permission: Example permission
+        uuid: Example uuid
         group: Example group
         object: Example object
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         group:
@@ -9500,6 +9530,8 @@ components:
           - NAPTR
           - TLSA
           - CAA
+          - SVCB
+          - HTTPS
           - Unknown
           - SHARED_RECORD_GROUP
           - SHARED_A
@@ -9636,6 +9668,7 @@ components:
         lb_tree_nodes_at_last_level: 1
         global_search_on_ea: false
         time_zone: Example time_zone
+        uuid: uuid
         active_dashboard_type: Example active_dashboard_type
         admin_group: Example admin_group
         global_search_on_ni_data: false
@@ -9651,6 +9684,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         active_dashboard_type:
@@ -9785,12 +9822,18 @@ components:
         usage_type: Example usage_type
         _ref: _ref
         default_group: Example default_group
+        uuid: Example uuid
         admin_groups:
         - admin_groups
         - admin_groups
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         admin_groups:
@@ -9861,6 +9904,7 @@ components:
         approval_notify_to: Example approval_notify_to
         rescheduled_notify_to: Example rescheduled_notify_to
         ticket_number: Example ticket_number
+        uuid: Example uuid
         enable_notify_group: false
         succeeded_notify_to: Example succeeded_notify_to
         enable_failed_notify: false
@@ -9881,6 +9925,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         approval_group:
@@ -10055,11 +10104,17 @@ components:
         _ref: _ref
         distinguished_name: Example distinguished_name
         valid_not_after: 1
+        uuid: Example uuid
         used_by: Example used_by
         issuer: Example issuer
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         distinguished_name:
@@ -10138,6 +10193,7 @@ components:
         ocsp_check: Example ocsp_check
         user_match_type: Example user_match_type
         recovery_interval: 1
+        uuid: Example uuid
         remote_lookup_username: Example remote_lookup_username
         ca_certificates:
         - cacertificate
@@ -10151,6 +10207,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         auto_populate_login:
@@ -10327,6 +10388,7 @@ components:
         cache_ttl: 1
         acct_retries: 1
         recovery_interval: 1
+        uuid: Example uuid
         mode: Example mode
         servers:
         - acct_port: 1
@@ -10357,6 +10419,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         acct_retries:
@@ -10534,11 +10601,17 @@ components:
         name: Example name
         comment: Example comment
         acct_retries: 1
+        uuid: Example uuid
         acct_timeout: 1
         auth_retries: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         acct_retries:
@@ -10672,6 +10745,7 @@ components:
         recovery_interval: 1
         ldap_group_authentication_type: Example ldap_group_authentication_type
         search_scope: Example search_scope
+        uuid: Example uuid
         timeout: 1
         mode: Example mode
         retries: 1
@@ -10706,6 +10780,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -10904,10 +10983,16 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
         session_timeout: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -11000,9 +11085,14 @@ components:
         name: Example name
         comment: Example comment
         disabled: false
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         comment:
@@ -11060,9 +11150,15 @@ components:
         comment: Example comment
         privacy_password: Example privacy_password
         authentication_protocol: Example authentication_protocol
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         authentication_password:
@@ -11077,6 +11173,10 @@ components:
           - NONE
           - MD5
           - SHA
+          - SHA-224
+          - SHA-256
+          - SHA-384
+          - SHA-512
           example: Example authentication_protocol
           type: string
         comment:
@@ -11123,6 +11223,8 @@ components:
           - NONE
           - DES
           - AES
+          - AES-192
+          - AES-256
           example: Example privacy_protocol
           type: string
       type: object
@@ -11168,10 +11270,16 @@ components:
         _ref: _ref
         create_home_dir: false
         permission: Example permission
+        uuid: Example uuid
         username: Example username
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         create_home_dir:
@@ -11256,6 +11364,7 @@ components:
         address: Example address
         domainname: Example domainname
         address_object: Example address_object
+        uuid: Example uuid
         data_source: Example data_source
         network: Example network
         logon_id: Example logon_id
@@ -11269,6 +11378,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address:
@@ -11380,6 +11494,7 @@ components:
         name: Example name
         comment: Example comment
         disabled: false
+        uuid: Example uuid
         domain_controllers:
         - fqdn_or_ip: Example fqdn_or_ip
           encryption: Example encryption
@@ -11399,6 +11514,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         ad_domain:
@@ -11512,9 +11632,14 @@ components:
         groups:
         - hsm:thaleslunagroup
         - hsm:thaleslunagroup
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         groups:
@@ -11568,11 +11693,17 @@ components:
         comment: Example comment
         key_server_port: 1
         protection: Example protection
+        uuid: Example uuid
         key_server_ip: Example key_server_ip
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         card_name:
@@ -11717,10 +11848,16 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -11913,6 +12050,7 @@ components:
             set_enable_doh_key_logging: false
             set_bfd: false
             set_wred: false
+            set_query_logging_warnings: false
             set_ms_max_connection: false
             set_debug_analytics: false
             set_mgm: false
@@ -11936,7 +12074,6 @@ components:
             set_admin_group_acl: false
             set_hw_ident: false
             set_bgp: false
-            set_analytics_database_dump: false
             set_ibtrap: false
             set_analytics_parameter: false
             set_expertmode: false
@@ -12004,7 +12141,9 @@ components:
             enable_all: false
             show_license_pool_container: false
           use_disable_concurrent_login: false
+          uuid: Example uuid
           admin_show_commands:
+            show_query_logging_warnings: false
             show_hsm_info: false
             show_wred_status: false
             show_uptime: false
@@ -12049,7 +12188,6 @@ components:
             show_ibtrap: false
             show_hsm_group: false
             show_coresummary: false
-            show_analytics_database_dumps: false
             show_tech_support: false
             show_hardware_type: false
             show_version: false
@@ -12248,9 +12386,11 @@ components:
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           saml_setting:
             auto_create_user: false
             persist_auto_created_user: false
@@ -12349,6 +12489,7 @@ components:
             set_enable_doh_key_logging: false
             set_bfd: false
             set_wred: false
+            set_query_logging_warnings: false
             set_ms_max_connection: false
             set_debug_analytics: false
             set_mgm: false
@@ -12372,7 +12513,6 @@ components:
             set_admin_group_acl: false
             set_hw_ident: false
             set_bgp: false
-            set_analytics_database_dump: false
             set_ibtrap: false
             set_analytics_parameter: false
             set_expertmode: false
@@ -12440,7 +12580,9 @@ components:
             enable_all: false
             show_license_pool_container: false
           use_disable_concurrent_login: false
+          uuid: Example uuid
           admin_show_commands:
+            show_query_logging_warnings: false
             show_hsm_info: false
             show_wred_status: false
             show_uptime: false
@@ -12485,7 +12627,6 @@ components:
             show_ibtrap: false
             show_hsm_group: false
             show_coresummary: false
-            show_analytics_database_dumps: false
             show_tech_support: false
             show_hardware_type: false
             show_version: false
@@ -12684,9 +12825,11 @@ components:
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           saml_setting:
             auto_create_user: false
             persist_auto_created_user: false
@@ -12745,6 +12888,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Adminrole'
@@ -12775,6 +12919,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Adminrole'
@@ -12801,6 +12946,7 @@ components:
               value: ""
           use_ssh_keys: false
           time_zone: Example time_zone
+          uuid: Example uuid
           admin_groups:
           - admin_groups
           - admin_groups
@@ -12852,6 +12998,7 @@ components:
               value: ""
           use_ssh_keys: false
           time_zone: Example time_zone
+          uuid: Example uuid
           admin_groups:
           - admin_groups
           - admin_groups
@@ -12900,6 +13047,7 @@ components:
           _ref: _ref
           resource_type: Example resource_type
           permission: Example permission
+          uuid: Example uuid
           group: Example group
           object: Example object
       properties:
@@ -12923,6 +13071,7 @@ components:
           _ref: _ref
           resource_type: Example resource_type
           permission: Example permission
+          uuid: Example uuid
           group: Example group
           object: Example object
       properties:
@@ -12960,6 +13109,7 @@ components:
           lb_tree_nodes_at_last_level: 1
           global_search_on_ea: false
           time_zone: Example time_zone
+          uuid: uuid
           active_dashboard_type: Example active_dashboard_type
           admin_group: Example admin_group
           global_search_on_ni_data: false
@@ -13004,6 +13154,7 @@ components:
           usage_type: Example usage_type
           _ref: _ref
           default_group: Example default_group
+          uuid: Example uuid
           admin_groups:
           - admin_groups
           - admin_groups
@@ -13037,6 +13188,7 @@ components:
           approval_notify_to: Example approval_notify_to
           rescheduled_notify_to: Example rescheduled_notify_to
           ticket_number: Example ticket_number
+          uuid: Example uuid
           enable_notify_group: false
           succeeded_notify_to: Example succeeded_notify_to
           enable_failed_notify: false
@@ -13083,6 +13235,7 @@ components:
           approval_notify_to: Example approval_notify_to
           rescheduled_notify_to: Example rescheduled_notify_to
           ticket_number: Example ticket_number
+          uuid: Example uuid
           enable_notify_group: false
           succeeded_notify_to: Example succeeded_notify_to
           enable_failed_notify: false
@@ -13134,6 +13287,9 @@ components:
         _ref:
           description: The reference to the LDAP auth service object.
           type: string
+        uuid:
+          description: The uuid of the object.
+          type: string
       type: object
     CertificateAuthservice_remote_lookup_service:
       oneOf:
@@ -13145,6 +13301,10 @@ components:
       properties:
         _ref:
           description: The reference to the OCSP responder certificate.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         issuer:
@@ -13212,6 +13372,7 @@ components:
           ocsp_check: Example ocsp_check
           user_match_type: Example user_match_type
           recovery_interval: 1
+          uuid: Example uuid
           remote_lookup_username: Example remote_lookup_username
           ca_certificates:
           - cacertificate
@@ -13262,6 +13423,7 @@ components:
           ocsp_check: Example ocsp_check
           user_match_type: Example user_match_type
           recovery_interval: 1
+          uuid: Example uuid
           remote_lookup_username: Example remote_lookup_username
           ca_certificates:
           - cacertificate
@@ -13294,6 +13456,7 @@ components:
           cache_ttl: 1
           acct_retries: 1
           recovery_interval: 1
+          uuid: Example uuid
           mode: Example mode
           servers:
           - acct_port: 1
@@ -13342,6 +13505,7 @@ components:
           cache_ttl: 1
           acct_retries: 1
           recovery_interval: 1
+          uuid: Example uuid
           mode: Example mode
           servers:
           - acct_port: 1
@@ -13411,6 +13575,7 @@ components:
           name: Example name
           comment: Example comment
           acct_retries: 1
+          uuid: Example uuid
           acct_timeout: 1
           auth_retries: 1
       properties:
@@ -13454,6 +13619,7 @@ components:
           name: Example name
           comment: Example comment
           acct_retries: 1
+          uuid: Example uuid
           acct_timeout: 1
           auth_retries: 1
       properties:
@@ -13483,6 +13649,7 @@ components:
           recovery_interval: 1
           ldap_group_authentication_type: Example ldap_group_authentication_type
           search_scope: Example search_scope
+          uuid: Example uuid
           timeout: 1
           mode: Example mode
           retries: 1
@@ -13540,6 +13707,7 @@ components:
           recovery_interval: 1
           ldap_group_authentication_type: Example ldap_group_authentication_type
           search_scope: Example search_scope
+          uuid: Example uuid
           timeout: 1
           mode: Example mode
           retries: 1
@@ -13599,6 +13767,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           session_timeout: 1
       properties:
         result:
@@ -13627,6 +13796,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           session_timeout: 1
       properties:
         result:
@@ -13688,6 +13858,7 @@ components:
           comment: Example comment
           privacy_password: Example privacy_password
           authentication_protocol: Example authentication_protocol
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Snmpuser'
@@ -13722,6 +13893,7 @@ components:
           comment: Example comment
           privacy_password: Example privacy_password
           authentication_protocol: Example authentication_protocol
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Snmpuser'
@@ -13754,6 +13926,7 @@ components:
           _ref: _ref
           create_home_dir: false
           permission: Example permission
+          uuid: Example uuid
           username: Example username
       properties:
         result:
@@ -13786,6 +13959,7 @@ components:
           _ref: _ref
           create_home_dir: false
           permission: Example permission
+          uuid: Example uuid
           username: Example username
       properties:
         result:
@@ -13811,6 +13985,7 @@ components:
           address: Example address
           domainname: Example domainname
           address_object: Example address_object
+          uuid: Example uuid
           data_source: Example data_source
           network: Example network
           logon_id: Example logon_id
@@ -13844,6 +14019,7 @@ components:
           address: Example address
           domainname: Example domainname
           address_object: Example address_object
+          uuid: Example uuid
           data_source: Example data_source
           network: Example network
           logon_id: Example logon_id
@@ -13878,6 +14054,7 @@ components:
           name: Example name
           comment: Example comment
           disabled: false
+          uuid: Example uuid
           domain_controllers:
           - fqdn_or_ip: Example fqdn_or_ip
             encryption: Example encryption
@@ -13917,6 +14094,7 @@ components:
           name: Example name
           comment: Example comment
           disabled: false
+          uuid: Example uuid
           domain_controllers:
           - fqdn_or_ip: Example fqdn_or_ip
             encryption: Example encryption
@@ -13963,6 +14141,7 @@ components:
           groups:
           - hsm:thaleslunagroup
           - hsm:thaleslunagroup
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/HsmAllgroups'
@@ -14002,6 +14181,7 @@ components:
           comment: Example comment
           key_server_port: 1
           protection: Example protection
+          uuid: Example uuid
           key_server_ip: Example key_server_ip
           status: Example status
       properties:
@@ -14042,6 +14222,7 @@ components:
           comment: Example comment
           key_server_port: 1
           protection: Example protection
+          uuid: Example uuid
           key_server_ip: Example key_server_ip
           status: Example status
       properties:
@@ -14086,6 +14267,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           status: Example status
       properties:
         result:
@@ -14128,6 +14310,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           status: Example status
       properties:
         result:

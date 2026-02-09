@@ -5,11 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Address** | Pointer to **string** | The address or FQDN of the DHCP Microsoft Server. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment from Microsoft Server | [optional] [readonly] 
 **DhcpUtilization** | Pointer to **int64** | The percentage of the total DHCP utilization of DHCP objects belonging to the DHCP Microsoft Server multiplied by 1000. This is the percentage of the total number of available IP addresses from all the DHCP objects belonging to the DHCP Microsoft Server versus the total number of all IP addresses in all of the DHCP objects on the DHCP Microsoft Server. | [optional] [readonly] 
 **DhcpUtilizationStatus** | Pointer to **string** | A string describing the utilization level of DHCP objects that belong to the DHCP Microsoft Server. | [optional] [readonly] 
 **DynamicHosts** | Pointer to **int64** | The total number of DHCP leases issued for the DHCP objects on the DHCP Microsoft Server. | [optional] [readonly] 
+**Ipv6LastSyncTs** | Pointer to **int64** | Timestamp of the last synchronization attempt | [optional] [readonly] 
 **LastSyncTs** | Pointer to **int64** | Timestamp of the last synchronization attempt | [optional] [readonly] 
 **LoginName** | Pointer to **string** | The login name of the DHCP Microsoft Server. | [optional] 
 **LoginPassword** | Pointer to **string** | The login password of the DHCP Microsoft Server. | [optional] 
@@ -71,6 +73,31 @@ SetRef sets Ref field to given value.
 `func (o *GetMsserverDhcpResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMsserverDhcpResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMsserverDhcpResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMsserverDhcpResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMsserverDhcpResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 
@@ -196,6 +223,31 @@ SetDynamicHosts sets DynamicHosts field to given value.
 `func (o *GetMsserverDhcpResponse) HasDynamicHosts() bool`
 
 HasDynamicHosts returns a boolean if a field has been set.
+
+### GetIpv6LastSyncTs
+
+`func (o *GetMsserverDhcpResponse) GetIpv6LastSyncTs() int64`
+
+GetIpv6LastSyncTs returns the Ipv6LastSyncTs field if non-nil, zero value otherwise.
+
+### GetIpv6LastSyncTsOk
+
+`func (o *GetMsserverDhcpResponse) GetIpv6LastSyncTsOk() (*int64, bool)`
+
+GetIpv6LastSyncTsOk returns a tuple with the Ipv6LastSyncTs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpv6LastSyncTs
+
+`func (o *GetMsserverDhcpResponse) SetIpv6LastSyncTs(v int64)`
+
+SetIpv6LastSyncTs sets Ipv6LastSyncTs field to given value.
+
+### HasIpv6LastSyncTs
+
+`func (o *GetMsserverDhcpResponse) HasIpv6LastSyncTs() bool`
+
+HasIpv6LastSyncTs returns a boolean if a field has been set.
 
 ### GetLastSyncTs
 

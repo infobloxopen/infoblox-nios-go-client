@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Canonical** | Pointer to **string** | The canonical name in FQDN format. This value can be in unicode format. | [optional] 
 **Comment** | Pointer to **string** | The comment for the record; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines if the record is disabled or not. False means that the record is enabled. | [optional] 
@@ -62,6 +63,31 @@ SetRef sets Ref field to given value.
 `func (o *GetRecordRpzCnameResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordRpzCnameResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordRpzCnameResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordRpzCnameResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordRpzCnameResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetCanonical
 

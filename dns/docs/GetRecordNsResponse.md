@@ -5,10 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Addresses** | Pointer to [**[]RecordNsAddresses**](RecordNsAddresses.md) | The list of zone name servers. | [optional] 
 **CloudInfo** | Pointer to [**RecordNsCloudInfo**](RecordNsCloudInfo.md) |  | [optional] 
 **Creator** | Pointer to **string** | The record creator. | [optional] [readonly] 
 **DnsName** | Pointer to **string** | The name of the NS record in punycode format. | [optional] [readonly] 
+**ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **MsDelegationName** | Pointer to **string** | The MS delegation point name. | [optional] 
 **Name** | Pointer to **string** | The name of the NS record in FQDN format. This value can be in unicode format. | [optional] 
@@ -61,6 +65,31 @@ SetRef sets Ref field to given value.
 `func (o *GetRecordNsResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordNsResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordNsResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordNsResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordNsResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddresses
 
@@ -161,6 +190,81 @@ SetDnsName sets DnsName field to given value.
 `func (o *GetRecordNsResponse) HasDnsName() bool`
 
 HasDnsName returns a boolean if a field has been set.
+
+### GetExtAttrsPlus
+
+`func (o *GetRecordNsResponse) GetExtAttrsPlus() map[string]ExtAttrs`
+
+GetExtAttrsPlus returns the ExtAttrsPlus field if non-nil, zero value otherwise.
+
+### GetExtAttrsPlusOk
+
+`func (o *GetRecordNsResponse) GetExtAttrsPlusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsPlusOk returns a tuple with the ExtAttrsPlus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsPlus
+
+`func (o *GetRecordNsResponse) SetExtAttrsPlus(v map[string]ExtAttrs)`
+
+SetExtAttrsPlus sets ExtAttrsPlus field to given value.
+
+### HasExtAttrsPlus
+
+`func (o *GetRecordNsResponse) HasExtAttrsPlus() bool`
+
+HasExtAttrsPlus returns a boolean if a field has been set.
+
+### GetExtAttrsMinus
+
+`func (o *GetRecordNsResponse) GetExtAttrsMinus() map[string]ExtAttrs`
+
+GetExtAttrsMinus returns the ExtAttrsMinus field if non-nil, zero value otherwise.
+
+### GetExtAttrsMinusOk
+
+`func (o *GetRecordNsResponse) GetExtAttrsMinusOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsMinusOk returns a tuple with the ExtAttrsMinus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrsMinus
+
+`func (o *GetRecordNsResponse) SetExtAttrsMinus(v map[string]ExtAttrs)`
+
+SetExtAttrsMinus sets ExtAttrsMinus field to given value.
+
+### HasExtAttrsMinus
+
+`func (o *GetRecordNsResponse) HasExtAttrsMinus() bool`
+
+HasExtAttrsMinus returns a boolean if a field has been set.
+
+### GetExtAttrs
+
+`func (o *GetRecordNsResponse) GetExtAttrs() map[string]ExtAttrs`
+
+GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
+
+### GetExtAttrsOk
+
+`func (o *GetRecordNsResponse) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
+
+GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtAttrs
+
+`func (o *GetRecordNsResponse) SetExtAttrs(v map[string]ExtAttrs)`
+
+SetExtAttrs sets ExtAttrs field to given value.
+
+### HasExtAttrs
+
+`func (o *GetRecordNsResponse) HasExtAttrs() bool`
+
+HasExtAttrs returns a boolean if a field has been set.
 
 ### GetLastQueried
 

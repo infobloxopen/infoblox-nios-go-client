@@ -192,6 +192,8 @@ docs/Ipv6fixedaddressIpv6addr.md
 docs/Ipv6fixedaddressIpv6addrOneOf.md
 docs/Ipv6fixedaddressLogicFilterRules.md
 docs/Ipv6fixedaddressMsAdUserData.md
+docs/Ipv6fixedaddressMsOptions.md
+docs/Ipv6fixedaddressMsServer.md
 docs/Ipv6fixedaddressOptions.md
 docs/Ipv6fixedaddressSnmp3Credential.md
 docs/Ipv6fixedaddressSnmpCredential.md
@@ -208,6 +210,8 @@ docs/Ipv6rangeDiscoveryBlackoutSetting.md
 docs/Ipv6rangeExclude.md
 docs/Ipv6rangeLogicFilterRules.md
 docs/Ipv6rangeMember.md
+docs/Ipv6rangeMsOptions.md
+docs/Ipv6rangeMsServer.md
 docs/Ipv6rangeOptionFilterRules.md
 docs/Ipv6rangePortControlBlackoutSetting.md
 docs/Ipv6rangeSubscribeSettings.md
@@ -541,6 +545,8 @@ model_ipv6fixedaddress_ipv6addr.go
 model_ipv6fixedaddress_ipv6addr_one_of.go
 model_ipv6fixedaddress_logic_filter_rules.go
 model_ipv6fixedaddress_ms_ad_user_data.go
+model_ipv6fixedaddress_ms_options.go
+model_ipv6fixedaddress_ms_server.go
 model_ipv6fixedaddress_options.go
 model_ipv6fixedaddress_snmp3_credential.go
 model_ipv6fixedaddress_snmp_credential.go
@@ -555,6 +561,8 @@ model_ipv6range_discovery_blackout_setting.go
 model_ipv6range_exclude.go
 model_ipv6range_logic_filter_rules.go
 model_ipv6range_member.go
+model_ipv6range_ms_options.go
+model_ipv6range_ms_server.go
 model_ipv6range_option_filter_rules.go
 model_ipv6range_port_control_blackout_setting.go
 model_ipv6range_subscribe_settings.go

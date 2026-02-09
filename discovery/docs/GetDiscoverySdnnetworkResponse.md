@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
 **FirstSeen** | Pointer to **int64** | Timestamp when this SDN network was first discovered. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the SDN network. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view assigned to this SDN network. | [optional] [readonly] 
@@ -54,6 +55,31 @@ SetRef sets Ref field to given value.
 `func (o *GetDiscoverySdnnetworkResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDiscoverySdnnetworkResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDiscoverySdnnetworkResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDiscoverySdnnetworkResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDiscoverySdnnetworkResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetFirstSeen
 

@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DNS API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for record:a objects
   name: RecordA
@@ -2966,6 +2966,7 @@ paths:
       - RecordNs
       x-tf-resource: dns_record_ns
       x-tf-datasource: dns_record_ns
+      x-sdk-default-ext-attrs: true
   /record:ns/{reference}:
     delete:
       description: Deletes a specific record:ns object by reference
@@ -3130,6 +3131,7 @@ paths:
       summary: Update a record:ns object
       tags:
       - RecordNs
+      x-sdk-default-ext-attrs: true
   /record:host:
     get:
       description: Returns a list of record:host objects matching the search criteria
@@ -15181,6 +15183,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -15316,6 +15319,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aws_rte53_record_info:
@@ -16403,6 +16411,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -16538,6 +16547,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aws_rte53_record_info:
@@ -17600,6 +17614,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         extattrs-:
@@ -17618,6 +17633,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aws_rte53_record_info:
@@ -17691,6 +17711,7 @@ components:
           enum:
           - A
           - AAAA
+          - CAA
           - MX
           - NAPTR
           - PTR
@@ -17955,11 +17976,6 @@ components:
           type: Example type
           geolocation_subdivision_code: Example geolocation_subdivision_code
           set_identifier: Example set_identifier
-        creator: Example creator
-        extattrs:
-          key:
-            value: ""
-        shared_record_group: Example shared_record_group
         use_ttl: false
         cloud_info:
           delegated_member:
@@ -17973,10 +17989,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
-        ddns_protected: false
-        canonical: Example canonical
-        ttl: 1
-        dns_name: Example dns_name
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -17986,17 +17999,31 @@ components:
             value: ""
         zone: Example zone
         ddns_principal: Example ddns_principal
+        last_queried: 1
+        forbid_reclamation: false
+        reclaimable: false
+        creator: Example creator
+        extattrs:
+          key:
+            value: ""
+        shared_record_group: Example shared_record_group
+        ddns_protected: false
+        canonical: Example canonical
+        ttl: 1
+        dns_name: Example dns_name
         disable: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        last_queried: 1
-        forbid_reclamation: false
         dns_canonical: Example dns_canonical
-        reclaimable: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aws_rte53_record_info:
@@ -18369,6 +18396,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         dns_mail_exchanger: Example dns_mail_exchanger
         extattrs-:
           key:
@@ -18399,6 +18427,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aws_rte53_record_info:
@@ -18782,6 +18815,7 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         ddns_protected: false
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         extattrs-:
@@ -18804,6 +18838,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aws_rte53_record_info:
@@ -19172,6 +19211,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -19309,6 +19349,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aws_rte53_record_info:
@@ -20371,6 +20416,7 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         dns_target: Example dns_target
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -20402,6 +20448,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aws_rte53_record_info:
@@ -20769,11 +20820,10 @@ components:
         - address: Example address
           auto_create_ptr: false
         creator: Example creator
-        view: Example view
+        extattrs:
+          key:
+            value: ""
         ms_delegation_name: Example ms_delegation_name
-        zone: Example zone
-        _ref: _ref
-        name: Example name
         cloud_info:
           delegated_member:
             name: Example name
@@ -20786,13 +20836,29 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
+        dns_name: Example dns_name
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
+          key:
+            value: ""
+        zone: Example zone
+        _ref: _ref
+        name: Example name
         nameserver: Example nameserver
         last_queried: 1
-        dns_name: Example dns_name
         policy: Example policy
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         addresses:
@@ -20817,6 +20883,27 @@ components:
           example: Example dns_name
           readOnly: true
           type: string
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-extattrs: true
         last_queried:
           description: The time of the last DNS query in Epoch seconds format.
           example: 1
@@ -20855,6 +20942,7 @@ components:
           readOnly: true
           type: string
       type: object
+      x-tf-extattrs-all: true
       x-tf-skip-expand: true
     RecordNsAddresses:
       example:
@@ -21012,6 +21100,7 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         device_type: Example device_type
+        uuid: Example uuid
         use_snmp_credential: false
         rrset_order: Example rrset_order
         extattrs-:
@@ -21050,6 +21139,7 @@ components:
           is_invalid_mac: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -21200,6 +21290,7 @@ components:
           is_invalid_mac: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -21374,6 +21465,7 @@ components:
           duid: Example duid
           match_client: Example match_client
           ipv6prefix: Example ipv6prefix
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -21524,6 +21616,7 @@ components:
           duid: Example duid
           match_client: Example match_client
           ipv6prefix: Example ipv6prefix
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -21675,6 +21768,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         aliases:
@@ -22143,6 +22241,7 @@ components:
           delegated_root: Example delegated_root
         ddns_protected: false
         dns_target: Example dns_target
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         target: Example target
@@ -22165,6 +22264,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         cloud_info:
@@ -22422,6 +22526,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         extattrs-:
           key:
             value: ""
@@ -22452,6 +22557,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         cloud_info:
@@ -22746,6 +22856,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         extattrs-:
@@ -22766,6 +22877,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         certificate_data:
@@ -23014,6 +23130,7 @@ components:
           delegated_root: Example delegated_root
         ca_tag: Example ca_tag
         ddns_protected: false
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         extattrs-:
@@ -23036,6 +23153,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         ca_flag:
@@ -23286,11 +23408,17 @@ components:
         _ref: _ref
         name: Example name
         dhcid: Example dhcid
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         creation_time:
@@ -23376,6 +23504,7 @@ components:
         creator: Example creator
         use_ttl: false
         flags: 1
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         key_tag: 1
@@ -23389,6 +23518,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         algorithm:
@@ -23528,6 +23662,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         key_tag: 1
@@ -23543,6 +23678,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         algorithm:
@@ -23776,6 +23916,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         view: Example view
@@ -23790,6 +23931,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         cloud_info:
@@ -24004,6 +24150,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         ttl: 1
         iterations: 1
         dns_name: Example dns_name
@@ -24019,6 +24166,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         algorithm:
@@ -24265,6 +24417,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         ttl: 1
         iterations: 1
         dns_name: Example dns_name
@@ -24277,6 +24430,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         algorithm:
@@ -24511,6 +24669,7 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         original_ttl: 1
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         labels: 1
@@ -24527,6 +24686,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         algorithm:
@@ -24800,6 +24964,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: Example uuid
         ttl: 1
         record_type: Example record_type
         dns_name: Example dns_name
@@ -24820,6 +24985,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         cloud_info:
@@ -25081,6 +25251,7 @@ components:
         is_invalid_mac: false
         nextserver: Example nextserver
         use_pxe_lease_time: false
+        uuid: Example uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -25228,6 +25399,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         bootfile:
@@ -26152,6 +26328,7 @@ components:
         duid: Example duid
         match_client: Example match_client
         ipv6prefix: Example ipv6prefix
+        uuid: Example uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -26301,6 +26478,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address_type:
@@ -27363,6 +27545,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -27371,6 +27554,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         member_soa_serials:
         - ms_server_primary: Example ms_server_primary
           grid_primary: Example grid_primary
@@ -27404,6 +27588,7 @@ components:
           use_tsig_key_name: false
           shared_with_ms_parent_delegation: false
         import_from: Example import_from
+        uuid: Example uuid
         soa_expire: 1
         update_forwarding:
         - _struct: _struct
@@ -27478,6 +27663,7 @@ components:
           type: Example type
           status: Example status
           algorithm: Example algorithm
+        mgm_private: false
         soa_negative_ttl: 1
         srgs:
         - srgs
@@ -27526,6 +27712,7 @@ components:
         use_copy_xfer_to_notify: false
         is_multimaster: false
         use_allow_active_dir: false
+        mgm_private_overridable: false
         records_monitored: false
         ms_secondaries:
         - is_master: false
@@ -27552,6 +27739,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -27560,6 +27748,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         ms_dc_ns_record_creation:
         - address: Example address
           comment: Example comment
@@ -27578,6 +27767,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -27586,6 +27776,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         grid_primary:
         - preferred_primaries:
           - address: Example address
@@ -27686,6 +27877,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address:
@@ -28049,6 +28245,20 @@ components:
             $ref: '#/components/schemas/ZoneAuthMemberSoaSerials'
           readOnly: true
           type: array
+        mgm_private:
+          description: "This field controls whether this object is synchronized with\
+            \ the Multi-Grid Master. If this field is set to True, objects are not\
+            \ synchronized."
+          example: false
+          type: boolean
+        mgm_private_overridable:
+          description: "This field is assumed to be True unless filled by any conforming\
+            \ objects, such as Network, IPv6 Network, Network Container, IPv6 Network\
+            \ Container, and Network View. This value is set to False if mgm_private\
+            \ is set to True in the parent object."
+          example: false
+          readOnly: true
+          type: boolean
         ms_ad_integrated:
           description: "The flag that determines whether Active Directory is integrated\
             \ or not. This field is valid only when ms_managed is \"STUB\", \"AUTH_PRIMARY\"\
@@ -28458,6 +28668,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -28465,6 +28676,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -28509,6 +28723,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -28516,6 +28731,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -28560,6 +28778,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -28567,6 +28786,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -29887,6 +30109,7 @@ components:
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
           shared_with_ms_parent_delegation: false
+        uuid: Example uuid
         mask_prefix: Example mask_prefix
         extattrs-:
           key:
@@ -29898,6 +30121,7 @@ components:
             value: ""
         display_domain: Example display_domain
         ms_sync_master_name: Example ms_sync_master_name
+        mgm_private_overridable: false
         locked: false
         ms_read_only: false
         ms_managed: Example ms_managed
@@ -29913,11 +30137,17 @@ components:
         locked_by: Example locked_by
         using_srg_associations: false
         disable: false
+        mgm_private: false
         _ref: _ref
         comment: Example comment
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address:
@@ -30015,6 +30245,20 @@ components:
           example: Example mask_prefix
           readOnly: true
           type: string
+        mgm_private:
+          description: "This field controls whether this object is synchronized with\
+            \ the Multi-Grid Master. If this field is set to True, objects are not\
+            \ synchronized."
+          example: false
+          type: boolean
+        mgm_private_overridable:
+          description: "This field is assumed to be True unless filled by any conforming\
+            \ objects, such as Network, IPv6 Network, Network Container, IPv6 Network\
+            \ Container, and Network View. This value is set to False if mgm_private\
+            \ is set to True in the parent object."
+          example: false
+          readOnly: true
+          type: boolean
         ms_ad_integrated:
           description: "The flag that determines whether Active Directory is integrated\
             \ or not. This field is valid only when ms_managed is \"STUB\", \"AUTH_PRIMARY\"\
@@ -30209,6 +30453,7 @@ components:
         prefix: Example prefix
         zone_format: Example zone_format
         external_ns_group: Example external_ns_group
+        uuid: Example uuid
         forwarders_only: false
         mask_prefix: Example mask_prefix
         extattrs-:
@@ -30220,6 +30465,7 @@ components:
             value: ""
         display_domain: Example display_domain
         ms_sync_master_name: Example ms_sync_master_name
+        mgm_private_overridable: false
         locked: false
         ms_read_only: false
         ms_managed: Example ms_managed
@@ -30277,11 +30523,17 @@ components:
           name: Example name
           forwarders_only: false
           use_override_forwarders: false
+        mgm_private: false
         _ref: _ref
         comment: Example comment
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address:
@@ -30387,6 +30639,20 @@ components:
           example: Example mask_prefix
           readOnly: true
           type: string
+        mgm_private:
+          description: "This field controls whether this object is synchronized with\
+            \ the Multi-Grid Master. If this field is set to True, objects are not\
+            \ synchronized."
+          example: false
+          type: boolean
+        mgm_private_overridable:
+          description: "This field is assumed to be True unless filled by any conforming\
+            \ objects, such as Network, IPv6 Network, Network Container, IPv6 Network\
+            \ Container, and Network View. This value is set to False if mgm_private\
+            \ is set to True in the parent object."
+          example: false
+          readOnly: true
+          type: boolean
         ms_ad_integrated:
           description: "The flag that determines whether Active Directory is integrated\
             \ or not. This field is valid only when ms_managed is \"STUB\", \"AUTH_PRIMARY\"\
@@ -30699,6 +30965,7 @@ components:
           lead: false
         zone_format: Example zone_format
         external_ns_group: Example external_ns_group
+        uuid: Example uuid
         soa_expire: 1
         mask_prefix: Example mask_prefix
         extattrs-:
@@ -30725,6 +30992,7 @@ components:
         display_domain: Example display_domain
         ms_sync_master_name: Example ms_sync_master_name
         soa_email: Example soa_email
+        mgm_private_overridable: false
         locked: false
         ms_read_only: false
         ms_managed: Example ms_managed
@@ -30743,6 +31011,7 @@ components:
         locked_by: Example locked_by
         using_srg_associations: false
         disable: false
+        mgm_private: false
         soa_negative_ttl: 1
         _ref: _ref
         comment: Example comment
@@ -30766,6 +31035,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address:
@@ -30849,6 +31123,20 @@ components:
           example: Example mask_prefix
           readOnly: true
           type: string
+        mgm_private:
+          description: "This field controls whether this object is synchronized with\
+            \ the Multi-Grid Master. If this field is set to True, objects are not\
+            \ synchronized."
+          example: false
+          type: boolean
+        mgm_private_overridable:
+          description: "This field is assumed to be True unless filled by any conforming\
+            \ objects, such as Network, IPv6 Network, Network Container, IPv6 Network\
+            \ Container, and Network View. This value is set to False if mgm_private\
+            \ is set to True in the parent object."
+          example: false
+          readOnly: true
+          type: boolean
         ms_ad_integrated:
           description: "The flag that determines whether Active Directory is integrated\
             \ or not. This field is valid only when ms_managed is \"STUB\", \"AUTH_PRIMARY\"\
@@ -31274,6 +31562,7 @@ components:
           use_tsig_key_name: false
           shared_with_ms_parent_delegation: false
         use_soa_email: false
+        uuid: Example uuid
         soa_expire: 1
         use_record_name_policy: false
         rpz_priority: 1
@@ -31457,6 +31746,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address:
@@ -32250,10 +32544,16 @@ components:
         zone: Example zone
         _ref: _ref
         description: Example description
+        uuid: Example uuid
         timestamp: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         description:
@@ -32311,6 +32611,7 @@ components:
         address: Example address
         ddns_protected: false
         type: Example type
+        uuid: uuid
         ttl: 1
         view: Example view
         zone: Example zone
@@ -32325,6 +32626,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         address:
@@ -32405,10 +32710,12 @@ components:
           - record:host
           - record:host_ipv4addr
           - record:host_ipv6addr
+          - record:https
           - record:mx
           - record:naptr
           - record:ptr
           - record:srv
+          - record:svcb
           - record:txt
           - record:unknown
           - sharedrecord:a
@@ -32456,9 +32763,15 @@ components:
         _ref: _ref
         name: Example name
         is_default: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         is_default:
@@ -32507,9 +32820,6 @@ components:
     Dns64group:
       additionalProperties: false
       example:
-        extattrs-:
-          key:
-            value: ""
         clients:
         - address: Example address
           permission: Example permission
@@ -32518,11 +32828,16 @@ components:
         extattrs:
           key:
             value: ""
+        prefix: Example prefix
+        uuid: Example uuid
+        enable_dnssec_dns64: false
+        extattrs-:
+          key:
+            value: ""
         extattrs+:
           key:
             value: ""
         disable: false
-        prefix: Example prefix
         _ref: _ref
         mapped:
         - address: Example address
@@ -32536,10 +32851,14 @@ components:
           permission: Example permission
         - address: Example address
           permission: Example permission
-        enable_dnssec_dns64: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         clients:
@@ -32701,9 +33020,14 @@ components:
         name: Example name
         comment: Example comment
         type: Example type
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: The uuid of the object.
           readOnly: true
           type: string
         comment:
@@ -32755,10 +33079,16 @@ components:
         principals:
         - principals
         - principals
+        uuid: Example uuid
         group: Example group
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -32811,12 +33141,18 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
         clusters:
         - ddns:principalcluster
         - ddns:principalcluster
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         clusters:
@@ -32871,9 +33207,15 @@ components:
         - rp_zones
         view: Example view
         _ref: _ref
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         rp_zones:
@@ -32911,27 +33253,33 @@ components:
     SharedrecordA:
       additionalProperties: false
       example:
-        extattrs-:
+        extattrs:
           key:
             value: ""
-        extattrs:
+        shared_record_group: Example shared_record_group
+        use_ttl: false
+        uuid: Example uuid
+        ipv4addr: Example ipv4addr
+        ttl: 1
+        dns_name: Example dns_name
+        extattrs-:
           key:
             value: ""
         extattrs+:
           key:
             value: ""
-        shared_record_group: Example shared_record_group
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        ipv4addr: Example ipv4addr
-        ttl: 1
-        dns_name: Example dns_name
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -33022,27 +33370,33 @@ components:
     SharedrecordAaaa:
       additionalProperties: false
       example:
-        extattrs-:
+        extattrs:
           key:
             value: ""
-        extattrs:
+        shared_record_group: Example shared_record_group
+        use_ttl: false
+        uuid: Example uuid
+        ttl: 1
+        dns_name: Example dns_name
+        ipv6addr: Example ipv6addr
+        extattrs-:
           key:
             value: ""
         extattrs+:
           key:
             value: ""
-        shared_record_group: Example shared_record_group
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
-        ttl: 1
-        dns_name: Example dns_name
-        ipv6addr: Example ipv6addr
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -33139,6 +33493,7 @@ components:
         shared_record_group: Example shared_record_group
         use_ttl: false
         canonical: Example canonical
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         extattrs-:
@@ -33155,6 +33510,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         canonical:
@@ -33258,6 +33618,7 @@ components:
         shared_record_group: Example shared_record_group
         use_ttl: false
         preference: 1
+        uuid: Example uuid
         ttl: 1
         dns_mail_exchanger: Example dns_mail_exchanger
         dns_name: Example dns_name
@@ -33274,6 +33635,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -33384,6 +33750,7 @@ components:
         weight: 1
         dns_target: Example dns_target
         priority: 1
+        uuid: Example uuid
         ttl: 1
         dns_name: Example dns_name
         target: Example target
@@ -33401,6 +33768,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -33515,27 +33887,33 @@ components:
     SharedrecordTxt:
       additionalProperties: false
       example:
-        extattrs-:
+        extattrs:
           key:
             value: ""
-        extattrs:
+        shared_record_group: Example shared_record_group
+        use_ttl: false
+        uuid: Example uuid
+        ttl: 1
+        dns_name: Example dns_name
+        extattrs-:
           key:
             value: ""
         extattrs+:
           key:
             value: ""
-        shared_record_group: Example shared_record_group
         disable: false
-        use_ttl: false
         _ref: _ref
         name: Example name
         comment: Example comment
         text: Example text
-        ttl: 1
-        dns_name: Example dns_name
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -33646,11 +34024,17 @@ components:
         - view: Example view
           fqdn: Example fqdn
         comment: Example comment
+        uuid: Example uuid
         record_name_policy: Example record_name_policy
         use_record_name_policy: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -33753,6 +34137,7 @@ components:
         rpz_qname_wait_recurse: false
         blacklist_log_query: false
         forward_only: false
+        uuid: Example uuid
         use_recursion: false
         nxdomain_log_query: false
         dnssec_trusted_keys:
@@ -33787,9 +34172,11 @@ components:
         - address: Example address
           _ref: _ref
           permission: Example permission
+          uuid: uuid
         - address: Example address
           _ref: _ref
           permission: Example permission
+          uuid: uuid
         use_filter_aaaa: false
         recursion: false
         ddns_principal_group: Example ddns_principal_group
@@ -33869,6 +34256,7 @@ components:
         forwarders:
         - forwarders
         - forwarders
+        mgm_private: false
         name: Example name
         nxdomain_redirect: false
         nxdomain_redirect_addresses_v6:
@@ -33891,6 +34279,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -33899,6 +34288,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         cloud_info:
           delegated_member:
             name: Example name
@@ -33970,6 +34360,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         - _struct: _struct
           address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -33978,6 +34369,7 @@ components:
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
+          uuid: uuid
         _ref: _ref
         use_root_name_server: false
         nxdomain_redirect_addresses:
@@ -33997,10 +34389,15 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         blacklist_action:
           description: The action to perform when a domain name matches the pattern
             defined in a rule that is specified by the blacklist_ruleset method. Valid
-            values are "REDIRECT" or "REFUSE". The default value is "REFUSE".
+            values are "REDIRECT" or "REFUSE". The default value is "REDIRECT".
           enum:
           - REDIRECT
           - REFUSE
@@ -34191,7 +34588,7 @@ components:
           example: Example filter_aaaa
           type: string
         filter_aaaa_list:
-          description: "Applies AAAA filtering to a named ACL, or to a list of IPv4/IPv6\
+          description: "Applies AAAA filtering to a named ACL, or to a list of IPv4\
             \ addresses and networks from which queries are received. This field does\
             \ not allow TSIG keys."
           enum:
@@ -34276,6 +34673,12 @@ components:
           example: 1
           format: int64
           type: integer
+        mgm_private:
+          description: "This field controls whether this object is synchronized with\
+            \ the Multi-Grid Master. If this field is set to True, objects are not\
+            \ synchronized."
+          example: false
+          type: boolean
         name:
           description: Name of the DNS view.
           example: Example name
@@ -34658,9 +35061,13 @@ components:
         address: Example address
         _ref: _ref
         permission: Example permission
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -34719,6 +35126,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -34726,6 +35134,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -34770,6 +35181,7 @@ components:
         permission: Example permission
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
+        uuid: uuid
       properties:
         _struct:
           description: The struct type of the object. The value must be one of 'addressac'
@@ -34777,6 +35189,9 @@ components:
           type: string
         _ref:
           description: The reference to the object.
+          type: string
+        uuid:
+          description: The uuid of the object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -35229,6 +35644,7 @@ components:
           use_tsig_key_name: false
           shared_with_ms_parent_delegation: false
         use_external_primary: false
+        uuid: Example uuid
         grid_primary:
         - preferred_primaries:
           - address: Example address
@@ -35333,6 +35749,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -35787,9 +36208,15 @@ components:
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
           shared_with_ms_parent_delegation: false
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -35961,9 +36388,15 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -36155,9 +36588,15 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -36335,9 +36774,15 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -36576,6 +37021,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -36752,6 +37198,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -36949,6 +37396,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -37125,6 +37573,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -37308,6 +37757,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -37373,6 +37823,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -37420,11 +37871,6 @@ components:
             type: Example type
             geolocation_subdivision_code: Example geolocation_subdivision_code
             set_identifier: Example set_identifier
-          creator: Example creator
-          extattrs:
-            key:
-              value: ""
-          shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
             delegated_member:
@@ -37438,10 +37884,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
-          ddns_protected: false
-          canonical: Example canonical
-          ttl: 1
-          dns_name: Example dns_name
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -37451,14 +37894,23 @@ components:
               value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
+          last_queried: 1
+          forbid_reclamation: false
+          reclaimable: false
+          creator: Example creator
+          extattrs:
+            key:
+              value: ""
+          shared_record_group: Example shared_record_group
+          ddns_protected: false
+          canonical: Example canonical
+          ttl: 1
+          dns_name: Example dns_name
           disable: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          last_queried: 1
-          forbid_reclamation: false
           dns_canonical: Example dns_canonical
-          reclaimable: false
       properties:
         result:
           $ref: '#/components/schemas/RecordCname'
@@ -37490,11 +37942,6 @@ components:
             type: Example type
             geolocation_subdivision_code: Example geolocation_subdivision_code
             set_identifier: Example set_identifier
-          creator: Example creator
-          extattrs:
-            key:
-              value: ""
-          shared_record_group: Example shared_record_group
           use_ttl: false
           cloud_info:
             delegated_member:
@@ -37508,10 +37955,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
-          ddns_protected: false
-          canonical: Example canonical
-          ttl: 1
-          dns_name: Example dns_name
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -37521,14 +37965,23 @@ components:
               value: ""
           zone: Example zone
           ddns_principal: Example ddns_principal
+          last_queried: 1
+          forbid_reclamation: false
+          reclaimable: false
+          creator: Example creator
+          extattrs:
+            key:
+              value: ""
+          shared_record_group: Example shared_record_group
+          ddns_protected: false
+          canonical: Example canonical
+          ttl: 1
+          dns_name: Example dns_name
           disable: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          last_queried: 1
-          forbid_reclamation: false
           dns_canonical: Example dns_canonical
-          reclaimable: false
       properties:
         result:
           $ref: '#/components/schemas/RecordCname'
@@ -37574,6 +38027,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           dns_mail_exchanger: Example dns_mail_exchanger
           extattrs-:
             key:
@@ -37645,6 +38099,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           dns_mail_exchanger: Example dns_mail_exchanger
           extattrs-:
             key:
@@ -37723,6 +38178,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           ddns_protected: false
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -37792,6 +38248,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           ddns_protected: false
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -37896,6 +38353,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -38074,6 +38532,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -38254,6 +38713,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           dns_target: Example dns_target
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -38327,6 +38787,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           dns_target: Example dns_target
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -38379,11 +38840,10 @@ components:
           - address: Example address
             auto_create_ptr: false
           creator: Example creator
-          view: Example view
+          extattrs:
+            key:
+              value: ""
           ms_delegation_name: Example ms_delegation_name
-          zone: Example zone
-          _ref: _ref
-          name: Example name
           cloud_info:
             delegated_member:
               name: Example name
@@ -38396,9 +38856,20 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
+          dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
+            key:
+              value: ""
+          zone: Example zone
+          _ref: _ref
+          name: Example name
           nameserver: Example nameserver
           last_queried: 1
-          dns_name: Example dns_name
           policy: Example policy
       properties:
         result:
@@ -38423,11 +38894,10 @@ components:
           - address: Example address
             auto_create_ptr: false
           creator: Example creator
-          view: Example view
+          extattrs:
+            key:
+              value: ""
           ms_delegation_name: Example ms_delegation_name
-          zone: Example zone
-          _ref: _ref
-          name: Example name
           cloud_info:
             delegated_member:
               name: Example name
@@ -38440,9 +38910,20 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
+          dns_name: Example dns_name
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
+            key:
+              value: ""
+          zone: Example zone
+          _ref: _ref
+          name: Example name
           nameserver: Example nameserver
           last_queried: 1
-          dns_name: Example dns_name
           policy: Example policy
       properties:
         result:
@@ -38485,6 +38966,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           device_type: Example device_type
+          uuid: Example uuid
           use_snmp_credential: false
           rrset_order: Example rrset_order
           extattrs-:
@@ -38523,6 +39005,7 @@ components:
             is_invalid_mac: false
             nextserver: Example nextserver
             use_pxe_lease_time: false
+            uuid: Example uuid
             func_call:
               _result_field: _result_field
               _object_function: _object_function
@@ -38673,6 +39156,7 @@ components:
             is_invalid_mac: false
             nextserver: Example nextserver
             use_pxe_lease_time: false
+            uuid: Example uuid
             func_call:
               _result_field: _result_field
               _object_function: _object_function
@@ -38847,6 +39331,7 @@ components:
             duid: Example duid
             match_client: Example match_client
             ipv6prefix: Example ipv6prefix
+            uuid: Example uuid
             func_call:
               _result_field: _result_field
               _object_function: _object_function
@@ -38997,6 +39482,7 @@ components:
             duid: Example duid
             match_client: Example match_client
             ipv6prefix: Example ipv6prefix
+            uuid: Example uuid
             func_call:
               _result_field: _result_field
               _object_function: _object_function
@@ -39185,6 +39671,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           device_type: Example device_type
+          uuid: Example uuid
           use_snmp_credential: false
           rrset_order: Example rrset_order
           extattrs-:
@@ -39223,6 +39710,7 @@ components:
             is_invalid_mac: false
             nextserver: Example nextserver
             use_pxe_lease_time: false
+            uuid: Example uuid
             func_call:
               _result_field: _result_field
               _object_function: _object_function
@@ -39373,6 +39861,7 @@ components:
             is_invalid_mac: false
             nextserver: Example nextserver
             use_pxe_lease_time: false
+            uuid: Example uuid
             func_call:
               _result_field: _result_field
               _object_function: _object_function
@@ -39547,6 +40036,7 @@ components:
             duid: Example duid
             match_client: Example match_client
             ipv6prefix: Example ipv6prefix
+            uuid: Example uuid
             func_call:
               _result_field: _result_field
               _object_function: _object_function
@@ -39697,6 +40187,7 @@ components:
             duid: Example duid
             match_client: Example match_client
             ipv6prefix: Example ipv6prefix
+            uuid: Example uuid
             func_call:
               _result_field: _result_field
               _object_function: _object_function
@@ -39884,6 +40375,7 @@ components:
             delegated_root: Example delegated_root
           ddns_protected: false
           dns_target: Example dns_target
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           target: Example target
@@ -39941,6 +40433,7 @@ components:
             delegated_root: Example delegated_root
           ddns_protected: false
           dns_target: Example dns_target
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           target: Example target
@@ -39995,6 +40488,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -40056,6 +40550,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           extattrs-:
             key:
               value: ""
@@ -40120,6 +40615,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -40173,6 +40669,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -40229,6 +40726,7 @@ components:
             delegated_root: Example delegated_root
           ca_tag: Example ca_tag
           ddns_protected: false
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -40286,6 +40784,7 @@ components:
             delegated_root: Example delegated_root
           ca_tag: Example ca_tag
           ddns_protected: false
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -40517,6 +41016,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           ttl: 1
           record_type: Example record_type
           dns_name: Example dns_name
@@ -40577,6 +41077,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: Example uuid
           ttl: 1
           record_type: Example record_type
           dns_name: Example dns_name
@@ -40647,6 +41148,7 @@ components:
           is_invalid_mac: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -40844,6 +41346,7 @@ components:
           duid: Example duid
           match_client: Example match_client
           ipv6prefix: Example ipv6prefix
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -41158,6 +41661,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41166,6 +41670,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           member_soa_serials:
           - ms_server_primary: Example ms_server_primary
             grid_primary: Example grid_primary
@@ -41199,6 +41704,7 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           import_from: Example import_from
+          uuid: Example uuid
           soa_expire: 1
           update_forwarding:
           - _struct: _struct
@@ -41273,6 +41779,7 @@ components:
             type: Example type
             status: Example status
             algorithm: Example algorithm
+          mgm_private: false
           soa_negative_ttl: 1
           srgs:
           - srgs
@@ -41321,6 +41828,7 @@ components:
           use_copy_xfer_to_notify: false
           is_multimaster: false
           use_allow_active_dir: false
+          mgm_private_overridable: false
           records_monitored: false
           ms_secondaries:
           - is_master: false
@@ -41347,6 +41855,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41355,6 +41864,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           ms_dc_ns_record_creation:
           - address: Example address
             comment: Example comment
@@ -41373,6 +41883,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41381,6 +41892,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           grid_primary:
           - preferred_primaries:
             - address: Example address
@@ -41645,6 +42157,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41653,6 +42166,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           member_soa_serials:
           - ms_server_primary: Example ms_server_primary
             grid_primary: Example grid_primary
@@ -41686,6 +42200,7 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           import_from: Example import_from
+          uuid: Example uuid
           soa_expire: 1
           update_forwarding:
           - _struct: _struct
@@ -41760,6 +42275,7 @@ components:
             type: Example type
             status: Example status
             algorithm: Example algorithm
+          mgm_private: false
           soa_negative_ttl: 1
           srgs:
           - srgs
@@ -41808,6 +42324,7 @@ components:
           use_copy_xfer_to_notify: false
           is_multimaster: false
           use_allow_active_dir: false
+          mgm_private_overridable: false
           records_monitored: false
           ms_secondaries:
           - is_master: false
@@ -41834,6 +42351,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41842,6 +42360,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           ms_dc_ns_record_creation:
           - address: Example address
             comment: Example comment
@@ -41860,6 +42379,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -41868,6 +42388,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           grid_primary:
           - preferred_primaries:
             - address: Example address
@@ -42005,6 +42526,7 @@ components:
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
+          uuid: Example uuid
           mask_prefix: Example mask_prefix
           extattrs-:
             key:
@@ -42016,6 +42538,7 @@ components:
               value: ""
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
+          mgm_private_overridable: false
           locked: false
           ms_read_only: false
           ms_managed: Example ms_managed
@@ -42031,6 +42554,7 @@ components:
           locked_by: Example locked_by
           using_srg_associations: false
           disable: false
+          mgm_private: false
           _ref: _ref
           comment: Example comment
       properties:
@@ -42072,6 +42596,7 @@ components:
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
+          uuid: Example uuid
           mask_prefix: Example mask_prefix
           extattrs-:
             key:
@@ -42083,6 +42608,7 @@ components:
               value: ""
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
+          mgm_private_overridable: false
           locked: false
           ms_read_only: false
           ms_managed: Example ms_managed
@@ -42098,6 +42624,7 @@ components:
           locked_by: Example locked_by
           using_srg_associations: false
           disable: false
+          mgm_private: false
           _ref: _ref
           comment: Example comment
       properties:
@@ -42139,6 +42666,7 @@ components:
           prefix: Example prefix
           zone_format: Example zone_format
           external_ns_group: Example external_ns_group
+          uuid: Example uuid
           forwarders_only: false
           mask_prefix: Example mask_prefix
           extattrs-:
@@ -42150,6 +42678,7 @@ components:
               value: ""
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
+          mgm_private_overridable: false
           locked: false
           ms_read_only: false
           ms_managed: Example ms_managed
@@ -42207,6 +42736,7 @@ components:
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
+          mgm_private: false
           _ref: _ref
           comment: Example comment
       properties:
@@ -42247,6 +42777,7 @@ components:
           prefix: Example prefix
           zone_format: Example zone_format
           external_ns_group: Example external_ns_group
+          uuid: Example uuid
           forwarders_only: false
           mask_prefix: Example mask_prefix
           extattrs-:
@@ -42258,6 +42789,7 @@ components:
               value: ""
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
+          mgm_private_overridable: false
           locked: false
           ms_read_only: false
           ms_managed: Example ms_managed
@@ -42315,6 +42847,7 @@ components:
             name: Example name
             forwarders_only: false
             use_override_forwarders: false
+          mgm_private: false
           _ref: _ref
           comment: Example comment
       properties:
@@ -42385,6 +42918,7 @@ components:
             lead: false
           zone_format: Example zone_format
           external_ns_group: Example external_ns_group
+          uuid: Example uuid
           soa_expire: 1
           mask_prefix: Example mask_prefix
           extattrs-:
@@ -42411,6 +42945,7 @@ components:
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
           soa_email: Example soa_email
+          mgm_private_overridable: false
           locked: false
           ms_read_only: false
           ms_managed: Example ms_managed
@@ -42429,6 +42964,7 @@ components:
           locked_by: Example locked_by
           using_srg_associations: false
           disable: false
+          mgm_private: false
           soa_negative_ttl: 1
           _ref: _ref
           comment: Example comment
@@ -42516,6 +43052,7 @@ components:
             lead: false
           zone_format: Example zone_format
           external_ns_group: Example external_ns_group
+          uuid: Example uuid
           soa_expire: 1
           mask_prefix: Example mask_prefix
           extattrs-:
@@ -42542,6 +43079,7 @@ components:
           display_domain: Example display_domain
           ms_sync_master_name: Example ms_sync_master_name
           soa_email: Example soa_email
+          mgm_private_overridable: false
           locked: false
           ms_read_only: false
           ms_managed: Example ms_managed
@@ -42560,6 +43098,7 @@ components:
           locked_by: Example locked_by
           using_srg_associations: false
           disable: false
+          mgm_private: false
           soa_negative_ttl: 1
           _ref: _ref
           comment: Example comment
@@ -42619,6 +43158,7 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           use_soa_email: false
+          uuid: Example uuid
           soa_expire: 1
           use_record_name_policy: false
           rpz_priority: 1
@@ -42837,6 +43377,7 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           use_soa_email: false
+          uuid: Example uuid
           soa_expire: 1
           use_record_name_policy: false
           rpz_priority: 1
@@ -43089,6 +43630,7 @@ components:
           _ref: _ref
           name: Example name
           is_default: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Recordnamepolicy'
@@ -43111,6 +43653,7 @@ components:
           _ref: _ref
           name: Example name
           is_default: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Recordnamepolicy'
@@ -43129,9 +43672,6 @@ components:
       description: The response format to create __Dns64group__ in object format.
       example:
         result:
-          extattrs-:
-            key:
-              value: ""
           clients:
           - address: Example address
             permission: Example permission
@@ -43140,11 +43680,16 @@ components:
           extattrs:
             key:
               value: ""
+          prefix: Example prefix
+          uuid: Example uuid
+          enable_dnssec_dns64: false
+          extattrs-:
+            key:
+              value: ""
           extattrs+:
             key:
               value: ""
           disable: false
-          prefix: Example prefix
           _ref: _ref
           mapped:
           - address: Example address
@@ -43158,7 +43703,6 @@ components:
             permission: Example permission
           - address: Example address
             permission: Example permission
-          enable_dnssec_dns64: false
       properties:
         result:
           $ref: '#/components/schemas/Dns64group'
@@ -43176,9 +43720,6 @@ components:
       description: The response format to update __Dns64group__ in object format.
       example:
         result:
-          extattrs-:
-            key:
-              value: ""
           clients:
           - address: Example address
             permission: Example permission
@@ -43187,11 +43728,16 @@ components:
           extattrs:
             key:
               value: ""
+          prefix: Example prefix
+          uuid: Example uuid
+          enable_dnssec_dns64: false
+          extattrs-:
+            key:
+              value: ""
           extattrs+:
             key:
               value: ""
           disable: false
-          prefix: Example prefix
           _ref: _ref
           mapped:
           - address: Example address
@@ -43205,7 +43751,6 @@ components:
             permission: Example permission
           - address: Example address
             permission: Example permission
-          enable_dnssec_dns64: false
       properties:
         result:
           $ref: '#/components/schemas/Dns64group'
@@ -43255,6 +43800,7 @@ components:
           principals:
           - principals
           - principals
+          uuid: Example uuid
           group: Example group
       properties:
         result:
@@ -43280,6 +43826,7 @@ components:
           principals:
           - principals
           - principals
+          uuid: Example uuid
           group: Example group
       properties:
         result:
@@ -43303,6 +43850,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           clusters:
           - ddns:principalcluster
           - ddns:principalcluster
@@ -43327,6 +43875,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           clusters:
           - ddns:principalcluster
           - ddns:principalcluster
@@ -43364,6 +43913,7 @@ components:
           - rp_zones
           view: Example view
           _ref: _ref
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Orderedresponsepolicyzones'
@@ -43382,24 +43932,25 @@ components:
       description: The response format to create __SharedrecordA__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          shared_record_group: Example shared_record_group
+          use_ttl: false
+          uuid: Example uuid
+          ipv4addr: Example ipv4addr
+          ttl: 1
+          dns_name: Example dns_name
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          shared_record_group: Example shared_record_group
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ipv4addr: Example ipv4addr
-          ttl: 1
-          dns_name: Example dns_name
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordA'
@@ -43417,24 +43968,25 @@ components:
       description: The response format to update __SharedrecordA__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          shared_record_group: Example shared_record_group
+          use_ttl: false
+          uuid: Example uuid
+          ipv4addr: Example ipv4addr
+          ttl: 1
+          dns_name: Example dns_name
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          shared_record_group: Example shared_record_group
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ipv4addr: Example ipv4addr
-          ttl: 1
-          dns_name: Example dns_name
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordA'
@@ -43453,24 +44005,25 @@ components:
       description: The response format to create __SharedrecordAaaa__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          shared_record_group: Example shared_record_group
+          use_ttl: false
+          uuid: Example uuid
+          ttl: 1
+          dns_name: Example dns_name
+          ipv6addr: Example ipv6addr
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          shared_record_group: Example shared_record_group
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ttl: 1
-          dns_name: Example dns_name
-          ipv6addr: Example ipv6addr
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordAaaa'
@@ -43488,24 +44041,25 @@ components:
       description: The response format to update __SharedrecordAaaa__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          shared_record_group: Example shared_record_group
+          use_ttl: false
+          uuid: Example uuid
+          ttl: 1
+          dns_name: Example dns_name
+          ipv6addr: Example ipv6addr
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          shared_record_group: Example shared_record_group
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
-          ttl: 1
-          dns_name: Example dns_name
-          ipv6addr: Example ipv6addr
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordAaaa'
@@ -43530,6 +44084,7 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -43566,6 +44121,7 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           canonical: Example canonical
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           extattrs-:
@@ -43604,6 +44160,7 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           preference: 1
+          uuid: Example uuid
           ttl: 1
           dns_mail_exchanger: Example dns_mail_exchanger
           dns_name: Example dns_name
@@ -43641,6 +44198,7 @@ components:
           shared_record_group: Example shared_record_group
           use_ttl: false
           preference: 1
+          uuid: Example uuid
           ttl: 1
           dns_mail_exchanger: Example dns_mail_exchanger
           dns_name: Example dns_name
@@ -43680,6 +44238,7 @@ components:
           weight: 1
           dns_target: Example dns_target
           priority: 1
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           target: Example target
@@ -43719,6 +44278,7 @@ components:
           weight: 1
           dns_target: Example dns_target
           priority: 1
+          uuid: Example uuid
           ttl: 1
           dns_name: Example dns_name
           target: Example target
@@ -43751,24 +44311,25 @@ components:
       description: The response format to create __SharedrecordTxt__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          shared_record_group: Example shared_record_group
+          use_ttl: false
+          uuid: Example uuid
+          ttl: 1
+          dns_name: Example dns_name
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          shared_record_group: Example shared_record_group
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
           text: Example text
-          ttl: 1
-          dns_name: Example dns_name
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordTxt'
@@ -43786,24 +44347,25 @@ components:
       description: The response format to update __SharedrecordTxt__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          shared_record_group: Example shared_record_group
+          use_ttl: false
+          uuid: Example uuid
+          ttl: 1
+          dns_name: Example dns_name
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          shared_record_group: Example shared_record_group
           disable: false
-          use_ttl: false
           _ref: _ref
           name: Example name
           comment: Example comment
           text: Example text
-          ttl: 1
-          dns_name: Example dns_name
       properties:
         result:
           $ref: '#/components/schemas/SharedrecordTxt'
@@ -43839,6 +44401,7 @@ components:
           - view: Example view
             fqdn: Example fqdn
           comment: Example comment
+          uuid: Example uuid
           record_name_policy: Example record_name_policy
           use_record_name_policy: false
       properties:
@@ -43875,6 +44438,7 @@ components:
           - view: Example view
             fqdn: Example fqdn
           comment: Example comment
+          uuid: Example uuid
           record_name_policy: Example record_name_policy
           use_record_name_policy: false
       properties:
@@ -43904,6 +44468,7 @@ components:
           rpz_qname_wait_recurse: false
           blacklist_log_query: false
           forward_only: false
+          uuid: Example uuid
           use_recursion: false
           nxdomain_log_query: false
           dnssec_trusted_keys:
@@ -43938,9 +44503,11 @@ components:
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           use_filter_aaaa: false
           recursion: false
           ddns_principal_group: Example ddns_principal_group
@@ -44020,6 +44587,7 @@ components:
           forwarders:
           - forwarders
           - forwarders
+          mgm_private: false
           name: Example name
           nxdomain_redirect: false
           nxdomain_redirect_addresses_v6:
@@ -44042,6 +44610,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -44050,6 +44619,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           cloud_info:
             delegated_member:
               name: Example name
@@ -44121,6 +44691,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -44129,6 +44700,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           _ref: _ref
           use_root_name_server: false
           nxdomain_redirect_addresses:
@@ -44169,6 +44741,7 @@ components:
           rpz_qname_wait_recurse: false
           blacklist_log_query: false
           forward_only: false
+          uuid: Example uuid
           use_recursion: false
           nxdomain_log_query: false
           dnssec_trusted_keys:
@@ -44203,9 +44776,11 @@ components:
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           - address: Example address
             _ref: _ref
             permission: Example permission
+            uuid: uuid
           use_filter_aaaa: false
           recursion: false
           ddns_principal_group: Example ddns_principal_group
@@ -44285,6 +44860,7 @@ components:
           forwarders:
           - forwarders
           - forwarders
+          mgm_private: false
           name: Example name
           nxdomain_redirect: false
           nxdomain_redirect_addresses_v6:
@@ -44307,6 +44883,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -44315,6 +44892,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           cloud_info:
             delegated_member:
               name: Example name
@@ -44386,6 +44964,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           - _struct: _struct
             address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -44394,6 +44973,7 @@ components:
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
+            uuid: uuid
           _ref: _ref
           use_root_name_server: false
           nxdomain_redirect_addresses:
@@ -44464,6 +45044,7 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           use_external_primary: false
+          uuid: Example uuid
           grid_primary:
           - preferred_primaries:
             - address: Example address
@@ -44620,6 +45201,7 @@ components:
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
           use_external_primary: false
+          uuid: Example uuid
           grid_primary:
           - preferred_primaries:
             - address: Example address
@@ -44768,6 +45350,7 @@ components:
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/NsgroupDelegation'
@@ -44814,6 +45397,7 @@ components:
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
             shared_with_ms_parent_delegation: false
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/NsgroupDelegation'
@@ -44886,6 +45470,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/NsgroupForwardingmember'
@@ -44957,6 +45542,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/NsgroupForwardingmember'
@@ -45005,6 +45591,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/NsgroupForwardstubserver'
@@ -45052,6 +45639,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/NsgroupForwardstubserver'
@@ -45127,6 +45715,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/NsgroupStubmember'
@@ -45201,6 +45790,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/NsgroupStubmember'

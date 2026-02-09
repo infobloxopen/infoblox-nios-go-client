@@ -6,8 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DnstapReceiverAddressOrFqdn** | Pointer to **string** | Address or FQDN of DNSTAP receiver. | [optional] 
 **DnstapReceiverPort** | Pointer to **int64** | DNSTAP receiver port number. | [optional] 
-**DnstapIdentity** | Pointer to **string** | DNSTAP id string. | [optional] [readonly] 
-**DnstapVersion** | Pointer to **string** | DNSTAP version. | [optional] [readonly] 
+**DnstapVersion** | Pointer to **string** | DNSTAP version. | [optional] 
 
 ## Methods
 
@@ -77,31 +76,6 @@ SetDnstapReceiverPort sets DnstapReceiverPort field to given value.
 `func (o *GridDnsDnstapSetting) HasDnstapReceiverPort() bool`
 
 HasDnstapReceiverPort returns a boolean if a field has been set.
-
-### GetDnstapIdentity
-
-`func (o *GridDnsDnstapSetting) GetDnstapIdentity() string`
-
-GetDnstapIdentity returns the DnstapIdentity field if non-nil, zero value otherwise.
-
-### GetDnstapIdentityOk
-
-`func (o *GridDnsDnstapSetting) GetDnstapIdentityOk() (*string, bool)`
-
-GetDnstapIdentityOk returns a tuple with the DnstapIdentity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDnstapIdentity
-
-`func (o *GridDnsDnstapSetting) SetDnstapIdentity(v string)`
-
-SetDnstapIdentity sets DnstapIdentity field to given value.
-
-### HasDnstapIdentity
-
-`func (o *GridDnsDnstapSetting) HasDnstapIdentity() bool`
-
-HasDnstapIdentity returns a boolean if a field has been set.
 
 ### GetDnstapVersion
 

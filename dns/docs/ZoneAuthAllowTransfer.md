@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Struct** | Pointer to **string** | The struct type of the object. The value must be one of &#39;addressac&#39; and &#39;tsigac&#39;. | [optional] 
 **Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Uuid** | Pointer to **string** | The uuid of the object. | [optional] 
 **Address** | Pointer to **string** | The address this rule applies to or \&quot;Any\&quot;. | [optional] 
 **Permission** | Pointer to **string** | The permission to use for this address. | [optional] 
 **TsigKey** | Pointer to **string** | A generated TSIG key. If the external primary server is a NIOS appliance running DNS One 2.x code, this can be set to :2xCOMPAT. | [optional] 
@@ -81,6 +82,31 @@ SetRef sets Ref field to given value.
 `func (o *ZoneAuthAllowTransfer) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *ZoneAuthAllowTransfer) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *ZoneAuthAllowTransfer) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *ZoneAuthAllowTransfer) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *ZoneAuthAllowTransfer) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 

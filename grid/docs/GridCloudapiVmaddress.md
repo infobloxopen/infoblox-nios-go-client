@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The IP address of the interface. | [optional] [readonly] 
 **AddressType** | Pointer to **string** | IP address type (Public, Private, Elastic, Floating, ...). | [optional] [readonly] 
 **AssociatedIp** | Pointer to **string** | Reference to associated IPv4 or IPv6 address. | [optional] [readonly] 
@@ -88,6 +89,31 @@ SetRef sets Ref field to given value.
 `func (o *GridCloudapiVmaddress) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridCloudapiVmaddress) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridCloudapiVmaddress) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridCloudapiVmaddress) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridCloudapiVmaddress) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 
