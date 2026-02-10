@@ -6764,7 +6764,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
       type: object
@@ -7720,7 +7720,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         comment:
@@ -9257,7 +9257,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         comment:
@@ -9355,7 +9355,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         abstract_type:
@@ -9614,7 +9614,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         field:
@@ -9963,7 +9963,7 @@ components:
           description: Reference to the topology rule
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
       type: object
     DtcTopology_rules_inner_oneOf_1_sources_inner:

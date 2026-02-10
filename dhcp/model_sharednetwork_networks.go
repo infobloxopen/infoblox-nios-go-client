@@ -21,7 +21,7 @@ var _ MappedNullable = &SharednetworkNetworks{}
 type SharednetworkNetworks struct {
 	// Reference to the Network.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid                 *string `json:"uuid,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

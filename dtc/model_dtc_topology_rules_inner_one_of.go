@@ -21,7 +21,7 @@ var _ MappedNullable = &DtcTopologyRulesInnerOneOf{}
 type DtcTopologyRulesInnerOneOf struct {
 	// Reference to the topology rule
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 }
 

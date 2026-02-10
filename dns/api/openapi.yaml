@@ -28678,7 +28678,7 @@ components:
           description: The reference to the object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -28733,7 +28733,7 @@ components:
           description: The reference to the object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -28788,7 +28788,7 @@ components:
           description: The reference to the object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -32629,7 +32629,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         address:
@@ -33027,7 +33027,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         comment:
@@ -35067,7 +35067,7 @@ components:
           description: The reference to the object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -35136,7 +35136,7 @@ components:
           description: The reference to the object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -35191,7 +35191,7 @@ components:
           description: The reference to the object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
         address:
           description: The address this rule applies to or "Any".

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Resource** | Pointer to **string** | The object retuned by the Smart Folder query. | [optional] [readonly] 
 **Value** | Pointer to [**SmartfolderChildrenValue**](SmartfolderChildrenValue.md) |  | [optional] 
 **ValueType** | Pointer to **string** | The type of the returned value. | [optional] [readonly] 

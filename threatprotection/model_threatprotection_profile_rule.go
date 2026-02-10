@@ -21,7 +21,7 @@ var _ MappedNullable = &ThreatprotectionProfileRule{}
 type ThreatprotectionProfileRule struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid   *string                            `json:"uuid,omitempty"`
 	Config *ThreatprotectionProfileRuleConfig `json:"config,omitempty"`
 	// Determines if the rule is enabled or not for the profile.

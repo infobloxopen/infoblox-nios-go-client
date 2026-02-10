@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Active** | Pointer to **bool** | Determines whether the distribution schedule is active. | [optional] 
 **StartTime** | Pointer to **int64** | The start time of the distribution. | [optional] 
 **TimeZone** | Pointer to **string** | Time zone of the distribution start time. | [optional] [readonly] 

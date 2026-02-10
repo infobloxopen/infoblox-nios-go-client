@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **ObjectType** | Pointer to **string** | The object type of the deleted object. This is undefined if the object is not supported. | [optional] [readonly] 
 **Result** | Pointer to [**DeletedObjects**](DeletedObjects.md) |  | [optional] 
 

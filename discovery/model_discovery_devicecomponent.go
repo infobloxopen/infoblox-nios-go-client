@@ -21,7 +21,7 @@ var _ MappedNullable = &DiscoveryDevicecomponent{}
 type DiscoveryDevicecomponent struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The component name.
 	ComponentName *string `json:"component_name,omitempty"`

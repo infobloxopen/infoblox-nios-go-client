@@ -21,7 +21,7 @@ var _ MappedNullable = &GridCloudapiCloudstatistics{}
 type GridCloudapiCloudstatistics struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// Ratio of allocated vs. available IPs
 	AllocatedAvailableRatio *int64 `json:"allocated_available_ratio,omitempty"`

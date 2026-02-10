@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Failures** | Pointer to **int64** | The number of failed requests. | [optional] [readonly] 
 **Finished** | Pointer to **int64** | The number of finished requests. | [optional] [readonly] 
 **Grouped** | Pointer to **string** | The type of grouping. | [optional] [readonly] 

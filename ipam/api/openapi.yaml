@@ -6297,7 +6297,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         comment:
@@ -7300,7 +7300,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         comment:
@@ -12717,7 +12717,7 @@ components:
           description: The reference to the DNS zone object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
       type: object
     ListNetworkviewResponse:
@@ -16005,7 +16005,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         cidr:
@@ -17164,7 +17164,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
       type: object
@@ -17328,7 +17328,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         associated_object:

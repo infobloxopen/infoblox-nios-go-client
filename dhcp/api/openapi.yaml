@@ -8948,7 +8948,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         dhcp_utilization:
@@ -16224,7 +16224,7 @@ components:
           description: Reference to the IPv6 Network.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
       type: object
     ListIpv6sharednetworkResponse:
@@ -21102,7 +21102,7 @@ components:
           description: Reference to the Network.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
       type: object
     ListSharednetworkResponse:
@@ -21144,7 +21144,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         network:

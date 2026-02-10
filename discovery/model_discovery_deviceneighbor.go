@@ -21,7 +21,7 @@ var _ MappedNullable = &DiscoveryDeviceneighbor{}
 type DiscoveryDeviceneighbor struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The IPv4 Address or IPv6 Address of the device neighbor.
 	Address *string `json:"address,omitempty"`

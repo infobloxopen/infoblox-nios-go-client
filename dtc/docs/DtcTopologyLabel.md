@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Field** | Pointer to **string** | The name of the field in the Topology database the label was obtained from. | [optional] [readonly] 
 **Label** | Pointer to **string** | The DTC Topology label name. | [optional] [readonly] 
 

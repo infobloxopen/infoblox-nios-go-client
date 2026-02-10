@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **AllowDistribution** | Pointer to **bool** | Determines if distribution is allowed for the Grid. | [optional] [readonly] 
 **AllowDistributionScheduling** | Pointer to **bool** | Determines if distribution scheduling is allowed. | [optional] [readonly] 
 **AllowUpgrade** | Pointer to **bool** | Determines if upgrade is allowed for the Grid. | [optional] [readonly] 

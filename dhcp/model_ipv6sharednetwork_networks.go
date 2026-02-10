@@ -21,7 +21,7 @@ var _ MappedNullable = &Ipv6sharednetworkNetworks{}
 type Ipv6sharednetworkNetworks struct {
 	// Reference to the IPv6 Network.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid                 *string `json:"uuid,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

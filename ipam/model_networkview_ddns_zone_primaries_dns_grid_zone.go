@@ -21,7 +21,7 @@ var _ MappedNullable = &NetworkviewDdnsZonePrimariesDnsGridZone{}
 type NetworkviewDdnsZonePrimariesDnsGridZone struct {
 	// The reference to the DNS zone object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid                 *string `json:"uuid,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -9128,7 +9128,7 @@ components:
           description: The reference to the object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
         address:
           description: The address this rule applies to or "Any".
@@ -9687,7 +9687,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         active_dashboard_type:
@@ -11092,7 +11092,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         comment:
@@ -11639,7 +11639,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         groups:
@@ -13288,7 +13288,7 @@ components:
           description: The reference to the LDAP auth service object.
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           type: string
       type: object
     CertificateAuthservice_remote_lookup_service:
@@ -13304,7 +13304,7 @@ components:
           readOnly: true
           type: string
         uuid:
-          description: The uuid of the object.
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         issuer:

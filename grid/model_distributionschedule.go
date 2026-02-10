@@ -21,7 +21,7 @@ var _ MappedNullable = &Distributionschedule{}
 type Distributionschedule struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// Determines whether the distribution schedule is active.
 	Active *bool `json:"active,omitempty"`

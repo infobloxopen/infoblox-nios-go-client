@@ -21,7 +21,7 @@ var _ MappedNullable = &Superhostchild{}
 type Superhostchild struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The record object, if supported by the WAPI. Otherwise, the value is \"None\".
 	AssociatedObject *string `json:"associated_object,omitempty"`

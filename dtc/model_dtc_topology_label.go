@@ -21,7 +21,7 @@ var _ MappedNullable = &DtcTopologyLabel{}
 type DtcTopologyLabel struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The name of the field in the Topology database the label was obtained from.
 	Field *string `json:"field,omitempty"`

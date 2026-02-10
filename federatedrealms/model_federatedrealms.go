@@ -21,7 +21,7 @@ var _ MappedNullable = &Federatedrealms{}
 type Federatedrealms struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// Federated realm id.
 	Id *string `json:"id,omitempty"`

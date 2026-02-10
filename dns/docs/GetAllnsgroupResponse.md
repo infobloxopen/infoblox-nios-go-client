@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for the name server group. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the name server group. | [optional] [readonly] 
 **Type** | Pointer to **string** | The type of the name server group. | [optional] [readonly] 

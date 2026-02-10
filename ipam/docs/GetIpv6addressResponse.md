@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for the address; maximum 256 characters. | [optional] [readonly] 
 **ConflictTypes** | Pointer to **[]string** | Types of the conflict. | [optional] [readonly] 
 **DiscoverNowStatus** | Pointer to **string** | Discover now status for this address. | [optional] [readonly] 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | Reference to the topology rule | [optional] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] 
 **DestType** | Pointer to **string** | The type of the destination for this rule. | [optional] 
 **DestinationLink** | Pointer to **string** | The reference to the destination object. | [optional] 
 **ReturnType** | Pointer to **string** | The type of the return value for this source. | [optional] 

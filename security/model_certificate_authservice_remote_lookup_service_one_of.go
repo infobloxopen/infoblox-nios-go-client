@@ -21,7 +21,7 @@ var _ MappedNullable = &CertificateAuthserviceRemoteLookupServiceOneOf{}
 type CertificateAuthserviceRemoteLookupServiceOneOf struct {
 	// The reference to the LDAP auth service object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid                 *string `json:"uuid,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

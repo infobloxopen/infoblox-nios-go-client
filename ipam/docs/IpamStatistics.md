@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Cidr** | Pointer to **int64** | The network CIDR. | [optional] [readonly] 
 **ConflictCount** | Pointer to **int64** | The number of conflicts discovered via network discovery. This attribute is only valid for a Network object. | [optional] [readonly] 
 **MsAdUserData** | Pointer to [**IpamStatisticsMsAdUserData**](IpamStatisticsMsAdUserData.md) |  | [optional] 

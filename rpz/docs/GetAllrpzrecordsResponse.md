@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **AlertType** | Pointer to **string** | The alert type of the record associated with the allrpzrecords object. | [optional] [readonly] 
 **Comment** | Pointer to **string** | The descriptive comment of the record associated with the allrpzrecords object. | [optional] [readonly] 
 **Disable** | Pointer to **bool** | The disable flag of the record associated with the allrpzrecords object (if present). | [optional] [readonly] 

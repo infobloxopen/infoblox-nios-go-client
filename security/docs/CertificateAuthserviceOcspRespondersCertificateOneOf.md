@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the OCSP responder certificate. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Issuer** | Pointer to **string** | The certificate issuer subject name. | [optional] [readonly] 
 **Serial** | Pointer to **string** | The certificate serial number in hex format. | [optional] [readonly] 
 **Subject** | Pointer to **string** | The certificate subject name. | [optional] [readonly] 

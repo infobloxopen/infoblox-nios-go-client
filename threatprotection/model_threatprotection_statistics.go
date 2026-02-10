@@ -21,7 +21,7 @@ var _ MappedNullable = &ThreatprotectionStatistics{}
 type ThreatprotectionStatistics struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The Grid member name to get threat protection statistics. If nothing is specified then event statistics is returned for the Grid.
 	Member *string `json:"member,omitempty"`

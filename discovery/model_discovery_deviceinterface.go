@@ -21,7 +21,7 @@ var _ MappedNullable = &DiscoveryDeviceinterface{}
 type DiscoveryDeviceinterface struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// Administrative state of the interface.
 	AdminStatus         *string                                      `json:"admin_status,omitempty"`

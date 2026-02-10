@@ -21,7 +21,7 @@ var _ MappedNullable = &Ipv6address{}
 type Ipv6address struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// Comment for the address; maximum 256 characters.
 	Comment *string `json:"comment,omitempty"`

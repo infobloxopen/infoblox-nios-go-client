@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | Reference to the IPv6 Network. | [optional] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] 
 
 ## Methods
 

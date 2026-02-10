@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **LastSequenceId** | Pointer to **string** | The last returned sequence ID. | [optional] [readonly] 
 **Object** | Pointer to **string** | The record object when supported by WAPI. Otherwise, the value is \&quot;None\&quot;. | [optional] [readonly] 
 **ObjectType** | Pointer to **string** | The object type. This is undefined if the object is not supported. | [optional] [readonly] 

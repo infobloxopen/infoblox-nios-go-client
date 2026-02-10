@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Description** | Pointer to **string** | Additional information about the VRF. | [optional] [readonly] 
 **Device** | Pointer to **string** | The device to which the VRF belongs. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the VRF. | [optional] [readonly] 

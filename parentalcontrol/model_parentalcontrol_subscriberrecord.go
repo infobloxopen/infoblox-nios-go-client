@@ -21,7 +21,7 @@ var _ MappedNullable = &ParentalcontrolSubscriberrecord{}
 type ParentalcontrolSubscriberrecord struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// accounting_session_id
 	AccountingSessionId *string `json:"accounting_session_id,omitempty"`

@@ -21,7 +21,7 @@ var _ MappedNullable = &HsmAllgroups{}
 type HsmAllgroups struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The list of HSM groups configured on the appliance.
 	Groups []string `json:"groups,omitempty"`

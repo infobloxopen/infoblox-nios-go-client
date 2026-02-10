@@ -21,7 +21,7 @@ var _ MappedNullable = &DtcMonitor{}
 type DtcMonitor struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// Comment for this DTC monitor; maximum 256 characters.
 	Comment *string `json:"comment,omitempty"`

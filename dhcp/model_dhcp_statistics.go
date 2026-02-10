@@ -21,7 +21,7 @@ var _ MappedNullable = &DhcpStatistics{}
 type DhcpStatistics struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The percentage of the total DHCP utilization of DHCP objects multiplied by 1000. This is the percentage of the total number of available IP addresses belonging to the object versus the total number of all IP addresses in object.
 	DhcpUtilization *int64 `json:"dhcp_utilization,omitempty"`

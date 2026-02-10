@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Address** | Pointer to **string** | The Grid endpoint IPv4 Address or IPv6 Address or Fully-Qualified Domain Name (FQDN). | [optional] [readonly] 
 **Comment** | Pointer to **string** | The Grid endpoint descriptive comment. | [optional] [readonly] 
 **Disable** | Pointer to **bool** | Determines whether a Grid endpoint is disabled or not. When this is set to False, the Grid endpoint is enabled. | [optional] [readonly] 

@@ -21,7 +21,7 @@ var _ MappedNullable = &Upgradestatus{}
 type Upgradestatus struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// Determines if distribution is allowed for the Grid.
 	AllowDistribution *bool `json:"allow_distribution,omitempty"`

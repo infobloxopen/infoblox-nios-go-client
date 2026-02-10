@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **ComponentName** | Pointer to **string** | The component name. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the device component. | [optional] [readonly] 
 **Device** | Pointer to **string** | A reference to a device, to which this component belongs to. | [optional] [readonly] 

@@ -21,7 +21,7 @@ var _ MappedNullable = &CertificateAuthserviceOcspRespondersCertificateOneOf{}
 type CertificateAuthserviceOcspRespondersCertificateOneOf struct {
 	// The reference to the OCSP responder certificate.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The certificate issuer subject name.
 	Issuer *string `json:"issuer,omitempty"`

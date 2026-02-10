@@ -21,7 +21,7 @@ var _ MappedNullable = &Tftpfiledir{}
 type Tftpfiledir struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
-	// The uuid of the object.
+	// Universally Unique ID assigned for this object.
 	Uuid *string `json:"uuid,omitempty"`
 	// The path to the directory that contains file or subdirectory.
 	Directory *string `json:"directory,omitempty"`

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the DNS zone object. | [optional] 
-**Uuid** | Pointer to **string** | The uuid of the object. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] 
 
 ## Methods
 
