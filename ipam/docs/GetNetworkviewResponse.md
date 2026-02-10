@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AssociatedDnsViews** | Pointer to **[]string** | The list of DNS views associated with this network view. | [optional] [readonly] 
 **AssociatedMembers** | Pointer to [**[]NetworkviewAssociatedMembers**](NetworkviewAssociatedMembers.md) | The list of members associated with a network view. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**NetworkviewCloudInfo**](NetworkviewCloudInfo.md) |  | [optional] 
@@ -67,6 +68,31 @@ SetRef sets Ref field to given value.
 `func (o *GetNetworkviewResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetNetworkviewResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetNetworkviewResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetNetworkviewResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetNetworkviewResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAssociatedDnsViews
 

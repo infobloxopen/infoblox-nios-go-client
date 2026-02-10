@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **Domain** | Pointer to **string** | The reference to the Active Directory Domain to which the site belongs. | [optional] 
 **Name** | Pointer to **string** | The name of the site properties object for the Active Directory Sites. | [optional] 
 **Networks** | Pointer to **[]string** | The list of networks to which the device interfaces belong. | [optional] 
@@ -52,6 +53,31 @@ SetRef sets Ref field to given value.
 `func (o *MsserverAdsitesSite) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *MsserverAdsitesSite) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *MsserverAdsitesSite) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *MsserverAdsitesSite) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *MsserverAdsitesSite) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetDomain
 

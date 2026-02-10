@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AddressType** | Pointer to **string** | Type of the DHCP IPv6 Host Address object. | [optional] 
 **ConfigureForDhcp** | Pointer to **bool** | Set this to True to enable the DHCP configuration for this IPv6 host address. | [optional] 
 **DiscoverNowStatus** | Pointer to **string** | The discovery status of this IPv6 Host Address. | [optional] [readonly] 
@@ -80,6 +81,31 @@ SetRef sets Ref field to given value.
 `func (o *GetRecordHostIpv6addrResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordHostIpv6addrResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordHostIpv6addrResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordHostIpv6addrResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordHostIpv6addrResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddressType
 

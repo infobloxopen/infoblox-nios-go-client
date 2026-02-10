@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox NOTIFICATION API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for notification:rest:endpoint objects
   name: NotificationRestEndpoint
@@ -1148,6 +1148,7 @@ components:
         client_certificate_subject: Example client_certificate_subject
         server_cert_validation: Example server_cert_validation
         sync_disabled: false
+        uuid: Example uuid
         uri: Example uri
         timeout: 1
         client_certificate_valid_from: 1
@@ -1179,6 +1180,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         client_certificate_subject:
@@ -1398,6 +1404,7 @@ components:
         name: Example name
         comment: Example comment
         template_type: Example template_type
+        uuid: Example uuid
         added_on: 1
         parameters:
         - name: Example name
@@ -1413,6 +1420,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         action_name:
@@ -1551,6 +1563,7 @@ components:
         event_deduplication_fields:
         - event_deduplication_fields
         - event_deduplication_fields
+        uuid: Example uuid
         publish_settings:
           enabled_attributes:
           - enabled_attributes
@@ -1610,6 +1623,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         all_members:
@@ -2070,6 +2088,7 @@ components:
           client_certificate_subject: Example client_certificate_subject
           server_cert_validation: Example server_cert_validation
           sync_disabled: false
+          uuid: Example uuid
           uri: Example uri
           timeout: 1
           client_certificate_valid_from: 1
@@ -2129,6 +2148,7 @@ components:
           client_certificate_subject: Example client_certificate_subject
           server_cert_validation: Example server_cert_validation
           sync_disabled: false
+          uuid: Example uuid
           uri: Example uri
           timeout: 1
           client_certificate_valid_from: 1
@@ -2193,6 +2213,7 @@ components:
           name: Example name
           comment: Example comment
           template_type: Example template_type
+          uuid: Example uuid
           added_on: 1
           parameters:
           - name: Example name
@@ -2227,6 +2248,7 @@ components:
           event_deduplication_fields:
           - event_deduplication_fields
           - event_deduplication_fields
+          uuid: Example uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes
@@ -2304,6 +2326,7 @@ components:
           event_deduplication_fields:
           - event_deduplication_fields
           - event_deduplication_fields
+          uuid: Example uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes

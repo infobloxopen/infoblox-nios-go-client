@@ -58,8 +58,6 @@ docs/CreateGridServicerestartGroupResponse.md
 docs/CreateGridServicerestartGroupResponseAsObject.md
 docs/CreateMemberResponse.md
 docs/CreateMemberResponseAsObject.md
-docs/CreateMemberdfpResponse.md
-docs/CreateMemberdfpResponseAsObject.md
 docs/CreateNatgroupResponse.md
 docs/CreateNatgroupResponseAsObject.md
 docs/CreateUpgradegroupResponse.md
@@ -623,8 +621,6 @@ model_create_grid_servicerestart_group_response.go
 model_create_grid_servicerestart_group_response_as_object.go
 model_create_member_response.go
 model_create_member_response_as_object.go
-model_create_memberdfp_response.go
-model_create_memberdfp_response_as_object.go
 model_create_natgroup_response.go
 model_create_natgroup_response_as_object.go
 model_create_upgradegroup_response.go

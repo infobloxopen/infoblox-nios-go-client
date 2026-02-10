@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DHCP API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for dhcp:statistics objects
   name: DhcpStatistics
@@ -8939,11 +8939,16 @@ components:
         static_hosts: 1
         total_hosts: 1
         dynamic_hosts: 1
+        uuid: uuid
         dhcp_utilization_status: Example dhcp_utilization_status
         dhcp_utilization: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         dhcp_utilization:
@@ -9010,6 +9015,7 @@ components:
         association_type: Example association_type
         ms_state: Example ms_state
         ms_shared_secret: Example ms_shared_secret
+        uuid: Example uuid
         ms_switchover_interval: 1
         recycle_leases: false
         extattrs-:
@@ -9050,6 +9056,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         association_type:
@@ -9345,10 +9356,16 @@ components:
         _ref: _ref
         name: Example name
         type: Example type
+        uuid: Example uuid
         space: Example space
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         code:
@@ -9433,9 +9450,15 @@ components:
         option_definitions:
         - option_definitions
         - option_definitions
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -9504,9 +9527,15 @@ components:
         - fingerprint
         name: Example name
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -9580,6 +9609,7 @@ components:
             value: ""
         default_mac_address_expiration: 1
         never_expires: false
+        uuid: Example uuid
         enforce_expiration_times: false
         extattrs-:
           key:
@@ -9606,6 +9636,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -9767,9 +9802,15 @@ components:
           name: Example name
           value: Example value
         comment: Example comment
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -9887,6 +9928,7 @@ components:
           key:
             value: ""
         next_server: Example next_server
+        uuid: Example uuid
         bootfile: Example bootfile
         apply_as_class: false
         extattrs-:
@@ -9916,6 +9958,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         apply_as_class:
@@ -10068,6 +10115,7 @@ components:
         circuit_id_substring_length: 1
         circuit_id_name: Example circuit_id_name
         remote_id_name: Example remote_id_name
+        uuid: Example uuid
         is_remote_id_substring: false
         is_circuit_id_substring: false
         remote_id_substring_length: 1
@@ -10087,6 +10135,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         circuit_id_name:
@@ -10214,19 +10267,21 @@ components:
     Fingerprint:
       additionalProperties: false
       example:
-        extattrs-:
+        extattrs:
           key:
             value: ""
-        extattrs:
+        ipv6_option_sequence:
+        - ipv6_option_sequence
+        - ipv6_option_sequence
+        type: Example type
+        uuid: Example uuid
+        extattrs-:
           key:
             value: ""
         extattrs+:
           key:
             value: ""
         disable: false
-        ipv6_option_sequence:
-        - ipv6_option_sequence
-        - ipv6_option_sequence
         vendor_id:
         - vendor_id
         - vendor_id
@@ -10234,13 +10289,17 @@ components:
         name: Example name
         device_class: Example device_class
         comment: Example comment
-        type: Example type
         option_sequence:
         - option_sequence
         - option_sequence
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -10347,6 +10406,7 @@ components:
         always_update_dns: false
         device_type: Example device_type
         use_pxe_lease_time: false
+        uuid: Example uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -10515,7 +10575,10 @@ components:
         reserved_interface: Example reserved_interface
         ddns_domainname: Example ddns_domainname
         ms_server:
+          address: Example address
+          name: Example name
           ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         template: Example template
         client_identifier_prepend_zero: false
         network_view: Example network_view
@@ -10575,6 +10638,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         agent_circuit_id:
@@ -11812,11 +11880,29 @@ components:
       type: object
     FixedaddressMsServer:
       example:
+        address: Example address
+        name: Example name
         ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
+          type: string
         ipv4addr:
-          description: The IPv4 Address or FQDN of the Microsoft server.
+          description: The IPv4 Address of the Microsoft server.
           example: Example ipv4addr
+          readOnly: true
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Microsoft server.
+          example: Example ipv6addr
+          readOnly: true
+          type: string
+        name:
+          description: The name of the Microsoft server.
+          example: Example name
+          readOnly: true
           type: string
       type: object
     FixedaddressOptions:
@@ -11959,6 +12045,7 @@ components:
         use_bootserver: false
         nextserver: Example nextserver
         use_pxe_lease_time: false
+        uuid: Example uuid
         enable_ddns: false
         use_logic_filter_rules: false
         extattrs-:
@@ -12009,6 +12096,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         bootfile:
@@ -12247,10 +12339,16 @@ components:
         _ref: _ref
         name: Example name
         type: Example type
+        uuid: Example uuid
         space: Example space
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         code:
@@ -12330,9 +12428,15 @@ components:
         option_definitions:
         - option_definitions
         - option_definitions
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -12409,10 +12513,16 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: Example uuid
         option_space: Example option_space
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         apply_as_class:
@@ -12536,7 +12646,9 @@ components:
       additionalProperties: false
       example:
         match_client: Example match_client
+        always_update_dns: false
         device_type: Example device_type
+        uuid: Example uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -12574,6 +12686,21 @@ components:
           name: Example name
           value: Example value
         allow_telnet: false
+        ms_iaid: 1
+        ms_options:
+        - vendor_class: Example vendor_class
+          num: 1
+          name: Example name
+          user_class: Example user_class
+          type: Example type
+          value: Example value
+        - vendor_class: Example vendor_class
+          num: 1
+          name: Example name
+          user_class: Example user_class
+          type: Example type
+          value: Example value
+        use_enable_ddns: false
         use_preferred_lifetime: false
         discovered_data:
           vport_name: Example vport_name
@@ -12689,6 +12816,11 @@ components:
         name: Example name
         disable_discovery: false
         reserved_interface: Example reserved_interface
+        ms_server:
+          address: Example address
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         template: Example template
         network_view: Example network_view
         duid: Example duid
@@ -12707,6 +12839,7 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         use_snmp_credential: false
+        enable_ddns: false
         ipv6addr: Ipv6fixedaddress_ipv6addr
         network: Example network
         use_logic_filter_rules: false
@@ -12735,6 +12868,7 @@ components:
           comment: Example comment
         comment: Example comment
         device_vendor: Example device_vendor
+        use_ms_options: false
         logic_filter_rules:
         - filter: Example filter
           type: Example type
@@ -12745,6 +12879,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address_type:
@@ -12763,6 +12902,11 @@ components:
           description: "This field controls whether the credential is used for both\
             \ the Telnet and SSH credentials. If set to False, the credential is used\
             \ only for SSH."
+          example: false
+          type: boolean
+        always_update_dns:
+          description: "This field controls whether only the DHCPv6 server is allowed\
+            \ to update DNS, regardless of the DHCPv6 client requests."
           example: false
           type: boolean
         cli_credentials:
@@ -12835,6 +12979,12 @@ components:
           description: The DUID value for this IPv6 fixed address.
           example: Example duid
           type: string
+        enable_ddns:
+          description: "The dynamic DNS updates flag of a DHCP IPv6 fixed address\
+            \ object. If set to True, the DHCPv6 server sends DDNS updates to DNS\
+            \ servers in the same Grid, and to external DNS servers."
+          example: false
+          type: boolean
         enable_immediate_discovery:
           description: Determines if the discovery for the IPv6 fixed address should
             be immediately enabled.
@@ -12900,6 +13050,21 @@ components:
           type: string
         ms_ad_user_data:
           $ref: '#/components/schemas/Ipv6fixedaddressMsAdUserData'
+        ms_iaid:
+          description: IAID associated with Microsoft IPv6 fixed address.
+          example: 1
+          format: int64
+          type: integer
+        ms_options:
+          description: This field contains the Microsoft DHCPv6 options for this IPv6
+            fixed address.
+          enum:
+          - msdhcpoption
+          items:
+            $ref: '#/components/schemas/Ipv6fixedaddressMsOptions'
+          type: array
+        ms_server:
+          $ref: '#/components/schemas/Ipv6fixedaddressMsServer'
         name:
           description: This field contains the name of this IPv6 fixed address.
           example: Example name
@@ -12962,8 +13127,16 @@ components:
           description: "Use flag for: domain_name_servers"
           example: false
           type: boolean
+        use_enable_ddns:
+          description: "Use flag for: enable_ddns"
+          example: false
+          type: boolean
         use_logic_filter_rules:
           description: "Use flag for: logic_filter_rules"
+          example: false
+          type: boolean
+        use_ms_options:
+          description: "Use flag for: ms_options"
           example: false
           type: boolean
         use_options:
@@ -13826,6 +13999,81 @@ components:
           readOnly: true
           type: integer
       type: object
+    Ipv6fixedaddressMsOptions:
+      example:
+        vendor_class: Example vendor_class
+        num: 1
+        name: Example name
+        user_class: Example user_class
+        type: Example type
+        value: Example value
+      properties:
+        num:
+          description: The code of the DHCP option.
+          example: 1
+          format: int64
+          type: integer
+        value:
+          description: Value of the DHCP option.
+          example: Example value
+          type: string
+        name:
+          description: The name of the DHCP option.
+          example: Example name
+          type: string
+        vendor_class:
+          description: The name of the vendor class with which this DHCP option is
+            associated.
+          example: Example vendor_class
+          type: string
+        user_class:
+          description: The name of the user class with which this DHCP option is associated.
+          example: Example user_class
+          type: string
+        type:
+          description: "The DHCP option type. Valid values are: * \"16-bit signed\
+            \ integer\" * \"16-bit unsigned integer\" * \"32-bit signed integer\"\
+            \ * \"32-bit unsigned integer\" * \"64-bit unsigned integer\" * \"8-bit\
+            \ signed integer\" * \"8-bit unsigned integer (1,2,4,8)\" * \"8-bit unsigned\
+            \ integer\" * \"array of 16-bit integer\" * \"array of 16-bit unsigned\
+            \ integer\" * \"array of 32-bit integer\" * \"array of 32-bit unsigned\
+            \ integer\" * \"array of 64-bit unsigned integer\" * \"array of 8-bit\
+            \ integer\" * \"array of 8-bit unsigned integer\" * \"array of ip-address\
+            \ pair\" * \"array of ip-address\" * \"array of string\" * \"binary\"\
+            \ * \"boolean array of ip-address\" * \"boolean\" * \"boolean-text\" *\
+            \ \"domain-list\" * \"domain-name\" * \"encapsulated\" * \"ip-address\"\
+            \ * \"string\" * \"text\""
+          example: Example type
+          readOnly: true
+          type: string
+      type: object
+    Ipv6fixedaddressMsServer:
+      example:
+        address: Example address
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
+      properties:
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
+          type: string
+        ipv4addr:
+          description: The IPv4 Address of the Microsoft server.
+          example: Example ipv4addr
+          readOnly: true
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Microsoft server.
+          example: Example ipv6addr
+          readOnly: true
+          type: string
+        name:
+          description: The name of the Microsoft server.
+          example: Example name
+          readOnly: true
+          type: string
+      type: object
     Ipv6fixedaddressOptions:
       example:
         vendor_class: Example vendor_class
@@ -13968,6 +14216,7 @@ components:
           key:
             value: ""
         offset: 1
+        uuid: Example uuid
         use_valid_lifetime: false
         domain_name_servers:
         - domain_name_servers
@@ -14008,6 +14257,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -14194,9 +14448,6 @@ components:
     Ipv6range:
       additionalProperties: false
       example:
-        template: Example template
-        network_view: Example network_view
-        discovery_member: Example discovery_member
         subscribe_settings:
           mapped_ea_attributes:
           - mapped_ea: Example mapped_ea
@@ -14207,6 +14458,69 @@ components:
           - enabled_attributes
           - enabled_attributes
         end_addr: Example end_addr
+        always_update_dns: false
+        uuid: Example uuid
+        use_valid_lifetime: false
+        ipv6_prefix_bits: 1
+        use_blackout_setting: false
+        exclude:
+        - start_address: Example start_address
+          comment: Example comment
+          end_address: Example end_address
+        - start_address: Example start_address
+          comment: Example comment
+          end_address: Example end_address
+        ms_options:
+        - vendor_class: Example vendor_class
+          num: 1
+          name: Example name
+          user_class: Example user_class
+          type: Example type
+          value: Example value
+        - vendor_class: Example vendor_class
+          num: 1
+          name: Example name
+          user_class: Example user_class
+          type: Example type
+          value: Example value
+        start_addr: Example start_addr
+        use_enable_ddns: false
+        use_preferred_lifetime: false
+        port_control_blackout_setting:
+          enable_blackout: false
+          blackout_schedule:
+            month: 1
+            year: 1
+            weekdays:
+            - weekdays
+            - weekdays
+            disable: false
+            recurring_time: 1
+            repeat: Example repeat
+            minutes_past_hour: 1
+            time_zone: Example time_zone
+            every: 1
+            day_of_month: 1
+            hour_of_day: 1
+            frequency: Example frequency
+          blackout_duration: 1
+        same_port_control_discovery_blackout: false
+        use_discovery_basic_polling_settings: false
+        enable_immediate_discovery: false
+        preferred_lifetime: 1
+        endpoint_sources:
+        - pxgrid:endpoint
+        - pxgrid:endpoint
+        ipv6_start_prefix: Example ipv6_start_prefix
+        name: Example name
+        ms_server:
+          address: Example address
+          name: Example name
+          ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
+        template: Example template
+        network_view: Example network_view
+        discovery_member: Example discovery_member
         cloud_info:
           delegated_member:
             name: Example name
@@ -14249,7 +14563,7 @@ components:
           switch_port_data_collection_polling_interval: 1
           port_scanning: false
           auto_arp_refresh_before_switch_port_polling: false
-        ipv6_prefix_bits: 1
+        enable_ddns: false
         network: Example network
         ipv6_end_prefix: Example ipv6_end_prefix
         recycle_leases: false
@@ -14267,15 +14581,7 @@ components:
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         server_association_type: Example server_association_type
-        use_blackout_setting: false
-        exclude:
-        - start_address: Example start_address
-          comment: Example comment
-          end_address: Example end_address
-        - start_address: Example start_address
-          comment: Example comment
-          end_address: Example end_address
-        start_addr: Example start_addr
+        valid_lifetime: 1
         extattrs:
           key:
             value: ""
@@ -14285,37 +14591,13 @@ components:
         - filter: Example filter
           permission: Example permission
         address_type: Example address_type
-        port_control_blackout_setting:
-          enable_blackout: false
-          blackout_schedule:
-            month: 1
-            year: 1
-            weekdays:
-            - weekdays
-            - weekdays
-            disable: false
-            recurring_time: 1
-            repeat: Example repeat
-            minutes_past_hour: 1
-            time_zone: Example time_zone
-            every: 1
-            day_of_month: 1
-            hour_of_day: 1
-            frequency: Example frequency
-          blackout_duration: 1
-        same_port_control_discovery_blackout: false
-        use_discovery_basic_polling_settings: false
-        enable_immediate_discovery: false
-        endpoint_sources:
-        - pxgrid:endpoint
-        - pxgrid:endpoint
+        ms_preference: 1
         use_recycle_leases: false
         disable: false
         restart_if_needed: false
-        ipv6_start_prefix: Example ipv6_start_prefix
         _ref: _ref
-        name: Example name
         comment: Example comment
+        use_ms_options: false
         logic_filter_rules:
         - filter: Example filter
           type: Example type
@@ -14345,6 +14627,11 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
+          readOnly: true
+          type: string
         address_type:
           description: "Type of a DHCP IPv6 Range object. Valid values are \"ADDRESS\"\
             , \"PREFIX\", or \"BOTH\". When the address type is \"ADDRESS\", values\
@@ -14355,6 +14642,11 @@ components:
             \ and 'ipv6_prefix_bits' are all required."
           example: Example address_type
           type: string
+        always_update_dns:
+          description: "This field controls whether only the DHCPv6 server is allowed\
+            \ to update DNS, regardless of the DHCPv6 client requests."
+          example: false
+          type: boolean
         cloud_info:
           $ref: '#/components/schemas/Ipv6rangeCloudInfo'
         comment:
@@ -14385,6 +14677,12 @@ components:
           description: The member that will run discovery for this range.
           example: Example discovery_member
           type: string
+        enable_ddns:
+          description: "The dynamic DNS updates flag of a DHCP IPv6 range object.\
+            \ If set to True, the DHCPv6 server sends DDNS updates to DNS servers\
+            \ in the same Grid, and to external DNS servers."
+          example: false
+          type: boolean
         enable_discovery:
           description: "Determines whether a discovery is enabled or not for this\
             \ range. When this is set to False, the discovery for this range is disabled."
@@ -14465,6 +14763,21 @@ components:
           type: array
         member:
           $ref: '#/components/schemas/Ipv6rangeMember'
+        ms_options:
+          description: This field contains the Microsoft DHCP options for this IPv6
+            range.
+          enum:
+          - msdhcpoption
+          items:
+            $ref: '#/components/schemas/Ipv6rangeMsOptions'
+          type: array
+        ms_preference:
+          description: This field contains the MS preference for this IPv6 Range.
+          example: 1
+          format: int64
+          type: integer
+        ms_server:
+          $ref: '#/components/schemas/Ipv6rangeMsServer'
         name:
           description: This field contains the name of the Microsoft scope.
           example: Example name
@@ -14488,6 +14801,11 @@ components:
           type: array
         port_control_blackout_setting:
           $ref: '#/components/schemas/Ipv6rangePortControlBlackoutSetting'
+        preferred_lifetime:
+          description: This field contains the IPv6 preferred lifetime.
+          example: 1
+          format: int64
+          type: integer
         recycle_leases:
           description: "If the field is set to True, the leases are kept in the Recycle\
             \ Bin until one week after expiration. Otherwise, the leases are permanently\
@@ -14505,8 +14823,11 @@ components:
           example: false
           type: boolean
         server_association_type:
-          description: "The type of server that is going to serve the range. Valid\
-            \ values are: * MEMBER * NONE"
+          description: The type of server that is going to serve the range.
+          enum:
+          - NONE
+          - MEMBER
+          - MS_SERVER
           example: Example server_association_type
           type: string
         start_addr:
@@ -14530,12 +14851,24 @@ components:
           description: "Use flag for: discovery_basic_poll_settings"
           example: false
           type: boolean
+        use_enable_ddns:
+          description: "Use flag for: enable_ddns"
+          example: false
+          type: boolean
         use_enable_discovery:
           description: "Use flag for: discovery_member , enable_discovery"
           example: false
           type: boolean
         use_logic_filter_rules:
           description: "Use flag for: logic_filter_rules"
+          example: false
+          type: boolean
+        use_ms_options:
+          description: "Use flag for: ms_options"
+          example: false
+          type: boolean
+        use_preferred_lifetime:
+          description: "Use flag for: preferred_lifetime"
           example: false
           type: boolean
         use_recycle_leases:
@@ -14546,6 +14879,15 @@ components:
           description: "Use flag for: subscribe_settings"
           example: false
           type: boolean
+        use_valid_lifetime:
+          description: "Use flag for: valid_lifetime"
+          example: false
+          type: boolean
+        valid_lifetime:
+          description: This field contains the IPv6 valid lifetime.
+          example: 1
+          format: int64
+          type: integer
       type: object
       x-tf-extattrs-all: true
       x-tf-skip-expand: true
@@ -15017,6 +15359,81 @@ components:
           example: Example name
           type: string
       type: object
+    Ipv6rangeMsOptions:
+      example:
+        vendor_class: Example vendor_class
+        num: 1
+        name: Example name
+        user_class: Example user_class
+        type: Example type
+        value: Example value
+      properties:
+        num:
+          description: The code of the DHCP option.
+          example: 1
+          format: int64
+          type: integer
+        value:
+          description: Value of the DHCP option.
+          example: Example value
+          type: string
+        name:
+          description: The name of the DHCP option.
+          example: Example name
+          type: string
+        vendor_class:
+          description: The name of the vendor class with which this DHCP option is
+            associated.
+          example: Example vendor_class
+          type: string
+        user_class:
+          description: The name of the user class with which this DHCP option is associated.
+          example: Example user_class
+          type: string
+        type:
+          description: "The DHCP option type. Valid values are: * \"16-bit signed\
+            \ integer\" * \"16-bit unsigned integer\" * \"32-bit signed integer\"\
+            \ * \"32-bit unsigned integer\" * \"64-bit unsigned integer\" * \"8-bit\
+            \ signed integer\" * \"8-bit unsigned integer (1,2,4,8)\" * \"8-bit unsigned\
+            \ integer\" * \"array of 16-bit integer\" * \"array of 16-bit unsigned\
+            \ integer\" * \"array of 32-bit integer\" * \"array of 32-bit unsigned\
+            \ integer\" * \"array of 64-bit unsigned integer\" * \"array of 8-bit\
+            \ integer\" * \"array of 8-bit unsigned integer\" * \"array of ip-address\
+            \ pair\" * \"array of ip-address\" * \"array of string\" * \"binary\"\
+            \ * \"boolean array of ip-address\" * \"boolean\" * \"boolean-text\" *\
+            \ \"domain-list\" * \"domain-name\" * \"encapsulated\" * \"ip-address\"\
+            \ * \"string\" * \"text\""
+          example: Example type
+          readOnly: true
+          type: string
+      type: object
+    Ipv6rangeMsServer:
+      example:
+        address: Example address
+        name: Example name
+        ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
+      properties:
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
+          type: string
+        ipv4addr:
+          description: The IPv4 Address of the Microsoft server.
+          example: Example ipv4addr
+          readOnly: true
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Microsoft server.
+          example: Example ipv6addr
+          readOnly: true
+          type: string
+        name:
+          description: The name of the Microsoft server.
+          example: Example name
+          readOnly: true
+          type: string
+      type: object
     Ipv6rangeOptionFilterRules:
       example:
         filter: Example filter
@@ -15261,6 +15678,7 @@ components:
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         offset: 1
+        uuid: Example uuid
         recycle_leases: false
         use_logic_filter_rules: false
         use_recycle_leases: false
@@ -15288,6 +15706,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         cloud_api_compatible:
@@ -15492,8 +15915,11 @@ components:
         use_ddns_use_option81: false
         networks:
         - _ref: _ref
+          uuid: uuid
         - _ref: _ref
+          uuid: uuid
         use_ddns_ttl: false
+        uuid: Example uuid
         use_ddns_generate_hostname: false
         use_valid_lifetime: false
         enable_ddns: false
@@ -15549,6 +15975,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -15787,9 +16218,13 @@ components:
     Ipv6sharednetworkNetworks:
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: Reference to the IPv6 Network.
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object.
           type: string
       type: object
     ListIpv6sharednetworkResponse:
@@ -15827,6 +16262,7 @@ components:
         cltt: 1
         never_starts: false
         on_commit: Example on_commit
+        uuid: Example uuid
         ipv6_iaid: Example ipv6_iaid
         tstp: 1
         ipv6_prefix_bits: 1
@@ -15955,6 +16391,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address:
@@ -16987,6 +17428,7 @@ components:
             value: ""
         expiration_time: 1
         never_expires: false
+        uuid: Example uuid
         guest_last_name: Example guest_last_name
         mac: Example mac
         filter: Example filter
@@ -17010,6 +17452,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         authentication_time:
@@ -17211,7 +17658,10 @@ components:
         - pxgrid:endpoint
         high_water_mark_reset: 1
         ms_server:
+          address: Example address
+          name: Example name
           ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         template: Example template
         use_enable_dhcp_thresholds: false
         cloud_info:
@@ -17282,7 +17732,10 @@ components:
         restart_if_needed: false
         low_water_mark: 1
         split_member:
+          address: Example address
+          name: Example name
           ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         logic_filter_rules:
         - filter: Example filter
           type: Example type
@@ -17324,6 +17777,7 @@ components:
         use_bootserver: false
         nextserver: Example nextserver
         use_pxe_lease_time: false
+        uuid: Example uuid
         is_split_scope: false
         use_unknown_clients: false
         use_lease_scavenge_time: false
@@ -17396,6 +17850,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         always_update_dns:
@@ -18518,11 +18977,29 @@ components:
       type: object
     RangeMsServer:
       example:
+        address: Example address
+        name: Example name
         ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
+          type: string
         ipv4addr:
-          description: The IPv4 Address or FQDN of the Microsoft server.
+          description: The IPv4 Address of the Microsoft server.
           example: Example ipv4addr
+          readOnly: true
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Microsoft server.
+          example: Example ipv6addr
+          readOnly: true
+          type: string
+        name:
+          description: The name of the Microsoft server.
+          example: Example name
+          readOnly: true
           type: string
       type: object
     RangeNacFilterRules:
@@ -18743,11 +19220,29 @@ components:
       type: object
     RangeSplitMember:
       example:
+        address: Example address
+        name: Example name
         ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
+          type: string
         ipv4addr:
-          description: The IPv4 Address or FQDN of the Microsoft server.
+          description: The IPv4 Address of the Microsoft server.
           example: Example ipv4addr
+          readOnly: true
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Microsoft server.
+          example: Example ipv6addr
+          readOnly: true
+          type: string
+        name:
+          description: The name of the Microsoft server.
+          example: Example name
+          readOnly: true
           type: string
       type: object
     RangeSubscribeSettings:
@@ -18851,6 +19346,7 @@ components:
           permission: Example permission
         nextserver: Example nextserver
         use_pxe_lease_time: false
+        uuid: Example uuid
         use_unknown_clients: false
         use_ddns_domainname: false
         use_lease_scavenge_time: false
@@ -18909,7 +19405,10 @@ components:
         ddns_domainname: Example ddns_domainname
         high_water_mark_reset: 1
         ms_server:
+          address: Example address
+          name: Example name
           ipv4addr: Example ipv4addr
+          ipv6addr: Example ipv6addr
         use_enable_dhcp_thresholds: false
         cloud_api_compatible: false
         lease_scavenge_time: 1
@@ -18970,6 +19469,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         bootfile:
@@ -19517,11 +20021,29 @@ components:
       type: object
     RangetemplateMsServer:
       example:
+        address: Example address
+        name: Example name
         ipv4addr: Example ipv4addr
+        ipv6addr: Example ipv6addr
       properties:
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
+          type: string
         ipv4addr:
-          description: The IPv4 Address or FQDN of the Microsoft server.
+          description: The IPv4 Address of the Microsoft server.
           example: Example ipv4addr
+          readOnly: true
+          type: string
+        ipv6addr:
+          description: The IPv6 Address of the Microsoft server.
+          example: Example ipv6addr
+          readOnly: true
+          type: string
+        name:
+          description: The name of the Microsoft server.
+          example: Example name
+          readOnly: true
           type: string
       type: object
     RangetemplateNacFilterRules:
@@ -19652,6 +20174,7 @@ components:
           name: Example name
           value: Example value
         use_pxe_lease_time: false
+        uuid: Example uuid
         use_valid_lifetime: false
         use_ddns_domainname: false
         options:
@@ -19722,6 +20245,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         address_type:
@@ -20118,6 +20646,7 @@ components:
         use_ddns_update_fixed_addresses: false
         static_hosts: 1
         use_pxe_lease_time: false
+        uuid: Example uuid
         use_authority: false
         use_lease_scavenge_time: false
         options:
@@ -20153,7 +20682,9 @@ components:
         lease_scavenge_time: 1
         networks:
         - _ref: _ref
+          uuid: uuid
         - _ref: _ref
+          uuid: uuid
         use_ddns_ttl: false
         use_ddns_generate_hostname: false
         enable_ddns: false
@@ -20191,6 +20722,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         authority:
@@ -20560,9 +21096,13 @@ components:
     SharednetworkNetworks:
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: Reference to the Network.
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object.
           type: string
       type: object
     ListSharednetworkResponse:
@@ -20596,10 +21136,15 @@ components:
         - range
         - range
         _ref: _ref
+        uuid: uuid
         network: Example network
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         network:
@@ -20690,6 +21235,7 @@ components:
           association_type: Example association_type
           ms_state: Example ms_state
           ms_shared_secret: Example ms_shared_secret
+          uuid: Example uuid
           ms_switchover_interval: 1
           recycle_leases: false
           extattrs-:
@@ -20748,6 +21294,7 @@ components:
           association_type: Example association_type
           ms_state: Example ms_state
           ms_shared_secret: Example ms_shared_secret
+          uuid: Example uuid
           ms_switchover_interval: 1
           recycle_leases: false
           extattrs-:
@@ -20808,6 +21355,7 @@ components:
           _ref: _ref
           name: Example name
           type: Example type
+          uuid: Example uuid
           space: Example space
       properties:
         result:
@@ -20831,6 +21379,7 @@ components:
           _ref: _ref
           name: Example name
           type: Example type
+          uuid: Example uuid
           space: Example space
       properties:
         result:
@@ -20857,6 +21406,7 @@ components:
           option_definitions:
           - option_definitions
           - option_definitions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Dhcpoptionspace'
@@ -20881,6 +21431,7 @@ components:
           option_definitions:
           - option_definitions
           - option_definitions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Dhcpoptionspace'
@@ -20914,6 +21465,7 @@ components:
           - fingerprint
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Filterfingerprint'
@@ -20946,6 +21498,7 @@ components:
           - fingerprint
           name: Example name
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Filterfingerprint'
@@ -20970,6 +21523,7 @@ components:
               value: ""
           default_mac_address_expiration: 1
           never_expires: false
+          uuid: Example uuid
           enforce_expiration_times: false
           extattrs-:
             key:
@@ -21016,6 +21570,7 @@ components:
               value: ""
           default_mac_address_expiration: 1
           never_expires: false
+          uuid: Example uuid
           enforce_expiration_times: false
           extattrs-:
             key:
@@ -21082,6 +21637,7 @@ components:
             name: Example name
             value: Example value
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Filternac'
@@ -21124,6 +21680,7 @@ components:
             name: Example name
             value: Example value
           comment: Example comment
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Filternac'
@@ -21147,6 +21704,7 @@ components:
             key:
               value: ""
           next_server: Example next_server
+          uuid: Example uuid
           bootfile: Example bootfile
           apply_as_class: false
           extattrs-:
@@ -21195,6 +21753,7 @@ components:
             key:
               value: ""
           next_server: Example next_server
+          uuid: Example uuid
           bootfile: Example bootfile
           apply_as_class: false
           extattrs-:
@@ -21245,6 +21804,7 @@ components:
           circuit_id_substring_length: 1
           circuit_id_name: Example circuit_id_name
           remote_id_name: Example remote_id_name
+          uuid: Example uuid
           is_remote_id_substring: false
           is_circuit_id_substring: false
           remote_id_substring_length: 1
@@ -21284,6 +21844,7 @@ components:
           circuit_id_substring_length: 1
           circuit_id_name: Example circuit_id_name
           remote_id_name: Example remote_id_name
+          uuid: Example uuid
           is_remote_id_substring: false
           is_circuit_id_substring: false
           remote_id_substring_length: 1
@@ -21318,19 +21879,21 @@ components:
       description: The response format to create __Fingerprint__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          ipv6_option_sequence:
+          - ipv6_option_sequence
+          - ipv6_option_sequence
+          type: Example type
+          uuid: Example uuid
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
           disable: false
-          ipv6_option_sequence:
-          - ipv6_option_sequence
-          - ipv6_option_sequence
           vendor_id:
           - vendor_id
           - vendor_id
@@ -21338,7 +21901,6 @@ components:
           name: Example name
           device_class: Example device_class
           comment: Example comment
-          type: Example type
           option_sequence:
           - option_sequence
           - option_sequence
@@ -21359,19 +21921,21 @@ components:
       description: The response format to update __Fingerprint__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          ipv6_option_sequence:
+          - ipv6_option_sequence
+          - ipv6_option_sequence
+          type: Example type
+          uuid: Example uuid
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
           disable: false
-          ipv6_option_sequence:
-          - ipv6_option_sequence
-          - ipv6_option_sequence
           vendor_id:
           - vendor_id
           - vendor_id
@@ -21379,7 +21943,6 @@ components:
           name: Example name
           device_class: Example device_class
           comment: Example comment
-          type: Example type
           option_sequence:
           - option_sequence
           - option_sequence
@@ -21429,6 +21992,7 @@ components:
           always_update_dns: false
           device_type: Example device_type
           use_pxe_lease_time: false
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -21597,7 +22161,10 @@ components:
           reserved_interface: Example reserved_interface
           ddns_domainname: Example ddns_domainname
           ms_server:
+            address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           template: Example template
           client_identifier_prepend_zero: false
           network_view: Example network_view
@@ -21679,6 +22246,7 @@ components:
           always_update_dns: false
           device_type: Example device_type
           use_pxe_lease_time: false
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -21847,7 +22415,10 @@ components:
           reserved_interface: Example reserved_interface
           ddns_domainname: Example ddns_domainname
           ms_server:
+            address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           template: Example template
           client_identifier_prepend_zero: false
           network_view: Example network_view
@@ -21926,6 +22497,7 @@ components:
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           enable_ddns: false
           use_logic_filter_rules: false
           extattrs-:
@@ -21994,6 +22566,7 @@ components:
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           enable_ddns: false
           use_logic_filter_rules: false
           extattrs-:
@@ -22064,6 +22637,7 @@ components:
           _ref: _ref
           name: Example name
           type: Example type
+          uuid: Example uuid
           space: Example space
       properties:
         result:
@@ -22087,6 +22661,7 @@ components:
           _ref: _ref
           name: Example name
           type: Example type
+          uuid: Example uuid
           space: Example space
       properties:
         result:
@@ -22114,6 +22689,7 @@ components:
           option_definitions:
           - option_definitions
           - option_definitions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Ipv6dhcpoptionspace'
@@ -22139,6 +22715,7 @@ components:
           option_definitions:
           - option_definitions
           - option_definitions
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/Ipv6dhcpoptionspace'
@@ -22183,6 +22760,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           option_space: Example option_space
       properties:
         result:
@@ -22227,6 +22805,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: Example uuid
           option_space: Example option_space
       properties:
         result:
@@ -22267,7 +22846,9 @@ components:
       example:
         result:
           match_client: Example match_client
+          always_update_dns: false
           device_type: Example device_type
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -22305,6 +22886,21 @@ components:
             name: Example name
             value: Example value
           allow_telnet: false
+          ms_iaid: 1
+          ms_options:
+          - vendor_class: Example vendor_class
+            num: 1
+            name: Example name
+            user_class: Example user_class
+            type: Example type
+            value: Example value
+          - vendor_class: Example vendor_class
+            num: 1
+            name: Example name
+            user_class: Example user_class
+            type: Example type
+            value: Example value
+          use_enable_ddns: false
           use_preferred_lifetime: false
           discovered_data:
             vport_name: Example vport_name
@@ -22420,6 +23016,11 @@ components:
           name: Example name
           disable_discovery: false
           reserved_interface: Example reserved_interface
+          ms_server:
+            address: Example address
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           template: Example template
           network_view: Example network_view
           duid: Example duid
@@ -22438,6 +23039,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           use_snmp_credential: false
+          enable_ddns: false
           ipv6addr: Ipv6fixedaddress_ipv6addr
           network: Example network
           use_logic_filter_rules: false
@@ -22466,6 +23068,7 @@ components:
             comment: Example comment
           comment: Example comment
           device_vendor: Example device_vendor
+          use_ms_options: false
           logic_filter_rules:
           - filter: Example filter
             type: Example type
@@ -22491,7 +23094,9 @@ components:
       example:
         result:
           match_client: Example match_client
+          always_update_dns: false
           device_type: Example device_type
+          uuid: Example uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -22529,6 +23134,21 @@ components:
             name: Example name
             value: Example value
           allow_telnet: false
+          ms_iaid: 1
+          ms_options:
+          - vendor_class: Example vendor_class
+            num: 1
+            name: Example name
+            user_class: Example user_class
+            type: Example type
+            value: Example value
+          - vendor_class: Example vendor_class
+            num: 1
+            name: Example name
+            user_class: Example user_class
+            type: Example type
+            value: Example value
+          use_enable_ddns: false
           use_preferred_lifetime: false
           discovered_data:
             vport_name: Example vport_name
@@ -22644,6 +23264,11 @@ components:
           name: Example name
           disable_discovery: false
           reserved_interface: Example reserved_interface
+          ms_server:
+            address: Example address
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           template: Example template
           network_view: Example network_view
           duid: Example duid
@@ -22662,6 +23287,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           use_snmp_credential: false
+          enable_ddns: false
           ipv6addr: Ipv6fixedaddress_ipv6addr
           network: Example network
           use_logic_filter_rules: false
@@ -22690,6 +23316,7 @@ components:
             comment: Example comment
           comment: Example comment
           device_vendor: Example device_vendor
+          use_ms_options: false
           logic_filter_rules:
           - filter: Example filter
             type: Example type
@@ -22721,6 +23348,7 @@ components:
             key:
               value: ""
           offset: 1
+          uuid: Example uuid
           use_valid_lifetime: false
           domain_name_servers:
           - domain_name_servers
@@ -22781,6 +23409,7 @@ components:
             key:
               value: ""
           offset: 1
+          uuid: Example uuid
           use_valid_lifetime: false
           domain_name_servers:
           - domain_name_servers
@@ -22836,9 +23465,6 @@ components:
       description: The response format to create __Ipv6range__ in object format.
       example:
         result:
-          template: Example template
-          network_view: Example network_view
-          discovery_member: Example discovery_member
           subscribe_settings:
             mapped_ea_attributes:
             - mapped_ea: Example mapped_ea
@@ -22849,6 +23475,69 @@ components:
             - enabled_attributes
             - enabled_attributes
           end_addr: Example end_addr
+          always_update_dns: false
+          uuid: Example uuid
+          use_valid_lifetime: false
+          ipv6_prefix_bits: 1
+          use_blackout_setting: false
+          exclude:
+          - start_address: Example start_address
+            comment: Example comment
+            end_address: Example end_address
+          - start_address: Example start_address
+            comment: Example comment
+            end_address: Example end_address
+          ms_options:
+          - vendor_class: Example vendor_class
+            num: 1
+            name: Example name
+            user_class: Example user_class
+            type: Example type
+            value: Example value
+          - vendor_class: Example vendor_class
+            num: 1
+            name: Example name
+            user_class: Example user_class
+            type: Example type
+            value: Example value
+          start_addr: Example start_addr
+          use_enable_ddns: false
+          use_preferred_lifetime: false
+          port_control_blackout_setting:
+            enable_blackout: false
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            blackout_duration: 1
+          same_port_control_discovery_blackout: false
+          use_discovery_basic_polling_settings: false
+          enable_immediate_discovery: false
+          preferred_lifetime: 1
+          endpoint_sources:
+          - pxgrid:endpoint
+          - pxgrid:endpoint
+          ipv6_start_prefix: Example ipv6_start_prefix
+          name: Example name
+          ms_server:
+            address: Example address
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
+          template: Example template
+          network_view: Example network_view
+          discovery_member: Example discovery_member
           cloud_info:
             delegated_member:
               name: Example name
@@ -22891,7 +23580,7 @@ components:
             switch_port_data_collection_polling_interval: 1
             port_scanning: false
             auto_arp_refresh_before_switch_port_polling: false
-          ipv6_prefix_bits: 1
+          enable_ddns: false
           network: Example network
           ipv6_end_prefix: Example ipv6_end_prefix
           recycle_leases: false
@@ -22909,15 +23598,7 @@ components:
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           server_association_type: Example server_association_type
-          use_blackout_setting: false
-          exclude:
-          - start_address: Example start_address
-            comment: Example comment
-            end_address: Example end_address
-          - start_address: Example start_address
-            comment: Example comment
-            end_address: Example end_address
-          start_addr: Example start_addr
+          valid_lifetime: 1
           extattrs:
             key:
               value: ""
@@ -22927,37 +23608,13 @@ components:
           - filter: Example filter
             permission: Example permission
           address_type: Example address_type
-          port_control_blackout_setting:
-            enable_blackout: false
-            blackout_schedule:
-              month: 1
-              year: 1
-              weekdays:
-              - weekdays
-              - weekdays
-              disable: false
-              recurring_time: 1
-              repeat: Example repeat
-              minutes_past_hour: 1
-              time_zone: Example time_zone
-              every: 1
-              day_of_month: 1
-              hour_of_day: 1
-              frequency: Example frequency
-            blackout_duration: 1
-          same_port_control_discovery_blackout: false
-          use_discovery_basic_polling_settings: false
-          enable_immediate_discovery: false
-          endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          ms_preference: 1
           use_recycle_leases: false
           disable: false
           restart_if_needed: false
-          ipv6_start_prefix: Example ipv6_start_prefix
           _ref: _ref
-          name: Example name
           comment: Example comment
+          use_ms_options: false
           logic_filter_rules:
           - filter: Example filter
             type: Example type
@@ -22999,9 +23656,6 @@ components:
       description: The response format to update __Ipv6range__ in object format.
       example:
         result:
-          template: Example template
-          network_view: Example network_view
-          discovery_member: Example discovery_member
           subscribe_settings:
             mapped_ea_attributes:
             - mapped_ea: Example mapped_ea
@@ -23012,6 +23666,69 @@ components:
             - enabled_attributes
             - enabled_attributes
           end_addr: Example end_addr
+          always_update_dns: false
+          uuid: Example uuid
+          use_valid_lifetime: false
+          ipv6_prefix_bits: 1
+          use_blackout_setting: false
+          exclude:
+          - start_address: Example start_address
+            comment: Example comment
+            end_address: Example end_address
+          - start_address: Example start_address
+            comment: Example comment
+            end_address: Example end_address
+          ms_options:
+          - vendor_class: Example vendor_class
+            num: 1
+            name: Example name
+            user_class: Example user_class
+            type: Example type
+            value: Example value
+          - vendor_class: Example vendor_class
+            num: 1
+            name: Example name
+            user_class: Example user_class
+            type: Example type
+            value: Example value
+          start_addr: Example start_addr
+          use_enable_ddns: false
+          use_preferred_lifetime: false
+          port_control_blackout_setting:
+            enable_blackout: false
+            blackout_schedule:
+              month: 1
+              year: 1
+              weekdays:
+              - weekdays
+              - weekdays
+              disable: false
+              recurring_time: 1
+              repeat: Example repeat
+              minutes_past_hour: 1
+              time_zone: Example time_zone
+              every: 1
+              day_of_month: 1
+              hour_of_day: 1
+              frequency: Example frequency
+            blackout_duration: 1
+          same_port_control_discovery_blackout: false
+          use_discovery_basic_polling_settings: false
+          enable_immediate_discovery: false
+          preferred_lifetime: 1
+          endpoint_sources:
+          - pxgrid:endpoint
+          - pxgrid:endpoint
+          ipv6_start_prefix: Example ipv6_start_prefix
+          name: Example name
+          ms_server:
+            address: Example address
+            name: Example name
+            ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
+          template: Example template
+          network_view: Example network_view
+          discovery_member: Example discovery_member
           cloud_info:
             delegated_member:
               name: Example name
@@ -23054,7 +23771,7 @@ components:
             switch_port_data_collection_polling_interval: 1
             port_scanning: false
             auto_arp_refresh_before_switch_port_polling: false
-          ipv6_prefix_bits: 1
+          enable_ddns: false
           network: Example network
           ipv6_end_prefix: Example ipv6_end_prefix
           recycle_leases: false
@@ -23072,15 +23789,7 @@ components:
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           server_association_type: Example server_association_type
-          use_blackout_setting: false
-          exclude:
-          - start_address: Example start_address
-            comment: Example comment
-            end_address: Example end_address
-          - start_address: Example start_address
-            comment: Example comment
-            end_address: Example end_address
-          start_addr: Example start_addr
+          valid_lifetime: 1
           extattrs:
             key:
               value: ""
@@ -23090,37 +23799,13 @@ components:
           - filter: Example filter
             permission: Example permission
           address_type: Example address_type
-          port_control_blackout_setting:
-            enable_blackout: false
-            blackout_schedule:
-              month: 1
-              year: 1
-              weekdays:
-              - weekdays
-              - weekdays
-              disable: false
-              recurring_time: 1
-              repeat: Example repeat
-              minutes_past_hour: 1
-              time_zone: Example time_zone
-              every: 1
-              day_of_month: 1
-              hour_of_day: 1
-              frequency: Example frequency
-            blackout_duration: 1
-          same_port_control_discovery_blackout: false
-          use_discovery_basic_polling_settings: false
-          enable_immediate_discovery: false
-          endpoint_sources:
-          - pxgrid:endpoint
-          - pxgrid:endpoint
+          ms_preference: 1
           use_recycle_leases: false
           disable: false
           restart_if_needed: false
-          ipv6_start_prefix: Example ipv6_start_prefix
           _ref: _ref
-          name: Example name
           comment: Example comment
+          use_ms_options: false
           logic_filter_rules:
           - filter: Example filter
             type: Example type
@@ -23174,6 +23859,7 @@ components:
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           offset: 1
+          uuid: Example uuid
           recycle_leases: false
           use_logic_filter_rules: false
           use_recycle_leases: false
@@ -23226,6 +23912,7 @@ components:
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           offset: 1
+          uuid: Example uuid
           recycle_leases: false
           use_logic_filter_rules: false
           use_recycle_leases: false
@@ -23272,8 +23959,11 @@ components:
           use_ddns_use_option81: false
           networks:
           - _ref: _ref
+            uuid: uuid
           - _ref: _ref
+            uuid: uuid
           use_ddns_ttl: false
+          uuid: Example uuid
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
           enable_ddns: false
@@ -23347,8 +24037,11 @@ components:
           use_ddns_use_option81: false
           networks:
           - _ref: _ref
+            uuid: uuid
           - _ref: _ref
+            uuid: uuid
           use_ddns_ttl: false
+          uuid: Example uuid
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
           enable_ddns: false
@@ -23452,6 +24145,7 @@ components:
               value: ""
           expiration_time: 1
           never_expires: false
+          uuid: Example uuid
           guest_last_name: Example guest_last_name
           mac: Example mac
           filter: Example filter
@@ -23498,6 +24192,7 @@ components:
               value: ""
           expiration_time: 1
           never_expires: false
+          uuid: Example uuid
           guest_last_name: Example guest_last_name
           mac: Example mac
           filter: Example filter
@@ -23604,7 +24299,10 @@ components:
           - pxgrid:endpoint
           high_water_mark_reset: 1
           ms_server:
+            address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           template: Example template
           use_enable_dhcp_thresholds: false
           cloud_info:
@@ -23675,7 +24373,10 @@ components:
           restart_if_needed: false
           low_water_mark: 1
           split_member:
+            address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           logic_filter_rules:
           - filter: Example filter
             type: Example type
@@ -23717,6 +24418,7 @@ components:
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           is_split_scope: false
           use_unknown_clients: false
           use_lease_scavenge_time: false
@@ -23871,7 +24573,10 @@ components:
           - pxgrid:endpoint
           high_water_mark_reset: 1
           ms_server:
+            address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           template: Example template
           use_enable_dhcp_thresholds: false
           cloud_info:
@@ -23942,7 +24647,10 @@ components:
           restart_if_needed: false
           low_water_mark: 1
           split_member:
+            address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           logic_filter_rules:
           - filter: Example filter
             type: Example type
@@ -23984,6 +24692,7 @@ components:
           use_bootserver: false
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           is_split_scope: false
           use_unknown_clients: false
           use_lease_scavenge_time: false
@@ -24088,6 +24797,7 @@ components:
             permission: Example permission
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_unknown_clients: false
           use_ddns_domainname: false
           use_lease_scavenge_time: false
@@ -24146,7 +24856,10 @@ components:
           ddns_domainname: Example ddns_domainname
           high_water_mark_reset: 1
           ms_server:
+            address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           use_enable_dhcp_thresholds: false
           cloud_api_compatible: false
           lease_scavenge_time: 1
@@ -24238,6 +24951,7 @@ components:
             permission: Example permission
           nextserver: Example nextserver
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_unknown_clients: false
           use_ddns_domainname: false
           use_lease_scavenge_time: false
@@ -24296,7 +25010,10 @@ components:
           ddns_domainname: Example ddns_domainname
           high_water_mark_reset: 1
           ms_server:
+            address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
+            ipv6addr: Example ipv6addr
           use_enable_dhcp_thresholds: false
           cloud_api_compatible: false
           lease_scavenge_time: 1
@@ -24389,6 +25106,7 @@ components:
             name: Example name
             value: Example value
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_valid_lifetime: false
           use_ddns_domainname: false
           options:
@@ -24490,6 +25208,7 @@ components:
             name: Example name
             value: Example value
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_valid_lifetime: false
           use_ddns_domainname: false
           options:
@@ -24584,6 +25303,7 @@ components:
           use_ddns_update_fixed_addresses: false
           static_hosts: 1
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_authority: false
           use_lease_scavenge_time: false
           options:
@@ -24619,7 +25339,9 @@ components:
           lease_scavenge_time: 1
           networks:
           - _ref: _ref
+            uuid: uuid
           - _ref: _ref
+            uuid: uuid
           use_ddns_ttl: false
           use_ddns_generate_hostname: false
           enable_ddns: false
@@ -24680,6 +25402,7 @@ components:
           use_ddns_update_fixed_addresses: false
           static_hosts: 1
           use_pxe_lease_time: false
+          uuid: Example uuid
           use_authority: false
           use_lease_scavenge_time: false
           options:
@@ -24715,7 +25438,9 @@ components:
           lease_scavenge_time: 1
           networks:
           - _ref: _ref
+            uuid: uuid
           - _ref: _ref
+            uuid: uuid
           use_ddns_ttl: false
           use_ddns_generate_hostname: false
           enable_ddns: false
@@ -24780,6 +25505,7 @@ components:
           - range
           - range
           _ref: _ref
+          uuid: uuid
           network: Example network
       properties:
         result:

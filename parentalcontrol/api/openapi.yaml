@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox PARENTALCONTROL API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for parentalcontrol:avp objects
   name: ParentalcontrolAvp
@@ -1779,6 +1779,7 @@ components:
         name: Example name
         comment: Example comment
         type: 1
+        uuid: Example uuid
         domain_types:
         - domain_types
         - domain_types
@@ -1786,6 +1787,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -1876,10 +1882,16 @@ components:
       example:
         _ref: _ref
         name: Example name
+        uuid: Example uuid
         value: Example value
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         name:
@@ -1928,6 +1940,7 @@ components:
         alt_subscriber_id_subexpression: 1
         enable_mgmt_only_nas: false
         proxy_password: Example proxy_password
+        uuid: Example uuid
         ancillaries:
         - ancillaries
         - ancillaries
@@ -1956,6 +1969,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         alt_subscriber_id:
@@ -2133,6 +2151,7 @@ components:
         prefix: 1
         flags: Example flags
         ipsd: Example ipsd
+        uuid: uuid
         op_code: Example op_code
         white_list: Example white_list
         subscriber_id: Example subscriber_id
@@ -2158,6 +2177,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object.
           readOnly: true
           type: string
         accounting_session_id:
@@ -2307,6 +2330,7 @@ components:
         dca_sub_query_count: false
         proxy_rpz_passthru: false
         blocking_ipv4_vip1: Example blocking_ipv4_vip1
+        uuid: Example uuid
         api_members:
         - name: Example name
         - name: Example name
@@ -2333,6 +2357,8 @@ components:
         extattrs:
           key:
             value: ""
+        global_content_policy_bit_numbers: Example global_content_policy_bit_numbers
+        enable_gcp_precedence_over_allowed_list: false
         global_allow_list_rpz: 1
         subscriber_collection_type: Example subscriber_collection_type
         nas_port: 1
@@ -2345,6 +2371,7 @@ components:
         blocking_ipv6_vip1: Example blocking_ipv6_vip1
         dca_sub_bw_list: false
         blocking_ipv6_vip2: Example blocking_ipv6_vip2
+        enable_global_content_policy: false
         spms:
         - ip_address: Example ip_address
         - ip_address: Example ip_address
@@ -2356,6 +2383,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         abss:
@@ -2411,8 +2443,16 @@ components:
           description: Enable/disable the DCA subscriber query count.
           example: false
           type: boolean
+        enable_gcp_precedence_over_allowed_list:
+          description: Enable/disable global content filter policy over allowed list.
+          example: false
+          type: boolean
         enable_global_allow_list_rpz:
           description: Enable/disable global allow list RPZ setting.
+          example: false
+          type: boolean
+        enable_global_content_policy:
+          description: Enable/disable global content policy setting.
           example: false
           type: boolean
         enable_rpz_filtering_bypass:
@@ -2452,6 +2492,10 @@ components:
           example: 1
           format: int64
           type: integer
+        global_content_policy_bit_numbers:
+          description: Global content filter policy bit numbers in range of 0 to 127.
+          example: Example global_content_policy_bit_numbers
+          type: string
         maximum_subscribers:
           description: The max number of subscribers for the site. It is used to configure
             the cache size.
@@ -2664,6 +2708,7 @@ components:
           name: Example name
           comment: Example comment
           type: 1
+          uuid: Example uuid
           domain_types:
           - domain_types
           - domain_types
@@ -2694,6 +2739,7 @@ components:
           name: Example name
           comment: Example comment
           type: 1
+          uuid: Example uuid
           domain_types:
           - domain_types
           - domain_types
@@ -2720,6 +2766,7 @@ components:
         result:
           _ref: _ref
           name: Example name
+          uuid: Example uuid
           value: Example value
       properties:
         result:
@@ -2742,6 +2789,7 @@ components:
         result:
           _ref: _ref
           name: Example name
+          uuid: Example uuid
           value: Example value
       properties:
         result:
@@ -2778,6 +2826,7 @@ components:
           alt_subscriber_id_subexpression: 1
           enable_mgmt_only_nas: false
           proxy_password: Example proxy_password
+          uuid: Example uuid
           ancillaries:
           - ancillaries
           - ancillaries
@@ -2827,6 +2876,7 @@ components:
           prefix: 1
           flags: Example flags
           ipsd: Example ipsd
+          uuid: uuid
           op_code: Example op_code
           white_list: Example white_list
           subscriber_id: Example subscriber_id
@@ -2872,6 +2922,7 @@ components:
           prefix: 1
           flags: Example flags
           ipsd: Example ipsd
+          uuid: uuid
           op_code: Example op_code
           white_list: Example white_list
           subscriber_id: Example subscriber_id
@@ -2930,6 +2981,7 @@ components:
           dca_sub_query_count: false
           proxy_rpz_passthru: false
           blocking_ipv4_vip1: Example blocking_ipv4_vip1
+          uuid: Example uuid
           api_members:
           - name: Example name
           - name: Example name
@@ -2956,6 +3008,8 @@ components:
           extattrs:
             key:
               value: ""
+          global_content_policy_bit_numbers: Example global_content_policy_bit_numbers
+          enable_gcp_precedence_over_allowed_list: false
           global_allow_list_rpz: 1
           subscriber_collection_type: Example subscriber_collection_type
           nas_port: 1
@@ -2968,6 +3022,7 @@ components:
           blocking_ipv6_vip1: Example blocking_ipv6_vip1
           dca_sub_bw_list: false
           blocking_ipv6_vip2: Example blocking_ipv6_vip2
+          enable_global_content_policy: false
           spms:
           - ip_address: Example ip_address
           - ip_address: Example ip_address
@@ -3011,6 +3066,7 @@ components:
           dca_sub_query_count: false
           proxy_rpz_passthru: false
           blocking_ipv4_vip1: Example blocking_ipv4_vip1
+          uuid: Example uuid
           api_members:
           - name: Example name
           - name: Example name
@@ -3037,6 +3093,8 @@ components:
           extattrs:
             key:
               value: ""
+          global_content_policy_bit_numbers: Example global_content_policy_bit_numbers
+          enable_gcp_precedence_over_allowed_list: false
           global_allow_list_rpz: 1
           subscriber_collection_type: Example subscriber_collection_type
           nas_port: 1
@@ -3049,6 +3107,7 @@ components:
           blocking_ipv6_vip1: Example blocking_ipv6_vip1
           dca_sub_bw_list: false
           blocking_ipv6_vip2: Example blocking_ipv6_vip2
+          enable_global_content_policy: false
           spms:
           - ip_address: Example ip_address
           - ip_address: Example ip_address

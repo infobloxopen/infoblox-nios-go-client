@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Clients** | Pointer to [**[]Dns64groupClients**](Dns64groupClients.md) | Access Control settings that contain IPv4 and IPv6 DNS clients and networks to which the DNS server is allowed to send synthesized AAAA records with the specified IPv6 prefix. | [optional] 
 **Comment** | Pointer to **string** | The descriptive comment for the DNS64 synthesis group object. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether the DNS64 synthesis group is disabled. | [optional] 
@@ -61,6 +62,31 @@ SetRef sets Ref field to given value.
 `func (o *GetDns64groupResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDns64groupResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDns64groupResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDns64groupResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDns64groupResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetClients
 

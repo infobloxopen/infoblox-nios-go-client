@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Certificate** | Pointer to **string** | Reference to underlying X509Certificate. | [optional] [readonly] 
 **InUse** | Pointer to **bool** | Determines whether the certificate is in use or not. | [optional] [readonly] 
 
@@ -51,6 +52,31 @@ SetRef sets Ref field to given value.
 `func (o *DtcCertificate) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DtcCertificate) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DtcCertificate) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DtcCertificate) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DtcCertificate) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetCertificate
 

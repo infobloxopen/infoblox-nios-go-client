@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**BlacklistAction** | Pointer to **string** | The action to perform when a domain name matches the pattern defined in a rule that is specified by the blacklist_ruleset method. Valid values are \&quot;REDIRECT\&quot; or \&quot;REFUSE\&quot;. The default value is \&quot;REFUSE\&quot;. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
+**BlacklistAction** | Pointer to **string** | The action to perform when a domain name matches the pattern defined in a rule that is specified by the blacklist_ruleset method. Valid values are \&quot;REDIRECT\&quot; or \&quot;REFUSE\&quot;. The default value is \&quot;REDIRECT\&quot;. | [optional] 
 **BlacklistLogQuery** | Pointer to **bool** | The flag that indicates whether blacklist redirection queries are logged. Specify \&quot;true\&quot; to enable logging, or \&quot;false\&quot; to disable it. The default value is \&quot;false\&quot;. | [optional] 
 **BlacklistRedirectAddresses** | Pointer to **[]string** | The array of IP addresses the appliance includes in the response it sends in place of a blacklisted IP address. | [optional] 
 **BlacklistRedirectTtl** | Pointer to **int64** | The Time To Live (TTL) value of the synthetic DNS responses resulted from blacklist redirection. The TTL value is a 32-bit unsigned integer that represents the TTL in seconds. | [optional] 
@@ -37,7 +38,7 @@ Name | Type | Description | Notes
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **FilterAaaa** | Pointer to **string** | The type of AAAA filtering for this DNS view object. | [optional] 
-**FilterAaaaList** | Pointer to [**[]ViewFilterAaaaList**](ViewFilterAaaaList.md) | Applies AAAA filtering to a named ACL, or to a list of IPv4/IPv6 addresses and networks from which queries are received. This field does not allow TSIG keys. | [optional] 
+**FilterAaaaList** | Pointer to [**[]ViewFilterAaaaList**](ViewFilterAaaaList.md) | Applies AAAA filtering to a named ACL, or to a list of IPv4 addresses and networks from which queries are received. This field does not allow TSIG keys. | [optional] 
 **FixedRrsetOrderFqdns** | Pointer to [**[]ViewFixedRrsetOrderFqdns**](ViewFixedRrsetOrderFqdns.md) | The fixed RRset order FQDN. If this field does not contain an empty value, the appliance will automatically set the enable_fixed_rrset_order_fqdns field to &#39;true&#39;, unless the same request sets the enable field to &#39;false&#39;. | [optional] 
 **ForwardOnly** | Pointer to **bool** | Determines if this DNS view sends queries to forwarders only or not. When the value is True, queries are sent to forwarders only, and not to other internal or Internet root servers. | [optional] 
 **Forwarders** | Pointer to **[]string** | The list of forwarders for the DNS view. A forwarder is a name server to which other name servers first send their off-site queries. The forwarder builds up a cache of information, avoiding the need for other name servers to send queries off-site. | [optional] 
@@ -48,6 +49,7 @@ Name | Type | Description | Notes
 **MaxCacheTtl** | Pointer to **int64** | The maximum number of seconds to cache ordinary (positive) answers. | [optional] 
 **MaxNcacheTtl** | Pointer to **int64** | The maximum number of seconds to cache negative (NXDOMAIN) answers. | [optional] 
 **MaxUdpSize** | Pointer to **int64** | The value is used by authoritative DNS servers to never send DNS responses larger than the configured value. The value should be between 512 and 4096 bytes. The recommended value is between 512 and 1220 bytes. | [optional] 
+**MgmPrivate** | Pointer to **bool** | This field controls whether this object is synchronized with the Multi-Grid Master. If this field is set to True, objects are not synchronized. | [optional] 
 **Name** | Pointer to **string** | Name of the DNS view. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view object associated with this DNS view. | [optional] 
 **NotifyDelay** | Pointer to **int64** | The number of seconds of delay the notify messages are sent to secondaries. | [optional] 
@@ -133,6 +135,31 @@ SetRef sets Ref field to given value.
 `func (o *View) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *View) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *View) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *View) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *View) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetBlacklistAction
 
@@ -1208,6 +1235,31 @@ SetMaxUdpSize sets MaxUdpSize field to given value.
 `func (o *View) HasMaxUdpSize() bool`
 
 HasMaxUdpSize returns a boolean if a field has been set.
+
+### GetMgmPrivate
+
+`func (o *View) GetMgmPrivate() bool`
+
+GetMgmPrivate returns the MgmPrivate field if non-nil, zero value otherwise.
+
+### GetMgmPrivateOk
+
+`func (o *View) GetMgmPrivateOk() (*bool, bool)`
+
+GetMgmPrivateOk returns a tuple with the MgmPrivate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMgmPrivate
+
+`func (o *View) SetMgmPrivate(v bool)`
+
+SetMgmPrivate sets MgmPrivate field to given value.
+
+### HasMgmPrivate
+
+`func (o *View) HasMgmPrivate() bool`
+
+HasMgmPrivate returns a boolean if a field has been set.
 
 ### GetName
 

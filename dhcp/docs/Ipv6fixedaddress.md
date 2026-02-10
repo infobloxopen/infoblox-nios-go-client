@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AddressType** | Pointer to **string** | The address type value for this IPv6 fixed address. When the address type is \&quot;ADDRESS\&quot;, a value for the &#39;ipv6addr&#39; member is required. When the address type is \&quot;PREFIX\&quot;, values for &#39;ipv6prefix&#39; and &#39;ipv6prefix_bits&#39; are required. When the address type is \&quot;BOTH\&quot;, values for &#39;ipv6addr&#39;, &#39;ipv6prefix&#39;, and &#39;ipv6prefix_bits&#39; are all required. | [optional] 
 **AllowTelnet** | Pointer to **bool** | This field controls whether the credential is used for both the Telnet and SSH credentials. If set to False, the credential is used only for SSH. | [optional] 
+**AlwaysUpdateDns** | Pointer to **bool** | This field controls whether only the DHCPv6 server is allowed to update DNS, regardless of the DHCPv6 client requests. | [optional] 
 **CliCredentials** | Pointer to [**[]Ipv6fixedaddressCliCredentials**](Ipv6fixedaddressCliCredentials.md) | The CLI credentials for the IPv6 fixed address. | [optional] 
 **CloudInfo** | Pointer to [**Ipv6fixedaddressCloudInfo**](Ipv6fixedaddressCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the fixed address; maximum 256 characters. | [optional] 
@@ -21,6 +23,7 @@ Name | Type | Description | Notes
 **DomainName** | Pointer to **string** | The domain name for this IPv6 fixed address. | [optional] 
 **DomainNameServers** | Pointer to **[]string** | The IPv6 addresses of DNS recursive name servers to which the DHCP client can send name resolution requests. The DHCP server includes this information in the DNS Recursive Name Server option in Advertise, Rebind, Information-Request, and Reply messages. | [optional] 
 **Duid** | Pointer to **string** | The DUID value for this IPv6 fixed address. | [optional] 
+**EnableDdns** | Pointer to **bool** | The dynamic DNS updates flag of a DHCP IPv6 fixed address object. If set to True, the DHCPv6 server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the IPv6 fixed address should be immediately enabled. | [optional] 
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
@@ -33,6 +36,9 @@ Name | Type | Description | Notes
 **MacAddress** | Pointer to **string** | The MAC address for this IPv6 fixed address. | [optional] 
 **MatchClient** | Pointer to **string** | The match_client value for this fixed address. Valid values are: \&quot;DUID\&quot;: The fixed IP address is leased to the matching DUID. \&quot;MAC_ADDRESS\&quot;: The fixed IP address is leased to the matching MAC address. | [optional] 
 **MsAdUserData** | Pointer to [**Ipv6fixedaddressMsAdUserData**](Ipv6fixedaddressMsAdUserData.md) |  | [optional] 
+**MsIaid** | Pointer to **int64** | IAID associated with Microsoft IPv6 fixed address. | [optional] 
+**MsOptions** | Pointer to [**[]Ipv6fixedaddressMsOptions**](Ipv6fixedaddressMsOptions.md) | This field contains the Microsoft DHCPv6 options for this IPv6 fixed address. | [optional] 
+**MsServer** | Pointer to [**Ipv6fixedaddressMsServer**](Ipv6fixedaddressMsServer.md) |  | [optional] 
 **Name** | Pointer to **string** | This field contains the name of this IPv6 fixed address. | [optional] 
 **Network** | Pointer to **string** | The network to which this IPv6 fixed address belongs, in IPv6 Address/CIDR format. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this IPv6 fixed address resides. | [optional] 
@@ -46,7 +52,9 @@ Name | Type | Description | Notes
 **UseCliCredentials** | Pointer to **bool** | If set to true, the CLI credential will override member-level settings. | [optional] 
 **UseDomainName** | Pointer to **bool** | Use flag for: domain_name | [optional] 
 **UseDomainNameServers** | Pointer to **bool** | Use flag for: domain_name_servers | [optional] 
+**UseEnableDdns** | Pointer to **bool** | Use flag for: enable_ddns | [optional] 
 **UseLogicFilterRules** | Pointer to **bool** | Use flag for: logic_filter_rules | [optional] 
+**UseMsOptions** | Pointer to **bool** | Use flag for: ms_options | [optional] 
 **UseOptions** | Pointer to **bool** | Use flag for: options | [optional] 
 **UsePreferredLifetime** | Pointer to **bool** | Use flag for: preferred_lifetime | [optional] 
 **UseSnmp3Credential** | Pointer to **bool** | Determines if the SNMPv3 credential should be used for the IPv6 fixed address. | [optional] 
@@ -98,6 +106,31 @@ SetRef sets Ref field to given value.
 
 HasRef returns a boolean if a field has been set.
 
+### GetUuid
+
+`func (o *Ipv6fixedaddress) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Ipv6fixedaddress) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Ipv6fixedaddress) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Ipv6fixedaddress) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
+
 ### GetAddressType
 
 `func (o *Ipv6fixedaddress) GetAddressType() string`
@@ -147,6 +180,31 @@ SetAllowTelnet sets AllowTelnet field to given value.
 `func (o *Ipv6fixedaddress) HasAllowTelnet() bool`
 
 HasAllowTelnet returns a boolean if a field has been set.
+
+### GetAlwaysUpdateDns
+
+`func (o *Ipv6fixedaddress) GetAlwaysUpdateDns() bool`
+
+GetAlwaysUpdateDns returns the AlwaysUpdateDns field if non-nil, zero value otherwise.
+
+### GetAlwaysUpdateDnsOk
+
+`func (o *Ipv6fixedaddress) GetAlwaysUpdateDnsOk() (*bool, bool)`
+
+GetAlwaysUpdateDnsOk returns a tuple with the AlwaysUpdateDns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlwaysUpdateDns
+
+`func (o *Ipv6fixedaddress) SetAlwaysUpdateDns(v bool)`
+
+SetAlwaysUpdateDns sets AlwaysUpdateDns field to given value.
+
+### HasAlwaysUpdateDns
+
+`func (o *Ipv6fixedaddress) HasAlwaysUpdateDns() bool`
+
+HasAlwaysUpdateDns returns a boolean if a field has been set.
 
 ### GetCliCredentials
 
@@ -498,6 +556,31 @@ SetDuid sets Duid field to given value.
 
 HasDuid returns a boolean if a field has been set.
 
+### GetEnableDdns
+
+`func (o *Ipv6fixedaddress) GetEnableDdns() bool`
+
+GetEnableDdns returns the EnableDdns field if non-nil, zero value otherwise.
+
+### GetEnableDdnsOk
+
+`func (o *Ipv6fixedaddress) GetEnableDdnsOk() (*bool, bool)`
+
+GetEnableDdnsOk returns a tuple with the EnableDdns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDdns
+
+`func (o *Ipv6fixedaddress) SetEnableDdns(v bool)`
+
+SetEnableDdns sets EnableDdns field to given value.
+
+### HasEnableDdns
+
+`func (o *Ipv6fixedaddress) HasEnableDdns() bool`
+
+HasEnableDdns returns a boolean if a field has been set.
+
 ### GetEnableImmediateDiscovery
 
 `func (o *Ipv6fixedaddress) GetEnableImmediateDiscovery() bool`
@@ -797,6 +880,81 @@ SetMsAdUserData sets MsAdUserData field to given value.
 `func (o *Ipv6fixedaddress) HasMsAdUserData() bool`
 
 HasMsAdUserData returns a boolean if a field has been set.
+
+### GetMsIaid
+
+`func (o *Ipv6fixedaddress) GetMsIaid() int64`
+
+GetMsIaid returns the MsIaid field if non-nil, zero value otherwise.
+
+### GetMsIaidOk
+
+`func (o *Ipv6fixedaddress) GetMsIaidOk() (*int64, bool)`
+
+GetMsIaidOk returns a tuple with the MsIaid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsIaid
+
+`func (o *Ipv6fixedaddress) SetMsIaid(v int64)`
+
+SetMsIaid sets MsIaid field to given value.
+
+### HasMsIaid
+
+`func (o *Ipv6fixedaddress) HasMsIaid() bool`
+
+HasMsIaid returns a boolean if a field has been set.
+
+### GetMsOptions
+
+`func (o *Ipv6fixedaddress) GetMsOptions() []Ipv6fixedaddressMsOptions`
+
+GetMsOptions returns the MsOptions field if non-nil, zero value otherwise.
+
+### GetMsOptionsOk
+
+`func (o *Ipv6fixedaddress) GetMsOptionsOk() (*[]Ipv6fixedaddressMsOptions, bool)`
+
+GetMsOptionsOk returns a tuple with the MsOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsOptions
+
+`func (o *Ipv6fixedaddress) SetMsOptions(v []Ipv6fixedaddressMsOptions)`
+
+SetMsOptions sets MsOptions field to given value.
+
+### HasMsOptions
+
+`func (o *Ipv6fixedaddress) HasMsOptions() bool`
+
+HasMsOptions returns a boolean if a field has been set.
+
+### GetMsServer
+
+`func (o *Ipv6fixedaddress) GetMsServer() Ipv6fixedaddressMsServer`
+
+GetMsServer returns the MsServer field if non-nil, zero value otherwise.
+
+### GetMsServerOk
+
+`func (o *Ipv6fixedaddress) GetMsServerOk() (*Ipv6fixedaddressMsServer, bool)`
+
+GetMsServerOk returns a tuple with the MsServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsServer
+
+`func (o *Ipv6fixedaddress) SetMsServer(v Ipv6fixedaddressMsServer)`
+
+SetMsServer sets MsServer field to given value.
+
+### HasMsServer
+
+`func (o *Ipv6fixedaddress) HasMsServer() bool`
+
+HasMsServer returns a boolean if a field has been set.
 
 ### GetName
 
@@ -1123,6 +1281,31 @@ SetUseDomainNameServers sets UseDomainNameServers field to given value.
 
 HasUseDomainNameServers returns a boolean if a field has been set.
 
+### GetUseEnableDdns
+
+`func (o *Ipv6fixedaddress) GetUseEnableDdns() bool`
+
+GetUseEnableDdns returns the UseEnableDdns field if non-nil, zero value otherwise.
+
+### GetUseEnableDdnsOk
+
+`func (o *Ipv6fixedaddress) GetUseEnableDdnsOk() (*bool, bool)`
+
+GetUseEnableDdnsOk returns a tuple with the UseEnableDdns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseEnableDdns
+
+`func (o *Ipv6fixedaddress) SetUseEnableDdns(v bool)`
+
+SetUseEnableDdns sets UseEnableDdns field to given value.
+
+### HasUseEnableDdns
+
+`func (o *Ipv6fixedaddress) HasUseEnableDdns() bool`
+
+HasUseEnableDdns returns a boolean if a field has been set.
+
 ### GetUseLogicFilterRules
 
 `func (o *Ipv6fixedaddress) GetUseLogicFilterRules() bool`
@@ -1147,6 +1330,31 @@ SetUseLogicFilterRules sets UseLogicFilterRules field to given value.
 `func (o *Ipv6fixedaddress) HasUseLogicFilterRules() bool`
 
 HasUseLogicFilterRules returns a boolean if a field has been set.
+
+### GetUseMsOptions
+
+`func (o *Ipv6fixedaddress) GetUseMsOptions() bool`
+
+GetUseMsOptions returns the UseMsOptions field if non-nil, zero value otherwise.
+
+### GetUseMsOptionsOk
+
+`func (o *Ipv6fixedaddress) GetUseMsOptionsOk() (*bool, bool)`
+
+GetUseMsOptionsOk returns a tuple with the UseMsOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseMsOptions
+
+`func (o *Ipv6fixedaddress) SetUseMsOptions(v bool)`
+
+SetUseMsOptions sets UseMsOptions field to given value.
+
+### HasUseMsOptions
+
+`func (o *Ipv6fixedaddress) HasUseMsOptions() bool`
+
+HasUseMsOptions returns a boolean if a field has been set.
 
 ### GetUseOptions
 

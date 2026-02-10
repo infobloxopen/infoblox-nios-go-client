@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AllowedObjectTypes** | Pointer to **[]string** | The object types this extensible attribute is allowed to associate with. | [optional] 
 **Comment** | Pointer to **string** | Comment for the Extensible Attribute Definition; maximum 256 characters. | [optional] 
 **DefaultValue** | Pointer to [**ExtensibleattributedefDefaultValue**](ExtensibleattributedefDefaultValue.md) |  | [optional] 
@@ -60,6 +61,31 @@ SetRef sets Ref field to given value.
 `func (o *Extensibleattributedef) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Extensibleattributedef) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Extensibleattributedef) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Extensibleattributedef) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Extensibleattributedef) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAllowedObjectTypes
 

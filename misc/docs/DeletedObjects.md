@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **ObjectType** | Pointer to **string** | The object type of the deleted object. This is undefined if the object is not supported. | [optional] [readonly] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetRef sets Ref field to given value.
 `func (o *DeletedObjects) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DeletedObjects) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DeletedObjects) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DeletedObjects) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DeletedObjects) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetObjectType
 

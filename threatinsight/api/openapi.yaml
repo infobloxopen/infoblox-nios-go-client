@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox THREATINSIGHT API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for threatinsight:allowlist objects
   name: ThreatinsightAllowlist
@@ -1132,9 +1132,15 @@ components:
         _ref: _ref
         comment: Example comment
         type: Example type
+        uuid: Example uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         comment:
@@ -1154,7 +1160,6 @@ components:
           enum:
           - SYSTEM
           - CUSTOM
-          - BOTH
           example: Example type
           readOnly: true
           type: string
@@ -1190,12 +1195,18 @@ components:
         _ref: _ref
         interval: 1
         force_refresh: false
+        uuid: Example uuid
         blacklist_rpz_list:
         - zone_rp
         - zone_rp
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         blacklist_rpz_list:
@@ -1248,10 +1259,16 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
+        uuid: Example uuid
         version: Example version
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         version:
@@ -1284,10 +1301,16 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
+        uuid: Example uuid
         version: Example version
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          example: Example uuid
           readOnly: true
           type: string
         version:
@@ -1333,6 +1356,7 @@ components:
           _ref: _ref
           comment: Example comment
           type: Example type
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/ThreatinsightAllowlist'
@@ -1356,6 +1380,7 @@ components:
           _ref: _ref
           comment: Example comment
           type: Example type
+          uuid: Example uuid
       properties:
         result:
           $ref: '#/components/schemas/ThreatinsightAllowlist'
@@ -1387,6 +1412,7 @@ components:
           _ref: _ref
           interval: 1
           force_refresh: false
+          uuid: Example uuid
           blacklist_rpz_list:
           - zone_rp
           - zone_rp

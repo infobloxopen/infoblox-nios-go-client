@@ -109,6 +109,7 @@ docs/DtcTopologyLabel.md
 docs/DtcTopologyLabelAPI.md
 docs/DtcTopologyRule.md
 docs/DtcTopologyRuleAPI.md
+docs/DtcTopologyRuleDestination.md
 docs/DtcTopologyRuleDestinationLink.md
 docs/DtcTopologyRuleDestinationLinkOneOf.md
 docs/DtcTopologyRuleSources.md
@@ -313,6 +314,7 @@ model_dtc_server_monitors.go
 model_dtc_topology.go
 model_dtc_topology_label.go
 model_dtc_topology_rule.go
+model_dtc_topology_rule_destination.go
 model_dtc_topology_rule_destination_link.go
 model_dtc_topology_rule_destination_link_one_of.go
 model_dtc_topology_rule_sources.go

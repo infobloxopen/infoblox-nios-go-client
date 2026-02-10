@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **CardName** | Pointer to **string** | The Entrust nShield HSM softcard name. | [optional] 
 **Comment** | Pointer to **string** | The Entrust nShield HSM group comment. | [optional] 
 **EntrustnshieldHsm** | Pointer to [**[]HsmEntrustnshieldgroupEntrustnshieldHsm**](HsmEntrustnshieldgroupEntrustnshieldHsm.md) | The list of Entrust nShield HSM devices. | [optional] 
@@ -58,6 +59,31 @@ SetRef sets Ref field to given value.
 `func (o *HsmEntrustnshieldgroup) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *HsmEntrustnshieldgroup) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *HsmEntrustnshieldgroup) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *HsmEntrustnshieldgroup) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *HsmEntrustnshieldgroup) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetCardName
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ApprovalGroup** | Pointer to **string** | The approval administration group. | [optional] 
 **ApprovalNotifyTo** | Pointer to **string** | The destination for approval task notifications. | [optional] 
 **ApprovedNotifyTo** | Pointer to **string** | The destination for approved task notifications. | [optional] 
@@ -71,6 +72,31 @@ SetRef sets Ref field to given value.
 `func (o *Approvalworkflow) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Approvalworkflow) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Approvalworkflow) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Approvalworkflow) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Approvalworkflow) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetApprovalGroup
 

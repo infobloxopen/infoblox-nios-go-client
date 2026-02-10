@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Code** | Pointer to **int64** | The code of a DHCP IPv6 option definition object. An option code number is used to identify the DHCP option. | [optional] 
 **Name** | Pointer to **string** | The name of a DHCP IPv6 option definition object. | [optional] 
 **Space** | Pointer to **string** | The space of a DHCP option definition object. | [optional] 
@@ -54,6 +55,31 @@ SetRef sets Ref field to given value.
 `func (o *GetIpv6dhcpoptiondefinitionResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetIpv6dhcpoptiondefinitionResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetIpv6dhcpoptiondefinitionResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetIpv6dhcpoptiondefinitionResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetIpv6dhcpoptiondefinitionResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetCode
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object. | [optional] [readonly] 
 **AllocatedAvailableRatio** | Pointer to **int64** | Ratio of allocated vs. available IPs | [optional] [readonly] 
 **AllocatedIpCount** | Pointer to **int64** | Total number of IPs allocated by tenants. | [optional] [readonly] 
 **AvailableIpCount** | Pointer to **string** | The total number of IP addresses available to tenants. Only IP addresses in networks that are within a delegation scope are counted. | [optional] [readonly] 
@@ -57,6 +58,31 @@ SetRef sets Ref field to given value.
 `func (o *GridCloudapiCloudstatistics) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridCloudapiCloudstatistics) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridCloudapiCloudstatistics) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridCloudapiCloudstatistics) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridCloudapiCloudstatistics) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAllocatedAvailableRatio
 
