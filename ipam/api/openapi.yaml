@@ -8358,10 +8358,10 @@ components:
         discovered_tenant: Example discovered_tenant
         network_view: Example network_view
         vlans:
-        - vlan: "{}"
+        - vlan: vlan
           name: Example name
           id: 1
-        - vlan: "{}"
+        - vlan: vlan
           name: Example name
           id: 1
         discovery_member: Example discovery_member
@@ -9873,15 +9873,13 @@ components:
       type: object
     NetworkVlans:
       example:
-        vlan: "{}"
+        vlan: vlan
         name: Example name
         id: 1
       properties:
         vlan:
           description: Reference to the underlying StaticVlan object vlan.
-          enum:
-          - subobj
-          type: object
+          type: string
         id:
           description: VLAN ID value.
           example: 1
@@ -12783,10 +12781,10 @@ components:
         template: Example template
         network_view: Example network_view
         vlans:
-        - vlan: "{}"
+        - vlan: vlan
           name: Example name
           id: 1
-        - vlan: "{}"
+        - vlan: vlan
           name: Example name
           id: 1
         discovery_member: Example discovery_member
@@ -14066,15 +14064,13 @@ components:
       type: object
     Ipv6networkVlans:
       example:
-        vlan: "{}"
+        vlan: vlan
         name: Example name
         id: 1
       properties:
         vlan:
           description: Reference to the underlying StaticVlan object vlan.
-          enum:
-          - subobj
-          type: object
+          type: string
         id:
           description: VLAN ID value.
           example: 1
@@ -17905,10 +17901,10 @@ components:
           discovered_tenant: Example discovered_tenant
           network_view: Example network_view
           vlans:
-          - vlan: "{}"
+          - vlan: vlan
             name: Example name
             id: 1
-          - vlan: "{}"
+          - vlan: vlan
             name: Example name
             id: 1
           discovery_member: Example discovery_member
@@ -18193,10 +18189,10 @@ components:
           discovered_tenant: Example discovered_tenant
           network_view: Example network_view
           vlans:
-          - vlan: "{}"
+          - vlan: vlan
             name: Example name
             id: 1
-          - vlan: "{}"
+          - vlan: vlan
             name: Example name
             id: 1
           discovery_member: Example discovery_member
@@ -19426,10 +19422,10 @@ components:
           template: Example template
           network_view: Example network_view
           vlans:
-          - vlan: "{}"
+          - vlan: vlan
             name: Example name
             id: 1
-          - vlan: "{}"
+          - vlan: vlan
             name: Example name
             id: 1
           discovery_member: Example discovery_member
@@ -19663,10 +19659,10 @@ components:
           template: Example template
           network_view: Example network_view
           vlans:
-          - vlan: "{}"
+          - vlan: vlan
             name: Example name
             id: 1
-          - vlan: "{}"
+          - vlan: vlan
             name: Example name
             id: 1
           discovery_member: Example discovery_member

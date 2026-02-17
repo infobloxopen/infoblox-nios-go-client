@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Vlan** | Pointer to **map[string]interface{}** | Reference to the underlying StaticVlan object vlan. | [optional] 
+**Vlan** | Pointer to **string** | Reference to the underlying StaticVlan object vlan. | [optional] 
 **Id** | Pointer to **int64** | VLAN ID value. | [optional] [readonly] 
 **Name** | Pointer to **string** | Name of the VLAN. | [optional] [readonly] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetVlan
 
-`func (o *NetworkVlans) GetVlan() map[string]interface{}`
+`func (o *NetworkVlans) GetVlan() string`
 
 GetVlan returns the Vlan field if non-nil, zero value otherwise.
 
 ### GetVlanOk
 
-`func (o *NetworkVlans) GetVlanOk() (*map[string]interface{}, bool)`
+`func (o *NetworkVlans) GetVlanOk() (*string, bool)`
 
 GetVlanOk returns a tuple with the Vlan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVlan
 
-`func (o *NetworkVlans) SetVlan(v map[string]interface{})`
+`func (o *NetworkVlans) SetVlan(v string)`
 
 SetVlan sets Vlan field to given value.
 
