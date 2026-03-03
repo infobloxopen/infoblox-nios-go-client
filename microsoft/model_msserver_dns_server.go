@@ -42,7 +42,7 @@ type MsserverDnsServer struct {
 	// Detailled status of the last synchronization attempt
 	LastSyncDetail *string `json:"last_sync_detail,omitempty"`
 	// Ordered list of IP addresses to forward queries to
-	Forwarders *string `json:"forwarders,omitempty"`
+	Forwarders []string `json:"forwarders,omitempty"`
 	// Flag indicating if the server supports IPv6
 	SupportsIpv6 *bool `json:"supports_ipv6,omitempty"`
 	// Flag indicating if the server supports reverse IPv6 zones
@@ -444,17 +444,17 @@ func (o *MsserverDnsServer) SetLastSyncDetail(v string) {
 }
 
 // GetForwarders returns the Forwarders field value if set, zero value otherwise.
-func (o *MsserverDnsServer) GetForwarders() string {
+func (o *MsserverDnsServer) GetForwarders() []string {
 	if o == nil || IsNil(o.Forwarders) {
-		var ret string
+		var ret []string
 		return ret
 	}
-	return *o.Forwarders
+	return o.Forwarders
 }
 
 // GetForwardersOk returns a tuple with the Forwarders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MsserverDnsServer) GetForwardersOk() (*string, bool) {
+func (o *MsserverDnsServer) GetForwardersOk() ([]string, bool) {
 	if o == nil || IsNil(o.Forwarders) {
 		return nil, false
 	}
@@ -470,9 +470,9 @@ func (o *MsserverDnsServer) HasForwarders() bool {
 	return false
 }
 
-// SetForwarders gets a reference to the given string and assigns it to the Forwarders field.
-func (o *MsserverDnsServer) SetForwarders(v string) {
-	o.Forwarders = &v
+// SetForwarders gets a reference to the given []string and assigns it to the Forwarders field.
+func (o *MsserverDnsServer) SetForwarders(v []string) {
+	o.Forwarders = v
 }
 
 // GetSupportsIpv6 returns the SupportsIpv6 field value if set, zero value otherwise.

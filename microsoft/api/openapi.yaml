@@ -2115,7 +2115,9 @@ components:
           login_name: Example login_name
           use_login: false
           last_sync_ts: 1
-          forwarders: Example forwarders
+          forwarders:
+          - forwarders
+          - forwarders
           supports_dnssec: false
           enable_dns_reports_sync: false
           status: Example status
@@ -2613,7 +2615,9 @@ components:
         login_name: Example login_name
         use_login: false
         last_sync_ts: 1
-        forwarders: Example forwarders
+        forwarders:
+        - forwarders
+        - forwarders
         supports_dnssec: false
         enable_dns_reports_sync: false
         status: Example status
@@ -2684,9 +2688,10 @@ components:
           type: string
         forwarders:
           description: Ordered list of IP addresses to forward queries to
-          example: Example forwarders
+          items:
+            type: string
           readOnly: true
-          type: string
+          type: array
         supports_ipv6:
           description: Flag indicating if the server supports IPv6
           example: false
@@ -3429,7 +3434,9 @@ components:
             login_name: Example login_name
             use_login: false
             last_sync_ts: 1
-            forwarders: Example forwarders
+            forwarders:
+            - forwarders
+            - forwarders
             supports_dnssec: false
             enable_dns_reports_sync: false
             status: Example status
@@ -3556,7 +3563,9 @@ components:
             login_name: Example login_name
             use_login: false
             last_sync_ts: 1
-            forwarders: Example forwarders
+            forwarders:
+            - forwarders
+            - forwarders
             supports_dnssec: false
             enable_dns_reports_sync: false
             status: Example status
