@@ -470,7 +470,7 @@ func (o *MsserverDnsServer) HasForwarders() bool {
 	return false
 }
 
-// SetForwarders gets a reference to the given slice of strings and assigns it to the Forwarders field.
+// SetForwarders gets a reference to the given []string and assigns it to the Forwarders field.
 func (o *MsserverDnsServer) SetForwarders(v []string) {
 	o.Forwarders = v
 }

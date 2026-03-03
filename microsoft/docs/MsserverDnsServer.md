@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **LastSyncTs** | Pointer to **int64** | Timestamp of the last synchronization attempt | [optional] [readonly] 
 **LastSyncStatus** | Pointer to **string** | Status of the last synchronization attempt | [optional] [readonly] 
 **LastSyncDetail** | Pointer to **string** | Detailled status of the last synchronization attempt | [optional] [readonly] 
-**Forwarders** | Pointer to **string** | Ordered list of IP addresses to forward queries to | [optional] [readonly] 
+**Forwarders** | Pointer to **[]string** | Ordered list of IP addresses to forward queries to | [optional] [readonly] 
 **SupportsIpv6** | Pointer to **bool** | Flag indicating if the server supports IPv6 | [optional] [readonly] 
 **SupportsIpv6Reverse** | Pointer to **bool** | Flag indicating if the server supports reverse IPv6 zones | [optional] [readonly] 
 **SupportsRrDname** | Pointer to **bool** | Flag indicating if the server supports DNAME records | [optional] [readonly] 
@@ -326,20 +326,20 @@ HasLastSyncDetail returns a boolean if a field has been set.
 
 ### GetForwarders
 
-`func (o *MsserverDnsServer) GetForwarders() string`
+`func (o *MsserverDnsServer) GetForwarders() []string`
 
 GetForwarders returns the Forwarders field if non-nil, zero value otherwise.
 
 ### GetForwardersOk
 
-`func (o *MsserverDnsServer) GetForwardersOk() (*string, bool)`
+`func (o *MsserverDnsServer) GetForwardersOk() (*[]string, bool)`
 
 GetForwardersOk returns a tuple with the Forwarders field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForwarders
 
-`func (o *MsserverDnsServer) SetForwarders(v string)`
+`func (o *MsserverDnsServer) SetForwarders(v []string)`
 
 SetForwarders sets Forwarders field to given value.
 
