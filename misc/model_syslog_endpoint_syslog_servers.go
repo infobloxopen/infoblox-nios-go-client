@@ -34,7 +34,7 @@ type SyslogEndpointSyslogServers struct {
 	// Severity values for syslog endpoint server.
 	Severity *string `json:"severity,omitempty"`
 	// Reference for creating sysog endpoint server.
-	Certificate *string `json:"certificate,omitempty"`
+	Certificate interface{} `json:"certificate,omitempty"`
 	// The token returned by the uploadinit function call in object fileop.
 	CertificateToken     *string `json:"certificate_token,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -283,22 +283,23 @@ func (o *SyslogEndpointSyslogServers) SetSeverity(v string) {
 	o.Severity = &v
 }
 
-// GetCertificate returns the Certificate field value if set, zero value otherwise.
-func (o *SyslogEndpointSyslogServers) GetCertificate() string {
-	if o == nil || IsNil(o.Certificate) {
-		var ret string
+// GetCertificate returns the Certificate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SyslogEndpointSyslogServers) GetCertificate() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
-	return *o.Certificate
+	return o.Certificate
 }
 
 // GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SyslogEndpointSyslogServers) GetCertificateOk() (*string, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SyslogEndpointSyslogServers) GetCertificateOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Certificate) {
 		return nil, false
 	}
-	return o.Certificate, true
+	return &o.Certificate, true
 }
 
 // HasCertificate returns a boolean if a field has been set.
@@ -310,9 +311,9 @@ func (o *SyslogEndpointSyslogServers) HasCertificate() bool {
 	return false
 }
 
-// SetCertificate gets a reference to the given string and assigns it to the Certificate field.
-func (o *SyslogEndpointSyslogServers) SetCertificate(v string) {
-	o.Certificate = &v
+// SetCertificate gets a reference to the given interface{} and assigns it to the Certificate field.
+func (o *SyslogEndpointSyslogServers) SetCertificate(v interface{}) {
+	o.Certificate = v
 }
 
 // GetCertificateToken returns the CertificateToken field value if set, zero value otherwise.
@@ -378,7 +379,7 @@ func (o SyslogEndpointSyslogServers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Severity) {
 		toSerialize["severity"] = o.Severity
 	}
-	if !IsNil(o.Certificate) {
+	if o.Certificate != nil {
 		toSerialize["certificate"] = o.Certificate
 	}
 	if !IsNil(o.CertificateToken) {
