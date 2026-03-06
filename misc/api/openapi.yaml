@@ -7024,7 +7024,7 @@ components:
           connection_type: Example connection_type
           port: 1
           format: Example format
-          certificate: Example certificate
+          certificate: ""
           certificate_token: Example certificate_token
           facility: Example facility
         - severity: Example severity
@@ -7033,7 +7033,7 @@ components:
           connection_type: Example connection_type
           port: 1
           format: Example format
-          certificate: Example certificate
+          certificate: ""
           certificate_token: Example certificate_token
           facility: Example facility
         wapi_user_password: Example wapi_user_password
@@ -7155,7 +7155,7 @@ components:
         connection_type: Example connection_type
         port: 1
         format: Example format
-        certificate: Example certificate
+        certificate: ""
         certificate_token: Example certificate_token
         facility: Example facility
       properties:
@@ -7219,9 +7219,7 @@ components:
           type: string
         certificate:
           description: Reference for creating sysog endpoint server.
-          example: Example certificate
           readOnly: true
-          type: string
         certificate_token:
           description: The token returned by the uploadinit function call in object
             fileop.
@@ -8331,7 +8329,7 @@ components:
             connection_type: Example connection_type
             port: 1
             format: Example format
-            certificate: Example certificate
+            certificate: ""
             certificate_token: Example certificate_token
             facility: Example facility
           - severity: Example severity
@@ -8340,7 +8338,7 @@ components:
             connection_type: Example connection_type
             port: 1
             format: Example format
-            certificate: Example certificate
+            certificate: ""
             certificate_token: Example certificate_token
             facility: Example facility
           wapi_user_password: Example wapi_user_password
@@ -8398,7 +8396,7 @@ components:
             connection_type: Example connection_type
             port: 1
             format: Example format
-            certificate: Example certificate
+            certificate: ""
             certificate_token: Example certificate_token
             facility: Example facility
           - severity: Example severity
@@ -8407,7 +8405,7 @@ components:
             connection_type: Example connection_type
             port: 1
             format: Example format
-            certificate: Example certificate
+            certificate: ""
             certificate_token: Example certificate_token
             facility: Example facility
           wapi_user_password: Example wapi_user_password
