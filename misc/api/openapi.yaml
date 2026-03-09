@@ -7024,7 +7024,7 @@ components:
           connection_type: Example connection_type
           port: 1
           format: Example format
-          certificate: ""
+          certificate: Example certificate
           certificate_token: Example certificate_token
           facility: Example facility
         - severity: Example severity
@@ -7033,7 +7033,7 @@ components:
           connection_type: Example connection_type
           port: 1
           format: Example format
-          certificate: ""
+          certificate: Example certificate
           certificate_token: Example certificate_token
           facility: Example facility
         wapi_user_password: Example wapi_user_password
@@ -7155,7 +7155,7 @@ components:
         connection_type: Example connection_type
         port: 1
         format: Example format
-        certificate: ""
+        certificate: Example certificate
         certificate_token: Example certificate_token
         facility: Example facility
       properties:
@@ -7218,8 +7218,7 @@ components:
           example: Example severity
           type: string
         certificate:
-          description: Reference for creating sysog endpoint server.
-          readOnly: true
+          $ref: '#/components/schemas/SyslogEndpointSyslogServers_certificate'
         certificate_token:
           description: The token returned by the uploadinit function call in object
             fileop.
@@ -8306,6 +8305,41 @@ components:
           $ref: '#/components/schemas/Search'
       title: UpdateSearchResponseAsObject
       type: object
+    SyslogEndpointSyslogServers_certificate_oneOf:
+      properties:
+        _ref:
+          description: The reference to the Syslog endpoint server certificate.
+          readOnly: true
+          type: string
+        issuer:
+          description: The certificate issuer subject name.
+          readOnly: true
+          type: string
+        serial:
+          description: The certificate serial number in hex format.
+          readOnly: true
+          type: string
+        subject:
+          description: The certificate subject name.
+          readOnly: true
+          type: string
+        valid_not_after:
+          description: The date after which the certificate becomes invalid.
+          readOnly: true
+          type: integer
+        valid_not_before:
+          description: The date before which the certificate is not valid.
+          readOnly: true
+          type: integer
+      readOnly: true
+      type: object
+    SyslogEndpointSyslogServers_certificate:
+      oneOf:
+      - description: The reference to the Syslog endpoint server certificate.
+        example: Example certificate
+        readOnly: true
+        type: string
+      - $ref: '#/components/schemas/SyslogEndpointSyslogServers_certificate_oneOf'
     ListSyslogEndpointResponseObject:
       description: The response format to retrieve __SyslogEndpoint__ objects.
       properties:
@@ -8329,7 +8363,7 @@ components:
             connection_type: Example connection_type
             port: 1
             format: Example format
-            certificate: ""
+            certificate: Example certificate
             certificate_token: Example certificate_token
             facility: Example facility
           - severity: Example severity
@@ -8338,7 +8372,7 @@ components:
             connection_type: Example connection_type
             port: 1
             format: Example format
-            certificate: ""
+            certificate: Example certificate
             certificate_token: Example certificate_token
             facility: Example facility
           wapi_user_password: Example wapi_user_password
@@ -8396,7 +8430,7 @@ components:
             connection_type: Example connection_type
             port: 1
             format: Example format
-            certificate: ""
+            certificate: Example certificate
             certificate_token: Example certificate_token
             facility: Example facility
           - severity: Example severity
@@ -8405,7 +8439,7 @@ components:
             connection_type: Example connection_type
             port: 1
             format: Example format
-            certificate: ""
+            certificate: Example certificate
             certificate_token: Example certificate_token
             facility: Example facility
           wapi_user_password: Example wapi_user_password
