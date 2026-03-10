@@ -7218,10 +7218,7 @@ components:
           example: Example severity
           type: string
         certificate:
-          description: Reference for creating sysog endpoint server.
-          example: Example certificate
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/SyslogEndpointSyslogServers_certificate'
         certificate_token:
           description: The token returned by the uploadinit function call in object
             fileop.
@@ -8308,6 +8305,41 @@ components:
           $ref: '#/components/schemas/Search'
       title: UpdateSearchResponseAsObject
       type: object
+    SyslogEndpointSyslogServers_certificate_oneOf:
+      properties:
+        _ref:
+          description: The reference to the Syslog endpoint server certificate.
+          readOnly: true
+          type: string
+        issuer:
+          description: The certificate issuer subject name.
+          readOnly: true
+          type: string
+        serial:
+          description: The certificate serial number in hex format.
+          readOnly: true
+          type: string
+        subject:
+          description: The certificate subject name.
+          readOnly: true
+          type: string
+        valid_not_after:
+          description: The date after which the certificate becomes invalid.
+          readOnly: true
+          type: integer
+        valid_not_before:
+          description: The date before which the certificate is not valid.
+          readOnly: true
+          type: integer
+      readOnly: true
+      type: object
+    SyslogEndpointSyslogServers_certificate:
+      oneOf:
+      - description: The reference to the Syslog endpoint server certificate.
+        example: Example certificate
+        readOnly: true
+        type: string
+      - $ref: '#/components/schemas/SyslogEndpointSyslogServers_certificate_oneOf'
     ListSyslogEndpointResponseObject:
       description: The response format to retrieve __SyslogEndpoint__ objects.
       properties:
