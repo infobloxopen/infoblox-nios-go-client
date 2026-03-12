@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox IPAM API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for ipv4address objects
   name: Ipv4address
@@ -6160,6 +6160,7 @@ components:
         usage:
         - usage
         - usage
+        uuid: uuid
         network: Example network
         extattrs-:
           key:
@@ -6293,6 +6294,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -6443,7 +6448,9 @@ components:
           readOnly: true
           type: array
         username:
-          description: The name of the user who created or modified the record.
+          description: The name of the user who created or modified the record. The
+            "username" field is populated only for lease objects that have a MAC Address
+            Filter configured with user details.
           example: Example username
           readOnly: true
           type: string
@@ -7265,6 +7272,7 @@ components:
         lease_state: Example lease_state
         reserved_port: Example reserved_port
         ip_address: Example ip_address
+        uuid: uuid
         network: Example network
         extattrs-:
           key:
@@ -7289,6 +7297,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -8229,6 +8241,7 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
+          use_arp_data_for_discovery: false
           credential_group: Example credential_group
           polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
@@ -8316,6 +8329,7 @@ components:
         nextserver: Example nextserver
         use_ddns_update_fixed_addresses: false
         use_pxe_lease_time: false
+        uuid: uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -8329,10 +8343,12 @@ components:
         use_lease_scavenge_time: false
         members:
         - _struct: _struct
+          address: Example address
           name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         - _struct: _struct
+          address: Example address
           name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
@@ -8410,6 +8426,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         authority:
@@ -8881,7 +8901,7 @@ components:
           readOnly: true
           type: string
         rir_organization:
-          description: The RIR organization assoicated with the network.
+          description: The RIR organization associated with the network.
           example: Example rir_organization
           type: string
         rir_registration_action:
@@ -9233,6 +9253,7 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
+        use_arp_data_for_discovery: false
         credential_group: Example credential_group
         polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
@@ -9318,6 +9339,10 @@ components:
           type: string
         use_global_polling_frequency_modifier:
           description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
+        use_arp_data_for_discovery:
+          description: Use ARP data to discover IP addresses.
           example: false
           type: boolean
       type: object
@@ -9617,6 +9642,7 @@ components:
     NetworkMembers:
       example:
         _struct: _struct
+        address: Example address
         name: Example name
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
@@ -9626,16 +9652,23 @@ components:
             and 'msdhcpserver'.
           type: string
         ipv4addr:
-          description: The IPv4 Address or FQDN of the Microsoft server.
+          description: The IPv4 Address of the Microsoft server.
           example: Example ipv4addr
+          readOnly: true
           type: string
         ipv6addr:
-          description: The IPv6 Address of the Grid Member.
+          description: The IPv6 Address of the Microsoft server.
           example: Example ipv6addr
+          readOnly: true
           type: string
         name:
-          description: The Grid member name
+          description: The name of the Microsoft server.
           example: Example name
+          readOnly: true
+          type: string
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
           type: string
       type: object
     NetworkMsAdUserData:
@@ -9851,7 +9884,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -10024,6 +10057,7 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
+          use_arp_data_for_discovery: false
           credential_group: Example credential_group
           polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
@@ -10106,6 +10140,7 @@ components:
         nextserver: Example nextserver
         use_ddns_update_fixed_addresses: false
         use_pxe_lease_time: false
+        uuid: uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -10175,6 +10210,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         authority:
@@ -10547,7 +10586,7 @@ components:
           readOnly: true
           type: string
         rir_organization:
-          description: The RIR organization assoicated with the network container.
+          description: The RIR organization associated with the network container.
           example: Example rir_organization
           type: string
         rir_registration_action:
@@ -10821,6 +10860,7 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
+        use_arp_data_for_discovery: false
         credential_group: Example credential_group
         polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
@@ -10906,6 +10946,10 @@ components:
           type: string
         use_global_polling_frequency_modifier:
           description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
+        use_arp_data_for_discovery:
+          description: Use ARP data to discover IP addresses.
           example: false
           type: boolean
       type: object
@@ -11415,7 +11459,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -11491,6 +11535,7 @@ components:
         nextserver: Example nextserver
         use_ddns_update_fixed_addresses: false
         use_pxe_lease_time: false
+        uuid: uuid
         use_ddns_domainname: false
         ipam_email_addresses:
         - ipam_email_addresses
@@ -11499,10 +11544,12 @@ components:
         use_lease_scavenge_time: false
         members:
         - _struct: _struct
+          address: Example address
           name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         - _struct: _struct
+          address: Example address
           name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
@@ -11601,6 +11648,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allow_any_netmask:
@@ -11878,7 +11929,7 @@ components:
           example: false
           type: boolean
         rir:
-          description: THe registry (RIR) that allocated the network address space.
+          description: The registry (RIR) that allocated the network address space.
           enum:
           - RIPE
           - NONE
@@ -11886,7 +11937,7 @@ components:
           readOnly: true
           type: string
         rir_organization:
-          description: The RIR organization assoicated with the network.
+          description: The RIR organization associated with the network.
           example: Example rir_organization
           type: string
         rir_registration_action:
@@ -12076,6 +12127,7 @@ components:
     NetworktemplateMembers:
       example:
         _struct: _struct
+        address: Example address
         name: Example name
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
@@ -12085,16 +12137,23 @@ components:
             and 'msdhcpserver'.
           type: string
         ipv4addr:
-          description: The IPv4 Address or FQDN of the Microsoft server.
+          description: The IPv4 Address of the Microsoft server.
           example: Example ipv4addr
+          readOnly: true
           type: string
         ipv6addr:
-          description: The IPv6 Address of the Grid Member.
+          description: The IPv6 Address of the Microsoft server.
           example: Example ipv6addr
+          readOnly: true
           type: string
         name:
-          description: The Grid member name
+          description: The name of the Microsoft server.
           example: Example name
+          readOnly: true
+          type: string
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
           type: string
       type: object
     NetworktemplateOptions:
@@ -12207,6 +12266,7 @@ components:
           tenant: Example tenant
           delegated_root: Example delegated_root
         is_default: false
+        uuid: uuid
         extattrs-:
           key:
             value: ""
@@ -12244,18 +12304,24 @@ components:
           dns_ext_zone: Example dns_ext_zone
           dns_grid_zone:
             _ref: _ref
+            uuid: uuid
           zone_match: Example zone_match
           dns_ext_primary: Example dns_ext_primary
         - dns_grid_primary: Example dns_grid_primary
           dns_ext_zone: Example dns_ext_zone
           dns_grid_zone:
             _ref: _ref
+            uuid: uuid
           zone_match: Example zone_match
           dns_ext_primary: Example dns_ext_primary
         comment: Example comment
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         associated_dns_views:
@@ -12287,7 +12353,7 @@ components:
           type: string
         ddns_zone_primaries:
           description: An array of Ddns Zone Primary dhcpddns structs that lists the
-            information of primary zone to wich DDNS updates should be sent.
+            information of primary zone to which DDNS updates should be sent.
           enum:
           - dhcpddns
           items:
@@ -12488,6 +12554,7 @@ components:
         dns_ext_zone: Example dns_ext_zone
         dns_grid_zone:
           _ref: _ref
+          uuid: uuid
         zone_match: Example zone_match
         dns_ext_primary: Example dns_ext_primary
       properties:
@@ -12574,7 +12641,7 @@ components:
           example: Example tsig_key
           type: string
         tsig_key_alg:
-          description: The TSIG key alorithm name.
+          description: The TSIG key algorithm name.
           enum:
           - HMAC-MD5
           - HMAC-SHA256
@@ -12627,7 +12694,7 @@ components:
           example: Example tsig_key
           type: string
         tsig_key_alg:
-          description: The TSIG key alorithm name.
+          description: The TSIG key algorithm name.
           enum:
           - HMAC-MD5
           - HMAC-SHA256
@@ -12650,9 +12717,14 @@ components:
     NetworkviewDdnsZonePrimariesDnsGridZone:
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the DNS zone object.
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
           type: string
       type: object
     ListNetworkviewResponse:
@@ -12694,6 +12766,7 @@ components:
         discovery_engine_type: Example discovery_engine_type
         use_enable_ifmap_publishing: false
         enable_ifmap_publishing: false
+        uuid: uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -12711,10 +12784,12 @@ components:
         use_ddns_domainname: false
         discovered_vlan_name: Example discovered_vlan_name
         members:
-        - name: Example name
+        - address: Example address
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
-        - name: Example name
+        - address: Example address
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         options:
@@ -12810,6 +12885,7 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
+          use_arp_data_for_discovery: false
           credential_group: Example credential_group
           polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
@@ -12905,6 +12981,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         auto_create_reversezone:
@@ -13462,6 +13542,7 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
+        use_arp_data_for_discovery: false
         credential_group: Example credential_group
         polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
@@ -13547,6 +13628,10 @@ components:
           type: string
         use_global_polling_frequency_modifier:
           description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
+        use_arp_data_for_discovery:
+          description: Use ARP data to discover IP addresses.
           example: false
           type: boolean
       type: object
@@ -13812,21 +13897,29 @@ components:
       type: object
     Ipv6networkMembers:
       example:
+        address: Example address
         name: Example name
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
-          description: The IPv4 Address of the Grid Member.
+          description: The IPv4 Address of the Microsoft server.
           example: Example ipv4addr
+          readOnly: true
           type: string
         ipv6addr:
-          description: The IPv6 Address of the Grid Member.
+          description: The IPv6 Address of the Microsoft server.
           example: Example ipv6addr
+          readOnly: true
           type: string
         name:
-          description: The Grid member name
+          description: The name of the Microsoft server.
           example: Example name
+          readOnly: true
+          type: string
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
           type: string
       type: object
     Ipv6networkMsAdUserData:
@@ -14042,7 +14135,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -14140,6 +14233,7 @@ components:
           - enabled_attributes
           - enabled_attributes
         discovery_engine_type: Example discovery_engine_type
+        uuid: uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -14237,6 +14331,7 @@ components:
         discovery_basic_poll_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
+          use_arp_data_for_discovery: false
           credential_group: Example credential_group
           polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
@@ -14324,6 +14419,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         auto_create_reversezone:
@@ -14789,6 +14888,7 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
+        use_arp_data_for_discovery: false
         credential_group: Example credential_group
         polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
@@ -14874,6 +14974,10 @@ components:
           type: string
         use_global_polling_frequency_modifier:
           description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
+        use_arp_data_for_discovery:
+          description: Use ARP data to discover IP addresses.
           example: false
           type: boolean
       type: object
@@ -15350,7 +15454,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -15427,6 +15531,7 @@ components:
         use_ddns_enable_option_fqdn: false
         rir_organization: Example rir_organization
         use_ddns_ttl: false
+        uuid: uuid
         rir_registration_status: Example rir_registration_status
         use_ddns_generate_hostname: false
         use_valid_lifetime: false
@@ -15446,10 +15551,12 @@ components:
         use_ddns_domainname: false
         use_domain_name: false
         members:
-        - name: Example name
+        - address: Example address
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
-        - name: Example name
+        - address: Example address
+          name: Example name
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         options:
@@ -15502,6 +15609,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allow_any_netmask:
@@ -15806,21 +15917,29 @@ components:
       type: object
     Ipv6networktemplateMembers:
       example:
+        address: Example address
         name: Example name
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
       properties:
         ipv4addr:
-          description: The IPv4 Address of the Grid Member.
+          description: The IPv4 Address of the Microsoft server.
           example: Example ipv4addr
+          readOnly: true
           type: string
         ipv6addr:
-          description: The IPv6 Address of the Grid Member.
+          description: The IPv6 Address of the Microsoft server.
           example: Example ipv6addr
+          readOnly: true
           type: string
         name:
-          description: The Grid member name
+          description: The name of the Microsoft server.
           example: Example name
+          readOnly: true
+          type: string
+        address:
+          description: The IPv4 Address or IPv6 Address or FQDN of the Microsoft server.
+          example: Example address
           type: string
       type: object
     Ipv6networktemplateOptions:
@@ -15891,11 +16010,16 @@ components:
         _ref: _ref
         cidr: 1
         utilization: 1
+        uuid: uuid
         unmanaged_count: 1
         network: Example network
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         cidr:
@@ -15983,6 +16107,7 @@ components:
           key:
             value: ""
         description: Example description
+        uuid: uuid
         func_call:
           _result_field: _result_field
           _object_function: _object_function
@@ -16011,6 +16136,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         assigned_to:
@@ -16129,10 +16258,15 @@ components:
         end_vlan_id: 1
         allow_range_overlapping: false
         vlan_name_prefix: Example vlan_name_prefix
+        uuid: uuid
         pre_create_vlan: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allow_range_overlapping:
@@ -16217,27 +16351,32 @@ components:
     Vlanrange:
       additionalProperties: false
       example:
-        extattrs-:
+        extattrs:
           key:
             value: ""
-        extattrs:
+        start_vlan_id: 1
+        vlan_name_prefix: Example vlan_name_prefix
+        vlan_view: Example vlan_view
+        uuid: uuid
+        extattrs-:
           key:
             value: ""
         extattrs+:
           key:
             value: ""
-        start_vlan_id: 1
         _ref: _ref
         name: Example name
         comment: Example comment
         delete_vlans: false
         end_vlan_id: 1
-        vlan_name_prefix: Example vlan_name_prefix
-        vlan_view: Example vlan_view
         pre_create_vlan: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -16347,6 +16486,7 @@ components:
           delegated_root: Example delegated_root
         dns_prefix: Example dns_prefix
         reverse: false
+        uuid: uuid
         ttl: 1
         extattrs-:
           key:
@@ -16367,6 +16507,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         cloud_info:
@@ -16596,9 +16740,14 @@ components:
         pre_defined: false
         _ref: _ref
         template_format: Example template_format
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         is_grid_default:
@@ -16672,6 +16821,7 @@ components:
         networks:
         - network
         - network
+        uuid: uuid
         v_network_view: Example v_network_view
         ping_timeout: 1
         mode: Example mode
@@ -16705,6 +16855,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         csv_file_name:
@@ -16760,7 +16914,7 @@ components:
             type: string
           type: array
         ping_retries:
-          description: The number of times to perfrom ping for ICMP and FULL modes.
+          description: The number of times to perform ping for ICMP and FULL modes.
           example: 1
           format: int64
           type: integer
@@ -16809,7 +16963,7 @@ components:
             $ref: '#/components/schemas/DiscoverytaskTcpPorts'
           type: array
         tcp_scan_technique:
-          description: The TCP scan techinque for FULL and TCP modes.
+          description: The TCP scan technique for FULL and TCP modes.
           enum:
           - SYN
           - CONNECT
@@ -17011,9 +17165,14 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
       type: object
@@ -17055,12 +17214,17 @@ components:
         name: Example name
         comment: Example comment
         disabled: false
+        uuid: uuid
         dns_associated_objects:
         - record:a
         - record:a
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -17154,19 +17318,24 @@ components:
       example:
         network_view: Example network_view
         parent: Example parent
-        view: Example view
         associated_object: Example associated_object
         data: Example data
         creation_timestamp: 1
+        type: Example type
+        uuid: uuid
+        view: Example view
         _ref: _ref
         name: Example name
         comment: Example comment
         disabled: false
         record_parent: Example record_parent
-        type: Example type
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         associated_object:
@@ -17262,9 +17431,14 @@ components:
         name: Example name
         replacement_character: Example replacement_character
         is_default: false
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         is_default:
@@ -17336,6 +17510,7 @@ components:
           usage:
           - usage
           - usage
+          uuid: uuid
           network: Example network
           extattrs-:
             key:
@@ -17604,6 +17779,7 @@ components:
           lease_state: Example lease_state
           reserved_port: Example reserved_port
           ip_address: Example ip_address
+          uuid: uuid
           network: Example network
           extattrs-:
             key:
@@ -17772,6 +17948,7 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -17859,6 +18036,7 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -17872,10 +18050,12 @@ components:
           use_lease_scavenge_time: false
           members:
           - _struct: _struct
+            address: Example address
             name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           - _struct: _struct
+            address: Example address
             name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
@@ -18060,6 +18240,7 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -18147,6 +18328,7 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -18160,10 +18342,12 @@ components:
           use_lease_scavenge_time: false
           members:
           - _struct: _struct
+            address: Example address
             name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           - _struct: _struct
+            address: Example address
             name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
@@ -18377,6 +18561,7 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -18459,6 +18644,7 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -18627,6 +18813,7 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -18709,6 +18896,7 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -18802,6 +18990,7 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          uuid: uuid
           use_ddns_domainname: false
           ipam_email_addresses:
           - ipam_email_addresses
@@ -18810,10 +18999,12 @@ components:
           use_lease_scavenge_time: false
           members:
           - _struct: _struct
+            address: Example address
             name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           - _struct: _struct
+            address: Example address
             name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
@@ -18935,6 +19126,7 @@ components:
           nextserver: Example nextserver
           use_ddns_update_fixed_addresses: false
           use_pxe_lease_time: false
+          uuid: uuid
           use_ddns_domainname: false
           ipam_email_addresses:
           - ipam_email_addresses
@@ -18943,10 +19135,12 @@ components:
           use_lease_scavenge_time: false
           members:
           - _struct: _struct
+            address: Example address
             name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           - _struct: _struct
+            address: Example address
             name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
@@ -19110,6 +19304,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           is_default: false
+          uuid: uuid
           extattrs-:
             key:
               value: ""
@@ -19147,12 +19342,14 @@ components:
             dns_ext_zone: Example dns_ext_zone
             dns_grid_zone:
               _ref: _ref
+              uuid: uuid
             zone_match: Example zone_match
             dns_ext_primary: Example dns_ext_primary
           - dns_grid_primary: Example dns_grid_primary
             dns_ext_zone: Example dns_ext_zone
             dns_grid_zone:
               _ref: _ref
+              uuid: uuid
             zone_match: Example zone_match
             dns_ext_primary: Example dns_ext_primary
           comment: Example comment
@@ -19223,6 +19420,7 @@ components:
             tenant: Example tenant
             delegated_root: Example delegated_root
           is_default: false
+          uuid: uuid
           extattrs-:
             key:
               value: ""
@@ -19260,12 +19458,14 @@ components:
             dns_ext_zone: Example dns_ext_zone
             dns_grid_zone:
               _ref: _ref
+              uuid: uuid
             zone_match: Example zone_match
             dns_ext_primary: Example dns_ext_primary
           - dns_grid_primary: Example dns_grid_primary
             dns_ext_zone: Example dns_ext_zone
             dns_grid_zone:
               _ref: _ref
+              uuid: uuid
             zone_match: Example zone_match
             dns_ext_primary: Example dns_ext_primary
           comment: Example comment
@@ -19335,6 +19535,7 @@ components:
           discovery_engine_type: Example discovery_engine_type
           use_enable_ifmap_publishing: false
           enable_ifmap_publishing: false
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -19352,10 +19553,12 @@ components:
           use_ddns_domainname: false
           discovered_vlan_name: Example discovered_vlan_name
           members:
-          - name: Example name
+          - address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           options:
@@ -19451,6 +19654,7 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -19572,6 +19776,7 @@ components:
           discovery_engine_type: Example discovery_engine_type
           use_enable_ifmap_publishing: false
           enable_ifmap_publishing: false
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -19589,10 +19794,12 @@ components:
           use_ddns_domainname: false
           discovered_vlan_name: Example discovered_vlan_name
           members:
-          - name: Example name
+          - address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           options:
@@ -19688,6 +19895,7 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -19845,6 +20053,7 @@ components:
             - enabled_attributes
             - enabled_attributes
           discovery_engine_type: Example discovery_engine_type
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -19942,6 +20151,7 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -20054,6 +20264,7 @@ components:
             - enabled_attributes
             - enabled_attributes
           discovery_engine_type: Example discovery_engine_type
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -20151,6 +20362,7 @@ components:
           discovery_basic_poll_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -20264,6 +20476,7 @@ components:
           use_ddns_enable_option_fqdn: false
           rir_organization: Example rir_organization
           use_ddns_ttl: false
+          uuid: uuid
           rir_registration_status: Example rir_registration_status
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
@@ -20283,10 +20496,12 @@ components:
           use_ddns_domainname: false
           use_domain_name: false
           members:
-          - name: Example name
+          - address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           options:
@@ -20364,6 +20579,7 @@ components:
           use_ddns_enable_option_fqdn: false
           rir_organization: Example rir_organization
           use_ddns_ttl: false
+          uuid: uuid
           rir_registration_status: Example rir_registration_status
           use_ddns_generate_hostname: false
           use_valid_lifetime: false
@@ -20383,10 +20599,12 @@ components:
           use_ddns_domainname: false
           use_domain_name: false
           members:
-          - name: Example name
+          - address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
-          - name: Example name
+          - address: Example address
+            name: Example name
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           options:
@@ -20520,6 +20738,7 @@ components:
             key:
               value: ""
           description: Example description
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -20567,6 +20786,7 @@ components:
             key:
               value: ""
           description: Example description
+          uuid: uuid
           func_call:
             _result_field: _result_field
             _object_function: _object_function
@@ -20626,6 +20846,7 @@ components:
           end_vlan_id: 1
           allow_range_overlapping: false
           vlan_name_prefix: Example vlan_name_prefix
+          uuid: uuid
           pre_create_vlan: false
       properties:
         result:
@@ -20660,6 +20881,7 @@ components:
           end_vlan_id: 1
           allow_range_overlapping: false
           vlan_name_prefix: Example vlan_name_prefix
+          uuid: uuid
           pre_create_vlan: false
       properties:
         result:
@@ -20694,23 +20916,24 @@ components:
       description: The response format to create __Vlanrange__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          start_vlan_id: 1
+          vlan_name_prefix: Example vlan_name_prefix
+          vlan_view: Example vlan_view
+          uuid: uuid
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          start_vlan_id: 1
           _ref: _ref
           name: Example name
           comment: Example comment
           delete_vlans: false
           end_vlan_id: 1
-          vlan_name_prefix: Example vlan_name_prefix
-          vlan_view: Example vlan_view
           pre_create_vlan: false
       properties:
         result:
@@ -20729,23 +20952,24 @@ components:
       description: The response format to update __Vlanrange__ in object format.
       example:
         result:
-          extattrs-:
+          extattrs:
             key:
               value: ""
-          extattrs:
+          start_vlan_id: 1
+          vlan_name_prefix: Example vlan_name_prefix
+          vlan_view: Example vlan_view
+          uuid: uuid
+          extattrs-:
             key:
               value: ""
           extattrs+:
             key:
               value: ""
-          start_vlan_id: 1
           _ref: _ref
           name: Example name
           comment: Example comment
           delete_vlans: false
           end_vlan_id: 1
-          vlan_name_prefix: Example vlan_name_prefix
-          vlan_view: Example vlan_view
           pre_create_vlan: false
       properties:
         result:
@@ -20787,6 +21011,7 @@ components:
             delegated_root: Example delegated_root
           dns_prefix: Example dns_prefix
           reverse: false
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -20843,6 +21068,7 @@ components:
             delegated_root: Example delegated_root
           dns_prefix: Example dns_prefix
           reverse: false
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -20884,6 +21110,7 @@ components:
           pre_defined: false
           _ref: _ref
           template_format: Example template_format
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Bulkhostnametemplate'
@@ -20907,6 +21134,7 @@ components:
           pre_defined: false
           _ref: _ref
           template_format: Example template_format
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Bulkhostnametemplate'
@@ -20957,6 +21185,7 @@ components:
           networks:
           - network
           - network
+          uuid: uuid
           v_network_view: Example v_network_view
           ping_timeout: 1
           mode: Example mode
@@ -21046,6 +21275,7 @@ components:
           name: Example name
           comment: Example comment
           disabled: false
+          uuid: uuid
           dns_associated_objects:
           - record:a
           - record:a
@@ -21083,6 +21313,7 @@ components:
           name: Example name
           comment: Example comment
           disabled: false
+          uuid: uuid
           dns_associated_objects:
           - record:a
           - record:a
@@ -21143,6 +21374,7 @@ components:
           name: Example name
           replacement_character: Example replacement_character
           is_default: false
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Hostnamerewritepolicy'

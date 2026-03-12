@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Comment** | Pointer to **string** | The comment for Super Host. | [optional] 
 **DeleteAssociatedObjects** | Pointer to **bool** | True if we have to delete all DNS/DHCP associated objects with Super Host, false by default. | [optional] 
 **DhcpAssociatedObjects** | Pointer to **[]string** | A list of DHCP objects refs which are associated with Super Host. | [optional] 
@@ -58,6 +59,31 @@ SetRef sets Ref field to given value.
 `func (o *Superhost) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Superhost) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Superhost) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Superhost) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Superhost) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetComment
 

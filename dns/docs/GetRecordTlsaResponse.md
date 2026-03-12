@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **CertificateData** | Pointer to **string** | Hex dump of either raw data for matching type 0, or the hash of the raw data for matching types 1 and 2. | [optional] 
 **CertificateUsage** | Pointer to **int64** | Specifies the provided association that will be used to match the certificate presented in the TLS handshake. Based on RFC-6698. | [optional] 
 **CloudInfo** | Pointer to [**RecordTlsaCloudInfo**](RecordTlsaCloudInfo.md) |  | [optional] 
@@ -68,6 +69,31 @@ SetRef sets Ref field to given value.
 `func (o *GetRecordTlsaResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordTlsaResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordTlsaResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordTlsaResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordTlsaResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetCertificateData
 

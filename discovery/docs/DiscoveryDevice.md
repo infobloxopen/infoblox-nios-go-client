@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Address** | Pointer to **string** | The IPv4 Address or IPv6 Address of the device. | [optional] [readonly] 
 **AddressRef** | Pointer to **string** | The ref to management IP address of the device. | [optional] [readonly] 
 **AvailableMgmtIps** | Pointer to **[]string** | The list of available management IPs for the device. | [optional] [readonly] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 **CapNetProvisioningNaReason** | Pointer to **string** | The reason that network provisioning is not available. | [optional] [readonly] 
 **CapNetVlanProvisioningInd** | Pointer to **bool** | Determines whether to create a VLAN and then provision a network to the interface of the device. | [optional] [readonly] 
 **CapNetVlanProvisioningNaReason** | Pointer to **string** | The reason that network provisioning on VLAN is not available. | [optional] [readonly] 
-**CapVlanAssignmentInd** | Pointer to **bool** | Determines whether to modify the VLAN assignement of an interface of the device. | [optional] [readonly] 
+**CapVlanAssignmentInd** | Pointer to **bool** | Determines whether to modify the VLAN assignment of an interface of the device. | [optional] [readonly] 
 **CapVlanAssignmentNaReason** | Pointer to **string** | The reason that VLAN assignment action is not available. | [optional] [readonly] 
 **CapVoiceVlanInd** | Pointer to **bool** | Determines whether to modify the voice VLAN assignment of an interface of the device. | [optional] [readonly] 
 **CapVoiceVlanNaReason** | Pointer to **string** | The reason that voice VLAN assignment action is not available. | [optional] [readonly] 
@@ -88,6 +89,31 @@ SetRef sets Ref field to given value.
 `func (o *DiscoveryDevice) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DiscoveryDevice) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DiscoveryDevice) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DiscoveryDevice) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DiscoveryDevice) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 

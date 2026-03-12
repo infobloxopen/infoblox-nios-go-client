@@ -5,12 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**AuthenticationKey** | Pointer to **string** | The authentication key for BFD protocol message-digest authentication. | [optional] 
-**AuthenticationKeyId** | Pointer to **int64** | The authentication key identifier for BFD protocol authentication. Valid values are between 1 and 255. | [optional] 
-**AuthenticationType** | Pointer to **string** | The authentication type for BFD protocol. | [optional] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **DetectionMultiplier** | Pointer to **int64** | The detection time multiplier value for BFD protocol. The negotiated transmit interval, multiplied by this value, provides the detection time for the receiving system in asynchronous BFD mode. Valid values are between 3 and 50. | [optional] 
-**MinRxInterval** | Pointer to **int64** | The minimum receive time (in seconds) for BFD protocol. Valid values are between 50 and 9999. | [optional] 
-**MinTxInterval** | Pointer to **int64** | The minimum transmission time (in seconds) for BFD protocol. Valid values are between 50 and 9999. | [optional] 
+**MinRxInterval** | Pointer to **int64** | The minimum receive time (in seconds) for BFD protocol. Valid values are between 50 and 9999. From NIOS 9.1.0 onwards, the BFD default value has been changed from 100 to 300. | [optional] 
+**MinTxInterval** | Pointer to **int64** | The minimum transmission time (in seconds) for BFD protocol. Valid values are between 50 and 9999. From NIOS 9.1.0 onwards, the BFD default value has been changed from 100 to 300. | [optional] 
 **Name** | Pointer to **string** | The name of the BFD template object. | [optional] 
 
 ## Methods
@@ -57,80 +55,30 @@ SetRef sets Ref field to given value.
 
 HasRef returns a boolean if a field has been set.
 
-### GetAuthenticationKey
+### GetUuid
 
-`func (o *Bfdtemplate) GetAuthenticationKey() string`
+`func (o *Bfdtemplate) GetUuid() string`
 
-GetAuthenticationKey returns the AuthenticationKey field if non-nil, zero value otherwise.
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
 
-### GetAuthenticationKeyOk
+### GetUuidOk
 
-`func (o *Bfdtemplate) GetAuthenticationKeyOk() (*string, bool)`
+`func (o *Bfdtemplate) GetUuidOk() (*string, bool)`
 
-GetAuthenticationKeyOk returns a tuple with the AuthenticationKey field if it's non-nil, zero value otherwise
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAuthenticationKey
+### SetUuid
 
-`func (o *Bfdtemplate) SetAuthenticationKey(v string)`
+`func (o *Bfdtemplate) SetUuid(v string)`
 
-SetAuthenticationKey sets AuthenticationKey field to given value.
+SetUuid sets Uuid field to given value.
 
-### HasAuthenticationKey
+### HasUuid
 
-`func (o *Bfdtemplate) HasAuthenticationKey() bool`
+`func (o *Bfdtemplate) HasUuid() bool`
 
-HasAuthenticationKey returns a boolean if a field has been set.
-
-### GetAuthenticationKeyId
-
-`func (o *Bfdtemplate) GetAuthenticationKeyId() int64`
-
-GetAuthenticationKeyId returns the AuthenticationKeyId field if non-nil, zero value otherwise.
-
-### GetAuthenticationKeyIdOk
-
-`func (o *Bfdtemplate) GetAuthenticationKeyIdOk() (*int64, bool)`
-
-GetAuthenticationKeyIdOk returns a tuple with the AuthenticationKeyId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthenticationKeyId
-
-`func (o *Bfdtemplate) SetAuthenticationKeyId(v int64)`
-
-SetAuthenticationKeyId sets AuthenticationKeyId field to given value.
-
-### HasAuthenticationKeyId
-
-`func (o *Bfdtemplate) HasAuthenticationKeyId() bool`
-
-HasAuthenticationKeyId returns a boolean if a field has been set.
-
-### GetAuthenticationType
-
-`func (o *Bfdtemplate) GetAuthenticationType() string`
-
-GetAuthenticationType returns the AuthenticationType field if non-nil, zero value otherwise.
-
-### GetAuthenticationTypeOk
-
-`func (o *Bfdtemplate) GetAuthenticationTypeOk() (*string, bool)`
-
-GetAuthenticationTypeOk returns a tuple with the AuthenticationType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthenticationType
-
-`func (o *Bfdtemplate) SetAuthenticationType(v string)`
-
-SetAuthenticationType sets AuthenticationType field to given value.
-
-### HasAuthenticationType
-
-`func (o *Bfdtemplate) HasAuthenticationType() bool`
-
-HasAuthenticationType returns a boolean if a field has been set.
+HasUuid returns a boolean if a field has been set.
 
 ### GetDetectionMultiplier
 

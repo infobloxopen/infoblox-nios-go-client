@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Bootfile** | Pointer to **string** | The boot file name for the fixed address. You can configure the DHCP server to support clients that use the boot file name option in their DHCPREQUEST messages. | [optional] 
 **Bootserver** | Pointer to **string** | The boot server address for the fixed address. You can specify the name and/or IP address of the boot server that the host needs to boot. The boot server IPv4 Address or name in FQDN format. | [optional] 
 **Comment** | Pointer to **string** | A descriptive comment of a fixed address template object. | [optional] 
@@ -78,6 +79,31 @@ SetRef sets Ref field to given value.
 `func (o *Fixedaddresstemplate) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Fixedaddresstemplate) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Fixedaddresstemplate) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Fixedaddresstemplate) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Fixedaddresstemplate) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetBootfile
 

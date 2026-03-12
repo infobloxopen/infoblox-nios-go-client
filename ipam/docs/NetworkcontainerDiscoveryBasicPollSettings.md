@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **CredentialGroup** | Pointer to **string** | Credential group. | [optional] 
 **PollingFrequencyModifier** | Pointer to **string** | Polling Frequency Modifier. | [optional] 
 **UseGlobalPollingFrequencyModifier** | Pointer to **bool** | Use Global Polling Frequency Modifier. | [optional] 
+**UseArpDataForDiscovery** | Pointer to **bool** | Use ARP data to discover IP addresses. | [optional] 
 
 ## Methods
 
@@ -387,6 +388,31 @@ SetUseGlobalPollingFrequencyModifier sets UseGlobalPollingFrequencyModifier fiel
 `func (o *NetworkcontainerDiscoveryBasicPollSettings) HasUseGlobalPollingFrequencyModifier() bool`
 
 HasUseGlobalPollingFrequencyModifier returns a boolean if a field has been set.
+
+### GetUseArpDataForDiscovery
+
+`func (o *NetworkcontainerDiscoveryBasicPollSettings) GetUseArpDataForDiscovery() bool`
+
+GetUseArpDataForDiscovery returns the UseArpDataForDiscovery field if non-nil, zero value otherwise.
+
+### GetUseArpDataForDiscoveryOk
+
+`func (o *NetworkcontainerDiscoveryBasicPollSettings) GetUseArpDataForDiscoveryOk() (*bool, bool)`
+
+GetUseArpDataForDiscoveryOk returns a tuple with the UseArpDataForDiscovery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseArpDataForDiscovery
+
+`func (o *NetworkcontainerDiscoveryBasicPollSettings) SetUseArpDataForDiscovery(v bool)`
+
+SetUseArpDataForDiscovery sets UseArpDataForDiscovery field to given value.
+
+### HasUseArpDataForDiscovery
+
+`func (o *NetworkcontainerDiscoveryBasicPollSettings) HasUseArpDataForDiscovery() bool`
+
+HasUseArpDataForDiscovery returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

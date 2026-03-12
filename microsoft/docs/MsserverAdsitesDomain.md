@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **EaDefinition** | Pointer to **string** | The name of the Extensible Attribute Definition object that is linked to the Active Directory Sites Domain. | [optional] [readonly] 
 **MsSyncMasterName** | Pointer to **string** | The IP address or FQDN of the managing master for the MS server, if applicable. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the Active Directory Domain properties object. | [optional] [readonly] 
@@ -55,6 +56,31 @@ SetRef sets Ref field to given value.
 `func (o *MsserverAdsitesDomain) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *MsserverAdsitesDomain) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *MsserverAdsitesDomain) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *MsserverAdsitesDomain) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *MsserverAdsitesDomain) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetEaDefinition
 

@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox MISC API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for allendpoints objects
   name: Allendpoints
@@ -5151,11 +5151,16 @@ components:
         _ref: _ref
         comment: Example comment
         type: Example type
+        uuid: uuid
         version: Example version
         subscribing_member: Example subscribing_member
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         address:
@@ -5216,39 +5221,20 @@ components:
     Bfdtemplate:
       additionalProperties: false
       example:
-        authentication_key_id: 1
         min_tx_interval: 1
-        authentication_key: Example authentication_key
         min_rx_interval: 1
         _ref: _ref
         name: Example name
-        authentication_type: Example authentication_type
+        uuid: uuid
         detection_multiplier: 1
       properties:
         _ref:
           description: The reference to the object.
           readOnly: true
           type: string
-        authentication_key:
-          description: The authentication key for BFD protocol message-digest authentication.
-          example: Example authentication_key
-          type: string
-          writeOnly: true
-        authentication_key_id:
-          description: The authentication key identifier for BFD protocol authentication.
-            Valid values are between 1 and 255.
-          example: 1
-          format: int64
-          type: integer
-        authentication_type:
-          description: The authentication type for BFD protocol.
-          enum:
-          - NONE
-          - MD5
-          - METICULOUS-MD5
-          - SHA1
-          - METICULOUS-SHA1
-          example: Example authentication_type
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
           type: string
         detection_multiplier:
           description: "The detection time multiplier value for BFD protocol. The\
@@ -5259,14 +5245,16 @@ components:
           format: int64
           type: integer
         min_rx_interval:
-          description: The minimum receive time (in seconds) for BFD protocol. Valid
-            values are between 50 and 9999.
+          description: "The minimum receive time (in seconds) for BFD protocol. Valid\
+            \ values are between 50 and 9999. From NIOS 9.1.0 onwards, the BFD default\
+            \ value has been changed from 100 to 300."
           example: 1
           format: int64
           type: integer
         min_tx_interval:
-          description: The minimum transmission time (in seconds) for BFD protocol.
-            Valid values are between 50 and 9999.
+          description: "The minimum transmission time (in seconds) for BFD protocol.\
+            \ Valid values are between 50 and 9999. From NIOS 9.1.0 onwards, the BFD\
+            \ default value has been changed from 100 to 300."
           example: 1
           format: int64
           type: integer
@@ -5309,6 +5297,7 @@ components:
         import_id: 1
         end_time: 1
         lines_warning: 1
+        uuid: uuid
         separator: Example separator
         file_size: 1
         start_time: 1
@@ -5321,6 +5310,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         action:
@@ -5458,9 +5451,14 @@ components:
         enable_registration: false
         _ref: _ref
         name: Example name
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         enable_registration:
@@ -5504,10 +5502,15 @@ components:
         object_type: Example object_type
         _ref: _ref
         last_sequence_id: Example last_sequence_id
+        uuid: uuid
         object: Example object
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         last_sequence_id:
@@ -5555,10 +5558,15 @@ components:
       example:
         _ref: _ref
         comment: Example comment
+        uuid: uuid
         timestamp: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -5597,9 +5605,14 @@ components:
       example:
         object_type: Example object_type
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         object_type:
@@ -5654,6 +5667,7 @@ components:
         - outbound_members
         - outbound_members
         client_certificate_subject: Example client_certificate_subject
+        uuid: uuid
         timeout: 1
         client_certificate_valid_from: 1
         extattrs-:
@@ -5683,6 +5697,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         brokers:
@@ -5916,9 +5934,14 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
       type: object
@@ -5952,10 +5975,15 @@ components:
         - members
         _ref: _ref
         in_use: false
+        uuid: uuid
         version: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         domain:
@@ -6040,9 +6068,14 @@ components:
           count: 1
         - type_name: Example type_name
           count: 1
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         hardware_type:
@@ -6136,9 +6169,14 @@ components:
           enabled: false
         _ref: _ref
         interval: 1
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         enable:
@@ -6225,6 +6263,7 @@ components:
         - outbound_members
         - outbound_members
         client_certificate_subject: Example client_certificate_subject
+        uuid: uuid
         publish_settings:
           enabled_attributes:
           - enabled_attributes
@@ -6258,6 +6297,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         address:
@@ -6383,7 +6426,7 @@ components:
         - enabled_attributes
       properties:
         enabled_attributes:
-          description: The list of NIOS extensible attributes enalbed for publishsing
+          description: The list of NIOS extensible attributes enabled for publishing
             to Cisco ISE endpoint.
           enum:
           - CLIENT_ID
@@ -6437,7 +6480,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -6541,6 +6584,7 @@ components:
         comment: Example comment
         disabled: false
         type: Example type
+        uuid: uuid
         nxdomain_rules:
         - pattern: Example pattern
           action: Example action
@@ -6549,6 +6593,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -6633,11 +6681,16 @@ components:
         _ref: _ref
         end_time: 1
         action: Example action
+        uuid: uuid
         reclaimable_records: 1
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         action:
@@ -6747,6 +6800,7 @@ components:
         task_id: 1
         scheduled_time: 1
         ticket_number: Example ticket_number
+        uuid: uuid
         re_execute_task: false
         execute_now: false
         execution_time: 1
@@ -6764,6 +6818,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         approval_status:
@@ -6987,9 +7045,14 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
       type: object
@@ -7042,6 +7105,7 @@ components:
         outbound_members:
         - outbound_members
         - outbound_members
+        uuid: uuid
         timeout: 1
         extattrs-:
           key:
@@ -7067,6 +7131,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         extattrs+:
@@ -7185,7 +7253,7 @@ components:
           example: Example hostname
           type: string
         format:
-          description: Format vlues for syslog endpoint server
+          description: Format values for syslog endpoint server
           enum:
           - raw
           - formatted
@@ -7313,11 +7381,16 @@ components:
           collection_name: Example collection_name
         _ref: _ref
         name: Example name
+        uuid: uuid
         ipv4addr: Example ipv4addr
         ipv6addr: Example ipv6addr
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         enable_service:
@@ -7405,10 +7478,15 @@ components:
         name: Example name
         is_synced_to_gm: false
         type: Example type
+        uuid: uuid
         directory: Example directory
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         directory:
@@ -7558,13 +7636,11 @@ components:
       description: The response format to create __Bfdtemplate__ in object format.
       example:
         result:
-          authentication_key_id: 1
           min_tx_interval: 1
-          authentication_key: Example authentication_key
           min_rx_interval: 1
           _ref: _ref
           name: Example name
-          authentication_type: Example authentication_type
+          uuid: uuid
           detection_multiplier: 1
       properties:
         result:
@@ -7583,13 +7659,11 @@ components:
       description: The response format to update __Bfdtemplate__ in object format.
       example:
         result:
-          authentication_key_id: 1
           min_tx_interval: 1
-          authentication_key: Example authentication_key
           min_rx_interval: 1
           _ref: _ref
           name: Example name
-          authentication_type: Example authentication_type
+          uuid: uuid
           detection_multiplier: 1
       properties:
         result:
@@ -7624,6 +7698,7 @@ components:
           import_id: 1
           end_time: 1
           lines_warning: 1
+          uuid: uuid
           separator: Example separator
           file_size: 1
           start_time: 1
@@ -7655,6 +7730,7 @@ components:
           enable_registration: false
           _ref: _ref
           name: Example name
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Datacollectioncluster'
@@ -7676,6 +7752,7 @@ components:
           enable_registration: false
           _ref: _ref
           name: Example name
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Datacollectioncluster'
@@ -7790,6 +7867,7 @@ components:
           - outbound_members
           - outbound_members
           client_certificate_subject: Example client_certificate_subject
+          uuid: uuid
           timeout: 1
           client_certificate_valid_from: 1
           extattrs-:
@@ -7857,6 +7935,7 @@ components:
           - outbound_members
           - outbound_members
           client_certificate_subject: Example client_certificate_subject
+          uuid: uuid
           timeout: 1
           client_certificate_valid_from: 1
           extattrs-:
@@ -7991,6 +8070,7 @@ components:
             enabled: false
           _ref: _ref
           interval: 1
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/OutboundCloudclient'
@@ -8031,6 +8111,7 @@ components:
           - outbound_members
           - outbound_members
           client_certificate_subject: Example client_certificate_subject
+          uuid: uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes
@@ -8100,6 +8181,7 @@ components:
           - outbound_members
           - outbound_members
           client_certificate_subject: Example client_certificate_subject
+          uuid: uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes
@@ -8153,6 +8235,7 @@ components:
           comment: Example comment
           disabled: false
           type: Example type
+          uuid: uuid
           nxdomain_rules:
           - pattern: Example pattern
             action: Example action
@@ -8180,6 +8263,7 @@ components:
           comment: Example comment
           disabled: false
           type: Example type
+          uuid: uuid
           nxdomain_rules:
           - pattern: Example pattern
             action: Example action
@@ -8262,6 +8346,7 @@ components:
           task_id: 1
           scheduled_time: 1
           ticket_number: Example ticket_number
+          uuid: uuid
           re_execute_task: false
           execute_now: false
           execution_time: 1
@@ -8381,6 +8466,7 @@ components:
           outbound_members:
           - outbound_members
           - outbound_members
+          uuid: uuid
           timeout: 1
           extattrs-:
             key:
@@ -8448,6 +8534,7 @@ components:
           outbound_members:
           - outbound_members
           - outbound_members
+          uuid: uuid
           timeout: 1
           extattrs-:
             key:
@@ -8504,6 +8591,7 @@ components:
             collection_name: Example collection_name
           _ref: _ref
           name: Example name
+          uuid: uuid
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
       properties:
@@ -8544,6 +8632,7 @@ components:
           name: Example name
           is_synced_to_gm: false
           type: Example type
+          uuid: uuid
           directory: Example directory
       properties:
         result:
@@ -8582,6 +8671,7 @@ components:
           name: Example name
           is_synced_to_gm: false
           type: Example type
+          uuid: uuid
           directory: Example directory
       properties:
         result:

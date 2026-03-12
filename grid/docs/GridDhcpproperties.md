@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Authority** | Pointer to **bool** | The Grid-level authority flag. This flag specifies whether a DHCP server is authoritative for a domain. | [optional] 
 **Bootfile** | Pointer to **string** | The name of a file that DHCP clients need to boot. Some DHCP clients use BOOTP (bootstrap protocol) or include the boot file name option in their DHCPREQUEST messages. | [optional] 
 **Bootserver** | Pointer to **string** | The name of the server on which a boot file is stored. | [optional] 
@@ -133,6 +134,31 @@ SetRef sets Ref field to given value.
 `func (o *GridDhcpproperties) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridDhcpproperties) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridDhcpproperties) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridDhcpproperties) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridDhcpproperties) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAuthority
 

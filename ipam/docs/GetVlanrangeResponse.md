@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment for this VLAN Range. | [optional] 
 **DeleteVlans** | Pointer to **bool** | Vlans delete option. Determines whether all child objects should be removed alongside with the VLAN Range or child objects should be assigned to another parental VLAN Range/View. By default child objects are re-parented. | [optional] 
 **EndVlanId** | Pointer to **int64** | End ID for VLAN Range. | [optional] 
@@ -61,6 +62,31 @@ SetRef sets Ref field to given value.
 `func (o *GetVlanrangeResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetVlanrangeResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetVlanrangeResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetVlanrangeResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetVlanrangeResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetComment
 

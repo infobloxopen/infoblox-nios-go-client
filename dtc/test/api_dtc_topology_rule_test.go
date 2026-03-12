@@ -23,6 +23,18 @@ func TestDtcTopologyRuleAPIService(t *testing.T) {
 
 	apiClient := dtc.NewAPIClient()
 
+	t.Run("Test DtcTopologyRuleAPIService Create", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.DtcTopologyRuleAPI.Create(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DtcTopologyRuleAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

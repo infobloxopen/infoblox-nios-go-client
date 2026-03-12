@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Ciphers** | Pointer to **string** | An optional cipher list for a secure HTTP/S connection. | [optional] 
 **ClientCert** | Pointer to **string** | An optional client certificate, supplied in a secure HTTP/S mode if present. | [optional] 
 **Comment** | Pointer to **string** | Comment for this DTC monitor; maximum 256 characters. | [optional] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**Interval** | Pointer to **int64** | The interval for TCP health check. | [optional] 
+**Interval** | Pointer to **int64** | The interval for a health check. | [optional] 
 **Name** | Pointer to **string** | The display name for this DTC monitor. | [optional] 
 **Port** | Pointer to **int64** | Port for TCP requests. | [optional] 
 **Request** | Pointer to **string** | An HTTP request to send. | [optional] 
@@ -28,7 +29,7 @@ Name | Type | Description | Notes
 **RetryDown** | Pointer to **int64** | The value of how many times the server should appear as down to be treated as dead after it was alive. | [optional] 
 **RetryUp** | Pointer to **int64** | The value of how many times the server should appear as up to be treated as alive after it was dead. | [optional] 
 **Secure** | Pointer to **bool** | The connection security status. | [optional] 
-**Timeout** | Pointer to **int64** | The timeout for TCP health check in seconds. | [optional] 
+**Timeout** | Pointer to **int64** | The timeout for a health check in seconds. | [optional] 
 **ValidateCert** | Pointer to **bool** | Determines whether the validation of the remote server&#39;s certificate is enabled. | [optional] 
 
 ## Methods
@@ -74,6 +75,31 @@ SetRef sets Ref field to given value.
 `func (o *DtcMonitorHttp) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DtcMonitorHttp) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DtcMonitorHttp) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DtcMonitorHttp) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DtcMonitorHttp) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetCiphers
 

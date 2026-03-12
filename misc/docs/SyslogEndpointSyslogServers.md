@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ConnectionType** | Pointer to **string** | Connection type values | [optional] 
 **Port** | Pointer to **int64** | The port this server listens on. | [optional] 
 **Hostname** | Pointer to **string** | List of hostnames | [optional] 
-**Format** | Pointer to **string** | Format vlues for syslog endpoint server | [optional] 
+**Format** | Pointer to **string** | Format values for syslog endpoint server | [optional] 
 **Facility** | Pointer to **string** | Facility values for syslog endpoint server | [optional] 
 **Severity** | Pointer to **string** | Severity values for syslog endpoint server. | [optional] 
 **Certificate** | Pointer to [**SyslogEndpointSyslogServersCertificate**](SyslogEndpointSyslogServersCertificate.md) |  | [optional] 

@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AddressType** | Pointer to **string** | Type of a DHCP IPv6 Range object. Valid values are \&quot;ADDRESS\&quot;, \&quot;PREFIX\&quot;, or \&quot;BOTH\&quot;. When the address type is \&quot;ADDRESS\&quot;, values for the &#39;start_addr&#39; and &#39;end_addr&#39; members are required. When the address type is \&quot;PREFIX\&quot;, values for &#39;ipv6_start_prefix&#39;, &#39;ipv6_end_prefix&#39;, and &#39;ipv6_prefix_bits&#39; are required. When the address type is \&quot;BOTH\&quot;, values for &#39;start_addr&#39;, &#39;end_addr&#39;, &#39;ipv6_start_prefix&#39;, &#39;ipv6_end_prefix&#39;, and &#39;ipv6_prefix_bits&#39; are all required. | [optional] 
+**AlwaysUpdateDns** | Pointer to **bool** | This field controls whether only the DHCPv6 server is allowed to update DNS, regardless of the DHCPv6 client requests. | [optional] 
 **CloudInfo** | Pointer to [**Ipv6rangeCloudInfo**](Ipv6rangeCloudInfo.md) |  | [optional] 
 **Comment** | Pointer to **string** | Comment for the range; maximum 256 characters. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether a range is disabled or not. When this is set to False, the range is enabled. | [optional] 
@@ -13,6 +15,7 @@ Name | Type | Description | Notes
 **DiscoveryBasicPollSettings** | Pointer to [**Ipv6rangeDiscoveryBasicPollSettings**](Ipv6rangeDiscoveryBasicPollSettings.md) |  | [optional] 
 **DiscoveryBlackoutSetting** | Pointer to [**Ipv6rangeDiscoveryBlackoutSetting**](Ipv6rangeDiscoveryBlackoutSetting.md) |  | [optional] 
 **DiscoveryMember** | Pointer to **string** | The member that will run discovery for this range. | [optional] 
+**EnableDdns** | Pointer to **bool** | The dynamic DNS updates flag of a DHCP IPv6 range object. If set to True, the DHCPv6 server sends DDNS updates to DNS servers in the same Grid, and to external DNS servers. | [optional] 
 **EnableDiscovery** | Pointer to **bool** | Determines whether a discovery is enabled or not for this range. When this is set to False, the discovery for this range is disabled. | [optional] 
 **EnableImmediateDiscovery** | Pointer to **bool** | Determines if the discovery for the range should be immediately enabled. | [optional] 
 **EndAddr** | Pointer to **string** | The IPv6 Address end address of the DHCP IPv6 range. | [optional] 
@@ -26,24 +29,33 @@ Name | Type | Description | Notes
 **Ipv6StartPrefix** | Pointer to **string** | The IPv6 Address starting prefix of the DHCP IPv6 range. | [optional] 
 **LogicFilterRules** | Pointer to [**[]Ipv6rangeLogicFilterRules**](Ipv6rangeLogicFilterRules.md) | This field contains the logic filters to be applied to this IPv6 range. This list corresponds to the match rules that are written to the DHCPv6 configuration file. | [optional] 
 **Member** | Pointer to [**Ipv6rangeMember**](Ipv6rangeMember.md) |  | [optional] 
+**MsOptions** | Pointer to [**[]Ipv6rangeMsOptions**](Ipv6rangeMsOptions.md) | This field contains the Microsoft DHCP options for this IPv6 range. | [optional] 
+**MsPreference** | Pointer to **int64** | This field contains the MS preference for this IPv6 Range. | [optional] 
+**MsServer** | Pointer to [**Ipv6rangeMsServer**](Ipv6rangeMsServer.md) |  | [optional] 
 **Name** | Pointer to **string** | This field contains the name of the Microsoft scope. | [optional] 
 **Network** | Pointer to **string** | The network this range belongs to, in IPv6 Address/CIDR format. | [optional] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this range resides. | [optional] 
 **OptionFilterRules** | Pointer to [**[]Ipv6rangeOptionFilterRules**](Ipv6rangeOptionFilterRules.md) | This field contains the Option filters to be applied to this IPv6 range. The appliance uses the matching rules of these filters to select the address range from which it assigns a lease. | [optional] 
 **PortControlBlackoutSetting** | Pointer to [**Ipv6rangePortControlBlackoutSetting**](Ipv6rangePortControlBlackoutSetting.md) |  | [optional] 
+**PreferredLifetime** | Pointer to **int64** | This field contains the IPv6 preferred lifetime. | [optional] 
 **RecycleLeases** | Pointer to **bool** | If the field is set to True, the leases are kept in the Recycle Bin until one week after expiration. Otherwise, the leases are permanently deleted. | [optional] 
 **RestartIfNeeded** | Pointer to **bool** | Restarts the member service. | [optional] 
 **SamePortControlDiscoveryBlackout** | Pointer to **bool** | If the field is set to True, the discovery blackout setting will be used for port control blackout setting. | [optional] 
-**ServerAssociationType** | Pointer to **string** | The type of server that is going to serve the range. Valid values are: * MEMBER * NONE | [optional] 
+**ServerAssociationType** | Pointer to **string** | The type of server that is going to serve the range. | [optional] 
 **StartAddr** | Pointer to **string** | The IPv6 Address starting address of the DHCP IPv6 range. | [optional] 
 **SubscribeSettings** | Pointer to [**Ipv6rangeSubscribeSettings**](Ipv6rangeSubscribeSettings.md) |  | [optional] 
 **Template** | Pointer to **string** | If set on creation, the range will be created according to the values specified in the named template. | [optional] 
 **UseBlackoutSetting** | Pointer to **bool** | Use flag for: discovery_blackout_setting , port_control_blackout_setting, same_port_control_discovery_blackout | [optional] 
 **UseDiscoveryBasicPollingSettings** | Pointer to **bool** | Use flag for: discovery_basic_poll_settings | [optional] 
+**UseEnableDdns** | Pointer to **bool** | Use flag for: enable_ddns | [optional] 
 **UseEnableDiscovery** | Pointer to **bool** | Use flag for: discovery_member , enable_discovery | [optional] 
 **UseLogicFilterRules** | Pointer to **bool** | Use flag for: logic_filter_rules | [optional] 
+**UseMsOptions** | Pointer to **bool** | Use flag for: ms_options | [optional] 
+**UsePreferredLifetime** | Pointer to **bool** | Use flag for: preferred_lifetime | [optional] 
 **UseRecycleLeases** | Pointer to **bool** | Use flag for: recycle_leases | [optional] 
 **UseSubscribeSettings** | Pointer to **bool** | Use flag for: subscribe_settings | [optional] 
+**UseValidLifetime** | Pointer to **bool** | Use flag for: valid_lifetime | [optional] 
+**ValidLifetime** | Pointer to **int64** | This field contains the IPv6 valid lifetime. | [optional] 
 **Result** | Pointer to [**Ipv6range**](Ipv6range.md) |  | [optional] 
 
 ## Methods
@@ -90,6 +102,31 @@ SetRef sets Ref field to given value.
 
 HasRef returns a boolean if a field has been set.
 
+### GetUuid
+
+`func (o *GetIpv6rangeResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetIpv6rangeResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetIpv6rangeResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetIpv6rangeResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
+
 ### GetAddressType
 
 `func (o *GetIpv6rangeResponse) GetAddressType() string`
@@ -114,6 +151,31 @@ SetAddressType sets AddressType field to given value.
 `func (o *GetIpv6rangeResponse) HasAddressType() bool`
 
 HasAddressType returns a boolean if a field has been set.
+
+### GetAlwaysUpdateDns
+
+`func (o *GetIpv6rangeResponse) GetAlwaysUpdateDns() bool`
+
+GetAlwaysUpdateDns returns the AlwaysUpdateDns field if non-nil, zero value otherwise.
+
+### GetAlwaysUpdateDnsOk
+
+`func (o *GetIpv6rangeResponse) GetAlwaysUpdateDnsOk() (*bool, bool)`
+
+GetAlwaysUpdateDnsOk returns a tuple with the AlwaysUpdateDns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlwaysUpdateDns
+
+`func (o *GetIpv6rangeResponse) SetAlwaysUpdateDns(v bool)`
+
+SetAlwaysUpdateDns sets AlwaysUpdateDns field to given value.
+
+### HasAlwaysUpdateDns
+
+`func (o *GetIpv6rangeResponse) HasAlwaysUpdateDns() bool`
+
+HasAlwaysUpdateDns returns a boolean if a field has been set.
 
 ### GetCloudInfo
 
@@ -289,6 +351,31 @@ SetDiscoveryMember sets DiscoveryMember field to given value.
 `func (o *GetIpv6rangeResponse) HasDiscoveryMember() bool`
 
 HasDiscoveryMember returns a boolean if a field has been set.
+
+### GetEnableDdns
+
+`func (o *GetIpv6rangeResponse) GetEnableDdns() bool`
+
+GetEnableDdns returns the EnableDdns field if non-nil, zero value otherwise.
+
+### GetEnableDdnsOk
+
+`func (o *GetIpv6rangeResponse) GetEnableDdnsOk() (*bool, bool)`
+
+GetEnableDdnsOk returns a tuple with the EnableDdns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDdns
+
+`func (o *GetIpv6rangeResponse) SetEnableDdns(v bool)`
+
+SetEnableDdns sets EnableDdns field to given value.
+
+### HasEnableDdns
+
+`func (o *GetIpv6rangeResponse) HasEnableDdns() bool`
+
+HasEnableDdns returns a boolean if a field has been set.
 
 ### GetEnableDiscovery
 
@@ -615,6 +702,81 @@ SetMember sets Member field to given value.
 
 HasMember returns a boolean if a field has been set.
 
+### GetMsOptions
+
+`func (o *GetIpv6rangeResponse) GetMsOptions() []Ipv6rangeMsOptions`
+
+GetMsOptions returns the MsOptions field if non-nil, zero value otherwise.
+
+### GetMsOptionsOk
+
+`func (o *GetIpv6rangeResponse) GetMsOptionsOk() (*[]Ipv6rangeMsOptions, bool)`
+
+GetMsOptionsOk returns a tuple with the MsOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsOptions
+
+`func (o *GetIpv6rangeResponse) SetMsOptions(v []Ipv6rangeMsOptions)`
+
+SetMsOptions sets MsOptions field to given value.
+
+### HasMsOptions
+
+`func (o *GetIpv6rangeResponse) HasMsOptions() bool`
+
+HasMsOptions returns a boolean if a field has been set.
+
+### GetMsPreference
+
+`func (o *GetIpv6rangeResponse) GetMsPreference() int64`
+
+GetMsPreference returns the MsPreference field if non-nil, zero value otherwise.
+
+### GetMsPreferenceOk
+
+`func (o *GetIpv6rangeResponse) GetMsPreferenceOk() (*int64, bool)`
+
+GetMsPreferenceOk returns a tuple with the MsPreference field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsPreference
+
+`func (o *GetIpv6rangeResponse) SetMsPreference(v int64)`
+
+SetMsPreference sets MsPreference field to given value.
+
+### HasMsPreference
+
+`func (o *GetIpv6rangeResponse) HasMsPreference() bool`
+
+HasMsPreference returns a boolean if a field has been set.
+
+### GetMsServer
+
+`func (o *GetIpv6rangeResponse) GetMsServer() Ipv6rangeMsServer`
+
+GetMsServer returns the MsServer field if non-nil, zero value otherwise.
+
+### GetMsServerOk
+
+`func (o *GetIpv6rangeResponse) GetMsServerOk() (*Ipv6rangeMsServer, bool)`
+
+GetMsServerOk returns a tuple with the MsServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsServer
+
+`func (o *GetIpv6rangeResponse) SetMsServer(v Ipv6rangeMsServer)`
+
+SetMsServer sets MsServer field to given value.
+
+### HasMsServer
+
+`func (o *GetIpv6rangeResponse) HasMsServer() bool`
+
+HasMsServer returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *GetIpv6rangeResponse) GetName() string`
@@ -739,6 +901,31 @@ SetPortControlBlackoutSetting sets PortControlBlackoutSetting field to given val
 `func (o *GetIpv6rangeResponse) HasPortControlBlackoutSetting() bool`
 
 HasPortControlBlackoutSetting returns a boolean if a field has been set.
+
+### GetPreferredLifetime
+
+`func (o *GetIpv6rangeResponse) GetPreferredLifetime() int64`
+
+GetPreferredLifetime returns the PreferredLifetime field if non-nil, zero value otherwise.
+
+### GetPreferredLifetimeOk
+
+`func (o *GetIpv6rangeResponse) GetPreferredLifetimeOk() (*int64, bool)`
+
+GetPreferredLifetimeOk returns a tuple with the PreferredLifetime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreferredLifetime
+
+`func (o *GetIpv6rangeResponse) SetPreferredLifetime(v int64)`
+
+SetPreferredLifetime sets PreferredLifetime field to given value.
+
+### HasPreferredLifetime
+
+`func (o *GetIpv6rangeResponse) HasPreferredLifetime() bool`
+
+HasPreferredLifetime returns a boolean if a field has been set.
 
 ### GetRecycleLeases
 
@@ -965,6 +1152,31 @@ SetUseDiscoveryBasicPollingSettings sets UseDiscoveryBasicPollingSettings field 
 
 HasUseDiscoveryBasicPollingSettings returns a boolean if a field has been set.
 
+### GetUseEnableDdns
+
+`func (o *GetIpv6rangeResponse) GetUseEnableDdns() bool`
+
+GetUseEnableDdns returns the UseEnableDdns field if non-nil, zero value otherwise.
+
+### GetUseEnableDdnsOk
+
+`func (o *GetIpv6rangeResponse) GetUseEnableDdnsOk() (*bool, bool)`
+
+GetUseEnableDdnsOk returns a tuple with the UseEnableDdns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseEnableDdns
+
+`func (o *GetIpv6rangeResponse) SetUseEnableDdns(v bool)`
+
+SetUseEnableDdns sets UseEnableDdns field to given value.
+
+### HasUseEnableDdns
+
+`func (o *GetIpv6rangeResponse) HasUseEnableDdns() bool`
+
+HasUseEnableDdns returns a boolean if a field has been set.
+
 ### GetUseEnableDiscovery
 
 `func (o *GetIpv6rangeResponse) GetUseEnableDiscovery() bool`
@@ -1015,6 +1227,56 @@ SetUseLogicFilterRules sets UseLogicFilterRules field to given value.
 
 HasUseLogicFilterRules returns a boolean if a field has been set.
 
+### GetUseMsOptions
+
+`func (o *GetIpv6rangeResponse) GetUseMsOptions() bool`
+
+GetUseMsOptions returns the UseMsOptions field if non-nil, zero value otherwise.
+
+### GetUseMsOptionsOk
+
+`func (o *GetIpv6rangeResponse) GetUseMsOptionsOk() (*bool, bool)`
+
+GetUseMsOptionsOk returns a tuple with the UseMsOptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseMsOptions
+
+`func (o *GetIpv6rangeResponse) SetUseMsOptions(v bool)`
+
+SetUseMsOptions sets UseMsOptions field to given value.
+
+### HasUseMsOptions
+
+`func (o *GetIpv6rangeResponse) HasUseMsOptions() bool`
+
+HasUseMsOptions returns a boolean if a field has been set.
+
+### GetUsePreferredLifetime
+
+`func (o *GetIpv6rangeResponse) GetUsePreferredLifetime() bool`
+
+GetUsePreferredLifetime returns the UsePreferredLifetime field if non-nil, zero value otherwise.
+
+### GetUsePreferredLifetimeOk
+
+`func (o *GetIpv6rangeResponse) GetUsePreferredLifetimeOk() (*bool, bool)`
+
+GetUsePreferredLifetimeOk returns a tuple with the UsePreferredLifetime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsePreferredLifetime
+
+`func (o *GetIpv6rangeResponse) SetUsePreferredLifetime(v bool)`
+
+SetUsePreferredLifetime sets UsePreferredLifetime field to given value.
+
+### HasUsePreferredLifetime
+
+`func (o *GetIpv6rangeResponse) HasUsePreferredLifetime() bool`
+
+HasUsePreferredLifetime returns a boolean if a field has been set.
+
 ### GetUseRecycleLeases
 
 `func (o *GetIpv6rangeResponse) GetUseRecycleLeases() bool`
@@ -1064,6 +1326,56 @@ SetUseSubscribeSettings sets UseSubscribeSettings field to given value.
 `func (o *GetIpv6rangeResponse) HasUseSubscribeSettings() bool`
 
 HasUseSubscribeSettings returns a boolean if a field has been set.
+
+### GetUseValidLifetime
+
+`func (o *GetIpv6rangeResponse) GetUseValidLifetime() bool`
+
+GetUseValidLifetime returns the UseValidLifetime field if non-nil, zero value otherwise.
+
+### GetUseValidLifetimeOk
+
+`func (o *GetIpv6rangeResponse) GetUseValidLifetimeOk() (*bool, bool)`
+
+GetUseValidLifetimeOk returns a tuple with the UseValidLifetime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseValidLifetime
+
+`func (o *GetIpv6rangeResponse) SetUseValidLifetime(v bool)`
+
+SetUseValidLifetime sets UseValidLifetime field to given value.
+
+### HasUseValidLifetime
+
+`func (o *GetIpv6rangeResponse) HasUseValidLifetime() bool`
+
+HasUseValidLifetime returns a boolean if a field has been set.
+
+### GetValidLifetime
+
+`func (o *GetIpv6rangeResponse) GetValidLifetime() int64`
+
+GetValidLifetime returns the ValidLifetime field if non-nil, zero value otherwise.
+
+### GetValidLifetimeOk
+
+`func (o *GetIpv6rangeResponse) GetValidLifetimeOk() (*int64, bool)`
+
+GetValidLifetimeOk returns a tuple with the ValidLifetime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValidLifetime
+
+`func (o *GetIpv6rangeResponse) SetValidLifetime(v int64)`
+
+SetValidLifetime sets ValidLifetime field to given value.
+
+### HasValidLifetime
+
+`func (o *GetIpv6rangeResponse) HasValidLifetime() bool`
+
+HasValidLifetime returns a boolean if a field has been set.
 
 ### GetResult
 

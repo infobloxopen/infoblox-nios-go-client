@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **StatusLastUpdated** | Pointer to **int64** | Timestamp of the last update | [optional] [readonly] 
 **LastSyncTs** | Pointer to **int64** | Timestamp of the last synchronization attempt | [optional] [readonly] 
 **LastSyncStatus** | Pointer to **string** | Status of the last synchronization attempt | [optional] [readonly] 
-**LastSyncDetail** | Pointer to **string** | Detailled status of the last synchronization attempt | [optional] [readonly] 
+**LastSyncDetail** | Pointer to **string** | Detailed status of the last synchronization attempt | [optional] [readonly] 
 **Forwarders** | Pointer to **[]string** | Ordered list of IP addresses to forward queries to | [optional] [readonly] 
 **SupportsIpv6** | Pointer to **bool** | Flag indicating if the server supports IPv6 | [optional] [readonly] 
 **SupportsIpv6Reverse** | Pointer to **bool** | Flag indicating if the server supports reverse IPv6 zones | [optional] [readonly] 

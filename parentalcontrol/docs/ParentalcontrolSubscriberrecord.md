@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AccountingSessionId** | Pointer to **string** | accounting_session_id | [optional] 
 **AltIpAddr** | Pointer to **string** | alt_ip_addr | [optional] 
 **Ans0** | Pointer to **string** | ans0 | [optional] 
@@ -74,6 +75,31 @@ SetRef sets Ref field to given value.
 `func (o *ParentalcontrolSubscriberrecord) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *ParentalcontrolSubscriberrecord) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *ParentalcontrolSubscriberrecord) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *ParentalcontrolSubscriberrecord) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *ParentalcontrolSubscriberrecord) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAccountingSessionId
 

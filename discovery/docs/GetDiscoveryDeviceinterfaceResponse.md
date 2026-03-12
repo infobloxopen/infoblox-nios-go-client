@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AdminStatus** | Pointer to **string** | Administrative state of the interface. | [optional] [readonly] 
 **AdminStatusTaskInfo** | Pointer to [**DiscoveryDeviceinterfaceAdminStatusTaskInfo**](DiscoveryDeviceinterfaceAdminStatusTaskInfo.md) |  | [optional] 
 **AggrInterfaceName** | Pointer to **string** | Name of the port channel current interface belongs to. | [optional] [readonly] 
@@ -20,9 +21,9 @@ Name | Type | Description | Notes
 **CapIfNetProvisioningIpv4NaReason** | Pointer to **string** | The reason that IPv4 network provisioning is not available. | [optional] [readonly] 
 **CapIfNetProvisioningIpv6Ind** | Pointer to **bool** | Determines whether to modify the IPv6 network associated to the interface. | [optional] [readonly] 
 **CapIfNetProvisioningIpv6NaReason** | Pointer to **string** | The reason that IPv6 network provisioning is not available. | [optional] [readonly] 
-**CapIfVlanAssignmentInd** | Pointer to **bool** | Determines whether to modify the VLAN assignement of the interface. | [optional] [readonly] 
+**CapIfVlanAssignmentInd** | Pointer to **bool** | Determines whether to modify the VLAN assignment of the interface. | [optional] [readonly] 
 **CapIfVlanAssignmentNaReason** | Pointer to **string** | The reason that VLAN assignment action is not available. | [optional] [readonly] 
-**CapIfVoiceVlanInd** | Pointer to **bool** | Determines whether to modify the voice VLAN assignement of the interface. | [optional] [readonly] 
+**CapIfVoiceVlanInd** | Pointer to **bool** | Determines whether to modify the voice VLAN assignment of the interface. | [optional] [readonly] 
 **CapIfVoiceVlanNaReason** | Pointer to **string** | The reason that voice VLAN assignment action is not available. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the interface. | [optional] [readonly] 
 **DescriptionTaskInfo** | Pointer to [**DiscoveryDeviceinterfaceDescriptionTaskInfo**](DiscoveryDeviceinterfaceDescriptionTaskInfo.md) |  | [optional] 
@@ -97,6 +98,31 @@ SetRef sets Ref field to given value.
 `func (o *GetDiscoveryDeviceinterfaceResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDiscoveryDeviceinterfaceResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDiscoveryDeviceinterfaceResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDiscoveryDeviceinterfaceResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDiscoveryDeviceinterfaceResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAdminStatus
 

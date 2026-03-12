@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox MICROSOFT API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for msserver objects
   name: Msserver
@@ -2041,6 +2041,7 @@ components:
         ms_rpc_timeout_in_seconds: 1
         last_seen: 1
         dhcp_server:
+          v6_managed: false
           use_synchronization_min_delay: false
           synchronization_min_delay: 1
           status_last_updated: 1
@@ -2055,6 +2056,7 @@ components:
           supports_failover: false
           status: Example status
           use_enable_monitoring: false
+        uuid: uuid
         ms_max_connection: 1
         synchronization_status: Example synchronization_status
         extattrs-:
@@ -2151,6 +2153,10 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
+          type: string
         ad_domain:
           description: The Active Directory domain to which this server belongs (if
             applicable).
@@ -2213,7 +2219,7 @@ components:
           type: object
           x-tf-extattrs: true
         grid_member:
-          description: eference to the assigned grid member
+          description: Reference to the assigned grid member
           example: Example grid_member
           type: string
         last_seen:
@@ -2507,6 +2513,7 @@ components:
       type: object
     MsserverDhcpServer:
       example:
+        v6_managed: false
         use_synchronization_min_delay: false
         synchronization_min_delay: 1
         status_last_updated: 1
@@ -2536,11 +2543,15 @@ components:
           type: string
           writeOnly: true
         managed:
-          description: flag indicating if the DNS service is managed
+          description: flag indicating if the DHCPv4 service is managed
+          example: false
+          type: boolean
+        v6_managed:
+          description: flag indicating if the DHCPv6 service is managed
           example: false
           type: boolean
         next_sync_control:
-          description: Defines what control to apply on the DNS server
+          description: Defines what control to apply on the DHCP server
           enum:
           - NONE
           - START
@@ -2548,7 +2559,7 @@ components:
           example: Example next_sync_control
           type: string
         status:
-          description: Status of the Microsoft DNS Service
+          description: Status of the Microsoft DHCP Service
           enum:
           - UNKNOWN
           - OFFLINE
@@ -2566,7 +2577,7 @@ components:
           example: false
           type: boolean
         enable_monitoring:
-          description: Flag indicating if the DNS service is monitored and controlled
+          description: Flag indicating if the DHCP service is monitored and controlled
           example: false
           type: boolean
         use_enable_invalid_mac:
@@ -2682,7 +2693,7 @@ components:
           readOnly: true
           type: string
         last_sync_detail:
-          description: Detailled status of the last synchronization attempt
+          description: Detailed status of the last synchronization attempt
           example: Example last_sync_detail
           readOnly: true
           type: string
@@ -2785,11 +2796,16 @@ components:
         _ref: _ref
         name: Example name
         ms_sync_master_name: Example ms_sync_master_name
+        uuid: uuid
         ea_definition: Example ea_definition
         netbios: Example netbios
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         ea_definition:
@@ -2855,9 +2871,14 @@ components:
         networks:
         - network
         - network
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         domain:
@@ -2911,8 +2932,10 @@ components:
         server_name: Example server_name
         synchronization_interval: 1
         address: Example address
+        ipv6_last_sync_ts: 1
         static_hosts: 1
         total_hosts: 1
+        uuid: uuid
         dhcp_utilization_status: Example dhcp_utilization_status
         status_last_updated: 1
         status_detail: Example status_detail
@@ -2932,6 +2955,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         address:
@@ -2968,6 +2995,12 @@ components:
         dynamic_hosts:
           description: The total number of DHCP leases issued for the DHCP objects
             on the DHCP Microsoft Server.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        ipv6_last_sync_ts:
+          description: Timestamp of the last synchronization attempt
           example: 1
           format: int64
           readOnly: true
@@ -3100,10 +3133,15 @@ components:
         use_login: false
         _ref: _ref
         enable_dns_reports_sync: false
+        uuid: uuid
         use_synchronization_interval: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         address:
@@ -3180,6 +3218,7 @@ components:
         - range
         static_hosts: 1
         total_hosts: 1
+        uuid: uuid
         dhcp_utilization_status: Example dhcp_utilization_status
         extattrs-:
           key:
@@ -3199,6 +3238,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -3360,6 +3403,7 @@ components:
           ms_rpc_timeout_in_seconds: 1
           last_seen: 1
           dhcp_server:
+            v6_managed: false
             use_synchronization_min_delay: false
             synchronization_min_delay: 1
             status_last_updated: 1
@@ -3374,6 +3418,7 @@ components:
             supports_failover: false
             status: Example status
             use_enable_monitoring: false
+          uuid: uuid
           ms_max_connection: 1
           synchronization_status: Example synchronization_status
           extattrs-:
@@ -3489,6 +3534,7 @@ components:
           ms_rpc_timeout_in_seconds: 1
           last_seen: 1
           dhcp_server:
+            v6_managed: false
             use_synchronization_min_delay: false
             synchronization_min_delay: 1
             status_last_updated: 1
@@ -3503,6 +3549,7 @@ components:
             supports_failover: false
             status: Example status
             use_enable_monitoring: false
+          uuid: uuid
           ms_max_connection: 1
           synchronization_status: Example synchronization_status
           extattrs-:
@@ -3644,6 +3691,7 @@ components:
           networks:
           - network
           - network
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/MsserverAdsitesSite'
@@ -3668,6 +3716,7 @@ components:
           networks:
           - network
           - network
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/MsserverAdsitesSite'
@@ -3690,8 +3739,10 @@ components:
           server_name: Example server_name
           synchronization_interval: 1
           address: Example address
+          ipv6_last_sync_ts: 1
           static_hosts: 1
           total_hosts: 1
+          uuid: uuid
           dhcp_utilization_status: Example dhcp_utilization_status
           status_last_updated: 1
           status_detail: Example status_detail
@@ -3729,8 +3780,10 @@ components:
           server_name: Example server_name
           synchronization_interval: 1
           address: Example address
+          ipv6_last_sync_ts: 1
           static_hosts: 1
           total_hosts: 1
+          uuid: uuid
           dhcp_utilization_status: Example dhcp_utilization_status
           status_last_updated: 1
           status_detail: Example status_detail
@@ -3773,6 +3826,7 @@ components:
           use_login: false
           _ref: _ref
           enable_dns_reports_sync: false
+          uuid: uuid
           use_synchronization_interval: false
       properties:
         result:
@@ -3799,6 +3853,7 @@ components:
           use_login: false
           _ref: _ref
           enable_dns_reports_sync: false
+          uuid: uuid
           use_synchronization_interval: false
       properties:
         result:
@@ -3828,6 +3883,7 @@ components:
           - range
           static_hosts: 1
           total_hosts: 1
+          uuid: uuid
           dhcp_utilization_status: Example dhcp_utilization_status
           extattrs-:
             key:
@@ -3871,6 +3927,7 @@ components:
           - range
           static_hosts: 1
           total_hosts: 1
+          uuid: uuid
           dhcp_utilization_status: Example dhcp_utilization_status
           extattrs-:
             key:

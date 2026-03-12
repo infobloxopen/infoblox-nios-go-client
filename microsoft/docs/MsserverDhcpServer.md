@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **UseLogin** | Pointer to **bool** | Flag to override login name and password from the MS Server | [optional] 
 **LoginName** | Pointer to **string** | Microsoft Server login name | [optional] 
 **LoginPassword** | Pointer to **string** | Microsoft Server login password | [optional] 
-**Managed** | Pointer to **bool** | flag indicating if the DNS service is managed | [optional] 
-**NextSyncControl** | Pointer to **string** | Defines what control to apply on the DNS server | [optional] 
-**Status** | Pointer to **string** | Status of the Microsoft DNS Service | [optional] [readonly] 
+**Managed** | Pointer to **bool** | flag indicating if the DHCPv4 service is managed | [optional] 
+**V6Managed** | Pointer to **bool** | flag indicating if the DHCPv6 service is managed | [optional] 
+**NextSyncControl** | Pointer to **string** | Defines what control to apply on the DHCP server | [optional] 
+**Status** | Pointer to **string** | Status of the Microsoft DHCP Service | [optional] [readonly] 
 **StatusLastUpdated** | Pointer to **int64** | Timestamp of the last update | [optional] [readonly] 
 **UseEnableMonitoring** | Pointer to **bool** | Override enable monitoring inherited from grid level | [optional] 
-**EnableMonitoring** | Pointer to **bool** | Flag indicating if the DNS service is monitored and controlled | [optional] 
+**EnableMonitoring** | Pointer to **bool** | Flag indicating if the DHCP service is monitored and controlled | [optional] 
 **UseEnableInvalidMac** | Pointer to **bool** | Override setting for Enable Invalid Mac Address | [optional] 
 **EnableInvalidMac** | Pointer to **bool** | Enable Invalid Mac Address | [optional] 
 **SupportsFailover** | Pointer to **bool** | Flag indicating if the DHCP supports Failover | [optional] [readonly] 
@@ -137,6 +138,31 @@ SetManaged sets Managed field to given value.
 `func (o *MsserverDhcpServer) HasManaged() bool`
 
 HasManaged returns a boolean if a field has been set.
+
+### GetV6Managed
+
+`func (o *MsserverDhcpServer) GetV6Managed() bool`
+
+GetV6Managed returns the V6Managed field if non-nil, zero value otherwise.
+
+### GetV6ManagedOk
+
+`func (o *MsserverDhcpServer) GetV6ManagedOk() (*bool, bool)`
+
+GetV6ManagedOk returns a tuple with the V6Managed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetV6Managed
+
+`func (o *MsserverDhcpServer) SetV6Managed(v bool)`
+
+SetV6Managed sets V6Managed field to given value.
+
+### HasV6Managed
+
+`func (o *MsserverDhcpServer) HasV6Managed() bool`
+
+HasV6Managed returns a boolean if a field has been set.
 
 ### GetNextSyncControl
 

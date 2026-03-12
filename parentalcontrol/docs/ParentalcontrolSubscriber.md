@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AltSubscriberId** | Pointer to **string** | The name of AVP to be used as an alternate subscriber ID for fixed lines. | [optional] 
 **AltSubscriberIdRegexp** | Pointer to **string** | A character string to control aspects of rewriting of the fields. | [optional] 
 **AltSubscriberIdSubexpression** | Pointer to **int64** | The subexpression indicates which subexpression to extract. If zero, then the text matching the entire regular expression is extracted. If non-zero, then the regex must contain at least that many sub-expression groups. It takes values from 0 to 8. | [optional] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 **NasContextInfo** | Pointer to **string** | NAS contextual information AVP. | [optional] 
 **PcZoneName** | Pointer to **string** | The SOA to store parental control records. | [optional] 
 **ProxyPassword** | Pointer to **string** | Proxy server password used for authentication. | [optional] 
-**ProxyUrl** | Pointer to **string** | Proxy url to download category data from and upload feedback to, configure for parental control. The default value &#39;None&#39; is no longer valid as it match url regex pattern \&quot;^http|https://\&quot;. The new default value does not get saved in database, but rather used for comparision with object created in unit test cases. | [optional] 
+**ProxyUrl** | Pointer to **string** | Proxy url to download category data from and upload feedback to, configure for parental control. The default value &#39;None&#39; is no longer valid as it match url regex pattern \&quot;^http|https://\&quot;. The new default value does not get saved in database, but rather used for comparison with object created in unit test cases. | [optional] 
 **ProxyUsername** | Pointer to **string** | Proxy server username used for authentication. | [optional] 
 **SubscriberId** | Pointer to **string** | The name of AVP to be used as a subscriber. | [optional] 
 **SubscriberIdRegexp** | Pointer to **string** | A character string to control aspects of rewriting of the fields. | [optional] 
@@ -77,6 +78,31 @@ SetRef sets Ref field to given value.
 `func (o *ParentalcontrolSubscriber) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *ParentalcontrolSubscriber) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *ParentalcontrolSubscriber) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *ParentalcontrolSubscriber) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *ParentalcontrolSubscriber) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAltSubscriberId
 

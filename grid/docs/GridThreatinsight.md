@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AllowlistUpdatePolicy** | Pointer to **string** | allowlist update policy (manual or automatic) | [optional] 
 **ConfigureDomainCollapsing** | Pointer to **bool** | Disable domain collapsing at grid level | [optional] 
 **CurrentAllowlist** | Pointer to **string** | The Grid allowlist. | [optional] [readonly] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 **LastAllowlistUpdateTime** | Pointer to **int64** | The last update time for the threat insight allowlist. | [optional] [readonly] 
 **LastAllowlistUpdateVersion** | Pointer to **string** | The version number of the last updated threat insight allowlist. | [optional] [readonly] 
 **LastCheckedForAllowlistUpdate** | Pointer to **int64** | Timestamp of last checked allowlist | [optional] [readonly] 
-**LastCheckedForPackageUpdate** | Pointer to **int64** | The last update time for the threat analytics moduleset package. | [optional] [readonly] 
+**LastCheckedForPackageUpdate** | Pointer to **int64** | The last update time for the threat insight moduleset package. | [optional] [readonly] 
 **LastCheckedForUpdate** | Pointer to **int64** | The last time when the threat insight module set was checked for the update. | [optional] [readonly] 
 **LastModuleUpdateTime** | Pointer to **int64** | The last update time for the threat insight module set. | [optional] [readonly] 
 **LastModuleUpdateVersion** | Pointer to **string** | The version number of the last updated threat insight module set. | [optional] [readonly] 
@@ -71,6 +72,31 @@ SetRef sets Ref field to given value.
 `func (o *GridThreatinsight) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GridThreatinsight) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GridThreatinsight) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GridThreatinsight) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GridThreatinsight) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAllowlistUpdatePolicy
 
