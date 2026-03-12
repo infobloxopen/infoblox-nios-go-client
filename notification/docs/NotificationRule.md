@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AllMembers** | Pointer to **bool** | Determines whether the notification rule is applied on all members or not. When this is set to False, the notification rule is applied only on selected_members. | [optional] 
 **Comment** | Pointer to **string** | The notification rule descriptive comment. | [optional] 
 **Disable** | Pointer to **bool** | Determines whether a notification rule is disabled or not. When this is set to False, the notification rule is enabled. | [optional] 
@@ -67,6 +68,31 @@ SetRef sets Ref field to given value.
 `func (o *NotificationRule) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *NotificationRule) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *NotificationRule) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *NotificationRule) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *NotificationRule) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAllMembers
 

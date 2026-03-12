@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AllowAnyNetmask** | Pointer to **bool** | This flag controls whether the template allows any netmask. You must specify a netmask when creating a network using this template. If you set this parameter to false, you must specify the \&quot;netmask\&quot; field for the network template object. | [optional] 
 **Authority** | Pointer to **bool** | Authority for the DHCP network. | [optional] 
 **AutoCreateReversezone** | Pointer to **bool** | This flag controls whether reverse zones are automatically created when the network is added. | [optional] 
@@ -48,8 +49,8 @@ Name | Type | Description | Notes
 **PxeLeaseTime** | Pointer to **int64** | The PXE lease time value of a DHCP Network object. Some hosts use PXE (Preboot Execution Environment) to boot remotely from a server. To better manage your IP resources, set a different lease time for PXE boot requests. You can configure the DHCP server to allocate an IP address with a shorter lease time to hosts that send PXE boot requests, so IP addresses are not leased longer than necessary. A 32-bit unsigned integer that represents the duration, in seconds, for which the update is cached. Zero indicates that the update is not cached. | [optional] 
 **RangeTemplates** | Pointer to **[]string** | The list of IP address range templates assigned to this network template object. When you create a network based on a network template object that contains range templates, the IP address ranges are created based on the associated IP address range templates. | [optional] 
 **RecycleLeases** | Pointer to **bool** | If the field is set to True, the leases are kept in the Recycle Bin until one week after expiration. Otherwise, the leases are permanently deleted. | [optional] 
-**Rir** | Pointer to **string** | THe registry (RIR) that allocated the network address space. | [optional] [readonly] 
-**RirOrganization** | Pointer to **string** | The RIR organization assoicated with the network. | [optional] 
+**Rir** | Pointer to **string** | The registry (RIR) that allocated the network address space. | [optional] [readonly] 
+**RirOrganization** | Pointer to **string** | The RIR organization associated with the network. | [optional] 
 **RirRegistrationAction** | Pointer to **string** | The RIR registration action. | [optional] 
 **RirRegistrationStatus** | Pointer to **string** | The registration status of the network in RIR. | [optional] 
 **SendRirRequest** | Pointer to **bool** | Determines whether to send the RIR registration request. | [optional] 
@@ -121,6 +122,31 @@ SetRef sets Ref field to given value.
 `func (o *Networktemplate) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Networktemplate) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Networktemplate) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Networktemplate) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Networktemplate) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAllowAnyNetmask
 

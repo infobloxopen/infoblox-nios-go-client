@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **User** | Pointer to **string** | The CLI user name. | [optional] 
 **Password** | Pointer to **string** | The CLI password. | [optional] 
 **CredentialType** | Pointer to **string** | The type of the credential. | [optional] 
-**Comment** | Pointer to **string** | The commment for the credential. | [optional] 
+**Comment** | Pointer to **string** | The comment for the credential. | [optional] 
 **Id** | Pointer to **int64** | The Credentials ID. | [optional] [readonly] 
 **CredentialGroup** | Pointer to **string** | Group for the CLI credential. | [optional] 
 

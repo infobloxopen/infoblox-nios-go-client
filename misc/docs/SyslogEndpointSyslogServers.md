@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **ConnectionType** | Pointer to **string** | Connection type values | [optional] 
 **Port** | Pointer to **int64** | The port this server listens on. | [optional] 
 **Hostname** | Pointer to **string** | List of hostnames | [optional] 
-**Format** | Pointer to **string** | Format vlues for syslog endpoint server | [optional] 
+**Format** | Pointer to **string** | Format values for syslog endpoint server | [optional] 
 **Facility** | Pointer to **string** | Facility values for syslog endpoint server | [optional] 
 **Severity** | Pointer to **string** | Severity values for syslog endpoint server. | [optional] 
-**Certificate** | Pointer to **string** | Reference for creating sysog endpoint server. | [optional] [readonly] 
+**Certificate** | Pointer to [**SyslogEndpointSyslogServersCertificate**](SyslogEndpointSyslogServersCertificate.md) |  | [optional] 
 **CertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop. | [optional] 
 
 ## Methods
@@ -210,20 +210,20 @@ HasSeverity returns a boolean if a field has been set.
 
 ### GetCertificate
 
-`func (o *SyslogEndpointSyslogServers) GetCertificate() string`
+`func (o *SyslogEndpointSyslogServers) GetCertificate() SyslogEndpointSyslogServersCertificate`
 
 GetCertificate returns the Certificate field if non-nil, zero value otherwise.
 
 ### GetCertificateOk
 
-`func (o *SyslogEndpointSyslogServers) GetCertificateOk() (*string, bool)`
+`func (o *SyslogEndpointSyslogServers) GetCertificateOk() (*SyslogEndpointSyslogServersCertificate, bool)`
 
 GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertificate
 
-`func (o *SyslogEndpointSyslogServers) SetCertificate(v string)`
+`func (o *SyslogEndpointSyslogServers) SetCertificate(v SyslogEndpointSyslogServersCertificate)`
 
 SetCertificate sets Certificate field to given value.
 

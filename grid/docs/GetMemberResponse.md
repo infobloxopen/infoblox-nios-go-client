@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ActivePosition** | Pointer to **string** | The active server of a Grid member. | [optional] [readonly] 
 **AdditionalIpList** | Pointer to [**[]MemberAdditionalIpList**](MemberAdditionalIpList.md) | The additional IP list of a Grid member. This list contains additional interface information that can be used at the member level. Note that interface structure(s) with interface type set to &#39;MGMT&#39; are not supported. | [optional] 
 **AutomatedTrafficCaptureSetting** | Pointer to [**MemberAutomatedTrafficCaptureSetting**](MemberAutomatedTrafficCaptureSetting.md) |  | [optional] 
@@ -31,6 +32,7 @@ Name | Type | Description | Notes
 **Ipv6Setting** | Pointer to [**MemberIpv6Setting**](MemberIpv6Setting.md) |  | [optional] 
 **Ipv6StaticRoutes** | Pointer to [**[]MemberIpv6StaticRoutes**](MemberIpv6StaticRoutes.md) | List of IPv6 static routes. | [optional] 
 **IsDscpCapable** | Pointer to **bool** | Determines if a Grid member supports DSCP (Differentiated Services Code Point). | [optional] [readonly] 
+**IsMaster** | Pointer to **bool** | Determines if a Grid member is a Grid Master or not. | [optional] [readonly] 
 **Lan2Enabled** | Pointer to **bool** | If this is set to \&quot;true\&quot;, the LAN2 port is enabled as an independent port or as a port for failover purposes. | [optional] 
 **Lan2PortSetting** | Pointer to [**MemberLan2PortSetting**](MemberLan2PortSetting.md) |  | [optional] 
 **LomNetworkConfig** | Pointer to [**[]MemberLomNetworkConfig**](MemberLomNetworkConfig.md) | The Network configurations for LOM. | [optional] 
@@ -49,7 +51,7 @@ Name | Type | Description | Notes
 **PreProvisioning** | Pointer to [**MemberPreProvisioning**](MemberPreProvisioning.md) |  | [optional] 
 **PreserveIfOwnsDelegation** | Pointer to **bool** | Set this flag to \&quot;true\&quot; to prevent the deletion of the member if any delegated object remains attached to it. | [optional] 
 **RemoteConsoleAccessEnable** | Pointer to **bool** | If set to True, superuser admins can access the Infoblox CLI from a remote location using an SSH (Secure Shell) v2 client. | [optional] 
-**RouterId** | Pointer to **int64** | Virutal router identifier. Provide this ID if \&quot;ha_enabled\&quot; is set to \&quot;true\&quot;. This is a unique VRID number (from 1 to 255) for the local subnet. | [optional] 
+**RouterId** | Pointer to **int64** | Virtual router identifier. Provide this ID if \&quot;ha_enabled\&quot; is set to \&quot;true\&quot;. This is a unique VRID number (from 1 to 255) for the local subnet. | [optional] 
 **ServiceStatus** | Pointer to [**[]MemberServiceStatus**](MemberServiceStatus.md) | The service status list of a grid member. | [optional] [readonly] 
 **ServiceTypeConfiguration** | Pointer to **string** | Configure all services to the given type. | [optional] 
 **SnmpSetting** | Pointer to [**MemberSnmpSetting**](MemberSnmpSetting.md) |  | [optional] 
@@ -81,9 +83,9 @@ Name | Type | Description | Notes
 **UseSyslogProxySetting** | Pointer to **bool** | Use flag for: external_syslog_server_enable , syslog_servers, syslog_proxy_setting, syslog_size | [optional] 
 **UseThresholdTraps** | Pointer to **bool** | Use flag for: threshold_traps | [optional] 
 **UseTimeZone** | Pointer to **bool** | Use flag for: time_zone | [optional] 
-**UseTrafficCaptureAuthDns** | Pointer to **bool** | This flag is the use flag for enabling automated traffic capture based on authorative DNS latency. | [optional] 
+**UseTrafficCaptureAuthDns** | Pointer to **bool** | This flag is the use flag for enabling automated traffic capture based on authoritative DNS latency. | [optional] 
 **UseTrafficCaptureChr** | Pointer to **bool** | This flag is the use flag for automated traffic capture settings at member level. | [optional] 
-**UseTrafficCaptureQps** | Pointer to **bool** | This flag is the use flag for enabling automated traffic capture based on DNS querie per second thresholds. | [optional] 
+**UseTrafficCaptureQps** | Pointer to **bool** | This flag is the use flag for enabling automated traffic capture based on DNS queries per second thresholds. | [optional] 
 **UseTrafficCaptureRecDns** | Pointer to **bool** | This flag is the use flag for enabling automated traffic capture based on recursive DNS latency. | [optional] 
 **UseTrafficCaptureRecQueries** | Pointer to **bool** | This flag is the use flag for enabling automated traffic capture based on outgoing recursive queries. | [optional] 
 **UseTrapNotifications** | Pointer to **bool** | Use flag for: trap_notifications | [optional] 
@@ -135,6 +137,31 @@ SetRef sets Ref field to given value.
 `func (o *GetMemberResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetMemberResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetMemberResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetMemberResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetMemberResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetActivePosition
 
@@ -785,6 +812,31 @@ SetIsDscpCapable sets IsDscpCapable field to given value.
 `func (o *GetMemberResponse) HasIsDscpCapable() bool`
 
 HasIsDscpCapable returns a boolean if a field has been set.
+
+### GetIsMaster
+
+`func (o *GetMemberResponse) GetIsMaster() bool`
+
+GetIsMaster returns the IsMaster field if non-nil, zero value otherwise.
+
+### GetIsMasterOk
+
+`func (o *GetMemberResponse) GetIsMasterOk() (*bool, bool)`
+
+GetIsMasterOk returns a tuple with the IsMaster field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsMaster
+
+`func (o *GetMemberResponse) SetIsMaster(v bool)`
+
+SetIsMaster sets IsMaster field to given value.
+
+### HasIsMaster
+
+`func (o *GetMemberResponse) HasIsMaster() bool`
+
+HasIsMaster returns a boolean if a field has been set.
 
 ### GetLan2Enabled
 

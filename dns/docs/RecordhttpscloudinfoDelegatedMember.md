@@ -1,0 +1,108 @@
+# RecordhttpscloudinfoDelegatedMember
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Ipv4addr** | Pointer to **string** | The IPv4 Address of the Grid Member. | [optional] 
+**Ipv6addr** | Pointer to **string** | The IPv6 Address of the Grid Member. | [optional] 
+**Name** | Pointer to **string** | The Grid member name | [optional] 
+
+## Methods
+
+### NewRecordhttpscloudinfoDelegatedMember
+
+`func NewRecordhttpscloudinfoDelegatedMember() *RecordhttpscloudinfoDelegatedMember`
+
+NewRecordhttpscloudinfoDelegatedMember instantiates a new RecordhttpscloudinfoDelegatedMember object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewRecordhttpscloudinfoDelegatedMemberWithDefaults
+
+`func NewRecordhttpscloudinfoDelegatedMemberWithDefaults() *RecordhttpscloudinfoDelegatedMember`
+
+NewRecordhttpscloudinfoDelegatedMemberWithDefaults instantiates a new RecordhttpscloudinfoDelegatedMember object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetIpv4addr
+
+`func (o *RecordhttpscloudinfoDelegatedMember) GetIpv4addr() string`
+
+GetIpv4addr returns the Ipv4addr field if non-nil, zero value otherwise.
+
+### GetIpv4addrOk
+
+`func (o *RecordhttpscloudinfoDelegatedMember) GetIpv4addrOk() (*string, bool)`
+
+GetIpv4addrOk returns a tuple with the Ipv4addr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpv4addr
+
+`func (o *RecordhttpscloudinfoDelegatedMember) SetIpv4addr(v string)`
+
+SetIpv4addr sets Ipv4addr field to given value.
+
+### HasIpv4addr
+
+`func (o *RecordhttpscloudinfoDelegatedMember) HasIpv4addr() bool`
+
+HasIpv4addr returns a boolean if a field has been set.
+
+### GetIpv6addr
+
+`func (o *RecordhttpscloudinfoDelegatedMember) GetIpv6addr() string`
+
+GetIpv6addr returns the Ipv6addr field if non-nil, zero value otherwise.
+
+### GetIpv6addrOk
+
+`func (o *RecordhttpscloudinfoDelegatedMember) GetIpv6addrOk() (*string, bool)`
+
+GetIpv6addrOk returns a tuple with the Ipv6addr field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpv6addr
+
+`func (o *RecordhttpscloudinfoDelegatedMember) SetIpv6addr(v string)`
+
+SetIpv6addr sets Ipv6addr field to given value.
+
+### HasIpv6addr
+
+`func (o *RecordhttpscloudinfoDelegatedMember) HasIpv6addr() bool`
+
+HasIpv6addr returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *RecordhttpscloudinfoDelegatedMember) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *RecordhttpscloudinfoDelegatedMember) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *RecordhttpscloudinfoDelegatedMember) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *RecordhttpscloudinfoDelegatedMember) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

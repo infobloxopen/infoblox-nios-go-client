@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoPortSettingEnabled** | Pointer to **bool** | Enable or disalbe the auto port setting. | [optional] 
+**AutoPortSettingEnabled** | Pointer to **bool** | Enable or disable the auto port setting. | [optional] 
 **Speed** | Pointer to **string** | The port speed; if speed is 1000, duplex is FULL. | [optional] 
 **Duplex** | Pointer to **string** | The port duplex; if speed is 1000, duplex must be FULL. | [optional] 
 

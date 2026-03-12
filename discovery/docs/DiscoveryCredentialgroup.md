@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the Credential group. | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetRef sets Ref field to given value.
 `func (o *DiscoveryCredentialgroup) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DiscoveryCredentialgroup) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DiscoveryCredentialgroup) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DiscoveryCredentialgroup) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DiscoveryCredentialgroup) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetName
 

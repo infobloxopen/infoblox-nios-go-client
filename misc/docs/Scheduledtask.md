@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **ApprovalStatus** | Pointer to **string** | The approval status of the task. | [optional] 
 **Approver** | Pointer to **string** | The approver of the task. | [optional] [readonly] 
 **ApproverComment** | Pointer to **string** | The comment specified by the approver of the task. | [optional] 
@@ -71,6 +72,31 @@ SetRef sets Ref field to given value.
 `func (o *Scheduledtask) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *Scheduledtask) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *Scheduledtask) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *Scheduledtask) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *Scheduledtask) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetApprovalStatus
 

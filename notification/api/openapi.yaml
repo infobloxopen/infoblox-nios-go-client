@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox NOTIFICATION API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for notification:rest:endpoint objects
   name: NotificationRestEndpoint
@@ -1148,6 +1148,7 @@ components:
         client_certificate_subject: Example client_certificate_subject
         server_cert_validation: Example server_cert_validation
         sync_disabled: false
+        uuid: uuid
         uri: Example uri
         timeout: 1
         client_certificate_valid_from: 1
@@ -1181,6 +1182,10 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
+          type: string
         client_certificate_subject:
           description: The client certificate subject of a notification REST endpoint.
           example: Example client_certificate_subject
@@ -1188,7 +1193,7 @@ components:
           type: string
         client_certificate_token:
           description: The token returned by the uploadinit function call in object
-            fileop for a notification REST endpoit client certificate.
+            fileop for a notification REST endpoint client certificate.
           example: Example client_certificate_token
           type: string
           writeOnly: true
@@ -1398,6 +1403,7 @@ components:
         name: Example name
         comment: Example comment
         template_type: Example template_type
+        uuid: uuid
         added_on: 1
         parameters:
         - name: Example name
@@ -1413,6 +1419,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         action_name:
@@ -1551,6 +1561,7 @@ components:
         event_deduplication_fields:
         - event_deduplication_fields
         - event_deduplication_fields
+        uuid: uuid
         publish_settings:
           enabled_attributes:
           - enabled_attributes
@@ -1610,6 +1621,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         all_members:
@@ -1850,7 +1865,7 @@ components:
         - enabled_attributes
       properties:
         enabled_attributes:
-          description: The list of NIOS extensible attributes enalbed for publishsing
+          description: The list of NIOS extensible attributes enabled for publishing
             to Cisco ISE endpoint.
           enum:
           - CLIENT_ID
@@ -2070,6 +2085,7 @@ components:
           client_certificate_subject: Example client_certificate_subject
           server_cert_validation: Example server_cert_validation
           sync_disabled: false
+          uuid: uuid
           uri: Example uri
           timeout: 1
           client_certificate_valid_from: 1
@@ -2129,6 +2145,7 @@ components:
           client_certificate_subject: Example client_certificate_subject
           server_cert_validation: Example server_cert_validation
           sync_disabled: false
+          uuid: uuid
           uri: Example uri
           timeout: 1
           client_certificate_valid_from: 1
@@ -2193,6 +2210,7 @@ components:
           name: Example name
           comment: Example comment
           template_type: Example template_type
+          uuid: uuid
           added_on: 1
           parameters:
           - name: Example name
@@ -2227,6 +2245,7 @@ components:
           event_deduplication_fields:
           - event_deduplication_fields
           - event_deduplication_fields
+          uuid: uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes
@@ -2304,6 +2323,7 @@ components:
           event_deduplication_fields:
           - event_deduplication_fields
           - event_deduplication_fields
+          uuid: uuid
           publish_settings:
             enabled_attributes:
             - enabled_attributes

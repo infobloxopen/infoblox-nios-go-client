@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **GssTsigDnsPrincipal** | Pointer to **string** | The principal name in which GSS-TSIG for dynamic updates is enabled. | [optional] 
 **GssTsigDomain** | Pointer to **string** | The domain in which GSS-TSIG for dynamic updates is enabled. | [optional] 
 **TsigKey** | Pointer to **string** | The TSIG key value. | [optional] 
-**TsigKeyAlg** | Pointer to **string** | The TSIG key alorithm name. | [optional] 
+**TsigKeyAlg** | Pointer to **string** | The TSIG key algorithm name. | [optional] 
 **TsigKeyName** | Pointer to **string** | The name of the TSIG key. The key name entered here must match the TSIG key name on the external name server. | [optional] 
 **KeyType** | Pointer to **string** | The key type to be used. | [optional] 
 

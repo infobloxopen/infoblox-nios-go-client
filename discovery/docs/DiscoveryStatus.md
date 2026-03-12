@@ -5,11 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Address** | Pointer to **string** | The IPv4 Address or IPv6 Address of the device. | [optional] [readonly] 
 **CliCollectionEnabled** | Pointer to **bool** | Indicates if CLI collection is enabled. | [optional] [readonly] 
 **CliCredentialInfo** | Pointer to [**DiscoveryStatusCliCredentialInfo**](DiscoveryStatusCliCredentialInfo.md) |  | [optional] 
 **ExistenceInfo** | Pointer to [**DiscoveryStatusExistenceInfo**](DiscoveryStatusExistenceInfo.md) |  | [optional] 
-**FingerprintEnabled** | Pointer to **bool** | Indicates if DHCP finterprinting is enabled. | [optional] [readonly] 
+**FingerprintEnabled** | Pointer to **bool** | Indicates if DHCP fingerprinting is enabled. | [optional] [readonly] 
 **FingerprintInfo** | Pointer to [**DiscoveryStatusFingerprintInfo**](DiscoveryStatusFingerprintInfo.md) |  | [optional] 
 **FirstSeen** | Pointer to **int64** | The timestamp when the device was first discovered. | [optional] [readonly] 
 **LastAction** | Pointer to **string** | The timestamp of the last detected interface property change. | [optional] [readonly] 
@@ -69,6 +70,31 @@ SetRef sets Ref field to given value.
 `func (o *DiscoveryStatus) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DiscoveryStatus) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DiscoveryStatus) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DiscoveryStatus) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DiscoveryStatus) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddress
 

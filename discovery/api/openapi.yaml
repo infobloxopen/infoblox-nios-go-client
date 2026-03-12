@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox DISCOVERY API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for discovery objects
   name: Discovery
@@ -3359,9 +3359,14 @@ components:
       additionalProperties: false
       example:
         _ref: _ref
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
       type: object
@@ -3388,9 +3393,14 @@ components:
       example:
         _ref: _ref
         name: Example name
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         name:
@@ -3438,6 +3448,7 @@ components:
         - network
         - network
         type: Example type
+        uuid: uuid
         network: Example network
         cap_vlan_assignment_ind: false
         extattrs-:
@@ -3496,6 +3507,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         address:
@@ -3573,7 +3588,7 @@ components:
           readOnly: true
           type: string
         cap_vlan_assignment_ind:
-          description: Determines whether to modify the VLAN assignement of an interface
+          description: Determines whether to modify the VLAN assignment of an interface
             of the device.
           example: false
           readOnly: true
@@ -3832,10 +3847,15 @@ components:
         description: Example description
         model: Example model
         type: Example type
+        uuid: uuid
         device: Example device
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         component_name:
@@ -3892,9 +3912,6 @@ components:
       additionalProperties: false
       example:
         cap_if_net_provisioning_ipv6_ind: false
-        network_view: Example network_view
-        cap_if_net_deprovisioning_ipv4_ind: false
-        description: Example description
         duplex: Example duplex
         reserved_object: Example reserved_object
         ifaddr_infos:
@@ -3905,6 +3922,48 @@ components:
           address_object: Example address_object
           network: Example network
         type: Example type
+        uuid: uuid
+        vpc_peer_device: Example vpc_peer_device
+        cap_if_net_deprovisioning_ipv6_na_reason: Example cap_if_net_deprovisioning_ipv6_na_reason
+        admin_status: Example admin_status
+        cap_if_admin_status_na_reason: Example cap_if_admin_status_na_reason
+        vpc_peer: Example vpc_peer
+        cap_if_voice_vlan_na_reason: Example cap_if_voice_vlan_na_reason
+        cap_if_vlan_assignment_na_reason: Example cap_if_vlan_assignment_na_reason
+        last_change: 1
+        cap_if_description_ind: false
+        cap_if_net_provisioning_ipv4_ind: false
+        index: 1
+        cap_if_description_na_reason: Example cap_if_description_na_reason
+        aggr_interface_name: Example aggr_interface_name
+        port_fast: Example port_fast
+        admin_status_task_info:
+          details:
+            id: 1
+            is_synchronized: false
+            status: Example status
+          status: Example status
+        link_aggregation: false
+        ms_ad_user_data:
+          active_users_count: 1
+        vrf_rd: Example vrf_rd
+        description_task_info:
+          description: Example description
+          details:
+            id: 1
+            is_synchronized: false
+            status: Example status
+        name: Example name
+        vlan_infos:
+        - name: Example name
+          id: 1
+        - name: Example name
+          id: 1
+        device: Example device
+        cap_if_net_provisioning_ipv6_na_reason: Example cap_if_net_provisioning_ipv6_na_reason
+        network_view: Example network_view
+        cap_if_net_deprovisioning_ipv4_ind: false
+        description: Example description
         oper_status: Example oper_status
         vrf_name: Example vrf_name
         mac: Example mac
@@ -3915,39 +3974,15 @@ components:
         extattrs+:
           key:
             value: ""
-        vpc_peer_device: Example vpc_peer_device
-        cap_if_net_deprovisioning_ipv6_na_reason: Example cap_if_net_deprovisioning_ipv6_na_reason
         cap_if_net_deprovisioning_ipv6_ind: false
-        admin_status: Example admin_status
         vrf_description: Example vrf_description
-        cap_if_admin_status_na_reason: Example cap_if_admin_status_na_reason
-        vpc_peer: Example vpc_peer
-        cap_if_voice_vlan_na_reason: Example cap_if_voice_vlan_na_reason
-        cap_if_vlan_assignment_na_reason: Example cap_if_vlan_assignment_na_reason
         extattrs:
           key:
             value: ""
         cap_if_voice_vlan_ind: false
-        last_change: 1
-        cap_if_description_ind: false
-        cap_if_net_provisioning_ipv4_ind: false
-        index: 1
-        cap_if_description_na_reason: Example cap_if_description_na_reason
         cap_if_net_deprovisioning_ipv4_na_reason: Example cap_if_net_deprovisioning_ipv4_na_reason
-        aggr_interface_name: Example aggr_interface_name
-        port_fast: Example port_fast
-        admin_status_task_info:
-          details:
-            id: 1
-            is_synchronized: false
-            status: Example status
-          status: Example status
         cap_if_admin_status_ind: false
-        link_aggregation: false
-        ms_ad_user_data:
-          active_users_count: 1
         cap_if_net_provisioning_ipv4_na_reason: Example cap_if_net_provisioning_ipv4_na_reason
-        vrf_rd: Example vrf_rd
         cap_if_vlan_assignment_ind: false
         vlan_info_task_info:
           data_vlan_info:
@@ -3960,25 +3995,15 @@ components:
           voice_vlan_info:
             name: Example name
             id: 1
-        description_task_info:
-          description: Example description
-          details:
-            id: 1
-            is_synchronized: false
-            status: Example status
         trunk_status: Example trunk_status
         _ref: _ref
-        name: Example name
-        vlan_infos:
-        - name: Example name
-          id: 1
-        - name: Example name
-          id: 1
-        device: Example device
-        cap_if_net_provisioning_ipv6_na_reason: Example cap_if_net_provisioning_ipv6_na_reason
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         admin_status:
@@ -4059,7 +4084,7 @@ components:
           readOnly: true
           type: string
         cap_if_vlan_assignment_ind:
-          description: Determines whether to modify the VLAN assignement of the interface.
+          description: Determines whether to modify the VLAN assignment of the interface.
           example: false
           readOnly: true
           type: boolean
@@ -4069,8 +4094,8 @@ components:
           readOnly: true
           type: string
         cap_if_voice_vlan_ind:
-          description: Determines whether to modify the voice VLAN assignement of
-            the interface.
+          description: Determines whether to modify the voice VLAN assignment of the
+            interface.
           example: false
           readOnly: true
           type: boolean
@@ -4500,11 +4525,16 @@ components:
         - name: Example name
           id: 1
         interface: Example interface
+        uuid: uuid
         device: Example device
         mac: Example mac
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         address:
@@ -4587,10 +4617,15 @@ components:
         author: Example author
         _ref: _ref
         name: Example name
+        uuid: uuid
         version: Example version
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         author:
@@ -4645,10 +4680,15 @@ components:
         debug_snmp: false
         task_id: Example task_id
         ip_address: Example ip_address
+        uuid: uuid
         force_test: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         community_string:
@@ -4705,6 +4745,7 @@ components:
         basic_polling_settings:
           cli_collection: false
           switch_port_data_collection_polling: Example switch_port_data_collection_polling
+          use_arp_data_for_discovery: false
           credential_group: Example credential_group
           polling_frequency_modifier: Example polling_frequency_modifier
           device_profile: false
@@ -4764,6 +4805,7 @@ components:
         - port: 1
           comment: Example comment
           type: Example type
+        uuid: uuid
         dns_lookup_option: Example dns_lookup_option
         unmanaged_ips_limit: 1
         cli_credentials:
@@ -4912,6 +4954,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         advanced_polling_settings:
@@ -5346,6 +5392,7 @@ components:
       example:
         cli_collection: false
         switch_port_data_collection_polling: Example switch_port_data_collection_polling
+        use_arp_data_for_discovery: false
         credential_group: Example credential_group
         polling_frequency_modifier: Example polling_frequency_modifier
         device_profile: false
@@ -5431,6 +5478,10 @@ components:
           type: string
         use_global_polling_frequency_modifier:
           description: Use Global Polling Frequency Modifier.
+          example: false
+          type: boolean
+        use_arp_data_for_discovery:
+          description: Use ARP data to discover IP addresses.
           example: false
           type: boolean
       type: object
@@ -5709,7 +5760,7 @@ components:
           example: Example credential_type
           type: string
         comment:
-          description: The commment for the credential.
+          description: The comment for the credential.
           example: Example comment
           type: string
         id:
@@ -6178,6 +6229,7 @@ components:
           comment: Example comment
         role: Example role
         use_snmpv1v2_credentials: false
+        uuid: uuid
         default_seed_routers:
         - network_view: Example network_view
           address: Example address
@@ -6259,6 +6311,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         address:
@@ -6388,7 +6444,7 @@ components:
           example: Example credential_type
           type: string
         comment:
-          description: The commment for the credential.
+          description: The comment for the credential.
           example: Example comment
           type: string
         id:
@@ -6689,9 +6745,14 @@ components:
         _ref: _ref
         name: Example name
         source_sdn_config: Example source_sdn_config
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         first_seen:
@@ -6751,6 +6812,7 @@ components:
         last_action: Example last_action
         snmp_collection_enabled: false
         type: Example type
+        uuid: uuid
         existence_info:
           message: Example message
           status: Example status
@@ -6784,6 +6846,10 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
+          type: string
         address:
           description: The IPv4 Address or IPv6 Address of the device.
           example: Example address
@@ -6799,7 +6865,7 @@ components:
         existence_info:
           $ref: '#/components/schemas/DiscoveryStatusExistenceInfo'
         fingerprint_enabled:
-          description: Indicates if DHCP finterprinting is enabled.
+          description: Indicates if DHCP fingerprinting is enabled.
           example: false
           readOnly: true
           type: boolean
@@ -7086,11 +7152,16 @@ components:
         _ref: _ref
         name: Example name
         description: Example description
+        uuid: uuid
         device: Example device
         route_distinguisher: Example route_distinguisher
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         description:
@@ -7140,6 +7211,34 @@ components:
     Vdiscoverytask:
       additionalProperties: false
       example:
+        auto_consolidate_managed_tenant: false
+        uuid: uuid
+        identity_version: Example identity_version
+        public_network_view_mapping_policy: Example public_network_view_mapping_policy
+        fqdn_or_ip: Example fqdn_or_ip
+        domain_name: Example domain_name
+        password: Example password
+        protocol: Example protocol
+        sync_child_accounts: false
+        state: Example state
+        service_account_file: Example service_account_file
+        network_filter: Example network_filter
+        update_metadata: false
+        service_account_file_token: Example service_account_file_token
+        allow_unsecured_connection: false
+        govcloud_enabled: false
+        private_network_view: Example private_network_view
+        public_network_view: Example public_network_view
+        cdiscovery_file_token: Example cdiscovery_file_token
+        dns_view_public_ip: Example dns_view_public_ip
+        role_arn: Example role_arn
+        port: 1
+        name: Example name
+        multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+        private_network_view_mapping_policy: Example private_network_view_mapping_policy
+        dns_view_private_ip: Example dns_view_private_ip
+        merge_data: false
+        credentials_type: Example credentials_type
         use_identity: false
         driver_type: Example driver_type
         update_dns_view_private_ip: false
@@ -7158,57 +7257,34 @@ components:
           day_of_month: 1
           hour_of_day: 1
           frequency: Example frequency
-        auto_consolidate_managed_tenant: false
         enable_filter: false
         enabled: false
         auto_create_dns_record: false
         auto_create_dns_record_type: Example auto_create_dns_record_type
-        identity_version: Example identity_version
-        public_network_view_mapping_policy: Example public_network_view_mapping_policy
-        fqdn_or_ip: Example fqdn_or_ip
-        domain_name: Example domain_name
-        password: Example password
-        protocol: Example protocol
         update_dns_view_public_ip: false
-        sync_child_accounts: false
         auto_consolidate_cloud_ea: false
         member: Example member
-        state: Example state
         network_list:
         - network_list
         - network_list
-        service_account_file: Example service_account_file
-        network_filter: Example network_filter
-        update_metadata: false
         state_msg: Example state_msg
-        service_account_file_token: Example service_account_file_token
-        allow_unsecured_connection: false
-        govcloud_enabled: false
         last_run: 1
-        private_network_view: Example private_network_view
-        public_network_view: Example public_network_view
-        cdiscovery_file_token: Example cdiscovery_file_token
         accounts_list:
         - accounts_list
         - accounts_list
-        dns_view_public_ip: Example dns_view_public_ip
         auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-        role_arn: Example role_arn
         selected_regions: Example selected_regions
-        port: 1
         _ref: _ref
-        name: Example name
         comment: Example comment
-        multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-        private_network_view_mapping_policy: Example private_network_view_mapping_policy
         auto_consolidate_managed_vm: false
-        dns_view_private_ip: Example dns_view_private_ip
-        merge_data: false
-        credentials_type: Example credentials_type
         username: Example username
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         accounts_list:
@@ -7631,6 +7707,7 @@ components:
         result:
           _ref: _ref
           name: Example name
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/DiscoveryCredentialgroup'
@@ -7651,6 +7728,7 @@ components:
         result:
           _ref: _ref
           name: Example name
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/DiscoveryCredentialgroup'
@@ -7689,6 +7767,7 @@ components:
           - network
           - network
           type: Example type
+          uuid: uuid
           network: Example network
           cap_vlan_assignment_ind: false
           extattrs-:
@@ -7797,9 +7876,6 @@ components:
       example:
         result:
           cap_if_net_provisioning_ipv6_ind: false
-          network_view: Example network_view
-          cap_if_net_deprovisioning_ipv4_ind: false
-          description: Example description
           duplex: Example duplex
           reserved_object: Example reserved_object
           ifaddr_infos:
@@ -7810,6 +7886,48 @@ components:
             address_object: Example address_object
             network: Example network
           type: Example type
+          uuid: uuid
+          vpc_peer_device: Example vpc_peer_device
+          cap_if_net_deprovisioning_ipv6_na_reason: Example cap_if_net_deprovisioning_ipv6_na_reason
+          admin_status: Example admin_status
+          cap_if_admin_status_na_reason: Example cap_if_admin_status_na_reason
+          vpc_peer: Example vpc_peer
+          cap_if_voice_vlan_na_reason: Example cap_if_voice_vlan_na_reason
+          cap_if_vlan_assignment_na_reason: Example cap_if_vlan_assignment_na_reason
+          last_change: 1
+          cap_if_description_ind: false
+          cap_if_net_provisioning_ipv4_ind: false
+          index: 1
+          cap_if_description_na_reason: Example cap_if_description_na_reason
+          aggr_interface_name: Example aggr_interface_name
+          port_fast: Example port_fast
+          admin_status_task_info:
+            details:
+              id: 1
+              is_synchronized: false
+              status: Example status
+            status: Example status
+          link_aggregation: false
+          ms_ad_user_data:
+            active_users_count: 1
+          vrf_rd: Example vrf_rd
+          description_task_info:
+            description: Example description
+            details:
+              id: 1
+              is_synchronized: false
+              status: Example status
+          name: Example name
+          vlan_infos:
+          - name: Example name
+            id: 1
+          - name: Example name
+            id: 1
+          device: Example device
+          cap_if_net_provisioning_ipv6_na_reason: Example cap_if_net_provisioning_ipv6_na_reason
+          network_view: Example network_view
+          cap_if_net_deprovisioning_ipv4_ind: false
+          description: Example description
           oper_status: Example oper_status
           vrf_name: Example vrf_name
           mac: Example mac
@@ -7820,39 +7938,15 @@ components:
           extattrs+:
             key:
               value: ""
-          vpc_peer_device: Example vpc_peer_device
-          cap_if_net_deprovisioning_ipv6_na_reason: Example cap_if_net_deprovisioning_ipv6_na_reason
           cap_if_net_deprovisioning_ipv6_ind: false
-          admin_status: Example admin_status
           vrf_description: Example vrf_description
-          cap_if_admin_status_na_reason: Example cap_if_admin_status_na_reason
-          vpc_peer: Example vpc_peer
-          cap_if_voice_vlan_na_reason: Example cap_if_voice_vlan_na_reason
-          cap_if_vlan_assignment_na_reason: Example cap_if_vlan_assignment_na_reason
           extattrs:
             key:
               value: ""
           cap_if_voice_vlan_ind: false
-          last_change: 1
-          cap_if_description_ind: false
-          cap_if_net_provisioning_ipv4_ind: false
-          index: 1
-          cap_if_description_na_reason: Example cap_if_description_na_reason
           cap_if_net_deprovisioning_ipv4_na_reason: Example cap_if_net_deprovisioning_ipv4_na_reason
-          aggr_interface_name: Example aggr_interface_name
-          port_fast: Example port_fast
-          admin_status_task_info:
-            details:
-              id: 1
-              is_synchronized: false
-              status: Example status
-            status: Example status
           cap_if_admin_status_ind: false
-          link_aggregation: false
-          ms_ad_user_data:
-            active_users_count: 1
           cap_if_net_provisioning_ipv4_na_reason: Example cap_if_net_provisioning_ipv4_na_reason
-          vrf_rd: Example vrf_rd
           cap_if_vlan_assignment_ind: false
           vlan_info_task_info:
             data_vlan_info:
@@ -7865,22 +7959,8 @@ components:
             voice_vlan_info:
               name: Example name
               id: 1
-          description_task_info:
-            description: Example description
-            details:
-              id: 1
-              is_synchronized: false
-              status: Example status
           trunk_status: Example trunk_status
           _ref: _ref
-          name: Example name
-          vlan_infos:
-          - name: Example name
-            id: 1
-          - name: Example name
-            id: 1
-          device: Example device
-          cap_if_net_provisioning_ipv6_na_reason: Example cap_if_net_provisioning_ipv6_na_reason
       properties:
         result:
           $ref: '#/components/schemas/DiscoveryDeviceinterface'
@@ -7967,6 +8047,7 @@ components:
           debug_snmp: false
           task_id: Example task_id
           ip_address: Example ip_address
+          uuid: uuid
           force_test: false
       properties:
         result:
@@ -7998,6 +8079,7 @@ components:
           basic_polling_settings:
             cli_collection: false
             switch_port_data_collection_polling: Example switch_port_data_collection_polling
+            use_arp_data_for_discovery: false
             credential_group: Example credential_group
             polling_frequency_modifier: Example polling_frequency_modifier
             device_profile: false
@@ -8057,6 +8139,7 @@ components:
           - port: 1
             comment: Example comment
             type: Example type
+          uuid: uuid
           dns_lookup_option: Example dns_lookup_option
           unmanaged_ips_limit: 1
           cli_credentials:
@@ -8256,6 +8339,7 @@ components:
             comment: Example comment
           role: Example role
           use_snmpv1v2_credentials: false
+          uuid: uuid
           default_seed_routers:
           - network_view: Example network_view
             address: Example address
@@ -8425,6 +8509,34 @@ components:
       description: The response format to create __Vdiscoverytask__ in object format.
       example:
         result:
+          auto_consolidate_managed_tenant: false
+          uuid: uuid
+          identity_version: Example identity_version
+          public_network_view_mapping_policy: Example public_network_view_mapping_policy
+          fqdn_or_ip: Example fqdn_or_ip
+          domain_name: Example domain_name
+          password: Example password
+          protocol: Example protocol
+          sync_child_accounts: false
+          state: Example state
+          service_account_file: Example service_account_file
+          network_filter: Example network_filter
+          update_metadata: false
+          service_account_file_token: Example service_account_file_token
+          allow_unsecured_connection: false
+          govcloud_enabled: false
+          private_network_view: Example private_network_view
+          public_network_view: Example public_network_view
+          cdiscovery_file_token: Example cdiscovery_file_token
+          dns_view_public_ip: Example dns_view_public_ip
+          role_arn: Example role_arn
+          port: 1
+          name: Example name
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+          private_network_view_mapping_policy: Example private_network_view_mapping_policy
+          dns_view_private_ip: Example dns_view_private_ip
+          merge_data: false
+          credentials_type: Example credentials_type
           use_identity: false
           driver_type: Example driver_type
           update_dns_view_private_ip: false
@@ -8443,53 +8555,26 @@ components:
             day_of_month: 1
             hour_of_day: 1
             frequency: Example frequency
-          auto_consolidate_managed_tenant: false
           enable_filter: false
           enabled: false
           auto_create_dns_record: false
           auto_create_dns_record_type: Example auto_create_dns_record_type
-          identity_version: Example identity_version
-          public_network_view_mapping_policy: Example public_network_view_mapping_policy
-          fqdn_or_ip: Example fqdn_or_ip
-          domain_name: Example domain_name
-          password: Example password
-          protocol: Example protocol
           update_dns_view_public_ip: false
-          sync_child_accounts: false
           auto_consolidate_cloud_ea: false
           member: Example member
-          state: Example state
           network_list:
           - network_list
           - network_list
-          service_account_file: Example service_account_file
-          network_filter: Example network_filter
-          update_metadata: false
           state_msg: Example state_msg
-          service_account_file_token: Example service_account_file_token
-          allow_unsecured_connection: false
-          govcloud_enabled: false
           last_run: 1
-          private_network_view: Example private_network_view
-          public_network_view: Example public_network_view
-          cdiscovery_file_token: Example cdiscovery_file_token
           accounts_list:
           - accounts_list
           - accounts_list
-          dns_view_public_ip: Example dns_view_public_ip
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-          role_arn: Example role_arn
           selected_regions: Example selected_regions
-          port: 1
           _ref: _ref
-          name: Example name
           comment: Example comment
-          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-          private_network_view_mapping_policy: Example private_network_view_mapping_policy
           auto_consolidate_managed_vm: false
-          dns_view_private_ip: Example dns_view_private_ip
-          merge_data: false
-          credentials_type: Example credentials_type
           username: Example username
       properties:
         result:
@@ -8508,6 +8593,34 @@ components:
       description: The response format to update __Vdiscoverytask__ in object format.
       example:
         result:
+          auto_consolidate_managed_tenant: false
+          uuid: uuid
+          identity_version: Example identity_version
+          public_network_view_mapping_policy: Example public_network_view_mapping_policy
+          fqdn_or_ip: Example fqdn_or_ip
+          domain_name: Example domain_name
+          password: Example password
+          protocol: Example protocol
+          sync_child_accounts: false
+          state: Example state
+          service_account_file: Example service_account_file
+          network_filter: Example network_filter
+          update_metadata: false
+          service_account_file_token: Example service_account_file_token
+          allow_unsecured_connection: false
+          govcloud_enabled: false
+          private_network_view: Example private_network_view
+          public_network_view: Example public_network_view
+          cdiscovery_file_token: Example cdiscovery_file_token
+          dns_view_public_ip: Example dns_view_public_ip
+          role_arn: Example role_arn
+          port: 1
+          name: Example name
+          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
+          private_network_view_mapping_policy: Example private_network_view_mapping_policy
+          dns_view_private_ip: Example dns_view_private_ip
+          merge_data: false
+          credentials_type: Example credentials_type
           use_identity: false
           driver_type: Example driver_type
           update_dns_view_private_ip: false
@@ -8526,53 +8639,26 @@ components:
             day_of_month: 1
             hour_of_day: 1
             frequency: Example frequency
-          auto_consolidate_managed_tenant: false
           enable_filter: false
           enabled: false
           auto_create_dns_record: false
           auto_create_dns_record_type: Example auto_create_dns_record_type
-          identity_version: Example identity_version
-          public_network_view_mapping_policy: Example public_network_view_mapping_policy
-          fqdn_or_ip: Example fqdn_or_ip
-          domain_name: Example domain_name
-          password: Example password
-          protocol: Example protocol
           update_dns_view_public_ip: false
-          sync_child_accounts: false
           auto_consolidate_cloud_ea: false
           member: Example member
-          state: Example state
           network_list:
           - network_list
           - network_list
-          service_account_file: Example service_account_file
-          network_filter: Example network_filter
-          update_metadata: false
           state_msg: Example state_msg
-          service_account_file_token: Example service_account_file_token
-          allow_unsecured_connection: false
-          govcloud_enabled: false
           last_run: 1
-          private_network_view: Example private_network_view
-          public_network_view: Example public_network_view
-          cdiscovery_file_token: Example cdiscovery_file_token
           accounts_list:
           - accounts_list
           - accounts_list
-          dns_view_public_ip: Example dns_view_public_ip
           auto_create_dns_hostname_template: Example auto_create_dns_hostname_template
-          role_arn: Example role_arn
           selected_regions: Example selected_regions
-          port: 1
           _ref: _ref
-          name: Example name
           comment: Example comment
-          multiple_accounts_sync_policy: Example multiple_accounts_sync_policy
-          private_network_view_mapping_policy: Example private_network_view_mapping_policy
           auto_consolidate_managed_vm: false
-          dns_view_private_ip: Example dns_view_private_ip
-          merge_data: false
-          credentials_type: Example credentials_type
           username: Example username
       properties:
         result:

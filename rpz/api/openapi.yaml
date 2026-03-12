@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox RPZ API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for allrpzrecords objects
   name: Allrpzrecords
@@ -30,6 +30,10 @@ tags:
   name: RecordRpzPtr
 - description: Operations for record:rpz:srv objects
   name: RecordRpzSrv
+- description: Operations for record:rpz:https objects
+  name: RecordRpzHttps
+- description: Operations for record:rpz:svcb objects
+  name: RecordRpzSvcb
 - description: Operations for record:rpz:txt objects
   name: RecordRpzTxt
 - description: Operations for record:rpz:a:ipaddress objects
@@ -2538,6 +2542,669 @@ paths:
       summary: Update a record:rpz:srv object
       tags:
       - RecordRpzSrv
+      x-sdk-default-ext-attrs: true
+  /record:rpz:https:
+    get:
+      description: Returns a list of record:rpz:https objects matching the search
+        criteria
+      operationId: RecordRpzHttpsList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRecordRpzHttpsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve record:rpz:https objects
+      tags:
+      - RecordRpzHttps
+    post:
+      description: Creates a new record:rpz:https object
+      operationId: RecordRpzHttpsCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordRpzHttps'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRecordRpzHttpsResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a record:rpz:https object
+      tags:
+      - RecordRpzHttps
+      x-tf-resource: rpz_record_rpz_https
+      x-tf-datasource: rpz_record_rpz_https
+      x-sdk-default-ext-attrs: true
+  /record:rpz:https/{reference}:
+    delete:
+      description: Deletes a specific record:rpz:https object by reference
+      operationId: RecordRpzHttpsDelete
+      parameters:
+      - description: Reference of the record:rpz:https object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a record:rpz:https object
+      tags:
+      - RecordRpzHttps
+    get:
+      description: Returns a specific record:rpz:https object by reference
+      operationId: RecordRpzHttpsRead
+      parameters:
+      - description: Reference of the record:rpz:https object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRecordRpzHttpsResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific record:rpz:https object
+      tags:
+      - RecordRpzHttps
+    put:
+      description: Updates a specific record:rpz:https object by reference
+      operationId: RecordRpzHttpsUpdate
+      parameters:
+      - description: Reference of the record:rpz:https object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordRpzHttps'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateRecordRpzHttpsResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a record:rpz:https object
+      tags:
+      - RecordRpzHttps
+      x-sdk-default-ext-attrs: true
+  /record:rpz:svcb:
+    get:
+      description: Returns a list of record:rpz:svcb objects matching the search criteria
+      operationId: RecordRpzSvcbList
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Enter the number of results to be fetched
+        explode: true
+        in: query
+        name: _max_results
+        required: false
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Control paging of results
+        explode: true
+        in: query
+        name: _paging
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Page id for retrieving next page of results
+        explode: true
+        in: query
+        name: _page_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: filters
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: false
+        in: query
+        name: extattrfilter
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRecordRpzSvcbResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Retrieve record:rpz:svcb objects
+      tags:
+      - RecordRpzSvcb
+    post:
+      description: Creates a new record:rpz:svcb object
+      operationId: RecordRpzSvcbCreate
+      parameters:
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordRpzSvcb'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRecordRpzSvcbResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Create a record:rpz:svcb object
+      tags:
+      - RecordRpzSvcb
+      x-tf-resource: rpz_record_rpz_svcb
+      x-tf-datasource: rpz_record_rpz_svcb
+      x-sdk-default-ext-attrs: true
+  /record:rpz:svcb/{reference}:
+    delete:
+      description: Deletes a specific record:rpz:svcb object by reference
+      operationId: RecordRpzSvcbDelete
+      parameters:
+      - description: Reference of the record:rpz:svcb object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Object deleted successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Delete a record:rpz:svcb object
+      tags:
+      - RecordRpzSvcb
+    get:
+      description: Returns a specific record:rpz:svcb object by reference
+      operationId: RecordRpzSvcbRead
+      parameters:
+      - description: Reference of the record:rpz:svcb object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Search Grid members for data
+        explode: true
+        in: query
+        name: _proxy_search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRecordRpzSvcbResponse'
+          description: Successful operation
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Get a specific record:rpz:svcb object
+      tags:
+      - RecordRpzSvcb
+    put:
+      description: Updates a specific record:rpz:svcb object by reference
+      operationId: RecordRpzSvcbUpdate
+      parameters:
+      - description: Reference of the record:rpz:svcb object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Enter the field names followed by comma
+        explode: true
+        in: query
+        name: _return_fields
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Enter the field names followed by comma, this returns the required\
+          \ fields along with the default fields"
+        explode: true
+        in: query
+        name: _return_fields+
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordRpzSvcb'
+        description: Object data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateRecordRpzSvcbResponse'
+          description: Object updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Update a record:rpz:svcb object
+      tags:
+      - RecordRpzSvcb
       x-sdk-default-ext-attrs: true
   /record:rpz:txt:
     get:
@@ -5050,6 +5717,7 @@ components:
         last_updated: 1
         expiration_time: 1
         type: Example type
+        uuid: uuid
         ttl: 1
         alert_type: Example alert_type
         view: Example view
@@ -5062,6 +5730,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         alert_type:
@@ -5131,6 +5803,7 @@ components:
           - SubstituteARecord
           - SubstituteCName
           - SubstituteClientIPAddressCname
+          - SubstituteHTTPSRecord
           - SubstituteIPAddressCname
           - SubstituteIPv4AddressRecord
           - SubstituteIPv6AddressRecord
@@ -5138,6 +5811,7 @@ components:
           - SubstituteNAPTRRecord
           - SubstitutePTRRecord
           - SubstituteSRVRecord
+          - SubstituteSVCBRecord
           - SubstituteTXTRecord
           example: Example rpz_rule
           readOnly: true
@@ -5163,10 +5837,12 @@ components:
           - record:rpz:cname:clientipaddress
           - record:rpz:cname:ipaddress
           - record:rpz:cname:ipaddressdn
+          - record:rpz:https
           - record:rpz:mx
           - record:rpz:naptr
           - record:rpz:ptr
           - record:rpz:srv
+          - record:rpz:svcb
           - record:rpz:txt
           example: Example type
           readOnly: true
@@ -5209,6 +5885,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: uuid
         ipv4addr: Example ipv4addr
         ttl: 1
         extattrs-:
@@ -5227,6 +5904,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -5328,6 +6009,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: uuid
         ttl: 1
         ipv6addr: Example ipv6addr
         extattrs-:
@@ -5346,6 +6028,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -5448,6 +6134,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: uuid
         ttl: 1
         extattrs-:
           key:
@@ -5465,6 +6152,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         canonical:
@@ -5569,6 +6260,7 @@ components:
             value: ""
         use_ttl: false
         preference: 1
+        uuid: uuid
         ttl: 1
         extattrs-:
           key:
@@ -5586,6 +6278,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -5698,6 +6394,7 @@ components:
         preference: 1
         flags: Example flags
         services: Example services
+        uuid: uuid
         ttl: 1
         extattrs-:
           key:
@@ -5718,6 +6415,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -5862,6 +6563,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: uuid
         ipv4addr: Example ipv4addr
         ttl: 1
         ipv6addr: Example ipv6addr
@@ -5882,6 +6584,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -5994,6 +6700,7 @@ components:
         use_ttl: false
         weight: 1
         priority: 1
+        uuid: uuid
         ttl: 1
         target: Example target
         extattrs-:
@@ -6013,6 +6720,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -6126,6 +6837,356 @@ components:
       - description: The response format to update __RecordRpzSrv__ .
         title: UpdateRecordRpzSrvResponse
         type: string
+    RecordRpzHttps:
+      additionalProperties: false
+      example:
+        extattrs:
+          key:
+            value: ""
+        target_name: Example target_name
+        svc_parameters:
+        - svc_key: Example svc_key
+          svc_value:
+          - svc_value
+          - svc_value
+          mandatory: false
+        - svc_key: Example svc_key
+          svc_value:
+          - svc_value
+          - svc_value
+          mandatory: false
+        use_ttl: false
+        priority: 1
+        uuid: uuid
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
+          key:
+            value: ""
+        rp_zone: Example rp_zone
+        zone: Example zone
+        disable: false
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+      properties:
+        _ref:
+          description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
+          type: string
+        comment:
+          description: The comment for the record; maximum 256 characters.
+          example: Example comment
+          type: string
+        disable:
+          description: Determines if the record is disabled or not. False means that
+            the record is enabled.
+          example: false
+          type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-extattrs: true
+        name:
+          description: The name for a record in FQDN format. This value cannot be
+            in unicode format.
+          example: Example name
+          type: string
+        priority:
+          description: "The priority of the Substitute (HTTPS Record) Rule. Valid\
+            \ values are from 0 to 65535 (inclusive), in 32-bit unsigned integer format."
+          example: 1
+          format: int64
+          type: integer
+        rp_zone:
+          description: The name of a response policy zone in which the record resides.
+          example: Example rp_zone
+          type: string
+        svc_parameters:
+          description: Structure to represent SVC Params.
+          enum:
+          - svcparams
+          items:
+            $ref: '#/components/schemas/RecordRpzHttpsSvcParameters'
+          type: array
+        target_name:
+          description: The target of the Substitute (HTTPS Record) Rule in FQDN format.
+            This value can be in unicode format.
+          example: Example target_name
+          type: string
+        ttl:
+          description: "The Time To Live (TTL) value for record. A 32-bit unsigned\
+            \ integer that represents the duration, in seconds, for which the record\
+            \ is valid (cached). Zero indicates that the record should not be cached."
+          example: 1
+          format: int64
+          type: integer
+        use_ttl:
+          description: "Use flag for: ttl"
+          example: false
+          type: boolean
+        view:
+          description: "The name of the DNS View in which the record resides. Example:\
+            \ \"external\"."
+          example: Example view
+          type: string
+        zone:
+          description: "The name of the zone in which the record resides. Example:\
+            \ \"zone.com\". If a view is not specified when searching by zone, the\
+            \ default view is used."
+          example: Example zone
+          readOnly: true
+          type: string
+      type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
+    RecordRpzHttpsSvcParameters:
+      example:
+        svc_key: Example svc_key
+        svc_value:
+        - svc_value
+        - svc_value
+        mandatory: false
+      properties:
+        svc_key:
+          description: Svc param key.
+          example: Example svc_key
+          type: string
+        svc_value:
+          description: Svc param value.
+          enum:
+          - string
+          items:
+            type: string
+          type: array
+        mandatory:
+          description: Specifies if this is mandatory key for this RR.
+          example: false
+          type: boolean
+      type: object
+    ListRecordRpzHttpsResponse:
+      oneOf:
+      - description: The response format to retrieve __RecordRpzHttps__ objects.
+        items:
+          $ref: '#/components/schemas/RecordRpzHttps'
+        title: ListRecordRpzHttpsResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListRecordRpzHttpsResponseObject'
+    CreateRecordRpzHttpsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateRecordRpzHttpsResponseAsObject'
+      - description: The response format to create __RecordRpzHttps__.
+        title: CreateRecordRpzHttpsResponse
+        type: string
+    GetRecordRpzHttpsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/RecordRpzHttps'
+      - $ref: '#/components/schemas/GetRecordRpzHttpsResponseObjectAsResult'
+    UpdateRecordRpzHttpsResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateRecordRpzHttpsResponseAsObject'
+      - description: The response format to update __RecordRpzHttps__ .
+        title: UpdateRecordRpzHttpsResponse
+        type: string
+    RecordRpzSvcb:
+      additionalProperties: false
+      example:
+        extattrs:
+          key:
+            value: ""
+        target_name: Example target_name
+        svc_parameters:
+        - svc_key: Example svc_key
+          svc_value:
+          - svc_value
+          - svc_value
+          mandatory: false
+        - svc_key: Example svc_key
+          svc_value:
+          - svc_value
+          - svc_value
+          mandatory: false
+        use_ttl: false
+        priority: 1
+        uuid: uuid
+        ttl: 1
+        extattrs-:
+          key:
+            value: ""
+        view: Example view
+        extattrs+:
+          key:
+            value: ""
+        rp_zone: Example rp_zone
+        zone: Example zone
+        disable: false
+        _ref: _ref
+        name: Example name
+        comment: Example comment
+      properties:
+        _ref:
+          description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
+          type: string
+        comment:
+          description: The comment for the record; maximum 256 characters.
+          example: Example comment
+          type: string
+        disable:
+          description: Determines if the record is disabled or not. False means that
+            the record is enabled.
+          example: false
+          type: boolean
+        extattrs+:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs-:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-ignore: true
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          type: object
+          x-tf-extattrs: true
+        name:
+          description: The name for a record in FQDN format. This value cannot be
+            in unicode format.
+          example: Example name
+          type: string
+        priority:
+          description: "The priority of the Substitute (SVCB Record) Rule. Valid values\
+            \ are from 0 to 65535 (inclusive), in 32-bit unsigned integer format."
+          example: 1
+          format: int64
+          type: integer
+        rp_zone:
+          description: The name of a response policy zone in which the record resides.
+          example: Example rp_zone
+          type: string
+        svc_parameters:
+          description: Structure to represent SVC Params.
+          enum:
+          - svcparams
+          items:
+            $ref: '#/components/schemas/RecordRpzSvcbSvcParameters'
+          type: array
+        target_name:
+          description: The target of the Substitute (SVCB Record) Rule in FQDN format.
+            This value can be in unicode format.
+          example: Example target_name
+          type: string
+        ttl:
+          description: "The Time To Live (TTL) value for record. A 32-bit unsigned\
+            \ integer that represents the duration, in seconds, for which the record\
+            \ is valid (cached). Zero indicates that the record should not be cached."
+          example: 1
+          format: int64
+          type: integer
+        use_ttl:
+          description: "Use flag for: ttl"
+          example: false
+          type: boolean
+        view:
+          description: "The name of the DNS View in which the record resides. Example:\
+            \ \"external\"."
+          example: Example view
+          type: string
+        zone:
+          description: "The name of the zone in which the record resides. Example:\
+            \ \"zone.com\". If a view is not specified when searching by zone, the\
+            \ default view is used."
+          example: Example zone
+          readOnly: true
+          type: string
+      type: object
+      x-tf-extattrs-all: true
+      x-tf-skip-expand: true
+    RecordRpzSvcbSvcParameters:
+      example:
+        svc_key: Example svc_key
+        svc_value:
+        - svc_value
+        - svc_value
+        mandatory: false
+      properties:
+        svc_key:
+          description: Svc param key.
+          example: Example svc_key
+          type: string
+        svc_value:
+          description: Svc param value.
+          enum:
+          - string
+          items:
+            type: string
+          type: array
+        mandatory:
+          description: Specifies if this is mandatory key for this RR.
+          example: false
+          type: boolean
+      type: object
+    ListRecordRpzSvcbResponse:
+      oneOf:
+      - description: The response format to retrieve __RecordRpzSvcb__ objects.
+        items:
+          $ref: '#/components/schemas/RecordRpzSvcb'
+        title: ListRecordRpzSvcbResponseArray
+        type: array
+      - $ref: '#/components/schemas/ListRecordRpzSvcbResponseObject'
+    CreateRecordRpzSvcbResponse:
+      oneOf:
+      - $ref: '#/components/schemas/CreateRecordRpzSvcbResponseAsObject'
+      - description: The response format to create __RecordRpzSvcb__.
+        title: CreateRecordRpzSvcbResponse
+        type: string
+    GetRecordRpzSvcbResponse:
+      oneOf:
+      - $ref: '#/components/schemas/RecordRpzSvcb'
+      - $ref: '#/components/schemas/GetRecordRpzSvcbResponseObjectAsResult'
+    UpdateRecordRpzSvcbResponse:
+      oneOf:
+      - $ref: '#/components/schemas/UpdateRecordRpzSvcbResponseAsObject'
+      - description: The response format to update __RecordRpzSvcb__ .
+        title: UpdateRecordRpzSvcbResponse
+        type: string
     RecordRpzTxt:
       additionalProperties: false
       example:
@@ -6133,6 +7194,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: uuid
         ttl: 1
         extattrs-:
           key:
@@ -6151,6 +7213,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -6255,6 +7321,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: uuid
         ipv4addr: Example ipv4addr
         ttl: 1
         extattrs-:
@@ -6273,6 +7340,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -6374,6 +7445,7 @@ components:
           key:
             value: ""
         use_ttl: false
+        uuid: uuid
         ttl: 1
         ipv6addr: Example ipv6addr
         extattrs-:
@@ -6392,6 +7464,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -6494,6 +7570,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: uuid
         is_ipv4: false
         ttl: 1
         extattrs-:
@@ -6512,6 +7589,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         canonical:
@@ -6551,7 +7632,7 @@ components:
           x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
-            \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
+            \ value is \"true\", it is an IPv4 record. Otherwise, it is an IPv6 record."
           example: false
           readOnly: true
           type: boolean
@@ -6621,6 +7702,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: uuid
         is_ipv4: false
         ttl: 1
         extattrs-:
@@ -6639,6 +7721,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         canonical:
@@ -6678,7 +7764,7 @@ components:
           x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
-            \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
+            \ value is \"true\", it is an IPv4 record. Otherwise, it is an IPv6 record."
           example: false
           readOnly: true
           type: boolean
@@ -6749,6 +7835,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: uuid
         is_ipv4: false
         ttl: 1
         extattrs-:
@@ -6767,6 +7854,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         canonical:
@@ -6806,7 +7897,7 @@ components:
           x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
-            \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
+            \ value is \"true\", it is an IPv4 record. Otherwise, it is an IPv6 record."
           example: false
           readOnly: true
           type: boolean
@@ -6878,6 +7969,7 @@ components:
             value: ""
         use_ttl: false
         canonical: Example canonical
+        uuid: uuid
         is_ipv4: false
         ttl: 1
         extattrs-:
@@ -6896,6 +7988,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         canonical:
@@ -6935,7 +8031,7 @@ components:
           x-tf-extattrs: true
         is_ipv4:
           description: "Indicates whether the record is an IPv4 record. If the return\
-            \ value is \"true\", it is an IPv4 record. Ohterwise, it is an IPv6 record."
+            \ value is \"true\", it is an IPv4 record. Otherwise, it is an IPv6 record."
           example: false
           readOnly: true
           type: boolean
@@ -7040,6 +8136,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           extattrs-:
@@ -7076,6 +8173,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           extattrs-:
@@ -7113,6 +8211,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ttl: 1
           ipv6addr: Example ipv6addr
           extattrs-:
@@ -7149,6 +8248,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ttl: 1
           ipv6addr: Example ipv6addr
           extattrs-:
@@ -7187,6 +8287,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -7223,6 +8324,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -7261,6 +8363,7 @@ components:
               value: ""
           use_ttl: false
           preference: 1
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -7298,6 +8401,7 @@ components:
               value: ""
           use_ttl: false
           preference: 1
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -7338,6 +8442,7 @@ components:
           preference: 1
           flags: Example flags
           services: Example services
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -7380,6 +8485,7 @@ components:
           preference: 1
           flags: Example flags
           services: Example services
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -7419,6 +8525,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           ipv6addr: Example ipv6addr
@@ -7457,6 +8564,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           ipv6addr: Example ipv6addr
@@ -7498,6 +8606,7 @@ components:
           use_ttl: false
           weight: 1
           priority: 1
+          uuid: uuid
           ttl: 1
           target: Example target
           extattrs-:
@@ -7537,6 +8646,7 @@ components:
           use_ttl: false
           weight: 1
           priority: 1
+          uuid: uuid
           ttl: 1
           target: Example target
           extattrs-:
@@ -7558,6 +8668,204 @@ components:
           $ref: '#/components/schemas/RecordRpzSrv'
       title: UpdateRecordRpzSrvResponseAsObject
       type: object
+    ListRecordRpzHttpsResponseObject:
+      description: The response format to retrieve __RecordRpzHttps__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/RecordRpzHttps'
+          type: array
+      title: ListRecordRpzHttpsResponseObject
+      type: object
+    CreateRecordRpzHttpsResponseAsObject:
+      description: The response format to create __RecordRpzHttps__ in object format.
+      example:
+        result:
+          extattrs:
+            key:
+              value: ""
+          target_name: Example target_name
+          svc_parameters:
+          - svc_key: Example svc_key
+            svc_value:
+            - svc_value
+            - svc_value
+            mandatory: false
+          - svc_key: Example svc_key
+            svc_value:
+            - svc_value
+            - svc_value
+            mandatory: false
+          use_ttl: false
+          priority: 1
+          uuid: uuid
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
+            key:
+              value: ""
+          rp_zone: Example rp_zone
+          zone: Example zone
+          disable: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+      properties:
+        result:
+          $ref: '#/components/schemas/RecordRpzHttps'
+      title: CreateRecordRpzHttpsResponseAsObject
+      type: object
+    GetRecordRpzHttpsResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __RecordRpzHttps__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/RecordRpzHttps'
+      title: GetRecordRpzHttpsResponseObjectAsResult
+      type: object
+    UpdateRecordRpzHttpsResponseAsObject:
+      description: The response format to update __RecordRpzHttps__ in object format.
+      example:
+        result:
+          extattrs:
+            key:
+              value: ""
+          target_name: Example target_name
+          svc_parameters:
+          - svc_key: Example svc_key
+            svc_value:
+            - svc_value
+            - svc_value
+            mandatory: false
+          - svc_key: Example svc_key
+            svc_value:
+            - svc_value
+            - svc_value
+            mandatory: false
+          use_ttl: false
+          priority: 1
+          uuid: uuid
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
+            key:
+              value: ""
+          rp_zone: Example rp_zone
+          zone: Example zone
+          disable: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+      properties:
+        result:
+          $ref: '#/components/schemas/RecordRpzHttps'
+      title: UpdateRecordRpzHttpsResponseAsObject
+      type: object
+    ListRecordRpzSvcbResponseObject:
+      description: The response format to retrieve __RecordRpzSvcb__ objects.
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/RecordRpzSvcb'
+          type: array
+      title: ListRecordRpzSvcbResponseObject
+      type: object
+    CreateRecordRpzSvcbResponseAsObject:
+      description: The response format to create __RecordRpzSvcb__ in object format.
+      example:
+        result:
+          extattrs:
+            key:
+              value: ""
+          target_name: Example target_name
+          svc_parameters:
+          - svc_key: Example svc_key
+            svc_value:
+            - svc_value
+            - svc_value
+            mandatory: false
+          - svc_key: Example svc_key
+            svc_value:
+            - svc_value
+            - svc_value
+            mandatory: false
+          use_ttl: false
+          priority: 1
+          uuid: uuid
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
+            key:
+              value: ""
+          rp_zone: Example rp_zone
+          zone: Example zone
+          disable: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+      properties:
+        result:
+          $ref: '#/components/schemas/RecordRpzSvcb'
+      title: CreateRecordRpzSvcbResponseAsObject
+      type: object
+    GetRecordRpzSvcbResponseObjectAsResult:
+      additionalProperties: false
+      description: The response format to retrieve __RecordRpzSvcb__ objects.
+      properties:
+        result:
+          $ref: '#/components/schemas/RecordRpzSvcb'
+      title: GetRecordRpzSvcbResponseObjectAsResult
+      type: object
+    UpdateRecordRpzSvcbResponseAsObject:
+      description: The response format to update __RecordRpzSvcb__ in object format.
+      example:
+        result:
+          extattrs:
+            key:
+              value: ""
+          target_name: Example target_name
+          svc_parameters:
+          - svc_key: Example svc_key
+            svc_value:
+            - svc_value
+            - svc_value
+            mandatory: false
+          - svc_key: Example svc_key
+            svc_value:
+            - svc_value
+            - svc_value
+            mandatory: false
+          use_ttl: false
+          priority: 1
+          uuid: uuid
+          ttl: 1
+          extattrs-:
+            key:
+              value: ""
+          view: Example view
+          extattrs+:
+            key:
+              value: ""
+          rp_zone: Example rp_zone
+          zone: Example zone
+          disable: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+      properties:
+        result:
+          $ref: '#/components/schemas/RecordRpzSvcb'
+      title: UpdateRecordRpzSvcbResponseAsObject
+      type: object
     ListRecordRpzTxtResponseObject:
       description: The response format to retrieve __RecordRpzTxt__ objects.
       properties:
@@ -7575,6 +8883,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -7611,6 +8920,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ttl: 1
           extattrs-:
             key:
@@ -7649,6 +8959,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           extattrs-:
@@ -7686,6 +8997,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ipv4addr: Example ipv4addr
           ttl: 1
           extattrs-:
@@ -7724,6 +9036,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ttl: 1
           ipv6addr: Example ipv6addr
           extattrs-:
@@ -7761,6 +9074,7 @@ components:
             key:
               value: ""
           use_ttl: false
+          uuid: uuid
           ttl: 1
           ipv6addr: Example ipv6addr
           extattrs-:
@@ -7800,6 +9114,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7838,6 +9153,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7877,6 +9193,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7915,6 +9232,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7955,6 +9273,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -7994,6 +9313,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -8034,6 +9354,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           is_ipv4: false
           ttl: 1
           extattrs-:
@@ -8073,6 +9394,7 @@ components:
               value: ""
           use_ttl: false
           canonical: Example canonical
+          uuid: uuid
           is_ipv4: false
           ttl: 1
           extattrs-:

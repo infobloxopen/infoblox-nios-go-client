@@ -23,6 +23,31 @@ func TestViewAPIService(t *testing.T) {
 
 	apiClient := dns.NewAPIClient()
 
+	t.Run("Test ViewAPIService Create", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ViewAPI.Create(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ViewAPIService Delete", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var reference string
+
+		httpRes, err := apiClient.ViewAPI.Delete(context.Background(), reference).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ViewAPIService List", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

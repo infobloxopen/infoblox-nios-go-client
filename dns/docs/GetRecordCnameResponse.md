@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AwsRte53RecordInfo** | Pointer to [**RecordCnameAwsRte53RecordInfo**](RecordCnameAwsRte53RecordInfo.md) |  | [optional] 
 **Canonical** | Pointer to **string** | Canonical name in FQDN format. This value can be in unicode format. | [optional] 
 **CloudInfo** | Pointer to [**RecordCnameCloudInfo**](RecordCnameCloudInfo.md) |  | [optional] 
@@ -23,6 +24,7 @@ Name | Type | Description | Notes
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name for a CNAME record in FQDN format. This value can be in unicode format. Regular expression search is not supported for unicode values. | [optional] 
 **Reclaimable** | Pointer to **bool** | Determines if the record is reclaimable or not. | [optional] [readonly] 
+**RrPreconditionInstructions** | Pointer to [**[]RecordCnameRrPreconditionInstructions**](RecordCnameRrPreconditionInstructions.md) | List of pre-condition instructions for CNAME record creation. | [optional] 
 **SharedRecordGroup** | Pointer to **string** | The name of the shared record group in which the record resides. This field exists only on db_objects if this record is a shared record. | [optional] [readonly] 
 **Ttl** | Pointer to **int64** | The Time To Live (TTL) value for record. A 32-bit unsigned integer that represents the duration, in seconds, for which the record is valid (cached). Zero indicates that the record should not be cached. | [optional] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] 
@@ -73,6 +75,31 @@ SetRef sets Ref field to given value.
 `func (o *GetRecordCnameResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetRecordCnameResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetRecordCnameResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetRecordCnameResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetRecordCnameResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAwsRte53RecordInfo
 
@@ -523,6 +550,31 @@ SetReclaimable sets Reclaimable field to given value.
 `func (o *GetRecordCnameResponse) HasReclaimable() bool`
 
 HasReclaimable returns a boolean if a field has been set.
+
+### GetRrPreconditionInstructions
+
+`func (o *GetRecordCnameResponse) GetRrPreconditionInstructions() []RecordCnameRrPreconditionInstructions`
+
+GetRrPreconditionInstructions returns the RrPreconditionInstructions field if non-nil, zero value otherwise.
+
+### GetRrPreconditionInstructionsOk
+
+`func (o *GetRecordCnameResponse) GetRrPreconditionInstructionsOk() (*[]RecordCnameRrPreconditionInstructions, bool)`
+
+GetRrPreconditionInstructionsOk returns a tuple with the RrPreconditionInstructions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRrPreconditionInstructions
+
+`func (o *GetRecordCnameResponse) SetRrPreconditionInstructions(v []RecordCnameRrPreconditionInstructions)`
+
+SetRrPreconditionInstructions sets RrPreconditionInstructions field to given value.
+
+### HasRrPreconditionInstructions
+
+`func (o *GetRecordCnameResponse) HasRrPreconditionInstructions() bool`
+
+HasRrPreconditionInstructions returns a boolean if a field has been set.
 
 ### GetSharedRecordGroup
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AddClientIpMacOptions** | Pointer to **bool** | Add custom IP, MAC and DNS View name ENDS0 options to outgoing recursive queries. | [optional] 
 **AllowBulkhostDdns** | Pointer to **string** | Determines if DDNS bulk host is allowed or not. | [optional] 
 **AllowGssTsigZoneUpdates** | Pointer to **bool** | Determines whether GSS-TSIG zone update is enabled for all Grid members. | [optional] 
@@ -80,8 +81,17 @@ Name | Type | Description | Notes
 **EnableDeleteAssociatedPtr** | Pointer to **bool** | Determines if the ability to automatically remove associated PTR records while deleting A or AAAA records is enabled or not. | [optional] 
 **EnableDns64** | Pointer to **bool** | Determines if the DNS64 support is enabled or not. | [optional] 
 **EnableDnsHealthCheck** | Pointer to **bool** | Determines if the DNS health check is enabled or not. | [optional] 
+**EnableDnstapAuthQueries** | Pointer to **bool** | Enable DNSTAP for authoritative query messages. | [optional] 
+**EnableDnstapAuthResponses** | Pointer to **bool** | Enable DNSTAP for authoritative response messages. | [optional] 
+**EnableDnstapClientQueries** | Pointer to **bool** | Enable DNSTAP for client query messages. | [optional] 
+**EnableDnstapClientResponses** | Pointer to **bool** | Enable DNSTAP for client response messages. | [optional] 
+**EnableDnstapForwarderQueries** | Pointer to **bool** | Enable DNSTAP for forwarder query messages. | [optional] 
+**EnableDnstapForwarderResponses** | Pointer to **bool** | Enable DNSTAP for forwarder response messages. | [optional] 
 **EnableDnstapQueries** | Pointer to **bool** | Determines whether the query messages need to be forwarded to DNSTAP or not. | [optional] 
+**EnableDnstapResolverQueries** | Pointer to **bool** | Enable DNSTAP for resolver query messages. | [optional] 
+**EnableDnstapResolverResponses** | Pointer to **bool** | Enable DNSTAP for resolver response messages. | [optional] 
 **EnableDnstapResponses** | Pointer to **bool** | Determines whether the response messages need to be forwarded to DNSTAP or not. | [optional] 
+**EnableDnstapSetting** | Pointer to **bool** | Indicates whether DNSTAP is enabled. | [optional] 
 **EnableDnstapViolationsTls** | Pointer to **bool** | Determines whether the violations messages need to be forwarded to DNSTAP or not. | [optional] 
 **EnableExcludedDomainNames** | Pointer to **bool** | Determines if excluding domain names from captured DNS queries and responses is enabled or disabled. | [optional] 
 **EnableFixedRrsetOrderFqdns** | Pointer to **bool** | Determines if the fixed RRset order FQDN is enabled or not. | [optional] 
@@ -200,6 +210,31 @@ SetRef sets Ref field to given value.
 `func (o *GetGridDnsResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetGridDnsResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetGridDnsResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetGridDnsResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetGridDnsResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAddClientIpMacOptions
 
@@ -2076,6 +2111,156 @@ SetEnableDnsHealthCheck sets EnableDnsHealthCheck field to given value.
 
 HasEnableDnsHealthCheck returns a boolean if a field has been set.
 
+### GetEnableDnstapAuthQueries
+
+`func (o *GetGridDnsResponse) GetEnableDnstapAuthQueries() bool`
+
+GetEnableDnstapAuthQueries returns the EnableDnstapAuthQueries field if non-nil, zero value otherwise.
+
+### GetEnableDnstapAuthQueriesOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapAuthQueriesOk() (*bool, bool)`
+
+GetEnableDnstapAuthQueriesOk returns a tuple with the EnableDnstapAuthQueries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapAuthQueries
+
+`func (o *GetGridDnsResponse) SetEnableDnstapAuthQueries(v bool)`
+
+SetEnableDnstapAuthQueries sets EnableDnstapAuthQueries field to given value.
+
+### HasEnableDnstapAuthQueries
+
+`func (o *GetGridDnsResponse) HasEnableDnstapAuthQueries() bool`
+
+HasEnableDnstapAuthQueries returns a boolean if a field has been set.
+
+### GetEnableDnstapAuthResponses
+
+`func (o *GetGridDnsResponse) GetEnableDnstapAuthResponses() bool`
+
+GetEnableDnstapAuthResponses returns the EnableDnstapAuthResponses field if non-nil, zero value otherwise.
+
+### GetEnableDnstapAuthResponsesOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapAuthResponsesOk() (*bool, bool)`
+
+GetEnableDnstapAuthResponsesOk returns a tuple with the EnableDnstapAuthResponses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapAuthResponses
+
+`func (o *GetGridDnsResponse) SetEnableDnstapAuthResponses(v bool)`
+
+SetEnableDnstapAuthResponses sets EnableDnstapAuthResponses field to given value.
+
+### HasEnableDnstapAuthResponses
+
+`func (o *GetGridDnsResponse) HasEnableDnstapAuthResponses() bool`
+
+HasEnableDnstapAuthResponses returns a boolean if a field has been set.
+
+### GetEnableDnstapClientQueries
+
+`func (o *GetGridDnsResponse) GetEnableDnstapClientQueries() bool`
+
+GetEnableDnstapClientQueries returns the EnableDnstapClientQueries field if non-nil, zero value otherwise.
+
+### GetEnableDnstapClientQueriesOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapClientQueriesOk() (*bool, bool)`
+
+GetEnableDnstapClientQueriesOk returns a tuple with the EnableDnstapClientQueries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapClientQueries
+
+`func (o *GetGridDnsResponse) SetEnableDnstapClientQueries(v bool)`
+
+SetEnableDnstapClientQueries sets EnableDnstapClientQueries field to given value.
+
+### HasEnableDnstapClientQueries
+
+`func (o *GetGridDnsResponse) HasEnableDnstapClientQueries() bool`
+
+HasEnableDnstapClientQueries returns a boolean if a field has been set.
+
+### GetEnableDnstapClientResponses
+
+`func (o *GetGridDnsResponse) GetEnableDnstapClientResponses() bool`
+
+GetEnableDnstapClientResponses returns the EnableDnstapClientResponses field if non-nil, zero value otherwise.
+
+### GetEnableDnstapClientResponsesOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapClientResponsesOk() (*bool, bool)`
+
+GetEnableDnstapClientResponsesOk returns a tuple with the EnableDnstapClientResponses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapClientResponses
+
+`func (o *GetGridDnsResponse) SetEnableDnstapClientResponses(v bool)`
+
+SetEnableDnstapClientResponses sets EnableDnstapClientResponses field to given value.
+
+### HasEnableDnstapClientResponses
+
+`func (o *GetGridDnsResponse) HasEnableDnstapClientResponses() bool`
+
+HasEnableDnstapClientResponses returns a boolean if a field has been set.
+
+### GetEnableDnstapForwarderQueries
+
+`func (o *GetGridDnsResponse) GetEnableDnstapForwarderQueries() bool`
+
+GetEnableDnstapForwarderQueries returns the EnableDnstapForwarderQueries field if non-nil, zero value otherwise.
+
+### GetEnableDnstapForwarderQueriesOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapForwarderQueriesOk() (*bool, bool)`
+
+GetEnableDnstapForwarderQueriesOk returns a tuple with the EnableDnstapForwarderQueries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapForwarderQueries
+
+`func (o *GetGridDnsResponse) SetEnableDnstapForwarderQueries(v bool)`
+
+SetEnableDnstapForwarderQueries sets EnableDnstapForwarderQueries field to given value.
+
+### HasEnableDnstapForwarderQueries
+
+`func (o *GetGridDnsResponse) HasEnableDnstapForwarderQueries() bool`
+
+HasEnableDnstapForwarderQueries returns a boolean if a field has been set.
+
+### GetEnableDnstapForwarderResponses
+
+`func (o *GetGridDnsResponse) GetEnableDnstapForwarderResponses() bool`
+
+GetEnableDnstapForwarderResponses returns the EnableDnstapForwarderResponses field if non-nil, zero value otherwise.
+
+### GetEnableDnstapForwarderResponsesOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapForwarderResponsesOk() (*bool, bool)`
+
+GetEnableDnstapForwarderResponsesOk returns a tuple with the EnableDnstapForwarderResponses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapForwarderResponses
+
+`func (o *GetGridDnsResponse) SetEnableDnstapForwarderResponses(v bool)`
+
+SetEnableDnstapForwarderResponses sets EnableDnstapForwarderResponses field to given value.
+
+### HasEnableDnstapForwarderResponses
+
+`func (o *GetGridDnsResponse) HasEnableDnstapForwarderResponses() bool`
+
+HasEnableDnstapForwarderResponses returns a boolean if a field has been set.
+
 ### GetEnableDnstapQueries
 
 `func (o *GetGridDnsResponse) GetEnableDnstapQueries() bool`
@@ -2101,6 +2286,56 @@ SetEnableDnstapQueries sets EnableDnstapQueries field to given value.
 
 HasEnableDnstapQueries returns a boolean if a field has been set.
 
+### GetEnableDnstapResolverQueries
+
+`func (o *GetGridDnsResponse) GetEnableDnstapResolverQueries() bool`
+
+GetEnableDnstapResolverQueries returns the EnableDnstapResolverQueries field if non-nil, zero value otherwise.
+
+### GetEnableDnstapResolverQueriesOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapResolverQueriesOk() (*bool, bool)`
+
+GetEnableDnstapResolverQueriesOk returns a tuple with the EnableDnstapResolverQueries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapResolverQueries
+
+`func (o *GetGridDnsResponse) SetEnableDnstapResolverQueries(v bool)`
+
+SetEnableDnstapResolverQueries sets EnableDnstapResolverQueries field to given value.
+
+### HasEnableDnstapResolverQueries
+
+`func (o *GetGridDnsResponse) HasEnableDnstapResolverQueries() bool`
+
+HasEnableDnstapResolverQueries returns a boolean if a field has been set.
+
+### GetEnableDnstapResolverResponses
+
+`func (o *GetGridDnsResponse) GetEnableDnstapResolverResponses() bool`
+
+GetEnableDnstapResolverResponses returns the EnableDnstapResolverResponses field if non-nil, zero value otherwise.
+
+### GetEnableDnstapResolverResponsesOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapResolverResponsesOk() (*bool, bool)`
+
+GetEnableDnstapResolverResponsesOk returns a tuple with the EnableDnstapResolverResponses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapResolverResponses
+
+`func (o *GetGridDnsResponse) SetEnableDnstapResolverResponses(v bool)`
+
+SetEnableDnstapResolverResponses sets EnableDnstapResolverResponses field to given value.
+
+### HasEnableDnstapResolverResponses
+
+`func (o *GetGridDnsResponse) HasEnableDnstapResolverResponses() bool`
+
+HasEnableDnstapResolverResponses returns a boolean if a field has been set.
+
 ### GetEnableDnstapResponses
 
 `func (o *GetGridDnsResponse) GetEnableDnstapResponses() bool`
@@ -2125,6 +2360,31 @@ SetEnableDnstapResponses sets EnableDnstapResponses field to given value.
 `func (o *GetGridDnsResponse) HasEnableDnstapResponses() bool`
 
 HasEnableDnstapResponses returns a boolean if a field has been set.
+
+### GetEnableDnstapSetting
+
+`func (o *GetGridDnsResponse) GetEnableDnstapSetting() bool`
+
+GetEnableDnstapSetting returns the EnableDnstapSetting field if non-nil, zero value otherwise.
+
+### GetEnableDnstapSettingOk
+
+`func (o *GetGridDnsResponse) GetEnableDnstapSettingOk() (*bool, bool)`
+
+GetEnableDnstapSettingOk returns a tuple with the EnableDnstapSetting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDnstapSetting
+
+`func (o *GetGridDnsResponse) SetEnableDnstapSetting(v bool)`
+
+SetEnableDnstapSetting sets EnableDnstapSetting field to given value.
+
+### HasEnableDnstapSetting
+
+`func (o *GetGridDnsResponse) HasEnableDnstapSetting() bool`
+
+HasEnableDnstapSetting returns a boolean if a field has been set.
 
 ### GetEnableDnstapViolationsTls
 

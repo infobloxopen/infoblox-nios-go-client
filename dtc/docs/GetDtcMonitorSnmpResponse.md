@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Comment** | Pointer to **string** | Comment for this DTC monitor; maximum 256 characters. | [optional] 
 **Community** | Pointer to **string** | The SNMP community string for SNMP authentication. | [optional] 
 **Context** | Pointer to **string** | The SNMPv3 context. | [optional] 
@@ -12,13 +13,13 @@ Name | Type | Description | Notes
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
-**Interval** | Pointer to **int64** | The interval for TCP health check. | [optional] 
+**Interval** | Pointer to **int64** | The interval for a health check. | [optional] 
 **Name** | Pointer to **string** | The display name for this DTC monitor. | [optional] 
 **Oids** | Pointer to [**[]DtcMonitorSnmpOids**](DtcMonitorSnmpOids.md) | A list of OIDs for SNMP monitoring. | [optional] 
 **Port** | Pointer to **int64** | The port value for SNMP requests. | [optional] 
 **RetryDown** | Pointer to **int64** | The value of how many times the server should appear as down to be treated as dead after it was alive. | [optional] 
 **RetryUp** | Pointer to **int64** | The value of how many times the server should appear as up to be treated as alive after it was dead. | [optional] 
-**Timeout** | Pointer to **int64** | The timeout for TCP health check in seconds. | [optional] 
+**Timeout** | Pointer to **int64** | The timeout for a health check in seconds. | [optional] 
 **User** | Pointer to **string** | The SNMPv3 user setting. | [optional] 
 **Version** | Pointer to **string** | The SNMP protocol version for the SNMP health check. | [optional] 
 **Result** | Pointer to [**DtcMonitorSnmp**](DtcMonitorSnmp.md) |  | [optional] 
@@ -66,6 +67,31 @@ SetRef sets Ref field to given value.
 `func (o *GetDtcMonitorSnmpResponse) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *GetDtcMonitorSnmpResponse) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *GetDtcMonitorSnmpResponse) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *GetDtcMonitorSnmpResponse) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *GetDtcMonitorSnmpResponse) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetComment
 

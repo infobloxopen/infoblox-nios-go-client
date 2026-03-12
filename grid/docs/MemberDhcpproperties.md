@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **AuthServerGroup** | Pointer to **string** | The Authentication Server Group object associated with this member. | [optional] 
 **AuthnCaptivePortal** | Pointer to **string** | The captive portal responsible for authenticating this DHCP member. | [optional] 
 **AuthnCaptivePortalAuthenticatedFilter** | Pointer to **string** | The MAC filter representing the authenticated range. | [optional] 
@@ -43,6 +44,8 @@ Name | Type | Description | Notes
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrs** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
+**FailoverAssociationIpCount** | Pointer to **int64** | Total number of IPs associated with IPv4 DHCP failover associations for the member. | [optional] [readonly] 
+**FailoverAssociationUtilization** | Pointer to **int64** | Failover association utilization percentage. | [optional] [readonly] 
 **GssTsigKeys** | Pointer to **[]string** | The list of GSS-TSIG keys for a member DHCP object. | [optional] 
 **HighWaterMark** | Pointer to **int64** | Determines the high watermark value of a member DHCP server. If the percentage of allocated addresses exceeds this watermark, the appliance makes a syslog entry and sends an e-mail notification (if enabled). Specifies the percentage of allocated addresses. The range is from 1 to 100. | [optional] 
 **HighWaterMarkReset** | Pointer to **int64** | Determines the high watermark reset value of a member DHCP server. If the percentage of allocated addresses drops below this value, a corresponding SNMP trap is reset. Specifies the percentage of allocated addresses. The range is from 1 to 100. The high watermark reset value must be lower than the high watermark value. | [optional] 
@@ -84,6 +87,7 @@ Name | Type | Description | Notes
 **LogicFilterRules** | Pointer to [**[]MemberDhcppropertiesLogicFilterRules**](MemberDhcppropertiesLogicFilterRules.md) | This field contains the logic filters to be applied on the Grid member. This list corresponds to the match rules that are written to the dhcpd configuration file. | [optional] 
 **LowWaterMark** | Pointer to **int64** | Determines the low watermark value. If the percent of allocated addresses drops below this watermark, the appliance makes a syslog entry and sends an e-mail notification (if enabled). | [optional] 
 **LowWaterMarkReset** | Pointer to **int64** | Determines the low watermark reset value. If the percentage of allocated addresses exceeds this value, a corresponding SNMP trap is reset. A number that specifies the percentage of allocated addresses. The range is from 1 to 100. The low watermark reset value must be higher than the low watermark value. | [optional] 
+**MaxFailoverAssociationIpCount** | Pointer to **int64** | Maximum number of IPs that can be associated with IPv4 DHCP failover associations for the member. | [optional] [readonly] 
 **MicrosoftCodePage** | Pointer to **string** | The Microsoft client DHCP IPv4 code page value of a grid member. This value is the hostname translation code page for Microsoft DHCP IPv4 clients and overrides the Grid level Microsoft DHCP IPv4 client code page. | [optional] 
 **Nextserver** | Pointer to **string** | The next server value of a member DHCP server. This value is the IP address or name of the boot file server on which the boot file is stored. | [optional] 
 **Option60MatchRules** | Pointer to [**[]MemberDhcppropertiesOption60MatchRules**](MemberDhcppropertiesOption60MatchRules.md) | The list of option 60 match rules. | [optional] 
@@ -200,6 +204,31 @@ SetRef sets Ref field to given value.
 `func (o *MemberDhcpproperties) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *MemberDhcpproperties) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *MemberDhcpproperties) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *MemberDhcpproperties) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *MemberDhcpproperties) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAuthServerGroup
 
@@ -1150,6 +1179,56 @@ SetExtAttrs sets ExtAttrs field to given value.
 `func (o *MemberDhcpproperties) HasExtAttrs() bool`
 
 HasExtAttrs returns a boolean if a field has been set.
+
+### GetFailoverAssociationIpCount
+
+`func (o *MemberDhcpproperties) GetFailoverAssociationIpCount() int64`
+
+GetFailoverAssociationIpCount returns the FailoverAssociationIpCount field if non-nil, zero value otherwise.
+
+### GetFailoverAssociationIpCountOk
+
+`func (o *MemberDhcpproperties) GetFailoverAssociationIpCountOk() (*int64, bool)`
+
+GetFailoverAssociationIpCountOk returns a tuple with the FailoverAssociationIpCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailoverAssociationIpCount
+
+`func (o *MemberDhcpproperties) SetFailoverAssociationIpCount(v int64)`
+
+SetFailoverAssociationIpCount sets FailoverAssociationIpCount field to given value.
+
+### HasFailoverAssociationIpCount
+
+`func (o *MemberDhcpproperties) HasFailoverAssociationIpCount() bool`
+
+HasFailoverAssociationIpCount returns a boolean if a field has been set.
+
+### GetFailoverAssociationUtilization
+
+`func (o *MemberDhcpproperties) GetFailoverAssociationUtilization() int64`
+
+GetFailoverAssociationUtilization returns the FailoverAssociationUtilization field if non-nil, zero value otherwise.
+
+### GetFailoverAssociationUtilizationOk
+
+`func (o *MemberDhcpproperties) GetFailoverAssociationUtilizationOk() (*int64, bool)`
+
+GetFailoverAssociationUtilizationOk returns a tuple with the FailoverAssociationUtilization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailoverAssociationUtilization
+
+`func (o *MemberDhcpproperties) SetFailoverAssociationUtilization(v int64)`
+
+SetFailoverAssociationUtilization sets FailoverAssociationUtilization field to given value.
+
+### HasFailoverAssociationUtilization
+
+`func (o *MemberDhcpproperties) HasFailoverAssociationUtilization() bool`
+
+HasFailoverAssociationUtilization returns a boolean if a field has been set.
 
 ### GetGssTsigKeys
 
@@ -2175,6 +2254,31 @@ SetLowWaterMarkReset sets LowWaterMarkReset field to given value.
 `func (o *MemberDhcpproperties) HasLowWaterMarkReset() bool`
 
 HasLowWaterMarkReset returns a boolean if a field has been set.
+
+### GetMaxFailoverAssociationIpCount
+
+`func (o *MemberDhcpproperties) GetMaxFailoverAssociationIpCount() int64`
+
+GetMaxFailoverAssociationIpCount returns the MaxFailoverAssociationIpCount field if non-nil, zero value otherwise.
+
+### GetMaxFailoverAssociationIpCountOk
+
+`func (o *MemberDhcpproperties) GetMaxFailoverAssociationIpCountOk() (*int64, bool)`
+
+GetMaxFailoverAssociationIpCountOk returns a tuple with the MaxFailoverAssociationIpCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxFailoverAssociationIpCount
+
+`func (o *MemberDhcpproperties) SetMaxFailoverAssociationIpCount(v int64)`
+
+SetMaxFailoverAssociationIpCount sets MaxFailoverAssociationIpCount field to given value.
+
+### HasMaxFailoverAssociationIpCount
+
+`func (o *MemberDhcpproperties) HasMaxFailoverAssociationIpCount() bool`
+
+HasMaxFailoverAssociationIpCount returns a boolean if a field has been set.
 
 ### GetMicrosoftCodePage
 

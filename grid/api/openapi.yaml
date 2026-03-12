@@ -9,10 +9,10 @@ info:
     url: https://www.infoblox.com
   termsOfService: https://www.infoblox.com
   title: Infoblox GRID API
-  version: 2.13.6
+  version: "2.14"
 servers:
 - description: NIOS WAPI server
-  url: /wapi/v2.13.6
+  url: /wapi/v2.14
 tags:
 - description: Operations for grid objects
   name: Grid
@@ -8323,95 +8323,7 @@ paths:
       summary: Retrieve memberdfp objects
       tags:
       - Memberdfp
-    post:
-      description: Creates a new memberdfp object
-      operationId: MemberdfpCreate
-      parameters:
-      - description: Enter the field names followed by comma
-        explode: true
-        in: query
-        name: _return_fields
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: "Enter the field names followed by comma, this returns the required\
-          \ fields along with the default fields"
-        explode: true
-        in: query
-        name: _return_fields+
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Select 1 if result is required as an object
-        explode: true
-        in: query
-        name: _return_as_object
-        required: false
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Memberdfp'
-        description: Object data to create
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateMemberdfpResponse'
-          description: Object created successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-      security:
-      - basicAuth: []
-      summary: Create a memberdfp object
-      tags:
-      - Memberdfp
-      x-tf-resource: grid_memberdfp
-      x-tf-datasource: grid_memberdfp
-      x-sdk-default-ext-attrs: true
   /memberdfp/{reference}:
-    delete:
-      description: Deletes a specific memberdfp object by reference
-      operationId: MemberdfpDelete
-      parameters:
-      - description: Reference of the memberdfp object
-        explode: false
-        in: path
-        name: reference
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          description: Object deleted successfully
-        "400":
-          description: Bad request
-        "401":
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "404":
-          description: Not found
-      security:
-      - basicAuth: []
-      summary: Delete a memberdfp object
-      tags:
-      - Memberdfp
     get:
       description: Returns a specific memberdfp object by reference
       operationId: MemberdfpRead
@@ -10905,8 +10817,11 @@ components:
         - member: Example member
           is_online: false
           interface: Example interface
+        uuid: uuid
         csp_grid_setting:
           csp_https_proxy: Example csp_https_proxy
+          csp_https_proxy_username: Example csp_https_proxy_username
+          csp_https_proxy_password: Example csp_https_proxy_password
           csp_join_token: Example csp_join_token
           csp_dns_resolver: Example csp_dns_resolver
         ntp_setting:
@@ -11265,6 +11180,10 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
+          type: string
         allow_recursive_deletion:
           description: The property to allow recursive deletion. Determines the users
             who can choose to perform recursive deletion on networks or zones from
@@ -11314,8 +11233,8 @@ components:
         email_setting:
           $ref: '#/components/schemas/GridEmailSetting'
         enable_federation:
-          description: Determines if the federation feature is enabled or not. Test
-            Setting will be performed for any change in enable_federation.
+          description: Determines if the Cloud Grid Management feature is enabled
+            or not. Test Setting will be performed for any change in enable_federation.
           example: false
           type: boolean
         enable_force_sync_join_token_to_gmc:
@@ -11632,6 +11551,8 @@ components:
     GridCspGridSetting:
       example:
         csp_https_proxy: Example csp_https_proxy
+        csp_https_proxy_username: Example csp_https_proxy_username
+        csp_https_proxy_password: Example csp_https_proxy_password
         csp_join_token: Example csp_join_token
         csp_dns_resolver: Example csp_dns_resolver
       properties:
@@ -11647,6 +11568,16 @@ components:
           description: HTTP Proxy IP address of CSP Portal
           example: Example csp_https_proxy
           type: string
+        csp_https_proxy_username:
+          description: Username for HTTPS proxy used to access the CSP Portal
+          example: Example csp_https_proxy_username
+          type: string
+        csp_https_proxy_password:
+          description: Password for HTTPS proxy used to access the CSP Portal. This
+            is write-only.
+          example: Example csp_https_proxy_password
+          type: string
+          writeOnly: true
       type: object
     GridDescendantsAction:
       example:
@@ -12191,6 +12122,10 @@ components:
           - DES_ASCII
           - DES_NTP
           - SHA1_ASCII
+          - SHA-224_HEX
+          - SHA-256_HEX
+          - SHA-384_HEX
+          - SHA-512_HEX
           example: Example type
           type: string
       type: object
@@ -13108,6 +13043,7 @@ components:
           description: Determines the type of a given trap.
           enum:
           - DBObjects
+          - DBWrites
           - Disk
           - Memory
           - NetworkCapacity
@@ -13393,6 +13329,8 @@ components:
           - AutomatedTrafficCapture
           - CloudDNSsync
           - IMCGRPCServer
+          - WATCHFRR
+          - DBActivity
           - IPAMUtilization
           - RPZHitRate
           example: Example trap_type
@@ -13471,9 +13409,14 @@ components:
         _ref: _ref
         enable_recycle_bin: false
         allow_api_admins: Example allow_api_admins
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allow_api_admins:
@@ -13591,11 +13534,16 @@ components:
         fixed_ip_count: 1
         available_ip_count: Example available_ip_count
         tenant_vm_count: 1
+        uuid: uuid
         floating_ip_count: 1
         tenant_ip_count: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allocated_available_ratio:
@@ -13693,10 +13641,15 @@ components:
           delegated_root: Example delegated_root
         comment: Example comment
         id: Example id
+        uuid: uuid
         last_event_ts: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         cloud_info:
@@ -13871,6 +13824,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: uuid
         extattrs-:
           key:
             value: ""
@@ -13901,6 +13855,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         availability_zone:
@@ -14172,6 +14130,7 @@ components:
           mgmt_platform: Example mgmt_platform
           tenant: Example tenant
           delegated_root: Example delegated_root
+        uuid: uuid
         is_ipv4: false
         vm_hostname: Example vm_hostname
         vm_vpc_address: Example vm_vpc_address
@@ -14216,6 +14175,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         address:
@@ -14595,10 +14558,15 @@ components:
           ipv4addr: Example ipv4addr
           ipv6addr: Example ipv6addr
         allow_api_admins: Example allow_api_admins
+        uuid: uuid
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allow_api_admins:
@@ -14783,6 +14751,7 @@ components:
           name: Example name
           value: Example value
         kdc_server: Example kdc_server
+        uuid: uuid
         ipv6_enable_lease_scavenging: false
         ipv6_generate_hostname: false
         enable_leasequery: false
@@ -14903,6 +14872,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         authority:
@@ -15672,6 +15645,7 @@ components:
         - grid:servicerestart:request
         - grid:servicerestart:request
         is_default: false
+        uuid: uuid
         mode: Example mode
         extattrs-:
           key:
@@ -15719,6 +15693,7 @@ components:
           pending_restart: 1
           timeouts: 1
           finished: 1
+          uuid: uuid
           success: 1
           _ref: _ref
           processing: 1
@@ -15726,6 +15701,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -15997,6 +15976,7 @@ components:
         pending_restart: 1
         timeouts: 1
         finished: 1
+        uuid: uuid
         success: 1
         _ref: _ref
         processing: 1
@@ -16004,6 +15984,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         failures:
@@ -16113,11 +16097,16 @@ components:
         member: Example member
         state: Example state
         error: Example error
+        uuid: uuid
         group: Example group
         order: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         error:
@@ -16221,50 +16210,85 @@ components:
         joined: false
         use_mgmt_port: false
         connection_timestamp: 1
+        uuid: uuid
+        join_token_expiration: 1
+        mgm_communication_mode: Example mgm_communication_mode
         detached: false
+        join_token: Example join_token
         port: 1
         enable: false
         last_event: Example last_event
         _ref: _ref
         connection_disabled: false
-        status: Example status
+        discovery_sync_disabled: false
+        join_status: Example join_status
       properties:
         _ref:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
+          type: string
         address:
-          description: The domain name or IP address for the Master Grid.
+          description: IP Address or FQDN to use to contact the SGM
           example: Example address
           type: string
         connection_disabled:
-          description: Determines if the sub-grid is currently disabled.
+          description: Indicates whether the sub-grid is currently disabled (true)
+            or not (false).
           example: false
           readOnly: true
           type: boolean
         connection_timestamp:
-          description: The timestamp that indicates when the connection to the Master
-            Grid was established.
+          description: Timestamp of the beginning of the current VPN connection with
+            the SGM.
           example: 1
           format: int64
           readOnly: true
           type: integer
         detached:
-          description: The detached flag for the Master Grid.
+          description: Indicate detached state of subgrid with MGM.
           example: false
           readOnly: true
           type: boolean
-        enable:
-          description: Determines if the Master Grid is enabled.
+        discovery_sync_disabled:
+          description: Enable/Disable discovery service.
           example: false
           type: boolean
+        enable:
+          description: Enable/Disable SuperGrid membership feature
+          example: false
+          type: boolean
+        join_status:
+          description: Gives the overall status of the Super Grid connectivity
+          enum:
+          - FAILED
+          - WARNING
+          - WORKING
+          - INACTIVE
+          example: Example join_status
+          readOnly: true
+          type: string
+        join_token:
+          description: Sub grid join token value.
+          example: Example join_token
+          readOnly: true
+          type: string
+        join_token_expiration:
+          description: Timestamp when the sub grid join token expires.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
         joined:
-          description: The flag shows if the Grid has joined the Master Grid.
+          description: Indicates whether the sub-grid is currently joined or not.
           example: false
           readOnly: true
           type: boolean
         last_event:
-          description: The Master Grid's last event.
+          description: Last event notified by the Super Grid Master.
           enum:
           - EVICT
           - DISABLE
@@ -16275,34 +16299,32 @@ components:
           readOnly: true
           type: string
         last_event_details:
-          description: The details of the Master Grid's last event.
+          description: additional details on the event.
           example: Example last_event_details
           readOnly: true
           type: string
         last_sync_timestamp:
-          description: The timestamp or the last synchronization operation with the
-            Master Grid.
+          description: Timestamp of the last synchronization with the SGM.
           example: 1
           format: int64
           readOnly: true
           type: integer
-        port:
-          description: The Master Grid port to which the Grid connects.
-          example: 1
-          format: int64
-          type: integer
-        status:
-          description: The Master Grid's status.
+        mgm_communication_mode:
+          description: MGM Communication Mode.
           enum:
-          - FAILED
-          - WARNING
-          - WORKING
-          - INACTIVE
-          example: Example status
+          - MODE1
+          - MODE2
+          example: Example mgm_communication_mode
           readOnly: true
           type: string
+        port:
+          description: Alternate port number to use when connecting to the VPN endpoint.
+          example: 1
+          format: int64
+          type: integer
         use_mgmt_port:
-          description: The flag shows if the MGMT port was used to join the Grid.
+          description: Indicates whether to use the management port to connect to
+            the SGM.
           example: false
           readOnly: true
           type: boolean
@@ -16333,6 +16355,7 @@ components:
         rpz_passthru_event_warning_threshold: 1
         atp_critical_event_warning_threshold: 1
         rpz_substituted_hit_warning_threshold: 1
+        uuid: uuid
         rpz_substituted_hit_critical_threshold: 1
         analytics_tunneling_event_warning_threshold: 1
         analytics_tunneling_event_critical_threshold: 1
@@ -16346,6 +16369,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         analytics_tunneling_event_critical_threshold:
@@ -16479,6 +16506,7 @@ components:
         default_ttl: 1
         dnssec_blacklist_enabled: false
         allow_recursive_query: false
+        enable_dnstap_resolver_responses: false
         enable_query_rewrite: false
         resolver_query_timeout: 1
         dns_health_check_anycast_control: false
@@ -16547,6 +16575,7 @@ components:
         default_bulk_host_name_template: Example default_bulk_host_name_template
         add_client_ip_mac_options: false
         gen_eadb_from_ranges: false
+        enable_dnstap_forwarder_queries: false
         transfer_excluded_servers:
         - transfer_excluded_servers
         - transfer_excluded_servers
@@ -16559,6 +16588,7 @@ components:
         copy_xfer_to_notify: false
         nxdomain_redirect: false
         allow_bulkhost_ddns: Example allow_bulkhost_ddns
+        enable_dnstap_forwarder_responses: false
         nxdomain_redirect_addresses_v6:
         - nxdomain_redirect_addresses_v6
         - nxdomain_redirect_addresses_v6
@@ -16691,13 +16721,17 @@ components:
           permission: Example permission
         ddns_restrict_static: false
         ddns_restrict_patterns: false
+        enable_dnstap_auth_queries: false
+        enable_dnstap_auth_responses: false
         enable_notify_source_port: false
         enable_blacklist: false
+        enable_dnstap_resolver_queries: false
         blacklist_log_query: false
         expire_after: 1
         forward_only: false
         dns_health_check_recursion_flag: false
         enable_host_rrset_order: false
+        uuid: uuid
         nxdomain_log_query: false
         dns_health_check_retries: 1
         response_rate_limiting:
@@ -16765,6 +16799,7 @@ components:
         - nsgroups
         - nsgroups
         enable_client_subnet_forwarding: false
+        enable_dnstap_client_responses: false
         max_cached_lifetime: 1
         notify_source_port: 1
         forwarders:
@@ -16811,6 +16846,7 @@ components:
         zone_deletion_double_confirm: false
         serial_query_rate: 1
         nsgroup_default: Example nsgroup_default
+        enable_dnstap_setting: false
         query_rewrite_domain_names:
         - query_rewrite_domain_names
         - query_rewrite_domain_names
@@ -16846,6 +16882,7 @@ components:
         - dns64_groups
         - dns64_groups
         enable_dns64: false
+        enable_dnstap_client_queries: false
         allow_update:
         - address: Example address
           tsig_key_alg: Example tsig_key_alg
@@ -16895,7 +16932,6 @@ components:
         - nxdomain_rulesets
         enable_capture_dns_responses: false
         dnstap_setting:
-          dnstap_identity: Example dnstap_identity
           dnstap_version: Example dnstap_version
           dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
           dnstap_receiver_port: 1
@@ -16906,6 +16942,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         add_client_ip_mac_options:
@@ -17339,14 +17379,50 @@ components:
           description: Determines if the DNS health check is enabled or not.
           example: false
           type: boolean
+        enable_dnstap_auth_queries:
+          description: Enable DNSTAP for authoritative query messages.
+          example: false
+          type: boolean
+        enable_dnstap_auth_responses:
+          description: Enable DNSTAP for authoritative response messages.
+          example: false
+          type: boolean
+        enable_dnstap_client_queries:
+          description: Enable DNSTAP for client query messages.
+          example: false
+          type: boolean
+        enable_dnstap_client_responses:
+          description: Enable DNSTAP for client response messages.
+          example: false
+          type: boolean
+        enable_dnstap_forwarder_queries:
+          description: Enable DNSTAP for forwarder query messages.
+          example: false
+          type: boolean
+        enable_dnstap_forwarder_responses:
+          description: Enable DNSTAP for forwarder response messages.
+          example: false
+          type: boolean
         enable_dnstap_queries:
           description: Determines whether the query messages need to be forwarded
             to DNSTAP or not.
           example: false
           type: boolean
+        enable_dnstap_resolver_queries:
+          description: Enable DNSTAP for resolver query messages.
+          example: false
+          type: boolean
+        enable_dnstap_resolver_responses:
+          description: Enable DNSTAP for resolver response messages.
+          example: false
+          type: boolean
         enable_dnstap_responses:
           description: Determines whether the response messages need to be forwarded
             to DNSTAP or not.
+          example: false
+          type: boolean
+        enable_dnstap_setting:
+          description: Indicates whether DNSTAP is enabled.
           example: false
           type: boolean
         enable_dnstap_violations_tls:
@@ -18354,17 +18430,24 @@ components:
           example: false
           type: boolean
         nsec3_salt_min_length:
-          description: The minimum length for NSEC3 salts.
+          description: The minimum length for NSEC3 salts. RFC 9276 recommends empty
+            salt (0 octets) for optimal resolver compatibility and reduced computational
+            overhead.
           example: 1
           format: int64
           type: integer
         nsec3_salt_max_length:
-          description: The maximum length for NSEC3 salts.
+          description: The maximum length for NSEC3 salts. RFC 9276 recommends empty
+            salt (0 octets) for optimal resolver compatibility and reduced computational
+            overhead.
           example: 1
           format: int64
           type: integer
         nsec3_iterations:
-          description: The number of iterations used for hashing NSEC3.
+          description: The number of iterations used for hashing NSEC3. RFC 9276 Section
+            3.1 mandates that this value MUST be set to zero (0) to ensure DNSSEC
+            resolver compatibility and alleviate computational burdens on validating
+            resolvers.
           example: 1
           format: int64
           type: integer
@@ -18482,7 +18565,6 @@ components:
       type: object
     GridDnsDnstapSetting:
       example:
-        dnstap_identity: Example dnstap_identity
         dnstap_version: Example dnstap_version
         dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
         dnstap_receiver_port: 1
@@ -18496,15 +18578,9 @@ components:
           example: 1
           format: int64
           type: integer
-        dnstap_identity:
-          description: DNSTAP id string.
-          example: Example dnstap_identity
-          readOnly: true
-          type: string
         dnstap_version:
           description: DNSTAP version.
           example: Example dnstap_version
-          readOnly: true
           type: string
       type: object
     GridDnsDtcScheduledBackup:
@@ -19329,9 +19405,14 @@ components:
         name: Example name
         backup_storage: false
         allow_uploads: false
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allow_uploads:
@@ -19405,6 +19486,7 @@ components:
         enable_auto_download: false
         enable_scheduled_download: false
         grid_name: Example grid_name
+        uuid: uuid
         enable_accel_resp_before_threat_protection: false
         last_rule_update_timestamp: 1
         outbound_settings:
@@ -19461,6 +19543,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         current_ruleset:
@@ -19777,6 +19863,7 @@ components:
         enable_auto_download: false
         enable_scheduled_download: false
         current_moduleset: Example current_moduleset
+        uuid: uuid
         domain_collapsing_level: 1
         current_allowlist: Example current_allowlist
         last_updated_package_version: Example last_updated_package_version
@@ -19807,6 +19894,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allowlist_update_policy:
@@ -19881,7 +19972,7 @@ components:
           readOnly: true
           type: integer
         last_checked_for_package_update:
-          description: The last update time for the threat analytics moduleset package.
+          description: The last update time for the threat insight moduleset package.
           example: 1
           format: int64
           readOnly: true
@@ -20152,14 +20243,10 @@ components:
         installed: 1
         expiry_date: 1
         limit_context: Example limit_context
-        _ref: _ref
-        limit: Example limit
         temp_assigned: 1
-        assigned: 1
-        model: Example model
         expiration_status: Example expiration_status
         type: Example type
-        key: Example key
+        uuid: uuid
         subpools:
         - installed: 1
           expiry_date: 1
@@ -20167,9 +20254,18 @@ components:
         - installed: 1
           expiry_date: 1
           key: Example key
+        _ref: _ref
+        limit: Example limit
+        assigned: 1
+        model: Example model
+        key: Example key
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         assigned:
@@ -20346,10 +20442,15 @@ components:
         subject: Example subject
         _ref: _ref
         valid_not_after: 1
+        uuid: uuid
         issuer: Example issuer
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         issuer:
@@ -20411,6 +20512,7 @@ components:
         guest_phone_required: false
         syslog_auth_failure_level: Example syslog_auth_failure_level
         welcome_message: Example welcome_message
+        uuid: uuid
         guest_custom_field4_required: false
         encryption: Example encryption
         guest_last_name_required: false
@@ -20440,6 +20542,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         authn_server_group:
@@ -20655,10 +20761,15 @@ components:
       example:
         last_entitlement_update: 1
         _ref: _ref
+        uuid: uuid
         lpc_uid: Example lpc_uid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         last_entitlement_update:
@@ -20702,10 +20813,15 @@ components:
         build_time: 1
         member: Example member
         binary_minor_version: 1
+        uuid: uuid
         binary_major_version: 1
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         binary_major_version:
@@ -20777,9 +20893,14 @@ components:
         groups:
         - groups
         - groups
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         groups:
@@ -20828,9 +20949,14 @@ components:
         changed_properties:
         - changed_properties
         - changed_properties
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         action:
@@ -20906,9 +21032,14 @@ components:
         _ref: _ref
         member: Example member
         reporting_status: Example reporting_status
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         dhcp_status:
@@ -20986,9 +21117,14 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -21052,6 +21188,7 @@ components:
         csp_access_key:
         - csp_access_key
         - csp_access_key
+        uuid: uuid
         ntp_setting:
           ntp_acl:
             ac_list:
@@ -21146,6 +21283,7 @@ components:
           destination_host: Example destination_host
           traffic_capture_directory: Example traffic_capture_directory
           username: Example username
+        is_master: false
         remote_console_access_enable: false
         syslog_servers:
         - severity: Example severity
@@ -21399,7 +21537,9 @@ components:
         syslog_size: 1
         csp_member_setting:
           csp_https_proxy: Example csp_https_proxy
+          csp_https_proxy_username: Example csp_https_proxy_username
           use_csp_https_proxy: false
+          csp_https_proxy_password: Example csp_https_proxy_password
           use_csp_join_token: false
           csp_join_token: Example csp_join_token
           use_csp_dns_resolver: false
@@ -21692,6 +21832,10 @@ components:
           description: The reference to the object.
           readOnly: true
           type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
+          type: string
         active_position:
           description: The active server of a Grid member.
           example: Example active_position
@@ -21802,6 +21946,7 @@ components:
           - AWS
           - AZURE
           - GCP
+          - OCI
           example: Example ha_cloud_platform
           type: string
         ha_on_cloud:
@@ -21824,6 +21969,11 @@ components:
         is_dscp_capable:
           description: Determines if a Grid member supports DSCP (Differentiated Services
             Code Point).
+          example: false
+          readOnly: true
+          type: boolean
+        is_master:
+          description: Determines if a Grid member is a Grid Master or not.
           example: false
           readOnly: true
           type: boolean
@@ -21924,7 +22074,7 @@ components:
           example: false
           type: boolean
         router_id:
-          description: Virutal router identifier. Provide this ID if "ha_enabled"
+          description: Virtual router identifier. Provide this ID if "ha_enabled"
             is set to "true". This is a unique VRID number (from 1 to 255) for the
             local subnet.
           example: 1
@@ -22069,7 +22219,7 @@ components:
           type: boolean
         use_traffic_capture_auth_dns:
           description: This flag is the use flag for enabling automated traffic capture
-            based on authorative DNS latency.
+            based on authoritative DNS latency.
           example: false
           type: boolean
         use_traffic_capture_chr:
@@ -22079,7 +22229,7 @@ components:
           type: boolean
         use_traffic_capture_qps:
           description: This flag is the use flag for enabling automated traffic capture
-            based on DNS querie per second thresholds.
+            based on DNS queries per second thresholds.
           example: false
           type: boolean
         use_traffic_capture_rec_dns:
@@ -22477,7 +22627,9 @@ components:
     MemberCspMemberSetting:
       example:
         csp_https_proxy: Example csp_https_proxy
+        csp_https_proxy_username: Example csp_https_proxy_username
         use_csp_https_proxy: false
+        csp_https_proxy_password: Example csp_https_proxy_password
         use_csp_join_token: false
         csp_join_token: Example csp_join_token
         use_csp_dns_resolver: false
@@ -22504,9 +22656,19 @@ components:
           example: Example csp_dns_resolver
           type: string
         csp_https_proxy:
-          description: HTTP Proxy IP address of CSP Portal
+          description: HTTP Proxy URL used to access the CSP Portal
           example: Example csp_https_proxy
           type: string
+        csp_https_proxy_username:
+          description: HTTPS proxy username used to access the CSP Portal
+          example: Example csp_https_proxy_username
+          type: string
+        csp_https_proxy_password:
+          description: HTTPS proxy password used to access the CSP Portal. This is
+            write-only.
+          example: Example csp_https_proxy_password
+          type: string
+          writeOnly: true
       type: object
     MemberDnsResolverSetting:
       example:
@@ -23217,13 +23379,14 @@ components:
           - SNIC_CORE_UTIL
           - FP_UTIL
           - FP_CORE_UTIL
-          - CPU_USAGE
+          - QUERY_LOGGING_ENABLED
           - MEMORY
           - EXTERNAL_STORAGE
           - SWAP_USAGE
           - DISCOVERY_CAPACITY
           - PASSIVE_HA_CONNECTIVITY
           - VPN_CERT
+          - DB_WRITES
           example: Example service
           readOnly: true
           type: string
@@ -23326,7 +23489,7 @@ components:
         speed: Example speed
       properties:
         auto_port_setting_enabled:
-          description: Enable or disalbe the auto port setting.
+          description: Enable or disable the auto port setting.
           example: false
           type: boolean
         speed:
@@ -23352,7 +23515,7 @@ components:
         speed: Example speed
       properties:
         auto_port_setting_enabled:
-          description: Enable or disalbe the auto port setting.
+          description: Enable or disable the auto port setting.
           example: false
           type: boolean
         speed:
@@ -23378,7 +23541,7 @@ components:
         speed: Example speed
       properties:
         auto_port_setting_enabled:
-          description: Enable or disalbe the auto port setting.
+          description: Enable or disable the auto port setting.
           example: false
           type: boolean
         speed:
@@ -23404,7 +23567,7 @@ components:
         speed: Example speed
       properties:
         auto_port_setting_enabled:
-          description: Enable or disalbe the auto port setting.
+          description: Enable or disable the auto port setting.
           example: false
           type: boolean
         speed:
@@ -23650,6 +23813,10 @@ components:
           - DES_ASCII
           - DES_NTP
           - SHA1_ASCII
+          - SHA-224_HEX
+          - SHA-256_HEX
+          - SHA-384_HEX
+          - SHA-512_HEX
           example: Example type
           type: string
       type: object
@@ -23918,6 +24085,7 @@ components:
           - IB-V4025
           - IB-V4126
           - IB-FLEX
+          - IB-FLEX-HW
           - CP-V805
           - CP-V1405
           - CP-V2205
@@ -24425,6 +24593,7 @@ components:
           description: Determines the type of a given trap.
           enum:
           - DBObjects
+          - DBWrites
           - Disk
           - Memory
           - NetworkCapacity
@@ -24724,6 +24893,8 @@ components:
           - AutomatedTrafficCapture
           - CloudDNSsync
           - IMCGRPCServer
+          - WATCHFRR
+          - DBActivity
           - IPAMUtilization
           - RPZHitRate
           example: Example trap_type
@@ -24823,6 +24994,7 @@ components:
         ignore_mac_addresses:
         - ignore_mac_addresses
         - ignore_mac_addresses
+        max_failover_association_ip_count: 1
         ipv6_enable_retry_updates: false
         use_enable_fingerprint: false
         authn_server_group_enabled: false
@@ -24844,6 +25016,7 @@ components:
           value: Example value
         kdc_server: Example kdc_server
         ipv6_enable_lease_scavenging: false
+        failover_association_ip_count: 1
         use_ddns_domainname: false
         use_ipv6_gss_tsig_keys: false
         ipv6_remember_expired_client_association: false
@@ -24879,6 +25052,7 @@ components:
         preferred_lifetime: 1
         use_ipv6_ddns_domainname: false
         deny_bootp: false
+        failover_association_utilization: 1
         use_dns_update_style: false
         enable_dhcp_on_ipv6_lan2: false
         use_lease_per_client_settings: false
@@ -24951,6 +25125,7 @@ components:
         use_ddns_update_fixed_addresses: false
         immediate_fa_configuration: false
         use_pxe_lease_time: false
+        uuid: uuid
         ipv6_generate_hostname: false
         use_valid_lifetime: false
         enable_leasequery: false
@@ -25035,6 +25210,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         auth_server_group:
@@ -25255,6 +25434,19 @@ components:
             \ values for extensible attributes, see {extattrs:values}."
           type: object
           x-tf-extattrs: true
+        failover_association_ip_count:
+          description: Total number of IPs associated with IPv4 DHCP failover associations
+            for the member.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
+        failover_association_utilization:
+          description: Failover association utilization percentage.
+          example: 1
+          format: int64
+          readOnly: true
+          type: integer
         gss_tsig_keys:
           description: The list of GSS-TSIG keys for a member DHCP object.
           enum:
@@ -25546,6 +25738,13 @@ components:
             \ than the low watermark value."
           example: 1
           format: int64
+          type: integer
+        max_failover_association_ip_count:
+          description: Maximum number of IPs that can be associated with IPv4 DHCP
+            failover associations for the member.
+          example: 1
+          format: int64
+          readOnly: true
           type: integer
         microsoft_code_page:
           description: The Microsoft client DHCP IPv4 code page value of a grid member.
@@ -26151,6 +26350,7 @@ components:
         server_id_directive_string: Example server_id_directive_string
         dnssec_validation_enabled: false
         copy_xfer_to_notify: false
+        enable_dnstap_forwarder_responses: false
         nxdomain_redirect_addresses_v6:
         - nxdomain_redirect_addresses_v6
         - nxdomain_redirect_addresses_v6
@@ -26162,6 +26362,7 @@ components:
         root_name_server_type: Example root_name_server_type
         bind_check_names_policy: Example bind_check_names_policy
         filter_aaaa: Example filter_aaaa
+        dns_over_https_endpoint: Example dns_over_https_endpoint
         use_resolver_query_timeout: false
         forward_updates: false
         file_transfer_setting:
@@ -26223,6 +26424,8 @@ components:
         doh_service: false
         use_dtc_edns_prefer_client_subnet: false
         dtc_health_source_address: Example dtc_health_source_address
+        enable_dnstap_auth_queries: false
+        enable_dnstap_auth_responses: false
         enable_notify_source_port: false
         enable_blacklist: false
         use_enable_excluded_domain_names: false
@@ -26244,11 +26447,13 @@ components:
         anonymize_response_logging: false
         use_filter_aaaa: false
         transfers_per_ns: 1
+        enable_dnstap_logging_type: false
         use_allow_query: false
         use_dnstap_setting: false
         disable_edns: false
         dnssec_nxdomain_enabled: false
         enable_dns: false
+        enable_dnstap_client_responses: false
         forwarders:
         - forwarders
         - forwarders
@@ -26298,6 +26503,7 @@ components:
           glue_record_address: Example glue_record_address
         ipv6addr: Example ipv6addr
         serial_query_rate: 1
+        enable_dnstap_setting: false
         edns_udp_size: 1
         views:
         - views
@@ -26320,6 +26526,7 @@ components:
         use_fixed_rrset_order_fqdns: false
         recursive_resolver: Example recursive_resolver
         enable_dns64: false
+        enable_dnstap_client_queries: false
         ipv6_glue_record_addresses:
         - view: Example view
           glue_address_choice: Example glue_address_choice
@@ -26348,7 +26555,6 @@ components:
         use_add_client_ip_mac_options: false
         enable_capture_dns_responses: false
         dnstap_setting:
-          dnstap_identity: Example dnstap_identity
           dnstap_version: Example dnstap_version
           dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
           dnstap_receiver_port: 1
@@ -26368,6 +26574,7 @@ components:
         dns_notify_transfer_source_address: Example dns_notify_transfer_source_address
         use_blackhole: false
         allow_recursive_query: false
+        enable_dnstap_resolver_responses: false
         enable_query_rewrite: false
         resolver_query_timeout: 1
         dns_health_check_anycast_control: false
@@ -26375,6 +26582,7 @@ components:
         use_forward_updates: false
         add_client_ip_mac_options: false
         ipv4addr: Example ipv4addr
+        enable_dnstap_forwarder_queries: false
         use_capture_dns_queries_on_all_domains: false
         nxdomain_redirect: false
         use_lan2_ipv6_port: false
@@ -26449,9 +26657,11 @@ components:
         tls_session_duration: 1
         enable_capture_dns_queries: false
         use_lan2_port: false
+        enable_dnstap_resolver_queries: false
         blacklist_log_query: false
         forward_only: false
         use_serial_query_rate: false
+        uuid: uuid
         dns_health_check_retries: 1
         use_lan_ipv6_port: false
         gss_tsig_keys:
@@ -26471,6 +26681,7 @@ components:
         server_id_directive: Example server_id_directive
         syslog_facility: Example syslog_facility
         use_dtc_dns_queries_specific_behavior: false
+        dns_over_https_stream_per_connection: 1
         use_ftc: false
         use_transfers_out: false
         use_lan_port: false
@@ -26508,6 +26719,7 @@ components:
         dns64_groups:
         - dns64_groups
         - dns64_groups
+        dnstap_identity: Example dnstap_identity
         logging_categories:
           log_database: false
           log_rpz: false
@@ -26547,6 +26759,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         add_client_ip_mac_options:
@@ -26809,6 +27025,16 @@ components:
             is "IP".
           example: Example dns_notify_transfer_source_address
           type: string
+        dns_over_https_endpoint:
+          description: DoH end point. Available in WAPI 2.14 and later
+          example: Example dns_over_https_endpoint
+          type: string
+        dns_over_https_stream_per_connection:
+          description: DNS over HTTPS streams per connection. Available in WAPI 2.14
+            and later
+          example: 1
+          format: int64
+          type: integer
         dns_over_tls_service:
           description: Enables DNS over TLS service.
           example: false
@@ -26888,6 +27114,10 @@ components:
           description: Determines if the DNS security validation is enabled or not.
           example: false
           type: boolean
+        dnstap_identity:
+          description: The DNSTAP identity string for this member.
+          example: Example dnstap_identity
+          type: string
         dnstap_setting:
           $ref: '#/components/schemas/MemberDnsDnstapSetting'
         doh_https_session_duration:
@@ -26979,14 +27209,54 @@ components:
             or not.
           example: false
           type: boolean
+        enable_dnstap_auth_queries:
+          description: Enable DNSTAP for authoritative query messages.
+          example: false
+          type: boolean
+        enable_dnstap_auth_responses:
+          description: Enable DNSTAP for authoritative response messages.
+          example: false
+          type: boolean
+        enable_dnstap_client_queries:
+          description: Enable DNSTAP for client query messages.
+          example: false
+          type: boolean
+        enable_dnstap_client_responses:
+          description: Enable DNSTAP for client response messages.
+          example: false
+          type: boolean
+        enable_dnstap_forwarder_queries:
+          description: Enable DNSTAP for forwarder query messages.
+          example: false
+          type: boolean
+        enable_dnstap_forwarder_responses:
+          description: Enable DNSTAP for forwarder response messages.
+          example: false
+          type: boolean
+        enable_dnstap_logging_type:
+          description: DNSTAP logging type for this member.
+          example: false
+          type: boolean
         enable_dnstap_queries:
           description: Determines whether the query messages need to be forwarded
             to DNSTAP or not.
           example: false
           type: boolean
+        enable_dnstap_resolver_queries:
+          description: Enable DNSTAP for resolver query messages.
+          example: false
+          type: boolean
+        enable_dnstap_resolver_responses:
+          description: Enable DNSTAP for resolver response messages.
+          example: false
+          type: boolean
         enable_dnstap_responses:
           description: Determines whether the response messages need to be forwarded
             to DNSTAP or not.
+          example: false
+          type: boolean
+        enable_dnstap_setting:
+          description: Indicates whether DNSTAP is enabled for this member.
           example: false
           type: boolean
         enable_dnstap_violations_tls:
@@ -27023,7 +27293,7 @@ components:
           example: false
           type: boolean
         enable_query_source_port:
-          description: Determines if the query source port for a memer is enabled
+          description: Determines if the query source port for a member is enabled
             or not.
           example: false
           type: boolean
@@ -27491,7 +27761,10 @@ components:
           type: boolean
         use_dnstap_setting:
           description: "Use flag for: enable_dnstap_queries , enable_dnstap_responses,\
-            \ enable_dnstap_violations_tls, dnstap_setting"
+            \ enable_dnstap_violations_tls, enable_dnstap_setting, enable_dnstap_logging_type,\
+            \ enable_dnstap_client_queries, enable_dnstap_resolver_queries, enable_dnstap_forwarder_queries,\
+            \ enable_dnstap_auth_queries, enable_dnstap_client_responses, enable_dnstap_resolver_responses,\
+            \ enable_dnstap_forwarder_responses, enable_dnstap_auth_responses, dnstap_setting"
           example: false
           type: boolean
         use_dtc_dns_queries_specific_behavior:
@@ -28294,7 +28567,6 @@ components:
       type: object
     MemberDnsDnstapSetting:
       example:
-        dnstap_identity: Example dnstap_identity
         dnstap_version: Example dnstap_version
         dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
         dnstap_receiver_port: 1
@@ -28308,15 +28580,9 @@ components:
           example: 1
           format: int64
           type: integer
-        dnstap_identity:
-          description: DNSTAP id string.
-          example: Example dnstap_identity
-          readOnly: true
-          type: string
         dnstap_version:
           description: DNSTAP version.
           example: Example dnstap_version
-          readOnly: true
           type: string
       type: object
     MemberDnsFileTransferSetting:
@@ -28681,6 +28947,7 @@ components:
         ftp_status: Example ftp_status
         tftp_port: 1
         use_allow_uploads: false
+        uuid: uuid
         tftp_acls:
         - address: Example address
           permission: Example permission
@@ -28710,6 +28977,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allow_uploads:
@@ -28922,10 +29193,15 @@ components:
         hwid: Example hwid
         expiration_status: Example expiration_status
         type: Example type
+        uuid: uuid
         key: Example key
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         expiration_status:
@@ -29059,6 +29335,7 @@ components:
         use_current_ruleset: false
         use_enable_accel_resp_before_threat_protection: false
         use_events_per_second_per_rule: false
+        uuid: uuid
         enable_accel_resp_before_threat_protection: false
         outbound_settings:
           enable_query_fqdn: false
@@ -29102,6 +29379,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -29317,9 +29598,14 @@ components:
         enable_service: false
         _ref: _ref
         name: Example name
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         enable_service:
@@ -29358,11 +29644,16 @@ components:
         _ref: _ref
         ipv4_address: Example ipv4_address
         comment: Example comment
+        uuid: uuid
         host_name: Example host_name
         status: Example status
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -29424,10 +29715,15 @@ components:
       example:
         cloud_sync_enabled: false
         _ref: _ref
+        uuid: uuid
         host_name: Example host_name
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         cloud_sync_enabled:
@@ -29472,11 +29768,16 @@ components:
           key:
             value: ""
         _ref: _ref
+        uuid: uuid
         host_name: Example host_name
         dfp_forward_first: false
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         dfp_forward_first:
@@ -29524,12 +29825,6 @@ components:
         title: ListMemberdfpResponseArray
         type: array
       - $ref: '#/components/schemas/ListMemberdfpResponseObject'
-    CreateMemberdfpResponse:
-      oneOf:
-      - $ref: '#/components/schemas/CreateMemberdfpResponseAsObject'
-      - description: The response format to create __Memberdfp__.
-        title: CreateMemberdfpResponse
-        type: string
     GetMemberdfpResponse:
       oneOf:
       - $ref: '#/components/schemas/Memberdfp'
@@ -29552,9 +29847,14 @@ components:
         comment: Example comment
         scheduled_time: 1
         time_zone: Example time_zone
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -29633,9 +29933,14 @@ components:
         - gmcgroup
         _ref: _ref
         activate_gmc_group_schedule: false
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         activate_gmc_group_schedule:
@@ -29691,9 +29996,14 @@ components:
         _ref: _ref
         active: false
         time_zone: Example time_zone
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         active:
@@ -29791,10 +30101,15 @@ components:
         name: Example name
         comment: Example comment
         time_zone: Example time_zone
+        uuid: uuid
         distribution_dependent_group: Example distribution_dependent_group
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         comment:
@@ -29910,9 +30225,14 @@ components:
         _ref: _ref
         active: false
         time_zone: Example time_zone
+        uuid: uuid
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         active:
@@ -30006,6 +30326,7 @@ components:
         ipv4_address: Example ipv4_address
         steps_total: 1
         type: Example type
+        uuid: uuid
         allow_upgrade_pause: false
         status_value_update_time: 1
         current_version_summary: Example current_version_summary
@@ -30056,6 +30377,10 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allow_distribution:
@@ -30444,10 +30769,15 @@ components:
         limit: Example limit
         expiration_status: Example expiration_status
         type: Example type
+        uuid: uuid
         key: Example key
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         expiration_status:
@@ -30555,6 +30885,15 @@ components:
     Extensibleattributedef:
       additionalProperties: false
       example:
+        max: 1
+        flags: Example flags
+        default_value: Example default_value
+        type: Example type
+        uuid: uuid
+        descendants_action:
+          option_delete_ea: Example option_delete_ea
+          option_with_ea: Example option_with_ea
+          option_without_ea: Example option_without_ea
         allowed_object_types:
         - allowed_object_types
         - allowed_object_types
@@ -30562,21 +30901,17 @@ components:
         list_values:
         - value: Example value
         - value: Example value
-        max: 1
         _ref: _ref
-        flags: Example flags
         name: Example name
         namespace: Example namespace
         comment: Example comment
-        default_value: Example default_value
-        type: Example type
-        descendants_action:
-          option_delete_ea: Example option_delete_ea
-          option_with_ea: Example option_with_ea
-          option_without_ea: Example option_without_ea
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
           readOnly: true
           type: string
         allowed_object_types:
@@ -30764,8 +31099,11 @@ components:
           - member: Example member
             is_online: false
             interface: Example interface
+          uuid: uuid
           csp_grid_setting:
             csp_https_proxy: Example csp_https_proxy
+            csp_https_proxy_username: Example csp_https_proxy_username
+            csp_https_proxy_password: Example csp_https_proxy_password
             csp_join_token: Example csp_join_token
             csp_dns_resolver: Example csp_dns_resolver
           ntp_setting:
@@ -31163,6 +31501,7 @@ components:
           _ref: _ref
           enable_recycle_bin: false
           allow_api_admins: Example allow_api_admins
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/GridCloudapi'
@@ -31236,6 +31575,7 @@ components:
             delegated_root: Example delegated_root
           comment: Example comment
           id: Example id
+          uuid: uuid
           last_event_ts: 1
       properties:
         result:
@@ -31279,6 +31619,7 @@ components:
             mgmt_platform: Example mgmt_platform
             tenant: Example tenant
             delegated_root: Example delegated_root
+          uuid: uuid
           extattrs-:
             key:
               value: ""
@@ -31389,6 +31730,7 @@ components:
             ipv4addr: Example ipv4addr
             ipv6addr: Example ipv6addr
           allow_api_admins: Example allow_api_admins
+          uuid: uuid
           status: Example status
       properties:
         result:
@@ -31436,6 +31778,7 @@ components:
             name: Example name
             value: Example value
           kdc_server: Example kdc_server
+          uuid: uuid
           ipv6_enable_lease_scavenging: false
           ipv6_generate_hostname: false
           enable_leasequery: false
@@ -31579,6 +31922,7 @@ components:
           - grid:servicerestart:request
           - grid:servicerestart:request
           is_default: false
+          uuid: uuid
           mode: Example mode
           extattrs-:
             key:
@@ -31626,6 +31970,7 @@ components:
             pending_restart: 1
             timeouts: 1
             finished: 1
+            uuid: uuid
             success: 1
             _ref: _ref
             processing: 1
@@ -31655,6 +32000,7 @@ components:
           - grid:servicerestart:request
           - grid:servicerestart:request
           is_default: false
+          uuid: uuid
           mode: Example mode
           extattrs-:
             key:
@@ -31702,6 +32048,7 @@ components:
             pending_restart: 1
             timeouts: 1
             finished: 1
+            uuid: uuid
             success: 1
             _ref: _ref
             processing: 1
@@ -31788,13 +32135,18 @@ components:
           joined: false
           use_mgmt_port: false
           connection_timestamp: 1
+          uuid: uuid
+          join_token_expiration: 1
+          mgm_communication_mode: Example mgm_communication_mode
           detached: false
+          join_token: Example join_token
           port: 1
           enable: false
           last_event: Example last_event
           _ref: _ref
           connection_disabled: false
-          status: Example status
+          discovery_sync_disabled: false
+          join_status: Example join_status
       properties:
         result:
           $ref: '#/components/schemas/Mastergrid'
@@ -31826,6 +32178,7 @@ components:
           rpz_passthru_event_warning_threshold: 1
           atp_critical_event_warning_threshold: 1
           rpz_substituted_hit_warning_threshold: 1
+          uuid: uuid
           rpz_substituted_hit_critical_threshold: 1
           analytics_tunneling_event_warning_threshold: 1
           analytics_tunneling_event_critical_threshold: 1
@@ -31895,6 +32248,7 @@ components:
           default_ttl: 1
           dnssec_blacklist_enabled: false
           allow_recursive_query: false
+          enable_dnstap_resolver_responses: false
           enable_query_rewrite: false
           resolver_query_timeout: 1
           dns_health_check_anycast_control: false
@@ -31963,6 +32317,7 @@ components:
           default_bulk_host_name_template: Example default_bulk_host_name_template
           add_client_ip_mac_options: false
           gen_eadb_from_ranges: false
+          enable_dnstap_forwarder_queries: false
           transfer_excluded_servers:
           - transfer_excluded_servers
           - transfer_excluded_servers
@@ -31975,6 +32330,7 @@ components:
           copy_xfer_to_notify: false
           nxdomain_redirect: false
           allow_bulkhost_ddns: Example allow_bulkhost_ddns
+          enable_dnstap_forwarder_responses: false
           nxdomain_redirect_addresses_v6:
           - nxdomain_redirect_addresses_v6
           - nxdomain_redirect_addresses_v6
@@ -32107,13 +32463,17 @@ components:
             permission: Example permission
           ddns_restrict_static: false
           ddns_restrict_patterns: false
+          enable_dnstap_auth_queries: false
+          enable_dnstap_auth_responses: false
           enable_notify_source_port: false
           enable_blacklist: false
+          enable_dnstap_resolver_queries: false
           blacklist_log_query: false
           expire_after: 1
           forward_only: false
           dns_health_check_recursion_flag: false
           enable_host_rrset_order: false
+          uuid: uuid
           nxdomain_log_query: false
           dns_health_check_retries: 1
           response_rate_limiting:
@@ -32181,6 +32541,7 @@ components:
           - nsgroups
           - nsgroups
           enable_client_subnet_forwarding: false
+          enable_dnstap_client_responses: false
           max_cached_lifetime: 1
           notify_source_port: 1
           forwarders:
@@ -32227,6 +32588,7 @@ components:
           zone_deletion_double_confirm: false
           serial_query_rate: 1
           nsgroup_default: Example nsgroup_default
+          enable_dnstap_setting: false
           query_rewrite_domain_names:
           - query_rewrite_domain_names
           - query_rewrite_domain_names
@@ -32262,6 +32624,7 @@ components:
           - dns64_groups
           - dns64_groups
           enable_dns64: false
+          enable_dnstap_client_queries: false
           allow_update:
           - address: Example address
             tsig_key_alg: Example tsig_key_alg
@@ -32311,7 +32674,6 @@ components:
           - nxdomain_rulesets
           enable_capture_dns_responses: false
           dnstap_setting:
-            dnstap_identity: Example dnstap_identity
             dnstap_version: Example dnstap_version
             dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
             dnstap_receiver_port: 1
@@ -32354,6 +32716,7 @@ components:
           name: Example name
           backup_storage: false
           allow_uploads: false
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/GridFiledistribution'
@@ -32386,6 +32749,7 @@ components:
           enable_auto_download: false
           enable_scheduled_download: false
           grid_name: Example grid_name
+          uuid: uuid
           enable_accel_resp_before_threat_protection: false
           last_rule_update_timestamp: 1
           outbound_settings:
@@ -32491,6 +32855,7 @@ components:
           enable_auto_download: false
           enable_scheduled_download: false
           current_moduleset: Example current_moduleset
+          uuid: uuid
           domain_collapsing_level: 1
           current_allowlist: Example current_allowlist
           last_updated_package_version: Example last_updated_package_version
@@ -32602,6 +32967,7 @@ components:
           guest_phone_required: false
           syslog_auth_failure_level: Example syslog_auth_failure_level
           welcome_message: Example welcome_message
+          uuid: uuid
           guest_custom_field4_required: false
           encryption: Example encryption
           guest_last_name_required: false
@@ -32701,6 +33067,7 @@ components:
           groups:
           - groups
           - groups
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/GridServicerestartGroupOrder'
@@ -32724,6 +33091,7 @@ components:
           groups:
           - groups
           - groups
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/GridServicerestartGroupOrder'
@@ -32797,6 +33165,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Natgroup'
@@ -32817,6 +33186,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Natgroup'
@@ -32860,6 +33230,7 @@ components:
           csp_access_key:
           - csp_access_key
           - csp_access_key
+          uuid: uuid
           ntp_setting:
             ntp_acl:
               ac_list:
@@ -32954,6 +33325,7 @@ components:
             destination_host: Example destination_host
             traffic_capture_directory: Example traffic_capture_directory
             username: Example username
+          is_master: false
           remote_console_access_enable: false
           syslog_servers:
           - severity: Example severity
@@ -33207,7 +33579,9 @@ components:
           syslog_size: 1
           csp_member_setting:
             csp_https_proxy: Example csp_https_proxy
+            csp_https_proxy_username: Example csp_https_proxy_username
             use_csp_https_proxy: false
+            csp_https_proxy_password: Example csp_https_proxy_password
             use_csp_join_token: false
             csp_join_token: Example csp_join_token
             use_csp_dns_resolver: false
@@ -33537,6 +33911,7 @@ components:
           csp_access_key:
           - csp_access_key
           - csp_access_key
+          uuid: uuid
           ntp_setting:
             ntp_acl:
               ac_list:
@@ -33631,6 +34006,7 @@ components:
             destination_host: Example destination_host
             traffic_capture_directory: Example traffic_capture_directory
             username: Example username
+          is_master: false
           remote_console_access_enable: false
           syslog_servers:
           - severity: Example severity
@@ -33884,7 +34260,9 @@ components:
           syslog_size: 1
           csp_member_setting:
             csp_https_proxy: Example csp_https_proxy
+            csp_https_proxy_username: Example csp_https_proxy_username
             use_csp_https_proxy: false
+            csp_https_proxy_password: Example csp_https_proxy_password
             use_csp_join_token: false
             csp_join_token: Example csp_join_token
             use_csp_dns_resolver: false
@@ -34202,6 +34580,7 @@ components:
           ignore_mac_addresses:
           - ignore_mac_addresses
           - ignore_mac_addresses
+          max_failover_association_ip_count: 1
           ipv6_enable_retry_updates: false
           use_enable_fingerprint: false
           authn_server_group_enabled: false
@@ -34223,6 +34602,7 @@ components:
             value: Example value
           kdc_server: Example kdc_server
           ipv6_enable_lease_scavenging: false
+          failover_association_ip_count: 1
           use_ddns_domainname: false
           use_ipv6_gss_tsig_keys: false
           ipv6_remember_expired_client_association: false
@@ -34258,6 +34638,7 @@ components:
           preferred_lifetime: 1
           use_ipv6_ddns_domainname: false
           deny_bootp: false
+          failover_association_utilization: 1
           use_dns_update_style: false
           enable_dhcp_on_ipv6_lan2: false
           use_lease_per_client_settings: false
@@ -34330,6 +34711,7 @@ components:
           use_ddns_update_fixed_addresses: false
           immediate_fa_configuration: false
           use_pxe_lease_time: false
+          uuid: uuid
           ipv6_generate_hostname: false
           use_valid_lifetime: false
           enable_leasequery: false
@@ -34492,6 +34874,7 @@ components:
           server_id_directive_string: Example server_id_directive_string
           dnssec_validation_enabled: false
           copy_xfer_to_notify: false
+          enable_dnstap_forwarder_responses: false
           nxdomain_redirect_addresses_v6:
           - nxdomain_redirect_addresses_v6
           - nxdomain_redirect_addresses_v6
@@ -34503,6 +34886,7 @@ components:
           root_name_server_type: Example root_name_server_type
           bind_check_names_policy: Example bind_check_names_policy
           filter_aaaa: Example filter_aaaa
+          dns_over_https_endpoint: Example dns_over_https_endpoint
           use_resolver_query_timeout: false
           forward_updates: false
           file_transfer_setting:
@@ -34564,6 +34948,8 @@ components:
           doh_service: false
           use_dtc_edns_prefer_client_subnet: false
           dtc_health_source_address: Example dtc_health_source_address
+          enable_dnstap_auth_queries: false
+          enable_dnstap_auth_responses: false
           enable_notify_source_port: false
           enable_blacklist: false
           use_enable_excluded_domain_names: false
@@ -34585,11 +34971,13 @@ components:
           anonymize_response_logging: false
           use_filter_aaaa: false
           transfers_per_ns: 1
+          enable_dnstap_logging_type: false
           use_allow_query: false
           use_dnstap_setting: false
           disable_edns: false
           dnssec_nxdomain_enabled: false
           enable_dns: false
+          enable_dnstap_client_responses: false
           forwarders:
           - forwarders
           - forwarders
@@ -34639,6 +35027,7 @@ components:
             glue_record_address: Example glue_record_address
           ipv6addr: Example ipv6addr
           serial_query_rate: 1
+          enable_dnstap_setting: false
           edns_udp_size: 1
           views:
           - views
@@ -34661,6 +35050,7 @@ components:
           use_fixed_rrset_order_fqdns: false
           recursive_resolver: Example recursive_resolver
           enable_dns64: false
+          enable_dnstap_client_queries: false
           ipv6_glue_record_addresses:
           - view: Example view
             glue_address_choice: Example glue_address_choice
@@ -34689,7 +35079,6 @@ components:
           use_add_client_ip_mac_options: false
           enable_capture_dns_responses: false
           dnstap_setting:
-            dnstap_identity: Example dnstap_identity
             dnstap_version: Example dnstap_version
             dnstap_receiver_address_or_fqdn: Example dnstap_receiver_address_or_fqdn
             dnstap_receiver_port: 1
@@ -34709,6 +35098,7 @@ components:
           dns_notify_transfer_source_address: Example dns_notify_transfer_source_address
           use_blackhole: false
           allow_recursive_query: false
+          enable_dnstap_resolver_responses: false
           enable_query_rewrite: false
           resolver_query_timeout: 1
           dns_health_check_anycast_control: false
@@ -34716,6 +35106,7 @@ components:
           use_forward_updates: false
           add_client_ip_mac_options: false
           ipv4addr: Example ipv4addr
+          enable_dnstap_forwarder_queries: false
           use_capture_dns_queries_on_all_domains: false
           nxdomain_redirect: false
           use_lan2_ipv6_port: false
@@ -34790,9 +35181,11 @@ components:
           tls_session_duration: 1
           enable_capture_dns_queries: false
           use_lan2_port: false
+          enable_dnstap_resolver_queries: false
           blacklist_log_query: false
           forward_only: false
           use_serial_query_rate: false
+          uuid: uuid
           dns_health_check_retries: 1
           use_lan_ipv6_port: false
           gss_tsig_keys:
@@ -34812,6 +35205,7 @@ components:
           server_id_directive: Example server_id_directive
           syslog_facility: Example syslog_facility
           use_dtc_dns_queries_specific_behavior: false
+          dns_over_https_stream_per_connection: 1
           use_ftc: false
           use_transfers_out: false
           use_lan_port: false
@@ -34849,6 +35243,7 @@ components:
           dns64_groups:
           - dns64_groups
           - dns64_groups
+          dnstap_identity: Example dnstap_identity
           logging_categories:
             log_database: false
             log_rpz: false
@@ -34920,6 +35315,7 @@ components:
           ftp_status: Example ftp_status
           tftp_port: 1
           use_allow_uploads: false
+          uuid: uuid
           tftp_acls:
           - address: Example address
             permission: Example permission
@@ -35007,6 +35403,7 @@ components:
           use_current_ruleset: false
           use_enable_accel_resp_before_threat_protection: false
           use_events_per_second_per_rule: false
+          uuid: uuid
           enable_accel_resp_before_threat_protection: false
           outbound_settings:
             enable_query_fqdn: false
@@ -35077,6 +35474,7 @@ components:
           enable_service: false
           _ref: _ref
           name: Example name
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/MemberParentalcontrol'
@@ -35109,6 +35507,7 @@ components:
           _ref: _ref
           ipv4_address: Example ipv4_address
           comment: Example comment
+          uuid: uuid
           host_name: Example host_name
           status: Example status
       properties:
@@ -35139,6 +35538,7 @@ components:
         result:
           cloud_sync_enabled: false
           _ref: _ref
+          uuid: uuid
           host_name: Example host_name
       properties:
         result:
@@ -35153,28 +35553,6 @@ components:
             $ref: '#/components/schemas/Memberdfp'
           type: array
       title: ListMemberdfpResponseObject
-      type: object
-    CreateMemberdfpResponseAsObject:
-      description: The response format to create __Memberdfp__ in object format.
-      example:
-        result:
-          extattrs-:
-            key:
-              value: ""
-          extattrs:
-            key:
-              value: ""
-          is_dfp_override: false
-          extattrs+:
-            key:
-              value: ""
-          _ref: _ref
-          host_name: Example host_name
-          dfp_forward_first: false
-      properties:
-        result:
-          $ref: '#/components/schemas/Memberdfp'
-      title: CreateMemberdfpResponseAsObject
       type: object
     GetMemberdfpResponseObjectAsResult:
       additionalProperties: false
@@ -35199,6 +35577,7 @@ components:
             key:
               value: ""
           _ref: _ref
+          uuid: uuid
           host_name: Example host_name
           dfp_forward_first: false
       properties:
@@ -35228,6 +35607,7 @@ components:
           comment: Example comment
           scheduled_time: 1
           time_zone: Example time_zone
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Gmcgroup'
@@ -35254,6 +35634,7 @@ components:
           comment: Example comment
           scheduled_time: 1
           time_zone: Example time_zone
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Gmcgroup'
@@ -35285,6 +35666,7 @@ components:
           - gmcgroup
           _ref: _ref
           activate_gmc_group_schedule: false
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Gmcschedule'
@@ -35329,6 +35711,7 @@ components:
           _ref: _ref
           active: false
           time_zone: Example time_zone
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Distributionschedule'
@@ -35361,6 +35744,7 @@ components:
           name: Example name
           comment: Example comment
           time_zone: Example time_zone
+          uuid: uuid
           distribution_dependent_group: Example distribution_dependent_group
       properties:
         result:
@@ -35393,6 +35777,7 @@ components:
           name: Example name
           comment: Example comment
           time_zone: Example time_zone
+          uuid: uuid
           distribution_dependent_group: Example distribution_dependent_group
       properties:
         result:
@@ -35437,6 +35822,7 @@ components:
           _ref: _ref
           active: false
           time_zone: Example time_zone
+          uuid: uuid
       properties:
         result:
           $ref: '#/components/schemas/Upgradeschedule'
@@ -35473,6 +35859,7 @@ components:
           ipv4_address: Example ipv4_address
           steps_total: 1
           type: Example type
+          uuid: uuid
           allow_upgrade_pause: false
           status_value_update_time: 1
           current_version_summary: Example current_version_summary
@@ -35581,6 +35968,15 @@ components:
         format.
       example:
         result:
+          max: 1
+          flags: Example flags
+          default_value: Example default_value
+          type: Example type
+          uuid: uuid
+          descendants_action:
+            option_delete_ea: Example option_delete_ea
+            option_with_ea: Example option_with_ea
+            option_without_ea: Example option_without_ea
           allowed_object_types:
           - allowed_object_types
           - allowed_object_types
@@ -35588,18 +35984,10 @@ components:
           list_values:
           - value: Example value
           - value: Example value
-          max: 1
           _ref: _ref
-          flags: Example flags
           name: Example name
           namespace: Example namespace
           comment: Example comment
-          default_value: Example default_value
-          type: Example type
-          descendants_action:
-            option_delete_ea: Example option_delete_ea
-            option_with_ea: Example option_with_ea
-            option_without_ea: Example option_without_ea
       properties:
         result:
           $ref: '#/components/schemas/Extensibleattributedef'
@@ -35618,6 +36006,15 @@ components:
         format.
       example:
         result:
+          max: 1
+          flags: Example flags
+          default_value: Example default_value
+          type: Example type
+          uuid: uuid
+          descendants_action:
+            option_delete_ea: Example option_delete_ea
+            option_with_ea: Example option_with_ea
+            option_without_ea: Example option_without_ea
           allowed_object_types:
           - allowed_object_types
           - allowed_object_types
@@ -35625,18 +36022,10 @@ components:
           list_values:
           - value: Example value
           - value: Example value
-          max: 1
           _ref: _ref
-          flags: Example flags
           name: Example name
           namespace: Example namespace
           comment: Example comment
-          default_value: Example default_value
-          type: Example type
-          descendants_action:
-            option_delete_ea: Example option_delete_ea
-            option_with_ea: Example option_with_ea
-            option_without_ea: Example option_without_ea
       properties:
         result:
           $ref: '#/components/schemas/Extensibleattributedef'

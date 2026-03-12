@@ -5,18 +5,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Algorithm** | Pointer to **string** | The hash algorithm that was used. | [optional] [readonly] 
 **CloudInfo** | Pointer to [**RecordNsec3CloudInfo**](RecordNsec3CloudInfo.md) |  | [optional] 
 **CreationTime** | Pointer to **int64** | The creation time of the record. | [optional] [readonly] 
 **Creator** | Pointer to **string** | Creator of the record. | [optional] [readonly] 
 **DnsName** | Pointer to **string** | Name for an NSEC3 record in punycode format. | [optional] [readonly] 
 **Flags** | Pointer to **int64** | The set of 8 one-bit flags, of which only one flag, the Opt-Out flag, is defined by RFC 5155. The Opt-Out flag indicates whether the NSEC3 record covers unsigned delegations. | [optional] [readonly] 
-**Iterations** | Pointer to **int64** | The number of times the hash function was performed. | [optional] [readonly] 
+**Iterations** | Pointer to **int64** | The number of times the hash function was performed. RFC 9276 Section 3.1 mandates that this value MUST be set to zero (0) to ensure DNSSEC resolver compatibility and alleviate computational burdens on validating resolvers. | [optional] [readonly] 
 **LastQueried** | Pointer to **int64** | The time of the last DNS query in Epoch seconds format. | [optional] [readonly] 
 **Name** | Pointer to **string** | The name of the NSEC3 record in FQDN format. | [optional] [readonly] 
 **NextOwnerName** | Pointer to **string** | The hashed next owner name that has authoritative data or that contains a delegation point NS record. | [optional] [readonly] 
 **RrsetTypes** | Pointer to **[]string** | The RRSet types that exist at the original owner name of the NSEC3 RR. | [optional] [readonly] 
-**Salt** | Pointer to **string** | A series of case-insensitive hexadecimal digits. It is appended to the original owner name as protection against pre-calculated dictionary attacks. A new salt value is generated when ZSK rolls over. You can control the period of the rollover. For random salt values, the selected length is between one and 15 octets. | [optional] [readonly] 
+**Salt** | Pointer to **string** | A series of case-insensitive hexadecimal digits. It is appended to the original owner name as protection against pre-calculated dictionary attacks. A new salt value is generated when ZSK rolls over. You can control the period of the rollover. RFC 9276 recommends using an empty salt (0 octets) for optimal resolver compatibility and reduced computational overhead. For random salt values, the selected length is between zero and 255 octets. | [optional] [readonly] 
 **Ttl** | Pointer to **int64** | The Time To Live (TTL) value for the record. A 32-bit unsigned integer that represents the duration, in seconds, for which the record is valid (cached). Zero indicates that the record should not be cached. | [optional] [readonly] 
 **UseTtl** | Pointer to **bool** | Use flag for: ttl | [optional] [readonly] 
 **View** | Pointer to **string** | The name of the DNS View in which the record resides. Example: \&quot;external\&quot;. | [optional] [readonly] 
@@ -65,6 +66,31 @@ SetRef sets Ref field to given value.
 `func (o *RecordNsec3) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *RecordNsec3) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *RecordNsec3) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *RecordNsec3) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *RecordNsec3) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetAlgorithm
 

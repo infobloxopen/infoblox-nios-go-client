@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **LastSequenceId** | Pointer to **string** | The last returned sequence ID. | [optional] [readonly] 
 **Object** | Pointer to **string** | The record object when supported by WAPI. Otherwise, the value is \&quot;None\&quot;. | [optional] [readonly] 
 **ObjectType** | Pointer to **string** | The object type. This is undefined if the object is not supported. | [optional] [readonly] 
@@ -53,6 +54,31 @@ SetRef sets Ref field to given value.
 `func (o *DbObjects) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DbObjects) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DbObjects) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DbObjects) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DbObjects) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetLastSequenceId
 

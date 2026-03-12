@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IpAddress** | Pointer to **string** | The IP address of addional blocking server. | [optional] 
-**BlockingPolicy** | Pointer to **string** | The blocking policy for the addional blocking server. | [optional] 
+**IpAddress** | Pointer to **string** | The IP address of additional blocking server. | [optional] 
+**BlockingPolicy** | Pointer to **string** | The blocking policy for the additional blocking server. | [optional] 
 
 ## Methods
 

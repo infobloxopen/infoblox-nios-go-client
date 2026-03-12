@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EnabledAttributes** | Pointer to **[]string** | The list of NIOS extensible attributes enalbed for publishsing to Cisco ISE endpoint. | [optional] 
+**EnabledAttributes** | Pointer to **[]string** | The list of NIOS extensible attributes enabled for publishing to Cisco ISE endpoint. | [optional] 
 
 ## Methods
 
