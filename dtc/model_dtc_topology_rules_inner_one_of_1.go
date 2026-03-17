@@ -22,7 +22,7 @@ type DtcTopologyRulesInnerOneOf1 struct {
 	// The type of the destination for this rule.
 	DestType *string `json:"dest_type,omitempty"`
 	// The reference to the destination object.
-	DestinationLink *string `json:"destination_link,omitempty"`
+	Destination []DtcTopologyRuleDestination `json:"destination,omitempty"`
 	// The type of the return value for this source.
 	ReturnType *string `json:"return_type,omitempty"`
 	// The topology for this rule.
@@ -82,36 +82,36 @@ func (o *DtcTopologyRulesInnerOneOf1) SetDestType(v string) {
 	o.DestType = &v
 }
 
-// GetDestinationLink returns the DestinationLink field value if set, zero value otherwise.
-func (o *DtcTopologyRulesInnerOneOf1) GetDestinationLink() string {
-	if o == nil || IsNil(o.DestinationLink) {
-		var ret string
+// GetDestination returns the Destination field value if set, zero value otherwise.
+func (o *DtcTopologyRulesInnerOneOf1) GetDestination() []DtcTopologyRuleDestination {
+	if o == nil || IsNil(o.Destination) {
+		var ret []DtcTopologyRuleDestination
 		return ret
 	}
-	return *o.DestinationLink
+	return o.Destination
 }
 
-// GetDestinationLinkOk returns a tuple with the DestinationLink field value if set, nil otherwise
+// GetDestinationOk returns a tuple with the Destination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcTopologyRulesInnerOneOf1) GetDestinationLinkOk() (*string, bool) {
-	if o == nil || IsNil(o.DestinationLink) {
+func (o *DtcTopologyRulesInnerOneOf1) GetDestinationOk() ([]DtcTopologyRuleDestination, bool) {
+	if o == nil || IsNil(o.Destination) {
 		return nil, false
 	}
-	return o.DestinationLink, true
+	return o.Destination, true
 }
 
-// HasDestinationLink returns a boolean if a field has been set.
-func (o *DtcTopologyRulesInnerOneOf1) HasDestinationLink() bool {
-	if o != nil && !IsNil(o.DestinationLink) {
+// HasDestination returns a boolean if a field has been set.
+func (o *DtcTopologyRulesInnerOneOf1) HasDestination() bool {
+	if o != nil && !IsNil(o.Destination) {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationLink gets a reference to the given string and assigns it to the DestinationLink field.
-func (o *DtcTopologyRulesInnerOneOf1) SetDestinationLink(v string) {
-	o.DestinationLink = &v
+// SetDestination gets a reference to the given []DtcTopologyRuleDestination and assigns it to the Destination field.
+func (o *DtcTopologyRulesInnerOneOf1) SetDestination(v []DtcTopologyRuleDestination) {
+	o.Destination = v
 }
 
 // GetReturnType returns the ReturnType field value if set, zero value otherwise.
@@ -255,8 +255,8 @@ func (o DtcTopologyRulesInnerOneOf1) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DestType) {
 		toSerialize["dest_type"] = o.DestType
 	}
-	if !IsNil(o.DestinationLink) {
-		toSerialize["destination_link"] = o.DestinationLink
+	if !IsNil(o.Destination) {
+		toSerialize["destination"] = o.Destination
 	}
 	if !IsNil(o.ReturnType) {
 		toSerialize["return_type"] = o.ReturnType

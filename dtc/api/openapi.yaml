@@ -9459,9 +9459,9 @@ components:
         _ref: _ref
         destination:
         - priority: 1
-          destination_link: Example destination_link
+          destination_link: Example string destination_link
         - priority: 1
-          destination_link: Example destination_link
+          destination_link: Example string destination_link
         uuid: uuid
       properties:
         _ref:
@@ -9519,12 +9519,10 @@ components:
     DtcTopologyRuleDestination:
       example:
         priority: 1
-        destination_link: Example destination_link
+        destination_link: Example string destination_link
       properties:
         destination_link:
-          description: The reference to the destination DTC pool or DTC server.
-          example: Example destination_link
-          type: string
+          $ref: '#/components/schemas/DtcTopologyRuleDestination_destination_link'
         priority:
           description: Priority.
           example: 1
@@ -9679,9 +9677,9 @@ components:
           _ref: _ref
           destination:
           - priority: 1
-            destination_link: Example destination_link
+            destination_link: Example string destination_link
           - priority: 1
-            destination_link: Example destination_link
+            destination_link: Example string destination_link
           uuid: uuid
       properties:
         result:
@@ -9964,9 +9962,11 @@ components:
         dest_type:
           description: The type of the destination for this rule.
           type: string
-        destination_link:
+        destination:
           description: The reference to the destination object.
-          type: string
+          items:
+            $ref: '#/components/schemas/DtcTopologyRuleDestination'
+          type: array
         return_type:
           description: The type of the return value for this source.
           type: string
@@ -11111,6 +11111,24 @@ components:
           $ref: '#/components/schemas/DtcObject'
       title: UpdateDtcObjectResponseAsObject
       type: object
+    DtcTopologyRuleDestination_destination_link_oneOf:
+      properties:
+        _ref:
+          description: The reference to the object.
+          type: string
+        host:
+          description: The host IP of server.
+          type: string
+        name:
+          description: The name of the server.
+          type: string
+      type: object
+    DtcTopologyRuleDestination_destination_link:
+      oneOf:
+      - description: The reference to the destination object.
+        example: Example string destination_link
+        type: string
+      - $ref: '#/components/schemas/DtcTopologyRuleDestination_destination_link_oneOf'
     ListDtcTopologyRuleResponseObject:
       description: The response format to retrieve __DtcTopologyRule__ objects.
       properties:
@@ -11146,9 +11164,9 @@ components:
           _ref: _ref
           destination:
           - priority: 1
-            destination_link: Example destination_link
+            destination_link: Example string destination_link
           - priority: 1
-            destination_link: Example destination_link
+            destination_link: Example string destination_link
           uuid: uuid
       properties:
         result:

@@ -19,8 +19,7 @@ var _ MappedNullable = &DtcTopologyRuleDestination{}
 
 // DtcTopologyRuleDestination struct for DtcTopologyRuleDestination
 type DtcTopologyRuleDestination struct {
-	// The reference to the destination DTC pool or DTC server.
-	DestinationLink *string `json:"destination_link,omitempty"`
+	DestinationLink *DtcTopologyRuleDestinationDestinationLink `json:"destination_link,omitempty"`
 	// Priority.
 	Priority             *int64 `json:"priority,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,9 +45,9 @@ func NewDtcTopologyRuleDestinationWithDefaults() *DtcTopologyRuleDestination {
 }
 
 // GetDestinationLink returns the DestinationLink field value if set, zero value otherwise.
-func (o *DtcTopologyRuleDestination) GetDestinationLink() string {
+func (o *DtcTopologyRuleDestination) GetDestinationLink() DtcTopologyRuleDestinationDestinationLink {
 	if o == nil || IsNil(o.DestinationLink) {
-		var ret string
+		var ret DtcTopologyRuleDestinationDestinationLink
 		return ret
 	}
 	return *o.DestinationLink
@@ -56,7 +55,7 @@ func (o *DtcTopologyRuleDestination) GetDestinationLink() string {
 
 // GetDestinationLinkOk returns a tuple with the DestinationLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtcTopologyRuleDestination) GetDestinationLinkOk() (*string, bool) {
+func (o *DtcTopologyRuleDestination) GetDestinationLinkOk() (*DtcTopologyRuleDestinationDestinationLink, bool) {
 	if o == nil || IsNil(o.DestinationLink) {
 		return nil, false
 	}
@@ -72,8 +71,8 @@ func (o *DtcTopologyRuleDestination) HasDestinationLink() bool {
 	return false
 }
 
-// SetDestinationLink gets a reference to the given string and assigns it to the DestinationLink field.
-func (o *DtcTopologyRuleDestination) SetDestinationLink(v string) {
+// SetDestinationLink gets a reference to the given DtcTopologyRuleDestinationDestinationLink and assigns it to the DestinationLink field.
+func (o *DtcTopologyRuleDestination) SetDestinationLink(v DtcTopologyRuleDestinationDestinationLink) {
 	o.DestinationLink = &v
 }
 

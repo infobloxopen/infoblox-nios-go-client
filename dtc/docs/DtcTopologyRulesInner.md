@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Ref** | Pointer to **string** | Reference to the topology rule | [optional] 
 **Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **DestType** | Pointer to **string** | The type of the destination for this rule. | [optional] 
-**DestinationLink** | Pointer to **string** | The reference to the destination object. | [optional] 
+**Destination** | Pointer to [**[]DtcTopologyRuleDestination**](DtcTopologyRuleDestination.md) | The reference to the destination object. | [optional] 
 **ReturnType** | Pointer to **string** | The type of the return value for this source. | [optional] 
 **Topology** | Pointer to **string** | The topology for this rule. | [optional] [readonly] 
 **Valid** | Pointer to **bool** | Indicates whether the rule is valid. | [optional] [readonly] 
@@ -107,30 +107,30 @@ SetDestType sets DestType field to given value.
 
 HasDestType returns a boolean if a field has been set.
 
-### GetDestinationLink
+### GetDestination
 
-`func (o *DtcTopologyRulesInner) GetDestinationLink() string`
+`func (o *DtcTopologyRulesInner) GetDestination() []DtcTopologyRuleDestination`
 
-GetDestinationLink returns the DestinationLink field if non-nil, zero value otherwise.
+GetDestination returns the Destination field if non-nil, zero value otherwise.
 
-### GetDestinationLinkOk
+### GetDestinationOk
 
-`func (o *DtcTopologyRulesInner) GetDestinationLinkOk() (*string, bool)`
+`func (o *DtcTopologyRulesInner) GetDestinationOk() (*[]DtcTopologyRuleDestination, bool)`
 
-GetDestinationLinkOk returns a tuple with the DestinationLink field if it's non-nil, zero value otherwise
+GetDestinationOk returns a tuple with the Destination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDestinationLink
+### SetDestination
 
-`func (o *DtcTopologyRulesInner) SetDestinationLink(v string)`
+`func (o *DtcTopologyRulesInner) SetDestination(v []DtcTopologyRuleDestination)`
 
-SetDestinationLink sets DestinationLink field to given value.
+SetDestination sets Destination field to given value.
 
-### HasDestinationLink
+### HasDestination
 
-`func (o *DtcTopologyRulesInner) HasDestinationLink() bool`
+`func (o *DtcTopologyRulesInner) HasDestination() bool`
 
-HasDestinationLink returns a boolean if a field has been set.
+HasDestination returns a boolean if a field has been set.
 
 ### GetReturnType
 

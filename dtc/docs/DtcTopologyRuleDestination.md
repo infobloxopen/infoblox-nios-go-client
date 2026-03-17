@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DestinationLink** | Pointer to **string** | The reference to the destination DTC pool or DTC server. | [optional] 
+**DestinationLink** | Pointer to [**DtcTopologyRuleDestinationDestinationLink**](DtcTopologyRuleDestinationDestinationLink.md) |  | [optional] 
 **Priority** | Pointer to **int64** | Priority. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDestinationLink
 
-`func (o *DtcTopologyRuleDestination) GetDestinationLink() string`
+`func (o *DtcTopologyRuleDestination) GetDestinationLink() DtcTopologyRuleDestinationDestinationLink`
 
 GetDestinationLink returns the DestinationLink field if non-nil, zero value otherwise.
 
 ### GetDestinationLinkOk
 
-`func (o *DtcTopologyRuleDestination) GetDestinationLinkOk() (*string, bool)`
+`func (o *DtcTopologyRuleDestination) GetDestinationLinkOk() (*DtcTopologyRuleDestinationDestinationLink, bool)`
 
 GetDestinationLinkOk returns a tuple with the DestinationLink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDestinationLink
 
-`func (o *DtcTopologyRuleDestination) SetDestinationLink(v string)`
+`func (o *DtcTopologyRuleDestination) SetDestinationLink(v DtcTopologyRuleDestinationDestinationLink)`
 
 SetDestinationLink sets DestinationLink field to given value.
 
