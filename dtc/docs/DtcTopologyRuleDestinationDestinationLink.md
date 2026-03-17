@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ref** | Pointer to **string** | The reference to the object. | [optional] 
+**Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
+**Uuid** | Pointer to **string** | Universally Unique ID assigned for this object | [optional] [readonly] 
 **Host** | Pointer to **string** | The host IP of server. | [optional] 
 **Name** | Pointer to **string** | The name of the server. | [optional] 
 
@@ -51,6 +52,31 @@ SetRef sets Ref field to given value.
 `func (o *DtcTopologyRuleDestinationDestinationLink) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
+
+### GetUuid
+
+`func (o *DtcTopologyRuleDestinationDestinationLink) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *DtcTopologyRuleDestinationDestinationLink) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *DtcTopologyRuleDestinationDestinationLink) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+### HasUuid
+
+`func (o *DtcTopologyRuleDestinationDestinationLink) HasUuid() bool`
+
+HasUuid returns a boolean if a field has been set.
 
 ### GetHost
 

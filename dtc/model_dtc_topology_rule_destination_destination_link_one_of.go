@@ -21,6 +21,8 @@ var _ MappedNullable = &DtcTopologyRuleDestinationDestinationLinkOneOf{}
 type DtcTopologyRuleDestinationDestinationLinkOneOf struct {
 	// The reference to the object.
 	Ref *string `json:"_ref,omitempty"`
+	// Universally Unique ID assigned for this object
+	Uuid *string `json:"uuid,omitempty"`
 	// The host IP of server.
 	Host *string `json:"host,omitempty"`
 	// The name of the server.
@@ -77,6 +79,38 @@ func (o *DtcTopologyRuleDestinationDestinationLinkOneOf) HasRef() bool {
 // SetRef gets a reference to the given string and assigns it to the Ref field.
 func (o *DtcTopologyRuleDestinationDestinationLinkOneOf) SetRef(v string) {
 	o.Ref = &v
+}
+
+// GetUuid returns the Uuid field value if set, zero value otherwise.
+func (o *DtcTopologyRuleDestinationDestinationLinkOneOf) GetUuid() string {
+	if o == nil || IsNil(o.Uuid) {
+		var ret string
+		return ret
+	}
+	return *o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DtcTopologyRuleDestinationDestinationLinkOneOf) GetUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
+	}
+	return o.Uuid, true
+}
+
+// HasUuid returns a boolean if a field has been set.
+func (o *DtcTopologyRuleDestinationDestinationLinkOneOf) HasUuid() bool {
+	if o != nil && !IsNil(o.Uuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
+func (o *DtcTopologyRuleDestinationDestinationLinkOneOf) SetUuid(v string) {
+	o.Uuid = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -156,6 +190,9 @@ func (o DtcTopologyRuleDestinationDestinationLinkOneOf) ToMap() (map[string]inte
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
 	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
 	}
@@ -185,6 +222,7 @@ func (o *DtcTopologyRuleDestinationDestinationLinkOneOf) UnmarshalJSON(data []by
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "_ref")
+		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "host")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties

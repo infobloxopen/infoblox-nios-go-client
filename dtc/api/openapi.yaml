@@ -11115,6 +11115,11 @@ components:
       properties:
         _ref:
           description: The reference to the object.
+          readOnly: true
+          type: string
+        uuid:
+          description: Universally Unique ID assigned for this object
+          readOnly: true
           type: string
         host:
           description: The host IP of server.
