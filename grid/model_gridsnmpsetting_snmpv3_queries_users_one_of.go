@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the GridsnmpsettingSnmpv3QueriesUsers type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GridsnmpsettingSnmpv3QueriesUsers{}
+// checks if the GridsnmpsettingSnmpv3QueriesUsersOneOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GridsnmpsettingSnmpv3QueriesUsersOneOf{}
 
-// GridsnmpsettingSnmpv3QueriesUsers struct for GridsnmpsettingSnmpv3QueriesUsers
-type GridsnmpsettingSnmpv3QueriesUsers struct {
+// GridsnmpsettingSnmpv3QueriesUsersOneOf struct for GridsnmpsettingSnmpv3QueriesUsersOneOf
+type GridsnmpsettingSnmpv3QueriesUsersOneOf struct {
 	// The reference to the SNMPv3 user object
 	Ref *string `json:"_ref,omitempty"`
 	// The authentication protocol to be used for this user.
@@ -36,27 +36,27 @@ type GridsnmpsettingSnmpv3QueriesUsers struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _GridsnmpsettingSnmpv3QueriesUsers GridsnmpsettingSnmpv3QueriesUsers
+type _GridsnmpsettingSnmpv3QueriesUsersOneOf GridsnmpsettingSnmpv3QueriesUsersOneOf
 
-// NewGridsnmpsettingSnmpv3QueriesUsers instantiates a new GridsnmpsettingSnmpv3QueriesUsers object
+// NewGridsnmpsettingSnmpv3QueriesUsersOneOf instantiates a new GridsnmpsettingSnmpv3QueriesUsersOneOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGridsnmpsettingSnmpv3QueriesUsers() *GridsnmpsettingSnmpv3QueriesUsers {
-	this := GridsnmpsettingSnmpv3QueriesUsers{}
+func NewGridsnmpsettingSnmpv3QueriesUsersOneOf() *GridsnmpsettingSnmpv3QueriesUsersOneOf {
+	this := GridsnmpsettingSnmpv3QueriesUsersOneOf{}
 	return &this
 }
 
-// NewGridsnmpsettingSnmpv3QueriesUsersWithDefaults instantiates a new GridsnmpsettingSnmpv3QueriesUsers object
+// NewGridsnmpsettingSnmpv3QueriesUsersOneOfWithDefaults instantiates a new GridsnmpsettingSnmpv3QueriesUsersOneOf object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGridsnmpsettingSnmpv3QueriesUsersWithDefaults() *GridsnmpsettingSnmpv3QueriesUsers {
-	this := GridsnmpsettingSnmpv3QueriesUsers{}
+func NewGridsnmpsettingSnmpv3QueriesUsersOneOfWithDefaults() *GridsnmpsettingSnmpv3QueriesUsersOneOf {
+	this := GridsnmpsettingSnmpv3QueriesUsersOneOf{}
 	return &this
 }
 
 // GetRef returns the Ref field value if set, zero value otherwise.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetRef() string {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetRef() string {
 	if o == nil || IsNil(o.Ref) {
 		var ret string
 		return ret
@@ -66,7 +66,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetRef() string {
 
 // GetRefOk returns a tuple with the Ref field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetRefOk() (*string, bool) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetRefOk() (*string, bool) {
 	if o == nil || IsNil(o.Ref) {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetRefOk() (*string, bool) {
 }
 
 // HasRef returns a boolean if a field has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) HasRef() bool {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) HasRef() bool {
 	if o != nil && !IsNil(o.Ref) {
 		return true
 	}
@@ -83,12 +83,12 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) HasRef() bool {
 }
 
 // SetRef gets a reference to the given string and assigns it to the Ref field.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) SetRef(v string) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) SetRef(v string) {
 	o.Ref = &v
 }
 
 // GetAuthenticationProtocol returns the AuthenticationProtocol field value if set, zero value otherwise.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetAuthenticationProtocol() string {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetAuthenticationProtocol() string {
 	if o == nil || IsNil(o.AuthenticationProtocol) {
 		var ret string
 		return ret
@@ -98,7 +98,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetAuthenticationProtocol() string {
 
 // GetAuthenticationProtocolOk returns a tuple with the AuthenticationProtocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetAuthenticationProtocolOk() (*string, bool) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetAuthenticationProtocolOk() (*string, bool) {
 	if o == nil || IsNil(o.AuthenticationProtocol) {
 		return nil, false
 	}
@@ -106,7 +106,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetAuthenticationProtocolOk() (*stri
 }
 
 // HasAuthenticationProtocol returns a boolean if a field has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) HasAuthenticationProtocol() bool {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) HasAuthenticationProtocol() bool {
 	if o != nil && !IsNil(o.AuthenticationProtocol) {
 		return true
 	}
@@ -115,12 +115,12 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) HasAuthenticationProtocol() bool {
 }
 
 // SetAuthenticationProtocol gets a reference to the given string and assigns it to the AuthenticationProtocol field.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) SetAuthenticationProtocol(v string) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) SetAuthenticationProtocol(v string) {
 	o.AuthenticationProtocol = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetComment() string {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetComment() string {
 	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
@@ -130,7 +130,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetComment() string {
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetCommentOk() (*string, bool) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetCommentOk() (*string, bool) {
 	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
@@ -138,7 +138,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetCommentOk() (*string, bool) {
 }
 
 // HasComment returns a boolean if a field has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) HasComment() bool {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) HasComment() bool {
 	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
@@ -147,12 +147,12 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) HasComment() bool {
 }
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) SetComment(v string) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) SetComment(v string) {
 	o.Comment = &v
 }
 
 // GetDisable returns the Disable field value if set, zero value otherwise.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetDisable() bool {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetDisable() bool {
 	if o == nil || IsNil(o.Disable) {
 		var ret bool
 		return ret
@@ -162,7 +162,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetDisable() bool {
 
 // GetDisableOk returns a tuple with the Disable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetDisableOk() (*bool, bool) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetDisableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Disable) {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetDisableOk() (*bool, bool) {
 }
 
 // HasDisable returns a boolean if a field has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) HasDisable() bool {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) HasDisable() bool {
 	if o != nil && !IsNil(o.Disable) {
 		return true
 	}
@@ -179,12 +179,12 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) HasDisable() bool {
 }
 
 // SetDisable gets a reference to the given bool and assigns it to the Disable field.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) SetDisable(v bool) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) SetDisable(v bool) {
 	o.Disable = &v
 }
 
 // GetExtAttrs returns the ExtAttrs field value if set, zero value otherwise.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetExtAttrs() map[string]ExtAttrs {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetExtAttrs() map[string]ExtAttrs {
 	if o == nil || IsNil(o.ExtAttrs) {
 		var ret map[string]ExtAttrs
 		return ret
@@ -194,7 +194,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetExtAttrs() map[string]ExtAttrs {
 
 // GetExtAttrsOk returns a tuple with the ExtAttrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetExtAttrsOk() (*map[string]ExtAttrs, bool) {
 	if o == nil || IsNil(o.ExtAttrs) {
 		return nil, false
 	}
@@ -202,7 +202,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetExtAttrsOk() (*map[string]ExtAttr
 }
 
 // HasExtAttrs returns a boolean if a field has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) HasExtAttrs() bool {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) HasExtAttrs() bool {
 	if o != nil && !IsNil(o.ExtAttrs) {
 		return true
 	}
@@ -211,12 +211,12 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) HasExtAttrs() bool {
 }
 
 // SetExtAttrs gets a reference to the given map[string]ExtAttrs and assigns it to the ExtAttrs field.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) SetExtAttrs(v map[string]ExtAttrs) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) SetExtAttrs(v map[string]ExtAttrs) {
 	o.ExtAttrs = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetName() string {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -226,7 +226,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetNameOk() (*string, bool) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -234,7 +234,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) HasName() bool {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -243,12 +243,12 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) SetName(v string) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) SetName(v string) {
 	o.Name = &v
 }
 
 // GetPrivacyProtocol returns the PrivacyProtocol field value if set, zero value otherwise.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetPrivacyProtocol() string {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetPrivacyProtocol() string {
 	if o == nil || IsNil(o.PrivacyProtocol) {
 		var ret string
 		return ret
@@ -258,7 +258,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetPrivacyProtocol() string {
 
 // GetPrivacyProtocolOk returns a tuple with the PrivacyProtocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) GetPrivacyProtocolOk() (*string, bool) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) GetPrivacyProtocolOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivacyProtocol) {
 		return nil, false
 	}
@@ -266,7 +266,7 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) GetPrivacyProtocolOk() (*string, boo
 }
 
 // HasPrivacyProtocol returns a boolean if a field has been set.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) HasPrivacyProtocol() bool {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) HasPrivacyProtocol() bool {
 	if o != nil && !IsNil(o.PrivacyProtocol) {
 		return true
 	}
@@ -275,11 +275,11 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) HasPrivacyProtocol() bool {
 }
 
 // SetPrivacyProtocol gets a reference to the given string and assigns it to the PrivacyProtocol field.
-func (o *GridsnmpsettingSnmpv3QueriesUsers) SetPrivacyProtocol(v string) {
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) SetPrivacyProtocol(v string) {
 	o.PrivacyProtocol = &v
 }
 
-func (o GridsnmpsettingSnmpv3QueriesUsers) MarshalJSON() ([]byte, error) {
+func (o GridsnmpsettingSnmpv3QueriesUsersOneOf) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -287,7 +287,7 @@ func (o GridsnmpsettingSnmpv3QueriesUsers) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GridsnmpsettingSnmpv3QueriesUsers) ToMap() (map[string]interface{}, error) {
+func (o GridsnmpsettingSnmpv3QueriesUsersOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Ref) {
 		toSerialize["_ref"] = o.Ref
@@ -318,16 +318,16 @@ func (o GridsnmpsettingSnmpv3QueriesUsers) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *GridsnmpsettingSnmpv3QueriesUsers) UnmarshalJSON(data []byte) (err error) {
-	varGridsnmpsettingSnmpv3QueriesUsers := _GridsnmpsettingSnmpv3QueriesUsers{}
+func (o *GridsnmpsettingSnmpv3QueriesUsersOneOf) UnmarshalJSON(data []byte) (err error) {
+	varGridsnmpsettingSnmpv3QueriesUsersOneOf := _GridsnmpsettingSnmpv3QueriesUsersOneOf{}
 
-	err = json.Unmarshal(data, &varGridsnmpsettingSnmpv3QueriesUsers)
+	err = json.Unmarshal(data, &varGridsnmpsettingSnmpv3QueriesUsersOneOf)
 
 	if err != nil {
 		return err
 	}
 
-	*o = GridsnmpsettingSnmpv3QueriesUsers(varGridsnmpsettingSnmpv3QueriesUsers)
+	*o = GridsnmpsettingSnmpv3QueriesUsersOneOf(varGridsnmpsettingSnmpv3QueriesUsersOneOf)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -345,38 +345,38 @@ func (o *GridsnmpsettingSnmpv3QueriesUsers) UnmarshalJSON(data []byte) (err erro
 	return err
 }
 
-type NullableGridsnmpsettingSnmpv3QueriesUsers struct {
-	value *GridsnmpsettingSnmpv3QueriesUsers
+type NullableGridsnmpsettingSnmpv3QueriesUsersOneOf struct {
+	value *GridsnmpsettingSnmpv3QueriesUsersOneOf
 	isSet bool
 }
 
-func (v NullableGridsnmpsettingSnmpv3QueriesUsers) Get() *GridsnmpsettingSnmpv3QueriesUsers {
+func (v NullableGridsnmpsettingSnmpv3QueriesUsersOneOf) Get() *GridsnmpsettingSnmpv3QueriesUsersOneOf {
 	return v.value
 }
 
-func (v *NullableGridsnmpsettingSnmpv3QueriesUsers) Set(val *GridsnmpsettingSnmpv3QueriesUsers) {
+func (v *NullableGridsnmpsettingSnmpv3QueriesUsersOneOf) Set(val *GridsnmpsettingSnmpv3QueriesUsersOneOf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGridsnmpsettingSnmpv3QueriesUsers) IsSet() bool {
+func (v NullableGridsnmpsettingSnmpv3QueriesUsersOneOf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGridsnmpsettingSnmpv3QueriesUsers) Unset() {
+func (v *NullableGridsnmpsettingSnmpv3QueriesUsersOneOf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGridsnmpsettingSnmpv3QueriesUsers(val *GridsnmpsettingSnmpv3QueriesUsers) *NullableGridsnmpsettingSnmpv3QueriesUsers {
-	return &NullableGridsnmpsettingSnmpv3QueriesUsers{value: val, isSet: true}
+func NewNullableGridsnmpsettingSnmpv3QueriesUsersOneOf(val *GridsnmpsettingSnmpv3QueriesUsersOneOf) *NullableGridsnmpsettingSnmpv3QueriesUsersOneOf {
+	return &NullableGridsnmpsettingSnmpv3QueriesUsersOneOf{value: val, isSet: true}
 }
 
-func (v NullableGridsnmpsettingSnmpv3QueriesUsers) MarshalJSON() ([]byte, error) {
+func (v NullableGridsnmpsettingSnmpv3QueriesUsersOneOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGridsnmpsettingSnmpv3QueriesUsers) UnmarshalJSON(src []byte) error {
+func (v *NullableGridsnmpsettingSnmpv3QueriesUsersOneOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
