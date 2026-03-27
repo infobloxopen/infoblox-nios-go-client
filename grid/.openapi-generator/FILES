@@ -464,6 +464,8 @@ docs/MemberSnmpSetting.md
 docs/MemberStaticRoutes.md
 docs/MemberSyslogProxySetting.md
 docs/MemberSyslogServers.md
+docs/MemberSyslogServersCertificate.md
+docs/MemberSyslogServersCertificateOneOf.md
 docs/MemberThreatinsight.md
 docs/MemberThreatinsightAPI.md
 docs/MemberThreatprotection.md
@@ -505,6 +507,9 @@ docs/MemberntpsettingntpaclAcList.md
 docs/MemberntpsettingntpaclaclistAddressAc.md
 docs/MemberpreprovisioningHardwareInfo.md
 docs/MembersnmpsettingSnmpv3QueriesUsers.md
+docs/MembersnmpsettingSnmpv3QueriesUsersOneOf.md
+docs/MembersnmpsettingSnmpv3QueriesUsersOneOf1.md
+docs/MembersnmpsettingSnmpv3QueriesUsersOneOf1User.md
 docs/MembersnmpsettingTrapReceivers.md
 docs/MembersyslogproxysettingClientAcls.md
 docs/MemberthreatprotectionnatrulesNatPorts.md
@@ -995,6 +1000,8 @@ model_member_snmp_setting.go
 model_member_static_routes.go
 model_member_syslog_proxy_setting.go
 model_member_syslog_servers.go
+model_member_syslog_servers_certificate.go
+model_member_syslog_servers_certificate_one_of.go
 model_member_threatinsight.go
 model_member_threatprotection.go
 model_member_threatprotection_nat_rules.go
@@ -1032,6 +1039,9 @@ model_memberntpsettingntpacl_ac_list.go
 model_memberntpsettingntpaclaclist_address_ac.go
 model_memberpreprovisioning_hardware_info.go
 model_membersnmpsetting_snmpv3_queries_users.go
+model_membersnmpsetting_snmpv3_queries_users_one_of.go
+model_membersnmpsetting_snmpv3_queries_users_one_of_1.go
+model_membersnmpsetting_snmpv3_queries_users_one_of_1_user.go
 model_membersnmpsetting_trap_receivers.go
 model_membersyslogproxysetting_client_acls.go
 model_memberthreatprotectionnatrules_nat_ports.go
