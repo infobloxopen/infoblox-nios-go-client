@@ -11242,7 +11242,7 @@ components:
             _ref: _ref
             name: Example name
             comment: Example comment
-            authentication_protocol: Example authentication_protocol
+            authentication_protocol: NONE
           - extattrs:
               key:
                 value: ""
@@ -11251,7 +11251,7 @@ components:
             _ref: _ref
             name: Example name
             comment: Example comment
-            authentication_protocol: Example authentication_protocol
+            authentication_protocol: NONE
           sysdescr:
           - sysdescr
           - sysdescr
@@ -12840,7 +12840,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
-          authentication_protocol: Example authentication_protocol
+          authentication_protocol: NONE
         - extattrs:
             key:
               value: ""
@@ -12849,7 +12849,7 @@ components:
           _ref: _ref
           name: Example name
           comment: Example comment
-          authentication_protocol: Example authentication_protocol
+          authentication_protocol: NONE
         sysdescr:
         - sysdescr
         - sysdescr
@@ -12959,7 +12959,7 @@ components:
         _ref: _ref
         name: Example name
         comment: Example comment
-        authentication_protocol: Example authentication_protocol
+        authentication_protocol: NONE
       properties:
         _ref:
           description: The reference to the SNMPv3 user object
@@ -12971,7 +12971,6 @@ components:
           - NONE
           - MD5
           - SHA
-          example: Example authentication_protocol
           readOnly: true
           type: string
         comment:
@@ -31166,7 +31165,7 @@ components:
               _ref: _ref
               name: Example name
               comment: Example comment
-              authentication_protocol: Example authentication_protocol
+              authentication_protocol: NONE
             - extattrs:
                 key:
                   value: ""
@@ -31175,7 +31174,7 @@ components:
               _ref: _ref
               name: Example name
               comment: Example comment
-              authentication_protocol: Example authentication_protocol
+              authentication_protocol: NONE
             sysdescr:
             - sysdescr
             - sysdescr
@@ -32923,7 +32922,6 @@ components:
           - NONE
           - MD5
           - SHA
-          example: Example authentication_protocol
           readOnly: true
           type: string
         comment:
