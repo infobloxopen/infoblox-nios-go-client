@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddressOrFqdn** | Pointer to **string** | The server address or FQDN. | [optional] 
-**Certificate** | Pointer to **string** | Reference to the underlying X509Certificate object grid:x509certificate. | [optional] [readonly] 
+**Certificate** | Pointer to [**MemberSyslogServersCertificate**](MemberSyslogServersCertificate.md) |  | [optional] 
 **CertificateToken** | Pointer to **string** | The token returned by the uploadinit function call in object fileop. | [optional] 
 **ConnectionType** | Pointer to **string** | The connection type for communicating with this server. | [optional] 
 **Port** | Pointer to **int64** | The port this server listens on. | [optional] 
@@ -62,20 +62,20 @@ HasAddressOrFqdn returns a boolean if a field has been set.
 
 ### GetCertificate
 
-`func (o *MemberSyslogServers) GetCertificate() string`
+`func (o *MemberSyslogServers) GetCertificate() MemberSyslogServersCertificate`
 
 GetCertificate returns the Certificate field if non-nil, zero value otherwise.
 
 ### GetCertificateOk
 
-`func (o *MemberSyslogServers) GetCertificateOk() (*string, bool)`
+`func (o *MemberSyslogServers) GetCertificateOk() (*MemberSyslogServersCertificate, bool)`
 
 GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertificate
 
-`func (o *MemberSyslogServers) SetCertificate(v string)`
+`func (o *MemberSyslogServers) SetCertificate(v MemberSyslogServersCertificate)`
 
 SetCertificate sets Certificate field to given value.
 

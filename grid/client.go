@@ -38,6 +38,7 @@ type APIClient struct {
 	GridDhcppropertiesAPI GridDhcppropertiesAPI
 	GridDnsAPI GridDnsAPI
 	GridFiledistributionAPI GridFiledistributionAPI
+	GridJoinAPI GridJoinAPI
 	GridLicensePoolAPI GridLicensePoolAPI
 	GridLicensePoolContainerAPI GridLicensePoolContainerAPI
 	GridMaxminddbinfoAPI GridMaxminddbinfoAPI
@@ -103,6 +104,7 @@ func NewAPIClient(options ...option.ClientOption) *APIClient {
 	c.GridDhcppropertiesAPI = (*GridDhcppropertiesAPIService)(&c.Common)
 	c.GridDnsAPI = (*GridDnsAPIService)(&c.Common)
 	c.GridFiledistributionAPI = (*GridFiledistributionAPIService)(&c.Common)
+	c.GridJoinAPI = (*GridJoinAPIService)(&c.Common)
 	c.GridLicensePoolAPI = (*GridLicensePoolAPIService)(&c.Common)
 	c.GridLicensePoolContainerAPI = (*GridLicensePoolContainerAPIService)(&c.Common)
 	c.GridMaxminddbinfoAPI = (*GridMaxminddbinfoAPIService)(&c.Common)

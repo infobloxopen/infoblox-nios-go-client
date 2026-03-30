@@ -1,4 +1,4 @@
-# GridsnmpsettingSnmpv3QueriesUsers
+# MembersnmpsettingSnmpv3QueriesUsersOneOf1User
 
 ## Properties
 
@@ -14,195 +14,195 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGridsnmpsettingSnmpv3QueriesUsers
+### NewMembersnmpsettingSnmpv3QueriesUsersOneOf1User
 
-`func NewGridsnmpsettingSnmpv3QueriesUsers() *GridsnmpsettingSnmpv3QueriesUsers`
+`func NewMembersnmpsettingSnmpv3QueriesUsersOneOf1User() *MembersnmpsettingSnmpv3QueriesUsersOneOf1User`
 
-NewGridsnmpsettingSnmpv3QueriesUsers instantiates a new GridsnmpsettingSnmpv3QueriesUsers object
+NewMembersnmpsettingSnmpv3QueriesUsersOneOf1User instantiates a new MembersnmpsettingSnmpv3QueriesUsersOneOf1User object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGridsnmpsettingSnmpv3QueriesUsersWithDefaults
+### NewMembersnmpsettingSnmpv3QueriesUsersOneOf1UserWithDefaults
 
-`func NewGridsnmpsettingSnmpv3QueriesUsersWithDefaults() *GridsnmpsettingSnmpv3QueriesUsers`
+`func NewMembersnmpsettingSnmpv3QueriesUsersOneOf1UserWithDefaults() *MembersnmpsettingSnmpv3QueriesUsersOneOf1User`
 
-NewGridsnmpsettingSnmpv3QueriesUsersWithDefaults instantiates a new GridsnmpsettingSnmpv3QueriesUsers object
+NewMembersnmpsettingSnmpv3QueriesUsersOneOf1UserWithDefaults instantiates a new MembersnmpsettingSnmpv3QueriesUsersOneOf1User object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetRef
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetRef() string`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetRef() string`
 
 GetRef returns the Ref field if non-nil, zero value otherwise.
 
 ### GetRefOk
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetRefOk() (*string, bool)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetRefOk() (*string, bool)`
 
 GetRefOk returns a tuple with the Ref field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRef
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) SetRef(v string)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) SetRef(v string)`
 
 SetRef sets Ref field to given value.
 
 ### HasRef
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) HasRef() bool`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) HasRef() bool`
 
 HasRef returns a boolean if a field has been set.
 
 ### GetAuthenticationProtocol
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetAuthenticationProtocol() string`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetAuthenticationProtocol() string`
 
 GetAuthenticationProtocol returns the AuthenticationProtocol field if non-nil, zero value otherwise.
 
 ### GetAuthenticationProtocolOk
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetAuthenticationProtocolOk() (*string, bool)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetAuthenticationProtocolOk() (*string, bool)`
 
 GetAuthenticationProtocolOk returns a tuple with the AuthenticationProtocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthenticationProtocol
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) SetAuthenticationProtocol(v string)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) SetAuthenticationProtocol(v string)`
 
 SetAuthenticationProtocol sets AuthenticationProtocol field to given value.
 
 ### HasAuthenticationProtocol
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) HasAuthenticationProtocol() bool`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) HasAuthenticationProtocol() bool`
 
 HasAuthenticationProtocol returns a boolean if a field has been set.
 
 ### GetComment
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetComment() string`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetComment() string`
 
 GetComment returns the Comment field if non-nil, zero value otherwise.
 
 ### GetCommentOk
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetCommentOk() (*string, bool)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetCommentOk() (*string, bool)`
 
 GetCommentOk returns a tuple with the Comment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComment
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) SetComment(v string)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) SetComment(v string)`
 
 SetComment sets Comment field to given value.
 
 ### HasComment
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) HasComment() bool`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
 
 ### GetDisable
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetDisable() bool`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetDisable() bool`
 
 GetDisable returns the Disable field if non-nil, zero value otherwise.
 
 ### GetDisableOk
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetDisableOk() (*bool, bool)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetDisableOk() (*bool, bool)`
 
 GetDisableOk returns a tuple with the Disable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDisable
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) SetDisable(v bool)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) SetDisable(v bool)`
 
 SetDisable sets Disable field to given value.
 
 ### HasDisable
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) HasDisable() bool`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) HasDisable() bool`
 
 HasDisable returns a boolean if a field has been set.
 
 ### GetExtAttrs
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetExtAttrs() map[string]ExtAttrs`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetExtAttrs() map[string]ExtAttrs`
 
 GetExtAttrs returns the ExtAttrs field if non-nil, zero value otherwise.
 
 ### GetExtAttrsOk
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetExtAttrsOk() (*map[string]ExtAttrs, bool)`
 
 GetExtAttrsOk returns a tuple with the ExtAttrs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtAttrs
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) SetExtAttrs(v map[string]ExtAttrs)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) SetExtAttrs(v map[string]ExtAttrs)`
 
 SetExtAttrs sets ExtAttrs field to given value.
 
 ### HasExtAttrs
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) HasExtAttrs() bool`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) HasExtAttrs() bool`
 
 HasExtAttrs returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetName() string`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetNameOk() (*string, bool)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) SetName(v string)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) HasName() bool`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetPrivacyProtocol
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetPrivacyProtocol() string`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetPrivacyProtocol() string`
 
 GetPrivacyProtocol returns the PrivacyProtocol field if non-nil, zero value otherwise.
 
 ### GetPrivacyProtocolOk
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) GetPrivacyProtocolOk() (*string, bool)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) GetPrivacyProtocolOk() (*string, bool)`
 
 GetPrivacyProtocolOk returns a tuple with the PrivacyProtocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrivacyProtocol
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) SetPrivacyProtocol(v string)`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) SetPrivacyProtocol(v string)`
 
 SetPrivacyProtocol sets PrivacyProtocol field to given value.
 
 ### HasPrivacyProtocol
 
-`func (o *GridsnmpsettingSnmpv3QueriesUsers) HasPrivacyProtocol() bool`
+`func (o *MembersnmpsettingSnmpv3QueriesUsersOneOf1User) HasPrivacyProtocol() bool`
 
 HasPrivacyProtocol returns a boolean if a field has been set.
 
