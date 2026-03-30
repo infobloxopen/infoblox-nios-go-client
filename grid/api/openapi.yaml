@@ -345,6 +345,48 @@ paths:
       summary: Update a grid object
       tags:
       - Grid
+  /grid/join:
+    post:
+      description: Joins a grid member to the master grid
+      operationId: GridJoinCreate
+      parameters:
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridJoin'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateGridJoinResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      security:
+      - basicAuth: []
+      summary: Join an Infoblox appliance to an existing grid
+      tags:
+      - GridJoin
+      x-tf-resource: grid_join
   /grid:cloudapi:
     get:
       description: Returns a list of grid:cloudapi objects matching the search criteria
@@ -11149,10 +11191,24 @@ components:
           - syscontact
           snmpv3_queries_enable: false
           snmpv3_queries_users:
-          - comment: Example comment
-            user: Example user
-          - comment: Example comment
-            user: Example user
+          - extattrs:
+              key:
+                value: ""
+            privacy_protocol: Example privacy_protocol
+            disable: false
+            _ref: _ref
+            name: Example name
+            comment: Example comment
+            authentication_protocol: NONE
+          - extattrs:
+              key:
+                value: ""
+            privacy_protocol: Example privacy_protocol
+            disable: false
+            _ref: _ref
+            name: Example name
+            comment: Example comment
+            authentication_protocol: NONE
           sysdescr:
           - sysdescr
           - sysdescr
@@ -12753,10 +12809,24 @@ components:
         - syscontact
         snmpv3_queries_enable: false
         snmpv3_queries_users:
-        - comment: Example comment
-          user: Example user
-        - comment: Example comment
-          user: Example user
+        - extattrs:
+            key:
+              value: ""
+          privacy_protocol: Example privacy_protocol
+          disable: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          authentication_protocol: NONE
+        - extattrs:
+            key:
+              value: ""
+          privacy_protocol: Example privacy_protocol
+          disable: false
+          _ref: _ref
+          name: Example name
+          comment: Example comment
+          authentication_protocol: NONE
         sysdescr:
         - sysdescr
         - sysdescr
@@ -12858,17 +12928,61 @@ components:
       type: object
     GridsnmpsettingSnmpv3QueriesUsers:
       example:
+        extattrs:
+          key:
+            value: ""
+        privacy_protocol: Example privacy_protocol
+        disable: false
+        _ref: _ref
+        name: Example name
         comment: Example comment
-        user: Example user
+        authentication_protocol: NONE
       properties:
-        user:
-          description: The SNMPv3 user.
-          example: Example user
+        _ref:
+          description: The reference to the SNMPv3 user object
+          readOnly: true
+          type: string
+        authentication_protocol:
+          description: The authentication protocol to be used for this user.
+          enum:
+          - NONE
+          - MD5
+          - SHA
+          readOnly: true
           type: string
         comment:
-          description: A descriptive comment for this queries user.
+          description: A descriptive comment for the SNMPv3 User.
           example: Example comment
+          readOnly: true
           type: string
+        disable:
+          description: Determines if SNMPv3 user is disabled or not.
+          example: false
+          readOnly: true
+          type: boolean
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          readOnly: true
+          type: object
+          x-tf-extattrs: true
+        name:
+          description: The name of the user.
+          example: Example name
+          readOnly: true
+          type: string
+        privacy_protocol:
+          description: The privacy protocol to be used for this user.
+          enum:
+          - NONE
+          - DES
+          - AES
+          example: Example privacy_protocol
+          readOnly: true
+          type: string
+      readOnly: true
       type: object
     GridsnmpsettingTrapReceivers:
       example:
@@ -21253,13 +21367,15 @@ components:
         syslog_proxy_setting:
           tcp_port: 1
           client_acls:
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
             tsig_key_name: Example tsig_key_name
             use_tsig_key_name: false
-          - address: Example address
+          - _struct: _struct
+            address: Example address
             tsig_key_alg: Example tsig_key_alg
             tsig_key: Example tsig_key
             permission: Example permission
@@ -21748,10 +21864,8 @@ components:
           - syscontact
           snmpv3_queries_enable: false
           snmpv3_queries_users:
-          - comment: Example comment
-            user: Example user
-          - comment: Example comment
-            user: Example user
+          - user: user
+          - user: user
           sysdescr:
           - sysdescr
           - sysdescr
@@ -24152,10 +24266,8 @@ components:
         - syscontact
         snmpv3_queries_enable: false
         snmpv3_queries_users:
-        - comment: Example comment
-          user: Example user
-        - comment: Example comment
-          user: Example user
+        - user: user
+        - user: user
         sysdescr:
         - sysdescr
         - sysdescr
@@ -24256,19 +24368,9 @@ components:
           type: boolean
       type: object
     MembersnmpsettingSnmpv3QueriesUsers:
-      example:
-        comment: Example comment
-        user: Example user
-      properties:
-        user:
-          description: The SNMPv3 user.
-          example: Example user
-          type: string
-        comment:
-          description: A descriptive comment for this queries user.
-          example: Example comment
-          type: string
-      type: object
+      oneOf:
+      - $ref: '#/components/schemas/MembersnmpsettingSnmpv3QueriesUsers_oneOf'
+      - $ref: '#/components/schemas/MembersnmpsettingSnmpv3QueriesUsers_oneOf_1'
     MembersnmpsettingTrapReceivers:
       example:
         address: Example address
@@ -24347,13 +24449,15 @@ components:
       example:
         tcp_port: 1
         client_acls:
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
           tsig_key_name: Example tsig_key_name
           use_tsig_key_name: false
-        - address: Example address
+        - _struct: _struct
+          address: Example address
           tsig_key_alg: Example tsig_key_alg
           tsig_key: Example tsig_key
           permission: Example permission
@@ -24399,6 +24503,7 @@ components:
       type: object
     MembersyslogproxysettingClientAcls:
       example:
+        _struct: _struct
         address: Example address
         tsig_key_alg: Example tsig_key_alg
         tsig_key: Example tsig_key
@@ -24406,6 +24511,10 @@ components:
         tsig_key_name: Example tsig_key_name
         use_tsig_key_name: false
       properties:
+        _struct:
+          description: The struct type of the object. The value must be one of 'addressac'
+            and 'tsigac'.
+          type: string
         address:
           description: The address this rule applies to or "Any".
           example: Example address
@@ -24460,10 +24569,7 @@ components:
           example: Example address_or_fqdn
           type: string
         certificate:
-          description: Reference to the underlying X509Certificate object grid:x509certificate.
-          example: Example certificate
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/MemberSyslogServers_certificate'
         certificate_token:
           description: The token returned by the uploadinit function call in object
             fileop.
@@ -31063,6 +31169,35 @@ components:
       - description: The response format to update __Extensibleattributedef__ .
         title: UpdateExtensibleattributedefResponse
         type: string
+    GridJoin:
+      additionalProperties: false
+      example:
+        shared_secret: Example shared_secret
+        grid_name: Example grid_name
+        master: Example master
+      properties:
+        grid_name:
+          description: The name of the Grid.
+          example: Example grid_name
+          type: string
+        master:
+          description: The virtual IP address of the grid master.
+          example: Example master
+          type: string
+        shared_secret:
+          description: The shared secret string of the grid.
+          example: Example shared_secret
+          type: string
+      type: object
+    CreateGridJoinResponse:
+      additionalProperties: false
+      description: The response format to join a Grid.
+      example:
+        result: ""
+      properties:
+        result: {}
+      title: GridJoinResponseAsObject
+      type: object
     ListGridResponseObject:
       description: The response format to retrieve __Grid__ objects.
       properties:
@@ -31431,10 +31566,24 @@ components:
             - syscontact
             snmpv3_queries_enable: false
             snmpv3_queries_users:
-            - comment: Example comment
-              user: Example user
-            - comment: Example comment
-              user: Example user
+            - extattrs:
+                key:
+                  value: ""
+              privacy_protocol: Example privacy_protocol
+              disable: false
+              _ref: _ref
+              name: Example name
+              comment: Example comment
+              authentication_protocol: NONE
+            - extattrs:
+                key:
+                  value: ""
+              privacy_protocol: Example privacy_protocol
+              disable: false
+              _ref: _ref
+              name: Example name
+              comment: Example comment
+              authentication_protocol: NONE
             sysdescr:
             - sysdescr
             - sysdescr
@@ -33192,6 +33341,104 @@ components:
           $ref: '#/components/schemas/Natgroup'
       title: UpdateNatgroupResponseAsObject
       type: object
+    MembersnmpsettingSnmpv3QueriesUsers_oneOf:
+      description: The reference to the SNMPv3 user object
+      example:
+        user: user
+      properties:
+        user:
+          description: The reference to the SNMPv3 user object
+          type: string
+      type: object
+    MembersnmpsettingSnmpv3QueriesUsers_oneOf_1_user:
+      description: The object reference to the SNMPv3 user object
+      properties:
+        _ref:
+          description: The reference to the SNMPv3 user object
+          readOnly: true
+          type: string
+        authentication_protocol:
+          description: The authentication protocol to be used for this user.
+          enum:
+          - NONE
+          - MD5
+          - SHA
+          readOnly: true
+          type: string
+        comment:
+          description: A descriptive comment for the SNMPv3 User.
+          example: Example comment
+          readOnly: true
+          type: string
+        disable:
+          description: Determines if SNMPv3 user is disabled or not.
+          example: false
+          readOnly: true
+          type: boolean
+        extattrs:
+          additionalProperties:
+            $ref: '#/components/schemas/ExtAttrs'
+          description: "Extensible attributes associated with the object. For valid\
+            \ values for extensible attributes, see {extattrs:values}."
+          readOnly: true
+          type: object
+          x-tf-extattrs: true
+        name:
+          description: The name of the user.
+          example: Example name
+          readOnly: true
+          type: string
+        privacy_protocol:
+          description: The privacy protocol to be used for this user.
+          enum:
+          - NONE
+          - DES
+          - AES
+          example: Example privacy_protocol
+          readOnly: true
+          type: string
+      type: object
+    MembersnmpsettingSnmpv3QueriesUsers_oneOf_1:
+      properties:
+        user:
+          $ref: '#/components/schemas/MembersnmpsettingSnmpv3QueriesUsers_oneOf_1_user'
+      readOnly: true
+      type: object
+    MemberSyslogServers_certificate_oneOf:
+      properties:
+        _ref:
+          description: The reference to the Syslog endpoint server certificate.
+          readOnly: true
+          type: string
+        issuer:
+          description: The certificate issuer subject name.
+          readOnly: true
+          type: string
+        serial:
+          description: The certificate serial number in hex format.
+          readOnly: true
+          type: string
+        subject:
+          description: The certificate subject name.
+          readOnly: true
+          type: string
+        valid_not_after:
+          description: The date after which the certificate becomes invalid.
+          readOnly: true
+          type: integer
+        valid_not_before:
+          description: The date before which the certificate is not valid.
+          readOnly: true
+          type: integer
+      readOnly: true
+      type: object
+    MemberSyslogServers_certificate:
+      oneOf:
+      - description: The reference to the Syslog endpoint server certificate.
+        example: Example certificate
+        readOnly: true
+        type: string
+      - $ref: '#/components/schemas/MemberSyslogServers_certificate_oneOf'
     ListMemberResponseObject:
       description: The response format to retrieve __Member__ objects.
       properties:
@@ -33295,13 +33542,15 @@ components:
           syslog_proxy_setting:
             tcp_port: 1
             client_acls:
-            - address: Example address
+            - _struct: _struct
+              address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               permission: Example permission
               tsig_key_name: Example tsig_key_name
               use_tsig_key_name: false
-            - address: Example address
+            - _struct: _struct
+              address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               permission: Example permission
@@ -33790,10 +34039,8 @@ components:
             - syscontact
             snmpv3_queries_enable: false
             snmpv3_queries_users:
-            - comment: Example comment
-              user: Example user
-            - comment: Example comment
-              user: Example user
+            - user: user
+            - user: user
             sysdescr:
             - sysdescr
             - sysdescr
@@ -33976,13 +34223,15 @@ components:
           syslog_proxy_setting:
             tcp_port: 1
             client_acls:
-            - address: Example address
+            - _struct: _struct
+              address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               permission: Example permission
               tsig_key_name: Example tsig_key_name
               use_tsig_key_name: false
-            - address: Example address
+            - _struct: _struct
+              address: Example address
               tsig_key_alg: Example tsig_key_alg
               tsig_key: Example tsig_key
               permission: Example permission
@@ -34471,10 +34720,8 @@ components:
             - syscontact
             snmpv3_queries_enable: false
             snmpv3_queries_users:
-            - comment: Example comment
-              user: Example user
-            - comment: Example comment
-              user: Example user
+            - user: user
+            - user: user
             sysdescr:
             - sysdescr
             - sysdescr
