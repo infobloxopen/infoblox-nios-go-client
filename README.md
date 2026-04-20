@@ -3,9 +3,12 @@
 A Go client library for interacting with Infoblox NIOS via its WAPI (Web API). This library enables Go applications to automate DNS, DHCP, IPAM, and other network management tasks using Infoblox appliances.
 The library is generated using the [OpenAPI Generator](https://openapi-generator.tech) project.
 
+Version 0.2.0 introduces UUID-based resource identification for NIOS 9.1.0 and WAPI v2.14.
+
 ## Index
 
 - [Requirements](#requirements)
+- [Version Compatibility Matrix](#version-compatibility-matrix)
 - [Features](#features)
 - [Installation](#installation)
 - [Authentication](#authentication)
@@ -22,8 +25,15 @@ The library is generated using the [OpenAPI Generator](https://openapi-generator
 
 ## Requirements
 
-- Go (latest stable version recommended i.e. 1.24.4; minimum 1.18)
-- Infoblox NIOS version 9.0.6 or higher
+- Go >=1.25.1
+- Infoblox NIOS version 9.1.0 or higher
+
+## Version Compatibility Matrix
+
+| Client Version | Go Version | NIOS Version | WAPI Version |
+|----------------|------------|--------------|--------------|
+| 0.2.0 | >= 1.25.1 | 9.1.0 or higher | v2.14 |
+| 0.1.1, 0.1.0, 0.0.1 | >= 1.24.4 | 9.0.6 or higher | v2.13.6 |
 
 ## Features
 
@@ -194,7 +204,7 @@ This client library supports a comprehensive set of Infoblox NIOS objects organi
 ### DNS Management
 Manage DNS zones, records, and related configurations:
 
-`record:a`, `record:aaaa`, `record:alias`, `record:cname`, `record:mx`, `record:txt`, `record:ptr`, `record:srv`, `record:ns`, `record:host`, `record:dname`, `record:naptr`, `record:tlsa`, `record:caa`, `record:dhcid`, `record:dnskey`, `record:ds`, `record:nsec`, `record:nsec3`, `record:nsec3param`, `record:rrsig`, `record:unknown`, `record:host_ipv4addr`, `record:host_ipv6addr`, `zone_auth`, `zone_delegated`, `zone_forward`, `zone_stub`, `zone_rp`, `zone_auth_discrepancy`, `allrecords`, `recordnamepolicy`, `dns64group`, `allnsgroup`, `ddns:principalcluster`, `ddns:principalcluster:group`, `orderedresponsepolicyzones`, `sharedrecord:a`, `sharedrecord:aaaa`, `sharedrecord:cname`, `sharedrecord:mx`, `sharedrecord:srv`, `sharedrecord:txt`, `sharedrecordgroup`, `view`, `nsgroup`, `nsgroup:delegation`, `nsgroup:forwardingmember`, `nsgroup:forwardstubserver`, `nsgroup:stubmember`
+`record:a`, `record:aaaa`, `record:alias`, `record:cname`, `record:mx`, `record:txt`, `record:ptr`, `record:srv`, `record:ns`, `record:host`, `record:dname`, `record:naptr`, `record:tlsa`, `record:caa`, `record:dhcid`, `record:dnskey`, `record:ds`, `record:nsec`, `record:nsec3`, `record:nsec3param`, `record:rrsig`, `record:unknown`, `record:host_ipv4addr`, `record:host_ipv6addr`, `record:svcb`, `record:https`, `zone_auth`, `zone_delegated`, `zone_forward`, `zone_stub`, `zone_rp`, `zone_auth_discrepancy`, `allrecords`, `recordnamepolicy`, `dns64group`, `allnsgroup`, `ddns:principalcluster`, `ddns:principalcluster:group`, `orderedresponsepolicyzones`, `sharedrecord:a`, `sharedrecord:aaaa`, `sharedrecord:cname`, `sharedrecord:mx`, `sharedrecord:srv`, `sharedrecord:txt`, `sharedrecordgroup`, `view`, `nsgroup`, `nsgroup:delegation`, `nsgroup:forwardingmember`, `nsgroup:forwardstubserver`, `nsgroup:stubmember`
 
 ### DHCP Management
 Configure and manage DHCP services:
