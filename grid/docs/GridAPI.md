@@ -4,10 +4,80 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**Create**](GridAPI.md#Create) | **Post** /grid | Invoke a grid function.
 [**List**](GridAPI.md#List) | **Get** /grid | Retrieve grid objects
 [**Read**](GridAPI.md#Read) | **Get** /grid/{reference} | Get a specific grid object
 [**Update**](GridAPI.md#Update) | **Put** /grid/{reference} | Update a grid object
 
+
+
+## Create
+
+> CreateGridJoinResponse Create(ctx).Function(function).GridJoin(gridJoin).ReturnAsObject(returnAsObject).Execute()
+
+Invoke a grid function.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	function := "function_example" // string | Function call to execute.
+	gridJoin := *grid.NewGridJoin() // GridJoin | Object data to create
+
+	apiClient := grid.NewAPIClient()
+	resp, r, err := apiClient.GridAPI.Create(context.Background()).Function(function).GridJoin(gridJoin).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridAPI.Create``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Create`: CreateGridJoinResponse
+	fmt.Fprintf(os.Stdout, "Response from `GridAPI.Create`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `GridAPICreateRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**function** | **string** | Function call to execute. | 
+**gridJoin** | [**GridJoin**](GridJoin.md) | Object data to create | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+[**CreateGridJoinResponse**](CreateGridJoinResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## List

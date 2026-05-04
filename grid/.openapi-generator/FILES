@@ -52,6 +52,7 @@ docs/CreateExtensibleattributedefResponse.md
 docs/CreateExtensibleattributedefResponseAsObject.md
 docs/CreateGmcgroupResponse.md
 docs/CreateGmcgroupResponseAsObject.md
+docs/CreateGridJoinResponse.md
 docs/CreateGridServicerestartGroupOrderResponse.md
 docs/CreateGridServicerestartGroupOrderResponseAsObject.md
 docs/CreateGridServicerestartGroupResponse.md
@@ -229,6 +230,7 @@ docs/GridFiledistribution.md
 docs/GridFiledistributionAPI.md
 docs/GridHttpProxyServerSetting.md
 docs/GridInformationalBannerSetting.md
+docs/GridJoin.md
 docs/GridLicensePool.md
 docs/GridLicensePoolAPI.md
 docs/GridLicensePoolContainer.md
@@ -622,6 +624,7 @@ model_create_extensibleattributedef_response.go
 model_create_extensibleattributedef_response_as_object.go
 model_create_gmcgroup_response.go
 model_create_gmcgroup_response_as_object.go
+model_create_grid_join_response.go
 model_create_grid_servicerestart_group_order_response.go
 model_create_grid_servicerestart_group_order_response_as_object.go
 model_create_grid_servicerestart_group_response.go
@@ -785,6 +788,7 @@ model_grid_external_syslog_backup_servers.go
 model_grid_filedistribution.go
 model_grid_http_proxy_server_setting.go
 model_grid_informational_banner_setting.go
+model_grid_join.go
 model_grid_license_pool.go
 model_grid_license_pool_container.go
 model_grid_license_pool_subpools.go

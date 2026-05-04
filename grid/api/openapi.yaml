@@ -209,6 +209,58 @@ paths:
       summary: Retrieve grid objects
       tags:
       - Grid
+    post:
+      description: Invoke a grid function. Use the '_function' query parameter to
+        specify the function name and include the arguments in the request body
+      operationId: GridCreate
+      parameters:
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Function call to execute.
+        explode: true
+        in: query
+        name: _function
+        required: true
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridJoin'
+        description: Object data to create
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateGridJoinResponse'
+          description: Object created successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Invoke a grid function.
+      tags:
+      - Grid
+      x-tf-resource: grid_join
   /grid/{reference}:
     get:
       description: Returns a specific grid object by reference
@@ -10875,6 +10927,15 @@ components:
       required: false
       schema:
         type: object
+      style: form
+    Function:
+      description: Function call to execute.
+      explode: true
+      in: query
+      name: _function
+      required: true
+      schema:
+        type: string
       style: form
   schemas:
     ExtAttrs:
@@ -30792,6 +30853,35 @@ components:
       - description: The response format to update __Extensibleattributedef__ .
         title: UpdateExtensibleattributedefResponse
         type: string
+    CreateGridJoinResponse:
+      additionalProperties: false
+      description: The response format to join a Grid.
+      example:
+        result: ""
+      properties:
+        result: {}
+      title: GridJoinResponseAsObject
+      type: object
+    GridJoin:
+      additionalProperties: false
+      example:
+        shared_secret: Example shared_secret
+        grid_name: Example grid_name
+        master: Example master
+      properties:
+        grid_name:
+          description: The name of the Grid.
+          example: Example grid_name
+          type: string
+        master:
+          description: The virtual IP address of the grid master.
+          example: Example master
+          type: string
+        shared_secret:
+          description: The shared secret string of the grid.
+          example: Example shared_secret
+          type: string
+      type: object
     ListGridResponseObject:
       description: The response format to retrieve __Grid__ objects.
       properties:
