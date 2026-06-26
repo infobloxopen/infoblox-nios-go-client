@@ -27567,8 +27567,12 @@ components:
           comment: Example comment
         ms_ddns_mode: Example ms_ddns_mode
         network_associations:
-        - network
-        - network
+        - network_view: Example network_view
+          _ref: Example _ref
+          network: Example network
+        - network_view: Example network_view
+          _ref: Example _ref
+          network: Example network
         allow_update:
         - _struct: _struct
           address: Example address
@@ -28163,9 +28167,7 @@ components:
           enum:
           - network
           items:
-            enum:
-            - network
-            type: string
+            $ref: '#/components/schemas/ZoneAuthNetworkAssociations'
           readOnly: true
           type: array
         network_view:
@@ -29491,6 +29493,28 @@ components:
           example: false
           readOnly: true
           type: boolean
+      type: object
+    ZoneAuthNetworkAssociations:
+      example:
+        network_view: Example network_view
+        _ref: Example _ref
+        network: Example network
+      properties:
+        _ref:
+          description: The reference to the network or network container object.
+          example: Example _ref
+          readOnly: true
+          type: string
+        network:
+          description: The network address in CIDR notation.
+          example: Example network
+          readOnly: true
+          type: string
+        network_view:
+          description: The name of the network view.
+          example: Example network_view
+          readOnly: true
+          type: string
       type: object
     ZoneAuthScavengingSettings:
       example:
@@ -41362,8 +41386,12 @@ components:
             comment: Example comment
           ms_ddns_mode: Example ms_ddns_mode
           network_associations:
-          - network
-          - network
+          - network_view: Example network_view
+            _ref: Example _ref
+            network: Example network
+          - network_view: Example network_view
+            _ref: Example _ref
+            network: Example network
           allow_update:
           - _struct: _struct
             address: Example address
@@ -41849,8 +41877,12 @@ components:
             comment: Example comment
           ms_ddns_mode: Example ms_ddns_mode
           network_associations:
-          - network
-          - network
+          - network_view: Example network_view
+            _ref: Example _ref
+            network: Example network
+          - network_view: Example network_view
+            _ref: Example _ref
+            network: Example network
           allow_update:
           - _struct: _struct
             address: Example address

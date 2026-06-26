@@ -76,7 +76,7 @@ Name | Type | Description | Notes
 **MsSecondaries** | Pointer to [**[]ZoneAuthMsSecondaries**](ZoneAuthMsSecondaries.md) | The list with the Microsoft DNS servers that are secondary servers for the zone. | [optional] 
 **MsSyncDisabled** | Pointer to **bool** | This flag controls whether this zone is synchronized with Microsoft DNS servers. | [optional] 
 **MsSyncMasterName** | Pointer to **string** | The name of MS synchronization master for this zone. | [optional] [readonly] 
-**NetworkAssociations** | Pointer to **[]string** | The list with the associated network/network container information. | [optional] [readonly] 
+**NetworkAssociations** | Pointer to [**[]ZoneAuthNetworkAssociations**](ZoneAuthNetworkAssociations.md) | The list with the associated network/network container information. | [optional] [readonly] 
 **NetworkView** | Pointer to **string** | The name of the network view in which this zone resides. | [optional] [readonly] 
 **NotifyDelay** | Pointer to **int64** | The number of seconds in delay with which notify messages are sent to secondaries. | [optional] 
 **NsGroup** | Pointer to **string** | The name server group that serves DNS for this zone. | [optional] 
@@ -1946,20 +1946,20 @@ HasMsSyncMasterName returns a boolean if a field has been set.
 
 ### GetNetworkAssociations
 
-`func (o *GetZoneAuthResponse) GetNetworkAssociations() []string`
+`func (o *GetZoneAuthResponse) GetNetworkAssociations() []ZoneAuthNetworkAssociations`
 
 GetNetworkAssociations returns the NetworkAssociations field if non-nil, zero value otherwise.
 
 ### GetNetworkAssociationsOk
 
-`func (o *GetZoneAuthResponse) GetNetworkAssociationsOk() (*[]string, bool)`
+`func (o *GetZoneAuthResponse) GetNetworkAssociationsOk() (*[]ZoneAuthNetworkAssociations, bool)`
 
 GetNetworkAssociationsOk returns a tuple with the NetworkAssociations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworkAssociations
 
-`func (o *GetZoneAuthResponse) SetNetworkAssociations(v []string)`
+`func (o *GetZoneAuthResponse) SetNetworkAssociations(v []ZoneAuthNetworkAssociations)`
 
 SetNetworkAssociations sets NetworkAssociations field to given value.
 
