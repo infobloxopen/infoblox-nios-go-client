@@ -29495,6 +29495,7 @@ components:
           type: boolean
       type: object
     ZoneAuthNetworkAssociations:
+      additionalProperties: true
       example:
         network_view: Example network_view
         _ref: Example _ref
