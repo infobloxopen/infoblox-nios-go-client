@@ -649,6 +649,7 @@ docs/ZoneAuthMsAllowTransfer.md
 docs/ZoneAuthMsDcNsRecordCreation.md
 docs/ZoneAuthMsPrimaries.md
 docs/ZoneAuthMsSecondaries.md
+docs/ZoneAuthNetworkAssociations.md
 docs/ZoneAuthScavengingSettings.md
 docs/ZoneAuthUpdateForwarding.md
 docs/ZoneDelegated.md
@@ -1237,6 +1238,7 @@ model_zone_auth_ms_allow_transfer.go
 model_zone_auth_ms_dc_ns_record_creation.go
 model_zone_auth_ms_primaries.go
 model_zone_auth_ms_secondaries.go
+model_zone_auth_network_associations.go
 model_zone_auth_scavenging_settings.go
 model_zone_auth_update_forwarding.go
 model_zone_delegated.go
