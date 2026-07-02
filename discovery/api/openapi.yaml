@@ -7275,10 +7275,12 @@ components:
           description: The DNS view name for private IPs.
           example: Example dns_view_private_ip
           type: string
+          x-go-skip-nil-check: true
         dns_view_public_ip:
           description: The DNS view name for public IPs.
           example: Example dns_view_public_ip
           type: string
+          x-go-skip-nil-check: true
         domain_name:
           description: The name of the domain to use with keystone v3.
           example: Example domain_name
