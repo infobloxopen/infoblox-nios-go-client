@@ -6383,7 +6383,7 @@ components:
         - enabled_attributes
       properties:
         enabled_attributes:
-          description: The list of NIOS extensible attributes enalbed for publishsing
+          description: The list of NIOS extensible attributes enalbed for publishing
             to Cisco ISE endpoint.
           enum:
           - CLIENT_ID
@@ -6437,7 +6437,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
