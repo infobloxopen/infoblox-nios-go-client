@@ -32,8 +32,8 @@ Version 0.2.0 introduces UUID-based resource identification for NIOS 9.1.0 and W
 
 | Client Version | Go Version | NIOS Version | WAPI Version |
 |----------------|------------|--------------|--------------|
-| 0.2.0 | >= 1.25.1 | 9.1.0 or higher | v2.14 |
-| 0.1.1, 0.1.0, 0.0.1 | >= 1.24.4 | 9.0.6 or higher | v2.13.6 |
+| 0.2.1, 0.2.0 | >= 1.25.1 | 9.1.0 or higher | v2.14 |
+| 0.1.2, 0.1.1, 0.1.0, 0.0.1 | >= 1.25.1 | 9.0.6 or higher | v2.13.6 |
 
 ## Features
 
@@ -193,7 +193,7 @@ This will print detailed request and response information to the console, helpin
 - Search and filter objects
 - Customizable request parameters
 
-Refer to [Infoblox WAPI documentation](https://docs.infoblox.com/display/API/WAPI+Reference) for supported object types and fields.
+Refer to [Infoblox WAPI documentation](https://docs.infoblox.com/space/NIOS) for supported object types and fields.
 
 Alternatively, you can also refer to the [Infoblox NIOS Swagger](https://infobloxopen.github.io/nios-swagger/) to view the API endpoints and their parameters.
 
