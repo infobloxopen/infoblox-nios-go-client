@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Ref** | Pointer to **string** | The reference to the object. | [optional] [readonly] 
-**AssociationType** | Pointer to **string** | The value indicating whether the failover assoctaion is Microsoft or Grid based. This is a read-only attribute. | [optional] [readonly] 
+**AssociationType** | Pointer to **string** | The value indicating whether the failover association is Microsoft or Grid based. This is a read-only attribute. | [optional] [readonly] 
 **Comment** | Pointer to **string** | A descriptive comment about a DHCP failover object. | [optional] 
 **ExtAttrsPlus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
 **ExtAttrsMinus** | Pointer to [**map[string]ExtAttrs**](ExtAttrs.md) | Extensible attributes associated with the object. For valid values for extensible attributes, see {extattrs:values}. | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **MsFailoverMode** | Pointer to **string** | The mode for the failover association. | [optional] 
 **MsFailoverPartner** | Pointer to **string** | Failover partner defined in the association with the Microsoft Server. | [optional] 
 **MsHotstandbyPartnerRole** | Pointer to **string** | The partner role in the case of HotStandby. | [optional] 
-**MsIsConflict** | Pointer to **bool** | Determines if the matching Microsfot failover association (if any) is in synchronization (False) or not (True). If there is no matching failover association the returned values is False. This is a read-only attribute. | [optional] [readonly] 
+**MsIsConflict** | Pointer to **bool** | Determines if the matching Microsoft failover association (if any) is in synchronization (False) or not (True). If there is no matching failover association the returned values is False. This is a read-only attribute. | [optional] [readonly] 
 **MsPreviousState** | Pointer to **string** | The previous failover association state. This is a read-only attribute. | [optional] [readonly] 
 **MsServer** | Pointer to **string** | The primary Microsoft Server. | [optional] 
 **MsSharedSecret** | Pointer to **string** | The failover association authentication. This is a write-only attribute. | [optional] 
