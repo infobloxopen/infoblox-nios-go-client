@@ -139,10 +139,10 @@ func (c *Configuration) ValidatePassthrough() error {
 
 	var missing []string
 	if c.PortalURL == "" {
-		missing = append(missing, fmt.Sprintf("'csp_url' (or %s)", envPortalURL))
+		missing = append(missing, fmt.Sprintf("'infoblox_portal_url' (or %s)", envPortalURL))
 	}
 	if c.PortalAPIKey == "" {
-		missing = append(missing, fmt.Sprintf("'api_key' (or %s)", envPortalKey))
+		missing = append(missing, fmt.Sprintf("'infoblox_portal_key' (or %s)", envPortalKey))
 	}
 	if c.NIOSLicenseUID == "" {
 		missing = append(missing, fmt.Sprintf("'nios_license_uid' (or %s)", envNiosLicenseUID))
