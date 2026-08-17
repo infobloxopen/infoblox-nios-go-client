@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The Cisco ISE attribute name that is enabled for publishsing from a Cisco ISE endpoint. | [optional] 
+**Name** | Pointer to **string** | The Cisco ISE attribute name that is enabled for publishing from a Cisco ISE endpoint. | [optional] 
 **MappedEa** | Pointer to **string** | The name of the extensible attribute definition object the Cisco ISE attribute that is enabled for subscription is mapped on. | [optional] 
 
 ## Methods
