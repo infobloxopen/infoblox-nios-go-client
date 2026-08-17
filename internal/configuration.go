@@ -131,8 +131,8 @@ func (c *Configuration) VerifyTLS() bool {
 	return c.SslVerify || c.IsPassthrough()
 }
 
-// ValidatePassthrough reports what passthrough mode is missing.
-func (c *Configuration) ValidatePassthrough() error {
+// CheckPortalConfig reports which Infoblox Portal settings passthrough mode is missing.
+func (c *Configuration) CheckPortalConfig() error {
 	if !c.IsPassthrough() {
 		return nil
 	}

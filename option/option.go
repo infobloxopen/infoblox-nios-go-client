@@ -79,13 +79,13 @@ func WithPortalAPIKey(portalAPIKey string) ClientOption {
 	}
 }
 
-// ValidatePassthrough applies the options and reports what passthrough mode is missing.
+// ValidatePassthrough reports whether the options describe a usable passthrough setup.
 func ValidatePassthrough(options ...ClientOption) error {
 	configuration := internal.NewConfiguration()
 	for _, opt := range options {
 		opt(configuration)
 	}
-	return configuration.ValidatePassthrough()
+	return configuration.CheckPortalConfig()
 }
 
 // WithHTTPClient returns a ClientOption that sets the HTTPClient to use for the SDK.
