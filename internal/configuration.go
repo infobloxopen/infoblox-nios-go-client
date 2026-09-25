@@ -75,6 +75,7 @@ type Configuration struct {
 	DefaultExtAttrs  map[string]struct{ Value string }
 	ClientCert       []byte
 	ClientKey        []byte
+	CACert           []byte
 	SslVerify        bool
 	ProxyURL         *url.URL
 }
@@ -101,7 +102,8 @@ func NewConfiguration() *Configuration {
 		DefaultExtAttrs:  make(map[string]struct{ Value string }),
 		ClientCert:       readFile(envClientCertPath),
 		ClientKey:        readFile(envClientKeyPath),
-		SslVerify:        false,
+		CACert:           readFile(envCACertPath),
+		SslVerify:        lookupEnvBool(envSslVerify, false),
 	}
 	return cfg
 }

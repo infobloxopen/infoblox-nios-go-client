@@ -2,6 +2,8 @@ package option
 
 import (
 	"net/http"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -62,4 +64,45 @@ func TestWithDebug(t *testing.T) {
 	opt := WithDebug(true)
 	opt(config)
 	assert.Equal(t, true, config.Debug)
+}
+
+func TestWithSslVerify(t *testing.T) {
+	config := &internal.Configuration{}
+	opt := WithSslVerify(true)
+	opt(config)
+	assert.Equal(t, true, config.SslVerify)
+}
+
+func TestWithCACert(t *testing.T) {
+	config := &internal.Configuration{}
+	caCertPEM := []byte("test-ca-cert-pem")
+	opt := WithCACert(caCertPEM)
+	opt(config)
+	assert.Equal(t, caCertPEM, config.CACert)
+}
+
+func TestWithCACert_Empty(t *testing.T) {
+	config := &internal.Configuration{}
+	opt := WithCACert(nil)
+	opt(config)
+	assert.Nil(t, config.CACert)
+}
+
+func TestWithCACertPath(t *testing.T) {
+	caCertPEM := []byte("test-ca-cert-pem")
+	caCertPath := filepath.Join(t.TempDir(), "ca.cert.pem")
+	require := assert.New(t)
+	require.NoError(os.WriteFile(caCertPath, caCertPEM, 0o600))
+
+	config := &internal.Configuration{}
+	opt := WithCACertPath(caCertPath)
+	opt(config)
+	assert.Equal(t, caCertPEM, config.CACert)
+}
+
+func TestWithCACertPath_MissingFile(t *testing.T) {
+	config := &internal.Configuration{}
+	opt := WithCACertPath(filepath.Join(t.TempDir(), "does-not-exist.pem"))
+	opt(config)
+	assert.Nil(t, config.CACert)
 }

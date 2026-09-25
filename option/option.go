@@ -1,8 +1,10 @@
 package option
 
 import (
+	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 
 	"github.com/infobloxopen/infoblox-nios-go-client/internal"
@@ -122,6 +124,47 @@ func WithClientName(clientName string) ClientOption {
 func WithDebug(debug bool) ClientOption {
 	return func(configuration *internal.Configuration) {
 		configuration.Debug = debug
+	}
+}
+
+// WithSslVerify returns a ClientOption that enables or disables TLS certificate verification
+// for direct-to-Grid connections. Can also be configured using the `NIOS_SSL_VERIFY` environment
+// variable. Optional. Defaults to false for backward compatibility; connections through the
+// Infoblox Portal are always verified regardless of this setting.
+func WithSslVerify(sslVerify bool) ClientOption {
+	return func(configuration *internal.Configuration) {
+		configuration.SslVerify = sslVerify
+	}
+}
+
+// WithCACert returns a ClientOption that sets a PEM-encoded CA certificate bundle used to verify
+// the NIOS Grid's TLS certificate when SslVerify is enabled. Can also be configured using the
+// `CA_CERT_PATH` environment variable.
+// Optional. If not provided, the system trust store is used.
+func WithCACert(caCertPEM []byte) ClientOption {
+	return func(configuration *internal.Configuration) {
+		if len(caCertPEM) > 0 {
+			configuration.CACert = caCertPEM
+		}
+	}
+}
+
+// WithCACertPath returns a ClientOption that reads a PEM-encoded CA certificate bundle from the
+// given file path and uses it to verify the NIOS Grid's TLS certificate when SslVerify is enabled.
+// Can also be configured using the `CA_CERT_PATH` environment variable.
+// Optional. If not provided, the system trust store is used.
+func WithCACertPath(caCertPath string) ClientOption {
+	return func(configuration *internal.Configuration) {
+		caCertPath = strings.TrimSpace(caCertPath)
+		if caCertPath == "" {
+			return
+		}
+		data, err := os.ReadFile(caCertPath)
+		if err != nil {
+			log.Printf("Error reading CA certificate file '%s': %v", caCertPath, err)
+			return
+		}
+		configuration.CACert = data
 	}
 }
 
