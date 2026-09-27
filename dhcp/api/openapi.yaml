@@ -739,8 +739,8 @@ paths:
       summary: Create a dhcpoptiondefinition object
       tags:
       - Dhcpoptiondefinition
-      x-tf-resource: dhcp_dhcpoptiondefinition
-      x-tf-datasource: dhcp_dhcpoptiondefinition
+      x-tf-resource: dhcp_optiondefinition
+      x-tf-datasource: dhcp_optiondefinition
   /dhcpoptiondefinition/{reference}:
     delete:
       description: Deletes a specific dhcpoptiondefinition object by reference
@@ -1068,8 +1068,8 @@ paths:
       summary: Create a dhcpoptionspace object
       tags:
       - Dhcpoptionspace
-      x-tf-resource: dhcp_dhcpoptionspace
-      x-tf-datasource: dhcp_dhcpoptionspace
+      x-tf-resource: dhcp_optionspace
+      x-tf-datasource: dhcp_optionspace
   /dhcpoptionspace/{reference}:
     delete:
       description: Deletes a specific dhcpoptionspace object by reference
@@ -4151,8 +4151,8 @@ paths:
       summary: Create a ipv6dhcpoptiondefinition object
       tags:
       - Ipv6dhcpoptiondefinition
-      x-tf-resource: dhcp_ipv6dhcpoptiondefinition
-      x-tf-datasource: dhcp_ipv6dhcpoptiondefinition
+      x-tf-resource: dhcp_ipv6optiondefinition
+      x-tf-datasource: dhcp_ipv6optiondefinition
   /ipv6dhcpoptiondefinition/{reference}:
     delete:
       description: Deletes a specific ipv6dhcpoptiondefinition object by reference
@@ -4481,8 +4481,8 @@ paths:
       summary: Create a ipv6dhcpoptionspace object
       tags:
       - Ipv6dhcpoptionspace
-      x-tf-resource: dhcp_ipv6dhcpoptionspace
-      x-tf-datasource: dhcp_ipv6dhcpoptionspace
+      x-tf-resource: dhcp_ipv6optionspace
+      x-tf-datasource: dhcp_ipv6optionspace
   /ipv6dhcpoptionspace/{reference}:
     delete:
       description: Deletes a specific ipv6dhcpoptionspace object by reference
@@ -9053,7 +9053,7 @@ components:
           readOnly: true
           type: string
         association_type:
-          description: The value indicating whether the failover assoctaion is Microsoft
+          description: The value indicating whether the failover association is Microsoft
             or Grid based. This is a read-only attribute.
           enum:
           - GRID
@@ -9169,7 +9169,7 @@ components:
           example: Example ms_hotstandby_partner_role
           type: string
         ms_is_conflict:
-          description: Determines if the matching Microsfot failover association (if
+          description: Determines if the matching Microsoft failover association (if
             any) is in synchronization (False) or not (True). If there is no matching
             failover association the returned values is False. This is a read-only
             attribute.
@@ -15203,7 +15203,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -18787,7 +18787,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
