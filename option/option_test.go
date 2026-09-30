@@ -105,4 +105,14 @@ func TestWithCACertPath_MissingFile(t *testing.T) {
 	opt := WithCACertPath(filepath.Join(t.TempDir(), "does-not-exist.pem"))
 	opt(config)
 	assert.Nil(t, config.CACert)
+	assert.ErrorIs(t, config.CACertErr, os.ErrNotExist)
+}
+
+func TestValidateCACert(t *testing.T) {
+	caCertPath := filepath.Join(t.TempDir(), "ca.cert.pem")
+	assert.NoError(t, os.WriteFile(caCertPath, []byte("test-ca-cert-pem"), 0o600))
+
+	assert.NoError(t, ValidateCACert())
+	assert.NoError(t, ValidateCACert(WithCACertPath(caCertPath)))
+	assert.ErrorIs(t, ValidateCACert(WithCACertPath(filepath.Join(t.TempDir(), "does-not-exist.pem"))), os.ErrNotExist)
 }

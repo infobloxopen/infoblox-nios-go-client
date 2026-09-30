@@ -76,6 +76,7 @@ type Configuration struct {
 	ClientCert       []byte
 	ClientKey        []byte
 	CACert           []byte
+	CACertErr        error
 	SslVerify        bool
 	ProxyURL         *url.URL
 }
@@ -153,6 +154,11 @@ func (c *Configuration) CheckPortalConfig() error {
 		return fmt.Errorf("NIOS through the Infoblox Portal requires %s", strings.Join(missing, ", "))
 	}
 	return nil
+}
+
+// CheckCACert reports whether the configured CA certificate file could be read.
+func (c *Configuration) CheckCACert() error {
+	return c.CACertErr
 }
 
 // URL formats template on a index using given variables

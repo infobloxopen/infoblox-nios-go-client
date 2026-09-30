@@ -1,7 +1,7 @@
 package option
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 	"net/url"
 	"os"
@@ -127,19 +127,16 @@ func WithDebug(debug bool) ClientOption {
 	}
 }
 
-// WithSslVerify returns a ClientOption that enables or disables TLS certificate verification
-// for direct-to-Grid connections. Can also be configured using the `NIOS_SSL_VERIFY` environment
-// variable. Optional. Defaults to false for backward compatibility; connections through the
-// Infoblox Portal are always verified regardless of this setting.
+// WithSslVerify returns a ClientOption that enables TLS certificate verification for direct-to-Grid connections.
+// Can also be configured using the `NIOS_SSL_VERIFY` environment variable.
+// Optional. Defaults to false.
 func WithSslVerify(sslVerify bool) ClientOption {
 	return func(configuration *internal.Configuration) {
 		configuration.SslVerify = sslVerify
 	}
 }
 
-// WithCACert returns a ClientOption that sets a PEM-encoded CA certificate bundle used to verify
-// the NIOS Grid's TLS certificate when SslVerify is enabled. Can also be configured using the
-// `CA_CERT_PATH` environment variable.
+// WithCACert returns a ClientOption that sets a PEM-encoded CA bundle used to verify the Grid's certificate.
 // Optional. If not provided, the system trust store is used.
 func WithCACert(caCertPEM []byte) ClientOption {
 	return func(configuration *internal.Configuration) {
@@ -149,8 +146,7 @@ func WithCACert(caCertPEM []byte) ClientOption {
 	}
 }
 
-// WithCACertPath returns a ClientOption that reads a PEM-encoded CA certificate bundle from the
-// given file path and uses it to verify the NIOS Grid's TLS certificate when SslVerify is enabled.
+// WithCACertPath returns a ClientOption that reads a PEM-encoded CA bundle from the given file path.
 // Can also be configured using the `CA_CERT_PATH` environment variable.
 // Optional. If not provided, the system trust store is used.
 func WithCACertPath(caCertPath string) ClientOption {
@@ -161,11 +157,20 @@ func WithCACertPath(caCertPath string) ClientOption {
 		}
 		data, err := os.ReadFile(caCertPath)
 		if err != nil {
-			log.Printf("Error reading CA certificate file '%s': %v", caCertPath, err)
+			configuration.CACertErr = fmt.Errorf("reading CA certificate file %q: %w", caCertPath, err)
 			return
 		}
 		configuration.CACert = data
 	}
+}
+
+// ValidateCACert reports whether the CA certificate file set by the options could be read.
+func ValidateCACert(options ...ClientOption) error {
+	configuration := internal.NewConfiguration()
+	for _, opt := range options {
+		opt(configuration)
+	}
+	return configuration.CheckCACert()
 }
 
 // WithProxyURL returns a ClientOption that sets the URL for Proxy Server
