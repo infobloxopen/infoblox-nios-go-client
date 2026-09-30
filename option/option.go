@@ -1,10 +1,8 @@
 package option
 
 import (
-	"fmt"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
 
 	"github.com/infobloxopen/infoblox-nios-go-client/internal"
@@ -146,25 +144,18 @@ func WithCACert(caCertPEM []byte) ClientOption {
 	}
 }
 
-// WithCACertPath returns a ClientOption that reads a PEM-encoded CA bundle from the given file path.
+// WithCACertPath returns a ClientOption that sets the path to a PEM-encoded CA bundle used to verify the Grid's certificate.
 // Can also be configured using the `CA_CERT_PATH` environment variable.
 // Optional. If not provided, the system trust store is used.
 func WithCACertPath(caCertPath string) ClientOption {
 	return func(configuration *internal.Configuration) {
-		caCertPath = strings.TrimSpace(caCertPath)
-		if caCertPath == "" {
-			return
+		if caCertPath = strings.TrimSpace(caCertPath); caCertPath != "" {
+			configuration.CACertPath = caCertPath
 		}
-		data, err := os.ReadFile(caCertPath)
-		if err != nil {
-			configuration.CACertErr = fmt.Errorf("reading CA certificate file %q: %w", caCertPath, err)
-			return
-		}
-		configuration.CACert = data
 	}
 }
 
-// ValidateCACert reports whether the CA certificate file set by the options could be read.
+// ValidateCACert reports whether the CA certificate bundle set by the options can be read and parsed.
 func ValidateCACert(options ...ClientOption) error {
 	configuration := internal.NewConfiguration()
 	for _, opt := range options {

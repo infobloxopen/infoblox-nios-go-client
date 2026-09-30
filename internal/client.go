@@ -138,12 +138,20 @@ func NewAPIClient(basePath string, cfg *Configuration) *APIClient {
 		InsecureSkipVerify: !cfg.VerifyTLS(),
 	}
 
-	if cfg.VerifyTLS() && len(cfg.CACert) > 0 {
-		pool := x509.NewCertPool()
-		if pool.AppendCertsFromPEM(cfg.CACert) {
-			tlsConfig.RootCAs = pool
-		} else {
-			log.Printf("Failed to parse CA certificate PEM; falling back to the system trust store")
+	if cfg.VerifyTLS() {
+		caCert, err := cfg.LoadCACert()
+		switch {
+		case err != nil:
+			log.Printf("%v; using the system trust store", err)
+		case len(caCert) > 0:
+			pool := x509.NewCertPool()
+			if pool.AppendCertsFromPEM(caCert) {
+				tlsConfig.RootCAs = pool
+			} else {
+				log.Printf("Failed to parse CA certificate PEM; falling back to the system trust store")
+			}
+		case cfg.SslVerify:
+			log.Printf("SslVerify is enabled but no CA certificate was loaded; using the system trust store")
 		}
 	}
 
