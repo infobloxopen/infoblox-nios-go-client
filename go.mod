@@ -1,10 +1,10 @@
 module github.com/infobloxopen/infoblox-nios-go-client
 
-go 1.25.1
+go 1.26.0
 
 require (
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/net v0.55.0
+	golang.org/x/net v0.60.0
 )
 
 require (
