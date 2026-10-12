@@ -63,6 +63,8 @@ You can configure the authentication for the client using environment variables 
 | NIOS_PASSWORD | Password for authentication | `password`                             |
 | CLIENT_CERT_PATH | Path to the cert file | `client.cert.pem`
 | CLIENT_KEY_PATH | Path to the key file | `client.key.pem`
+| NIOS_SSL_VERIFY | Enable TLS certificate verification for direct-to-Grid connections (default `false`) | `true`
+| CA_CERT_PATH | Path to a PEM-encoded CA bundle used to verify the Grid's certificate when `NIOS_SSL_VERIFY` is enabled | `ca.cert.pem`
 
 ### Using Configuration for the API Client
 
@@ -83,6 +85,23 @@ apiClient := client.NewAPIClient(
 ```
 
 > Note: The Password is a secret and should be handled securely. Hardcoding the Password in your code is not recommended.
+
+By default the client does not verify the NIOS Grid's TLS certificate, since a Grid typically
+serves a self-signed certificate. If the Grid's WAPI endpoint presents a certificate issued by a
+trusted internal or public CA, verification can be enabled with `option.WithSslVerify(true)`. To
+validate against a custom CA bundle rather than the system trust store, also supply the bundle
+with `option.WithCACert([]byte)` (inline PEM) or `option.WithCACertPath(string)` (path to a PEM
+file):
+
+```go
+apiClient := client.NewAPIClient(
+    option.WithNIOSHostUrl(NIOS_HOST_URL),
+    option.WithNIOSUsername("username"),
+    option.WithNIOSPassword("password"),
+    option.WithSslVerify(true),
+    option.WithCACertPath("/path/to/ca.cert.pem"),
+)
+```
 
 ## Usage
 
