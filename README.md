@@ -23,7 +23,7 @@ The library is generated using the [OpenAPI Generator](https://openapi-generator
 
 ## Requirements
 
-- Go >=1.25.1
+- Go >=1.26.0
 - Infoblox NIOS version 9.0.6 or higher
 
 ## Version Compatibility Matrix
@@ -32,6 +32,7 @@ The library is generated using the [OpenAPI Generator](https://openapi-generator
 |----------------|------------|--------------|--------------|
 | 0.2.1, 0.2.0 | >= 1.25.1 | 9.1.0 or higher | v2.14 |
 | 0.1.2, 0.1.1, 0.1.0, 0.0.1 | >= 1.25.1 | 9.0.6 or higher | v2.13.6 |
+| 0.1.3 | >= 1.26.0 | 9.0.6 or higher | v2.13.6 |
 
 ## Features
 
