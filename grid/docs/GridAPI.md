@@ -105,7 +105,7 @@ import (
 func main() {
 	reference := "reference_example" // string | Reference of the grid object
 	function := "function_example" // string | Function call to execute.
-	gridFunctionCall := grid.GridFunctionCall{GridFunctionCallOneOf: grid.NewGridFunctionCallOneOf()} // GridFunctionCall | Object data for the function call
+	gridFunctionCall := grid.GridFunctionCall{RestartServiceActionRequest: grid.NewRestartServiceActionRequest()} // GridFunctionCall | Object data for the function call
 
 	apiClient := grid.NewAPIClient()
 	r, err := apiClient.GridAPI.CreateFunctionCall(context.Background(), reference).Function(function).GridFunctionCall(gridFunctionCall).Execute()

@@ -11004,7 +11004,7 @@ components:
       type: object
     GridFunctionCall:
       oneOf:
-      - $ref: '#/components/schemas/GridFunctionCall_oneOf'
+      - $ref: '#/components/schemas/RestartServiceActionRequest'
     Grid:
       additionalProperties: false
       example:
@@ -30939,7 +30939,7 @@ components:
           example: Example shared_secret
           type: string
       type: object
-    GridFunctionCall_oneOf:
+    RestartServiceActionRequest:
       additionalProperties: false
       description: The request format for Restart Services Function Call.
       example:
@@ -30990,6 +30990,7 @@ components:
         user_name:
           description: "Name of the user requesting the restart, recorded by NIOS."
           type: string
+      title: RestartServiceActionRequest
       type: object
     ListGridResponseObject:
       description: The response format to retrieve __Grid__ objects.

@@ -229,7 +229,6 @@ docs/GridExternalSyslogBackupServers.md
 docs/GridFiledistribution.md
 docs/GridFiledistributionAPI.md
 docs/GridFunctionCall.md
-docs/GridFunctionCallOneOf.md
 docs/GridHttpProxyServerSetting.md
 docs/GridInformationalBannerSetting.md
 docs/GridJoin.md
@@ -520,6 +519,7 @@ docs/MemberthreatprotectionnatrulesNatPorts.md
 docs/MembertrafficcapturerecdnssettingKpiMonitoredDomains.md
 docs/Natgroup.md
 docs/NatgroupAPI.md
+docs/RestartServiceActionRequest.md
 docs/Restartservicestatus.md
 docs/RestartservicestatusAPI.md
 docs/UpdateCaptiveportalResponse.md
@@ -789,7 +789,6 @@ model_grid_email_setting.go
 model_grid_external_syslog_backup_servers.go
 model_grid_filedistribution.go
 model_grid_function_call.go
-model_grid_function_call_one_of.go
 model_grid_http_proxy_server_setting.go
 model_grid_informational_banner_setting.go
 model_grid_join.go
@@ -1055,6 +1054,7 @@ model_membersyslogproxysetting_client_acls.go
 model_memberthreatprotectionnatrules_nat_ports.go
 model_membertrafficcapturerecdnssetting_kpi_monitored_domains.go
 model_natgroup.go
+model_restart_service_action_request.go
 model_restartservicestatus.go
 model_update_captiveportal_response.go
 model_update_captiveportal_response_as_object.go
