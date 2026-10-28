@@ -330,6 +330,60 @@ paths:
       summary: Get a specific grid object
       tags:
       - Grid
+    post:
+      description: Used as a POST call for Function Calls
+      operationId: GridCreateFunctionCall
+      parameters:
+      - description: Reference of the grid object
+        explode: false
+        in: path
+        name: reference
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Select 1 if result is required as an object
+        explode: true
+        in: query
+        name: _return_as_object
+        required: false
+        schema:
+          enum:
+          - 0
+          - 1
+          type: integer
+        style: form
+      - description: Function call to execute.
+        explode: true
+        in: query
+        name: _function
+        required: true
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GridFunctionCall'
+        description: Object data for the function call
+        required: true
+      responses:
+        "200":
+          description: Function call executed successfully. No response body is returned.
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not found
+      security:
+      - basicAuth: []
+      summary: Used as a POST call for Function Calls
+      tags:
+      - Grid
     put:
       description: Updates a specific grid object by reference
       operationId: GridUpdate
@@ -10948,6 +11002,9 @@ components:
       required:
       - value
       type: object
+    GridFunctionCall:
+      oneOf:
+      - $ref: '#/components/schemas/GridFunctionCall_oneOf'
     Grid:
       additionalProperties: false
       example:
@@ -30880,6 +30937,58 @@ components:
         shared_secret:
           description: The shared secret string of the grid.
           example: Example shared_secret
+          type: string
+      type: object
+    GridFunctionCall_oneOf:
+      additionalProperties: false
+      description: The request format for Restart Services Function Call.
+      example:
+        mode: GROUPED
+        restart_option: restart_option
+        user_name: user_name
+        members:
+        - members
+        - members
+        groups:
+        - groups
+        - groups
+        services:
+        - services
+        - services
+      properties:
+        groups:
+          description: "Service Restart Group names to restart. Conflicts with `members`.\
+            \ If both are omitted, NIOS uses the default restart group."
+          items:
+            type: string
+          type: array
+        members:
+          description: "Grid Member names to restart. Conflicts with `groups`. If\
+            \ both are omitted, NIOS uses the default restart group."
+          items:
+            type: string
+          type: array
+        mode:
+          description: "Grid restart method. Valid values are `GROUPED`, `SEQUENTIAL`,\
+            \ and `SIMULTANEOUS`."
+          enum:
+          - GROUPED
+          - SEQUENTIAL
+          - SIMULTANEOUS
+          type: string
+        restart_option:
+          description: Controls whether NIOS restarts services only when needed or
+            unconditionally. Valid values are `RESTART_IF_NEEDED` and `FORCE_RESTART`.
+            Defaults to `RESTART_IF_NEEDED`.
+          type: string
+        services:
+          description: "Services to restart. Valid values are `ALL`, `DNS`, `DHCP`,\
+            \ `DHCPV4`, and `DHCPV6`. Defaults to `ALL`."
+          items:
+            type: string
+          type: array
+        user_name:
+          description: "Name of the user requesting the restart, recorded by NIOS."
           type: string
       type: object
     ListGridResponseObject:
