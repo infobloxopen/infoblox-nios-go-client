@@ -228,6 +228,8 @@ docs/GridEmailSetting.md
 docs/GridExternalSyslogBackupServers.md
 docs/GridFiledistribution.md
 docs/GridFiledistributionAPI.md
+docs/GridFunctionCall.md
+docs/GridFunctionCallOneOf.md
 docs/GridHttpProxyServerSetting.md
 docs/GridInformationalBannerSetting.md
 docs/GridJoin.md
@@ -786,6 +788,8 @@ model_grid_dns_sortlist.go
 model_grid_email_setting.go
 model_grid_external_syslog_backup_servers.go
 model_grid_filedistribution.go
+model_grid_function_call.go
+model_grid_function_call_one_of.go
 model_grid_http_proxy_server_setting.go
 model_grid_informational_banner_setting.go
 model_grid_join.go

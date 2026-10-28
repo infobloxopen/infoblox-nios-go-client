@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost/wapi/v2.13.6*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Create**](GridAPI.md#Create) | **Post** /grid | Invoke a grid function.
+[**CreateFunctionCall**](GridAPI.md#CreateFunctionCall) | **Post** /grid/{reference} | Used as a POST call for Function Calls
 [**List**](GridAPI.md#List) | **Get** /grid | Retrieve grid objects
 [**Read**](GridAPI.md#Read) | **Get** /grid/{reference} | Get a specific grid object
 [**Update**](GridAPI.md#Update) | **Put** /grid/{reference} | Update a grid object
@@ -74,6 +75,78 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateFunctionCall
+
+> CreateFunctionCall(ctx, reference).Function(function).GridFunctionCall(gridFunctionCall).ReturnAsObject(returnAsObject).Execute()
+
+Used as a POST call for Function Calls
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/infobloxopen/infoblox-nios-go-client/grid"
+)
+
+func main() {
+	reference := "reference_example" // string | Reference of the grid object
+	function := "function_example" // string | Function call to execute.
+	gridFunctionCall := grid.GridFunctionCall{GridFunctionCallOneOf: grid.NewGridFunctionCallOneOf()} // GridFunctionCall | Object data for the function call
+
+	apiClient := grid.NewAPIClient()
+	r, err := apiClient.GridAPI.CreateFunctionCall(context.Background(), reference).Function(function).GridFunctionCall(gridFunctionCall).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GridAPI.CreateFunctionCall``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**reference** | **string** | Reference of the grid object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a `GridAPICreateFunctionCallRequest` struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**function** | **string** | Function call to execute. | 
+**gridFunctionCall** | [**GridFunctionCall**](GridFunctionCall.md) | Object data for the function call | 
+**returnAsObject** | **int32** | Select 1 if result is required as an object | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
