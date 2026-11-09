@@ -9851,7 +9851,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -11415,7 +11415,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -14042,7 +14042,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
@@ -15350,7 +15350,7 @@ components:
         name: Example name
       properties:
         name:
-          description: The Cisco ISE attribute name that is enabled for publishsing
+          description: The Cisco ISE attribute name that is enabled for publishing
             from a Cisco ISE endpoint.
           enum:
           - ACCOUNT_SESSION_ID
